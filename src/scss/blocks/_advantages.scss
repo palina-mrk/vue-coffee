@@ -1,0 +1,268 @@
+.advantages {
+  position: relative;
+  width: 100%;
+  padding: 90px 0 68px;
+  margin: 0;
+  color: $color-black;
+  font-family: $ff-gilroy sans-serif;
+  font-weight: 500;
+  overflow: hidden;
+
+  @include vp-laptop {
+    padding: 59px 0;
+  }
+
+  @include vp-tablet {
+    padding: 190px 0 61px;
+  }
+
+  @include vp-mobile {
+    padding: 30px 0 61px;
+  }
+
+  &__wrapper {
+    width: 100%;
+    justify-content: start;
+    display: flex;
+    gap: 85px;
+
+    @include vp-laptop {
+      gap: 65px;
+    }
+  }
+
+  &__images {
+    width: 755px;
+    display: flex;
+    position: relative;
+
+    @include vp-laptop {
+      width: 534px;
+    }
+
+    @include vp-tablet {
+      display: none;
+    }
+  }
+
+  &__back-image {
+    width: 755px;
+    height: 503px;
+    top: 107px;
+    left: 0px;
+    z-index: -1;
+    position: absolute;
+
+    @include vp-laptop {
+      width: 534px;
+      height: 355px;
+      top: 78px;
+      left: 0px;
+    }
+  }
+
+  &__front-image {
+    width: 516px;
+    height: 433px;
+    margin: 280px auto 0 0;
+
+    @include vp-laptop {
+      width: 366px;
+      height: 307px;
+      margin: 200px auto 0 0;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  &__title {
+    margin: 0 0 78px;
+    padding: 0;
+    font-family: $ff-gilroy;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 62px;
+    max-width: 580px;
+
+    @include vp-laptop {
+      font-size: 35px;
+      line-height: 44px;
+      margin: 0 0 54px;
+      max-width: 410px;
+    }
+
+    @include vp-tablet {
+      font-size: 40px;
+      line-height: 50px;
+      margin: 0 0 60px;
+      max-width: 460px;
+    }
+
+    @include vp-mobile {
+      font-size: 20px;
+      line-height: 25px;
+      margin: 0 0 30px;
+      max-width: 220px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    gap: 59px;
+
+    @include vp-laptop {
+      gap: 38px;
+    }
+
+    @include vp-tablet {
+      gap: 60px;
+    }
+
+    @include vp-mobile {
+      gap: 30px;
+    }
+  }
+
+  &__item {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 50px;
+    align-items: start;
+
+    @include vp-laptop {
+      gap: 30px;
+    }
+
+    @include vp-tablet {
+      gap: 40px;
+    }
+
+    @include vp-mobile {
+      gap: 21px;
+    }
+  }
+
+  &__item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    background-color: $color-ucla-gold;
+    border-radius: 50%;
+    width: 84px;
+    height: 84px;
+
+    @include vp-laptop {
+      width: 60px;
+      height: 60px;
+    }
+
+    @include vp-tablet {
+      width: 81px;
+      height: 81px;
+    }
+
+    @include vp-mobile {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__item-svg {
+    width: 30px;
+    height: 30px;
+
+    @include vp-laptop {
+      width: 26px;
+      height: 23px;
+    }
+
+    @include vp-tablet {
+      width: 35px;
+      height: 30px;
+    }
+
+    @include vp-mobile {
+      width: 18px;
+      height: 15px;
+    }
+  }
+
+  &__item-text {
+    max-width: 530px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+
+    @include vp-laptop {
+      max-width: 400px;
+      gap: 15px;
+    }
+
+    @include vp-tablet {
+      max-width: 430px;
+      gap: 20px;
+    }
+
+    @include vp-mobile {
+      max-width: 250px;
+      gap: 13px;
+    }
+  }
+
+  &__item-title {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+
+    @include vp-laptop {
+      font-size: 21px;
+      line-height: 25px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 30px;
+    }
+
+    @include vp-mobile {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+
+  &__item-description {
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    line-height: 32px;
+
+    @include vp-laptop {
+      font-size: 18px;
+      line-height: 23px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+}

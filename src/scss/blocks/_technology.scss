@@ -1,0 +1,130 @@
+.technology {
+  position: relative;
+  width: 100%;
+  padding: 218px 0 153px;
+  margin: 0;
+  color: $color-white;
+  font-family: $ff-gilroy sans-serif;
+  font-weight: 500;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  @include vp-laptop {
+    padding: 142px 0 93px;
+  }
+
+  @include vp-tablet {
+    padding: 175px 0 0;
+  }
+
+  @include vp-mobile {
+    padding: 80px 0 0;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+
+    @include vp-laptop {
+      gap: 68px;
+    }
+
+    @include vp-tablet {
+      gap: 75px;
+    }
+
+    @include vp-mobile {
+      gap: 29px;
+    }
+  }
+
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    max-width: 960px;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 62px;
+
+    @include vp-laptop {
+      font-size: 35px;
+      line-height: 44px;
+      max-width: 520px;
+    }
+
+    @include vp-tablet {
+      font-size: 40px;
+      line-height: 50px;
+      max-width: unset;
+    }
+
+    @include vp-mobile {
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+    max-width: 1245px;
+
+    @include vp-laptop {
+      max-width: 880px;
+      gap: 20px;
+      margin: 0 0 0px;
+    }
+
+    @include vp-tablet {
+      max-width: unset;
+      gap: 26px;
+      margin: 0 0 13px;
+    }
+
+    @include vp-mobile {
+      gap: 18px;
+      margin: 0 0 44px;
+    }
+  }
+
+  &__paragraph {
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    line-height: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    @include vp-laptop {
+      font-size: 18px;
+      line-height: 23px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    @include vp-mobile {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
+  &__button {
+    width: 400px;
+
+    @include vp-laptop {
+      width: 283px;
+    }
+
+    @include vp-tablet {
+      width: 100%;
+    }
+  }
+}

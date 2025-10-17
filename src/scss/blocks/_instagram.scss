@@ -1,0 +1,269 @@
+.instagram {
+  position: relative;
+  width: 100%;
+  padding: 60px 0 53px;
+  margin: 0;
+  color: $color-black;
+  font-family: $ff-gilroy sans-serif;
+  font-weight: 500;
+  overflow: hidden;
+
+  @include vp-laptop {
+    padding: 27px 0 32px;
+  }
+
+  @include vp-tablet {
+    padding: 23px 0 200px;
+  }
+
+  @include vp-mobile {
+    padding: 26px 0 127px;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 57px;
+    margin: 0 0 70px;
+
+    @include vp-laptop {
+      gap: 30px;
+      margin: 0 0 52px;
+    }
+
+    @include vp-tablet {
+      gap: 40px;
+      margin: 0 0 91px;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    @include vp-mobile {
+      gap: 23px;
+      margin: 0 0 43px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 62px;
+
+    @include vp-laptop {
+      font-size: 35px;
+      line-height: 44px;
+    }
+
+    @include vp-tablet {
+      font-size: 40px;
+      line-height: 50px;
+      color: $color-raising-black;
+    }
+
+    @include vp-mobile {
+      font-size: 20px;
+      line-height: 16px;
+    }
+  }
+
+  &__link {
+    width: 86px;
+    height: 86px;
+
+    @include vp-laptop {
+      width: 60px;
+      height: 60px;
+    }
+
+    @include vp-tablet {
+      width: 81px;
+      height: 81px;
+    }
+
+    @include vp-mobile {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    height: 784px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    @include vp-laptop {
+      height: 554px;
+    }
+
+    @include vp-tablet {
+      height: 389px;
+    }
+
+    @include vp-mobile {
+      height: 183px;
+    }
+  }
+
+  &__images {
+    width: 700px;
+    height: 100%;
+    position: relative;
+
+    @include vp-laptop {
+      width: 500px;
+    }
+
+    @include vp-tablet {
+      height: 813px;
+      width: 458px;
+      z-index: -1;
+      left: calc(50% + 30px);
+      top: -15px;
+    }
+
+    @include vp-mobile {
+      width: 211px;
+      height: 400px;
+      left: calc(50% + 10px);
+      top: 22px;
+    }
+  }
+
+  &__back-image {
+    width: 650px;
+    height: 844px;
+    position: absolute;
+    left: 48px;
+    bottom: 3px; 
+
+    @include vp-laptop {
+      height: 569px;
+      width: 317px;
+      bottom: 29px;
+      left: 1px;
+    }
+
+    @include vp-tablet {
+      height: 813px;
+      width: 458px;
+      top: 0;
+      left: 0;
+    }
+
+    @include vp-mobile {
+      width: 211px;
+      height: 400px;
+    }
+  }
+
+  &__front-image {
+    width: 350px;
+    height: 733px;
+    position: absolute;
+    left: 240px;
+    bottom: -45px;
+
+    @include vp-laptop {
+      width: 255px;
+      height: 479px;
+      left: 161px;
+      bottom: -10px;
+    }
+
+    @include vp-tablet {
+      display: none;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    gap: 20px;
+    width: 1240px;
+    position: absolute;
+    left: 700px;
+    bottom: 0;
+
+    @include vp-laptop {
+      width: 880px;
+      left: 500px;
+      gap: 15px 20px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+      left: 0;
+      min-width: 700px;
+      width: calc(50% + 50vw);
+      flex-wrap: nowrap;
+    }
+
+    @include vp-mobile {
+      min-width: 320px;
+    }
+  }
+
+  &__gallery-item {
+    padding: 0;
+    margin: 0;
+    width: 400px;
+    height: 382px;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+
+    @include vp-laptop {
+      width: 280px;
+      height: 270px; 
+      border-radius: 8px;
+    }
+
+    @include vp-tablet {
+      width: 340px;
+      height: 389px;
+      border-radius: 10px;
+    }
+
+    @include vp-mobile {
+      width: 160px;
+      height: 183px;
+    }
+
+    &:nth-child(n+4) {
+      @include vp-tablet {
+        display: none;
+      }
+    }
+  }
+
+  &__gallery-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__button {
+    position: relative;
+    transform: translate(100%, -10px);
+
+    @include vp-tablet {
+      position: absolute;
+      transform: unset;
+      bottom: -115px;
+      left: 0;
+      rotate: -180deg;
+    }
+
+    @include vp-mobile {
+      bottom: -62px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.products {
+  padding: 48px 0 97px;
+
+  @include vp-laptop {
+    padding: 37px 0 71px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+    @include vp-laptop {
+      gap: 51px;
+    }
+  }
+  
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 70px 20px;
+    flex-wrap: wrap;
+    justify-content: start;
+
+    @include vp-laptop {
+      gap: 49px 20px;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
