@@ -8,8 +8,10 @@ export const useCatalogStore = defineStore('catalog', () => {
   const isLoaded = ref(false)
   const catalog = reactive([])
 
-  async function defineCatalog (result) {
-    console.log(await result?.products)
+  function defineCatalog (result) {
+    console.log(result.data.products[0])
+    result.data.products.forEach(el => catalog.push(el))
+    console.log(catalog[1])
   }
 
  /* async function loadCatalog() {

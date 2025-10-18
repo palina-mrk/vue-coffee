@@ -34,9 +34,8 @@ const app = createApp({
 })
 app.use(createPinia())
 const catalogStore = useCatalogStore()
-
-const { result } = useQuery(
-  gql`{
+apolloClient.query({
+  query: gql`{
     products {
       id
       title
@@ -47,9 +46,8 @@ const { result } = useQuery(
       rating { rate count }
       },
   }`,
-)
-console.log(result)
-catalogStore.defineCatalog(result)
+}).then((result => catalogStore.defineCatalog(result)))
+
 
 
 

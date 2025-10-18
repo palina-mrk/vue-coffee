@@ -1,15 +1,15 @@
 <script setup>
 import ProductCard from './components/cards/ProductCard.vue';
 import {reactive} from 'vue'
-/*
+
 import { storeToRefs } from 'pinia'
 import { useCatalogStore } from './stores/catalog'
 
 const catalogStore = useCatalogStore()
-const { catalog, isLoading } = storeToRefs(catalogStore)
+const { catalog, isLoadув } = storeToRefs(catalogStore)
 
-catalogStore.loadCatalog().then((data) => (catalog.concat(data)))
-*/
+catalogStore.
+
 
 
 const product = reactive({
