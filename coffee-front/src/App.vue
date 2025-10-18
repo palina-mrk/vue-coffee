@@ -1,28 +1,34 @@
 <script setup>
-import HomeView from './views/HomeView.vue';
 import ProductCard from './components/cards/ProductCard.vue';
 import {reactive} from 'vue'
 
+import { storeToRefs } from 'pinia'
+import { useCatalogStore } from './stores/catalog'
+
+const catalogStore = useCatalogStore()
+const { catalog, isLoading } = storeToRefs(catalogStore)
+
+catalogStore.loadCatalog().then((data) => (catalog.concat(data)))
+
 const product = reactive({
-    "id": 120,
-    "title": "Greenland Greenland Glacier",
-    "description": "Гренландский ледяной кофе с хрустящим холодным вкусом и необычайной свежестью.",
-    "price": 290,
-    "priceCrossed": 390,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 8},
-    "roasting": 4, /* от 1  до 5 */
-    "rating": 4.6,
-    "comments": 150
-  });
+  "id": 3,
+  "title": "Brazil Santos",
+  "description": "Свежеобжаренный кофе - мягкий, слегка орехово-шоколадный вкус.",
+  "weights": [
+    {"value": 250, "price": 200, "priceCrossed": 260},
+    {"value": 1000, "price": 700, "priceCrossed": 1000},
+  ],
+  "category": ["Скидки", "Популярное"],
+  "hue": {"acidity": 2, "bitterness": 4, "richness": 8},
+  "rating": 4.2,
+  "comments": 250});
 </script>
 
 <template>
-<ProductCard :product="product" :main="true"></ProductCard>
+<ProductCard :product="product" :isHomePage="true"></ProductCard>
 </template>
 
-<style lang="scss">
-@import "@/scss/blocks/_btn.scss";
+<style lang="scss" scoped>
 * {
   font-family: $ff-gilroy;
 }

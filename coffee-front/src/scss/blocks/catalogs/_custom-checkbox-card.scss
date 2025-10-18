@@ -22,6 +22,26 @@
       border-radius: 14px;
       gap: 7px;
     }
+
+    @include vp-tablet {
+      width: 220px;
+      min-height: 220px;
+      box-shadow: 0 0 61px 0 $color-spanish-gray-c95-25;
+      padding: 20px 17px 30px;
+      border-radius: 20px;
+      gap: 2px;
+      justify-content: space-between;
+    }
+
+    @include vp-mobile {
+      width: 106px;
+      min-height: 110px;
+      box-shadow: 0 0 30px 0 $color-spanish-gray-c95-25;
+      padding: 10px 10px 15px;
+      border-radius: 10px;
+      gap: 1px;
+      justify-content: space-between;
+    }
   } 
 
   &__label-text {
@@ -34,6 +54,16 @@
     @include vp-laptop {
       font-size: 14px;
       line-height: 17px;
+    }
+
+    @include vp-tablet {
+      font-size: 24px;
+      line-height: 29px;
+    }
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 14px;
     }
   }
 
@@ -48,6 +78,18 @@
     @include vp-laptop {
       max-width: 47px;
       max-height: 67px;
+    }
+
+    @include vp-tablet {
+      width: 120px;
+      height: 120px;
+      max-width: unset;
+      max-height: unset;
+    }
+
+    @include vp-mobile {
+      width: 60px;
+      height: 60px;
     }
   }
 

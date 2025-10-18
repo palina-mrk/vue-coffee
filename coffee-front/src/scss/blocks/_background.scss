@@ -601,6 +601,15 @@
     @include vp-laptop {
       bottom: 600px;
     }
+
+    @include vp-tablet {
+      height: 620px;
+      bottom: unset;
+    }
+
+    @include vp-mobile {
+      height: 301px;
+    }
   }
 
   &__svg-vawe--catalog-hero {
@@ -612,6 +621,17 @@
       height: 291px;
       bottom: 310px;
     }
+
+    @include vp-tablet {
+      height: 201px;
+      top: 615px;
+      bottom: unset;
+    }
+
+    @include vp-mobile {
+      height: 115px;
+      top: 300px;
+    }
   }
 
   &__div--catalog-hero-bottom-wall {
@@ -622,6 +642,17 @@
     @include vp-laptop {
       bottom: 123px;
       height: 450px;
+    }
+
+    @include vp-tablet {
+      height: unset;
+      top: 630px;
+      bottom: 442px;
+    }
+
+    @include vp-mobile {
+      top: 305px;
+      bottom: 267px;
     }
   }
 
@@ -637,6 +668,21 @@
       left: calc(50% + 315px);
       top: 54px;
     }
+
+    @include vp-tablet {
+      rotate: 0deg;
+      width: 762px;
+      height: 488px;
+      left: calc(50% - 384px);
+      top: 417px;
+    }
+
+    @include vp-mobile {
+      width: 371px;
+      height: 291px;
+      left: calc(50% - 208px);
+      top: 177px;  
+    }
   }
 
   &__img--catalog-hero-cup {
@@ -651,6 +697,20 @@
       height: 322px;
       top: 85px;
       left: calc(50% + 96px);
+    }
+
+    @include vp-tablet {
+      width: 558px;
+      height: 401px;
+      top: 410px;
+      left: calc(50% - 301px);
+    }
+
+    @include vp-mobile {
+      width: 306px;
+      height: 205px;
+      top: 196px;
+      left: calc(50% - 168px);
     }
   }
 
@@ -669,7 +729,11 @@
     }
 
     @include vp-tablet {
-      display: none;
+      top: 44px;
+    }
+
+    @include vp-mobile {
+      top: 23px;
     }
   }
 
@@ -681,17 +745,17 @@
 
     @include vp-laptop {
       height: 209px;
-      top: 36px;
+      top: 32px;
     }
 
     @include vp-tablet {
-      height: 190px;
-      top: -64px;
+      height: 196px;
+      top: 51px;
     }
 
     @include vp-mobile {
-      height: 108px;
-      top: -52px;
+      height: 112px;
+      top: 25px;
     }
   }
 
@@ -699,13 +763,18 @@
     height: 407px;
     top: 30px;
     color: $color-cultured;
+    z-index: -5;
 
     @include vp-laptop {
       height: 208px;
       top: 22px;
     }
-  }
 
+    @include vp-tablet {
+      height: 119px;
+      top: 17px;
+    }
+  }
 
   &__img--catalog-footer-corns {
     width: 730px;
@@ -732,7 +801,7 @@
       width: 339px;
       height: 231px;
       left: calc(50% - 172px);
-      top: -6px;
+      top: 21px;
     }
   }
 
@@ -761,7 +830,7 @@
       width: 307px;
       height: 204px;
       left: calc(50% - 140px);
-      top: -7px;
+      top: 20px;
     }
   }
 

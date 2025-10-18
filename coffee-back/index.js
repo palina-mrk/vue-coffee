@@ -4,6 +4,7 @@ const { buildSchema } = require('graphql')
 var cors = require('cors')
 
 const products = require('./data/products')
+const coffee = require('./data/coffee')
 
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`

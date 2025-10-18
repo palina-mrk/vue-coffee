@@ -228,6 +228,43 @@
     }
   }
 
+  
+  &--black-small {
+    line-height: 24px;
+    color: $color-black;
+    text-decoration: underline;
+    padding: 11px 30px 10px;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 16px;
+      padding: 7px 18px 6px;
+      border-radius: 18px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 26px;
+      border-radius: 25px;      
+      padding: 9px 20px 8px;
+    }
+
+    @include vp-mobile {
+      font-size: 18px;
+      line-height: 21px;    
+      padding: 7px 20px 7px;
+      border-radius: 20px;
+    }
+
+    &:hover {
+      background-color: $color-ghost-white;
+      color: $color-ucla-gold;
+    }
+  }
+
   &--size-m {
     font-size: 25px;
     padding: 11px 29px 10px;
@@ -374,6 +411,22 @@
       font-size: 14px;
       line-height: 17px;
       border-radius: 7px;
+    }
+
+    @include vp-tablet {
+      height: 70px;
+      border: 1px solid $color-platinum;
+      padding: 22px;
+      font-size: 22px;
+      line-height: 26px;
+      border-radius: 5px;
+    }
+
+    @include vp-mobile {
+      height: 50px;
+      padding: 14px 14px 15px;
+      font-size: 18px;
+      line-height: 21px;
     }
 
     &:hover {

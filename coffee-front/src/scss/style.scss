@@ -1,0 +1,42 @@
+/* Global */
+/* ------------------------------------ */
+@import "./global/_variables";
+@import "./global/_mixins";
+@import "./global/_normalize";
+@import "./global/_fonts";
+@import "./global/_reboot";
+@import "./global/_container";
+@import "./global/_visually-hidden";
+
+/* Blocks */
+/* ------------------------------------ */
+@import "./blocks/_main-nav";
+@import "./blocks/_product-card";
+@import "./blocks/_background";
+@import "./blocks/_btn";
+@import "./blocks/_custom-search";
+@import "./blocks/_socials";
+@import "./blocks/_header";
+@import "./blocks/_slider-large";
+@import "./blocks/_catalog-card";
+@import "./blocks/_custom-dropdown";
+@import "./blocks/_slider-stars";
+@import "./blocks/_slider-corns";
+@import "./blocks/_slider-points";
+@import "./blocks/_product-card";
+@import "./blocks/_overview";
+@import "./blocks/_advantages";
+@import "./blocks/_technology";
+@import "./blocks/_news-card";
+@import "./blocks/_news";
+@import "./blocks/_instagram";
+@import "./blocks/_custom-subscribe";
+@import "./blocks/_footer";
+
+/* Blocks for catalog page */
+@import "./blocks/catalogs/_hero";
+@import "./blocks/catalogs/_products";
+@import "./blocks/catalogs/_custom-checkbox-corns";
+@import "./blocks/catalogs/_custom-checkbox-words";
+@import "./blocks/catalogs/_custom-checkbox-card";
+@import "./blocks/catalogs/_filter-form";

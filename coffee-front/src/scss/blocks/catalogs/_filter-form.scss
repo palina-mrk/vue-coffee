@@ -7,6 +7,14 @@
     gap: 48px;
   }
 
+  @include vp-tablet {
+    gap: 51px;
+  }
+
+  @include vp-mobile {
+    gap: 35px;
+  }
+
   &__inner {
     display: flex;
     gap: 20px;
@@ -15,6 +23,15 @@
 
     @include vp-laptop {
       gap: 15px 20px;
+    }
+
+    @include vp-tablet {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @include vp-mobile {
+      gap: 10px;
     }
   }
 
@@ -31,6 +48,20 @@
       padding: 30px 35px 83px 60px;
       width: 280px;
       border-radius: 14px;
+    }
+
+    @include vp-tablet {
+      box-shadow: 0px 0px 61px 0px $color-spanish-gray-c95-25;
+      padding: 105px 44px 65px;
+      width: 700px;
+      min-height: 620px;
+    }
+
+    @include vp-mobile {
+      box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
+      padding: 50px 20px 30px;
+      width: 340px;
+      min-height: 303px;
     }
 
     &::before {
@@ -50,6 +81,24 @@
         bottom: 33px;
         left: 20px;
       }
+
+      @include vp-tablet {
+        height: 20px;
+        left: 33px;
+        right: 33px;
+        top: 40px;
+        bottom: unset;
+        width: unset;
+        border-radius: 20px;
+      }
+
+      @include vp-mobile {
+        height: 10px;
+        left: 15px;
+        right: 15px;
+        top: 20px;
+        border-radius: 10px;
+      }
     }
   }
 
@@ -66,6 +115,14 @@
     @include vp-laptop {
       gap: 30px;
     }
+
+    @include vp-tablet {
+      gap: 40px;
+    }
+
+    @include vp-mobile {
+      gap: 20px;
+    }
   }
 
   &__corns-groupname {
@@ -80,6 +137,18 @@
       line-height: 25px;
       margin: 0 0 30px;
     }
+
+    @include vp-tablet {
+      font-size: 32px;
+      line-height: 39px;
+      margin: 0 0 50px;
+    }
+
+    @include vp-mobile {
+      font-size: 16px;
+      line-height: 19px;
+      margin: 0 0 24px;
+    }
   }
 
   &__words-block {
@@ -88,8 +157,8 @@
     box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
     position: relative;
     width: calc(100% - 420px);
-    padding: 82px 135px 47px 95px;
-    max-height: 526px;
+    padding: 82px 135px 55px 95px;
+    height: 526px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -100,8 +169,27 @@
       padding: 56px 73px 25px 67px;
       width: calc(100% - 300px);
       border-radius: 14px;
-      max-height: 373px;
+      height: 373px;
       gap: 15px 0;
+    }
+
+    @include vp-tablet {
+      box-shadow: 0px 0px 61px 0px $color-spanish-gray-c95-25;
+      padding: 107px 55px 45px 44px;
+      width: 700px;
+      height: 1200px;
+      flex-direction: column;
+      gap: 77px 100px;
+      margin: 0 0 20px;
+    }
+
+    @include vp-mobile {
+      box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
+      padding: 50px 26px 31px 20px;
+      width: 340px;
+      height: 588px;
+      gap: 33px 48px;
+      margin: 0 0 10px;
     }
 
     &::before {
@@ -121,6 +209,22 @@
         right: 50px;
         top: 25px;
       }
+
+      @include vp-tablet {
+        left: 33px;
+        right: 33px;
+        height: 20px;
+        border-radius: 20px;
+        top: 40px;
+      }
+
+      @include vp-mobile {
+        height: 10px;
+        left: 15px;
+        right: 15px;
+        top: 20px;
+        border-radius: 10px;
+      }
     }
   }
 
@@ -137,6 +241,16 @@
     @include vp-laptop {
       gap: 15px;
     }
+
+    @include vp-tablet {
+      gap: 31px;
+      max-width: 250px;
+    }
+
+    @include vp-mobile {
+      gap: 16px;
+      max-width: 125px;
+    }
   }
 
   &__words-group:first-of-type {
@@ -145,6 +259,18 @@
     @include vp-laptop {
       margin: 0 27px 0 0;
     }
+
+    @include vp-tablet {
+      order: -2;
+      margin: 0;
+    }
+  }
+
+  &__words-group:nth-of-type(4) {
+    @include vp-tablet {
+      order: -1;
+      margin: 0;
+    }
   }
 
   &__words-group:last-of-type {
@@ -152,6 +278,10 @@
 
     @include vp-laptop {
       margin: 0 0 0 25px;
+    }
+
+    @include vp-tablet {
+      margin: 0;
     }
   }
 
@@ -169,6 +299,20 @@
       margin: 0 0 20px;
       max-width: 100px;
     }
+
+    @include vp-tablet {
+      font-size: 32px;
+      line-height: 39px;
+      margin: 0 0 42px 6px;
+      max-width: 180px;
+    }
+
+    @include vp-mobile {
+      font-size: 16px;
+      line-height: 19px;
+      margin: 0 0 23px;
+      max-width: 110px;
+    }
   }
 
   &__cards-group {
@@ -185,6 +329,18 @@
     @include vp-laptop {
       gap: 15px;
     }
+
+    @include vp-tablet {
+      flex-wrap: wrap;
+      gap: 20px;
+      width: 700px;
+      justify-content: start;
+    }
+
+    @include vp-mobile {
+      gap: 10px;
+      width: 340px;
+    }
   }
 
   &__submit {
@@ -193,6 +349,10 @@
     @include vp-laptop {
       position: relative;
       left: -15px;
+    }
+
+    @include vp-tablet {
+      position: unset;
     }
   }
 }

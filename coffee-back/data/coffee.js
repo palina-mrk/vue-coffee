@@ -1,4 +1,4 @@
-export const products = [
+const coffee = [
   {
     "id": 1,
     "title": "Colombia Supremo",
@@ -1320,3 +1320,5 @@ export const products = [
     "comments": 150
   }
 ]
+
+module.exports = coffee;

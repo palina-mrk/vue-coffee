@@ -8,6 +8,14 @@
     @include vp-laptop {
       padding: 0 0 0 37px;
     }
+
+    @include vp-tablet {
+      padding: 0 0 0 102px;
+    }
+
+    @include vp-mobile {
+      padding: 0 0 0 50px;
+    }
   
     &::before {
       content: "";
@@ -23,6 +31,16 @@
       @include vp-laptop {
         width: 17px;
         height: 17px;
+      }
+
+      @include vp-tablet {
+        width: 40px;
+        height: 40px;
+      }
+
+      @include vp-mobile {
+        width: 20px;
+        height: 20px;
       }
     }
   } 

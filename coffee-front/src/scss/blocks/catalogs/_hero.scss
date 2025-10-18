@@ -14,11 +14,11 @@
   }
 
   @include vp-tablet {
-    padding: 175px 0 0;
+    padding: 173px 0 0;
   }
 
   @include vp-mobile {
-    padding: 80px 0 0;
+    padding: 95px 0 0;
   }
 
   &__wrapper {
@@ -32,11 +32,11 @@
     }
 
     @include vp-tablet {
-      gap: 75px;
+      gap: 73px;
     }
 
     @include vp-mobile {
-      gap: 29px;
+      gap: 20px;
     }
   }
 
@@ -50,6 +50,14 @@
 
     @include vp-laptop {
       gap: 11px;
+    }
+
+    @include vp-tablet {
+      gap: 22px;
+    }
+
+    @include vp-mobile {
+      gap: 12px;
     }
   }
 
@@ -73,6 +81,19 @@
       height: 3px;
       left: -5px;
     }
+
+    @include vp-tablet {
+      width: 4px;
+      height: 4px;
+      left: -11px;
+    }
+
+    @include vp-mobile {
+      width: 2px;
+      height: 2px;
+      left: -5px;
+      top: calc(50% + 2px);
+    }
   }
 
   &__breadcrumbs-link {
@@ -84,6 +105,16 @@
     @include vp-laptop {
       font-size: 12px;
       line-height: 14px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 25px;
+    }
+
+    @include vp-mobile {
+      font-size: 10px;
+      line-height: 12px;
     }
 
     &:hover {
@@ -109,14 +140,16 @@
     }
 
     @include vp-tablet {
-      font-size: 40px;
-      line-height: 50px;
+      font-size: 50px;
+      line-height: 62px;
       max-width: unset;
+      margin: 0 0 482px;
     }
 
     @include vp-mobile {
-      font-size: 20px;
-      line-height: 25px;
+      font-size: 25px;
+      line-height: 31px;
+      margin: 0 0 250px;
     }
   }
 }
