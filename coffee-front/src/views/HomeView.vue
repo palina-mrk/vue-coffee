@@ -1,7 +1,7 @@
 <script setup>
-import MainHeader from "../components/MainHeader.vue";
-import MainBody from "../components/MainBody.vue";
-import MainFooter from "../components/MainFooter.vue";
+import MainHeader from "./MainHeader.vue";
+import MainBody from "./MainBody.vue";
+import MainFooter from "./MainFooter.vue";
 </script>
 
 <template>

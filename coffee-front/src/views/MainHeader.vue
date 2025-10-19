@@ -16,7 +16,7 @@
               height="30"
               aria-hidden="true"
             >
-              <use xlink:href="./images/btn/btn-sprite.svg#burger-icon"></use>
+              <use xlink:href="../assets/btn-sprite.svg#burger-icon"></use>
             </svg>
           </button>
         </div>
@@ -28,19 +28,19 @@
           <picture>
             <source
               media="(max-width: 767px)"
-              srcset="./images/header/logo/image-logo-mobile.png"
+              srcset="../images/header/logo/image-logo-mobile.png"
             />
             <source
               media="(max-width: 1348px)"
-              srcset="./images/header/logo/image-logo-tablet.png"
+              srcset="../images/header/logo/image-logo-tablet.png"
             />
             <source
               media="(max-width: 1903px)"
-              srcset="./images/header/logo/image-logo-laptop.png"
+              srcset="../images/header/logo/image-logo-laptop.png"
             />
             <img
               class="header__logo-img"
-              src="./images/header/logo/image-logo-desktop.png"
+              src="../images/header/logo/image-logo-desktop.png"
               width="260"
               height="116"
               alt="Ссылка на главную страницу"
@@ -79,7 +79,7 @@
               aria-hidden="true"
             >
               <use
-                xlink:href="./images/header/header-sprite.svg#icon-search"
+                xlink:href="../assets/header-sprite.svg#icon-search"
               ></use>
             </svg>
             <a class="custom-search__btn btn-linked" href="#">
@@ -101,7 +101,7 @@
                 aria-hidden="true"
               >
                 <use
-                  xlink:href="./images/header/header-sprite.svg#icon-search"
+                  xlink:href="../assets/header-sprite.svg#icon-search"
                 ></use>
               </svg>
             </a>
@@ -119,7 +119,7 @@
                 aria-hidden="true"
               >
                 <use
-                  xlink:href="./images/header/header-sprite.svg#icon-basket"
+                  xlink:href="../assets/header-sprite.svg#icon-basket"
                 ></use>
               </svg>
             </a>
@@ -137,7 +137,7 @@
                 aria-hidden="true"
               >
                 <use
-                  xlink:href="./images/header/header-sprite.svg#icon-user"
+                  xlink:href="../assets/header-sprite.svg#icon-user"
                 ></use>
               </svg>
             </a>
@@ -149,7 +149,7 @@
           height="40"
           aria-hidden="true"
         >
-          <use xlink:href="./images/header/header-sprite.svg#icon-close"></use>
+          <use xlink:href="../assets/header-sprite.svg#icon-close"></use>
         </svg>
 
         <div class="header__menu-contacts">
@@ -166,7 +166,7 @@
                   aria-hidden="true"
                 >
                   <use
-                    xlink:href="./images/header/header-sprite.svg#icon-phone"
+                    xlink:href="../assets/header-sprite.svg#icon-phone"
                   ></use>
                 </svg>
               </a>
@@ -180,7 +180,7 @@
                   aria-hidden="true"
                 >
                   <use
-                    xlink:href="./images/header/header-sprite.svg#icon-instagram"
+                    xlink:href="../assets/header-sprite.svg#icon-instagram"
                   ></use>
                 </svg>
               </a>
@@ -193,10 +193,9 @@
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_btn.scss";
 @import "@/scss/blocks/_custom-search.scss";
-@import "@/scss/blocks/_background.scss";
 @import "@/scss/blocks/_main-nav.scss";
 @import "@/scss/blocks/_socials.scss";
+@import "@/scss/blocks/_news.scss";
 @import "@/scss/blocks/_header.scss";
 </style>

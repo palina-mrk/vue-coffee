@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
 import { computed, reactive } from "vue";
-import { useCatalogStore } from "./catalog";
+import { useCoffeeStore } from "./coffee";
 
 export const useCartStore = defineStore("cart", () => {
-  const catalog = useCatalogStore();
+  const catalog = useCoffeeStore();
 
   const cart = reactive({});
   /* item.id -> {

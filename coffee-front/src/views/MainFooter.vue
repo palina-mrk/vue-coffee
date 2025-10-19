@@ -11,7 +11,7 @@
       aria-hidden="true"
     >
       <use
-        xlink:href="../../images/background/bg-sprite.svg#bg-footer-vawe"
+        xlink:href="../assets/bg-sprite.svg#bg-footer-vawe"
       ></use>
     </svg>
 
@@ -22,26 +22,26 @@
       aria-hidden="true"
     >
       <use
-        xlink:href="../../images/background/bg-sprite.svg#bg-footer-vawe-for-tablet"
+        xlink:href="../assets/background/bg-sprite.svg#bg-footer-vawe-for-tablet"
       ></use>
     </svg>
 
     <picture>
       <source
         media="(max-width: 767px)"
-        srcset="../../images/background/bg-footer-corns-mobile.png"
+        srcset="../images/background/bg-footer-corns-mobile.png"
       />
       <source
         media="(max-width: 1348px)"
-        srcset="../../images/background/bg-footer-corns-tablet.png"
+        srcset="../images/background/bg-footer-corns-tablet.png"
       />
       <source
         media="(max-width: 1903px)"
-        srcset="../../images/background/bg-footer-corns-laptop.png"
+        srcset="../images/background/bg-footer-corns-laptop.png"
       />
       <img
         class="background__img background__img--footer-corns"
-        src="../../images/background/bg-footer-corns-desktop.png"
+        src="../images/background/bg-footer-corns-desktop.png"
         width="769"
         height="659"
         alt="Зёрна кофе под чашкой"
@@ -51,19 +51,19 @@
     <picture>
       <source
         media="(max-width: 767px)"
-        srcset="../../images/background/bg-heading-cup-mobile.png"
+        srcset="../images/background/bg-heading-cup-mobile.png"
       />
       <source
         media="(max-width: 1348px)"
-        srcset="../../images/background/bg-heading-cup-tablet.png"
+        srcset="../images/background/bg-heading-cup-tablet.png"
       />
       <source
         media="(max-width: 1903px)"
-        srcset="../../images/background/bg-heading-cup-laptop.png"
+        srcset="../images/background/bg-heading-cup-laptop.png"
       />
       <img
         class="background__img background__img--footer-cup"
-        src="../../images/background/bg-heading-cup-desktop.png"
+        src="../images/background/bg-heading-cup-desktop.png"
         width="682"
         height="455"
         alt="Чашка кофе"
@@ -116,19 +116,19 @@
           <picture>
             <source
               media="(max-width: 767px)"
-              srcset="./images/header/logo/image-logo-mobile.png"
+              srcset="../images/header/logo/image-logo-mobile.png"
             />
             <source
               media="(max-width: 1348px)"
-              srcset="./images/header/logo/image-logo-tablet.png"
+              srcset="../images/header/logo/image-logo-tablet.png"
             />
             <source
               media="(max-width: 1903px)"
-              srcset="./images/header/logo/image-logo-laptop.png"
+              srcset="../images/header/logo/image-logo-laptop.png"
             />
             <img
               class="footer__logo-img"
-              src="./images/header/logo/image-logo-desktop.png"
+              src="../images/header/logo/image-logo-desktop.png"
               width="260"
               height="116"
               alt="Ссылка на главную страницу"
@@ -159,5 +159,6 @@
 @import "@/scss/blocks/_background.scss";
 @import "@/scss/blocks/_main-nav.scss";
 @import "@/scss/blocks/_socials.scss";
+@import "@/scss/blocks/_custom-subscribe.scss";
 @import "@/scss/blocks/_footer.scss";
 </style>

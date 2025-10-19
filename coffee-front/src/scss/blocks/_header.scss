@@ -5,6 +5,7 @@
   z-index: 3;
   background: transparent;
   width: 100%;
+  font-family: $ff-gilroy sans-serif;
 
   @include vp-laptop {
     padding: 20px 0 13px;

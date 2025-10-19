@@ -3,10 +3,10 @@ import { ref, reactive } from "vue";
 import apolloClient from "../apollo";
 import gql from "graphql-tag";
 
-export const useCatalogStore = defineStore("catalog", () => {
+export const useCoffeeStore = defineStore("catalog", () => {
   const isLoaded = ref(false);
   const catalog = reactive([]);
-
+  
   function loadCatalog() {
     apolloClient
       .query({
@@ -61,5 +61,9 @@ export const useCatalogStore = defineStore("catalog", () => {
     return catalog.find((i) => i.id == itemId).find((w) => w.value == weight);
   }
 
-  return { isLoaded, catalog, loadCatalog, getPrice, getFullInfo, getSellInfo };
+  function getSaleIndexes() {
+    return catalog.filter((i) => i.actions.includes('Скидки')).map(i => i.id).sort();
+  }
+
+  return { isLoaded, catalog, loadCatalog, getPrice, getFullInfo, getSellInfo, getSaleIndexes };
 });

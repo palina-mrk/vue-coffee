@@ -3,26 +3,16 @@ import ProductCard from "./components/cards/ProductCard.vue";
 import { reactive, ref } from "vue";
 
 import { storeToRefs } from "pinia";
-import { useCatalogStore } from "./stores/catalog";
+import { useCoffeeStore } from "./stores/coffee";
 
-const catalogStore = useCatalogStore();
+const catalogStore = useCoffeeStore();
 const { catalog, isLoaded } = storeToRefs(catalogStore);
 
 </script>
 
 <template>
-  <p>{{ isLoaded }}</p>
-  <p>{{ catalog[9] }}</p>
-  <div v-if="isLoaded">
-    <ProductCard v-for="product in catalog" :product="product" :isHomePage="true"></ProductCard>
-  </div>
+  <RouterView></RouterView>
 </template>
 
 <style lang="scss" scoped>
-* {
-  font-family: $ff-gilroy;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
 </style>
