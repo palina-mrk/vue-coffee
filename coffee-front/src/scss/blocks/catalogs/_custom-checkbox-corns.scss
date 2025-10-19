@@ -1,5 +1,4 @@
 .custom-checkbox-corns {
-  
   &__label {
     position: relative;
     padding: 0 0 0 42px;
@@ -16,7 +15,7 @@
     @include vp-mobile {
       padding: 0 0 0 50px;
     }
-  
+
     &::before {
       content: "";
       background-color: $color-platinum;
@@ -43,7 +42,7 @@
         height: 20px;
       }
     }
-  } 
+  }
 
   &__field:checked ~ .custom-checkbox-corns__label::before {
     background-color: $color-ucla-gold;

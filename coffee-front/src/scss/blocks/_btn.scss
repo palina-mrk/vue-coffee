@@ -23,9 +23,7 @@
     color: $color-ucla-gold;
   }
 
-
   &--burger {
-  
     .btn-icon__svg {
       width: 59px;
       height: 36px;
@@ -101,9 +99,9 @@
       color: $color-white;
     }
 
-  .btn-icon__svg {
-    width: 34px;
-    height: 17px;
+    .btn-icon__svg {
+      width: 34px;
+      height: 17px;
 
       @include vp-tablet {
         width: 38px;
@@ -128,7 +126,7 @@
         width: 48px;
         height: 10px;
       }
-    } 
+    }
   }
 }
 
@@ -167,7 +165,7 @@
     padding: 5px 18px 3px;
     gap: 13px;
   }
-  
+
   &__icon {
     width: 16px;
     height: 11px;
@@ -211,13 +209,13 @@
     @include vp-tablet {
       font-size: 25px;
       line-height: 30px;
-      border-radius: 30px;      
+      border-radius: 30px;
       padding: 7px 10px 6px;
     }
 
     @include vp-mobile {
       font-size: 12px;
-      line-height: 16px;    
+      line-height: 16px;
       padding: 5px 13px 3px;
       border-radius: 16px;
     }
@@ -228,7 +226,6 @@
     }
   }
 
-  
   &--black-small {
     line-height: 24px;
     color: $color-black;
@@ -248,13 +245,13 @@
     @include vp-tablet {
       font-size: 20px;
       line-height: 26px;
-      border-radius: 25px;      
+      border-radius: 25px;
       padding: 9px 20px 8px;
     }
 
     @include vp-mobile {
       font-size: 18px;
-      line-height: 21px;    
+      line-height: 21px;
       padding: 7px 20px 7px;
       border-radius: 20px;
     }
@@ -283,7 +280,7 @@
 
     @include vp-mobile {
       font-size: 12px;
-      line-height: 16px;    
+      line-height: 16px;
       padding: 5px 13px 3px;
       border-radius: 16px;
     }
@@ -436,7 +433,7 @@
 }
 
 .product-card--main-mobile {
-  .btn--size-s{
+  .btn--size-s {
     @include vp-mobile {
       font-size: 12px;
       line-height: 14px;

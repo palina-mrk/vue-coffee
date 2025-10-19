@@ -331,7 +331,7 @@
     }
   }
 
-  &__paragraph-string{
+  &__paragraph-string {
     @include vp-tablet {
       display: flex;
       flex-direction: column;
@@ -351,7 +351,6 @@
     @include vp-laptop {
       margin: 0 0 30px auto;
     }
-
   }
 
   &__products-prev,
@@ -389,7 +388,7 @@
     list-style-type: none;
     justify-content: space-between;
     gap: 20px;
-    
+
     @include vp-laptop {
       margin: 0 39px;
       gap: 13px;

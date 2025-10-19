@@ -4,7 +4,7 @@ const { buildSchema } = require('graphql')
 var cors = require('cors')
 
 const products = require('./data/products')
-const coffee = require('./data/coffee')
+const coffees = require('./data/coffee')
 
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
@@ -44,6 +44,42 @@ const schema = buildSchema(`
     description: String
     category: String!
     image: String
+  }
+
+  type Coffee {
+    id: Int!
+    title: String!
+    category: String!
+    description: String!
+    weights: [Weight!]!
+    rate: Rate!
+    hue: Hue!
+    details: [Detail!]!
+    taste: [String!]!
+  }
+
+  type Weight {
+    value: Int!
+    price: Int!
+    priceCrossed: Int!
+  }
+
+  type Rate {
+    rating: Float!
+    comments: Int!
+  }
+
+  type Hue {
+    acidity: Int!
+    bitterness: Int!
+    richness: Int!
+  }
+
+  type Detail {
+    kind: String!
+    variety: String
+    processing: String
+    geography: String!
   }
 `)
 

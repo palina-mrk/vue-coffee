@@ -11,7 +11,7 @@
   }
 
   @include vp-tablet {
-    padding: 20px 0 21px; 
+    padding: 20px 0 21px;
     box-shadow: 0px 5px 20px 0px rgba(157, 157, 157, 0.25);
     background-color: $color-white;
   }
@@ -20,7 +20,7 @@
     padding: 9px 0 11px;
   }
 
-  &__wrapper{
+  &__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,7 +45,7 @@
   }
 
   &__logo-img {
-    width: 260px; 
+    width: 260px;
     height: 116px;
 
     @include vp-laptop {
@@ -112,12 +112,12 @@
 
     @include vp-laptop {
       margin: 0 0 0 35px;
-      gap: 5px 37px;   
+      gap: 5px 37px;
     }
 
     @include vp-tablet {
       margin: 0 0 10px 6px;
-      gap: 5px 54px;   
+      gap: 5px 54px;
     }
 
     @include vp-mobile {
@@ -169,7 +169,7 @@
   &__basket-icon {
     width: 37px;
     height: 36px;
-    
+
     @include vp-laptop {
       width: 26px;
       height: 24px;
@@ -189,7 +189,7 @@
   &__user-icon {
     width: 32px;
     height: 37px;
-    
+
     @include vp-laptop {
       width: 24px;
       height: 32px;
@@ -241,7 +241,6 @@
     }
   }
 
-
   .header__menu-close {
     display: none;
     position: absolute;
@@ -261,7 +260,7 @@
     gap: 182px;
 
     @include vp-mobile {
-      gap: 90px
+      gap: 90px;
     }
   }
 }
@@ -297,7 +296,6 @@
     @include vp-tablet {
       display: none;
     }
-
   }
 
   .header__search {
@@ -314,7 +312,7 @@
     padding: 16px 0 0;
   }
 
-  .header__wrapper{
+  .header__wrapper {
     flex-direction: column;
     align-items: start;
     justify-content: start;
@@ -347,7 +345,7 @@
     }
   }
 
-  .header__burger, 
+  .header__burger,
   .header__search,
   .header__users-item:first-child {
     display: none;

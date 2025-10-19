@@ -16,7 +16,7 @@
   &__item {
     color: $color-antiflash-white-f0;
     display: flex;
-  } 
+  }
 
   &__svg {
     width: 25px;
@@ -42,13 +42,13 @@
   .slider-stars {
     @include vp-mobile {
       gap: 1px;
-    }   
+    }
   }
 
   .slider-stars__svg {
     @include vp-mobile {
       width: 16px;
-      height: 16px;      
+      height: 16px;
     }
-  } 
+  }
 }

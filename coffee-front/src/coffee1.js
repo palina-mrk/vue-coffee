@@ -1,4 +1,4 @@
-const coffees = [
+[
   {
     id: 1,
     title: "Colombia Supremo",
@@ -2399,5 +2399,3 @@ const coffees = [
     taste: ["хруст снега", "холодная свежесть", "ледяная капля"],
   },
 ];
-
-module.exports = coffees;

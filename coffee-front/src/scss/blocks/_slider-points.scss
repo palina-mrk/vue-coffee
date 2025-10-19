@@ -10,7 +10,7 @@
   }
 
   @include vp-mobile {
-    gap: 3px;  
+    gap: 3px;
   }
 
   &__item {
@@ -28,7 +28,7 @@
       width: 8px;
       height: 8px;
     }
-  } 
+  }
 
   &__item--selected {
     background-color: $color-ucla-gold;

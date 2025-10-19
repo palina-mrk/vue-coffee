@@ -1,5 +1,4 @@
 .custom-checkbox-words {
-  
   &__label {
     position: relative;
     padding: 0 0 0 45px;
@@ -27,7 +26,7 @@
       line-height: 14px;
       padding: 0 0 0 30px;
     }
-  
+
     &::before {
       content: "";
       background-color: $color-platinum;
@@ -54,7 +53,7 @@
         height: 20px;
       }
     }
-  } 
+  }
 
   &__field:checked ~ .custom-checkbox-corns__label::before {
     background-color: $color-ucla-gold;

@@ -130,12 +130,12 @@
     padding: 0;
     margin: 0;
     display: flex;
-    
+
     @include vp-tablet {
       top: -100px;
       display: none;
 
-      &:nth-child(1){
+      &:nth-child(1) {
         display: flex;
       }
     }

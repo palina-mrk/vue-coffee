@@ -139,7 +139,7 @@
     height: 844px;
     position: absolute;
     left: 48px;
-    bottom: 3px; 
+    bottom: 3px;
 
     @include vp-laptop {
       height: 569px;
@@ -223,7 +223,7 @@
 
     @include vp-laptop {
       width: 280px;
-      height: 270px; 
+      height: 270px;
       border-radius: 8px;
     }
 
@@ -238,7 +238,7 @@
       height: 183px;
     }
 
-    &:nth-child(n+4) {
+    &:nth-child(n + 4) {
       @include vp-tablet {
         display: none;
       }
