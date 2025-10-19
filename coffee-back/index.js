@@ -9,42 +9,13 @@ const coffees = require('./data/coffee')
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
   type Query {
-    products: [Product!]!
-    product(id: ID!): Product
-    categories: [String!]!
-    "Schema version"
-    version: String
-  }
-
-  type Mutation {
-    addProduct(product: ProductInput!): Product
+    coffees: [Coffee!]!
+    coffee(id: ID!): Coffee
   }
 
   """ 
   User can be the author of a post or comment
   """
-  type Product {
-    id: ID!
-    title: String!
-    price: Float!
-    description: String!
-    category: String!
-    image: String!
-    rating: Rating!
-  }
-
-  type Rating {
-    rate: Float
-    count: Int
-  }
-  
-  input ProductInput {
-    title: String!
-    price: Float!
-    description: String
-    category: String!
-    image: String
-  }
 
   type Coffee {
     id: Int!
@@ -54,6 +25,7 @@ const schema = buildSchema(`
     weights: [Weight!]!
     rate: Rate!
     hue: Hue!
+    actions: [String!]!
     details: [Detail!]!
     taste: [String!]!
   }
@@ -89,28 +61,16 @@ const expressWs = require('express-ws')(app);
 
 // The root provides a resolver function for each API endpoint
 const root = {
-  product: ({id}) => products.find(p => p.id == id),
-  products: () => products.map(p => p),
-  version: () => '1.2.3',
-  categories: () => products.map(p => p.category).sort().filter((c, ind, arr) => ind === 0 || c !== arr[ind - 1]),
-
-  addProduct({ product }) {
-    const newProduct = {
-      "id": products.length + 1,
-      "title": product.title,
-      "price": product.price,
-      "description": product.description || 'some words about product...',
-      "category": product.category,
-      "image": product.image || '[product picture]',
-      "rating": { rate: 0.0, count: 0 },
-    }
-
-    products.push(newProduct)
-
-    broadcast(makeEvent('addProduct', { newProduct } ))
-
-    return root.product({id: newProduct.id})
-  }
+  coffee: ({id}) => coffees.find(p => p.id == id),
+  coffees: () => coffees.map(p => {
+    let weights = [];
+    let details = [];
+    p.weights.forEach(el => weights.push(el));
+    p.details.forEach(el => details.push(el));
+    p.weights = weights;
+    p.details = details;
+    return p;
+  }),
 }
 
 app.use(cors())
@@ -128,9 +88,9 @@ app.ws('/ws', function(ws, req) {
   ws.on('message', function(msg) {
     const data = JSON.parse(msg)
     
-    if (data.event === 'getProducts') {
+    if (data.event === 'getCoffees') {
       ws.send(
-        makeEvent('updateProducts', { products : products.map(p => p) 
+        makeEvent('updateCoffees', { coffees : coffees.map(p => p) 
         })
       )
     }

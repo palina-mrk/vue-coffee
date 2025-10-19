@@ -12,23 +12,39 @@ export const useCatalogStore = defineStore("catalog", () => {
       .query({
         query: gql`
           {
-            products {
+            coffees {
               id
               title
               description
-              price
               category
-              image
-              rating {
-                rate
-                count
+              rate {
+                rating
+                comments
+              } 
+              weights {
+                value
+                price
+                priceCrossed
               }
+              hue {
+                acidity
+                bitterness
+                richness
+              }
+              details {
+                kind
+                variety
+                processing
+                geography
+              }
+              actions
+              taste
             }
           }
         `,
       })
       .then((result) => {
-        result.data.products.forEach((el) => catalog.push(el));
+        result.data.coffees.forEach((el) => catalog.push(el));
         catalog.forEach((el) => console.log(el));
         isLoaded.value = true;
       });

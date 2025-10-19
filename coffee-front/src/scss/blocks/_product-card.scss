@@ -396,8 +396,6 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
-    max-width: 270px;
-    max-height: 42px;
     overflow: hidden;
     padding: 0;
     margin: 0;
@@ -406,22 +404,16 @@
     @include vp-laptop {
       font-size: 12px;
       line-height: 14px;
-      max-width: 180px;
-      max-height: 29px;
     }
 
     @include vp-tablet {
       font-size: 16px;
       line-height: 19px;
-      max-width: 240px;
-      max-height: 38px;
     }
 
     @include vp-mobile {
       font-size: 14px;
       line-height: 16px;
-      max-width: 220px;
-      max-height: 36px;
     }
   }
 
@@ -477,6 +469,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    display: none;
 
     @include vp-laptop {
       top: 3px;
@@ -548,6 +541,10 @@
 
   .product-card__actions-item:nth-child(n + 2) {
     display: none;
+  }
+
+  .product-card__price--crossed {
+    display: flex;
   }
 }
 
@@ -678,7 +675,6 @@
       font-size: 10px;
       line-height: 13px;
       max-width: 160px;
-      max-height: 26px;
     }
   }
 
