@@ -1992,7 +1992,7 @@ const coffee = [
     ],
     "taste": ["шоколад", "орех", "булочки с маком"]
   },
-  {
+   {
         "id": 61,
         "title": "France French Press",
         "category": "coffee",
@@ -2006,13 +2006,13 @@ const coffee = [
             "comments": 130
         },
         "actions": {
-            "Скидки": False,
-            "Популярное": True,
-            "Новый урожай": False,
-            "Микролот": False,
-            "Ваш выбор": False,
-            "Новинка": False,
-            "Сорт недели": True
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
         },
         "hue": {
             "acidity": 5,
@@ -2038,13 +2038,13 @@ const coffee = [
             "comments": 130
         },
         "actions": {
-            "Скидки": False,
-            "Популярное": True,
-            "Новый урожай": False,
-            "Микролот": True,
-            "Ваш выбор": False,
-            "Новинка": False,
-            "Сорт недели": False
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
         },
         "hue": {
             "acidity": 4,
@@ -2071,13 +2071,13 @@ const coffee = [
             "comments": 140
         },
         "actions": {
-            "Скидки": True,
-            "Популярное": True,
-            "Новый урожай": False,
-            "Микролот": False,
-            "Ваш выбор": False,
-            "Новинка": False,
-            "Сорт недели": False
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
         },
         "hue": {
             "acidity": 3,
@@ -2103,13 +2103,13 @@ const coffee = [
             "comments": 120
         },
         "actions": {
-            "Скидки": False,
-            "Популярное": True,
-            "Новый урожай": False,
-            "Микролот": False,
-            "Ваш выбор": False,
-            "Новинка": False,
-            "Сорт недели": True
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
         },
         "hue": {
             "acidity": 5,
@@ -2135,13 +2135,13 @@ const coffee = [
             "comments": 130
         },
         "actions": {
-            "Скидки": False,
-            "Популярное": True,
-            "Новый урожай": False,
-            "Микролот": True,
-            "Ваш выбор": False,
-            "Новинка": False,
-            "Сорт недели": False
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
         },
         "hue": {
             "acidity": 4,
@@ -2168,13 +2168,13 @@ const coffee = [
             "comments": 110
         },
         "actions": {
-            "Скидки": True,
-            "Популярное": True,
-            "Новый урожай": False,
-            "Микролот": False,
-            "Ваш выбор": False,
-            "Новинка": False,
-            "Сорт недели": False
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
         },
         "hue": {
             "acidity": 3,
@@ -2200,13 +2200,13 @@ const coffee = [
             "comments": 140
         },
         "actions": {
-            "Скидки": False,
-            "Популярное": True,
-            "Новый урожай": False,
-            "Микролот": False,
-            "Ваш выбор": False,
-            "Новинка": False,
-            "Сорт недели": True
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
         },
         "hue": {
             "acidity": 5,
@@ -2232,13 +2232,13 @@ const coffee = [
             "comments": 120
         },
         "actions": {
-            "Скидки": False,
-            "Популярное": True,
-            "Новый урожай": False,
-            "Микролот": True,
-            "Ваш выбор": False,
-            "Новинка": False,
-            "Сорт недели": False
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
         },
         "hue": {
             "acidity": 6,
@@ -2265,13 +2265,13 @@ const coffee = [
             "comments": 130
         },
         "actions": {
-            "Скидки": True,
-            "Популярное": True,
-            "Новый урожай": False,
-            "Микролот": False,
-            "Ваш выбор": False,
-            "Новинка": False,
-            "Сорт недели": False
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
         },
         "hue": {
             "acidity": 7,
@@ -2297,13 +2297,13 @@ const coffee = [
             "comments": 110
         },
         "actions": {
-            "Скидки": False,
-            "Популярное": True,
-            "Новый урожай": False,
-            "Микролот": False,
-            "Ваш выбор": False,
-            "Новинка": False,
-            "Сорт недели": True
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
         },
         "hue": {
             "acidity": 4,
@@ -2315,380 +2315,1129 @@ const coffee = [
         ],
         "taste": ["землистый", "томат", "аромат хлеба"]
     },
+    {
+        "id": 71,
+        "title": "Latvia Latvian Blend",
+        "category": "coffee",
+        "description": "Латышская смесь кофе с ореховыми и хлебными нотами.",
+        "weights": [
+            {"value": 250, "price": 280, "priceCrossed": 380},
+            {"value": 1000, "price": 1120, "priceCrossed": 1520}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 140
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Латышская Смесь", "geography": "Латвия"},
+            {"kind": "Робуста", "processing": "Мытая", "geography": "Индия"}
+        ],
+        "taste": ["хлеб", "миндаль", "молочная карамель"]
+    },
+    {
+        "id": 72,
+        "title": "Estonia Estonian Dark",
+        "category": "coffee",
+        "description": "Эстонская темная обжарка с крепким, длительным послевкусием.",
+        "weights": [
+            {"value": 250, "price": 260, "priceCrossed": 360},
+            {"value": 1000, "price": 1040, "priceCrossed": 1440}
+        ],
+        "rate": {
+            "rating": 4.4,
+            "comments": 120
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 3,
+            "bitterness": 7,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Эстонская Темная Обжарка", "geography": "Эстония"},
+            {"kind": "Робуста", "processing": "Сухой", "geography": "Вьетнам"}
+        ],
+        "taste": ["обугленное дерево", "горький шоколад", "перец"]
+    },
+    {
+        "id": 73,
+        "title": "Croatia Croatian Roast",
+        "category": "coffee",
+        "description": "Хорватская смесь кофе с мягким ореховым ароматом и лёгкой кислотностью.",
+        "weights": [
+            {"value": 250, "price": 270, "priceCrossed": 370},
+            {"value": 1000, "price": 1080, "priceCrossed": 1480}
+        ],
+        "rate": {
+            "rating": 4.3,
+            "comments": 130
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Хорватская Обжарка", "geography": "Хорватия"},
+            {"kind": "Арабика", "variety": "Эфиопия Сидамогр.4", "geography": "Эфиопия"}
+        ],
+        "taste": ["орешек", "кислое яблоко", "горький шоколад"]
+    },
+    {
+        "id": 74,
+        "title": "Serbia Serbian Specialty",
+        "category": "coffee",
+        "description": "Сербыцкий кофе с особым образом подобранным составом и минимальной кислотностью.",
+        "weights": [
+            {"value": 250, "price": 250, "priceCrossed": 350},
+            {"value": 1000, "price": 1000, "priceCrossed": 1400}
+        ],
+        "rate": {
+            "rating": 4.2,
+            "comments": 110
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Сербыцкая Специалитет", "geography": "Сербия"},
+            {"kind": "Робуста", "processing": "Файн", "geography": "Вьетнам"}
+        ],
+        "taste": ["чистый дуб", "ферментация", "безупречный баланс"]
+    },
+    {
+        "id": 75,
+        "title": "Montenegro Montenegrin Blend",
+        "category": "coffee",
+        "description": "Черногорская смесь кофе с ярким характером и слегка смолянистым вкусом.",
+        "weights": [
+            {"value": 250, "price": 280, "priceCrossed": 380},
+            {"value": 1000, "price": 1120, "priceCrossed": 1520}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 140
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Черногорская Смесь", "geography": "Черногория"},
+            {"kind": "Арабика", "variety": "Кот Бразилио", "geography": "Бразилия"}
+        ],
+        "taste": ["смола", "хвойный лес", "обжаренный каштан"]
+    },
+    {
+        "id": 76,
+        "title": "Bosnia Bosnian Gold",
+        "category": "coffee",
+        "description": "Боснийский кофе с уникальными местными ингредиентами и долгим послевкусием.",
+        "weights": [
+            {"value": 250, "price": 260, "priceCrossed": 360},
+            {"value": 1000, "price": 1040, "priceCrossed": 1440}
+        ],
+        "rate": {
+            "rating": 4.4,
+            "comments": 120
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Боснийское Золото", "geography": "Босния"},
+            {"kind": "Робуста", "processing": "Сухой", "geography": "Вьетнам"}
+        ],
+        "taste": ["золотистые крупинки", "перечный запах", "тонкие ароматы лаванды"]
+    },
+    {
+        "id": 77,
+        "title": "Bulgaria Bulgarian Black",
+        "category": "coffee",
+        "description": "Болгарский кофе глубокой обжарки с мощным, бархатистым вкусом.",
+        "weights": [
+            {"value": 250, "price": 270, "priceCrossed": 370},
+            {"value": 1000, "price": 1080, "priceCrossed": 1480}
+        ],
+        "rate": {
+            "rating": 4.3,
+            "comments": 130
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 3,
+            "bitterness": 7,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Болгарский Блэк", "geography": "Болгария"},
+            {"kind": "Робуста", "processing": "Файн", "geography": "Вьетнам"}
+        ],
+        "taste": ["глубокий чёрный шоколад", "заморозка", "горячий камень"]
+    },
+    {
+        "id": 78,
+        "title": "Cyprus Cypriot Mix",
+        "category": "coffee",
+        "description": "Киприотская смесь кофе с традиционными греческими специями и богатым вкусом.",
+        "weights": [
+            {"value": 250, "price": 250, "priceCrossed": 350},
+            {"value": 1000, "price": 1000, "priceCrossed": 1400}
+        ],
+        "rate": {
+            "rating": 4.2,
+            "comments": 110
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Киприотская Смесь", "geography": "Кипр"},
+            {"kind": "Арабика", "variety": "Премиум Амхара Айеху", "geography": "Эфиопия"}
+        ],
+        "taste": ["традиционные специи", "календарный дух", "древняя земля"]
+    },
+    {
+        "id": 79,
+        "title": "Greece Greek Island",
+        "category": "coffee",
+        "description": "Греческий островной кофе с натуральными ароматами Средиземноморья.",
+        "weights": [
+            {"value": 250, "price": 280, "priceCrossed": 380},
+            {"value": 1000, "price": 1120, "priceCrossed": 1520}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 140
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Греческий Островной", "geography": "Греция"},
+            {"kind": "Робуста", "processing": "Мытая", "geography": "Индия"}
+        ],
+        "taste": ["море", "солёный воздух", "оливки"]
+    },
+    {
+        "id": 80,
+        "title": "Albania Albanian Roast",
+        "category": "coffee",
+        "description": "Албанская смесь кофе с сильными древесными и ореховыми нотами.",
+        "weights": [
+            {"value": 250, "price": 260, "priceCrossed": 360},
+            {"value": 1000, "price": 1040, "priceCrossed": 1440}
+        ],
+        "rate": {
+            "rating": 4.4,
+            "comments": 120
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Албанская Обжарка", "geography": "Албания"},
+            {"kind": "Робуста", "processing": "Сухой", "geography": "Вьетнам"}
+        ],
+        "taste": ["древесные нотки", "остатки костра", "острые специи"]
+    },
   {
-    "id": 71,
-    "title": "Latvia Latvian Blend",
-    "description": "Латышская смесь кофе с ореховыми и хлебными нотами.",
-    "price": 280,
-    "priceCrossed": 380,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 8},
-    "rating": 4.5,
-    "comments": 140
-  },
-  {
-    "id": 72,
-    "title": "Estonia Estonian Dark",
-    "description": "Эстонская темная обжарка с крепким, длительным послевкусием.",
-    "price": 260,
-    "priceCrossed": 360,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 3, "bitterness": 7, "richness": 8},
-    "rating": 4.4,
-    "comments": 120
-  },
-  {
-    "id": 73,
-    "title": "Croatia Croatian Roast",
-    "description": "Хорватская смесь кофе с мягким ореховым ароматом и лёгкой кислотностью.",
-    "price": 270,
-    "priceCrossed": 370,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.3,
-    "comments": 130
-  },
-  {
-    "id": 74,
-    "title": "Serbia Serbian Specialty",
-    "description": "Сербыцкий кофе с особым образом подобранным составом и минимальной кислотностью.",
-    "price": 250,
-    "priceCrossed": 350,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 7},
-    "rating": 4.2,
-    "comments": 110
-  },
-  {
-    "id": 75,
-    "title": "Montenegro Montenegrin Blend",
-    "description": "Черногорская смесь кофе с ярким характером и слегка смолянистым вкусом.",
-    "price": 280,
-    "priceCrossed": 380,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 8},
-    "rating": 4.5,
-    "comments": 140
-  },
-  {
-    "id": 76,
-    "title": "Bosnia Bosnian Gold",
-    "description": "Боснийский кофе с уникальными местными ингредиентами и долгим послевкусием.",
-    "price": 260,
-    "priceCrossed": 360,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 7},
-    "rating": 4.4,
-    "comments": 120
-  },
-  {
-    "id": 77,
-    "title": "Bulgaria Bulgarian Black",
-    "description": "Болгарский кофе глубокой обжарки с мощным, бархатистым вкусом.",
-    "price": 270,
-    "priceCrossed": 370,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 3, "bitterness": 7, "richness": 8},
-    "rating": 4.3,
-    "comments": 130
-  },
-  {
-    "id": 78,
-    "title": "Cyprus Cypriot Mix",
-    "description": "Киприотская смесь кофе с традиционными греческими специями и богатым вкусом.",
-    "price": 250,
-    "priceCrossed": 350,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.2,
-    "comments": 110
-  },
-  {
-    "id": 79,
-    "title": "Greece Greek Island",
-    "description": "Греческий островной кофе с натуральными ароматами Средиземноморья.",
-    "price": 280,
-    "priceCrossed": 380,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 8},
-    "rating": 4.5,
-    "comments": 140
-  },
-  {
-    "id": 80,
-    "title": "Albania Albanian Roast",
-    "description": "Албанская смесь кофе с сильными древесными и ореховыми нотами.",
-    "price": 260,
-    "priceCrossed": 360,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.4,
-    "comments": 120
-  },
-  {
-    "id": 81,
-    "title": "Kazakhstan Kazakh Steppe",
-    "description": "Казахстанский степной кофе с характерным ореховым ароматом и мягким вкусом.",
-    "price": 270,
-    "priceCrossed": 370,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 8},
-    "rating": 4.3,
-    "comments": 130
-  },
-  {
-    "id": 82,
-    "title": "Uzbekistan Uzbek Sunrise",
-    "description": "Узбекский солнечный кофе с ярким ароматом жаркого лета и лёгким привкусом абрикоса.",
-    "price": 250,
-    "priceCrossed": 350,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.2,
-    "comments": 110
-  },
-  {
-    "id": 83,
-    "title": "Turkmenistan Turkmen Honey",
-    "description": "Туркмения медовый кофе с необычным сладким ароматом и плотной структурой.",
-    "price": 280,
-    "priceCrossed": 380,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 8},
-    "rating": 4.5,
-    "comments": 140
-  },
-  {
-    "id": 84,
-    "title": "Kyrgyzstan Kyrgyz Treasure",
-    "description": "Киргизский кофе с оригинальными альпийскими ароматами и сладким послевкусием.",
-    "price": 260,
-    "priceCrossed": 360,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.4,
-    "comments": 120
-  },
-  {
-    "id": 85,
-    "title": "Tajikistan Tajik Spice",
-    "description": "Таджикистанский кофе с ароматическими приправами Востока и маслянистым вкусом.",
-    "price": 270,
-    "priceCrossed": 370,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 8},
-    "rating": 4.3,
-    "comments": 130
-  },
-  {
-    "id": 86,
-    "title": "Afghanistan Afghan Spirit",
-    "description": "Афганский кофе с уникальными природными свойствами и сложной смесью вкусов.",
-    "price": 250,
-    "priceCrossed": 350,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.2,
-    "comments": 110
-  },
-  {
-    "id": 87,
-    "title": "Lebanon Lebanese Dream",
-    "description": "Ливанский кофе с арабскими мотивами и богатым шоколадным вкусом.",
-    "price": 280,
-    "priceCrossed": 380,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 8},
-    "rating": 4.5,
-    "comments": 140
-  },
-  {
-    "id": 88,
-    "title": "Israel Israeli Magic",
-    "description": "Израильский кофе с инновационной обработкой и насыщенными карамельными нотами.",
-    "price": 260,
-    "priceCrossed": 360,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.4,
-    "comments": 120
-  },
-  {
-    "id": 89,
-    "title": "Morocco Moroccan Mint",
-    "description": "Марроканский мятный кофе с традиционной марокканской подачей и уникальной свежестью.",
-    "price": 270,
-    "priceCrossed": 370,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 8},
-    "rating": 4.3,
-    "comments": 130
-  },
-  {
-    "id": 90,
-    "title": "Algeria Algerian Fusion",
-    "description": "Алжирский кофе с восточной харизмой и особенностями местных традиций.",
-    "price": 250,
-    "priceCrossed": 350,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.2,
-    "comments": 110
-  },
-  {
-    "id": 91,
-    "title": "Tunisia Tunisian Twist",
-    "description": "Тунискский кофе с местным рецептом приготовления и особенным ароматом.",
-    "price": 280,
-    "priceCrossed": 380,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 8},
-    "rating": 4.5,
-    "comments": 140
-  },
-  {
-    "id": 92,
-    "title": "Saudi Arabia Saudi Crown",
-    "description": "Саудовский королевский кофе с подчёркнуто солёным оттенком и пряными нотами.",
-    "price": 260,
-    "priceCrossed": 360,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.4,
-    "comments": 120
-  },
-   {
-    "id": 93,
-    "title": "Oman Omani Majesty",
-    "description": "Омманский кофе с экзотическим вкусом восточных пряностей и сухой миндальной ноткой.",
-    "price": 290,
-    "priceCrossed": 390,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 8},
-    "rating": 4.5,
-    "comments": 130
-  },
-  {
-    "id": 94,
-    "title": "Bahrain Bahraini Pearl",
-    "description": "Бахрейнский жемчужный кофе с лёгкой кислинкой и намеками на морские мотивы.",
-    "price": 270,
-    "priceCrossed": 370,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.4,
-    "comments": 120
-  },
-  {
-    "id": 95,
-    "title": "Kuwait Kuwaiti Surprise",
-    "description": "Кувейтский кофе с сюрпризом — неожиданными черничными и лесными нотами.",
-    "price": 280,
-    "priceCrossed": 380,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 6, "bitterness": 5, "richness": 7},
-    "rating": 4.5,
-    "comments": 140
-  },
-  {
-    "id": 96,
-    "title": "United Arab Emirates UAE Royalty",
-    "description": "Эмиратский королевский кофе с шафраном и ароматом кардамона.",
-    "price": 300,
-    "priceCrossed": 400,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 5, "bitterness": 6, "richness": 8},
-    "rating": 4.6,
-    "comments": 150
-  },
-  {
-    "id": 97,
-    "title": "Palestine Palestinian Heritage",
-    "description": "Палестинский кофе с глубокими корнями истории и пряным вкусом кардамона.",
-    "price": 270,
-    "priceCrossed": 370,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 7},
-    "rating": 4.4,
-    "comments": 130
-  },
-  {
-    "id": 98,
-    "title": "Syria Syrian Dawn",
-    "description": "Сирийский рассветный кофе с незабываемым ароматом восточных садов.",
-    "price": 280,
-    "priceCrossed": 380,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.5,
-    "comments": 140
-  },
-  {
-    "id": 99,
-    "title": "Jordan Jordanian Soul",
-    "description": "Иорданский кофе с душой пустыни и лёгким касанием свежего инжира.",
-    "price": 290,
-    "priceCrossed": 390,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 8},
-    "rating": 4.6,
-    "comments": 150
-  },
-  {
-    "id": 100,
-    "title": "Georgia Georgian Mist",
-    "description": "Грузинский туманный кофе с мягким и мягким дубовым ароматом и вязким вкусом.",
-    "price": 270,
-    "priceCrossed": 370,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.4,
-    "comments": 130
-  },
-  {
-    "id": 101,
-    "title": "Armenia Armenian Fire",
-    "description": "Армянский огненный кофе с запахом леса и отчётливым дымным оттенком.",
-    "price": 280,
-    "priceCrossed": 380,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 6, "bitterness": 5, "richness": 7},
-    "rating": 4.5,
-    "comments": 140
-  },
-  {
-    "id": 102,
-    "title": "Azerbaijan Azerbaijani Sparkle",
-    "description": "Азербайджанский искрящийся кофе с необычными элементами местной кухни.",
-    "price": 290,
-    "priceCrossed": 390,
-    "category": ["Популярное", "Микролот"],
-    "hue": {"acidity": 5, "bitterness": 6, "richness": 8},
-    "rating": 4.6,
-    "comments": 150
-  },
-  {
-    "id": 103,
-    "title": "Mongolia Mongolian Wild",
-    "description": "Монгольский дикий кофе с неповторимым ароматом степей и горных вершин.",
-    "price": 270,
-    "priceCrossed": 370,
-    "category": ["Популярное", "Скидки"],
-    "hue": {"acidity": 4, "bitterness": 6, "richness": 7},
-    "rating": 4.4,
-    "comments": 130
-  },
-  {
-    "id": 104,
-    "title": "Kazakhstan Kazakh Horizon",
-    "description": "Казахстанский горизонтальный кофе с мягкими хвойными и лесными оттенками.",
-    "price": 280,
-    "priceCrossed": 380,
-    "category": ["Популярное", "Сорт недели"],
-    "hue": {"acidity": 5, "bitterness": 5, "richness": 7},
-    "rating": 4.5,
-    "comments": 140
-  },
+        "id": 81,
+        "title": "Kazakhstan Kazakh Steppe",
+        "category": "coffee",
+        "description": "Казахстанский степной кофе с характерным ореховым ароматом и мягким вкусом.",
+        "weights": [
+            {"value": 250, "price": 270, "priceCrossed": 370},
+            {"value": 1000, "price": 1080, "priceCrossed": 1480}
+        ],
+        "rate": {
+            "rating": 4.3,
+            "comments": 130
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Казахская Степь", "geography": "Казахстан"},
+            {"kind": "Робуста", "processing": "Сухой", "geography": "Вьетнам"}
+        ],
+        "taste": ["хрустящие орехи", "слоёное тесто", "нежная выпечка"]
+    },
+    {
+        "id": 82,
+        "title": "Uzbekistan Uzbek Sunrise",
+        "category": "coffee",
+        "description": "Узбекский солнечный кофе с ярким ароматом жаркого лета и лёгким привкусом абрикоса.",
+        "weights": [
+            {"value": 250, "price": 250, "priceCrossed": 350},
+            {"value": 1000, "price": 1000, "priceCrossed": 1400}
+        ],
+        "rate": {
+            "rating": 4.2,
+            "comments": 110
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Узбекский Рассвет", "geography": "Узбекистан"},
+            {"kind": "Арабика", "variety": "Перу гр.2", "geography": "Перу"}
+        ],
+        "taste": ["абрикосы", "лотос", "солнце над холмом"]
+    },
+    {
+        "id": 83,
+        "title": "Turkmenistan Turkmen Honey",
+        "category": "coffee",
+        "description": "Туркмения медовый кофе с необычным сладким ароматом и плотной структурой.",
+        "weights": [
+            {"value": 250, "price": 280, "priceCrossed": 380},
+            {"value": 1000, "price": 1120, "priceCrossed": 1520}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 140
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Туркменский Мед", "geography": "Туркмения"},
+            {"kind": "Робуста", "processing": "Мытая", "geography": "Индия"}
+        ],
+        "taste": ["мед", "парное молоко", "камыши"]
+    },
+    {
+        "id": 84,
+        "title": "Kyrgyzstan Kyrgyz Treasure",
+        "category": "coffee",
+        "description": "Киргизский кофе с оригинальными альпийскими ароматами и сладким послевкусием.",
+        "weights": [
+            {"value": 250, "price": 260, "priceCrossed": 360},
+            {"value": 1000, "price": 1040, "priceCrossed": 1440}
+        ],
+        "rate": {
+            "rating": 4.4,
+            "comments": 120
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Киргизское Сокровище", "geography": "Киргизия"},
+            {"kind": "Арабика", "variety": "Эфиопия Сидамогр.4", "geography": "Эфиопия"}
+        ],
+        "taste": ["Альпы", "ландыши", "нежная сливочность"]
+    },
+    {
+        "id": 85,
+        "title": "Tajikistan Tajik Spice",
+        "category": "coffee",
+        "description": "Таджикистанский кофе с ароматическими приправами Востока и маслянистым вкусом.",
+        "weights": [
+            {"value": 250, "price": 270, "priceCrossed": 370},
+            {"value": 1000, "price": 1080, "priceCrossed": 1480}
+        ],
+        "rate": {
+            "rating": 4.3,
+            "comments": 130
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Таджикская Пряность", "geography": "Таджикистан"},
+            {"kind": "Робуста", "processing": "Файн", "geography": "Вьетнам"}
+        ],
+        "taste": ["восток", "смолы", "цветущие сады"]
+    },
+    {
+        "id": 86,
+        "title": "Afghanistan Afghan Spirit",
+        "category": "coffee",
+        "description": "Афганский кофе с уникальными природными свойствами и сложной смесью вкусов.",
+        "weights": [
+            {"value": 250, "price": 250, "priceCrossed": 350},
+            {"value": 1000, "price": 1000, "priceCrossed": 1400}
+        ],
+        "rate": {
+            "rating": 4.2,
+            "comments": 110
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Афганский Спирит", "geography": "Афганистан"},
+            {"kind": "Робуста", "processing": "Сухой", "geography": "Вьетнам"}
+        ],
+        "taste": ["восточная тайна", "песчаные бури", "резкие краски заката"]
+    },
+    {
+        "id": 87,
+        "title": "Lebanon Lebanese Dream",
+        "category": "coffee",
+        "description": "Ливанский кофе с арабскими мотивами и богатым шоколадным вкусом.",
+        "weights": [
+            {"value": 250, "price": 280, "priceCrossed": 380},
+            {"value": 1000, "price": 1120, "priceCrossed": 1520}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 140
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Ливанский Сон", "geography": "Ливан"},
+            {"kind": "Арабика", "variety": "Премиум Амхара Айеху", "geography": "Эфиопия"}
+        ],
+        "taste": ["шоколад", "арабские сказки", "африканские мотивы"]
+    },
+    {
+        "id": 88,
+        "title": "Israel Israeli Magic",
+        "category": "coffee",
+        "description": "Израильский кофе с инновационной обработкой и насыщенными карамельными нотами.",
+        "weights": [
+            {"value": 250, "price": 260, "priceCrossed": 360},
+            {"value": 1000, "price": 1040, "priceCrossed": 1440}
+        ],
+        "rate": {
+            "rating": 4.4,
+            "comments": 120
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Израильское Волшебство", "geography": "Израиль"},
+            {"kind": "Робуста", "processing": "Мытая", "geography": "Индия"}
+        ],
+        "taste": ["карамель", "подарок моря", "средиземноморье"]
+    },
+    {
+        "id": 89,
+        "title": "Morocco Moroccan Mint",
+        "category": "coffee",
+        "description": "Марроканский мятный кофе с традиционной марокканской подачей и уникальной свежестью.",
+        "weights": [
+            {"value": 250, "price": 270, "priceCrossed": 370},
+            {"value": 1000, "price": 1080, "priceCrossed": 1480}
+        ],
+        "rate": {
+            "rating": 4.3,
+            "comments": 130
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Марроканская Мята", "geography": "Марокко"},
+            {"kind": "Робуста", "processing": "Файн", "geography": "Вьетнам"}
+        ],
+        "taste": ["мята", "травяные пряности", "тёплый океан"]
+    },
+    {
+        "id": 90,
+        "title": "Algeria Algerian Fusion",
+        "category": "coffee",
+        "description": "Алжирский кофе с восточной харизмой и особенностями местных традиций.",
+        "weights": [
+            {"value": 250, "price": 250, "priceCrossed": 350},
+            {"value": 1000, "price": 1000, "priceCrossed": 1400}
+        ],
+        "rate": {
+            "rating": 4.2,
+            "comments": 110
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Алжирская Фьюжн", "geography": "Алжир"},
+            {"kind": "Арабика", "variety": "Кот Бразилио", "geography": "Бразилия"}
+        ],
+        "taste": ["просторная пустыня", "палящее солнце", "терпкий шарм"]
+    },
+    {
+        "id": 91,
+        "title": "Tunisia Tunisian Twist",
+        "category": "coffee",
+        "description": "Тунискский кофе с местным рецептом приготовления и особенным ароматом.",
+        "weights": [
+            {"value": 250, "price": 280, "priceCrossed": 380},
+            {"value": 1000, "price": 1120, "priceCrossed": 1520}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 140
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Тунисский Твист", "geography": "Тунис"},
+            {"kind": "Робуста", "processing": "Сухой", "geography": "Вьетнам"}
+        ],
+        "taste": ["океанские волны", "свежесть ветра", "локальное тепло"]
+    },
+    {
+        "id": 92,
+        "title": "Saudi Arabia Saudi Crown",
+        "category": "coffee",
+        "description": "Саудовский королевский кофе с подчёркнуто солёным оттенком и пряными нотами.",
+        "weights": [
+            {"value": 250, "price": 260, "priceCrossed": 360},
+            {"value": 1000, "price": 1040, "priceCrossed": 1440}
+        ],
+        "rate": {
+            "rating": 4.4,
+            "comments": 120
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Саудовская Корона", "geography": "Саудовская Аравия"},
+            {"kind": "Робуста", "processing": "Мытая", "geography": "Индия"}
+        ],
+        "taste": ["салат из морской соли", "царственный декор", "застолье"]
+    },
+   
+    {
+        "id": 93,
+        "title": "Oman Omani Majesty",
+        "category": "coffee",
+        "description": "Омманский кофе с экзотическим вкусом восточных пряностей и сухой миндальной ноткой.",
+        "weights": [
+            {"value": 250, "price": 290, "priceCrossed": 390},
+            {"value": 1000, "price": 1160, "priceCrossed": 1560}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 130
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Оманская Величие", "geography": "Оман"},
+            {"kind": "Робуста", "processing": "Сухой", "geography": "Вьетнам"}
+        ],
+        "taste": ["восток", "пряности", "орешки миндаля"]
+    },
+    {
+        "id": 94,
+        "title": "Bahrain Bahraini Pearl",
+        "category": "coffee",
+        "description": "Бахрейнский жемчужный кофе с лёгкой кислинкой и намеками на морские мотивы.",
+        "weights": [
+            {"value": 250, "price": 270, "priceCrossed": 370},
+            {"value": 1000, "price": 1080, "priceCrossed": 1480}
+        ],
+        "rate": {
+            "rating": 4.4,
+            "comments": 120
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Бахрейнская Жемчужина", "geography": "Бахрейн"},
+            {"kind": "Арабика", "variety": "Эфиопия Сидамогр.4", "geography": "Эфиопия"}
+        ],
+        "taste": ["жемчуг", "морская вода", "солёный аромат побережья"]
+    },
+    {
+        "id": 95,
+        "title": "Kuwait Kuwaiti Surprise",
+        "category": "coffee",
+        "description": "Кувейтский кофе с сюрпризом — неожиданными черничными и лесными нотами.",
+        "weights": [
+            {"value": 250, "price": 280, "priceCrossed": 380},
+            {"value": 1000, "price": 1120, "priceCrossed": 1520}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 140
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 6,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Кувейтский Сюрприз", "geography": "Кувейт"},
+            {"kind": "Робуста", "processing": "Файн", "geography": "Вьетнам"}
+        ],
+        "taste": ["лесные ягоды", "дыхание пустыни", "мягкая прохлада"]
+    },
+    {
+        "id": 96,
+        "title": "United Arab Emirates UAE Royalty",
+        "category": "coffee",
+        "description": "Эмиратский королевский кофе с шафраном и ароматом кардамона.",
+        "weights": [
+            {"value": 250, "price": 300, "priceCrossed": 400},
+            {"value": 1000, "price": 1200, "priceCrossed": 1600}
+        ],
+        "rate": {
+            "rating": 4.6,
+            "comments": 150
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Королевский Эмираты", "geography": "Объединённые Арабские Эмираты"},
+            {"kind": "Робуста", "processing": "Мытая", "geography": "Индия"}
+        ],
+        "taste": ["кардинал", "солнечная дорога", "вонючий цветок"]
+    },
+    {
+        "id": 97,
+        "title": "Palestine Palestinian Heritage",
+        "category": "coffee",
+        "description": "Палестинский кофе с глубокими корнями истории и пряным вкусом кардамона.",
+        "weights": [
+            {"value": 250, "price": 270, "priceCrossed": 370},
+            {"value": 1000, "price": 1080, "priceCrossed": 1480}
+        ],
+        "rate": {
+            "rating": 4.4,
+            "comments": 130
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Палестинское Наследие", "geography": "Палестина"},
+            {"kind": "Арабика", "variety": "Кот Бразилио", "geography": "Бразилия"}
+        ],
+        "taste": ["кардамон", "сердечность", "восток"]
+    },
+    {
+        "id": 98,
+        "title": "Syria Syrian Dawn",
+        "category": "coffee",
+        "description": "Сирийский рассветный кофе с незабываемым ароматом восточных садов.",
+        "weights": [
+            {"value": 250, "price": 280, "priceCrossed": 380},
+            {"value": 1000, "price": 1120, "priceCrossed": 1520}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 140
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Сирийский Рассвет", "geography": "Сирия"},
+            {"kind": "Робуста", "processing": "Сухой", "geography": "Вьетнам"}
+        ],
+        "taste": ["восточные сады", "солнечный свет", "оранжевый сад"]
+    },
+    {
+        "id": 99,
+        "title": "Jordan Jordanian Soul",
+        "category": "coffee",
+        "description": "Иорданский кофе с душой пустыни и лёгким касанием свежего инжира.",
+        "weights": [
+            {"value": 250, "price": 290, "priceCrossed": 390},
+            {"value": 1000, "price": 1160, "priceCrossed": 1560}
+        ],
+        "rate": {
+            "rating": 4.6,
+            "comments": 150
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Иорданская Душа", "geography": "Иордания"},
+            {"kind": "Робуста", "processing": "Файн", "geography": "Вьетнам"}
+        ],
+        "taste": ["душа пустыни", "привкус инжира", "вечернее небо"]
+    },
+    {
+        "id": 100,
+        "title": "Georgia Georgian Mist",
+        "category": "coffee",
+        "description": "Грузинский туманный кофе с мягким и мягким дубовым ароматом и вязким вкусом.",
+        "weights": [
+            {"value": 250, "price": 270, "priceCrossed": 370},
+            {"value": 1000, "price": 1080, "priceCrossed": 1480}
+        ],
+        "rate": {
+            "rating": 4.4,
+            "comments": 130
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Грузинский Туман", "geography": "Грузия"},
+            {"kind": "Арабика", "variety": "Премиум Амхара Айеху", "geography": "Эфиопия"}
+        ],
+        "taste": ["дым", "влажный туман", "травы Кавказа"]
+    },
+    {
+        "id": 101,
+        "title": "Armenia Armenian Fire",
+        "category": "coffee",
+        "description": "Армянский огненный кофе с запахом леса и отчётливым дымным оттенком.",
+        "weights": [
+            {"value": 250, "price": 280, "priceCrossed": 380},
+            {"value": 1000, "price": 1120, "priceCrossed": 1520}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 140
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 6,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Армянский Огонь", "geography": "Армения"},
+            {"kind": "Робуста", "processing": "Мытая", "geography": "Индия"}
+        ],
+        "taste": ["лес", "дрова", "дым огня"]
+    },
+    {
+        "id": 102,
+        "title": "Azerbaijan Azerbaijani Sparkle",
+        "category": "coffee",
+        "description": "Азербайджанский искрящийся кофе с необычными элементами местной кухни.",
+        "weights": [
+            {"value": 250, "price": 290, "priceCrossed": 390},
+            {"value": 1000, "price": 1160, "priceCrossed": 1560}
+        ],
+        "rate": {
+            "rating": 4.6,
+            "comments": 150
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": true,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 6,
+            "richness": 8
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Азербайджанский Искрящийся", "geography": "Азербайджан"},
+            {"kind": "Робуста", "processing": "Файн", "geography": "Вьетнам"}
+        ],
+        "taste": ["местная кухня", "солнышко", "восточная магия"]
+    },
+    {
+        "id": 103,
+        "title": "Mongolia Mongolian Wild",
+        "category": "coffee",
+        "description": "Монгольский дикий кофе с неповторимым ароматом степей и горных вершин.",
+        "weights": [
+            {"value": 250, "price": 270, "priceCrossed": 370},
+            {"value": 1000, "price": 1080, "priceCrossed": 1480}
+        ],
+        "rate": {
+            "rating": 4.4,
+            "comments": 130
+        },
+        "actions": {
+            "Скидки": true,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": false
+        },
+        "hue": {
+            "acidity": 4,
+            "bitterness": 6,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Монгольский Дикий", "geography": "Монголия"},
+            {"kind": "Арабика", "variety": "Перу гр.2", "geography": "Перу"}
+        ],
+        "taste": ["монгольская степь", "снег горы", "прохлада реки"]
+    },
+    {
+        "id": 104,
+        "title": "Kazakhstan Kazakh Horizon",
+        "category": "coffee",
+        "description": "Казахстанский горизонтальный кофе с мягкими хвойными и лесными оттенками.",
+        "weights": [
+            {"value": 250, "price": 280, "priceCrossed": 380},
+            {"value": 1000, "price": 1120, "priceCrossed": 1520}
+        ],
+        "rate": {
+            "rating": 4.5,
+            "comments": 140
+        },
+        "actions": {
+            "Скидки": false,
+            "Популярное": true,
+            "Новый урожай": false,
+            "Микролот": false,
+            "Ваш выбор": false,
+            "Новинка": false,
+            "Сорт недели": true
+        },
+        "hue": {
+            "acidity": 5,
+            "bitterness": 5,
+            "richness": 7
+        },
+        "details": [
+            {"kind": "Арабика", "variety": "Казахский Горизонт", "geography": "Казахстан"},
+            {"kind": "Робуста", "processing": "Сухой", "geography": "Вьетнам"}
+        ],
+        "taste": ["хвоя", "лес", "луг"]
+    },
   {
     "id": 105,
     "title": "Uzbekistan Uzbek Golden",

@@ -29,7 +29,8 @@ function addToBasket() {
     <div class="product-card__top">
       <div class="product-card__actions">
         <ul class="product-card__actions-list">
-          <li v-for="action in Object.entries(product.actions).filter(el => el[1]).map(el => el[0])" class="product-card__actions-item">{{ action }}</li>
+          <li v-if="props.product.actions['Скидки']" v-for="action in Object.entries(product.actions).filter(el => el[1]).map(el => el[0])" class="product-card__actions-item">{{ action }}</li>
+          <li v-else class="product-card__actions-item">Скидки</li>
         </ul>
       </div>
       <custom-dropdown class="product-card__dropdown" :weightVariants="weightVariants"

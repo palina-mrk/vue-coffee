@@ -1,16 +1,30 @@
 import { defineStore } from 'pinia'
 import { ref, reactive } from 'vue'
-
+import apolloClient from '../apollo';
+import gql from 'graphql-tag';
 
 export const useCatalogStore = defineStore('catalog', () => {
   const isLoaded = ref(false)
   const catalog = reactive([])
 
-  function defineCatalog (result) {
-    console.log(result.data.products[0])
-    result.data.products.forEach(el => catalog.push(el))
-    console.log(catalog[1])
-    isLoaded.value = true;
+  function loadCatalog () {
+    apolloClient.query({
+    query: gql`{
+      products {
+        id
+        title
+        description
+        price
+        category
+        image 
+        rating { rate count }
+        },
+    }`,
+    }).then((result => {
+      result.data.products.forEach((el) => catalog.push(el));
+      catalog.forEach(el => console.log(el));
+      isLoaded.value = true;
+    }));
   }
 
   function getPrice(itemId, weight) {
@@ -26,5 +40,5 @@ export const useCatalogStore = defineStore('catalog', () => {
                   .find((w) => w.value == weight);
   }
 
-  return { isLoaded, catalog,  defineCatalog, getPrice, getFullInfo, getSellInfo }
+  return { isLoaded, catalog,  loadCatalog, getPrice, getFullInfo, getSellInfo }
 })
