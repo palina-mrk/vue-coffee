@@ -3,11 +3,10 @@ import SliderCorns from '../sliders/SliderCorns.vue';
 import SliderPoints from '../sliders/SliderPoints.vue';
 import SliderStars from '../sliders/SliderStars.vue';
 import CustomDropdown from '../inputs/CustomDropdown.vue';
-import { computed, reactive, ref } from 'vue';
+import { computed, reactive, ref, withKeys } from 'vue';
 
 const props = defineProps(['product', 'isHomePage'])
 
-const isSale = computed(() => props.product.category.includes('Скидки'));
 const weightIndex = ref(0);
 
 const weightVariants = computed(() => props.product.weights.map(el => el.value)); 
@@ -25,12 +24,12 @@ function addToBasket() {
 </script>
 
 <template>
-<div :class="{ 'product-card': true, 'product-card--sale': isSale,  'product-card--main-mobile': isHomePage}">
+<div :class="{ 'product-card': true, 'product-card--sale': props.product.actions['Скидки'],  'product-card--main-mobile': isHomePage}">
     <div class="product-card__sales-icon">%</div>
     <div class="product-card__top">
-      <div class="product-card__categories">
-        <ul class="product-card__category-list">
-          <li v-for="category in product.category" class="product-card__category-item">{{ category }}</li>
+      <div class="product-card__actions">
+        <ul class="product-card__actions-list">
+          <li v-for="action in Object.entries(product.actions).filter(el => el[1]).map(el => el[0])" class="product-card__actions-item">{{ action }}</li>
         </ul>
       </div>
       <custom-dropdown class="product-card__dropdown" :weightVariants="weightVariants"
@@ -48,11 +47,11 @@ function addToBasket() {
         </picture>
       </div>
       <div class="product-card__details">
-        <slider-stars class="product-card__stars" :rating="product.rating"></slider-stars>
+        <slider-stars class="product-card__stars" :rating="product.rate.rating"></slider-stars>
         
         <div class="product-card__rating">
-          <span class="product-card__rating-value">{{ product.rating }}</span>
-          <span class="product-card__comments-count">({{ product.comments }} отзыва)</span>
+          <span class="product-card__rating-value">{{ product.rate.rating }}</span>
+          <span class="product-card__comments-count">({{ product.rate.comments }} отзыва)</span>
         </div>
 
         <slider-corns class="product-card__corns" :count="product.roasting"></slider-corns>

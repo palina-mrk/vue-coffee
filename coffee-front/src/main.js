@@ -2,9 +2,8 @@ import './style.css'
 import App from './App.vue';
 import { createPinia } from 'pinia'
 import { useCatalogStore } from './stores/catalog'
-import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag'
-
+/*
 import {
   ApolloClient,
   createHttpLink,
@@ -23,32 +22,35 @@ const apolloClient = new ApolloClient({
   cache,
 })
 import { provideApolloClient } from '@vue/apollo-composable'
-provideApolloClient(apolloClient)
+provideApolloClient(apolloClient)*/
+
+import { createApp, provide, h } from 'vue';
+import { DefaultApolloClient } from '@vue/apollo-composable';
+import apolloClient from './apollo';
 
 const app = createApp({
   setup() {
     provide(DefaultApolloClient, apolloClient);
   },
-
   render: () => h(App),
 })
+
 app.use(createPinia())
 const catalogStore = useCatalogStore()
+
+
 apolloClient.query({
-  query: gql`{
-    products {
-      id
-      title
-      description
-      price
-      category
-      image 
-      rating { rate count }
-      },
-  }`,
+query: gql`{
+  products {
+    id
+    title
+    description
+    price
+    category
+    image 
+    rating { rate count }
+    },
+}`,
 }).then((result => catalogStore.defineCatalog(result)))
-
-
-
 
 app.mount('#app')
