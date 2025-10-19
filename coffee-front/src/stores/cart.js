@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { computed, reactive } from "vue";
 import { useCatalogStore } from "./catalog";
 
-export const useCatrStore = defineStore("cart", () => {
+export const useCartStore = defineStore("cart", () => {
   const catalog = useCatalogStore();
 
   const cart = reactive({});
@@ -11,6 +11,17 @@ export const useCatrStore = defineStore("cart", () => {
     weight2: count2
   }*/
 
+  function cartInfo() {
+    let info = 'cart: ';
+    Object.keys(cart).forEach((el) => {
+      let ans = ` id: ${el}`;
+      Object.keys(cart[el]).forEach(w => ans += `, ${w}: ${cart[el][w]}`);
+      info += ans;
+      info += `; `
+    })
+    return info;
+  }
+
   function addToCart(itemId, weight) {
     if (!cart[itemId]) {
       cart[itemId] = {};
@@ -18,19 +29,40 @@ export const useCatrStore = defineStore("cart", () => {
 
     if (!cart[itemId][weight]) cart[itemId][weight] = 1;
     else cart[itemId][weight]++;
+    console.log(cartInfo());
+  }
+
+  function removeFromCart(itemId, weight) {
+    if (!cart[itemId] || !cart[itemId][weight]) return; 
+    else {
+      delete cart[itemId][weight];
+      if (Object.keys(cart[itemId]).length == 0) 
+        delete cart[itemId];
+    }
   }
 
   function setCount(itemId, weight, count) {
     if (count <= 0) {
-      delete cart[itemId][weight];
+      removeFromCart(itemId, weight);
     } else {
+      if (!cart[itemId]) {
+        cart[itemId] = {};
+      }
       cart[itemId][weight] = count;
     }
   }
 
+  function clearCart() {
+    Object.keys(cart).forEach(itemId => delete cart[itemId]);
+  }
+
   const itemIdCount = computed(() => Object.values(cart.value).length);
+  
   const totalCount = computed(() =>
-    Object.values(cart.value).reduce((sum, c) => sum + c, 0),
+    Object.values(cart)  /* [{w1: c1, w2: c2}, {w1: c3, w2: c4}]*/
+    .reduce((acc, weights) => (
+      acc + Object.values(weights).reduce((acc, count) => acc + count, 0))
+      , acc),
   );
 
   const totalSum = computed(() =>
@@ -44,6 +76,8 @@ export const useCatrStore = defineStore("cart", () => {
   return {
     cart,
     addToCart,
+    removeFromCart,
+    clearCart,
     setCount,
     itemIdCount,
     totalCount,

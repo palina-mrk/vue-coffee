@@ -45,7 +45,6 @@ export const useCatalogStore = defineStore("catalog", () => {
       })
       .then((result) => {
         result.data.coffees.forEach((el) => catalog.push(el));
-        catalog.forEach((el) => console.log(el));
         isLoaded.value = true;
       });
   }

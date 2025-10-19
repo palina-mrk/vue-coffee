@@ -3,9 +3,10 @@ import SliderCorns from '../sliders/SliderCorns.vue';
 import SliderPoints from '../sliders/SliderPoints.vue';
 import SliderStars from '../sliders/SliderStars.vue';
 import CustomDropdown from '../inputs/CustomDropdown.vue';
+import { useCartStore } from '../../stores/cart';
 import { computed, ref } from 'vue';
-
 const props = defineProps(['product', 'isHomePage'])
+const cartStore = useCartStore();
 
 const isSale = computed(() => props.product.actions.includes('Скидки'));
 const weightIndex = ref(0);
@@ -19,8 +20,9 @@ function changeWeight(newValue) {
   weightIndex.value = props.product.weights.findIndex((weight) => weight.value == newValue);
 }
 
-function addToBasket() {
-
+function addToCart() {
+  cartStore.addToCart(props.product.id, currentWeight.value);
+  console.log(cartStore.totalCount)
 }
 </script>
 
@@ -79,7 +81,10 @@ function addToBasket() {
     <div class="product-card__bottom">
       <span class="product-card__price product-card__price--crossed">{{ currentPriceCrossed }} ₽</span>
       <span class="product-card__price">{{ currentPrice }} ₽</span>
-      <button class="product-card__button btn btn--size-s">В&nbsp;корзину</button>
+      <button 
+        @click="addToCart" 
+        class="product-card__button btn btn--size-s"
+      >В&nbsp;корзину</button>
     </div>
   </div>
 </template>
