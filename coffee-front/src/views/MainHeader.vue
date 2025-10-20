@@ -1,11 +1,20 @@
 <script setup>
 import MainNav from '../components/navigation/MainNav.vue';
 import LogoNav from '../components/navigation/LogoNav.vue';
+import CustomSearch from '../components/inputs/CustomSearch.vue';
+import UsersList from '../components/navigation/UsersList.vue';
 
+import { useRoute } from 'vue-router';
+import { computed, ref } from 'vue';
+const route = useRoute();
+
+const isHomePage = computed(() => route.name == 'home');
+const isMenu = ref(false)
+const isSearch = ref(false)
 </script>
 
 <template>
-  <header class="header">
+  <header :class="{'header': true, 'header--background': !isHomePage, 'header--menu': isMenu, 'header--search': isSearch}">
     <div class="container">
       <div class="header__wrapper">
         <div class="header__burger">
@@ -13,6 +22,7 @@ import LogoNav from '../components/navigation/LogoNav.vue';
             class="btn-icon btn-icon--burger"
             type="button"
             aria-label="Открыть бургерное меню"
+            @click="isMenu = true"
           >
             <svg
               class="btn-icon__svg"
@@ -26,93 +36,31 @@ import LogoNav from '../components/navigation/LogoNav.vue';
         </div>
         <logo-nav class="header__logo-link"></logo-nav>
         
-        <div class="header__nav">
-          <MainNav></MainNav>
+        <div 
+          class="header__nav"
+        >
+          <MainNav
+            @leave-page="isMenu = false"
+          ></MainNav>
         </div>
-        <form class="header__search" method="POST" action="#">
-          <div class="custom-search">
-            <input
-              class="custom-search__field"
-              type="search"
-              name="search-field"
-              placeholder="Поиск по&nbsp;товарам"
-            />
-            <svg
-              class="custom-search__icon"
-              width="36"
-              height="35"
-              aria-hidden="true"
-            >
-              <use
-                xlink:href="../assets/header-sprite.svg#icon-search"
-              ></use>
-            </svg>
-            <a class="custom-search__btn btn-linked" href="#">
-              <span class="btn-linked__text">Отменить</span>
-            </a>
-          </div>
-        </form>
-        <ul class="header__users-list">
-          <li class="header__users-item">
-            <a
-              class="header__users-link"
-              href="#"
-              aria-label="Открыть поле поиска"
-            >
-              <svg
-                class="header__search-icon"
-                width="36"
-                height="31"
-                aria-hidden="true"
-              >
-                <use
-                  xlink:href="../assets/header-sprite.svg#icon-search"
-                ></use>
-              </svg>
-            </a>
-          </li>
-          <li class="header__users-item">
-            <a
-              class="header__users-link"
-              href="#"
-              aria-label="Перейти в корзину"
-            >
-              <svg
-                class="header__basket-icon"
-                width="33"
-                height="31"
-                aria-hidden="true"
-              >
-                <use
-                  xlink:href="../assets/header-sprite.svg#icon-basket"
-                ></use>
-              </svg>
-            </a>
-          </li>
-          <li class="header__users-item">
-            <a
-              class="header__users-link"
-              href="#"
-              aria-label="Войти в личный кабинет"
-            >
-              <svg
-                class="header__user-icon"
-                width="33"
-                height="36"
-                aria-hidden="true"
-              >
-                <use
-                  xlink:href="../assets/header-sprite.svg#icon-user"
-                ></use>
-              </svg>
-            </a>
-          </li>
-        </ul>
+
+        <custom-search 
+          class="header__search"
+          @close-search="isSearch = false"
+        ></custom-search>
+        
+        <users-list 
+          class="header__users-list"
+          :isSearch="isSearch"
+          @setSearch="isSearch = true"
+        ></users-list>
+
         <svg
           class="header__menu-close btn-icon btn-icon--close"
           width="40"
           height="40"
           aria-hidden="true"
+          @click = "isMenu = false"
         >
           <use xlink:href="../assets/header-sprite.svg#icon-close"></use>
         </svg>
@@ -159,9 +107,7 @@ import LogoNav from '../components/navigation/LogoNav.vue';
 
 <style lang="scss" scoped>
 @import "@/scss/blocks/_custom-search.scss";
-@import "@/scss/blocks/_main-nav.scss";
 @import "@/scss/blocks/_socials.scss";
-@import "@/scss/blocks/_news.scss";
 @import "@/scss/blocks/_header.scss";
 * {
   font-family: $ff-gilroy;

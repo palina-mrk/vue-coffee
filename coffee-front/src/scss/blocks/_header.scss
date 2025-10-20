@@ -83,14 +83,17 @@
     top: calc(50% - 4px);
     transform: translateY(-50%);
     display: none;
+    max-width: 1240px;
 
     @include vp-laptop {
+      max-width: 880px;
       left: 201px;
       right: 99px;
       top: 50%;
     }
 
     @include vp-tablet {
+      max-width: 580px;
       left: 0;
       right: 0;
       top: 40px;
@@ -98,6 +101,7 @@
     }
 
     @include vp-mobile {
+      max-width: 270px;
       top: 21px;
     }
   }
@@ -133,6 +137,11 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 
     @include vp-tablet {
       color: $color-raising-black;

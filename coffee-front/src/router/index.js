@@ -4,6 +4,7 @@ import CoffeeView from '../views/CoffeeView.vue'
 import TeaView from '../views/TeaView.vue'
 import VendingView from '../views/VendingView.vue'
 import HealthyView from '../views/HealthyView.vue'
+import CartView from '../views/CartView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -13,7 +14,7 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        title: 'Home page',
+        title: 'Домашняя страница',
       },
     },
     {
@@ -21,7 +22,7 @@ const router = createRouter({
       name: 'catalog-coffee',
       component: CoffeeView,
       meta: {
-        title: 'Catalog coffee page',
+        title: 'Свежеобжаренный кофе',
       },
     },
     {
@@ -29,7 +30,7 @@ const router = createRouter({
       name: 'catalog-tea',
       component: TeaView,
       meta: {
-        title: 'Catalog tea page',
+        title: 'Чай и кофейные напитки',
       },
     },
     {
@@ -37,7 +38,7 @@ const router = createRouter({
       name: 'catalog-vending',
       component: VendingView,
       meta: {
-        title: 'Vending production page',
+        title: 'Продукция для вендинга',
       },
     },
     {
@@ -45,12 +46,20 @@ const router = createRouter({
       name: 'catalog-healthy',
       component: HealthyView,
       meta: {
-        title: 'Healthy products page',
+        title: 'Здоровое питание',
       },
     },
     {
       path: '/home',
       redirect: { name: 'home' },
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: CartView,
+      meta: {
+        title: 'Корзина',
+      },
     },/*
     {
       path: '/about',

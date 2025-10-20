@@ -6,7 +6,7 @@ const isHomePage = computed(() => route.name == 'home');
 </script>
 
 <template>
-  <div v-if="isHomePage">
+  <template v-if="isHomePage">
     <div class="background__div background__div--footer-wall"></div>
 
     <svg
@@ -74,9 +74,9 @@ const isHomePage = computed(() => route.name == 'home');
         alt="Чашка кофе"
       />
     </picture>
-  </div>
+  </template>
 
-  <div v-else>
+  <template v-else>
     <div class="background__div background__div--catalog-footer-wall"></div>
 
     <svg class="background__svg-vawe background__svg-vawe--catalog-back-footer" width="3720" height="408" aria-hidden="true">
@@ -94,7 +94,7 @@ const isHomePage = computed(() => route.name == 'home');
     <svg class="background__svg-vawe-for-tablet background__svg-vawe--catalog-front-footer" width="1348" height="190" aria-hidden="true">
       <use xlink:href="../../assets/bg-sprite.svg#bg-catalog-front-for-footer-for-tablet"></use>
     </svg>
-  </div>
+  </template>
 </template>
 
 <style lang="scss" scoped>

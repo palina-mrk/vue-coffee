@@ -15,8 +15,8 @@ const app = createApp({
 });
 app.use(router);
 app.use(createPinia());
-
+/*
 const catalogStore = useCoffeeStore();
 catalogStore.loadCatalog();
-
+*/
 app.mount("#app");

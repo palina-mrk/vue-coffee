@@ -9,13 +9,16 @@
         <router-link 
           class="main-nav__link" 
           :to="{ name: 'catalog-coffee' }"
+          @click="$emit('leave-page')"
           >Каталог товаров</router-link>
       </li>
       <li class="main-nav__item">
-        <a class="main-nav__link" href="#">Блог</a>
+        <a class="main-nav__link" 
+        @click="$emit('leave-page')">Блог</a>
       </li>
       <li class="main-nav__item">
-        <a class="main-nav__link" href="#">Контакты</a>
+        <a class="main-nav__link" 
+        @click="$emit('leave-page')">Контакты</a>
       </li>
     </ul>
   </nav>

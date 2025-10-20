@@ -6,7 +6,7 @@ import CatalogFooter from "./CatalogFooter.vue";
 
 <template>
   <MainHeader></MainHeader>
-  <h1 style="height: 1000px; color: 'black';">Чай</h1>
+  <h1 style="height: 1000px; color: 'black'; padding-top: 100px">Чай</h1>
   <CatalogFooter></CatalogFooter>
 </template>
 

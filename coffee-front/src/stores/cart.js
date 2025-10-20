@@ -62,7 +62,7 @@ export const useCartStore = defineStore("cart", () => {
     Object.values(cart)  /* [{w1: c1, w2: c2}, {w1: c3, w2: c4}]*/
     .reduce((acc, weights) => (
       acc + Object.values(weights).reduce((acc, count) => acc + count, 0))
-      , acc),
+      , 0),
   );
 
   const totalSum = computed(() =>

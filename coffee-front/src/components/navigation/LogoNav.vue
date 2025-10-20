@@ -5,6 +5,7 @@
 <template>
   <router-link 
     :to="{ name: 'home' }"
+    @click="$emit('leave-page')"
     aria-label="Ссылка на главную страницу"
   >
     <picture>

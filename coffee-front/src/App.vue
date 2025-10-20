@@ -1,13 +1,11 @@
 <script setup>
-import ProductCard from "./components/cards/ProductCard.vue";
-import { reactive, ref } from "vue";
-
-import { storeToRefs } from "pinia";
+import { onBeforeMount } from 'vue';
 import { useCoffeeStore } from "./stores/coffee";
 
-const catalogStore = useCoffeeStore();
-const { catalog, isLoaded } = storeToRefs(catalogStore);
-
+onBeforeMount(() => {
+  const catalogStore = useCoffeeStore();
+  catalogStore.loadCatalog();
+})
 </script>
 
 <template>

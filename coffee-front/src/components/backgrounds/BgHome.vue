@@ -3,7 +3,7 @@ defineProps(['section'])
 </script>
 
 <template>
-  <div v-if="section == 'overview'">
+  <template v-if="section == 'overview'">
   <svg
     class="background__svg-puddle background__svg-puddle--right"
     width="1453"
@@ -125,8 +125,8 @@ defineProps(['section'])
       xlink:href="../../assets/bg-sprite.svg#bg-overview-vawe-for-tablet"
     ></use>
   </svg>
-  </div>
-  <div v-else-if="section == 'advantages'">
+  </template>
+  <template v-else-if="section == 'advantages'">
     <svg
         class="background__svg-vawe background__svg-vawe--advantages"
         width="3720"
@@ -150,8 +150,8 @@ defineProps(['section'])
       </svg>
 
       <div class="background__div background__div--advantages-wall"></div>
-  </div>  
-  <div v-else-if="section == 'technology'">
+  </template>  
+  <template v-else-if="section == 'technology'">
 
     <picture>
       <source
@@ -217,8 +217,8 @@ defineProps(['section'])
       ></use>
     </svg>
 
-  </div>
-  <div v-else-if="section == 'news'">
+  </template>
+  <template v-else-if="section == 'news'">
     <svg
       class="background__svg-vawe background__svg-vawe--news"
       width="2627"
@@ -231,8 +231,8 @@ defineProps(['section'])
     </svg>
 
     <div class="background__div background__div--news-wall"></div>
-  </div>
-  <div v-else-if="section == 'instagram'">
+  </template>
+  <template v-else-if="section == 'instagram'">
   
     <div class="background__div background__div--instagram-top-wall"></div>
 
@@ -251,7 +251,7 @@ defineProps(['section'])
         </svg>
 
 
-  </div>
+  </template>
 </template>
 
 <style lang="scss" scoped>
