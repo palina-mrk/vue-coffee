@@ -67,7 +67,7 @@ legend {
   @include vp-laptop {
     font-size: 22px;
     line-height: 25px;
-    margin: 0 0 30px;
+    margin: 0 0 25px;
   }
 
   @include vp-tablet {
