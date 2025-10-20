@@ -5,7 +5,6 @@
 <template>
   <router-link 
     :to="{ name: 'home' }"
-    href="#"
     aria-label="Ссылка на главную страницу"
   >
     <picture>

@@ -3,144 +3,33 @@ import { useCoffeeStore } from '../stores/coffee';
 import { computed, ref, reactive } from 'vue';
 const catalogStore = useCoffeeStore();
 import ProductCard from '../components/cards/ProductCard.vue';
+import BgHome from '../components/backgrounds/BgHome.vue';
+import SliderLarge from '../components/sliders/SliderLarge.vue';
 import { storeToRefs } from "pinia";
+import CatalogCard from '../components/cards/CatalogCard.vue';
 
 const { catalog, isLoaded } = storeToRefs(catalogStore);
+const catalogCards = reactive([
+  {page: 'coffee', title: 'Свежеобжаренный кофе'},
+  {page: 'tea', title: 'Чай и кофейные напитки'},
+  {page: 'vending', title: 'Продукция для вендинга'},
+  {page: 'healthy', title: 'Здоровое питание'}
+])
 
 </script>
 
 <template>
   <main v-if="isLoaded">
     <section class="overview">
-      <svg
-        class="background__svg-puddle background__svg-puddle--right"
-        width="1453"
-        height="1750"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-puddle-right"
-        ></use>
-      </svg>
-
-      <svg
-        class="background__svg-puddle background__svg-puddle--left"
-        width="1230"
-        height="1380"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-puddle-left"
-        ></use>
-      </svg>
-      <svg
-        class="background__svg-puddle background__svg-puddle--left-for-laptop"
-        width="819"
-        height="934"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-puddle-left-for-laptop"
-        ></use>
-      </svg>
-
-      <picture>
-        <source
-          media="(max-width: 767px)"
-          srcset="../images/background/bg-heading-corns-mobile.png"
-        />
-        <source
-          media="(max-width: 1348px)"
-          srcset="../images/background/bg-heading-corns-tablet.png"
-        />
-        <source
-          media="(max-width: 1903px)"
-          srcset="../images/background/bg-heading-corns-laptop.png"
-        />
-        <img
-          class="background__img background__img--heading-corns"
-          src="../images/background/bg-heading-corns-desktop.png"
-          width="900"
-          height="773"
-          alt="Зёрна кофе под чашкой"
-        />
-      </picture>
-
-      <picture>
-        <source
-          media="(max-width: 767px)"
-          srcset="../images/background/bg-corns-left-mobile.png"
-        />
-        <source
-          media="(max-width: 1348px)"
-          srcset="../images/background/bg-corns-left-tablet.png"
-        />
-        <source
-          media="(max-width: 1903px)"
-          srcset="../images/background/bg-corns-left-laptop.png"
-        />
-        <img
-          class="background__img background__img--left-corns"
-          src="../images/background/bg-corns-left-desktop.png"
-          width="360"
-          height="694"
-          alt="Зёрна кофе слева"
-        />
-      </picture>
-
-      <picture>
-        <source
-          media="(max-width: 767px)"
-          srcset="../images/background/bg-heading-cup-mobile.png"
-        />
-        <source
-          media="(max-width: 1348px)"
-          srcset="../images/background/bg-heading-cup-tablet.png"
-        />
-        <source
-          media="(max-width: 1903px)"
-          srcset="../images/background/bg-heading-cup-laptop.png"
-        />
-        <img
-          class="background__img background__img--cup"
-          src="../images/background/bg-heading-cup-desktop.png"
-          width="744"
-          height="496"
-          alt="Чашка кофе"
-        />
-      </picture>
-
-      <div class="background__div background__div--cup-shadow"></div>
-
-      <svg
-        class="background__svg-vawe background__svg-vawe--overview"
-        width="2627"
-        height="288"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-overview-vawe"
-        ></use>
-      </svg>
-
-      <svg
-        class="background__svg-vawe-for-tablet background__svg-vawe--overview"
-        width="1348"
-        height="216"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-overview-vawe-for-tablet"
-        ></use>
-      </svg>
+      <bg-home :section="'overview'"></bg-home>
 
       <div class="container">
         <div class="overview__hero-wrapper">
-          <ul class="overview__slider slider-large">
-            <li class="slider-large__point slider-large__point--brown"></li>
-            <li class="slider-large__point"></li>
-            <li class="slider-large__point"></li>
-          </ul>
+          <slider-large
+            class="overview__slider"
+            :count="3"
+            :selected="1"
+          ></slider-large>
           <h1 class="overview__hero-title">Свежеобжаренный кофе</h1>
           <div class="overview__hero-content">
             <p class="overview__hero-paragraph">
@@ -154,8 +43,10 @@ const { catalog, isLoaded } = storeToRefs(catalogStore);
               >
             </p>
           </div>
-          <a class="overview__hero-button btn btn--size-xl" href="#"
-            >Посмотреть каталог</a
+          <router-link 
+            class="overview__hero-button btn btn--size-xl" 
+            :to="{ name: 'catalog-coffee' }"
+            >Посмотреть каталог</router-link
           >
         </div>
       </div>
@@ -165,121 +56,18 @@ const { catalog, isLoaded } = storeToRefs(catalogStore);
             Каталоги нашей продукции
           </h2>
           <ul class="overview__catalogs-list">
-            <li class="overview__catalogs-item">
-              <div class="catalog-card">
-                <div class="catalog-card__image-wrapper">
-                  <picture>
-                    <source
-                      media="(max-width: 767px)"
-                      srcset="../images/catalog-card/catalog-coffee-mobile.png"
-                    />
-                    <source
-                      media="(max-width: 1348px)"
-                      srcset="../images/catalog-card/catalog-coffee-tablet.png"
-                    />
-                    <source
-                      media="(max-width: 1903px)"
-                      srcset="../images/catalog-card/catalog-coffee-laptop.png"
-                    />
-                    <img
-                      class="catalog-card__image"
-                      src="../images/catalog-card/catalog-coffee-desktop.png"
-                      width="295"
-                      height="212"
-                      alt="Карточка каталога кофе"
-                    />
-                  </picture>
-                </div>
-                <h3 class="catalog-card__title">Свежеобжаренный кофе</h3>
-                <a class="catalog-card__button btn btn--size-m" href="#"
-                  >Купить</a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="catalog-card">
-                <div class="catalog-card__image-wrapper">
-                  <picture>
-                    <source
-                      media="(max-width: 767px)"
-                      srcset="../images/catalog-card/catalog-tea-mobile.png"
-                    />
-                    <source
-                      media="(max-width: 1348px)"
-                      srcset="../images/catalog-card/catalog-tea-tablet.png"
-                    />
-                    <source
-                      media="(max-width: 1903px)"
-                      srcset="../images/catalog-card/catalog-tea-laptop.png"
-                    />
-                    <img
-                      class="catalog-card__image"
-                      src="../images/catalog-card/catalog-tea-desktop.png"
-                      width="260"
-                      height="116"
-                      alt="Карточка каталога чая"
-                    />
-                  </picture>
-                </div>
-                <h3 class="catalog-card__title">Чай и&nbsp;кофейные напитки</h3>
-                <a class="catalog-card__button btn btn--size-m" href="#"
-                  >Купить</a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="catalog-card">
-                <div class="catalog-card__image-wrapper">
-                  <picture>
-                    <source
-                      media="(max-width: 1903px)"
-                      srcset="../images/catalog-card/catalog-vending-laptop.png"
-                    />
-                    <img
-                      class="catalog-card__image"
-                      src="../images/catalog-card/catalog-vending-desktop.png"
-                      width="276"
-                      height="253"
-                      alt="Карточка каталога вендинга"
-                    />
-                  </picture>
-                </div>
-                <h3 class="catalog-card__title">Продукция для вендинга</h3>
-                <a class="catalog-card__button btn btn--size-m" href="#"
-                  >Купить</a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="catalog-card">
-                <div class="catalog-card__image-wrapper">
-                  <picture>
-                    <source
-                      media="(max-width: 1903px)"
-                      srcset="../images/catalog-card/catalog-healthy-laptop.png"
-                    />
-                    <img
-                      class="catalog-card__image"
-                      src="../images/catalog-card/catalog-healthy-desktop.png"
-                      width="266"
-                      height="186"
-                      alt="Карточка каталога кофе"
-                    />
-                  </picture>
-                </div>
-                <h3 class="catalog-card__title">Здоровое питание</h3>
-                <a class="catalog-card__button btn btn--size-m" href="#"
-                  >Купить</a
-                >
-              </div>
+            <li
+              v-for="catalogCard in catalogCards" 
+              class="overview__catalogs-item">
+              <CatalogCard 
+              :page="catalogCard.page"
+              :title="catalogCard.title"></CatalogCard>
             </li>
           </ul>
-          <ul class="overview__catalogs-slider slider-large">
-            <li class="slider-large__point slider-large__point--brown"></li>
-            <li class="slider-large__point"></li>
-            <li class="slider-large__point"></li>
-            <li class="slider-large__point"></li>
-          </ul>
+          <slider-large 
+          class="overview__catalogs-slider"
+          :count="4" 
+          :selected="1"></slider-large>
         </div>
       </div>
       <div class="container">
@@ -355,30 +143,10 @@ const { catalog, isLoaded } = storeToRefs(catalogStore);
     </section>
 
     <section class="advantages">
-      <svg
-        class="background__svg-vawe background__svg-vawe--advantages"
-        width="3720"
-        height="400"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-advantages-vawe"
-        ></use>
-      </svg>
 
-      <svg
-        class="background__svg-vawe-for-tablet background__svg-vawe--advantages"
-        width="1348"
-        height="216"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-advantages-vawe-for-tablet"
-        ></use>
-      </svg>
+      <bg-home :section="'advantages'"></bg-home>
 
-      <div class="background__div background__div--advantages-wall"></div>
-
+      
       <div class="container">
         <div class="advantages__wrapper">
           <div class="advantages__images">
@@ -486,69 +254,8 @@ const { catalog, isLoaded } = storeToRefs(catalogStore);
     </section>
 
     <section class="technology">
-      <picture>
-        <source
-          media="(max-width: 767px)"
-          srcset="../images/background/bg-coffeemachine-mobile.png"
-        />
-        <source
-          media="(max-width: 1348px)"
-          srcset="../images/background/bg-coffeemachine-tablet.png"
-        />
-        <img
-          class="background__img background__img--technology"
-          src="../images/background/bg-coffeemachine.png"
-          width="900"
-          height="773"
-          alt="Машина для перемолки кофе"
-        />
-      </picture>
 
-      <div class="background__div background__div--technology-shadow"></div>
-
-      <svg
-        class="background__svg-vawe background__svg-vawe--technology-first"
-        width="2627"
-        height="288"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-technology-first-vawe"
-        ></use>
-      </svg>
-
-      <svg
-        class="background__svg-vawe-for-tablet background__svg-vawe--technology-first"
-        width="1348"
-        height="236"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-technology-first-vawe-for-tablet"
-        ></use>
-      </svg>
-
-      <svg
-        class="background__svg-vawe background__svg-vawe--technology-second"
-        width="3298"
-        height="298"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-technology-second-vawe"
-        ></use>
-      </svg>
-
-      <svg
-        class="background__svg-vawe-for-tablet background__svg-vawe--technology-second"
-        width="1348"
-        height="138"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-technology-second-vawe-for-tablet"
-        ></use>
-      </svg>
+      <bg-home :section="'technology'"></bg-home>
 
       <div class="container">
         <div class="technology__wrapper">
@@ -589,19 +296,10 @@ const { catalog, isLoaded } = storeToRefs(catalogStore);
     </section>
 
     <section class="news">
-      <svg
-        class="background__svg-vawe background__svg-vawe--news"
-        width="2627"
-        height="288"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-news-vawe"
-        ></use>
-      </svg>
+      
+      <bg-home :section="'news'"></bg-home>
 
-      <div class="background__div background__div--news-wall"></div>
-
+      
       <div class="container">
         <div class="news__heading">
           <h2 class="news__title">Новости компании</h2>
@@ -831,43 +529,9 @@ const { catalog, isLoaded } = storeToRefs(catalogStore);
     </section>
 
     <section class="instagram">
-      <div class="background__div background__div--instagram-top-wall"></div>
-
-      <svg
-        class="background__svg-vawe background__svg-vawe--instagram"
-        width="2627"
-        height="288"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-instagram-ellipse"
-        ></use>
-      </svg>
-
-      <svg
-        class="background__svg-vawe-for-tablet background__svg-vawe--instagram"
-        width="2627"
-        height="288"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-instagram-ellipse-for-tablet"
-        ></use>
-      </svg>
-
-      <div class="background__div background__div--instagram-bottom-wall"></div>
-
-      <svg
-        class="background__svg-vawe-for-tablet background__svg-vawe--instagram-bottom"
-        width="2627"
-        height="288"
-        aria-hidden="true"
-      >
-        <use
-          xlink:href="../assets/bg-sprite.svg#bg-instagram-bottom-vawe-for-tablet"
-        ></use>
-      </svg>
-
+      
+      <bg-home :section="'instagram'"></bg-home>
+      
       <div class="container">
         <div class="instagram__title-wrapper">
           <h2 class="instagram__title">Мы&nbsp;в&nbsp;Instagram</h2>
@@ -1061,7 +725,6 @@ const { catalog, isLoaded } = storeToRefs(catalogStore);
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_background.scss";
 @import "@/scss/blocks/_socials.scss";
 @import "@/scss/blocks/_overview.scss";
 @import "@/scss/blocks/_advantages.scss";
@@ -1069,8 +732,6 @@ const { catalog, isLoaded } = storeToRefs(catalogStore);
 @import "@/scss/blocks/_news.scss";
 @import "@/scss/blocks/_technology.scss";
 @import "@/scss/blocks/_instagram.scss";
-@import "@/scss/blocks/_catalog-card.scss";
-@import "@/scss/blocks/_slider-large.scss";
 * {
   font-family: $ff-gilroy;
 }
