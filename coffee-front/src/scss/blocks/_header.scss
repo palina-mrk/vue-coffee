@@ -257,26 +257,16 @@
   }
 
   .header__burger,
-  .header__search,
-  .header__users-item:first-child {
+  .header__search {
     display: none;
   }
 
   .header__users-list {
-    display: flex;
-    flex-direction: row;
     margin: 0 0 390px;
-    padding: 0;
-    gap: 50px;
 
     @include vp-mobile {
       margin: 0 0 190px;
-      gap: 24px;
     }
-  }
-
-  .header__users-link:hover {
-    color: $color-ucla-gold;
   }
 
   .header__menu-close {
@@ -296,7 +286,4 @@
     margin: 0;
   }
 
-  .header__users-link:hover {
-    color: $color-ucla-gold;
-  }
 }

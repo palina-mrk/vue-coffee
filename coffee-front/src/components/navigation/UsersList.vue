@@ -3,10 +3,16 @@ defineProps(['isSearch', 'isMenu'])
 import { useCartStore } from '../../stores/cart';
 
 const cart = useCartStore();
+
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
+const route = useRoute();
+
+const isHomePage = computed(() => route.name == 'home');
 </script>
 
 <template>
-  <ul :class="{'users-list': true, 'users-list--search': isSearch, 'users-list--menu': isMenu}">
+  <ul :class="{'users-list': true, 'users-list--search': isSearch, 'users-list--menu': isMenu, 'users-list--bg': !isHomePage}">
     <li class="users-list__item" v-if="!isSearch && !isMenu">
       <button
         class="users-list__link"
@@ -128,7 +134,7 @@ const cart = useCartStore();
     position: absolute;
     background-color: $color-cornsilk;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     font-size: 18px;
     line-height: 21px;
@@ -233,6 +239,22 @@ const cart = useCartStore();
 }
 
 .users-list--menu {
+  gap: 50px;
+
+  @include vp-mobile {
+      gap: 24px;
+  }
+
+  .users-list__link:hover {
+    color: $color-ucla-gold;
+  }
+
+  .users-list__basket-count {
+    background-color: $color-ucla-gold;
+  }
+}
+
+.users-list--bg {
   .users-list__link:hover {
     color: $color-ucla-gold;
   }

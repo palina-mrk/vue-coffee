@@ -1,0 +1,35 @@
+<script setup>
+</script>
+
+<template>
+
+  <picture>
+    <source media="(max-width: 767px)" srcset="../../images/background/bg-heading-corns-mobile.png">
+    <source media="(max-width: 1348px)" srcset="../../images/background/bg-heading-corns-tablet.png">
+    <source media="(max-width: 1903px)" srcset="../../images/background/bg-heading-corns-laptop.png">
+    <img class="background__img background__img--catalog-hero-corns" src="../../images/background/bg-heading-corns-desktop.png" width="360" height="694" alt="Зёрна кофе под чашкой">
+  </picture>
+
+  <picture>
+    <source media="(max-width: 767px)" srcset="../../images/background/bg-heading-cup-mobile.png">
+    <source media="(max-width: 1348px)" srcset="../../images/background/bg-heading-cup-tablet.png">
+    <source media="(max-width: 1903px)" srcset="../../images/background/bg-heading-cup-laptop.png">
+    <img class="background__img background__img--catalog-hero-cup" src="../../images/background/bg-heading-cup-desktop.png" width="682" height="455" alt="Чашка кофе">
+  </picture>
+
+  <div class="background__div background__div--catalog-hero-top-wall"></div>
+
+  <svg class="background__svg-vawe background__svg-vawe--catalog-hero" width="3720" height="568" aria-hidden="true">
+    <use xlink:href="../../assets/bg-sprite.svg#bg-catalog-vawe-for-hero"></use>
+  </svg>
+  <svg class="background__svg-vawe-for-tablet background__svg-vawe--catalog-hero" width="1348" height="201" aria-hidden="true">
+    <use xlink:href="../../assets/bg-sprite.svg#bg-catalog-vawe-for-hero-for-tablet"></use>
+  </svg>
+
+  <div class="background__div background__div--catalog-hero-bottom-wall"></div>
+
+</template>
+
+<style lang="scss" scoped>
+@import "@/scss/blocks/_background.scss";
+</style>

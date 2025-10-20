@@ -108,7 +108,6 @@ const isSearch = ref(false)
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_custom-search.scss";
 @import "@/scss/blocks/_socials.scss";
 @import "@/scss/blocks/_header.scss";
 * {
