@@ -1,16 +1,13 @@
 <script setup>
-defineProps(['isSearch'])
+defineProps(['isSearch', 'isMenu'])
 import { useCartStore } from '../../stores/cart';
-import { useCoffeeStore } from "../../stores/coffee";
-import {ref, computed} from 'vue'
 
 const cart = useCartStore();
-const x = ref("ddd")
 </script>
 
 <template>
-  <ul class="users-list">
-    <li class="users-list__item" v-if="!isSearch">
+  <ul :class="{'users-list': true, 'users-list--search': isSearch, 'users-list--menu': isMenu}">
+    <li class="users-list__item" v-if="!isSearch && !isMenu">
       <button
         class="users-list__link"
         aria-label="Открыть поле поиска"
@@ -31,9 +28,10 @@ const x = ref("ddd")
     <li 
       class="users-list__item"
       >
-      <a
+      <router-link
         class="users-list__link"
-        href="#"
+        :to="{ name: 'catalog-coffee' }"
+        @click="$emit('leave-page')"
         aria-label="Перейти в корзину"
       >
         <svg
@@ -46,16 +44,17 @@ const x = ref("ddd")
             xlink:href="../../assets/header-sprite.svg#icon-basket"
           ></use>
         </svg>
-      </a>
+      </router-link>
       <div
         v-if="cart.totalCount > 0"
-        class="users-list__basket-count"
+        class='users-list__basket-count'
       >{{ cart.totalCount }}</div>
     </li>
     <li class="users-list__item">
       <a
         class="users-list__link"
         href="#"
+        @click="$emit('leave-page')"
         aria-label="Войти в личный кабинет"
       >
         <svg
@@ -75,41 +74,171 @@ const x = ref("ddd")
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_users-list.scss";
-.users-list__item {
-  position: relative;
-}
+.users-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 5px 49px;
+    justify-content: end;
+    align-items: center;
 
-.users-list__basket-count {
-  position: absolute;
-  color: $color-black;
-  background-color: $color-ucla-gold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  line-height: 21px;
-  font-weight: 700;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  left: 100%;
-  bottom: 80%;
-  transform: translate(-50%, 50%);
-  pointer-events: none;
+    @include vp-laptop {
+      gap: 5px 37px;
+    }
 
-  @include vp-laptop {
-    width: 21px;
-    height: 21px;
-    font-size: 13px;
-    line-height: 17px;
+    @include vp-tablet {
+      gap: 5px 54px;
+    }
+
+    @include vp-mobile {
+      gap: 5px 25px;
+    }
+
+  &__link {
+    color: $color-black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    @include vp-tablet {
+      color: $color-raising-black;
+    }
+
+    &:hover {
+      color: $color-white;
+
+      @include vp-tablet {
+        color: $color-ucla-gold;
+      }
+    }
   }
 
-  @include vp-mobile {
-    width: 21px;
-    height: 21px;
-    font-size: 13px;
-    line-height: 17px;
+  &__item {
+    position: relative;
+  }
+
+  &__basket-count {
+    position: absolute;
+    background-color: $color-cornsilk;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    left: 100%;
+    bottom: 80%;
+    transform: translate(-50%, 50%);
+    pointer-events: none;
+
+    @include vp-laptop {
+      width: 21px;
+      height: 21px;
+      font-size: 13px;
+      line-height: 17px;
+    }
+
+    @include vp-tablet {
+      color: $color-raising-black;
+      background-color: $color-ucla-gold;
+    }
+
+    @include vp-mobile {
+      width: 21px;
+      height: 21px;
+      font-size: 13px;
+      line-height: 17px;
+    }
+  }
+  
+  &__search-icon {
+    width: 36px;
+    height: 36px;
+
+    @include vp-laptop {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include vp-tablet {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include vp-mobile {
+      width: 21px;
+      height: 22px;
+    }
+  }
+
+  &__basket-icon {
+    width: 37px;
+    height: 36px;
+
+    @include vp-laptop {
+      width: 26px;
+      height: 24px;
+    }
+
+    @include vp-tablet {
+      width: 44px;
+      height: 40px;
+    }
+
+    @include vp-mobile {
+      width: 24px;
+      height: 19px;
+    }
+  }
+
+  &__user-icon {
+    width: 32px;
+    height: 37px;
+
+    @include vp-laptop {
+      width: 24px;
+      height: 32px;
+    }
+
+    @include vp-tablet {
+      width: 38px;
+      height: 46px;
+    }
+
+    @include vp-mobile {
+      width: 18px;
+      height: 23px;
+    }
+  }
+}
+
+.users-list--search {
+  .users-list__link:hover {
+    color: $color-ucla-gold;
+  }
+
+  .users-list__basket-count {
+    background-color: $color-ucla-gold;
+  }
+}
+
+.users-list--menu {
+  .users-list__link:hover {
+    color: $color-ucla-gold;
+  }
+
+  .users-list__basket-count {
+    background-color: $color-ucla-gold;
   }
 }
 </style>

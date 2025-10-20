@@ -52,7 +52,9 @@ const isSearch = ref(false)
         <users-list 
           class="header__users-list"
           :isSearch="isSearch"
+          :isMenu="isMenu"
           @setSearch="isSearch = true"
+          @leave-page="isMenu = false"
         ></users-list>
 
         <svg
