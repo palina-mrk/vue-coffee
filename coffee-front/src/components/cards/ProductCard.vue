@@ -5,8 +5,11 @@ import SliderStars from '../sliders/SliderStars.vue';
 import CustomDropdown from '../inputs/CustomDropdown.vue';
 import { useCartStore } from '../../stores/cart';
 import { computed, ref } from 'vue';
-const props = defineProps(['product', 'isHomePage'])
+import { useRoute } from 'vue-router';
+const props = defineProps(['product'])
 const cartStore = useCartStore();
+const route = useRoute();
+const isHomePage = computed(() => route.name == 'home');
 
 const isSale = computed(() => props.product.actions.includes('Скидки'));
 const weightIndex = ref(0);
@@ -93,4 +96,7 @@ function addToCart() {
 <style lang="scss" scoped>
 @import "@/scss/blocks/_product-card.scss";
 @import "@/scss/blocks/_custom-dropdown.scss";
+* {
+  font-family: $ff-gilroy;
+}
 </style>

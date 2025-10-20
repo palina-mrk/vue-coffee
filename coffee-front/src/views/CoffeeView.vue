@@ -1,13 +1,11 @@
 <script setup>
 import MainHeader from "./MainHeader.vue";
-import MainBody from "./MainBody.vue";
-import MainFooter from "./MainFooter.vue";
+import CatalogFooter from "./CatalogFooter.vue";
 </script>
 
 <template>
   <MainHeader></MainHeader>
-  <MainBody></MainBody>
-  <MainFooter></MainFooter>
+  <CatalogFooter></CatalogFooter>
 </template>
 
 <style lang="scss" scoped>

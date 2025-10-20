@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import CoffeeView from '../views/CoffeeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -11,11 +12,19 @@ const router = createRouter({
       meta: {
         title: 'Home page',
       },
-    },/*
-    {
-      path: '/th',
-      redirect: { name: 'home' },
     },
+    {
+      path: '/coffee',
+      name: 'catalog-coffee',
+      component: CoffeeView,
+      meta: {
+        title: 'Catalog coffee page',
+      },
+    },
+    {
+      path: '/home',
+      redirect: { name: 'home' },
+    },/*
     {
       path: '/about',
       name: 'about',

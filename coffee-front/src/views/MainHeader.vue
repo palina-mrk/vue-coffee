@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+import MainNav from '../components/navigation/MainNav.vue';
+import LogoNav from '../components/navigation/LogoNav.vue';
+
+</script>
 
 <template>
   <header class="header">
@@ -20,49 +24,10 @@
             </svg>
           </button>
         </div>
-        <a
-          class="header__logo-link"
-          href="#"
-          aria-label="Ссылка на главную страницу"
-        >
-          <picture>
-            <source
-              media="(max-width: 767px)"
-              srcset="../images/header/logo/image-logo-mobile.png"
-            />
-            <source
-              media="(max-width: 1348px)"
-              srcset="../images/header/logo/image-logo-tablet.png"
-            />
-            <source
-              media="(max-width: 1903px)"
-              srcset="../images/header/logo/image-logo-laptop.png"
-            />
-            <img
-              class="header__logo-img"
-              src="../images/header/logo/image-logo-desktop.png"
-              width="260"
-              height="116"
-              alt="Ссылка на главную страницу"
-            />
-          </picture>
-        </a>
+        <logo-nav class="header__logo-link"></logo-nav>
+        
         <div class="header__nav">
-          <nav class="main-nav">
-            <ul class="main-nav__list">
-              <li class="main-nav__item">
-                <a class="main-nav__link" href="#catalogs-overview"
-                  >Каталог товаров</a
-                >
-              </li>
-              <li class="main-nav__item">
-                <a class="main-nav__link" href="#">Блог</a>
-              </li>
-              <li class="main-nav__item">
-                <a class="main-nav__link" href="#">Контакты</a>
-              </li>
-            </ul>
-          </nav>
+          <MainNav></MainNav>
         </div>
         <form class="header__search" method="POST" action="#">
           <div class="custom-search">
@@ -198,4 +163,7 @@
 @import "@/scss/blocks/_socials.scss";
 @import "@/scss/blocks/_news.scss";
 @import "@/scss/blocks/_header.scss";
+* {
+  font-family: $ff-gilroy;
+}
 </style>

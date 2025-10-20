@@ -52,4 +52,7 @@ function setValue(newValue) {
 
 <style lang="scss" scoped>
 @import "@/scss/blocks/_custom-dropdown.scss";
+* {
+  font-family: $ff-gilroy;
+}
 </style>

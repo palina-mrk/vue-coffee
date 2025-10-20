@@ -1,8 +1,14 @@
-<script setup></script>
+<script setup>
+import MainNav from '../components/navigation/MainNav.vue';
+import LogoNav from '../components/navigation/LogoNav.vue';
+import BgFooter from '../components/backgrounds/BgFooter.vue';
+</script>
 
 <template>
   <footer class="footer">
-    <div class="background__div background__div--footer-wall"></div>
+    <bg-footer></bg-footer>
+
+    <!--div class="background__div background__div--footer-wall"></div>
 
     <svg
       class="background__svg-vawe background__svg-vawe--footer"
@@ -68,7 +74,7 @@
         height="455"
         alt="Чашка кофе"
       />
-    </picture>
+    </picture-->
 
     <div class="container">
       <div class="footer__subscribe">
@@ -108,57 +114,19 @@
         </form>
       </div>
       <div class="footer__nav-wrapper">
-        <a
-          class="footer__logo-link"
-          href="#"
-          aria-label="Ссылка на главную страницу"
-        >
-          <picture>
-            <source
-              media="(max-width: 767px)"
-              srcset="../images/header/logo/image-logo-mobile.png"
-            />
-            <source
-              media="(max-width: 1348px)"
-              srcset="../images/header/logo/image-logo-tablet.png"
-            />
-            <source
-              media="(max-width: 1903px)"
-              srcset="../images/header/logo/image-logo-laptop.png"
-            />
-            <img
-              class="footer__logo-img"
-              src="../images/header/logo/image-logo-desktop.png"
-              width="260"
-              height="116"
-              alt="Ссылка на главную страницу"
-            />
-          </picture>
-        </a>
-        <nav class="main-nav footer__nav">
-          <ul class="main-nav__list">
-            <li class="main-nav__item">
-              <a class="main-nav__link" href="#our-catalogs">Каталог товаров</a>
-            </li>
-            <li class="main-nav__item">
-              <a class="main-nav__link" href="#">Блог</a>
-            </li>
-            <li class="main-nav__item">
-              <a class="main-nav__link" href="#">Контакты</a>
-            </li>
-          </ul>
-        </nav>
+        <logo-nav class="footer__logo-link"></logo-nav>
+        <main-nav class="footer__nav"></main-nav>
       </div>
     </div>
   </footer>
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_btn.scss";
-@import "@/scss/blocks/_custom-search.scss";
 @import "@/scss/blocks/_background.scss";
-@import "@/scss/blocks/_main-nav.scss";
 @import "@/scss/blocks/_socials.scss";
 @import "@/scss/blocks/_custom-subscribe.scss";
 @import "@/scss/blocks/_footer.scss";
+* {
+  font-family: $ff-gilroy;
+}
 </style>
