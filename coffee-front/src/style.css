@@ -1,9 +1,47 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a {
+  color: #f9b300;
+  text-decoration: none;
+}
+
 #app {
   color: black;
   font-weight: 300;
   display: flex;
   flex-direction: column;
   font-family: Gilroy;
-  min-height: 100vh;
   align-items: center;
+  width: 3720px;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+body {
+  background-color: #f6f6f6;
+  color: black;
+  font-weight: 300;
+  display: flex;
+  font-family: Gilroy;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+main {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 3720px;
+  display: flex;
+  flex-direction: column;
 }

@@ -1,19 +1,28 @@
 <script setup>
 import FieldsetCorns from '../subforms/FieldsetCorns.vue'
 import { useRoute } from 'vue-router';
+import {ref} from 'vue'
 const route = useRoute();
+
+const roastingDegrees = ref({})
+
+function updateValues(object, value) {
+  if(object[value]) 
+    delete object[value];
+  else 
+    object[value] = true;
+}
 </script>
 
 <template>
   <div class="filter-form">
     <div class="filter-form__inner">
       <!-- Степень обжарки roasting-->
-      <div class="filter-form__corns-block"> 
         <fieldset-corns
+          class="filter-form__corns-block"
           :maxDegree="5"
+          @toggle-value="updateValues(roastingDegrees, $event)"
         ></fieldset-corns>
-      </div>
-
       <div class="filter-form__words-block">
 
         <!-- Geography -->
@@ -248,8 +257,6 @@ const route = useRoute();
         </div>
       </fieldset>
     </div>
-
-    <button class="filter-form__submit btn-linked btn-linked--black-small" type="submit">Сортировка</button>
   </div>
 </template>
 

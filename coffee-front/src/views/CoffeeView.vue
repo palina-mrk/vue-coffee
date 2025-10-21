@@ -7,7 +7,6 @@ import CatalogFooter from "./CatalogFooter.vue";
 <template>
   <MainHeader></MainHeader>
   <CatalogHero></CatalogHero>
-  
   <CatalogFooter></CatalogFooter>
 </template>
 

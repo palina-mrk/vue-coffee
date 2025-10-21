@@ -340,7 +340,19 @@
     background: $color-black-302;
 
     @include vp-mobile {
-      bottom: 15px;
+      bottom: 0;
+    }
+
+    &::after {
+      @include vp-mobile {
+        position: absolute;
+        content: "";
+        background-color: $color-white;
+        width: 100%;
+        height: 15px;
+        left: 0;
+        bottom: 0;
+      }
     }
   }
 
@@ -367,35 +379,46 @@
 
   &__svg-vawe--news {
     height: 408px;
-    top: 40px;
+    top: 0;
     color: $color-cornsilk;
     background-color: $color-white;
 
     @include vp-laptop {
-      top: 155px;
       height: 210px;
     }
 
     @include vp-tablet {
-      display: none;
+      display: none;      
     }
   }
 
   &__div--news-wall {
-    top: 440px;
+    top: 405px;
     bottom: -2px;
     background-color: $color-cornsilk;
 
     @include vp-laptop {
-      top: 360px;
+      top: 230px;
     }
 
     @include vp-tablet {
-      top: 342px;
+      top: 0;
     }
 
-    @include vp-mobile {
-      top: 195px;
+    &::before {
+      @include vp-tablet {
+        position: absolute;
+        content: "";
+        background-color: $color-white;
+        width: 100%;
+        height: 345px;
+        left: 0;
+        top: 0;
+      }
+
+      @include vp-mobile {
+        height: 195px;
+      }
     }
   }
 
@@ -595,31 +618,31 @@
 
   &__div--catalog-hero-top-wall {
     top: 0;
-    bottom: 830px;
+    bottom: 715px;
     background-color: $color-ucla-gold;
 
     @include vp-laptop {
-      bottom: 600px;
+      bottom: 538px;
     }
 
     @include vp-tablet {
-      height: 620px;
+      height: 628px;
       bottom: unset;
     }
 
     @include vp-mobile {
-      height: 301px;
+      height: 309px;
     }
   }
 
   &__svg-vawe--catalog-hero {
     height: 568px;
-    bottom: 270px;
+    bottom: 158px;
     color: $color-ucla-gold;
 
     @include vp-laptop {
       height: 291px;
-      bottom: 310px;
+      bottom: 250px;
     }
 
     @include vp-tablet {
@@ -635,13 +658,13 @@
   }
 
   &__div--catalog-hero-bottom-wall {
-    height: 588px;
-    bottom: 112px;
-    background-color: $color-white;
+    height: 70px;
+    bottom: -1px;
+    background-color: $color-cultured;
 
     @include vp-laptop {
       bottom: 123px;
-      height: 450px;
+      height: 370px;
     }
 
     @include vp-tablet {

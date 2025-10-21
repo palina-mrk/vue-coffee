@@ -34,7 +34,7 @@
       gap: 10px;
     }
   }
-
+/*
   &__corns-block {
     background-color: $color-white;
     border-radius: 20px;
@@ -42,24 +42,26 @@
     position: relative;
     width: 400px;
     padding: 43px 50px 70px 85px;
+    height: 526px;
 
     @include vp-laptop {
       box-shadow: 0 0 21px 0 $color-spanish-gray-c95-25;
-      padding: 35px 35px 83px 50px;
+      padding: 35px 35px 60px 50px;
       width: 280px;
       border-radius: 14px;
+      height: 373px;
     }
 
     @include vp-tablet {
       box-shadow: 0px 0px 61px 0px $color-spanish-gray-c95-25;
-      padding: 105px 44px 65px;
+      padding: 108px 30px 65px;
       width: 700px;
       min-height: 620px;
     }
 
     @include vp-mobile {
       box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
-      padding: 50px 20px 30px;
+      padding: 52px 8px 30px;
       width: 340px;
       min-height: 303px;
     }
@@ -102,7 +104,7 @@
     }
   }
 
-/*  &__corns-group {
+  &__corns-group {
     border: none;
     display: flex;
     flex-direction: column;
@@ -340,19 +342,6 @@
     @include vp-mobile {
       gap: 10px;
       width: 340px;
-    }
-  }
-
-  &__submit {
-    align-self: start;
-
-    @include vp-laptop {
-      position: relative;
-      left: -15px;
-    }
-
-    @include vp-tablet {
-      position: unset;
     }
   }
 }

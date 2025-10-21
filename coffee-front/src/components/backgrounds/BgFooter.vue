@@ -27,7 +27,7 @@ const isHomePage = computed(() => route.name == 'home');
       aria-hidden="true"
     >
       <use
-        xlink:href="../../assets/background/bg-sprite.svg#bg-footer-vawe-for-tablet"
+        xlink:href="../../assets/bg-sprite.svg#bg-footer-vawe-for-tablet"
       ></use>
     </svg>
 

@@ -132,7 +132,8 @@ const isHomePage = computed(() => route.name == 'home');
 
   &__basket-count {
     position: absolute;
-    background-color: $color-cornsilk;
+    background-color: $color-ucla-gold;
+    border: 1px solid $color-cultured;
     display: flex;
     align-items: end;
     justify-content: center;
@@ -156,7 +157,7 @@ const isHomePage = computed(() => route.name == 'home');
 
     @include vp-tablet {
       color: $color-raising-black;
-      background-color: $color-ucla-gold;
+      border: none;
     }
 
     @include vp-mobile {
@@ -234,7 +235,7 @@ const isHomePage = computed(() => route.name == 'home');
   }
 
   .users-list__basket-count {
-    background-color: $color-ucla-gold;
+    border: none;
   }
 }
 
@@ -250,7 +251,7 @@ const isHomePage = computed(() => route.name == 'home');
   }
 
   .users-list__basket-count {
-    background-color: $color-ucla-gold;
+    border: none;
   }
 }
 
@@ -260,7 +261,7 @@ const isHomePage = computed(() => route.name == 'home');
   }
 
   .users-list__basket-count {
-    background-color: $color-ucla-gold;
+    border: none;
   }
 }
 </style>
