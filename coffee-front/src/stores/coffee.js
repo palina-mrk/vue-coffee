@@ -37,14 +37,33 @@ export const useCoffeeStore = defineStore("catalog", () => {
                 processing
                 geography
               }
+              roasting
               actions
               taste
+            }
+            teas {
+              id
+              title
+              description
+              category
+              rate {
+                rating
+                comments
+              } 
+              weights {
+                value
+                price
+                priceCrossed
+              }
+              kind
+              actions
             }
           }
         `,
       })
       .then((result) => {
         result.data.coffees.forEach((el) => catalog.push(el));
+        result.data.teas.forEach((el) => catalog.push(el));
         isLoaded.value = true;
       });
   }

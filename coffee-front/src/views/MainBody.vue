@@ -1,6 +1,6 @@
 <script setup>
 import { useCoffeeStore } from '../stores/coffee';
-import { computed, ref, reactive } from 'vue';
+import { reactive } from 'vue';
 const catalogStore = useCoffeeStore();
 import ProductCard from '../components/cards/ProductCard.vue';
 import BgHome from '../components/backgrounds/BgHome.vue';

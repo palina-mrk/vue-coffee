@@ -3,14 +3,16 @@ const { createHandler } = require('graphql-http/lib/use/express')
 const { buildSchema } = require('graphql')
 var cors = require('cors')
 
-const products = require('./data/products')
+const teas = require('./data/teas')
 const coffees = require('./data/coffee')
 
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
   type Query {
     coffees: [Coffee!]!
-    coffee(id: ID!): Coffee
+    coffee(id: Int!): Coffee
+    teas: [Tea!]!
+    tea(id: Int!): Tea
   }
 
   """ 
@@ -25,9 +27,21 @@ const schema = buildSchema(`
     weights: [Weight!]!
     rate: Rate!
     hue: Hue!
+    roasting: String!
     actions: [String!]!
     details: [Detail!]!
     taste: [String!]!
+  }
+
+  type Tea {
+    id: Int!
+    title: String!
+    category: String!
+    description: String!
+    weights: [Weight!]!
+    rate: Rate!
+    actions: [String!]!
+    kind: String!
   }
 
   type Weight {
@@ -69,6 +83,13 @@ const root = {
     p.details.forEach(el => details.push(el));
     p.weights = weights;
     p.details = details;
+    return p;
+  }),
+  tea: ({id}) => teas.find(p => p.id == id),
+  teas: () => teas.map(p => {
+    let weights = [];
+    p.weights.forEach(el => weights.push(el));
+    p.weights = weights;
     return p;
   }),
 }

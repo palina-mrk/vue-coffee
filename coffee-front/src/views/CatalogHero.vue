@@ -29,8 +29,8 @@ const route = useRoute();
           </li>
         </ul>
         <h2 class="hero__title">{{ route.meta.title }}</h2>
-        <filter-coffee class="hero__form filter-form"></filter-coffee>
         
+        <filter-coffee class="hero__form filter-form"></filter-coffee>
       </div>
     </div>
   </section>
@@ -38,6 +38,7 @@ const route = useRoute();
 </template>
 
 <style lang="scss" scoped>
+@import "@/scss/blocks/_background.scss";
 @import "@/scss/blocks/catalogs/_hero.scss";
 @import "@/scss/blocks/catalogs/_filter-form.scss";
 @import "@/scss/blocks/catalogs/_custom-checkbox-card.scss";

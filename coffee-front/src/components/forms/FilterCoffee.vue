@@ -46,20 +46,55 @@ function updateValues(object, value) {
         @set-value="preparationWay = $event"
       ></preparation-block>
 
-      <p>{{preparationWay}}</p>
+      <!--p>{{preparationWay}}</p>
 
       <p>{{ otherDetails }}</p>
-      
-      <p>{{ roastingDegrees }}</p>
+
+      <p>{{ roastingDegrees }}</p-->
 
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/catalogs/_filter-form.scss";
-@import "@/scss/blocks/catalogs/_custom-checkbox-card.scss";
 * {
   font-family: $ff-gilroy;
+}
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+
+  @include vp-laptop {
+    gap: 48px;
+  }
+
+  @include vp-tablet {
+    gap: 51px;
+  }
+
+  @include vp-mobile {
+    gap: 35px;
+  }
+
+  &__inner {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: $color-black;
+
+    @include vp-laptop {
+      gap: 15px 20px;
+    }
+
+    @include vp-tablet {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    @include vp-mobile {
+      gap: 10px;
+    }
+  }
 }
 </style>

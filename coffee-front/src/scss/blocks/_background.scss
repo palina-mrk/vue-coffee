@@ -658,24 +658,23 @@
   }
 
   &__div--catalog-hero-bottom-wall {
-    height: 70px;
-    bottom: -1px;
-    background-color: $color-cultured;
+    top: 750px;
+    bottom: 63px;
+    background-color: $color-white;
 
     @include vp-laptop {
-      bottom: 123px;
-      height: 370px;
+      top: 400px;
+      bottom: 46px;
     }
 
     @include vp-tablet {
-      height: unset;
       top: 630px;
-      bottom: 442px;
+      bottom: 347px;
     }
 
     @include vp-mobile {
       top: 305px;
-      bottom: 267px;
+      bottom: 197px;
     }
   }
 
@@ -794,8 +793,11 @@
     }
 
     @include vp-tablet {
-      height: 119px;
-      top: 17px;
+      top: 35px;
+    }
+
+    @include vp-mobile {
+      top: -29px;
     }
   }
 

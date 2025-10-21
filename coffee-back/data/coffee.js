@@ -11,6 +11,7 @@ const coffees = [
     ],
     rate: { rating: 4, comments: 32 },
     actions: ["Скидки", "Популярное"],
+    roasting: 5,
     hue: { acidity: 3, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Колумбия Супремо", geography: "Колумбия" },
@@ -29,6 +30,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 150 },
     actions: ["Популярное", "Новый урожай"],
+    roasting: 5,
     hue: { acidity: 8, bitterness: 3, richness: 6 },
     details: [
       { kind: "Арабика", variety: "Иргалчефф", geography: "Эфиопия" },
@@ -48,6 +50,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 250 },
     actions: ["Скидки", "Популярное"],
+    roasting: 5,
     hue: { acidity: 2, bitterness: 4, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Сантош", geography: "Бразилия" },
@@ -67,6 +70,7 @@ const coffees = [
     ],
     rate: { rating: 4.7, comments: 100 },
     actions: ["Популярное", "Микролот"],
+    roasting: 5,
     hue: { acidity: 7, bitterness: 4, richness: 5 },
     details: [
       { kind: "Арабика", variety: "Кения АА", geography: "Кения" },
@@ -91,6 +95,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 80 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 5,
     hue: { acidity: 3, bitterness: 6, richness: 9 },
     details: [
       { kind: "Арабика", variety: "Манделинг", geography: "Суматра" },
@@ -112,6 +117,7 @@ const coffees = [
     ],
     rate: { rating: 4.1, comments: 60 },
     actions: ["Скидки", "Популярное"],
+    roasting: 3,
     hue: { acidity: 4, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Перувиан Органик", geography: "Перу" },
@@ -131,6 +137,7 @@ const coffees = [
     ],
     rate: { rating: 4.6, comments: 90 },
     actions: ["Популярное", "Новый урожай"],
+    roasting: 5,
     hue: { acidity: 6, bitterness: 4, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Таразу", geography: "Коста-Рика" },
@@ -150,6 +157,7 @@ const coffees = [
     ],
     rate: { rating: 4, comments: 70 },
     actions: ["Популярное", "Новинка"],
+    roasting: 4,
     hue: { acidity: 3, bitterness: 5, richness: 6 },
     details: [{ kind: "Арабика", variety: "Чиапас", geography: "Мексика" }],
     taste: ["корица", "горький шоколад", "корень имбиря"],
@@ -166,6 +174,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 110 },
     actions: ["Популярное", "Микролот"],
+    roasting: 5,
     hue: { acidity: 2, bitterness: 7, richness: 8 },
     details: [{ kind: "Робуста", processing: "Мытая", geography: "Индия" }],
     taste: ["перечная мята", "карамель", "древесные нотки"],
@@ -182,6 +191,7 @@ const coffees = [
     ],
     rate: { rating: 4.9, comments: 130 },
     actions: ["Популярное", "Микролот"],
+    roasting: 5,
     hue: { acidity: 9, bitterness: 3, richness: 6 },
     details: [{ kind: "Арабика", variety: "Гейша", geography: "Панама" }],
     taste: ["жасмин", "бергамот", "розовый грейпфрут"],
@@ -198,6 +208,7 @@ const coffees = [
     ],
     rate: { rating: 4.8, comments: 140 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 4,
     hue: { acidity: 5, bitterness: 4, richness: 8 },
     details: [{ kind: "Арабика", variety: "Кона", geography: "Гавайи" }],
     taste: ["сливочное масло", "кайенский перец", "ликёрный миндаль"],
@@ -214,6 +225,7 @@ const coffees = [
     ],
     rate: { rating: 4.6, comments: 100 },
     actions: ["Популярное", "Микролот"],
+    roasting: 5,
     hue: { acidity: 7, bitterness: 4, richness: 6 },
     details: [{ kind: "Арабика", variety: "Пибери", geography: "Танзания" }],
     taste: ["виноград", "малина", "белый чай"],
@@ -230,6 +242,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 90 },
     actions: ["Скидки", "Популярное"],
+    roasting: 4,
     hue: { acidity: 4, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Никаргуа ШХГ ЕП", geography: "Никарагуа" },
@@ -248,6 +261,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 120 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 3,
     hue: { acidity: 5, bitterness: 6, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Бурбон", geography: "Эль-Сальвадор" },
@@ -266,6 +280,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 110 },
     actions: ["Популярное", "Новый урожай"],
+    roasting: 3,
     hue: { acidity: 6, bitterness: 5, richness: 8 },
     details: [{ kind: "Арабика", variety: "Каранави", geography: "Боливия" }],
     taste: ["спелые фрукты", "леденцы", "виноград"],
@@ -282,6 +297,7 @@ const coffees = [
     ],
     rate: { rating: 3.9, comments: 150 },
     actions: ["Скидки", "Популярное"],
+    roasting: 1,
     hue: { acidity: 2, bitterness: 8, richness: 9 },
     details: [{ kind: "Робуста", processing: "Сухой", geography: "Вьетнам" }],
     taste: ["темный шоколад", "арахис", "дымчатые тона"],
@@ -298,6 +314,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 130 },
     actions: ["Популярное", "Новый урожай"],
+    roasting: 1,
     hue: { acidity: 7, bitterness: 5, richness: 7 },
     details: [
       {
@@ -321,6 +338,7 @@ const coffees = [
     ],
     rate: { rating: 4.6, comments: 160 },
     actions: ["Популярное", "Микролот"],
+    roasting: 4,
     hue: { acidity: 4, bitterness: 7, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Матари", geography: "Йемен" },
@@ -341,6 +359,7 @@ const coffees = [
     rate: { rating: 4.4, comments: 120 },
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 6, bitterness: 5, richness: 7 },
+    roasting: 4,
     details: [
       { kind: "Арабика", variety: "Буигиси", geography: "Уганда" },
       { kind: "Арабика", variety: "Бургунд", geography: "Уганда" },
@@ -359,6 +378,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 100 },
     actions: ["Популярное", "Новинка"],
+    roasting: 5,
     hue: { acidity: 5, bitterness: 4, richness: 8 },
     details: [
       {
@@ -382,6 +402,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 110 },
     actions: ["Популярное", "Новый урожай"],
+    roasting: 2,
     hue: { acidity: 6, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Копакаки", geography: "Руанда" },
@@ -401,6 +422,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 100 },
     actions: ["Скидки", "Популярное"],
+    roasting: 2,
     hue: { acidity: 5, bitterness: 4, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Каиянза", geography: "Бурунди" },
@@ -420,6 +442,7 @@ const coffees = [
     ],
     rate: { rating: 4.6, comments: 120 },
     actions: ["Популярное", "Микролот"],
+    roasting: 2,
     hue: { acidity: 7, bitterness: 5, richness: 6 },
     details: [
       { kind: "Арабика", variety: "Хуэхуэтенанго", geography: "Гватемала" },
@@ -439,6 +462,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 110 },
     actions: ["Популярное", "Микролот"],
+    roasting: 1,
     hue: { acidity: 6, bitterness: 5, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Замбийская Пибери", geography: "Замбия" },
@@ -458,6 +482,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 130 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 4,
     hue: { acidity: 5, bitterness: 6, richness: 7 },
     details: [
       {
@@ -485,6 +510,7 @@ const coffees = [
     ],
     rate: { rating: 4.1, comments: 140 },
     actions: ["Скидки", "Популярное"],
+    roasting: 4,
     hue: { acidity: 4, bitterness: 7, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Айфунэ", geography: "Тимор" },
@@ -504,6 +530,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 120 },
     actions: ["Популярное", "Новинка"],
+    roasting: 5,
     hue: { acidity: 3, bitterness: 6, richness: 9 },
     details: [
       { kind: "Арабика", variety: "Бирманская Арабика", geography: "Мьянма" },
@@ -523,6 +550,7 @@ const coffees = [
     ],
     rate: { rating: 4.8, comments: 150 },
     actions: ["Популярное", "Микролот"],
+    roasting: 5,
     hue: { acidity: 5, bitterness: 4, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Голубая гора", geography: "Ямайка" },
@@ -542,6 +570,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 110 },
     actions: ["Популярное", "Новый урожай"],
+    roasting: 2,
     hue: { acidity: 4, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Юньнань", geography: "Китай" },
@@ -562,6 +591,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 130 },
     actions: ["Популярное", "Новинка"],
+    roasting: 2,
     hue: { acidity: 6, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Дой Чанг", geography: "Таиланд" },
@@ -581,6 +611,7 @@ const coffees = [
       { value: 1000, price: 1080, priceCrossed: 1480 },
     ],
     rate: { rating: 4.3, comments: 80 },
+    roasting: 1,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 5, bitterness: 6, richness: 7 },
     details: [
@@ -602,6 +633,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 120 },
     actions: ["Популярное", "Микролот", "Новинка"],
+    roasting: 1,
     hue: { acidity: 4, bitterness: 6, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Бардагхан", geography: "Непал" },
@@ -622,6 +654,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 130 },
     actions: ["Популярное", "Микролот"],
+    roasting: 2,
     hue: { acidity: 6, bitterness: 5, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Галáпа́гос", geography: "Эквадор" },
@@ -642,6 +675,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 110 },
     actions: ["Популярное", "Новый урожай"],
+    roasting: 4,
     hue: { acidity: 5, bitterness: 4, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Чинкондийский", geography: "Малави" },
@@ -661,6 +695,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 140 },
     actions: ["Скидки", "Популярное"],
+    roasting: 5,
     hue: { acidity: 4, bitterness: 5, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Цейлонская", geography: "Шри-Ланка" },
@@ -681,6 +716,7 @@ const coffees = [
     ],
     rate: { rating: 4.6, comments: 150 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 5,
     hue: { acidity: 5, bitterness: 6, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Борнео", geography: "Малайзия" },
@@ -701,6 +737,7 @@ const coffees = [
     ],
     rate: { rating: 4.1, comments: 100 },
     actions: ["Популярное", "Новый урожай"],
+    roasting: 5,
     hue: { acidity: 3, bitterness: 7, richness: 6 },
     details: [
       { kind: "Арабика", variety: "Акватия", geography: "Гана" },
@@ -721,6 +758,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 120 },
     actions: ["Популярное", "Микролот"],
+    roasting: 5,
     hue: { acidity: 6, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Иранская", geography: "Иран" },
@@ -741,6 +779,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 130 },
     actions: ["Популярное", "Новый урожай"],
+    roasting: 3,
     hue: { acidity: 7, bitterness: 4, richness: 6 },
     details: [
       { kind: "Арабика", variety: "Ангольская", geography: "Ангола" },
@@ -761,6 +800,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 110 },
     actions: ["Скидки", "Популярное"],
+    roasting: 2,
     hue: { acidity: 4, bitterness: 5, richness: 7 },
     details: [
       { kind: "Робуста", processing: "Файн", geography: "Индия" },
@@ -780,6 +820,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 140 },
     actions: ["Популярное", "Микролот"],
+    roasting: 3,
     hue: { acidity: 5, bitterness: 6, richness: 7 },
     details: [
       { kind: "Робуста", processing: "Файн", geography: "Индия" },
@@ -799,6 +840,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 150 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 2,
     hue: { acidity: 3, bitterness: 5, richness: 8 },
     details: [
       { kind: "Робуста", processing: "Файн", geography: "Индия" },
@@ -818,6 +860,7 @@ const coffees = [
     ],
     rate: { rating: 4.1, comments: 100 },
     actions: ["Популярное", "Новинка"],
+    roasting: 4,
     hue: { acidity: 2, bitterness: 8, richness: 9 },
     details: [
       { kind: "Робуста", processing: "Файн", geography: "Индия" },
@@ -837,6 +880,7 @@ const coffees = [
     ],
     rate: { rating: 4.6, comments: 120 },
     actions: ["Популярное", "Микролот"],
+    roasting: 1,
     hue: { acidity: 5, bitterness: 6, richness: 7 },
     details: [
       { kind: "Робуста", processing: "Файн", geography: "Индия" },
@@ -856,6 +900,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 130 },
     actions: ["Скидки", "Популярное"],
+    roasting: 1,
     hue: { acidity: 6, bitterness: 5, richness: 7 },
     details: [
       { kind: "Робуста", processing: "Файн", geography: "Индия" },
@@ -874,6 +919,7 @@ const coffees = [
       { value: 1000, price: 960, priceCrossed: 1360 },
     ],
     rate: { rating: 4.3, comments: 110 },
+    roasting: 5,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
@@ -893,6 +939,7 @@ const coffees = [
       { value: 1000, price: 1080, priceCrossed: 1480 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 3,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 7, bitterness: 5, richness: 6 },
     details: [
@@ -913,6 +960,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 120 },
     actions: ["Популярное", "Микролот"],
+    roasting: 2,
     hue: { acidity: 3, bitterness: 7, richness: 8 },
     details: [
       { kind: "Робуста", processing: "Файн", geography: "Индия" },
@@ -931,6 +979,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.6, comments: 130 },
+    roasting: 1,
     actions: ["Популярное", "Новый урожай"],
     hue: { acidity: 6, bitterness: 5, richness: 7 },
     details: [
@@ -950,6 +999,7 @@ const coffees = [
       { value: 1000, price: 920, priceCrossed: 1320 },
     ],
     rate: { rating: 4.2, comments: 110 },
+    roasting: 3,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 4, bitterness: 6, richness: 7 },
     details: [
@@ -970,6 +1020,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 140 },
     actions: ["Популярное", "Микролот"],
+    roasting: 5,
     hue: { acidity: 7, bitterness: 5, richness: 6 },
     details: [
       { kind: "Арабика", variety: "Окакуэхо", geography: "Намибия" },
@@ -990,6 +1041,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 120 },
     actions: ["Популярное", "Новый урожай"],
+    roasting: 3,
     hue: { acidity: 5, bitterness: 4, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Итакири", geography: "Парагвай" },
@@ -1010,6 +1062,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 130 },
     actions: ["Скидки", "Популярное"],
+    roasting: 5,
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Каллахари", geography: "Ботсвана" },
@@ -1034,6 +1087,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 110 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 1,
     hue: { acidity: 3, bitterness: 7, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Каракорам", geography: "Пакистан" },
@@ -1053,6 +1107,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 2,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 4, bitterness: 5, richness: 8 },
     details: [
@@ -1074,6 +1129,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 120 },
     actions: ["Популярное", "Новинка"],
+    roasting: 2,
     hue: { acidity: 3, bitterness: 6, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Чернигов", geography: "Украина" },
@@ -1094,6 +1150,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 130 },
     actions: ["Скидки", "Популярное"],
+    roasting: 2,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Белгийская смесь", geography: "Бельгия" },
@@ -1118,6 +1175,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 110 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 2,
     hue: { acidity: 3, bitterness: 4, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Уджи Матча Латте", geography: "Япония" },
@@ -1138,6 +1196,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 140 },
     actions: ["Популярное", "Микролот"],
+    roasting: 1,
     hue: { acidity: 4, bitterness: 5, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Канадский Клен", geography: "Канада" },
@@ -1158,6 +1217,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 120 },
     actions: ["Скидки", "Популярное"],
+    roasting: 1,
     hue: { acidity: 3, bitterness: 6, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Бавария Рост", geography: "Германия" },
@@ -1178,6 +1238,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 130 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 4,
     hue: { acidity: 5, bitterness: 5, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Французский Пресс", geography: "Франция" },
@@ -1196,6 +1257,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 130 },
     actions: ["Популярное", "Микролот"],
+    roasting: 4,
     hue: { acidity: 4, bitterness: 6, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Итальянский Эспрессо", geography: "Италия" },
@@ -1215,6 +1277,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 140 },
     actions: ["Скидки", "Популярное"],
+    roasting: 3,
     hue: { acidity: 3, bitterness: 5, richness: 8 },
     details: [
       {
@@ -1236,6 +1299,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 120 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 2,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Испанская Обжарка", geography: "Испания" },
@@ -1254,6 +1318,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 130 },
     actions: ["Популярное", "Микролот"],
+    roasting: 2,
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Польская Смесь", geography: "Польша" },
@@ -1271,6 +1336,7 @@ const coffees = [
       { value: 1000, price: 1000, priceCrossed: 1400 },
     ],
     rate: { rating: 4.2, comments: 110 },
+    roasting: 2,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 3, bitterness: 6, richness: 7 },
     details: [
@@ -1290,6 +1356,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 140 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 1,
     hue: { acidity: 5, bitterness: 5, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Турецкий Деликтат", geography: "Турция" },
@@ -1307,6 +1374,7 @@ const coffees = [
       { value: 1000, price: 1040, priceCrossed: 1440 },
     ],
     rate: { rating: 4.4, comments: 120 },
+    roasting: 1,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 6, bitterness: 5, richness: 7 },
     details: [
@@ -1326,6 +1394,7 @@ const coffees = [
       { value: 1000, price: 1080, priceCrossed: 1480 },
     ],
     rate: { rating: 4.3, comments: 130 },
+    roasting: 5,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 7, bitterness: 4, richness: 6 },
     details: [
@@ -1349,6 +1418,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 110 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 5,
     hue: { acidity: 4, bitterness: 6, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Балтийская Обжарка", geography: "Литва" },
@@ -1366,6 +1436,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 140 },
     actions: ["Популярное", "Микролот"],
+    roasting: 5,
     hue: { acidity: 5, bitterness: 5, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Латышская Смесь", geography: "Латвия" },
@@ -1384,6 +1455,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 120 },
     actions: ["Скидки", "Популярное"],
+    roasting: 4,
     hue: { acidity: 3, bitterness: 7, richness: 8 },
     details: [
       {
@@ -1407,6 +1479,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 130 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 4,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Хорватская Обжарка", geography: "Хорватия" },
@@ -1426,6 +1499,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 110 },
     actions: ["Популярное", "Микролот"],
+    roasting: 4,
     hue: { acidity: 4, bitterness: 6, richness: 7 },
     details: [
       {
@@ -1449,6 +1523,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 140 },
     actions: ["Скидки", "Популярное"],
+    roasting: 3,
     hue: { acidity: 5, bitterness: 5, richness: 8 },
     details: [
       {
@@ -1472,6 +1547,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 120 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 4,
     hue: { acidity: 4, bitterness: 6, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Боснийское Золото", geography: "Босния" },
@@ -1491,6 +1567,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 130 },
     actions: ["Популярное", "Микролот"],
+    roasting: 2,
     hue: { acidity: 3, bitterness: 7, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Болгарский Блэк", geography: "Болгария" },
@@ -1509,6 +1586,7 @@ const coffees = [
       { value: 1000, price: 1000, priceCrossed: 1400 },
     ],
     rate: { rating: 4.2, comments: 110 },
+    roasting: 5,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
@@ -1532,6 +1610,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 4,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
@@ -1551,6 +1630,7 @@ const coffees = [
       { value: 1000, price: 1040, priceCrossed: 1440 },
     ],
     rate: { rating: 4.4, comments: 120 },
+    roasting: 2,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
@@ -1570,6 +1650,7 @@ const coffees = [
       { value: 1000, price: 1080, priceCrossed: 1480 },
     ],
     rate: { rating: 4.3, comments: 130 },
+    roasting: 4,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
@@ -1590,6 +1671,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 110 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 1,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       {
@@ -1612,6 +1694,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 1,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
@@ -1631,6 +1714,7 @@ const coffees = [
       { value: 1000, price: 1040, priceCrossed: 1440 },
     ],
     rate: { rating: 4.4, comments: 120 },
+    roasting: 2,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
@@ -1655,6 +1739,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 130 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 5,
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
       {
@@ -1678,6 +1763,7 @@ const coffees = [
     ],
     rate: { rating: 4.2, comments: 110 },
     actions: ["Популярное", "Микролот"],
+    roasting: 3,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Афганский Спирит", geography: "Афганистан" },
@@ -1697,6 +1783,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 140 },
     actions: ["Скидки", "Популярное"],
+    roasting: 3,
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Ливанский Сон", geography: "Ливан" },
@@ -1720,6 +1807,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 120 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 3,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       {
@@ -1743,6 +1831,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 130 },
     actions: ["Популярное", "Микролот"],
+    roasting: 1,
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Марроканская Мята", geography: "Марокко" },
@@ -1761,6 +1850,7 @@ const coffees = [
       { value: 1000, price: 1000, priceCrossed: 1400 },
     ],
     rate: { rating: 4.2, comments: 110 },
+    roasting: 5,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
@@ -1780,6 +1870,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 5,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
@@ -1800,6 +1891,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 120 },
     actions: ["Популярное", "Микролот"],
+    roasting: 2,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       {
@@ -1822,6 +1914,7 @@ const coffees = [
       { value: 1000, price: 1160, priceCrossed: 1560 },
     ],
     rate: { rating: 4.5, comments: 130 },
+    roasting: 2,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
@@ -1842,6 +1935,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 120 },
     actions: ["Скидки", "Популярное"],
+    roasting: 2,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       {
@@ -1864,6 +1958,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 2,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 6, bitterness: 5, richness: 7 },
     details: [
@@ -1882,6 +1977,7 @@ const coffees = [
       { value: 1000, price: 1200, priceCrossed: 1600 },
     ],
     rate: { rating: 4.6, comments: 150 },
+    roasting: 2,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 5, bitterness: 6, richness: 8 },
     details: [
@@ -1906,6 +2002,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 130 },
     actions: ["Скидки", "Популярное"],
+    roasting: 4,
     hue: { acidity: 4, bitterness: 6, richness: 7 },
     details: [
       {
@@ -1929,6 +2026,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 140 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 4,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Сирийский Рассвет", geography: "Сирия" },
@@ -1948,6 +2046,7 @@ const coffees = [
     ],
     rate: { rating: 4.6, comments: 150 },
     actions: ["Популярное", "Микролот"],
+    roasting: 4,
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
       { kind: "Арабика", variety: "Иорданская Душа", geography: "Иордания" },
@@ -1967,6 +2066,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 130 },
     actions: ["Скидки", "Популярное"],
+    roasting: 2,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Грузинский Туман", geography: "Грузия" },
@@ -1989,6 +2089,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 4,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 6, bitterness: 5, richness: 7 },
     details: [
@@ -2009,6 +2110,7 @@ const coffees = [
     ],
     rate: { rating: 4.6, comments: 150 },
     actions: ["Популярное", "Микролот"],
+    roasting: 5,
     hue: { acidity: 5, bitterness: 6, richness: 8 },
     details: [
       {
@@ -2032,6 +2134,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 130 },
     actions: ["Скидки", "Популярное"],
+    roasting: 5,
     hue: { acidity: 4, bitterness: 6, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Монгольский Дикий", geography: "Монголия" },
@@ -2050,6 +2153,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 2,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
@@ -2073,6 +2177,7 @@ const coffees = [
       { value: 1000, price: 1160, priceCrossed: 1560 },
     ],
     rate: { rating: 4.6, comments: 150 },
+    roasting: 2,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
@@ -2092,6 +2197,7 @@ const coffees = [
       { value: 1000, price: 1080, priceCrossed: 1480 },
     ],
     rate: { rating: 4.4, comments: 130 },
+    roasting: 1,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
@@ -2115,6 +2221,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 5,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 6, bitterness: 5, richness: 7 },
     details: [
@@ -2135,6 +2242,7 @@ const coffees = [
     ],
     rate: { rating: 4.6, comments: 150 },
     actions: ["Популярное", "Микролот"],
+    roasting: 3,
     hue: { acidity: 5, bitterness: 6, richness: 8 },
     details: [
       {
@@ -2158,6 +2266,7 @@ const coffees = [
     ],
     rate: { rating: 4.4, comments: 130 },
     actions: ["Скидки", "Популярное"],
+    roasting: 3,
     hue: { acidity: 4, bitterness: 6, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Афганская Тайна", geography: "Афганистан" },
@@ -2177,6 +2286,7 @@ const coffees = [
     ],
     rate: { rating: 4.5, comments: 140 },
     actions: ["Популярное", "Сорт недели"],
+    roasting: 5,
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Иракская Пряность", geography: "Ирак" },
@@ -2195,6 +2305,7 @@ const coffees = [
       { value: 1000, price: 1160, priceCrossed: 1560 },
     ],
     rate: { rating: 4.6, comments: 150 },
+    roasting: 2,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
@@ -2214,6 +2325,7 @@ const coffees = [
       { value: 1000, price: 1080, priceCrossed: 1480 },
     ],
     rate: { rating: 4.4, comments: 130 },
+    roasting: 2,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
@@ -2237,6 +2349,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 4,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 3, bitterness: 6, richness: 8 },
     details: [
@@ -2261,6 +2374,7 @@ const coffees = [
     ],
     rate: { rating: 4.6, comments: 150 },
     actions: ["Популярное", "Микролот"],
+    roasting: 5,
     hue: { acidity: 4, bitterness: 5, richness: 7 },
     details: [
       { kind: "Арабика", variety: "Китайский Дзэн", geography: "Китай" },
@@ -2279,6 +2393,7 @@ const coffees = [
       { value: 1000, price: 1080, priceCrossed: 1480 },
     ],
     rate: { rating: 4.4, comments: 130 },
+    roasting: 3,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
@@ -2298,6 +2413,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 2,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
@@ -2321,6 +2437,7 @@ const coffees = [
       { value: 1000, price: 1160, priceCrossed: 1560 },
     ],
     rate: { rating: 4.6, comments: 150 },
+    roasting: 2,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 5, bitterness: 5, richness: 7 },
     details: [
@@ -2344,6 +2461,7 @@ const coffees = [
       { value: 1000, price: 1080, priceCrossed: 1480 },
     ],
     rate: { rating: 4.4, comments: 130 },
+    roasting: 1,
     actions: ["Скидки", "Популярное"],
     hue: { acidity: 6, bitterness: 5, richness: 7 },
     details: [
@@ -2363,6 +2481,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.5, comments: 140 },
+    roasting: 3,
     actions: ["Популярное", "Сорт недели"],
     hue: { acidity: 5, bitterness: 6, richness: 8 },
     details: [
@@ -2386,6 +2505,7 @@ const coffees = [
       { value: 1000, price: 1160, priceCrossed: 1560 },
     ],
     rate: { rating: 4.6, comments: 150 },
+    roasting: 2,
     actions: ["Популярное", "Микролот"],
     hue: { acidity: 4, bitterness: 6, richness: 8 },
     details: [
@@ -2397,7 +2517,7 @@ const coffees = [
       { kind: "Арабика", variety: "Кот Бразилио", geography: "Бразилия" },
     ],
     taste: ["хруст снега", "холодная свежесть", "ледяная капля"],
-  },
+  }
 ];
 
 module.exports = coffees;
