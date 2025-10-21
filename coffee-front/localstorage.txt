@@ -1,0 +1,4 @@
+const cart = reactive(JSON.parse(localStorage.getItem("cart") || "{}"));
+watch(cart, () => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  });
