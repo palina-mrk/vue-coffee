@@ -3,6 +3,7 @@
     position: relative;
     padding: 0 0 0 42px;
     display: block;
+    cursor: pointer;
 
     @include vp-laptop {
       padding: 0 0 0 37px;

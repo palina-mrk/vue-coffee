@@ -8,30 +8,30 @@ const degrees = ref([])
 
 <template>
   <div class="form-block">
-    <div class="form-block__group">
-      <p class="form-block__groupname">Степень обжарки</p>
+    <fieldset class="form-block__group">
+      <legend class="form-block__groupname">Степень обжарки</legend>
       <!-- у группы чексбоксов д.б. одинаковый name и v-model -->
-        <div 
-          class="custom-checkbox-corns"
-          v-for="degree in maxDegree"
-        >
-          <input 
-            class="custom-checkbox-corns__field visually-hidden" :id="`coffee-roasting-${maxDegree + 1 - degree}`" 
-            type="checkbox" 
-            name="coffee-roasting" 
-            :value="maxDegree + 1 - degree"
-            v-model="degrees"
-            @input="$emit('toggle-value', $event.target.value)"
-            >
-          <label 
-            class="custom-checkbox-corns__label" 
-            :for="`coffee-roasting-${maxDegree + 1 - degree}`">
-            <slider-corns class="slider-corns--label"
-            :count="maxDegree + 1 - degree"
-            ></slider-corns>
-          </label>
-        </div>
+      <div 
+        class="custom-checkbox-corns"
+        v-for="degree in maxDegree"
+      >
+        <input 
+          class="custom-checkbox-corns__field visually-hidden" :id="`coffee-roasting-${maxDegree + 1 - degree}`" 
+          type="checkbox" 
+          name="coffee-roasting" 
+          :value="maxDegree + 1 - degree"
+          v-model="degrees"
+          @input="$emit('toggle-value', $event.target.value)"
+          >
+        <label 
+          class="custom-checkbox-corns__label" 
+          :for="`coffee-roasting-${maxDegree + 1 - degree}`">
+          <slider-corns class="slider-corns--label"
+          :count="maxDegree + 1 - degree"
+          ></slider-corns>
+        </label>
       </div>
+    </fieldset>
   </div>
 </template>
 
@@ -139,24 +139,24 @@ font-family: $ff-gilroy;
   color: $color-black;
   font-size: 30px;
   line-height: 36px;
-  margin: 0 0 -8px;
+  margin: 0 0 44px;
 
   @include vp-laptop {
     font-size: 22px;
     line-height: 25px;
-    margin: 0 0 -5px;
+    margin: 0 0 35px;
   }
 
   @include vp-tablet {
     font-size: 32px;
     line-height: 39px;
-    margin: 0 0 5px;
+    margin: 0 0 45px;
   }
 
   @include vp-mobile {
     font-size: 16px;
     line-height: 19px;
-    margin: 0 0 4px;
+    margin: 0 0 24px;
   }
 }
 

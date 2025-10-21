@@ -1,5 +1,6 @@
 <script setup>
-import FieldsetCorns from '../subforms/FieldsetCorns.vue'
+import RoastingBlock from '../subforms/RoastingBlock.vue'
+import DetailsBlock from '../subforms/DetailsBlock.vue'
 import { useRoute } from 'vue-router';
 import {ref} from 'vue'
 const route = useRoute();
@@ -18,161 +19,17 @@ function updateValues(object, value) {
   <div class="filter-form">
     <div class="filter-form__inner">
       <!-- Степень обжарки roasting-->
-        <fieldset-corns
-          class="filter-form__corns-block"
-          :maxDegree="5"
-          @toggle-value="updateValues(roastingDegrees, $event)"
-        ></fieldset-corns>
-      <div class="filter-form__words-block">
-
-        <!-- Geography -->
-        <fieldset class="filter-form__words-group">
-        <legend class="filter-form__words-groupname">География</legend>
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-geography-africa" type="checkbox" name="coffee-geography" value="africa">
-            <label for="coffee-geography-africa" class="custom-checkbox-words__label">Африка</label>
-          </div>
-          
-          <div class="custom-checkbox">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-geography-yemen" type="checkbox" name="coffee-geography" value="yemen">
-            <label for="coffee-geography-yemen" class="custom-checkbox-words__label">Йемен</label>
-          </div>
-          
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-geography-uganda" type="checkbox" name="coffee-geography" value="uganda">
-            <label for="coffee-geography-uganda" class="custom-checkbox-words__label">Уганда</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-geography-ethiopia" type="checkbox" name="coffee-geography" value="ethiopia">
-            <label for="coffee-geography-ethiopia" class="custom-checkbox-words__label">Эфиопия</label>
-          </div>
-          
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-geography-asia" type="checkbox" name="coffee-geography" value="asia">
-            <label for="coffee-geography-asia" class="custom-checkbox-words__label">Азия</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-geography-center-america" type="checkbox" name="coffee-geography" value="center-america">
-            <label for="coffee-geography-center-america" class="custom-checkbox-words__label">Центр. Америка</label>
-          </div>
-          
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-geography-latin-america" type="checkbox" name="coffee-geography" value="latin-america">
-            <label for="coffee-geography-latin-america" class="custom-checkbox-words__label">Лат. Америка</label>
-          </div>
-        </fieldset>
-
-        <!-- Кислинка acidity -->
-        <fieldset class="filter-form__words-group">
-        <legend class="filter-form__words-groupname">Кислинка</legend>
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-acidity-low" type="checkbox" name="coffee-acidity" value="low">
-            <label for="coffee-acidity-low" class="custom-checkbox-words__label">Низкая</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-acidity-medium" type="checkbox" name="coffee-acidity" value="medium">
-            <label for="coffee-acidity-medium" class="custom-checkbox-words__label">Средняя</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-acidity-high" type="checkbox" name="coffee-acidity" value="high">
-            <label for="coffee-acidity-high" class="custom-checkbox-words__label">Высокая</label>
-          </div>
-        </fieldset>
-
-        <!-- Способ обработки processing -->
-        <fieldset class="filter-form__words-group">
-        <legend class="filter-form__words-groupname">Способ обработки</legend>
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-processing-dry" type="checkbox" name="coffee-processing" value="dry">
-            <label for="coffee-processing-dry" class="custom-checkbox-words__label">Сухая</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox__field visually-hidden" id="coffee-processing-washed" type="checkbox" name="coffee-processing" value="washed">
-            <label for="coffee-processing-washed" class="custom-checkbox-words__label">Мытая</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-processing-others" type="checkbox" name="coffee-processing" value="others">
-            <label for="coffee-processing-others" class="custom-checkbox-words__label">Прочие</label>
-          </div>
-        </fieldset>
-
-        <!-- Особые категории category -->
-        <fieldset class="filter-form__words-group">
-        <legend class="filter-form__words-groupname">Особые</legend>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-category-popular" type="checkbox" name="coffee-category" value="popular">
-            <label for="coffee-category-popular" class="custom-checkbox-words__label">Популярное</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-category-new-harvest" type="checkbox" name="coffee-category" value="new-harvest">
-            <label for="coffee-category-new-harvest" class="custom-checkbox-words__label">Новый урожай</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-category-your-choice" type="checkbox" name="coffee-category" value="your-choice">
-            <label for="coffee-category-your-choice" class="custom-checkbox-words__label">Ваш выбор</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-category-microlot" type="checkbox" name="coffee-category" value="microlot">
-            <label for="coffee-category-microlot" class="custom-checkbox-words__label">Микролот</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-category-weekly-variety" type="checkbox" name="coffee-category" value="weekly-variety">
-            <label for="coffee-category-weekly-variety" class="custom-checkbox-words__label">Сорт недели</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-category-sales" type="checkbox" name="coffee-category" value="sales">
-            <label for="coffee-category-sales" class="custom-checkbox-words__label">Скидки</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-category-new-product" type="checkbox" name="coffee-category" value="new-product">
-            <label for="coffee-category-new-product" class="custom-checkbox-words__label">Новинка</label>
-          </div>
-
-        </fieldset>
-
-
-        <!-- Вид кофе kind -->
-        <fieldset class="filter-form__words-group">
-        <legend class="filter-form__words-groupname">Вид кофе</legend>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-kind-arabica" type="checkbox" name="coffee-kind" value="arabica">
-            <label for="coffee-kind-arabica" class="custom-checkbox-words__label">Арабика</label>
-          </div>
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-kind-robusta" type="checkbox" name="coffee-kind" value="robusta">
-            <label for="coffee-kind-robusta" class="custom-checkbox-words__label">Робуста</label>
-          </div>
-
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-kind-arabica-blend" type="checkbox" name="coffee-kind" value="arabica-blend">
-            <label for="coffee-kind-arabica-blend" class="custom-checkbox-words__label">Смесь арабик</label>
-          </div>
-
-
-          <div class="custom-checkbox-words">
-            <input class="custom-checkbox-words__field visually-hidden" id="coffee-kind-arabica-robusta-blend" type="checkbox" name="coffee-kind" value="arabica-robusta-blend">
-            <label for="coffee-kind-arabica-robusta-blend" class="custom-checkbox-words__label">Смесь арабика/робуста</label>
-          </div>
-        </fieldset>
-      </div>
-
-        <!-- Способ приготовления -->
+      <roasting-block
+        class="filter-form__corns-block"
+        :maxDegree="5"
+        @toggle-value="updateValues(roastingDegrees, $event)"
+      ></roasting-block>
+      
+      <!-- Особые свойства details -->
+      <details-block class="filter-form__words-block">
+      </details-block>
+      
+      <!-- Способ приготовления -->
       <fieldset class="filter-form__cards-group">
         <legend class="filter-form__cards-groupname visually-hidden">Способ приготовления</legend>
 
@@ -262,9 +119,7 @@ function updateValues(object, value) {
 
 <style lang="scss" scoped>
 @import "@/scss/blocks/catalogs/_filter-form.scss";
-@import "@/scss/blocks/catalogs/_custom-checkbox-corns.scss";
 @import "@/scss/blocks/catalogs/_custom-checkbox-card.scss";
-@import "@/scss/blocks/catalogs/_custom-checkbox-words.scss";
 * {
   font-family: $ff-gilroy;
 }
