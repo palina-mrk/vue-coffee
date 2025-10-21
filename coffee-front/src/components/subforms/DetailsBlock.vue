@@ -40,7 +40,7 @@ const fieldsetProps = reactive({
   },
 })
 
-const selectedValues = reactive({
+/*const selectedValues = reactive({
   'geography': {},
   'acidity':{},
   'processing':{},
@@ -53,7 +53,7 @@ function updateValue(object, value) {
     delete object[value];
   else 
     object[value] = true;
-}
+}*/
 </script>
 
 <template>
@@ -66,7 +66,7 @@ function updateValue(object, value) {
       :labels="prop.labels"
       :values="prop.values"
       :fieldsCount="prop.fieldsCount"
-      @toggle-value="updateValue(selectedValues[prop.name], $event)"
+      @toggle-value="$emit('toggle-value',{'name': prop.name, 'value': $event})"
       class="form-block__group"
     ></fieldset-words>
   </div>
@@ -78,7 +78,8 @@ function updateValue(object, value) {
 * {
 font-family: $ff-gilroy;
 }
-
+/*@toggle-value="updateValue(selectedValues[prop.name], $event)"
+      */
 .form-block {
   background-color: $color-white;
   border-radius: 20px;
