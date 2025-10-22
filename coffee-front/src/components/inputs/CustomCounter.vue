@@ -33,7 +33,7 @@ const props = defineProps(["modelValue"]);
 
   &__btn {
     margin: 0;
-    padding: 0;
+    padding: 10px;
     background-color: transparent;
     border: none;
     display: flex;
@@ -41,35 +41,27 @@ const props = defineProps(["modelValue"]);
     font-family: $ff-gilroy;
     font-weight: 500;
     font-size: 25px;
-    line-height: 30px;
+    line-height: 40px;
     user-select: none;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-
-    &::before {
-      content: "";
-      width: 200%;
-      height: 200%;
-      top: -50%;
-      left: -50%;
-      position: absolute;
-      cursor: pointer;
-    }
+    cursor: pointer;
+    top: 0;
 
     &--minus {
-      left: 46px;
+      left: 8px;
     }
 
     &--plus {
-      right: 46px;
+      right: 8px;
+    }
+
+
+    &:hover {
+      color: $color-ucla-gold;
     }
 
     &[disabled] {
       color: $color-chinese-silver;
-    }
-
-    &[disabled]::before  {
       cursor: unset;
     }
   }

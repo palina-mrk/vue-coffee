@@ -1,11 +1,13 @@
 <script setup>
+import CartName from "./CartName.vue"
 import CartLine from "./CartLine.vue"
 
 </script>
 
 <template>
 
-  <CartLine style="width: 100%;"></CartLine>  
+  <CartName style="width: 1380px;" :sale="10"></CartName>  
+  <CartLine style="width: 1380px;"></CartLine>  
   <!--div 
   
   :class="{ 'product-card': true, 'product-card--sale': isSale,  'product-card--main-mobile': isHomePage, 'product-card--bordered': !isHomePage}">

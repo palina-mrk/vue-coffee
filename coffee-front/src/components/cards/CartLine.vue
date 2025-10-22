@@ -38,7 +38,7 @@ const itemInfo = reactive({
       </div>
       <div class="product-line__details-text">
         <h3 class="product-line__title">{{ itemInfo.title }}</h3>
-        <span class="product-line__text-line">{{ itemInfo.description }}</span>
+        <span class="product-line__text-line">{{ itemInfo.descripton }}</span>
         <span class="product-line__text-line">{{ itemInfo.weight }}</span>
       </div>
     </div>
@@ -60,19 +60,18 @@ const itemInfo = reactive({
 .product-line {
   width: 100%;
   min-height: 173px;
-  padding: 20px 38px 48px;
-  display: flex;
-  gap: 50px;
+  padding: 30px 10px 30px 0;
+  display: grid;
+  gap: 10px;
   align-items: center;
+  justify-items: start;
   border-radius: 20px;
   border: 1px solid $color-antiflash-white-f0;
   background-color: $color-lotion;
-  font-weight: 500;
-  font-size: 25px;
-  line-height: 29px;
   color: $color-raising-black;
   font-family: $ff-gilroy sans-serif;
   position: relative;
+  grid-template-columns: 213px 1fr 130px 215px 185px 110px;
 
   @include vp-laptop {
   }
@@ -84,7 +83,8 @@ const itemInfo = reactive({
   }
 
   &__btn-remove {
-    margin: 0 0 0 72px;
+    position: relative;
+    left: 35px;
   }
 
   &__details {
@@ -92,6 +92,20 @@ const itemInfo = reactive({
     gap: 34px;
     width: 329px;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icon-wrapper{
+    width: 81px;
+    height: 113px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &__icon-image {
+    width: 100%;
+    height: 100%;
   }
 
   &__details-text {
@@ -102,12 +116,15 @@ const itemInfo = reactive({
     align-items: start;
     margin: 0;
     padding: 0;
+    width: 100%;
   }
 
   &__title {
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;
+    margin: 0;
+    padding: 0;
   }
 
   &__text-line {
@@ -117,7 +134,8 @@ const itemInfo = reactive({
   }
 
   &__count {
-    width: 270px;
+    width: 170px;
+    height: 50px;
   }
 
   &__price,
@@ -134,7 +152,7 @@ const itemInfo = reactive({
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 10px;
+  padding: 20px;
   background-color: transparent;
   cursor: pointer;
   color: $color-ucla-gold;
