@@ -736,6 +736,35 @@
     }
   }
 
+  &__img--catalog-hero-tea {
+    width: 689px;
+    height: 655px;
+    top: 120px;
+    left: calc(50% + 138px);
+    z-index: 2;
+
+    @include vp-laptop {
+      width: 483px;
+      height: 322px;
+      top: 85px;
+      left: calc(50% + 96px);
+    }
+
+    @include vp-tablet {
+      width: 558px;
+      height: 401px;
+      top: 410px;
+      left: calc(50% - 301px);
+    }
+
+    @include vp-mobile {
+      width: 306px;
+      height: 205px;
+      top: 196px;
+      left: calc(50% - 168px);
+    }
+  }
+
   &__div--catalog-footer-wall {
     top: 30px;
     bottom: -1px;

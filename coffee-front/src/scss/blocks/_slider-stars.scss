@@ -52,3 +52,16 @@
     }
   }
 }
+
+.slider-stars--tea {
+  @include vp-tablet {
+    gap: 2px;
+  }
+
+  .slider-stars__svg {
+    @include vp-tablet {
+      width: 21px;
+      height: 21px;
+    }
+  }
+}

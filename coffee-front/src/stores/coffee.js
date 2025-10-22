@@ -6,6 +6,8 @@ import gql from "graphql-tag";
 export const useCoffeeStore = defineStore("catalog", () => {
   const isLoaded = ref(false);
   const catalog = reactive([]);
+  const coffees = reactive([]);
+  const teas = reactive([]);
   
   function loadCatalog() {
     apolloClient
@@ -62,8 +64,8 @@ export const useCoffeeStore = defineStore("catalog", () => {
         `,
       })
       .then((result) => {
-        result.data.coffees.forEach((el) => catalog.push(el));
-        result.data.teas.forEach((el) => catalog.push(el));
+        result.data.coffees.forEach((el) => {catalog.push(el); coffees.push(el)});
+        result.data.teas.forEach((el) => {catalog.push(el); teas.push(el)});
         isLoaded.value = true;
       });
   }
@@ -84,5 +86,5 @@ export const useCoffeeStore = defineStore("catalog", () => {
     return catalog.filter((i) => i.actions.includes('Скидки')).map(i => i.id).sort();
   }
 
-  return { isLoaded, catalog, loadCatalog, getPrice, getFullInfo, getSellInfo, getSaleIndexes };
+  return { isLoaded, catalog, coffees, teas, loadCatalog, getPrice, getFullInfo, getSellInfo, getSaleIndexes };
 });

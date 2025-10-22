@@ -15,6 +15,7 @@ export default defineConfig({
           @import "@/scss/global/_normalize.scss";
           @import "@/scss/global/_container.scss";
           @import "@/scss/global/_visually-hidden.scss";
+          @import "@/scss/blocks/_background.scss";
           @import "@/scss/blocks/_btn.scss";
         `,
       },

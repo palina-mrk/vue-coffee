@@ -27,11 +27,33 @@ function addToCart() {
   cartStore.addToCart(props.product.id, currentWeight.value);
   console.log(cartStore.totalCount)
 }
+
+const imageVariant = computed(() => {
+  switch (props.product.kind) {
+    case 'Черный чай':
+    case 'Травяной чай':
+      return 'black';
+    case 'Зелёный чай':
+    case 'Матча':
+      return 'green';
+    case 'Молочный улунг':
+    case 'Пуэр':
+      return 'milk';
+    case 'Кофейные напитки':
+      return 'drinks';
+    default:
+      return null;
+  }
+})
 </script>
 
 <template>
-<div :class="{ 'product-card': true, 'product-card--sale': isSale,  'product-card--main-mobile': isHomePage, 'product-card--bordered': !isHomePage}">
-    <div class="product-card__sales-icon">%</div>
+  <div 
+  v-if="product.category == 'coffee'"
+  :class="{ 'product-card': true, 'product-card--sale': isSale,  'product-card--main-mobile': isHomePage, 'product-card--bordered': !isHomePage}">
+    <div 
+    v-show="isSale"
+    class="product-card__sales-icon">%</div>
     <div class="product-card__top">
       <div class="product-card__actions">
         <ul class="product-card__actions-list">
@@ -54,7 +76,9 @@ function addToCart() {
         </picture>
       </div>
       <div class="product-card__details">
-        <slider-stars class="product-card__stars" :rating="product.rate.rating"></slider-stars>
+        <slider-stars         
+        :class="{'product-card__stars': true, 'slider-stars--main-mobile': isHomePage}"
+        :rating="product.rate.rating"></slider-stars>
         
         <div class="product-card__rating">
           <span class="product-card__rating-value">{{ product.rate.rating }}</span>
@@ -82,7 +106,52 @@ function addToCart() {
     <h3 class="product-card__title">{{ product.title }}</h3>
     <p class="product-card__description">{{ product.description }}</p>
     <div class="product-card__bottom">
-      <span class="product-card__price product-card__price--crossed">{{ currentPriceCrossed }} ₽</span>
+      <span v-show="isSale" class="product-card__price product-card__price--crossed">{{ currentPriceCrossed }} ₽</span>
+      <span class="product-card__price">{{ currentPrice }} ₽</span>
+      <button 
+        @click="addToCart" 
+        class="product-card__button btn btn--size-s"
+      >В&nbsp;корзину</button>
+    </div>
+  </div>
+
+
+  <div 
+  v-else-if="product.category == 'tea'"
+  :class="{ 'product-card': true,  'product-card--tea': true, 'product-card--main-mobile': isHomePage, 'product-card--bordered': !isHomePage}">
+    <div class="product-card__top">
+      <div class="product-card__rating-wrapper">
+        <slider-stars class="product-card__stars slider-stars--tea":rating="product.rate.rating"></slider-stars>
+          
+        <div class="product-card__rating">
+          <span class="product-card__rating-value">{{ product.rate.rating }}</span>
+          <span class="product-card__comments-count">({{ product.rate.comments }} отзыва)</span>
+        </div>
+      </div>
+
+      <custom-dropdown 
+      class="product-card__dropdown" :weightVariants="weightVariants"
+      :defaultValue="currentWeight"
+      @set-value="changeWeight($event)">
+      </custom-dropdown>
+    </div>
+    <div class="product-card__middle">
+      <div class="product-card__image-wrapper">
+        <div
+        v-show="isSale"
+        class="product-card__sales-icon">%</div>
+        <picture>
+          <source media="(max-width: 767px)" srcset="../../images/tea-card/tea-mobile.png">
+          <source media="(max-width: 1348px)" srcset="../../images/tea-card/tea-tablet.png">
+          <source media="(max-width: 1903px)" :srcset="`../../src/images/tea-card/tea-${imageVariant}-laptop.png`">
+          <img class="product-card__image" :src="`../../src/images/tea-card/tea-${imageVariant}-desktop.png`" width="223" height="312" alt="Карточка товара чая">
+        </picture>
+      </div>
+    </div>
+    <h3 class="product-card__title">{{ product.title }}</h3>
+    <p class="product-card__description">{{ product.description }}</p>
+    <div class="product-card__bottom">
+      <span v-show="isSale" class="product-card__price product-card__price--crossed">{{ currentPriceCrossed }} ₽</span>
       <span class="product-card__price">{{ currentPrice }} ₽</span>
       <button 
         @click="addToCart" 
@@ -153,8 +222,8 @@ function addToCart() {
     height: 70px;
     top: 2px;
     left: 3px;
+    display: flex;
     transform: translate(50%, -50%);
-    display: none;
     font-family: $ff-gilroy sans-serif;
 
     @include vp-laptop {
@@ -568,7 +637,7 @@ function addToCart() {
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
+    display: flex;
 
     @include vp-laptop {
       top: 3px;
@@ -828,6 +897,181 @@ function addToCart() {
     border-radius: 17px;
     border: 1px solid $color-platinum;
     box-shadow: none;
+  }
+}
+
+.product-card--tea {
+  padding: 28px 40px 50px;
+
+  @include vp-laptop {
+    padding: 18px 25px 38px;    
+  }
+
+  @include vp-tablet {
+    padding: 30px 37px 42px; 
+  }
+
+  @include vp-mobile {
+    padding: 26px 34px 43px; 
+  }
+
+  .product-card__top {
+    justify-content: space-between;
+    margin: 0 0 15px;
+    padding: 0 6px 0 0;
+
+    @include vp-laptop {
+      margin: 0 0 8px;
+      padding: 0 1px 0 0;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 8px;
+      padding: 0;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 15px;
+      padding: 0 5px 0 0;
+    }
+  }
+
+  .product-card__rating-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 12px;
+
+    @include vp-laptop {
+      gap: 8px;
+    }
+
+    @include vp-tablet {
+      gap: 12px;
+    }
+
+    @include vp-mobile {
+      gap: 10px;
+    }
+  }
+
+  .product-card__rating-value {
+    @include vp-tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  .product-card__comments-count {
+    @include vp-tablet {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  .product-card__stars,
+  .product-card__rating,
+  .product-card__dropdown {
+    margin: 0;
+    padding: 0;
+    align-self: unset;
+  }
+
+  .product-card__middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include vp-tablet {
+      margin: 0 0 20px;
+    }
+  }
+
+  .product-card__image-wrapper {
+    width: 223px;
+    height: 312px;
+    display: flex;
+    position: relative;
+
+    @include vp-laptop {
+      width: 158px;
+      height: 221px;
+    }
+
+    @include vp-tablet {
+      width: 187px;
+      height: 262px;
+    }
+
+    @include vp-mobile {
+      width: 190px;
+      height: 265px;
+    }
+  }
+
+  .product-card__title {
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+
+  .product-card__description {
+    @include vp-tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include vp-mobile {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  .product-card__sales-icon {
+    position: absolute;
+    top: 26px;
+    right: -31px;
+    transform: unset;
+    left: unset;
+
+    @include vp-laptop {
+      top: 22px;
+      right: -19px;
+    }
+
+    @include vp-tablet {
+      top: 31px;
+      right: -15px;
+    }
+
+    @include vp-mobile {
+      top: 35px;
+      right: -10px;
+    }
+  }
+
+  .product-card__price {
+    @include vp-tablet {
+      font-size: 24px;
+      line-height: 31px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 31px;
+    }
+  }
+
+  .product-card__price--crossed {
+    @include vp-tablet {
+      font-size: 18px;
+      line-height: 21px;  
+    }
+    @include vp-mobile {
+      font-size: 22px;
+      line-height: 26px;    
+    }
   }
 }
 

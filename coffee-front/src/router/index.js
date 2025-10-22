@@ -28,7 +28,7 @@ const router = createRouter({
     {
       path: '/tea',
       name: 'catalog-tea',
-      component: TeaView,
+      component: CoffeeView,
       meta: {
         title: 'Чай и кофейные напитки',
       },

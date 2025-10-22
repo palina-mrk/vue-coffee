@@ -1,17 +1,29 @@
 <script setup>
 import ProductCard from '../components/cards/ProductCard.vue';
-import ProductCardCopy from '../components/cards/ProductCardCopy.vue';
 import { useCoffeeStore } from '../stores/coffee';
 const catalogStore = useCoffeeStore();
 import { storeToRefs } from "pinia";
-const { catalog, isLoaded } = storeToRefs(catalogStore);
-import {ref} from 'vue';
+const { catalog, coffees, teas, isLoaded } = storeToRefs(catalogStore);
+import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
+const route = useRoute();
 
-const cardsCount = ref(20);
+const cardsCount = ref(12);
+const maxCount = computed(() => {
+  switch(route.name) {
+    case 'catalog-coffee':
+      return coffees.length;
+    case 'catalog-tea':
+      return teas.length;
+    default:
+      return 0;
+  }
+})
+
 function showMore() {
   cardsCount.value += 20;
-  if(cardsCount.value > catalog.length)
-    cardsCount.value = catalog.length
+  if(cardsCount.value > maxCount)
+    cardsCount.value = maxCount
 }
 </script>
 
@@ -25,9 +37,17 @@ function showMore() {
 
         <ul v-if="isLoaded" class="products__list">
           <li 
+            v-if="route.name == 'catalog-coffee'"
             class="products__item"
-            v-for="n in cardsCount">
-            <ProductCardCopy :product="catalog[120 + n - 1]"></ProductCardCopy>
+            v-for="n in 20">
+            <ProductCard :product="coffees[n - 1]"></ProductCard>
+          </li>
+
+          <li 
+            v-else-if="route.name == 'catalog-tea'"
+            class="products__item"
+            v-for="n in 20">
+            <ProductCard :product="teas[n - 1]"></ProductCard>
           </li>
         </ul>
         
