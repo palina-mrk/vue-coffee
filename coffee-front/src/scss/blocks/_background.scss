@@ -886,4 +886,76 @@
     }
   }
 
+  /* Для корзиины 
+
+    &__div--cart-top-wall {
+    top: 0;
+    height: 500px;
+    background-color: $color-cornsilk;
+
+    @include vp-laptop {
+    }
+
+    @include vp-tablet {
+      display: none;
+    }
+
+    @include vp-mobile {
+    }
+  }
+
+  &__svg-vawe--cart-top {
+    height: 546px;
+    top: 500px;
+    color: $color-cornsilk;
+
+    @include vp-laptop {
+    }
+
+    @include vp-tablet {
+      display: none;
+    }
+
+    @include vp-mobile {
+    }
+  }
+
+
+  &__div--cart-middle-wall {
+    top: 500px;
+    bottom: 110px;
+    background-color: $color-white;
+    width: 3720px;
+    left: calc(50% - 1860px);
+    z-index: -6;
+
+    @include vp-laptop {
+    }
+
+    @include vp-tablet {
+    }
+
+    @include vp-mobile {
+    }
+  }
+
+  &__svg-vawe--cart-bottom {
+    height: 384px;
+    bottom: 110px;
+    color: $color-cultured;
+    background-color: $color-white;
+
+    @include vp-laptop {
+      height: 209px;
+      
+    }
+
+    @include vp-tablet {
+      height: 200px;
+      
+    }
+
+    @include vp-mobile {
+    }
+  }*/
 }

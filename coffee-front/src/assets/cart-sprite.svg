@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-remove" viewBox="0 0 27 29" fill="none">
+    <path d="M0.75 6.15H3.52778M3.52778 6.15H25.75M3.52778 6.15V25.05C3.52778 25.7661 3.82044 26.4528 4.34137 26.9592C4.8623 27.4655 5.56884 27.75 6.30556 27.75H20.1944C20.9312 27.75 21.6377 27.4655 22.1586 26.9592C22.6796 26.4528 22.9722 25.7661 22.9722 25.05V6.15H3.52778ZM7.69444 6.15V3.45C7.69444 2.73392 7.9871 2.04716 8.50804 1.54081C9.02897 1.03446 9.73551 0.75 10.4722 0.75H16.0278C16.7645 0.75 17.471 1.03446 17.992 1.54081C18.5129 2.04716 18.8056 2.73392 18.8056 3.45V6.15M10.4722 12.9V21M16.0278 12.9V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-cross" viewBox="0 0 24 24" fill="none">
+    <path d="M1.5 1.5L22.5 22.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    <path d="M22.5 1.5L1.5 22.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+
+</svg>

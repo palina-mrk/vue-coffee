@@ -9,5 +9,54 @@ const props = defineProps(["count","selected"]);
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_slider-large.scss";
+.slider-large {
+  display: flex;
+  gap: 30px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  @include vp-laptop {
+    gap: 20px;
+  }
+
+  @include vp-tablet {
+    gap: 30px;
+  }
+
+  @include vp-mobile {
+    gap: 16px;
+  }
+
+  &__point {
+    background-color: $color-white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    @include vp-laptop {
+      width: 14px;
+      height: 14px;
+    }
+
+    @include vp-tablet {
+      width: 25px;
+      height: 25px;
+      background-color: $color-bright-gray;
+    }
+
+    @include vp-mobile {
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  &__point--brown {
+    background-color: $color-bistre;
+
+    @include vp-tablet {
+      background-color: $color-ucla-gold;
+    }
+  }
+}
 </style>

@@ -4,7 +4,7 @@ defineProps(["count"]);
 
 <template>
   <ul class="slider-corns">
-    <li v-for="n in Number(count)" class="slider-corns__item">
+    <li v-for="n in count" class="slider-corns__item">
       <svg
         class="slider-corns__svg"
         width="19"

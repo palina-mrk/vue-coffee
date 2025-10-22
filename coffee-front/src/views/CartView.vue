@@ -1,12 +1,12 @@
 <script setup>
 import MainHeader from "./MainHeader.vue";
-import MainBody from "./MainBody.vue";
+import CartBody from "./CartBody.vue";
 import CatalogFooter from "./CatalogFooter.vue";
 </script>
 
 <template>
   <MainHeader></MainHeader>
-  <h1 style="height: 1000px; color: 'black'; padding-top: 100px;">Basket</h1>
+  <CartBody></CartBody>
   <CatalogFooter></CatalogFooter>
 </template>
 

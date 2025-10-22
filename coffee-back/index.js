@@ -27,7 +27,7 @@ const schema = buildSchema(`
     weights: [Weight!]!
     rate: Rate!
     hue: Hue!
-    roasting: String!
+    roasting: Int!
     actions: [String!]!
     details: [Detail!]!
     taste: [String!]!
