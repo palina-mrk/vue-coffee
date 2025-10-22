@@ -25,7 +25,7 @@ const isCoffeePage = computed(() => route.name == 'catalog-coffee');
     <source media="(max-width: 767px)" srcset="../../images/background/bg-tea-mobile.png">
     <source media="(max-width: 1348px)" srcset="../../images/background/bg-tea-tablet.png">
     <source media="(max-width: 1903px)" srcset="../../images/background/bg-tea-laptop.png">
-    <img class="background__img background__img--catalog-hero-tea" src="../../images/background/bg-tea-desktop.png" width="689" height="655" alt="Чашка чая">
+    <img class="background__img background__img--catalog-hero-tea" src="../../images/background/bg-tea-desktop.png" width="819" height="655" alt="Чашка чая">
   </picture>
 
   <div class="background__div background__div--catalog-hero-top-wall"></div>

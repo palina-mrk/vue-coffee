@@ -618,16 +618,15 @@
 
   &__div--catalog-hero-top-wall {
     top: 0;
-    bottom: 715px;
+    height: 601px;
     background-color: $color-ucla-gold;
 
     @include vp-laptop {
-      bottom: 538px;
+      height: 430px;
     }
 
     @include vp-tablet {
       height: 628px;
-      bottom: unset;
     }
 
     @include vp-mobile {
@@ -637,18 +636,17 @@
 
   &__svg-vawe--catalog-hero {
     height: 568px;
-    bottom: 158px;
+    top: 600px;
     color: $color-ucla-gold;
 
     @include vp-laptop {
       height: 291px;
-      bottom: 250px;
+      top: 429px;
     }
 
     @include vp-tablet {
       height: 201px;
       top: 615px;
-      bottom: unset;
     }
 
     @include vp-mobile {
@@ -658,12 +656,12 @@
   }
 
   &__div--catalog-hero-bottom-wall {
-    top: 750px;
+    top: 600px;
     bottom: 63px;
     background-color: $color-white;
 
     @include vp-laptop {
-      top: 400px;
+      top: 431px;
       bottom: 46px;
     }
 
@@ -737,31 +735,31 @@
   }
 
   &__img--catalog-hero-tea {
-    width: 689px;
+    width: 819px;
     height: 655px;
-    top: 120px;
-    left: calc(50% + 138px);
+    top: 250px;
+    left: calc(50% + 263px);
     z-index: 2;
 
     @include vp-laptop {
-      width: 483px;
-      height: 322px;
-      top: 85px;
-      left: calc(50% + 96px);
+      width: 578px;
+      height: 463px;
+      top: 177px;
+      left: calc(50% + 185px);
     }
 
     @include vp-tablet {
-      width: 558px;
-      height: 401px;
-      top: 410px;
-      left: calc(50% - 301px);
+      width: 670px;
+      height: 572px;
+      top: 273px;
+      left: calc(50% - 286px);
     }
 
     @include vp-mobile {
-      width: 306px;
-      height: 205px;
-      top: 196px;
-      left: calc(50% - 168px);
+      width: 327px;
+      height: 279px;
+      top: 134px;
+      left: calc(50% - 139px);
     }
   }
 
