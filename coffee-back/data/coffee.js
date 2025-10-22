@@ -820,7 +820,7 @@ const coffees = [
     ],
     rate: { rating: 4.3, comments: 140 },
     actions: ["Популярное", "Микролот"],
-    roasting: 3,
+    roasting: 5,
     hue: { acidity: 5, bitterness: 6, richness: 7 },
     details: [
       { kind: "Робуста", processing: "Файн", geography: "Индия" },

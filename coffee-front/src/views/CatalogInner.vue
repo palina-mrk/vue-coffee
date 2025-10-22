@@ -60,8 +60,77 @@ function showMore() {
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/catalogs/_products.scss";
 * {
   font-family: $ff-gilroy;
 }
+.products {
+  padding: 48px 0 97px;
+
+  @include vp-laptop {
+    padding: 37px 0 71px;
+  }
+
+  @include vp-tablet {
+    padding: 30px 0 38px;
+  }
+
+  @include vp-mobile {
+    padding: 36px 0 50px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+    @include vp-laptop {
+      gap: 51px;
+    }
+
+    @include vp-tablet {
+      gap: 30px;
+    }
+
+    @include vp-mobile {
+      gap: 22px;
+    }
+  }
+
+  &__sort-btn {
+    align-self: start;
+
+    @include vp-laptop {
+      position: relative;
+      left: -15px;
+    }
+
+    @include vp-tablet {
+      position: unset;
+    }
+  }
+
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 70px 20px;
+    flex-wrap: wrap;
+    justify-content: start;
+
+    @include vp-laptop {
+      gap: 49px 20px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
+
 </style>

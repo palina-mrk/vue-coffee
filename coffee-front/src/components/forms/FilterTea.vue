@@ -108,7 +108,7 @@ font-family: $ff-gilroy;
     cursor: pointer;
 
     @include vp-laptop {
-      padding: 20px 20px 30px;
+      padding: 20px 20px 29px;
       width: 280px;
       height: 227px;
       box-shadow: 0 0 21px 0 $color-spanish-gray-c95-25;
@@ -119,17 +119,19 @@ font-family: $ff-gilroy;
       width: 220px;
       height: 220px;
       box-shadow: 0 0 61px 0 $color-spanish-gray-c95-25;
-      padding: 20px 20px 10px;
+      padding: 8px 30px;
+      gap: 15px;
       border-radius: 10px;
       flex-direction: column-reverse;
+      justify-content: center;
     }
 
     @include vp-mobile {
       width: 106px;
       height: 110px;
       box-shadow: 0 0 30px 0 $color-spanish-gray-c95-25;
-      padding: 4px 4px 8px;
-      justify-content: space-between;
+      padding: 4px;
+      gap: 1px;
     }
   }
 
@@ -139,6 +141,7 @@ font-family: $ff-gilroy;
     font-size: 25px;
     line-height: 30px;
     font-family: $ff-gilroy sans-serif;
+    text-align: center;
 
     @include vp-laptop {
       font-size: 18px;
@@ -153,8 +156,6 @@ font-family: $ff-gilroy;
     @include vp-mobile {
       font-size: 12px;
       line-height: 15px;
-      min-height: 71px;
-      text-align: center;
     }
   }
 

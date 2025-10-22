@@ -94,6 +94,21 @@ const isHomePage = computed(() => route.name == 'home');
     <svg class="background__svg-vawe-for-tablet background__svg-vawe--catalog-front-footer" width="1348" height="190" aria-hidden="true">
       <use xlink:href="../../assets/bg-sprite.svg#bg-catalog-front-for-footer-for-tablet"></use>
     </svg>
+
+    <picture>
+      <source media="(max-width: 767px)" srcset="../../images/background/bg-footer-corns-mobile.png">
+      <source media="(max-width: 1348px)" srcset="../../images/background/bg-footer-corns-tablet.png">
+      <source media="(max-width: 1903px)" srcset="../../images/background/bg-footer-corns-laptop.png">
+      <img class="background__img background__img--catalog-footer-corns" src="../../images/background/bg-footer-corns-desktop.png" width="769" height="659" alt="Зёрна кофе под чашкой">
+    </picture>
+
+    <picture>
+      <source media="(max-width: 767px)" srcset="../../images/background/bg-heading-cup-mobile.png">
+      <source media="(max-width: 1348px)" srcset="../../images/background/bg-heading-cup-tablet.png">
+      <source media="(max-width: 1903px)" srcset="../../images/background/bg-heading-cup-laptop.png">
+      <img class="background__img background__img--catalog-footer-cup" src="../../images/background/bg-heading-cup-desktop.png" width="682" height="455" alt="Чашка кофе">
+    </picture>
+
   </template>
 </template>
 

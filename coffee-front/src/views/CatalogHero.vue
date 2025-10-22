@@ -30,7 +30,7 @@ const route = useRoute();
           </li>
         </ul>
 
-        <h2 class="hero__title">{{ route.meta.title }}</h2>
+        <h2 :class="{'hero__title' : true, 'hero__title--tea' : (route.name == 'catalog-tea')}">{{ route.meta.title }}</h2>
         
         <filter-coffee
           v-if="route.name == 'catalog-coffee'" 
@@ -202,6 +202,20 @@ const route = useRoute();
       font-size: 25px;
       line-height: 31px;
       margin: 0 0 250px;
+    }
+
+    &--tea {
+      @include vp-laptop {
+        margin: 0 0 -26px;
+      }
+
+      @include vp-tablet {
+        margin: 0 0 482px;
+      }
+
+      @include vp-mobile {
+        margin: 0 0 245px;
+      }
     }
   }
 }
