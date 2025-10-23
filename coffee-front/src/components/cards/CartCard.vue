@@ -65,9 +65,6 @@ const cartItems = reactive([
 
 
 <style lang="scss" scoped>
-* {
-  font-family: $ff-gilroy;
-}
 .cart-card {
   padding: 110px 140px 86px;
   display: flex;
@@ -76,7 +73,9 @@ const cartItems = reactive([
   width: 1660px;
   min-height: 268px;
   border-radius: 20px;
-  border: 1px solid $color-platinum;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color-platinum;
   background-color: $color-white;
   color: $color-raising-black;
   font-family: $ff-gilroy sans-serif;
@@ -87,7 +86,7 @@ const cartItems = reactive([
     width: 1180px;
     min-height: 268px;
     border-radius: 14px;
-    border: 0.7px solid $color-platinum;
+    border-width: 0.7px;
   }
 
   @include vp-tablet {
@@ -96,7 +95,17 @@ const cartItems = reactive([
     width: 700px;
     min-height: 137px;
     border-radius: 14px;
-    border: 0.4px solid $color-platinum;
+    border-width: 0.4px;
+  }
+
+  @include vp-mobile {
+    padding: 40px 17px 50px;
+    width: 340px;
+    box-shadow: 0px 0px 50px 0px $color-quick-silver-25;
+    min-height: 115px;
+    border-radius: 10px;
+    border-width: 1px;
+    
   }
 
   &__top {
@@ -117,12 +126,17 @@ const cartItems = reactive([
       margin: 0 0 30px;
       align-items: start;
     }
+
+    @include vp-mobile {
+      gap: 20px;
+      margin: 0 0 20px;
+    }
   }
 
   &__summary {
     margin: 0;
     padding: 0;
-    font-family: 'Gilroy';
+    font-family: $ff-gilroy sans-serif;
     font-weight: 900;
     font-size: 40px;
     line-height: 50px;
@@ -135,6 +149,11 @@ const cartItems = reactive([
     @include vp-tablet {
       font-size: 30px;
       line-height: 37px;
+    }
+
+    @include vp-mobile {
+      font-size: 20px;
+      line-height: 25px;
     }
   }
 
@@ -150,6 +169,11 @@ const cartItems = reactive([
     @include vp-tablet {
       width: 120px;
       height: 35px;
+    }
+
+    @include vp-mobile {
+      width: 124px;
+      height: 30px;
     }
   }
 
@@ -167,6 +191,10 @@ const cartItems = reactive([
 
     @include vp-tablet {
       gap: 58px;
+    }
+
+    @include vp-mobile {
+      gap: 40px;
     }
   }
 
@@ -208,12 +236,19 @@ const cartItems = reactive([
     }
 
     &::after {
-      position: absolute;
-      content: "";
-      width: 100%;
-      height: 2px;
-      background-color: $color-philippine-silver;
-      bottom: -28px;
+      @include vp-tablet {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 2px;
+        background-color: $color-philippine-silver;
+        bottom: -28px;  
+      }
+      
+      @include vp-mobile {
+        bottom: -21px;
+        height: 1px;
+      }
     }
   }
 }
@@ -239,6 +274,22 @@ const cartItems = reactive([
     padding: 7px;
     border-width: 0.7px;
     border-radius: 3.5px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  @include vp-tablet {
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  @include vp-mobile {
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 6px;
     font-size: 14px;
     line-height: 17px;
   }

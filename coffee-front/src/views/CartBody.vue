@@ -111,7 +111,7 @@ const route = useRoute();
 
     @include vp-mobile {
       gap: 12px;
-      margin: 0;
+      margin: 0 0 -2px;
     }
   }
 

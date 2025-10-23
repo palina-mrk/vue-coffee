@@ -64,6 +64,7 @@ const props = defineProps(["modelValue"]);
       padding: 13px;
       font-size: 20px;
       line-height: 24px;
+      top: 0;
     }
 
     &--minus {
@@ -78,7 +79,7 @@ const props = defineProps(["modelValue"]);
       }
 
       @include vp-mobile {
-        left: 5px;
+        left: 4px;
       }
     }
 
@@ -94,7 +95,7 @@ const props = defineProps(["modelValue"]);
       }
 
       @include vp-mobile {
-        right: 5px;
+        right: 4px;
       }
     }
 

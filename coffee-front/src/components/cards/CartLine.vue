@@ -86,9 +86,6 @@ defineProps(['itemInfo'])
 
 
 <style lang="scss" scoped>
-* {
-  font-family: $ff-gilroy;
-}
 .product-line {
   display: none;
 
@@ -135,11 +132,12 @@ defineProps(['itemInfo'])
     }
 
     @include vp-mobile {
-      padding: 17px 40px 17px 50px;
+      padding: 13px 30px 13px 10px;
       min-height: 104px;
       display: flex;
       justify-content: space-between;
       border-width: 1px;
+      border-radius: 10px;
     }
 
     &--long {
@@ -289,7 +287,7 @@ defineProps(['itemInfo'])
     }
 
     @include vp-mobile {
-      width: 180px;
+      width: 160px;
       height: 47px;
     }
   }
@@ -322,6 +320,7 @@ defineProps(['itemInfo'])
     @include vp-mobile {
       width: 110px;
       gap: 5px;
+      height: 60px;
     }
   }
 
@@ -437,7 +436,7 @@ defineProps(['itemInfo'])
     }
 
     @include vp-mobile {
-      width: 18px;
+      width: 19px;
       height: 20px;
     }
   }
