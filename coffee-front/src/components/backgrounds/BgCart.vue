@@ -26,7 +26,7 @@
 <style lang="scss" scoped>
 @import "@/scss/blocks/_background.scss";
 .background {
-  /* Модификаации для корзиины */
+  /* Модификации для корзиины */
     &__div--cart-top-wall {
     top: 0;
     height: 500px;
@@ -73,6 +73,7 @@
     }
 
     @include vp-tablet {
+      display: none;
     }
 
     @include vp-mobile {
@@ -91,8 +92,7 @@
     }
 
     @include vp-tablet {
-      height: 200px;
-      
+      display: none;
     }
 
     @include vp-mobile {

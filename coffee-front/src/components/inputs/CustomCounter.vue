@@ -47,12 +47,55 @@ const props = defineProps(["modelValue"]);
     cursor: pointer;
     top: 0;
 
+    @include vp-laptop {
+      padding: 8px;
+      font-size: 18px;
+      line-height: 20px;
+    }
+
+    @include vp-tablet {
+      padding: 10px;
+      font-size: 20px;
+      line-height: 24px;
+      top: 6px;
+    }
+
+    @include vp-mobile {
+      padding: 13px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+
     &--minus {
       left: 8px;
+
+      @include vp-laptop {
+        left: 7px;
+      }
+
+      @include vp-tablet {
+        left: 15px;
+      }
+
+      @include vp-mobile {
+        left: 5px;
+      }
     }
 
     &--plus {
       right: 8px;
+
+      @include vp-laptop {
+        right: 7px;
+      }
+
+      @include vp-tablet {
+        right: 15px;
+      }
+
+      @include vp-mobile {
+        right: 5px;
+      }
     }
 
 
@@ -72,7 +115,9 @@ const props = defineProps(["modelValue"]);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid $color-light-silver;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $color-light-silver;
     background-color: $color-cultured;
     border-radius: 5px;
     width: 100%;
@@ -80,9 +125,32 @@ const props = defineProps(["modelValue"]);
     text-align: center;
     font-family: $ff-gilroy;
     color: $color-black;
-    font-weight: 500;
-    font-size: 25px;
-    line-height: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+
+    @include vp-laptop {
+      padding: 11px 45px 9px;
+      border-width: 0.7px;
+      border-radius: 4px;
+      font-size: 14px;
+      line-height: 15px;
+    }
+
+    @include vp-tablet {
+      padding: 15px 60px 12px;
+      border-width: 1px;
+      border-color: $color-ucla-gold;
+      border-radius: 5px;
+      background-color: $color-cornsilk;
+      font-size: 20px;
+      line-height: 23px;
+    }
+
+    @include vp-mobile {
+      font-size: 18px;
+      padding: 14px 50px 10px;
+    }
 
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {

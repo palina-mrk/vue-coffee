@@ -51,12 +51,12 @@ const cartItems = reactive([
       >Удалить все</button>
     </div>
     <ul class="cart-card__products-list">
-      <li class="cart-card__products-item cart-card__products-item--list-headings"><CartHeading></CartHeading></li>
+      <li class="cart-card__products-item"><cart-heading :sale="10"></cart-heading></li>
       <li 
         class="cart-card__products-item"
         v-for="item in cartItems" 
       >
-        <CartLine :productInfo="item"></CartLine> 
+        <cart-line :itemInfo="item"></cart-line> 
       </li>
     </ul>
   </div>
@@ -108,7 +108,7 @@ const cartItems = reactive([
     width: 100%;
 
     @include vp-laptop {
-      margin: 0 0 49px;
+      margin: 0 0 45px;
     }
 
     @include vp-tablet {
@@ -162,11 +162,31 @@ const cartItems = reactive([
     gap: 28px;
 
     @include vp-laptop {
-      gap: 20px;
+      gap: 18px;
+    }
+
+    @include vp-tablet {
+      gap: 58px;
     }
   }
 
-  &__products-item {
+  /* уменьшаем gap после названий таблицы */
+  /* убираем названия полей для tablet */
+  &__products-item:first-child {
+    margin: 0 0 -8px;
+
+    @include vp-laptop {
+      margin: 0 0 -5px;
+    }
+    
+    @include vp-tablet {
+      margin: 0;
+      display: none;
+    }
+  }
+
+  /* устанавливаем высоту для карточек товаров */
+  &__products-item:not(:first-child) {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -177,36 +197,23 @@ const cartItems = reactive([
     }
 
     @include vp-tablet {
-      min-height: 252px;
-    }
-
-    &--list-headings {
       min-height: unset;
-      margin: 0 0 -8px;
-
-      @include vp-laptop {
-        margin: 0 0 -5px;
-      }
-
-      @include vp-tablet {
-        display: none;
-      }
+    }
+  }
+  
+  /* рисуем черту между элементами списка для tablet */
+  &__products-item:not(:last-child) {
+    @include vp-tablet {
+      position: relative;
     }
 
-    &:nth-child(n + 3) {
-      @include vp-tablet {
-        position: relative;
-      }
-
-      &::before {
-        position: absolute;
-        content: "";
-        width: 100%;
-        height: 1px;
-        background-color: $color-philippine-silver;
-        top: -34px;
-        transform: translateY(50%);
-      }
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: $color-philippine-silver;
+      bottom: -28px;
     }
   }
 }

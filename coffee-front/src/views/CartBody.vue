@@ -81,6 +81,14 @@ const route = useRoute();
     display: flex;
     flex-direction: column;
     gap: 25px;
+
+    @include vp-tablet {
+      gap: 20px;
+    }
+
+    @include vp-mobile {
+      gap: 30px;
+    }
   }
 
   &__breadcrumbs-list {
@@ -93,14 +101,17 @@ const route = useRoute();
 
     @include vp-laptop {
       gap: 11px;
+      margin: 0 0 10px;
     }
 
     @include vp-tablet {
       gap: 22px;
+      margin: 0 0 -2px;
     }
 
     @include vp-mobile {
       gap: 12px;
+      margin: 0;
     }
   }
 
