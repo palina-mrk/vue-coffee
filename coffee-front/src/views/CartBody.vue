@@ -56,7 +56,7 @@ const route = useRoute();
 .cart {
   position: relative;
   width: 100%;
-  padding: 200px 0 110px;
+  padding: 202px 0 110px;
   margin: 0;
   color: $color-raising-black;
   font-family: $ff-gilroy sans-serif;
@@ -80,26 +80,14 @@ const route = useRoute();
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 135px;
-
-    @include vp-laptop {
-      gap: 100px;
-    }
-
-    @include vp-tablet {
-      gap: 73px;
-    }
-
-    @include vp-mobile {
-      gap: 20px;
-    }
+    gap: 25px;
   }
 
   &__breadcrumbs-list {
     display: flex;
     list-style-type: none;
     justify-content: start;
-    margin: 0;
+    margin: 0 0 21px;
     padding: 0;
     gap: 14px;
 
@@ -181,7 +169,7 @@ const route = useRoute();
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 29px;
+    gap: 20px;
   }
 
   &__forms-bottom {

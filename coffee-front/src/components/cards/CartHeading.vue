@@ -17,6 +17,7 @@ defineProps(['sale'])
 <style lang="scss" scoped>
 .product-line {
   width: 100%;
+  height: 100%;
   display: grid;
   gap: 10px;
   justify-items: start;

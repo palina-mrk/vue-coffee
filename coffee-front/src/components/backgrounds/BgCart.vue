@@ -8,6 +8,10 @@
     <use xlink:href="../../assets/bg-sprite.svg#bg-cart-top"></use>
   </svg>
 
+  <svg class="background__svg-vawe-for-tablet background__svg-vawe--cart-top" width="1348" height="192" aria-hidden="true">
+    <use xlink:href="../../assets/bg-sprite.svg#bg-cart-top-for-tablet"></use>
+  </svg>
+
   <svg class="background__svg-vawe background__svg-vawe--cart-bottom" width="3720" height="384" aria-hidden="true">
     <use xlink:href="../../assets/bg-sprite.svg#bg-cart-bottom"></use>
   </svg>
@@ -32,7 +36,7 @@
     }
 
     @include vp-tablet {
-      display: none;
+      height: 300px;
     }
 
     @include vp-mobile {
@@ -48,7 +52,8 @@
     }
 
     @include vp-tablet {
-      display: none;
+      height: 192px;
+      top: 300px;
     }
 
     @include vp-mobile {

@@ -16,15 +16,12 @@ const itemInfo = reactive({
 </script>
 
 <template>
-  <div class="product-line">
+  <div class="product-line__top product-line__top--long">
     <button
     class="product-line__btn-remove btn-remove"
     type="button">
       <svg class="btn-remove__icon" width="21" height="21" aria-hidden="true">
         <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
-      </svg>
-      <svg class="btn-remove__icon btn-remove__icon--for-tablet" width="21" height="21" aria-hidden="true">
-        <use xlink:href="../../assets/cart-sprite.svg#icon-remove"></use>
       </svg>
     </button>
     <div class="product-line__details">
@@ -50,6 +47,50 @@ const itemInfo = reactive({
     <span class="product-line__sale">{{ itemInfo.sale }} ₽</span>
     <span class="product-line__total">{{ itemInfo.total }} ₽</span>
   </div>
+
+  <div class="product-line">
+    <div class="product-line__top"> 
+
+    <div class="product-line__details">
+      <div class="product-line__icon-wrapper">
+        <picture>
+          <source media="(max-width: 767px)" :srcset="`../../src/images/cart/cart-${itemInfo.category}-mobile.png`">
+          <source media="(max-width: 1348px)" :srcset="`../../src/images/cart/cart-${itemInfo.category}-tablet.png`">
+          <source media="(max-width: 1903px)" :srcset="`../../src/images/cart/cart-${itemInfo.category}-laptop.png`">
+          <img class="product-card__icon-image" :src="`../../src/images/cart/cart-${itemInfo.category}-desktop.png`" width="81" height="113" alt="Иконка товара">
+        </picture>
+      </div>
+      <div class="product-line__details-text">
+        <h3 class="product-line__title">{{ itemInfo.title }}</h3>
+        <span class="product-line__text-line">{{ itemInfo.descripton }}</span>
+        <span class="product-line__text-line">{{ itemInfo.weight }}</span>
+      </div>
+    </div>
+
+    <div class="product-line__price-wrapper">
+      <span class="product-line__total">{{ itemInfo.total }} ₽</span>
+      <div class="product-line__sale-wrapper">
+        <span class="product-line__price">{{ itemInfo.price }} ₽</span>
+        <span class="product-line__sale">(-{{ itemInfo.sale }}%)</span>
+      </div>
+    </div>
+    </div>
+    <div class="product-line__bottom"> 
+  
+    <button
+    class="product-line__btn-remove btn-remove"
+    type="button">
+      <svg class="btn-remove__icon" width="21" height="21" aria-hidden="true">
+        <use xlink:href="../../assets/cart-sprite.svg#icon-remove"></use>
+      </svg>
+    </button>
+    <custom-counter class="product-line__count"
+      :modelValue="itemInfo.count"
+      @update:modelValue="itemInfo.count = $event"
+    ></custom-counter>
+    
+    </div>
+  </div>
 </template>
 
 
@@ -58,28 +99,43 @@ const itemInfo = reactive({
   font-family: $ff-gilroy;
 }
 .product-line {
-  width: 100%;
-  min-height: 173px;
-  padding: 30px 10px 30px 0;
-  display: grid;
-  gap: 10px;
-  align-items: center;
-  justify-items: start;
-  border-radius: 20px;
-  border: 1px solid $color-antiflash-white-f0;
-  background-color: $color-lotion;
-  color: $color-raising-black;
-  font-family: $ff-gilroy sans-serif;
-  position: relative;
-  grid-template-columns: 213px 1fr 130px 215px 185px 110px;
-
-  @include vp-laptop {
-  }
+  display: none;
 
   @include vp-tablet {
+    display: flex;
+    flex-direction: column;
   }
 
-  @include vp-mobile {
+  &__top {
+    width: 100%;
+    height: 100%;
+    padding: 30px 10px 30px 0;
+    display: grid;
+    gap: 10px;
+    align-items: center;
+    justify-items: start;
+    border-radius: 20px;
+    border: 1px solid $color-antiflash-white-f0;
+    background-color: $color-lotion;
+    color: $color-raising-black;
+    font-family: $ff-gilroy sans-serif;
+    position: relative;
+    grid-template-columns: 213px 1fr 130px 215px 185px 110px;
+
+    @include vp-laptop {
+    }
+
+    @include vp-tablet {
+    }
+
+    @include vp-mobile {
+    }
+
+    &--long {
+      @include vp-tablet {
+        display: none;
+      }
+    }
   }
 
   &__btn-remove {
@@ -166,14 +222,6 @@ const itemInfo = reactive({
   &__icon {
     width: 21px;
     height: 21px;
-  }
-
-  &__icon--for-tablet {
-    display: none;
-
-    @include vp-tablet {
-      display: flex;
-    }
   }
 }
 </style>

@@ -1,16 +1,15 @@
 import { defineStore } from "pinia";
-import { computed, reactive } from "vue";
+import { computed, reactive, watch } from "vue";
 import { useCoffeeStore } from "./coffee";
 
 export const useCartStore = defineStore("cart", () => {
   const catalog = useCoffeeStore();
-
-  const cart = reactive({});
+  const cart = reactive(JSON.parse(localStorage.getItem("cart") || "{}"));
   /* item.id -> {
     weight1: count1, 
     weight2: count2
   }*/
-
+  
   function cartInfo() {
     let info = 'cart: ';
     Object.keys(cart).forEach((el) => {
@@ -65,6 +64,23 @@ export const useCartStore = defineStore("cart", () => {
       , 0),
   );
 
+  const totalCountString = computed(() => {
+    if(totalCount.value % 100 > 10 && totalCount.value % 100 < 20)
+      return `${totalCount.value} товаров`;
+    
+      switch (totalCount.value % 10) {
+        case 1: 
+          return `${totalCount.value} товар`;
+        case 2:
+        case 3:
+        case 4: 
+          return `${totalCount.value} товара`;
+        default:
+          return `${totalCount.value} товаров`;
+      }
+  }
+);
+
   const totalSum = computed(() =>
     Object.entries(cart.value).reduce((sum, [itemId, count]) => {
       return sum + count * catalog.getPrice(itemId);
@@ -72,6 +88,11 @@ export const useCartStore = defineStore("cart", () => {
   );
 
   const cartRows = computed(() => Object.entries(cart.value));
+
+  watch(cart, () => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  });
+
 
   return {
     cart,
@@ -81,6 +102,7 @@ export const useCartStore = defineStore("cart", () => {
     setCount,
     itemIdCount,
     totalCount,
+    totalCountString,
     totalSum,
     cartRows,
   };
