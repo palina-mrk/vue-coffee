@@ -398,7 +398,7 @@
     background-color: $color-cornsilk;
 
     @include vp-laptop {
-      top: 230px;
+      top: 200px;
     }
 
     @include vp-tablet {
@@ -886,43 +886,49 @@
     }
   }
 
-  /* Для корзиины 
+  /* Для корзиины */
 
     &__div--cart-top-wall {
     top: 0;
-    height: 500px;
+    height: 479px;
     background-color: $color-cornsilk;
 
     @include vp-laptop {
+      height: 339px;
     }
 
     @include vp-tablet {
-      display: none;
+      height: 335px;
     }
 
     @include vp-mobile {
+      height: 100px;
     }
   }
 
   &__svg-vawe--cart-top {
     height: 546px;
-    top: 500px;
+    top: 478px;
     color: $color-cornsilk;
 
     @include vp-laptop {
+      width: 3720px;
+      top: 338px;
     }
 
     @include vp-tablet {
-      display: none;
+      top: 330px;
+      height: 192px;
     }
 
     @include vp-mobile {
+      top: 100px;
     }
   }
 
 
   &__div--cart-middle-wall {
-    top: 500px;
+    top: 479px;
     bottom: 110px;
     background-color: $color-white;
     width: 3720px;
@@ -930,12 +936,16 @@
     z-index: -6;
 
     @include vp-laptop {
+      top: 339px;
     }
 
     @include vp-tablet {
+      bottom: 120px;
     }
 
     @include vp-mobile {
+      top: 100px;
+      bottom: 50px;
     }
   }
 
@@ -946,16 +956,17 @@
     background-color: $color-white;
 
     @include vp-laptop {
-      height: 209px;
-      
+      height: 195px;
     }
 
     @include vp-tablet {
-      height: 200px;
-      
+      bottom: 120px;
+      height: 160px;
     }
 
     @include vp-mobile {
+      bottom: 50px;
+      height: 108px;
     }
-  }*/
+  }
 }

@@ -62,7 +62,6 @@ const route = useRoute();
   font-family: $ff-gilroy sans-serif;
   font-weight: 500;
   overflow: hidden;
-  box-sizing: border-box;
 
   @include vp-laptop {
     padding: 140px 0 0;
@@ -119,7 +118,7 @@ const route = useRoute();
     position: relative;
   }
 
-  &__breadcrumbs-item:nth-child(n + 2)::before {
+  &__breadcrumbs-item:not(:first-child)::before {
     content: "";
     background-color: $color-raising-black;
     width: 4px;
