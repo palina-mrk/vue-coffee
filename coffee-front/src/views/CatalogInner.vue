@@ -44,7 +44,7 @@ function showMore() {
           </li>
 
           <li 
-            v-else-if="route.name == 'catalog-tea'"
+            v-else
             class="products__item"
             v-for="n in 20">
             <ProductCard :product="teas[n - 1]"></ProductCard>

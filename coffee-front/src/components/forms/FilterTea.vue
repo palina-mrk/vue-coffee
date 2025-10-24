@@ -136,7 +136,7 @@ font-family: $ff-gilroy;
 
   &__label-text {
     color: $color-black;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 25px;
     line-height: 30px;
     font-family: $ff-gilroy sans-serif;

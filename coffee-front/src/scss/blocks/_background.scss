@@ -763,6 +763,64 @@
     }
   }
 
+  &__img--catalog-hero-vending {
+    width: 448px;
+    height: 520px;
+    top: 440px;
+    left: calc(50% + 464px);
+    z-index: 2;
+
+    @include vp-laptop {
+      width: 351px;
+      height: 363px;
+      top: 303px;
+      left: calc(50% + 300px);
+    }
+
+    @include vp-tablet {
+      width: 457px;
+      height: 450px;
+      top: 367px;
+      left: calc(50% - 105px);
+    }
+
+    @include vp-mobile {
+      width: 227px;
+      height: 242px;
+      top: 173px;
+      left: calc(50% - 56px);
+    }
+  }
+
+  &__img--catalog-hero-healthy {
+    width: 518px;
+    height: 364px;
+    top: 443px;
+    left: calc(50% + 321px);
+    z-index: 2;
+
+    @include vp-laptop {
+      width: 365px;
+      height: 257px;
+      top: 313px;
+      left: calc(50% + 227px);
+    }
+
+    @include vp-tablet {
+      width: 550px;
+      height: 384px;
+      top: 395px;
+      left: calc(50% - 95px);
+    }
+
+    @include vp-mobile {
+      width: 269px;
+      height: 168px;
+      top: 203px;
+      left: calc(50% - 46px);
+    }
+  }
+
   &__div--catalog-footer-wall {
     top: 30px;
     bottom: -1px;

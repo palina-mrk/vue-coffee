@@ -1,12 +1,14 @@
 <script setup>
 import MainHeader from "./MainHeader.vue";
-import MainBody from "./MainBody.vue";
+import CatalogHero from "./CatalogHero.vue";
+import CatalogInner from "./CatalogInner.vue";
 import MainFooter from "./MainFooter.vue";
 </script>
 
 <template>
   <MainHeader></MainHeader>
-  <h1 style="height: 1000px; color: 'black'; padding-top: 100px;">Здоровое питание</h1>
+  <CatalogHero></CatalogHero>
+  <CatalogInner></CatalogInner>
   <MainFooter></MainFooter>
 </template>
 

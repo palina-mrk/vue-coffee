@@ -53,8 +53,7 @@ const length = ref(5)
   font-family: $ff-gilroy;
 
   @include vp-laptop {
-    height: 475px;
-    gap: 21px 20px;
+    height: 580px;
   }
 
   @include vp-tablet {
@@ -74,52 +73,51 @@ const length = ref(5)
 .custom-checkbox-card {
   &__label {
     display: flex;
-    padding: 30px 30px 35px;
+    padding: 30px 30px 30px 80px;
     align-items: center;
-    flex-direction: column;
-    justify-content: space-between;
     background-color: $color-white;
     border-radius: 20px;
     box-shadow: 0 0 30px 0 $color-spanish-gray-c95-25;
-    width: 400px;
+    width: 540px;
     height: 320px;
+    gap: 55px;
     cursor: pointer;
 
     @include vp-laptop {
-      padding: 20px 20px 29px;
-      width: 280px;
-      height: 227px;
+      padding: 20px 20px 20px 60px;
+      width: 380px;
+      height: 225px;
       box-shadow: 0 0 21px 0 $color-spanish-gray-c95-25;
       border-radius: 14px;
+      gap: 30px;
     }
 
     @include vp-tablet {
       width: 220px;
       height: 220px;
       box-shadow: 0 0 61px 0 $color-spanish-gray-c95-25;
-      padding: 8px 30px;
-      gap: 15px;
+      padding: 10px 30px 15px;
+      gap: 3px;
       border-radius: 10px;
       flex-direction: column-reverse;
-      justify-content: center;
+      justify-content: end;
     }
 
     @include vp-mobile {
       width: 106px;
-      height: 110px;
+      height: 125px;
       box-shadow: 0 0 30px 0 $color-spanish-gray-c95-25;
-      padding: 4px;
-      gap: 1px;
+      padding: 10px 3px 13px;
+      gap: 5px;
     }
   }
 
   &__label-text {
     color: $color-black;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 25px;
     line-height: 30px;
     font-family: $ff-gilroy sans-serif;
-    text-align: center;
 
     @include vp-laptop {
       font-size: 18px;
@@ -129,11 +127,14 @@ const length = ref(5)
     @include vp-tablet {
       font-size: 20px;
       line-height: 24px;
+      text-align: center;
+      min-height: 62px;
     }
 
     @include vp-mobile {
       font-size: 12px;
       line-height: 15px;
+      min-height: 30px;
     }
   }
 
@@ -141,22 +142,22 @@ const length = ref(5)
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    height: 200px;
+    width: 130px;
+    height: 230px;
 
     @include vp-laptop {
-      width: 101px;
-      height: 141px;
+      width: 90px;
+      height: 160px;
     }
 
     @include vp-tablet {
-      width: 98px;
-      height: 139px;
+      width: 60px;
+      height: 130px;
     }
 
     @include vp-mobile {
-      width: 48px;
-      height: 68px;
+      width: 30px;
+      height: 65px;
     }
   }
 

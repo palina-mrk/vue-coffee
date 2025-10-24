@@ -2,6 +2,8 @@
 import BgCatalog from '../components/backgrounds/BgCatalog.vue';
 import FilterCoffee from '../components/forms/FilterCoffee.vue';
 import FilterTea from '../components/forms/FilterTea.vue';
+import FilterHealthy from '../components/forms/FilterHealthy.vue';
+import FilterVending from '../components/forms/FilterVending.vue';
 import { useRoute } from 'vue-router';
 const route = useRoute();
 </script>
@@ -39,7 +41,12 @@ const route = useRoute();
         <filter-tea
           v-else-if="route.name == 'catalog-tea'" 
           class="hero__form"></filter-tea>
-          
+        <filter-vending
+          v-else-if="route.name == 'catalog-vending'" 
+          class="hero__form"></filter-vending>
+        <filter-healthy
+          v-else-if="route.name == 'catalog-healthy'" 
+          class="hero__form"></filter-healthy>
       </div>
     </div>
   </section>
@@ -189,7 +196,7 @@ const route = useRoute();
       font-size: 50px;
       line-height: 62px;
       max-width: 600px;
-      margin: 0 0 -9px;
+      margin: 0 0 15px;
     }
 
     @include vp-tablet {
@@ -202,7 +209,7 @@ const route = useRoute();
     @include vp-mobile {
       font-size: 25px;
       line-height: 31px;
-      margin: 0 0 250px;
+      margin: 0 0 248px;
     }
 
     &--tea {

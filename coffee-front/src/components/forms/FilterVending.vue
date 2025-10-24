@@ -25,8 +25,8 @@ const length = ref(7)
       <label 
         :for="`vending-filter-${values[i - 1]}`"  class="custom-checkbox-card__label">
         <picture>
-          <source media="(max-width: 767px)" srcset="../../images/vending-card/vending-mobile.png">
-          <source media="(max-width: 1348px)" srcset="../../images/vending-card/vending-tablet.png">
+          <source media="(max-width: 767px)" srcset="../../images/vending-card/vending-product-mobile.png">
+          <source media="(max-width: 1348px)" srcset="../../images/vending-card/vending-product-tablet.png">
           <source media="(max-width: 1903px)" srcset="../../images/vending-card/vending-product-laptop.png">
           <img class="custom-checkbox-card__label-img" src="../../images/vending-card/vending-product-desktop.png" width="331" height="175" alt="Карточка вида товара для вендинга">
         </picture>
@@ -53,8 +53,8 @@ const length = ref(7)
   font-family: $ff-gilroy;
 
   @include vp-laptop {
-    height: 475px;
-    gap: 21px 20px;
+    height: 468px;
+    gap: 20px;
   }
 
   @include vp-tablet {
@@ -66,7 +66,7 @@ const length = ref(7)
   }
 
   @include vp-mobile {
-    gap: 10px;
+    gap: 10px 20px;
   }
 
 }
@@ -74,7 +74,7 @@ const length = ref(7)
 .custom-checkbox-card {
   &__label {
     display: flex;
-    padding: 30px 30px 35px;
+    padding: 20px 34px 25px;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
@@ -84,56 +84,62 @@ const length = ref(7)
     width: 400px;
     height: 320px;
     cursor: pointer;
+    gap: 40px;
 
     @include vp-laptop {
-      padding: 20px 20px 29px;
+      padding: 15px 23px;
       width: 280px;
-      height: 227px;
+      height: 224px;
       box-shadow: 0 0 21px 0 $color-spanish-gray-c95-25;
       border-radius: 14px;
+      gap: 32px;
     }
 
     @include vp-tablet {
-      width: 220px;
-      height: 220px;
+      width: 340px;
+      height: 224px;
       box-shadow: 0 0 61px 0 $color-spanish-gray-c95-25;
-      padding: 8px 30px;
-      gap: 15px;
+      padding: 30px 30px 23px;
+      gap: 17px;
       border-radius: 10px;
       flex-direction: column-reverse;
-      justify-content: center;
+      justify-content: end;
     }
 
     @include vp-mobile {
-      width: 106px;
+      width: 160px;
       height: 110px;
       box-shadow: 0 0 30px 0 $color-spanish-gray-c95-25;
-      padding: 4px;
-      gap: 1px;
+      padding: 10px 9px;
+      gap: 3px;
     }
   }
 
   &__label-text {
     color: $color-black;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 25px;
     line-height: 30px;
     font-family: $ff-gilroy sans-serif;
     text-align: center;
+    min-height: 40px;
 
     @include vp-laptop {
       font-size: 18px;
       line-height: 21px;
+      min-height: 30px;
     }
 
     @include vp-tablet {
       font-size: 20px;
       line-height: 24px;
+      min-height: 36px;
     }
 
     @include vp-mobile {
       font-size: 12px;
       line-height: 15px;
+      min-height: 22px;
     }
   }
 
@@ -141,22 +147,26 @@ const length = ref(7)
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    height: 200px;
+    width: 331px;
+    height: 175px;
+    border-radius: 20px;
 
     @include vp-laptop {
-      width: 101px;
-      height: 141px;
+      width: 234px;
+      height: 123px;
+      border-radius: 14px;
     }
 
     @include vp-tablet {
-      width: 98px;
-      height: 139px;
+      width: 262px;
+      height: 116px;
+      border-radius: 10px;
     }
 
     @include vp-mobile {
-      width: 48px;
-      height: 68px;
+      width: 128px;
+      height: 57px;
+      border-radius: 5px;
     }
   }
 
