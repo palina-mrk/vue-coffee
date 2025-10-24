@@ -2,14 +2,14 @@
 import MainHeader from "./MainHeader.vue";
 import CatalogHero from "./CatalogHero.vue";
 import CatalogInner from "./CatalogInner.vue";
-import CatalogFooter from "./.CatalogFooter.vue";
+import MainFooter from "./MainFooter.vue";
 </script>
 
 <template>
   <MainHeader></MainHeader>
   <CatalogHero></CatalogHero>
   <CatalogInner></CatalogInner>
-  <CatalogFooter></CatalogFooter>
+  <MainFooter></MainFooter>
 </template>
 
 <style lang="scss" scoped>

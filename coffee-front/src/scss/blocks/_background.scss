@@ -980,20 +980,34 @@
     left: calc(50% - 1860px);
     z-index: -6;
 
-    @include vp-laptop {
-    }
-
     @include vp-tablet {
     }
 
     @include vp-mobile {
       bottom: 50px;
     }
+
+    &::after {
+      @include vp-tablet {
+        content: "";
+        position: absolute;
+        width: 100%;
+        bottom: -120px;
+        left: 0;
+        height: 90px;
+        background-color: $color-cornsilk;
+      }
+
+      @include vp-mobile {
+        bottom: -50px;
+        height: 80px;
+      }
+    }
   }
 
   &__svg-vawe--contacts-bottom {
     height: 384px;
-    bottom: 0px;
+    bottom: 0;
     color: $color-cornsilk;
     background-color: $color-white;
 
@@ -1003,10 +1017,11 @@
 
     @include vp-tablet {
       height: 200px;
+      bottom: 70px;
     }
 
     @include vp-mobile {
-      height: 108px;
+      height: 115px;
     }
   }
   
@@ -1044,9 +1059,6 @@
 
     @include vp-tablet {
       height: 50px;
-    }
-
-    @include vp-mobile {
     }
   }
 }

@@ -36,7 +36,7 @@ const isHomePage = computed(() => route.name == 'home');
       >
       <router-link
         class="users-list__link"
-        :to="{ name: 'catalog-coffee' }"
+        :to="{ name: 'cart' }"
         @click="$emit('leave-page')"
         aria-label="Перейти в корзину"
       >

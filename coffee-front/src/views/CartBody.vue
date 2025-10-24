@@ -1,12 +1,10 @@
 <script setup>
 import BgCart from '../components/backgrounds/BgCart.vue';
 import CartCard from '../components/cards/CartCard.vue';
-import CustomBreadcrumbs from '../components/inputs/CustomBreadcrumbs.vue';
+import CustomBreadcrumbs from '../components/navigation/CustomBreadcrumbs.vue';
 import DeliveryForm from '../components/subforms/DeliveryForm.vue';
 import PaymentForm from '../components/subforms/PaymentForm.vue';
 import PromoForm from '../components/subforms/PromoForm.vue';
-import { useRoute } from 'vue-router';
-const route = useRoute();
 </script>
 
 <template>

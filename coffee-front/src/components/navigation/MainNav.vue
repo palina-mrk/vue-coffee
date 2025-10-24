@@ -17,8 +17,10 @@
         @click="$emit('leave-page')">Блог</a>
       </li>
       <li class="main-nav__item">
-        <a class="main-nav__link" 
-        @click="$emit('leave-page')">Контакты</a>
+        <router-link 
+        class="main-nav__link" 
+        :to="{ name: 'contacts' }"
+        @click="$emit('leave-page')">Контакты</router-link>
       </li>
     </ul>
   </nav>

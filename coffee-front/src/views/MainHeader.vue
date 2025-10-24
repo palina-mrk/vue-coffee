@@ -53,7 +53,7 @@ const isSearch = ref(false)
           class="header__users-list"
           :isSearch="isSearch"
           :isMenu="isMenu"
-          @setSearch="isSearch = true"
+          @set-search="isSearch = true"
           @leave-page="isMenu = false"
         ></users-list>
 
