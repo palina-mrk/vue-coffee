@@ -2,27 +2,9 @@
 import { ref, reactive } from 'vue';
 
 const selectedValues = ref([])
-const labels = reactive(['Черный чай','Травяной чай','Зелёный чай','Матча','Молочный улунг','Пуэр','Кофейные напитки'])
-const values = reactive(['black-tea','herbal-tea','green-tea','matcha','milk-oolong','pu-erh','coffee-drinks'])
+const labels = reactive(['Гранулированный кофе','Гранулированный какао','Гранулированный цикорий','Гранулированные кофейные напитки','Зерновой кофе','Кофе порошкообразный','Сухое молоко гранулированное'])
+const values = reactive(['granulated-coffee', 'granulated-cocoa', 'granulated-chicory', 'granulated-coffee-drinks', 'bean-coffee','powdered-coffee','granulated-milk-powder'])
 const length = ref(7)
-
-const imageVariant = (label) => {
-  switch (label) {
-    case 'Черный чай':
-    case 'Травяной чай':
-      return 'black';
-    case 'Зелёный чай':
-    case 'Матча':
-      return 'green';
-    case 'Молочный улунг':
-    case 'Пуэр':
-      return 'milk';
-    case 'Кофейные напитки':
-      return 'drinks';
-    default:
-      return null;
-  }
-}
 </script>
 
 <template>
@@ -35,18 +17,18 @@ const imageVariant = (label) => {
     >
       <input 
         class="custom-checkbox-card__field visually-hidden" 
-        :id="`tea-filter-${values[i - 1]}`" 
+        :id="`vending-filter-${values[i - 1]}`" 
         type="checkbox" 
-        name="tea-filter" 
+        name="vending-filter" 
         :value="`${labels[i - 1]}`"
         v-model="selectedValues">
       <label 
-        :for="`tea-filter-${values[i - 1]}`"  class="custom-checkbox-card__label">
+        :for="`vending-filter-${values[i - 1]}`"  class="custom-checkbox-card__label">
         <picture>
-          <source media="(max-width: 767px)" srcset="../../images/tea-card/tea-mobile.png">
-          <source media="(max-width: 1348px)" srcset="../../images/tea-card/tea-tablet.png">
-          <source media="(max-width: 1903px)" :srcset="`../../src/images/tea-card/tea-${imageVariant(labels[i - 1])}-laptop.png`">
-          <img class="custom-checkbox-card__label-img" :src="`../../src/images/tea-card/tea-${imageVariant(labels[i - 1])}-desktop.png`" width="150" height="200" alt="Карточка вида чая">
+          <source media="(max-width: 767px)" srcset="../../images/vending-card/vending-mobile.png">
+          <source media="(max-width: 1348px)" srcset="../../images/vending-card/vending-tablet.png">
+          <source media="(max-width: 1903px)" srcset="../../images/vending-card/vending-product-laptop.png">
+          <img class="custom-checkbox-card__label-img" src="../../images/vending-card/vending-product-desktop.png" width="331" height="175" alt="Карточка вида товара для вендинга">
         </picture>
         <span class="custom-checkbox-card__label-text">{{ labels[i - 1] }}</span>
       </label>
@@ -56,10 +38,6 @@ const imageVariant = (label) => {
 </template>
 
 <style lang="scss" scoped>
-* {
-font-family: $ff-gilroy;
-}
-
 .filter__group {
   background-color: transparent;
   display: flex;
@@ -72,6 +50,7 @@ font-family: $ff-gilroy;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-end;
+  font-family: $ff-gilroy;
 
   @include vp-laptop {
     height: 475px;

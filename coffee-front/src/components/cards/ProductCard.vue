@@ -42,7 +42,7 @@ const imageVariant = computed(() => {
     case 'Кофейные напитки':
       return 'drinks';
     default:
-      return null;
+      return 'product';
   }
 })
 </script>
@@ -115,9 +115,8 @@ const imageVariant = computed(() => {
     </div>
   </div>
 
-
   <div 
-  v-else-if="product.category == 'tea'"
+  v-else
   :class="{ 'product-card': true,  'product-card--tea': true, 'product-card--main-mobile': isHomePage, 'product-card--bordered': !isHomePage}">
     <div class="product-card__top">
       <div class="product-card__rating-wrapper">
@@ -141,10 +140,10 @@ const imageVariant = computed(() => {
         v-show="isSale"
         class="product-card__sales-icon">%</div>
         <picture>
-          <source media="(max-width: 767px)" srcset="../../images/tea-card/tea-product-mobile.png">
-          <source media="(max-width: 1348px)" srcset="../../images/tea-card/tea-product-tablet.png">
-          <source media="(max-width: 1903px)" :srcset="`../../src/images/tea-card/tea-${imageVariant}-laptop.png`">
-          <img class="product-card__image" :src="`../../src/images/tea-card/tea-${imageVariant}-desktop.png`" width="223" height="312" alt="Карточка товара чая">
+          <source media="(max-width: 767px)" :srcset="`../../src/images/${product.category}-card/${product.category}-product-mobile.png`">
+          <source media="(max-width: 1348px)" :srcset="`../../src/images/${product.category}-card/${product.category}-product-tablet.png`">
+          <source media="(max-width: 1903px)" :srcset="`../../src/images/tea-card/${product.category}-${imageVariant}-laptop.png`">
+          <img class="product-card__image" :src="`../../src/images/${product.category}-card/${product.category}-${imageVariant}-desktop.png`" width="223" height="312" alt="Карточка товара">
         </picture>
       </div>
     </div>
@@ -159,6 +158,7 @@ const imageVariant = computed(() => {
       >В&nbsp;корзину</button>
     </div>
   </div>
+
 </template>
 
 
