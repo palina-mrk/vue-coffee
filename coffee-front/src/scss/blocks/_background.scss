@@ -888,7 +888,7 @@
 
   /* Для корзиины */
 
-    &__div--cart-top-wall {
+  &__div--cart-top-wall {
     top: 0;
     height: 479px;
     background-color: $color-cornsilk;
@@ -961,12 +961,92 @@
 
     @include vp-tablet {
       bottom: 120px;
-      height: 160px;
+      height: 200px;
     }
 
     @include vp-mobile {
       bottom: 50px;
       height: 108px;
+    }
+  }
+
+  /* Для контактов */
+  
+  &__div--contacts-top-wall {
+    top: 0;
+    bottom: 110px;
+    background-color: $color-white;
+    width: 3720px;
+    left: calc(50% - 1860px);
+    z-index: -6;
+
+    @include vp-laptop {
+    }
+
+    @include vp-tablet {
+    }
+
+    @include vp-mobile {
+      bottom: 50px;
+    }
+  }
+
+  &__svg-vawe--contacts-bottom {
+    height: 384px;
+    bottom: 0px;
+    color: $color-cornsilk;
+    background-color: $color-white;
+
+    @include vp-laptop {
+      height: 195px;
+    }
+
+    @include vp-tablet {
+      height: 200px;
+    }
+
+    @include vp-mobile {
+      height: 108px;
+    }
+  }
+  
+  &__svg-vawe--contacts-front-footer {
+    height: 407px;
+    top: 30px;
+    color: $color-cornsilk;
+    z-index: -5;
+
+    @include vp-laptop {
+      height: 208px;
+      top: 22px;
+    }
+
+    @include vp-tablet {
+      top: 35px;
+    }
+
+    @include vp-mobile {
+      top: -29px;
+    }
+  }
+
+  &__div--contacts-footer-wall {
+    top: 0;
+    height: 50px;
+    background-color: $color-cornsilk;
+    width: 3720px;
+    left: calc(50% - 1860px);
+    z-index: -7;
+
+    @include vp-laptop {
+      height: 25px;
+    }
+
+    @include vp-tablet {
+      height: 50px;
+    }
+
+    @include vp-mobile {
     }
   }
 }

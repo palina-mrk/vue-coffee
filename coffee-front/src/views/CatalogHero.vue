@@ -13,6 +13,7 @@ const route = useRoute();
     
     <div class="container">
       <div class="hero__wrapper">
+
         <ul class="hero__breadcrumbs-list">
           <li class="hero__breadcrumbs-item">
             <router-link 
@@ -236,54 +237,6 @@ const route = useRoute();
   @include vp-mobile {
     gap: 35px;
   }
-/*
-  &__inner {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    color: $color-black;
-
-    @include vp-laptop {
-      gap: 15px 20px;
-    }
-
-    @include vp-tablet {
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    @include vp-mobile {
-      gap: 10px;
-    }
-  }
-
-  &__cards-group {
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    margin: 0;
-    gap: 20px;
-    border: none;
-    justify-content: space-between;
-    width: 100%;
-
-    @include vp-laptop {
-      gap: 15px;
-    }
-
-    @include vp-tablet {
-      flex-wrap: wrap;
-      gap: 20px;
-      width: 700px;
-      justify-content: start;
-    }
-
-    @include vp-mobile {
-      gap: 10px;
-      width: 340px;
-    }
-  }*/
 }
 
 </style>

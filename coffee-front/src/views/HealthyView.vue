@@ -1,7 +1,7 @@
 <script setup>
 import MainHeader from "./MainHeader.vue";
 import MainBody from "./MainBody.vue";
-import CatalogFooter from "./CatalogFooter.vue";
+import CatalogFooter from "./.CatalogFooter.vue";
 </script>
 
 <template>

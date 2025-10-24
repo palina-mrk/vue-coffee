@@ -2,7 +2,7 @@
 import MainHeader from "./MainHeader.vue";
 import CatalogHero from "./CatalogHero.vue";
 import CatalogInner from "./CatalogInner.vue";
-import CatalogFooter from "./CatalogFooter.vue";
+import CatalogFooter from "./.CatalogFooter.vue";
 </script>
 
 <template>

@@ -5,6 +5,7 @@ import TeaView from '../views/TeaView.vue'
 import VendingView from '../views/VendingView.vue'
 import HealthyView from '../views/HealthyView.vue'
 import CartView from '../views/CartView.vue'
+import ContactsView from '../views/ContactsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -59,6 +60,14 @@ const router = createRouter({
       component: CartView,
       meta: {
         title: 'Корзина',
+      },
+    },
+    {
+      path: '/contacts',
+      name: 'contacts',
+      component: ContactsView,
+      meta: {
+        title: 'Контакты',
       },
     },/*
     {

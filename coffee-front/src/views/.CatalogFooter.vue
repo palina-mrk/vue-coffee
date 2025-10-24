@@ -5,7 +5,7 @@ import BgFooter from '../components/backgrounds/BgFooter.vue';
 </script>
 
 <template>
-  <footer class="footer footer--for-catalog">
+  <footer class="footer">
     <bg-footer></bg-footer>
   
     <div class="container">
