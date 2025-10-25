@@ -9,7 +9,6 @@ import { useRoute } from 'vue-router';
 const props = defineProps(['product'])
 const cartStore = useCartStore();
 const route = useRoute();
-const isHomePage = computed(() => route.name == 'home');
 
 const isSale = computed(() => props.product.actions.includes('Скидки'));
 const weightIndex = ref(0);
@@ -49,7 +48,7 @@ const imageVariant = computed(() => {
 <template>
   <div 
   v-if="product.category == 'coffee'"
-  :class="{ 'product-card': true, 'product-card--sale': isSale,  'product-card--main-mobile': isHomePage, 'product-card--bordered': !isHomePage}">
+  :class="{ 'product-card': true, 'product-card--sale': isSale,  'product-card--main-mobile': (route.name == 'home' || route.name == 'catalogs'), 'product-card--bordered': !(route.name == 'home' || route.name == 'catalogs')}">
     <div 
     v-show="isSale"
     class="product-card__sales-icon">%</div>
@@ -60,7 +59,10 @@ const imageVariant = computed(() => {
           <li v-else class="product-card__actions-item">Скидки</li>
         </ul>
       </div>
-      <custom-dropdown class="product-card__dropdown" :weightVariants="weightVariants"
+      <custom-dropdown class="product-card__dropdown" 
+      :class="{'custom-dropdown--main-mobile': (route.name == 'home' || route.name == 'catalogs')}"
+      :weightVariants="weightVariants"
+      :weightUnit="product.category == 'vending' ? 'кг' : 'г'"
       :defaultValue="currentWeight"
       @set-value="changeWeight($event)">
       </custom-dropdown>
@@ -76,7 +78,7 @@ const imageVariant = computed(() => {
       </div>
       <div class="product-card__details">
         <slider-stars         
-        :class="{'product-card__stars': true, 'slider-stars--main-mobile': isHomePage}"
+        :class="{'product-card__stars': true, 'slider-stars--main-mobile': (route.name == 'home' || route.name == 'catalogs')}"
         :rating="product.rate.rating"></slider-stars>
         
         <div class="product-card__rating">
@@ -116,7 +118,7 @@ const imageVariant = computed(() => {
 
   <div 
   v-else
-  :class="{ 'product-card': true,  'product-card--tea': true, 'product-card--main-mobile': isHomePage, 'product-card--bordered': !isHomePage}">
+  :class="{ 'product-card': true,  'product-card--tea': true, 'product-card--main-mobile': (route.name == 'home' || route.name == 'catalogs'), 'product-card--bordered': !(route.name == 'home' || route.name == 'catalogs')}">
     <div class="product-card__top">
       <div class="product-card__rating-wrapper">
         <slider-stars class="product-card__stars slider-stars--tea":rating="product.rate.rating"></slider-stars>
@@ -128,7 +130,9 @@ const imageVariant = computed(() => {
       </div>
 
       <custom-dropdown 
-      class="product-card__dropdown" :weightVariants="weightVariants"
+      class="product-card__dropdown" 
+      :class="{'custom-dropdown--main-mobile': (route.name == 'home' || route.name == 'catalogs')}"
+      :weightVariants="weightVariants"
       :weightUnit="product.category == 'vending' ? 'кг' : 'г'"
       :defaultValue="currentWeight"
       @set-value="changeWeight($event)">

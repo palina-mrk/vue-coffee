@@ -36,7 +36,7 @@ const cartStore = useCartStore();
       :modelValue="itemInfo.count"
       @update:modelValue="cartStore.setCount(itemInfo.id, itemInfo.weight, $event)"
     ></custom-counter>
-    <span class="product-line__sale">{{ itemInfo.sale }} ₽</span>
+    <span class="product-line__sale">{{ itemInfo.sale ? `${itemInfo.sale}₽ (-${itemInfo.salePercent}%)` : ''}} </span>
     <span class="product-line__total">{{ itemInfo.total }} ₽</span>
   </div>
 
@@ -62,8 +62,8 @@ const cartStore = useCartStore();
       <div class="product-line__price-wrapper">
         <span class="product-line__total">{{ itemInfo.total }} ₽</span>
         <div class="product-line__sale-wrapper">
-          <span class="product-line__price">{{ itemInfo.price }} ₽</span>
-          <span class="product-line__sale">{{ itemInfo.sale ? `(-${itemInfo.sale}%)` : ''}}</span>
+          <span class="product-line__price">{{ itemInfo.sale ? `${itemInfo.price} ₽` : ''}}</span>
+          <span class="product-line__sale">{{ itemInfo.sale ? `(-${itemInfo.salePercent}%)` : ''}}</span>
         </div>
       </div>
     </div>

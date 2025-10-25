@@ -18,14 +18,16 @@ const catalogStore = useCatalogStore();
         :disabled="!(cartStore.totalCount > 0)"
       >Удалить все</button>
     </div>
-    <p style="color: black; font-size: 30px;">{{ cartStore.rawCartItems }}</p>
     <ul
     v-if="catalogStore.isLoaded" 
     class="cart-card__products-list">
-      <li class="cart-card__products-item"><cart-heading :sale="10"></cart-heading></li>
       <li 
         class="cart-card__products-item"
-        v-for="item in cartStore.rawCartItems" 
+        v-show="cartStore.totalCount > 0"
+        ><cart-heading :sale="cartStore.globalSale"></cart-heading></li>
+      <li 
+        class="cart-card__products-item"
+        v-for="item in cartStore.cartItems" 
       >
         <cart-line :itemInfo="item"></cart-line> 
       </li>

@@ -9,6 +9,19 @@ export const useCartStore = defineStore("cart", () => {
      [id1, weight2, count2], 
      [id2, weight2, count2],
   }*/
+ 
+  const globalSales = reactive([
+    [0, 0],
+    [5000, 10],
+    [7000, 15],
+    [10000, 20]
+  ]) /**При покупке на определенную сумму ко всем нескидочным 
+  товарам применится скидка на определенное кол-во процентов
+  [[сумма1, процент1],[сумма2, процент2]] */
+
+  const globalSale = computed(() => 
+    globalSales.findLast(s => s[0] <= rawTotalSum.value)[1]
+  ) /* вычисляем эту скидку*/
   
   const cartInfo = computed(() => cartRows.reduce((str, el) => str + `id: ${el[0]}, weight: ${el[1]}, count: ${el[2]};
   `,"cart: "));
@@ -19,6 +32,9 @@ export const useCartStore = defineStore("cart", () => {
       cartRows.push([itemId, weight, 1]);
     else item[2]++;
     console.log(rawCartItems.value)
+    console.log(rawTotalSum.value)
+    console.log(cartItems.value)
+    console.log(totalSum.value)
   }
 
   function removeFromCart(itemId, weight) {
@@ -29,7 +45,8 @@ export const useCartStore = defineStore("cart", () => {
     cartRows.splice(ind, 1);
   }
 
-  function setCount(itemId, weight, count) {
+  function setCount(itemId, weight, itemCount) {
+    const count = Number(itemCount);
     if (count <= 0) {
       removeFromCart(itemId, weight);
       return;
@@ -68,8 +85,13 @@ export const useCartStore = defineStore("cart", () => {
   }
   );
 
+  const rawTotalSum = computed(() =>
+    rawCartItems.value.reduce((acc,el) => (acc + el.total), 0)
+    //cartRows.reduce((acc,el) => (acc + el[2] * catalog.getPrice(el[0], el[1])), 0)
+  );
   const totalSum = computed(() =>
-    cartRows.reduce((acc,el) => (acc + el[2] * catalog.getPrice(el[0], el[1])), 0)
+    cartItems.value.reduce((acc,el) => (acc + el.total), 0)
+    //cartRows.reduce((acc,el) => (acc + el[2] * catalog.getPrice(el[0], el[1])), 0)
   );
 
   /*[id, weight, count]
@@ -83,9 +105,7 @@ export const useCartStore = defineStore("cart", () => {
       ), []))*/
 
   const rawCartItems = computed(() => catalog.isLoaded ? cartRows.reduce((acc, [id, weight, count]) => {
-    console.log(id, weight, count);
     const item = catalog.getFullInfo(id);
-    console.log(item);
     const {price, priceCrossed} = catalog.getSellInfo(id, weight);
     const shortDescription = catalog.getShortDescription(id);
     acc.push({
@@ -98,11 +118,31 @@ export const useCartStore = defineStore("cart", () => {
       price: (item.actions.includes('Скидки') ? priceCrossed : price) * count,
       count: count,
       sale: item.actions.includes('Скидки') ? (priceCrossed - price)*count : 0,
-      salePercent: item.actions.includes('Скидки') ? Number(((priceCrossed - price) * 100 *count / priceCrossed).toFixed(0)) : 0,
+      salePercent: item.actions.includes('Скидки') ? Math.round(((priceCrossed - price) * 100 / priceCrossed)) : 0,
       total: price * count,
     });
     return acc;
   }, []) : [])
+
+  const cartItems = computed(() => {
+    console.log(globalSale.value);
+    if(globalSale.value == 0)
+      return rawCartItems.value;
+
+    return rawCartItems.value.map(rawItem => {
+        console.log(rawItem.sale);
+        if(rawItem.sale > 0)
+          return rawItem;
+        
+        const item = Object.assign(rawItem);
+        item.salePercent = globalSale.value;
+        item.total = Math.round((rawItem.price * (100 - globalSale.value) / 100));
+        item.sale = Math.round((rawItem.price * globalSale.value / 100));
+        return item;
+      }
+    )
+  })
+
 
   watch(cartRows, () => {
     localStorage.setItem("cartRows", JSON.stringify(cartRows));
@@ -120,5 +160,9 @@ export const useCartStore = defineStore("cart", () => {
     totalCountString,
     totalSum,
     rawCartItems,
+    rawTotalSum,
+    cartItems,
+    totalSum,
+    globalSale
   };
 });

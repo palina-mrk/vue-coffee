@@ -96,7 +96,7 @@ export const useCatalogStore = defineStore("catalog", () => {
       return item.kind;
 
     if(item.details.length == 1)
-      return `${Object.values(item.details[0]).join(', ')}`;
+      return `${Object.values(item.details[0]).filter(str => str != 'Detail' && str != undefined).join(', ')}`;
 
     const kinds = item.details.map(d => d.kind);
     if (!kinds.includes('Арабика'))
