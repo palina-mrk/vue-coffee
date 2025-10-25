@@ -8,7 +8,7 @@
       <li class="main-nav__item">
         <router-link 
           class="main-nav__link" 
-          :to="{ name: 'catalog-coffee' }"
+          :to="{ name: 'catalogs' }"
           @click="$emit('leave-page')"
           >Каталог товаров</router-link>
       </li>
@@ -28,5 +28,79 @@
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_main-nav.scss";
+.main-nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    font-family: $ff-gilroy sans-serif;
+
+    @include vp-laptop {
+      gap: 5px 66px;
+    }
+
+    @include vp-tablet {
+      gap: 5px 60px;
+    }
+
+    @include vp-mobile {
+      gap: 5px 30px;
+    }
+  }
+
+  &__link {
+    font-family: $ff-gilroy;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 29px;
+    color: $color-black;
+    flex-shrink: 0;
+
+    @include vp-laptop {
+      font-size: 18px;
+      line-height: 21px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 29px;
+    }
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  &__link:hover {
+    border-bottom: 2px solid $color-ucla-gold;
+  }
+}
+
+.main-nav--vertical {
+  .main-nav__list {
+    flex-direction: column;
+    gap: 41px;  
+    
+    
+    @include vp-mobile {
+      gap: 20px;
+    }
+  }
+
+  .main-nav__link {
+    font-size: 32px;
+    line-height: 38px;
+    color: $color-eerie-black;  
+    
+    @include vp-mobile {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+}
+
 </style>

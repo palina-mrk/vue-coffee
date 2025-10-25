@@ -25,7 +25,6 @@ function changeWeight(newValue) {
 
 function addToCart() {
   cartStore.addToCart(props.product.id, currentWeight.value);
-  console.log(cartStore.totalCount)
 }
 
 const imageVariant = computed(() => {
@@ -130,6 +129,7 @@ const imageVariant = computed(() => {
 
       <custom-dropdown 
       class="product-card__dropdown" :weightVariants="weightVariants"
+      :weightUnit="product.category == 'vending' ? 'кг' : 'г'"
       :defaultValue="currentWeight"
       @set-value="changeWeight($event)">
       </custom-dropdown>

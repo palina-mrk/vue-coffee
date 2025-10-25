@@ -2,7 +2,6 @@ import "./style.css";
 import App from "./App.vue";
 import router from './router'
 import { createPinia } from "pinia";
-import { useCoffeeStore } from "./stores/coffee";
 import { createApp, provide, h } from "vue";
 import { DefaultApolloClient } from "@vue/apollo-composable";
 import apolloClient from "./apollo";

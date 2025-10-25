@@ -240,8 +240,10 @@ const isHomePage = computed(() => route.name == 'home');
 }
 
 .users-list--menu {
-  gap: 50px;
-
+  @include vp-tablet {
+    gap: 50px;  
+  }
+  
   @include vp-mobile {
       gap: 24px;
   }

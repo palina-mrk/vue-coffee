@@ -1,6 +1,8 @@
 <script setup>
 import CustomCounter from '../inputs/CustomCounter.vue';
 defineProps(['itemInfo'])
+import { useCartStore } from '../../stores/cart';
+const cartStore = useCartStore();
 </script>
 
 <template>
@@ -8,6 +10,7 @@ defineProps(['itemInfo'])
     class="product-line__top product-line__top--long">
     <button
     class="product-line__btn-remove btn-remove"
+    @click="cartStore.removeFromCart(itemInfo.id, itemInfo.weight)"
     type="button">
       <svg class="btn-remove__icon" width="21" height="21" aria-hidden="true">
         <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
@@ -25,13 +28,13 @@ defineProps(['itemInfo'])
       <div class="product-line__details-text">
         <h3 class="product-line__title">{{ itemInfo.title }}</h3>
         <span class="product-line__text-line">{{ itemInfo.descripton }}</span>
-        <span class="product-line__text-line">{{ itemInfo.weight }}</span>
+        <span class="product-line__text-line">{{ itemInfo.weightString }}</span>
       </div>
     </div>
     <span class="product-line__price">{{ itemInfo.price }} ₽</span>
     <custom-counter class="product-line__count"
       :modelValue="itemInfo.count"
-      @update:modelValue="itemInfo.count = $event"
+      @update:modelValue="cartStore.setCount(itemInfo.id, itemInfo.weight, $event)"
     ></custom-counter>
     <span class="product-line__sale">{{ itemInfo.sale }} ₽</span>
     <span class="product-line__total">{{ itemInfo.total }} ₽</span>
@@ -60,7 +63,7 @@ defineProps(['itemInfo'])
         <span class="product-line__total">{{ itemInfo.total }} ₽</span>
         <div class="product-line__sale-wrapper">
           <span class="product-line__price">{{ itemInfo.price }} ₽</span>
-          <span class="product-line__sale">(-{{ itemInfo.sale }}%)</span>
+          <span class="product-line__sale">{{ itemInfo.sale ? `(-${itemInfo.sale}%)` : ''}}</span>
         </div>
       </div>
     </div>
@@ -69,6 +72,7 @@ defineProps(['itemInfo'])
   
       <button
       class="product-line__btn-remove btn-remove"
+      @click="cartStore.removeFromCart(itemInfo.id, itemInfo.weight)"
       type="button">
         <svg class="btn-remove__icon" width="21" height="21" aria-hidden="true">
           <use xlink:href="../../assets/cart-sprite.svg#icon-remove"></use>
@@ -77,7 +81,7 @@ defineProps(['itemInfo'])
 
       <custom-counter class="product-line__count"
         :modelValue="itemInfo.count"
-        @update:modelValue="itemInfo.count = $event"
+        @update:modelValue="cartStore.setCount(itemInfo.id, itemInfo.weight, $event)"
       ></custom-counter>
     
     </div>

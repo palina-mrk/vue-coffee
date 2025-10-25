@@ -34,7 +34,7 @@ body {
   font-weight: 300;
   display: flex;
   font-family: Gilroy;
-  min-height: 100vh;
+  min-height: 100%;
   justify-content: center;
 }
 

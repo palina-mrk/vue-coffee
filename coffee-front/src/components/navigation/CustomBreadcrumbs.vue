@@ -1,36 +1,36 @@
 <script setup>
-import { useRoute } from 'vue-router';
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
-/* path = [{route: 'catalog', title: 'Каталог товаров'}, ...]*/
+const router = useRouter();
+
+const routerNames = computed(() => {
+  const arr = route.path.split('/');
+  arr[0] = 'home';
+  return arr;
+})
 </script>
 
 <template>
-
     <ul 
       class="breadcrumbs__list"
-      :class="{'breadcrumbs--white': isWhite}"
     >
-      <li class="breadcrumbs__item">
+      <li v-for="routerName in routerNames"
+        class="breadcrumbs__item">
         <router-link 
           class="breadcrumbs__link"  
-          :to="{ name: 'home' }"
-        >Главная</router-link>
-      </li>
-      <li class="breadcrumbs__item">
-        <a class="breadcrumbs__link"  href="#">{{  route.meta.title }}</a>
+          :to="{ name: routerName }"
+        >{{ router.options.routes.find((r => r.name == routerName)).meta.title }}</router-link>
       </li>
     </ul>
 
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/catalogs/_hero.scss";
-* {
-  font-family: $ff-gilroy;
-}
 .breadcrumbs {
   &__list{
     display: flex;
+    font-family: $ff-gilroy;
     list-style-type: none;
     justify-content: start;
     margin: 0;
@@ -118,7 +118,7 @@ const route = useRoute();
     background-color: $color-white;
   }
 
-  &__link {
+  .breadcrumbs__link {
     color: $color-white;
 
     &:hover {

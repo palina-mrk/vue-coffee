@@ -1,9 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import CoffeeView from '../views/CoffeeView.vue'
-import TeaView from '../views/TeaView.vue'
-import VendingView from '../views/VendingView.vue'
-import HealthyView from '../views/HealthyView.vue'
+import CatalogView from '../views/CatalogView.vue'
 import CartView from '../views/CartView.vue'
 import ContactsView from '../views/ContactsView.vue'
 
@@ -15,37 +12,45 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        title: 'Домашняя страница',
+        title: 'Главная',
       },
     },
     {
-      path: '/coffee',
-      name: 'catalog-coffee',
-      component: CoffeeView,
+      path: '/catalogs',
+      name: 'catalogs',
+      component: HomeView,
+      meta: {
+        title: 'Каталог товаров',
+      },
+    },
+    {
+      path: '/catalogs/coffee',
+      name: 'coffee',
+      component: CatalogView,
       meta: {
         title: 'Свежеобжаренный кофе',
       },
     },
     {
-      path: '/tea',
-      name: 'catalog-tea',
-      component: CoffeeView,
+      path: '/catalogs/tea',
+      name: 'tea',
+      component: CatalogView,
       meta: {
         title: 'Чай и кофейные напитки',
       },
     },
     {
-      path: '/vending',
-      name: 'catalog-vending',
-      component: VendingView,
+      path: '/catalogs/vending',
+      name: 'vending',
+      component: CatalogView,
       meta: {
         title: 'Продукция для вендинга',
       },
     },
     {
-      path: '/healthy',
-      name: 'catalog-healthy',
-      component: HealthyView,
+      path: '/catalogs/healthy',
+      name: 'healthy',
+      component: CatalogView,
       meta: {
         title: 'Здоровое питание',
       },
@@ -92,9 +97,25 @@ const router = createRouter({
       ],
     },*/
   ],
-  scrollBehavior: () => ({
-    top: 0,
-  }),
+  scrollBehavior (to) {
+    if (to.name == 'catalogs') {
+      return {
+        el: '#catalogs',
+        top: '180',
+        behavior: 'smooth'
+      };
+    } else if (to.hash) {
+      return {
+        el: to.hash,
+        top: '100',
+        behavior: 'smooth'
+      };  
+    }
+    return { 
+      top: 0,
+      behavior: 'smooth' 
+    };  
+  },
 })
 /*
 router.beforeEach(async (to, from) => {

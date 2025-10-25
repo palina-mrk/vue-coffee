@@ -8,7 +8,7 @@ import PromoForm from '../components/subforms/PromoForm.vue';
 </script>
 
 <template>
-
+<main>
   <section class="cart">
     <bg-cart></bg-cart>
     
@@ -35,15 +35,10 @@ import PromoForm from '../components/subforms/PromoForm.vue';
       </div>
     </div>
   </section>
-
+</main>
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/catalogs/_hero.scss";
-* {
-  font-family: $ff-gilroy;
-}
-
 .cart {
   position: relative;
   width: 100%;
@@ -53,6 +48,7 @@ import PromoForm from '../components/subforms/PromoForm.vue';
   font-family: $ff-gilroy sans-serif;
   font-weight: 500;
   overflow: hidden;
+  height: 100%;
 
   @include vp-laptop {
     padding: 140px 0 0;

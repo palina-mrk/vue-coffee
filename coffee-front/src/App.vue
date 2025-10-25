@@ -1,9 +1,9 @@
 <script setup>
 import { onBeforeMount } from 'vue';
-import { useCoffeeStore } from "./stores/coffee";
+import { useCatalogStore } from "./stores/catalog";
 
 onBeforeMount(() => {
-  const catalogStore = useCoffeeStore();
+  const catalogStore = useCatalogStore();
   catalogStore.loadCatalog();
 })
 </script>

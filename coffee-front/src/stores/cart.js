@@ -1,67 +1,54 @@
 import { defineStore } from "pinia";
 import { computed, reactive, watch } from "vue";
-import { useCoffeeStore } from "./coffee";
+import { useCatalogStore } from "./catalog";
 
 export const useCartStore = defineStore("cart", () => {
-  const catalog = useCoffeeStore();
-  const cart = reactive(JSON.parse(localStorage.getItem("cart") || "{}"));
-  /* item.id -> {
-    weight1: count1, 
-    weight2: count2
+  const catalog = useCatalogStore();
+  const cartRows = reactive(JSON.parse(localStorage.getItem("cartRows") || "[]"));/*
+  [id1, weight1, count1], 
+     [id1, weight2, count2], 
+     [id2, weight2, count2],
   }*/
   
-  function cartInfo() {
-    let info = 'cart: ';
-    Object.keys(cart).forEach((el) => {
-      let ans = ` id: ${el}`;
-      Object.keys(cart[el]).forEach(w => ans += `, ${w}: ${cart[el][w]}`);
-      info += ans;
-      info += `; `
-    })
-    return info;
-  }
+  const cartInfo = computed(() => cartRows.reduce((str, el) => str + `id: ${el[0]}, weight: ${el[1]}, count: ${el[2]};
+  `,"cart: "));
 
   function addToCart(itemId, weight) {
-    if (!cart[itemId]) {
-      cart[itemId] = {};
-    }
-
-    if (!cart[itemId][weight]) cart[itemId][weight] = 1;
-    else cart[itemId][weight]++;
-    console.log(cartInfo());
+    const item = cartRows.find(el => el[0] == itemId && el[1] == weight);
+    if (!item) 
+      cartRows.push([itemId, weight, 1]);
+    else item[2]++;
+    console.log(rawCartItems.value)
   }
 
   function removeFromCart(itemId, weight) {
-    if (!cart[itemId] || !cart[itemId][weight]) return; 
-    else {
-      delete cart[itemId][weight];
-      if (Object.keys(cart[itemId]).length == 0) 
-        delete cart[itemId];
-    }
+    const ind = cartRows.findIndex(el => el[0] == itemId && el[1] == weight);
+    if(ind == -1)
+      return;
+    
+    cartRows.splice(ind, 1);
   }
 
   function setCount(itemId, weight, count) {
     if (count <= 0) {
       removeFromCart(itemId, weight);
-    } else {
-      if (!cart[itemId]) {
-        cart[itemId] = {};
-      }
-      cart[itemId][weight] = count;
+      return;
     }
+      
+    const item = cartRows.find(el => el[0] == itemId && el[1] == weight);
+    if (!item) 
+      cartRows.push([itemId, weight, count]);
+    else item[2] = count;
   }
 
   function clearCart() {
-    Object.keys(cart).forEach(itemId => delete cart[itemId]);
+    cartRows.length = 0;
   }
 
-  const itemIdCount = computed(() => Object.values(cart.value).length);
+  const itemIdCount = computed(() => cartRows.length);
   
   const totalCount = computed(() =>
-    Object.values(cart)  /* [{w1: c1, w2: c2}, {w1: c3, w2: c4}]*/
-    .reduce((acc, weights) => (
-      acc + Object.values(weights).reduce((acc, count) => acc + count, 0))
-      , 0),
+    cartRows.reduce((acc,el) => (acc + el[2]), 0)
   );
 
   const totalCountString = computed(() => {
@@ -79,23 +66,51 @@ export const useCartStore = defineStore("cart", () => {
           return `${totalCount.value} товаров`;
       }
   }
-);
-
-  const totalSum = computed(() =>
-    Object.entries(cart.value).reduce((sum, [itemId, count]) => {
-      return sum + count * catalog.getPrice(itemId);
-    }, 0),
   );
 
-  const cartRows = computed(() => Object.entries(cart.value));
+  const totalSum = computed(() =>
+    cartRows.reduce((acc,el) => (acc + el[2] * catalog.getPrice(el[0], el[1])), 0)
+  );
 
-  watch(cart, () => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+  /*[id, weight, count]
+  const cartRows = computed(() => 
+    Object.keys(cart).reduce( (acc, id) => 
+      Object.keys(cart[id]).map( 
+        weight => {
+          acc.push([id, weight, cart[id][weight]]);
+          return acc;
+        }
+      ), []))*/
+
+  const rawCartItems = computed(() => catalog.isLoaded ? cartRows.reduce((acc, [id, weight, count]) => {
+    console.log(id, weight, count);
+    const item = catalog.getFullInfo(id);
+    console.log(item);
+    const {price, priceCrossed} = catalog.getSellInfo(id, weight);
+    const shortDescription = catalog.getShortDescription(id);
+    acc.push({
+      id: id,
+      title: item.title,
+      category: item.category,
+      descripton: shortDescription,
+      weight: weight,
+      weightString: `${weight} ${item.category == 'vending' ? 'кг.' : 'г.'}`,
+      price: (item.actions.includes('Скидки') ? priceCrossed : price) * count,
+      count: count,
+      sale: item.actions.includes('Скидки') ? (priceCrossed - price)*count : 0,
+      salePercent: item.actions.includes('Скидки') ? Number(((priceCrossed - price) * 100 *count / priceCrossed).toFixed(0)) : 0,
+      total: price * count,
+    });
+    return acc;
+  }, []) : [])
+
+  watch(cartRows, () => {
+    localStorage.setItem("cartRows", JSON.stringify(cartRows));
   });
 
 
   return {
-    cart,
+    cartRows,
     addToCart,
     removeFromCart,
     clearCart,
@@ -104,6 +119,6 @@ export const useCartStore = defineStore("cart", () => {
     totalCount,
     totalCountString,
     totalSum,
-    cartRows,
+    rawCartItems,
   };
 });

@@ -1,7 +1,7 @@
 <script setup>
-import { useCoffeeStore } from '../stores/coffee';
+import { useCatalogStore } from '../stores/catalog';
 import { reactive } from 'vue';
-const catalogStore = useCoffeeStore();
+const catalogStore = useCatalogStore();
 import ProductCard from '../components/cards/ProductCard.vue';
 import BgHome from '../components/backgrounds/BgHome.vue';
 import SliderLarge from '../components/sliders/SliderLarge.vue';
@@ -15,13 +15,14 @@ const catalogCards = reactive([
   {page: 'vending', title: 'Продукция для вендинга'},
   {page: 'healthy', title: 'Здоровое питание'}
 ])
-
 </script>
 
 <template>
   <main v-if="isLoaded">
     <section class="overview">
-      <bg-home :section="'overview'"></bg-home>
+      <bg-home 
+      :section="'overview'"
+      ></bg-home>
 
       <div class="container">
         <div class="overview__hero-wrapper">
@@ -45,14 +46,16 @@ const catalogCards = reactive([
           </div>
           <router-link 
             class="overview__hero-button btn btn--size-xl" 
-            :to="{ name: 'catalog-coffee' }"
+            :to="{ name: 'catalogs' }"
             >Посмотреть каталог</router-link
           >
         </div>
       </div>
       <div class="container">
         <div class="overview__catalogs-wrapper">
-          <h2 class="overview__catalogs-title" id="catalogs-overview">
+          <h2 
+            class="overview__catalogs-title" 
+            id="catalogs">
             Каталоги нашей продукции
           </h2>
           <ul class="overview__catalogs-list">
@@ -534,7 +537,9 @@ const catalogCards = reactive([
       
       <div class="container">
         <div class="instagram__title-wrapper">
-          <h2 class="instagram__title">Мы&nbsp;в&nbsp;Instagram</h2>
+          <h2 class="instagram__title"
+            id="instagram"
+          >Мы&nbsp;в&nbsp;Instagram</h2>
           <a
             class="instagram__link socials__link socials__link--filled"
             href="#"

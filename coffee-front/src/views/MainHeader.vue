@@ -3,18 +3,23 @@ import MainNav from '../components/navigation/MainNav.vue';
 import LogoNav from '../components/navigation/LogoNav.vue';
 import CustomSearch from '../components/inputs/CustomSearch.vue';
 import UsersList from '../components/navigation/UsersList.vue';
+import TabletSocials from '../components/littles/TabletSocials.vue'
 
-import { useRoute } from 'vue-router';
-import { computed, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { ref } from 'vue';
 const route = useRoute();
+const router = useRouter();
 
-const isHomePage = computed(() => route.name == 'home');
 const isMenu = ref(false)
 const isSearch = ref(false)
+function toInstagram () {
+  isMenu.value = false;
+  router.push({name: 'home', hash: '#instagram'})
+}
 </script>
 
 <template>
-  <header :class="{'header': true, 'header--background': !isHomePage, 'header--menu': isMenu, 'header--search': isSearch}">
+  <header :class="{'header': true, 'header--background': route.name != 'home', 'header--menu': isMenu, 'header--search': isSearch}">
     <div class="container">
       <div class="header__wrapper">
         <div class="header__burger">
@@ -36,14 +41,12 @@ const isSearch = ref(false)
         </div>
         <logo-nav class="header__logo-link"></logo-nav>
         
-        <div 
+        <main-nav 
           class="header__nav"
-        >
-          <MainNav
-            @leave-page="isMenu = false"
-          ></MainNav>
-        </div>
-
+          :class="{'main-nav--vertical' : isMenu}"
+          @leave-page="isMenu = false"
+        ></main-nav>
+        
         <custom-search 
           class="header__search"
           @close-search="isSearch = false"
@@ -71,36 +74,9 @@ const isSearch = ref(false)
           <a class="header__email" href="mailto:Import@kldrefine.com"
             >Import@kldrefine.com</a
           >
-          <ul class="socials">
-            <li class="socials__item">
-              <a class="socials__link" href="#">
-                <svg
-                  class="socials__icon"
-                  width="53"
-                  height="53"
-                  aria-hidden="true"
-                >
-                  <use
-                    xlink:href="../assets/header-sprite.svg#icon-phone"
-                  ></use>
-                </svg>
-              </a>
-            </li>
-            <li class="socials__item">
-              <a class="socials__link socials__link--filled" href="#">
-                <svg
-                  class="socials__icon"
-                  width="102"
-                  height="102"
-                  aria-hidden="true"
-                >
-                  <use
-                    xlink:href="../assets/header-sprite.svg#icon-instagram"
-                  ></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
+          <tablet-socials
+            @to-instagram="toInstagram"
+          ></tablet-socials>
         </div>
       </div>
     </div>
@@ -108,9 +84,295 @@ const isSearch = ref(false)
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_socials.scss";
-@import "@/scss/blocks/_header.scss";
-* {
-  font-family: $ff-gilroy;
+.header {
+  padding: 22px 0;
+  margin: 0;
+  position: fixed;
+  z-index: 3;
+  background: transparent;
+  width: 100%;
+  font-family: $ff-gilroy sans-serif;
+
+  @include vp-laptop {
+    padding: 20px 0 13px;
+  }
+
+  @include vp-tablet {
+    padding: 20px 0 21px;
+    box-shadow: 0px 5px 20px 0px rgba(157, 157, 157, 0.25);
+    background-color: $color-white;
+  }
+
+  @include vp-mobile {
+    padding: 9px 0 11px;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  &__burger {
+    display: none;
+    color: $color-black;
+
+    @include vp-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  &__logo-img {
+    width: 260px;
+    height: 116px;
+
+    @include vp-laptop {
+      width: 179px;
+      height: 80px;
+    }
+
+    @include vp-tablet {
+      width: 225px;
+      height: 102px;
+    }
+
+    @include vp-mobile {
+      width: 110px;
+      height: 50px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    padding-top: 4px;
+    color: $color-black;
+
+    @include vp-tablet {
+      display: none;
+    }
+  }
+
+  &__search {
+    position: absolute;
+    left: 280px;
+    right: 140px;
+    top: calc(50% - 4px);
+    transform: translateY(-50%);
+    display: none;
+    max-width: 1240px;
+
+    @include vp-laptop {
+      max-width: 880px;
+      left: 201px;
+      right: 99px;
+      top: 50%;
+    }
+
+    @include vp-tablet {
+      max-width: 580px;
+      left: 0;
+      right: 0;
+      top: 40px;
+      transform: unset;
+    }
+
+    @include vp-mobile {
+      max-width: 270px;
+      top: 21px;
+    }
+  }
+
+  &__users-list {
+    margin: 0 0 10px 58px;
+
+    @include vp-laptop {
+      margin: 0 0 0 35px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 10px 6px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 3px 46px;
+    }
+  }
+
+  &__contacts {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    gap: 79px;
+
+    @include vp-tablet {
+      display: flex;
+    }
+
+    @include vp-mobile {
+      gap: 39px;
+    }
+  }
+
+  &__email {
+    display: block;
+    font-family: $ff-gilroy;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.3;
+    color: $color-raising-black;
+    padding: 0;
+
+    @include vp-mobile {
+      font-size: 16px;
+    }
+
+    &:hover {
+      color: $color-ucla-gold;
+    }
+  }
+
+  .header__menu-close {
+    display: none;
+    position: absolute;
+    top: 28px;
+    right: 24px;
+
+    @include vp-mobile {
+      top: 13px;
+      right: 12px;
+    }
+  }
+
+  .header__menu-contacts {
+    display: none;
+    align-self: center;
+    flex-direction: column;
+    gap: 182px;
+
+    @include vp-mobile {
+      gap: 90px;
+    }
+  }
 }
+
+.header--search {
+  box-shadow: 0px 5px 20px 0px rgba(157, 157, 157, 0.25);
+  background-color: $color-white;
+
+  @include vp-tablet {
+    height: 100%;
+  }
+
+  .header__burger {
+    display: none;
+  }
+
+  .header__logo-link {
+    @include vp-tablet {
+      display: none;
+    }
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__users-list {
+    @include vp-tablet {
+      display: none;
+    }
+  }
+
+  .header__search {
+    display: flex;
+  }
+}
+
+.header--menu {
+  height: 100%;
+  padding: 30px 0 0;
+  background-color: $color-white;
+
+  @include vp-mobile {
+    padding: 16px 0 0;
+  }
+
+  .header__wrapper {
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  .header__logo-img {
+    width: 220px;
+    height: 100px;
+
+    @include vp-mobile {
+      width: 110px;
+      height: 50px;
+    }
+  }
+
+  .header__logo-link {
+    margin-bottom: 171px;
+
+    @include vp-mobile {
+      margin-bottom: 80px;
+    }
+  }
+
+  .header__nav {
+    display: flex;
+    margin-bottom: 75px;  
+    
+
+    @include vp-mobile {
+      margin-bottom: 36px;
+    }
+  }
+
+  .header__burger,
+  .header__search {
+    display: none;
+  }
+
+  .header__users-list {  
+    margin: 100px 0 190px;
+    
+    @include vp-mobile {
+      margin: 70px 0 120px;
+    }
+  }
+
+  .header__menu-close {
+    display: flex;
+  }
+
+  .header__menu-contacts {
+    display: flex;
+  }
+}
+
+.header--background {
+  box-shadow: 0px 5px 20px 0px rgba(157, 157, 157, 0.25);
+  background-color: $color-white;
+
+  .header__nav {
+    margin: 0;
+  }
+
+}
+
 </style>

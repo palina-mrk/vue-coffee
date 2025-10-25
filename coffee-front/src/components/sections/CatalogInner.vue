@@ -1,9 +1,9 @@
 <script setup>
-import ProductCard from '../components/cards/ProductCard.vue';
-import { useCoffeeStore } from '../stores/coffee';
-const catalogStore = useCoffeeStore();
+import ProductCard from '../cards/ProductCard.vue';
+import { useCatalogStore } from '../../stores/catalog';
+const catalogStore = useCatalogStore();
 import { storeToRefs } from "pinia";
-const { catalog, coffees, teas, isLoaded } = storeToRefs(catalogStore);
+const { coffees, teas, isLoaded } = storeToRefs(catalogStore);
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 const route = useRoute();
@@ -11,9 +11,9 @@ const route = useRoute();
 const cardsCount = ref(12);
 const maxCount = computed(() => {
   switch(route.name) {
-    case 'catalog-coffee':
+    case 'coffee':
       return coffees.length;
-    case 'catalog-tea':
+    case 'tea':
       return teas.length;
     default:
       return 0;
@@ -37,7 +37,7 @@ function showMore() {
 
         <ul v-if="isLoaded" class="products__list">
           <li 
-            v-if="route.name == 'catalog-coffee'"
+            v-if="route.name == 'coffee'"
             class="products__item"
             v-for="n in 20">
             <ProductCard :product="coffees[n - 1]"></ProductCard>
@@ -60,11 +60,9 @@ function showMore() {
 </template>
 
 <style lang="scss" scoped>
-* {
-  font-family: $ff-gilroy;
-}
 .products {
   padding: 48px 0 97px;
+  font-family: $ff-gilroy;
 
   @include vp-laptop {
     padding: 37px 0 71px;

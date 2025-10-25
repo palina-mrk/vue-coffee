@@ -4,7 +4,7 @@ const route = useRoute();
 </script>
 
 <template>
-  <template v-if="route.name == 'home'">
+  <template v-if="route.name == 'home' || route.name == 'catalogs'">
     <div class="background__div background__div--footer-wall"></div>
 
     <svg
@@ -113,7 +113,7 @@ const route = useRoute();
 
   </template>
 
-    <template v-else>
+  <template v-else>
     <div class="background__div background__div--catalog-footer-wall"></div>
 
     <svg class="background__svg-vawe background__svg-vawe--catalog-back-footer" width="3720" height="408" aria-hidden="true">

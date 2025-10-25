@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["weightVariants", "defaultValue"]);
+const props = defineProps(["weightVariants", "weightUnit", "defaultValue"]);
 import { ref, defineEmits } from "vue";
 
 const currentValue = ref(props.defaultValue);
@@ -26,7 +26,7 @@ function setValue(newValue) {
       type="button"
       @click="showVariants"
     >
-      <span class="custom-dropdown__chosen-text">{{ currentValue }} г.</span>
+      <span class="custom-dropdown__chosen-text">{{ currentValue }} {{ weightUnit ? weightUnit : 'г' }}.</span>
       <svg
         class="custom-dropdown__icon"
         width="12"

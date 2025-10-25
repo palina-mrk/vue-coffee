@@ -2,41 +2,9 @@
 import CartHeading from "./CartHeading.vue"
 import CartLine from "./CartLine.vue"
 import { useCartStore } from '../../stores/cart';
-import { reactive } from 'vue';
 const cartStore = useCartStore();
-
-const cartItems = reactive([
-    {
-    title: 'Columbia Supremo',
-    category: 'coffee',
-    descripton: 'Мытая, натуральная, смесь',
-    weight: 250,
-    price: 270,
-    count: 1,
-    sale: 27,
-    total: 243,
-  },
-  {
-    title: 'Columbia Supremo',
-    category: 'coffee',
-    descripton: 'Мытая, натуральная, смесь',
-    weight: 250,
-    price: 270,
-    count: 2,
-    sale: 27,
-    total: 243,
-  },
-  {
-    title: 'Columbia Supremo',
-    category: 'coffee',
-    descripton: 'Мытая, натуральная, смесь',
-    weight: 250,
-    price: 270,
-    count: 5,
-    sale: 27,
-    total: 243,
-  }
-])
+import { useCatalogStore } from '../../stores/catalog';
+const catalogStore = useCatalogStore();
 </script>
 
 <template>
@@ -50,11 +18,14 @@ const cartItems = reactive([
         :disabled="!(cartStore.totalCount > 0)"
       >Удалить все</button>
     </div>
-    <ul class="cart-card__products-list">
+    <p style="color: black; font-size: 30px;">{{ cartStore.rawCartItems }}</p>
+    <ul
+    v-if="catalogStore.isLoaded" 
+    class="cart-card__products-list">
       <li class="cart-card__products-item"><cart-heading :sale="10"></cart-heading></li>
       <li 
         class="cart-card__products-item"
-        v-for="item in cartItems" 
+        v-for="item in cartStore.rawCartItems" 
       >
         <cart-line :itemInfo="item"></cart-line> 
       </li>

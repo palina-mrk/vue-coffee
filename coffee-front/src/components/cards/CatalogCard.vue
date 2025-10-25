@@ -30,7 +30,7 @@ const props = defineProps(['page','title'])
     <h3 class="catalog-card__title">{{ title }}</h3>
     <router-link 
       class="catalog-card__button btn btn--size-m"
-      :to="{ name: `catalog-${page}` }"
+      :to="{ name: page }"
       >Купить</router-link
     >
   </div>

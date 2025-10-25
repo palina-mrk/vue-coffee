@@ -19,7 +19,7 @@ const selectedPageVariant = ref('contacts');
 </script>
 
 <template>
-
+  <main>
   <section class="contacts">
     <bg-contacts></bg-contacts>
       
@@ -136,7 +136,7 @@ const selectedPageVariant = ref('contacts');
       </div>
       
     </section>
-
+  </main>
 </template>
 
 <style lang="scss" scoped>
@@ -149,6 +149,7 @@ const selectedPageVariant = ref('contacts');
   font-family: $ff-gilroy sans-serif;
   font-weight: 500;
   overflow: hidden;
+  height: 100%;
 
   @include vp-laptop {
     padding: 140px 0 175px;

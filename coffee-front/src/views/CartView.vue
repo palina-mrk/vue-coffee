@@ -11,8 +11,4 @@ import MainFooter from "./MainFooter.vue";
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_btn.scss";
-* {
-  font-family: $ff-gilroy;
-}
 </style>
