@@ -8,7 +8,7 @@ defineProps(['sale'])
     <span class="product-line__text-item">Наименование товара</span>
     <span class="product-line__text-item">Цена</span>
     <span class="product-line__text-item">Количество</span>
-    <span class="product-line__text-item">Скидка {{ sale ? `(${sale}%)` : ''}}</span>
+    <span class="product-line__text-item">Скидка {{ sale ? `(-${sale}%)` : ''}}</span>
     <span class="product-line__text-item">Итого</span>
   </div>
 </template>

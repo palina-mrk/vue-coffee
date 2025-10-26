@@ -44,7 +44,6 @@ import PromoForm from '../components/subforms/PromoForm.vue';
   width: 100%;
   padding: 202px 0 110px;
   margin: 0;
-  color: $color-raising-black;
   font-family: $ff-gilroy sans-serif;
   font-weight: 500;
   overflow: hidden;

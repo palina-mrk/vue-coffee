@@ -1,54 +1,69 @@
 <script setup>
-import { ref } from 'vue';
-import SliderCorns from '../sliders/SliderCorns.vue'
-defineProps(['maxDegree'])
+import { reactive, ref } from 'vue';
+import DeliveryWay from './DeliveryWay.vue';
+import { useCartStore } from '../../stores/cart';
+const cartStore = useCartStore();
 
-const degrees = ref([])
+const deliveryWays = reactive({
+  'name': 'delivery',
+  'legend': 'Доставка',
+  'labelStrs': cartStore.deliveryLabels,
+  'labelPrices': cartStore.deliveryPrices,
+  'values': cartStore.deliveryValues,
+  'fieldsCount': cartStore.deliveryPrices.length
+})
+
 </script>
 
 <template>
   <div class="form-block">
-    <fieldset class="form-block__group">
-      <legend class="form-block__groupname">Степень обжарки</legend>
-      <!-- у группы чексбоксов д.б. одинаковый name и v-model -->
-      <div 
-        class="custom-checkbox-corns"
-        v-for="degree in maxDegree"
-      >
-        <input 
-          class="custom-checkbox-corns__field visually-hidden" :id="`coffee-roasting-${maxDegree + 1 - degree}`" 
-          type="checkbox" 
-          name="coffee-roasting" 
-          :value="maxDegree + 1 - degree"
-          v-model="degrees"
-          @input="$emit('toggle-value', $event.target.value)"
-          >
-        <label 
-          class="custom-checkbox-corns__label" 
-          :for="`coffee-roasting-${maxDegree + 1 - degree}`">
-          <slider-corns class="slider-corns--label"
-          :count="maxDegree + 1 - degree"
-          ></slider-corns>
-        </label>
+    <div class="form-block__top">
+      <span class="form-block__summary-wrapper">
+        <span class="form-block__summary-text">Итог: {{ cartStore.totalSum + cartStore.deliveryPrice }} ₽</span>
+        <span class="form-block__subsummary-text">Подытог: {{ cartStore.totalSum }} ₽</span>
+        <span class="form-block__subsummary-text">Скидка: {{ cartStore.totalSale ?  cartStore.totalSale : 0}} ₽ {{ cartStore.globalSale ? `(${cartStore.globalSale}%)` : ''}}</span>
+      </span>
+      <div class="form-block__icons-wrapper">
+        <picture>
+          <source media="(max-width: 767px)" srcset="../../images/cart/cart-mastercard-mobile.png">
+          <source media="(max-width: 1348px)" srcset="../../images/cart/cart-mastercard-tablet.png">
+          <source media="(max-width: 1904px)" srcset="../../images/cart/cart-mastercard-laptop.png">
+          <img class="form-block__icon-mastercard" src="../../images/cart/cart-mastercard-desktop.png" width="79" height="51" alt="Логотип карты mastercard">
+        </picture>
+        <picture>
+          <source media="(max-width: 767px)" srcset="../../images/cart/cart-visa-mobile.png">
+          <source media="(max-width: 1348px)" srcset="../../images/cart/cart-visa-tablet.png">
+          <source media="(max-width: 1904px)" srcset="../../images/cart/cart-visa-laptop.png">
+          <img class="form-block__icon-visa" src="../../images/cart/cart-visa-desktop.png" width="66" height="43" alt="Логотип карты visa">
+        </picture>
       </div>
-    </fieldset>
+    </div>
+    <delivery-way 
+    class="form-block__delivery"
+    :inputData="deliveryWays"
+    :selectedValue="cartStore.deliveryValue"
+    @set-value="cartStore.setDeliveryValue($event)"
+    ></delivery-way>
+    <button 
+      class="form-block__button btn-gold" 
+      type="button"
+    >Оплатить заказ</button>
+
+    <span class="form-block__personal-text">Ваши персональные данные будут использоваться для управления доступом к&nbsp;вашей учетной записи и&nbsp;для других целей, описанных в&nbsp;нашем документе политика конфиденциальности.</span>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/catalogs/_custom-checkbox-corns.scss";
-* {
-font-family: $ff-gilroy;
-}
-
 .form-block {
   background-color: $color-white;
   border-radius: 20px;
   box-shadow: 0 0 30px 0 $color-spanish-gray-c95-25;
   position: relative;
-  width: 400px;
-  padding: 45px 92px;
-  height: 526px;
+  width: 680px;
+  padding: 50px 80px 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
   @include vp-laptop {
     box-shadow: 0 0 21px 0 $color-spanish-gray-c95-25;
@@ -72,91 +87,96 @@ font-family: $ff-gilroy;
     height: 303px;
   }
 
-  &::before {
-    content: "";
-    background-color: $color-ucla-gold;
-    border-radius: 10px;
-    width: 15px;
-    position: absolute;
-    left: 30px;
-    top: 43px;
-    bottom: 48px;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
 
-    @include vp-laptop {
-      width: 10px;
-      border-radius: 7px;
-      top: 32px;
-      bottom: 33px;
-      left: 20px;
-    }
+  &__summary-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    margin: 0 0 10px;
+  }
 
-    @include vp-tablet {
-      height: 20px;
-      left: 33px;
-      right: 33px;
-      top: 40px;
-      bottom: unset;
-      width: unset;
-      border-radius: 20px;
-    }
+  &__summary-text {
+    font-family: $ff-gilroy sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 37px;
+    color: $color-raising-black;
+  }
 
-    @include vp-mobile {
-      height: 10px;
-      left: 15px;
-      right: 15px;
-      top: 20px;
-      border-radius: 10px;
-    }
+  &__subsummary-text {
+    font-family: $ff-gilroy sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: $color-sonic-silver;
+  }
+
+  &__icons-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__delivery {
+    margin: 0 0 20px;
+  }
+
+  &__personal-text {
+    font-family: $ff-gilroy sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-sonic-silver;
   }
 }
 
-.form-block__group {
-  border: none;
+
+.btn-gold {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: start;
-  gap: 52px;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  background-color: $color-ucla-gold;
+  font-weight: 600;
+  line-height: 30px;
+  font-size: 25px;
+  font-family: $ff-gilroy sans-serif;
+  border-radius: 5px;
+  border: none;
   margin: 0;
-  padding: 0;
-  width: max-content;
+  padding: 20px;
+  user-select: none;
+  cursor: pointer;
 
   @include vp-laptop {
-    gap: 30px;
-  }
-
-  @include vp-tablet {
-    gap: 40px;
-  }
-
-  @include vp-mobile {
-    gap: 20px;
-  }
-}
-
-.form-block__groupname {
-  font-weight: 700;
-  color: $color-black;
-  font-size: 30px;
-  line-height: 36px;
-  margin: 0 0 44px;
-
-  @include vp-laptop {
-    font-size: 22px;
+    font-size: 21px;
     line-height: 25px;
-    margin: 0 0 35px;
   }
 
   @include vp-tablet {
-    font-size: 32px;
-    line-height: 39px;
-    margin: 0 0 45px;
+    font-size: 25px;
+    line-height: 30px;
   }
 
   @include vp-mobile {
-    font-size: 16px;
-    line-height: 19px;
-    margin: 0 0 24px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &:hover {
+    background-color: $color-mustard-yellow;
+  }
+
+  &[disabled] {
+    border-color: $color-antiflash-white-f0;
+    background-color: $color-lotion;
+    color: $color-antiflash-white-f0;
+    cursor: unset;
   }
 }
 

@@ -61,7 +61,7 @@ function updateValue(object, value) {
 
     <fieldset-words
       v-for="prop in Object.values(fieldsetProps)"
-      :name="prop.name"
+      :name="'coffee-' + prop.name"
       :legend="prop.legend"
       :labels="prop.labels"
       :values="prop.values"

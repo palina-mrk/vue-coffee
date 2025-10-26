@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { computed, reactive, watch } from "vue";
+import { computed, reactive, watch, ref } from "vue";
 import { useCatalogStore } from "./catalog";
 
 export const useCartStore = defineStore("cart", () => {
@@ -18,6 +18,24 @@ export const useCartStore = defineStore("cart", () => {
   ]) /**При покупке на определенную сумму ко всем нескидочным 
   товарам применится скидка на определенное кол-во процентов
   [[сумма1, процент1],[сумма2, процент2]] */
+
+  const deliveryWays = reactive([
+    [390, 'sdek', 'СДЭК - до двери'],
+    [300, 'russian-post', 'Почта России'],
+    [427, 'dpd', 'DPD - курьер, 3 дн'],
+  ]) 
+  const deliveryWay = ref(deliveryWays[0]);
+
+  const deliveryPrices = computed(() => deliveryWays.map(el => el[0]))
+  const deliveryValues = computed(() => deliveryWays.map(el => el[1]))
+  const deliveryLabels = computed(() => deliveryWays.map(el => el[2]))
+  function setDeliveryValue (value) {
+    const way = deliveryWays.find(el => el[1] == value);
+    if(way)
+      deliveryWay.value = way;
+  }
+  const deliveryValue = computed(() => deliveryWay.value[1]);
+  const deliveryPrice = computed(() => deliveryWay.value[0]);
 
   const globalSale = computed(() => 
     globalSales.findLast(s => s[0] <= rawTotalSum.value)[1]
@@ -87,23 +105,14 @@ export const useCartStore = defineStore("cart", () => {
 
   const rawTotalSum = computed(() =>
     rawCartItems.value.reduce((acc,el) => (acc + el.total), 0)
-    //cartRows.reduce((acc,el) => (acc + el[2] * catalog.getPrice(el[0], el[1])), 0)
   );
   const totalSum = computed(() =>
     cartItems.value.reduce((acc,el) => (acc + el.total), 0)
-    //cartRows.reduce((acc,el) => (acc + el[2] * catalog.getPrice(el[0], el[1])), 0)
   );
-
-  /*[id, weight, count]
-  const cartRows = computed(() => 
-    Object.keys(cart).reduce( (acc, id) => 
-      Object.keys(cart[id]).map( 
-        weight => {
-          acc.push([id, weight, cart[id][weight]]);
-          return acc;
-        }
-      ), []))*/
-
+  const totalSale = computed(() =>
+    cartItems.value.reduce((acc,el) => (acc + el.sale), 0)
+  );
+  
   const rawCartItems = computed(() => catalog.isLoaded ? cartRows.reduce((acc, [id, weight, count]) => {
     const item = catalog.getFullInfo(id);
     const {price, priceCrossed} = catalog.getSellInfo(id, weight);
@@ -163,6 +172,14 @@ export const useCartStore = defineStore("cart", () => {
     rawTotalSum,
     cartItems,
     totalSum,
-    globalSale
+    totalSale,
+    globalSale,
+    deliveryValues,
+    deliveryLabels,
+    deliveryPrices,
+    deliveryValue,
+    setDeliveryValue,
+    deliveryValue,
+    deliveryPrice
   };
 });

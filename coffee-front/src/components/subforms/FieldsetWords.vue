@@ -15,14 +15,14 @@ const selectedValues = ref([])
       class="custom-checkbox-words">
       <input 
         class="custom-checkbox-words__field visually-hidden" 
-        :id="`coffee-${name}-${values[index - 1]}`" 
+        :id="`${name}-${values[index - 1]}`" 
         type="checkbox" 
-        :name="`coffee-${name}`" 
+        :name="`${name}`" 
         v-model="selectedValues"
         @input="$emit('toggle-value', $event.target.value)"
         :value="values[index - 1]">
       <label 
-        :for="`coffee-${name}-${values[index - 1]}`" class="custom-checkbox-words__label"
+        :for="`${name}-${values[index - 1]}`" class="custom-checkbox-words__label"
         >{{ labels[index - 1] }}</label>
       </div>
       
