@@ -57,7 +57,9 @@ const deliveryWays = reactive({
 .form-block {
   background-color: $color-white;
   border-radius: 20px;
-  box-shadow: 0 0 30px 0 $color-spanish-gray-c95-25;
+  border-width: 1px;
+  border-color: $color-platinum;
+  box-shadow: 0 0 50px 0 $color-quick-silver-25;
   position: relative;
   width: 680px;
   padding: 50px 80px 23px;
@@ -66,31 +68,34 @@ const deliveryWays = reactive({
   gap: 10px;
 
   @include vp-laptop {
-    box-shadow: 0 0 21px 0 $color-spanish-gray-c95-25;
-    padding: 34px 60px;
-    width: 280px;
+    box-shadow: 0 0 35px 0 $color-spanish-gray-c95-25;
     border-radius: 14px;
-    height: 373px;
+    gap: 7px;
+    padding: 40px 50px 14px;
+    width: 480px;
   }
 
   @include vp-tablet {
-    box-shadow: 0px 0px 61px 0px $color-spanish-gray-c95-25;
-    padding: 109px 44px 65px;
+    box-shadow: 0px 0px 50px 0px $color-spanish-gray-c95-25;
+    border-radius: 10px;
+    gap: 10px;
+    padding: 40px 34px 60px;
     width: 700px;
-    height: 620px;
   }
 
   @include vp-mobile {
-    box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
-    padding: 52px 20px 30px;
+    padding: 30px 18px 35px;
     width: 340px;
-    height: 303px;
   }
 
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: start;
+
+    @include vp-mobile {
+      margin: 0 0 10px;
+    }
   }
 
   &__summary-wrapper {
@@ -98,7 +103,18 @@ const deliveryWays = reactive({
     flex-direction: column;
     align-items: start;
     gap: 10px;
-    margin: 0 0 10px;
+    
+    @include vp-laptop {
+      gap: 7px;
+    }
+
+    @include vp-tablet {
+      gap: 10px;
+    }
+
+    @include vp-mobile {
+      gap: 10px;
+    }
   }
 
   &__summary-text {
@@ -107,6 +123,24 @@ const deliveryWays = reactive({
     font-size: 30px;
     line-height: 37px;
     color: $color-raising-black;
+    margin: 0 0 10px;
+
+    @include vp-laptop {
+      font-size: 22px;
+      line-height: 26px;
+      margin: 0 0 5px;
+    }
+
+    @include vp-tablet {
+      font-size: 30px;
+      line-height: 37px;
+      margin: 0 0 10px;
+    }
+
+    @include vp-mobile {
+      font-size: 20px;
+      line-height: 25px;
+    }
   }
 
   &__subsummary-text {
@@ -115,15 +149,105 @@ const deliveryWays = reactive({
     font-size: 20px;
     line-height: 24px;
     color: $color-sonic-silver;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    @include vp-mobile {
+      font-size: 14px;
+      line-height: 16px;
+    }
   }
 
   &__icons-wrapper {
     display: flex;
     align-items: center;
+    justify-content: end;
+    gap: 8px;
+    position: relative;
+    top: -10px;
+
+    @include vp-laptop {
+      gap: 6px;
+      top: -3px;
+    }
+
+    @include vp-tablet {
+      gap: 13px;
+      top: -4px;
+    }
+
+    @include vp-mobile {
+      gap: 6px;
+      top: -1px;
+      right: -1px;
+    }
+  }
+
+  &__icon-visa,
+  &__icon-mastercard {
+    display: flex;
+    overflow: hidden;
+    object-fit: cover;
+  }
+
+  &__icon-visa {
+    width: 66px;
+    height: 42px;
+
+    @include vp-laptop {
+      width: 53px;
+      height: 35px;
+    }
+
+    @include vp-tablet {
+      width: 63px;
+      height: 41px;
+    }
+
+    @include vp-mobile {
+      width: 53px;
+      height: 35px;
+    }
+  }
+
+  &__icon-mastercard {
+    width: 79px;
+    height: 51px;
+
+    @include vp-laptop {
+      width: 64px;
+      height: 41px;
+    }
+
+    @include vp-tablet {
+      width: 74px;
+      height: 49px;
+    }
+    
+    @include vp-mobile {
+      width: 63px;
+      height: 41px;
+    }
   }
 
   &__delivery {
     margin: 0 0 20px;
+
+    @include vp-laptop {
+      margin: 0 0 14px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 20px;
+    }
   }
 
   &__personal-text {
@@ -132,6 +256,21 @@ const deliveryWays = reactive({
     font-size: 14px;
     line-height: 16px;
     color: $color-sonic-silver;
+
+    @include vp-laptop {
+      font-size: 10px;
+      line-height: 11px;
+    }
+
+    @include vp-tablet {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    @include vp-mobile {
+      font-size: 10px;
+      line-height: 12px;
+    }
   }
 }
 
@@ -154,18 +293,23 @@ const deliveryWays = reactive({
   cursor: pointer;
 
   @include vp-laptop {
-    font-size: 21px;
-    line-height: 25px;
+    font-size: 18px;
+    line-height: 21px;
+    padding: 14px;
+    border-radius: 4px;
   }
 
   @include vp-tablet {
     font-size: 25px;
     line-height: 30px;
+    padding: 20px;
+    border-radius: 5px;
   }
 
   @include vp-mobile {
     font-size: 18px;
     line-height: 22px;
+    padding: 14px;
   }
 
   &:hover {

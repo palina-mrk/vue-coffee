@@ -22,15 +22,15 @@ import PromoForm from '../components/subforms/PromoForm.vue';
         <div class="cart__forms-block">
           <cart-card
             class="cart__form"></cart-card>
-          <delivery-form
-            class="cart__form"></delivery-form>
-        
+            <payment-form
+              class="cart__form"></payment-form>
+          
           <div class="cart__bottom-forms">
             <promo-form
               class="cart__form"></promo-form>
-            <payment-form
-              class="cart__form"></payment-form>
-          </div>
+            <delivery-form
+            class="cart__delivery-form cart__form"></delivery-form>
+        </div>
         </div>
       </div>
     </div>

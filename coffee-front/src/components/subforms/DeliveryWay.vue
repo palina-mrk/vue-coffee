@@ -51,11 +51,11 @@ const selectedValues = reactive([])
   }
 
   @include vp-tablet {
-    gap: 20px;
+    gap: 25px;
   }
 
   @include vp-mobile {
-    gap: 21px;
+    gap: 22px;
   }
 
   &__title,
@@ -88,6 +88,24 @@ const selectedValues = reactive([])
   &__label-price {
     font-weight: 700;
   }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include vp-laptop {
+      gap: 7px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+    }
+
+    @include vp-mobile {
+      gap: 22px;
+    }
+  }
   
   &__item-label {
     display: flex;
@@ -104,7 +122,7 @@ const selectedValues = reactive([])
     }
 
     @include vp-tablet {
-      padding: 0 0 0 20px;
+      padding: 0 0 0 30px;
       gap: 3px;
     }
 
