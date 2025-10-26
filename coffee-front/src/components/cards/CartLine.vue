@@ -348,6 +348,7 @@ const cartStore = useCartStore();
       display: flex;
       justify-content: end;
       gap: 5px;
+      flex-wrap: wrap;
     }
   }
 
@@ -359,6 +360,8 @@ const cartStore = useCartStore();
       color: $color-light-silver;
       text-align: right;
       position: relative;
+      width: fit-content;
+      align-self: flex-end;
 
       @include vp-mobile {
         font-size: 12px;

@@ -1,163 +1,182 @@
 <script setup>
-import { ref } from 'vue';
-import SliderCorns from '../sliders/SliderCorns.vue'
-defineProps(['maxDegree'])
+import CustomPromo from '../inputs/CustomPromo.vue';
+import {reactive, ref} from 'vue'
 
-const degrees = ref([])
+const promoData = reactive({
+  id: 'promo',
+  name: 'promo',
+  placeholder: 'Введите промокод',
+  accept: 'Скидка -15% по промокоду “coffee2021”',
+  error: 'Срок действия промокода истёк',
+})
+const promoValue = ref('')
 </script>
 
 <template>
-  <div class="form-block">
-    <fieldset class="form-block__group">
-      <legend class="form-block__groupname">Степень обжарки</legend>
-      <!-- у группы чексбоксов д.б. одинаковый name и v-model -->
-      <div 
-        class="custom-checkbox-corns"
-        v-for="degree in maxDegree"
-      >
-        <input 
-          class="custom-checkbox-corns__field visually-hidden" :id="`coffee-roasting-${maxDegree + 1 - degree}`" 
-          type="checkbox" 
-          name="coffee-roasting" 
-          :value="maxDegree + 1 - degree"
-          v-model="degrees"
-          @input="$emit('toggle-value', $event.target.value)"
-          >
-        <label 
-          class="custom-checkbox-corns__label" 
-          :for="`coffee-roasting-${maxDegree + 1 - degree}`">
-          <slider-corns class="slider-corns--label"
-          :count="maxDegree + 1 - degree"
-          ></slider-corns>
-        </label>
-      </div>
-    </fieldset>
+  <div class="promo-form">
+    <h2 class="promo-form__title">Промокод</h2>
+    <p class="promo-form__text">Введите подарочный промокод в&nbsp;поле ниже и&nbsp;получите скидку на&nbsp;заказ до&nbsp;20%. Скидка не&nbsp;распространяется на&nbsp;доставку</p>
+    <custom-promo 
+    class="promo-form__input custom-input--error"
+    v-model="promoValue"
+    :inputData="promoData"
+    @update:modelValue="promoValue = $event"
+    ></custom-promo>
+    <button 
+    class="promo-form__button btn-cornsilk"
+    type="button">Ввести промокод</button>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/catalogs/_custom-checkbox-corns.scss";
-* {
-font-family: $ff-gilroy;
-}
-
-.form-block {
+.promo-form {
   background-color: $color-white;
   border-radius: 20px;
-  box-shadow: 0 0 30px 0 $color-spanish-gray-c95-25;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color-platinum;
+  box-shadow: 0 0 50px 0 $color-quick-silver-25;
   position: relative;
-  width: 400px;
-  padding: 45px 92px;
-  height: 526px;
+  width: 960px;
+  padding: 50px 140px 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 
   @include vp-laptop {
-    box-shadow: 0 0 21px 0 $color-spanish-gray-c95-25;
-    padding: 34px 60px;
-    width: 280px;
+    box-shadow: 0 0 35px 0 $color-spanish-gray-c95-25;
     border-radius: 14px;
-    height: 373px;
+    gap: 20px;
+    padding: 40px 100px 41px;
+    width: 679px;
   }
 
   @include vp-tablet {
-    box-shadow: 0px 0px 61px 0px $color-spanish-gray-c95-25;
-    padding: 109px 44px 65px;
+    box-shadow: 0px 0px 50px 0px $color-spanish-gray-c95-25;
+    border-radius: 10px;
+    padding: 40px 34px 50px;
     width: 700px;
-    height: 620px;
   }
 
   @include vp-mobile {
-    box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
-    padding: 52px 20px 30px;
+    padding: 30px 18px 38px;
     width: 340px;
-    height: 303px;
+    gap: 20px;
   }
 
-  &::before {
-    content: "";
-    background-color: $color-ucla-gold;
-    border-radius: 10px;
-    width: 15px;
-    position: absolute;
-    left: 30px;
-    top: 43px;
-    bottom: 48px;
+  &__title {
+    font-family: $ff-gilroy sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 37px;
+    color: $color-raising-black;
+    margin: 0;
+    padding: 0;
 
     @include vp-laptop {
-      width: 10px;
-      border-radius: 7px;
-      top: 32px;
-      bottom: 33px;
-      left: 20px;
+      font-size: 22px;
+      line-height: 26px;
     }
 
     @include vp-tablet {
-      height: 20px;
-      left: 33px;
-      right: 33px;
-      top: 40px;
-      bottom: unset;
-      width: unset;
-      border-radius: 20px;
+      font-size: 25px;
+      line-height: 31px;
     }
 
     @include vp-mobile {
-      height: 10px;
-      left: 15px;
-      right: 15px;
-      top: 20px;
-      border-radius: 10px;
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+
+  &__text {
+    font-family: $ff-gilroy sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: $color-raising-black;
+    padding: 0;
+    margin: 0 0 10px;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    @include vp-mobile {
+      font-size: 14px;
+      line-height: 18px;
+      margin: 0;
+    }
+  }
+
+  &__input {
+    margin: 0 0 9px;
+
+    @include vp-laptop {
+      margin: 0 0 3px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 -2px;
     }
   }
 }
 
-.form-block__group {
-  border: none;
+.btn-cornsilk {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: start;
-  gap: 52px;
+  align-items: center;
+  justify-content: center;
+  color: $color-ucla-gold;
+  background-color: $color-cornsilk;
+  border-color: $color-ucla-gold;
+  border-style: solid;
+  border-width: 1px;
+  font-weight: 600;
+  line-height: 30px;
+  font-size: 25px;
+  font-family: $ff-gilroy sans-serif;
+  border-radius: 5px;
   margin: 0;
-  padding: 0;
-  width: max-content;
+  padding: 20px 17px 17px;
+  user-select: none;
+  cursor: pointer;
 
   @include vp-laptop {
-    gap: 30px;
+    font-size: 18px;
+    line-height: 21px;
+    padding: 14px;
+    border-radius: 4px;
   }
 
   @include vp-tablet {
-    gap: 40px;
+    font-size: 20px;
+    line-height: 26px;
+    padding: 23px 22px 20px;
+    border-radius: 5px;
   }
 
   @include vp-mobile {
-    gap: 20px;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 14px;
+  }
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-ucla-gold;
+  }
+
+  &[disabled] {
+    border-color: $color-antiflash-white-f0;
+    background-color: $color-lotion;
+    color: $color-antiflash-white-f0;
+    cursor: unset;
   }
 }
-
-.form-block__groupname {
-  font-weight: 700;
-  color: $color-black;
-  font-size: 30px;
-  line-height: 36px;
-  margin: 0 0 44px;
-
-  @include vp-laptop {
-    font-size: 22px;
-    line-height: 25px;
-    margin: 0 0 35px;
-  }
-
-  @include vp-tablet {
-    font-size: 32px;
-    line-height: 39px;
-    margin: 0 0 45px;
-  }
-
-  @include vp-mobile {
-    font-size: 16px;
-    line-height: 19px;
-    margin: 0 0 24px;
-  }
-}
-
 </style>

@@ -25,11 +25,9 @@ const props = defineProps(["modelValue"]);
 </template>
 
 <style lang="scss" scoped>
-* {
-  font-family: $ff-gilroy;
-}
 .custom-counter {
   position: relative;
+  font-family: $ff-gilroy;
 
   &__btn {
     margin: 0;

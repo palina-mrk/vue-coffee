@@ -19,19 +19,19 @@ import PromoForm from '../components/subforms/PromoForm.vue';
         ></custom-breadcrumbs>
         
         <h1 class="visually-hidden">Корзина</h1>
-        <div class="cart__forms-block">
+        <div class="cart__top-forms">
           <cart-card
             class="cart__form"></cart-card>
-            <payment-form
-              class="cart__form"></payment-form>
-          
-          <div class="cart__bottom-forms">
-            <promo-form
-              class="cart__form"></promo-form>
-            <delivery-form
-            class="cart__delivery-form cart__form"></delivery-form>
+          <delivery-form
+            class="cart__form"></delivery-form>
         </div>
+        <div class="cart__bottom-forms">
+          <promo-form
+          class="cart__promo-form"></promo-form>
+          <payment-form
+          class="cart__payment-form cart__form"></payment-form>
         </div>
+    
       </div>
     </div>
   </section>
@@ -61,49 +61,58 @@ import PromoForm from '../components/subforms/PromoForm.vue';
     padding: 95px 0 0;
   }
 
-  &__wrapper {
+  &__top-forms {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 25px;
+    margin: 0 0 25px;
+
+    @include vp-laptop {
+      gap: 20px;
+      margin: 0 0 20px;
+    }
 
     @include vp-tablet {
       gap: 20px;
+      margin: 0 0 30px;
     }
 
     @include vp-mobile {
       gap: 30px;
+      margin: 0 0 20px;
     }
   }
 
   &__breadcrumbs-list {
-    margin: 0 0 21px;
+    margin: 0 0 50px;
 
     @include vp-laptop {
-      margin: 0 0 10px;
+      margin: 0 0 35px;
     }
 
     @include vp-tablet {
-      margin: 0 0 -2px;
+      margin: 0 0 19px;
     }
 
     @include vp-mobile {
-      margin: 0 0 -2px;
+      margin: 0 0 30px;
     }
   }
 
-  &__forms-block {
+  &__bottom-forms {
     width: 100%;
     display: flex;
-    flex-direction: column;
     gap: 20px;
-  }
 
-  &__forms-bottom {
-    width: 100%;
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
+    @include vp-tablet {
+      flex-direction: column;
+      gap: 90px;
+    }
+
+    @include vp-mobile {
+      gap: 20px;
+    }
   }
 }
 

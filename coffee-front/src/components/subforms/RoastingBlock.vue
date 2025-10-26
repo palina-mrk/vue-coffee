@@ -36,12 +36,60 @@ const degrees = ref([])
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/catalogs/_custom-checkbox-corns.scss";
-* {
-font-family: $ff-gilroy;
+.custom-checkbox-corns {
+  &__label {
+    position: relative;
+    padding: 0 0 0 42px;
+    display: block;
+    cursor: pointer;
+
+    @include vp-laptop {
+      padding: 0 0 0 37px;
+    }
+
+    @include vp-tablet {
+      padding: 0 0 0 102px;
+    }
+
+    @include vp-mobile {
+      padding: 0 0 0 50px;
+    }
+
+    &::before {
+      content: "";
+      background-color: $color-platinum;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @include vp-laptop {
+        width: 17px;
+        height: 17px;
+      }
+
+      @include vp-tablet {
+        width: 40px;
+        height: 40px;
+      }
+
+      @include vp-mobile {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  &__field:checked ~ .custom-checkbox-corns__label::before {
+    background-color: $color-ucla-gold;
+  }
 }
 
 .form-block {
+  font-family: $ff-gilroy;
   background-color: $color-white;
   border-radius: 20px;
   box-shadow: 0 0 30px 0 $color-spanish-gray-c95-25;

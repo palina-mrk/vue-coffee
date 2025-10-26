@@ -65,7 +65,7 @@ const catalogStore = useCatalogStore();
   }
 
   @include vp-tablet {
-    padding: 50px 34px 28px;
+    padding: 47px 34px;
     box-shadow: 0px 0px 20px 0px $color-quick-silver-25;
     width: 700px;
     min-height: 137px;
@@ -88,7 +88,7 @@ const catalogStore = useCatalogStore();
     align-items: center;
     justify-content: space-between;
     padding: 0;
-    margin: 0 0 64px;
+    margin: 0 0 60px;
     width: 100%;
 
     @include vp-laptop {
@@ -158,10 +158,10 @@ const catalogStore = useCatalogStore();
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 25px;
 
     @include vp-laptop {
-      gap: 18px;
+      gap: 15px;
     }
 
     @include vp-tablet {

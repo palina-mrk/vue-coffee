@@ -135,28 +135,33 @@ const isHomePage = computed(() => route.name == 'home');
     background-color: $color-ucla-gold;
     border: 1px solid $color-cultured;
     display: flex;
-    align-items: end;
+    align-items: center;
     justify-content: center;
     font-size: 18px;
-    line-height: 21px;
+    line-height: 1;
     font-weight: 700;
     border-radius: 50%;
     width: 30px;
     height: 30px;
     left: 100%;
     bottom: 80%;
+    padding: 3px 0 0;
     transform: translate(-50%, 50%);
     pointer-events: none;
 
     @include vp-laptop {
-      width: 21px;
-      height: 21px;
-      font-size: 13px;
-      line-height: 17px;
+      width: 22px;
+      height: 22px;
+      font-size: 15px;
+      padding: 4px 0 0;
+      bottom: 85%;
     }
 
     @include vp-tablet {
       color: $color-raising-black;
+      width: 28px;
+      height: 28px;
+      font-size: 18px;
       border: none;
     }
 
@@ -164,7 +169,6 @@ const isHomePage = computed(() => route.name == 'home');
       width: 21px;
       height: 21px;
       font-size: 13px;
-      line-height: 17px;
     }
   }
   
