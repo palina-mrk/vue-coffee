@@ -1,45 +1,45 @@
 <script setup>
-import BgCatalog from '../backgrounds/BgCatalog.vue';
-import FilterCoffee from '../forms/FilterCoffee.vue';
-import FilterTea from '../forms/FilterTea.vue';
-import FilterHealthy from '../forms/FilterHealthy.vue';
-import FilterVending from '../forms/FilterVending.vue';
-import CustomBreadcrumbs from '../navigation/CustomBreadcrumbs.vue';
-import { useRoute } from 'vue-router';
+import BgCatalog from "../backgrounds/BgCatalog.vue";
+import FilterCoffee from "../forms/FilterCoffee.vue";
+import FilterTea from "../forms/FilterTea.vue";
+import FilterHealthy from "../forms/FilterHealthy.vue";
+import FilterVending from "../forms/FilterVending.vue";
+import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
+import { useRoute } from "vue-router";
 const route = useRoute();
-
 </script>
 
 <template>
-
   <section :class="['hero', `hero--${route.name}`]">
     <bg-catalog></bg-catalog>
-    
+
     <div class="container">
       <div class="hero__wrapper">
-
         <custom-breadcrumbs
           class="hero__breadcrumbs-list breadcrumbs--white"
         ></custom-breadcrumbs>
 
         <h2 class="hero__title">{{ route.meta.title }}</h2>
-        
+
         <filter-coffee
-          v-if="route.name == 'coffee'" 
-          class="hero__form"></filter-coffee>
+          v-if="route.name == 'coffee'"
+          class="hero__form"
+        ></filter-coffee>
         <filter-tea
-          v-else-if="route.name == 'tea'" 
-          class="hero__form"></filter-tea>
+          v-else-if="route.name == 'tea'"
+          class="hero__form"
+        ></filter-tea>
         <filter-vending
-          v-else-if="route.name == 'vending'" 
-          class="hero__form"></filter-vending>
+          v-else-if="route.name == 'vending'"
+          class="hero__form"
+        ></filter-vending>
         <filter-healthy
-          v-else-if="route.name == 'healthy'" 
-          class="hero__form"></filter-healthy>
+          v-else-if="route.name == 'healthy'"
+          class="hero__form"
+        ></filter-healthy>
       </div>
     </div>
   </section>
-
 </template>
 
 <style lang="scss" scoped>
@@ -84,7 +84,7 @@ const route = useRoute();
       gap: 20px;
     }
   }
-  
+
   &__title {
     padding: 0;
     max-width: 960px;
@@ -117,7 +117,6 @@ const route = useRoute();
 
 .hero--tea {
   .hero__wrapper {
-
   }
 
   .hero__title {
@@ -134,5 +133,4 @@ const route = useRoute();
     }
   }
 }
-
 </style>

@@ -1,55 +1,94 @@
 <script setup>
-import { reactive } from 'vue';
-import PaymentWay from './PaymentWay.vue';
-import { useCartStore } from '../../stores/cart';
+import { reactive } from "vue";
+import PaymentWay from "./PaymentWay.vue";
+import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
 
 const deliveryWays = reactive({
-  'name': 'delivery',
-  'legend': 'Доставка',
-  'labelStrs': cartStore.deliveryLabels,
-  'labelPrices': cartStore.deliveryPrices,
-  'values': cartStore.deliveryValues,
-  'fieldsCount': cartStore.deliveryPrices.length
-})
-
+  name: "delivery",
+  legend: "Доставка",
+  labelStrs: cartStore.deliveryLabels,
+  labelPrices: cartStore.deliveryPrices,
+  values: cartStore.deliveryValues,
+  fieldsCount: cartStore.deliveryPrices.length,
+});
 </script>
 
 <template>
   <div class="form-block">
     <div class="form-block__top">
       <span class="form-block__summary-wrapper">
-        <span class="form-block__summary-text">Итог: {{ cartStore.totalSum + cartStore.deliveryPrice }} ₽</span>
-        <span class="form-block__subsummary-text">Подытог: {{ cartStore.totalSum }} ₽</span>
-        <span class="form-block__subsummary-text">Скидка: {{ cartStore.totalSale ?  cartStore.totalSale : 0}} ₽ {{ cartStore.globalSale ? `(${cartStore.globalSale}%)` : ''}}</span>
+        <span class="form-block__summary-text"
+          >Итог: {{ cartStore.totalSum + cartStore.deliveryPrice }} ₽</span
+        >
+        <span class="form-block__subsummary-text"
+          >Подытог: {{ cartStore.totalSum }} ₽</span
+        >
+        <span class="form-block__subsummary-text"
+          >Скидка: {{ cartStore.totalSale ? cartStore.totalSale : 0 }} ₽
+          {{ cartStore.globalSale ? `(${cartStore.globalSale}%)` : "" }}</span
+        >
       </span>
       <div class="form-block__icons-wrapper">
         <picture>
-          <source media="(max-width: 767px)" srcset="../../images/cart/cart-mastercard-mobile.png">
-          <source media="(max-width: 1348px)" srcset="../../images/cart/cart-mastercard-tablet.png">
-          <source media="(max-width: 1904px)" srcset="../../images/cart/cart-mastercard-laptop.png">
-          <img class="form-block__icon-mastercard" src="../../images/cart/cart-mastercard-desktop.png" width="79" height="51" alt="Логотип карты mastercard">
+          <source
+            media="(max-width: 767px)"
+            srcset="../../images/cart/cart-mastercard-mobile.png"
+          />
+          <source
+            media="(max-width: 1348px)"
+            srcset="../../images/cart/cart-mastercard-tablet.png"
+          />
+          <source
+            media="(max-width: 1904px)"
+            srcset="../../images/cart/cart-mastercard-laptop.png"
+          />
+          <img
+            class="form-block__icon-mastercard"
+            src="../../images/cart/cart-mastercard-desktop.png"
+            width="79"
+            height="51"
+            alt="Логотип карты mastercard"
+          />
         </picture>
         <picture>
-          <source media="(max-width: 767px)" srcset="../../images/cart/cart-visa-mobile.png">
-          <source media="(max-width: 1348px)" srcset="../../images/cart/cart-visa-tablet.png">
-          <source media="(max-width: 1904px)" srcset="../../images/cart/cart-visa-laptop.png">
-          <img class="form-block__icon-visa" src="../../images/cart/cart-visa-desktop.png" width="66" height="43" alt="Логотип карты visa">
+          <source
+            media="(max-width: 767px)"
+            srcset="../../images/cart/cart-visa-mobile.png"
+          />
+          <source
+            media="(max-width: 1348px)"
+            srcset="../../images/cart/cart-visa-tablet.png"
+          />
+          <source
+            media="(max-width: 1904px)"
+            srcset="../../images/cart/cart-visa-laptop.png"
+          />
+          <img
+            class="form-block__icon-visa"
+            src="../../images/cart/cart-visa-desktop.png"
+            width="66"
+            height="43"
+            alt="Логотип карты visa"
+          />
         </picture>
       </div>
     </div>
-    <payment-way 
-    class="form-block__delivery"
-    :inputData="deliveryWays"
-    :selectedValue="cartStore.deliveryValue"
-    @set-value="cartStore.setDeliveryValue($event)"
+    <payment-way
+      class="form-block__delivery"
+      :inputData="deliveryWays"
+      :selectedValue="cartStore.deliveryValue"
+      @set-value="cartStore.setDeliveryValue($event)"
     ></payment-way>
-    <button 
-      class="form-block__button btn-gold" 
-      type="button"
-    >Оплатить заказ</button>
+    <button class="form-block__button btn-gold" type="button">
+      Оплатить заказ
+    </button>
 
-    <span class="form-block__personal-text">Ваши персональные данные будут использоваться для управления доступом к&nbsp;вашей учетной записи и&nbsp;для других целей, описанных в&nbsp;нашем документе политика конфиденциальности.</span>
+    <span class="form-block__personal-text"
+      >Ваши персональные данные будут использоваться для управления доступом
+      к&nbsp;вашей учетной записи и&nbsp;для других целей, описанных
+      в&nbsp;нашем документе политика конфиденциальности.</span
+    >
   </div>
 </template>
 
@@ -104,7 +143,7 @@ const deliveryWays = reactive({
     flex-direction: column;
     align-items: start;
     gap: 10px;
-    
+
     @include vp-laptop {
       gap: 7px;
     }
@@ -233,7 +272,7 @@ const deliveryWays = reactive({
       width: 74px;
       height: 49px;
     }
-    
+
     @include vp-mobile {
       width: 63px;
       height: 41px;
@@ -275,7 +314,6 @@ const deliveryWays = reactive({
     }
   }
 }
-
 
 .btn-gold {
   display: flex;
@@ -326,5 +364,4 @@ const deliveryWays = reactive({
     cursor: unset;
   }
 }
-
 </style>

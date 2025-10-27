@@ -4,31 +4,18 @@
   <ul class="socials">
     <li class="socials__item">
       <a class="socials__link" href="tel:+74012375343">
-        <svg
-          class="socials__icon"
-          width="53"
-          height="53"
-          aria-hidden="true"
-        >
-          <use
-            xlink:href="../../assets/header-sprite.svg#icon-phone"
-          ></use>
+        <svg class="socials__icon" width="53" height="53" aria-hidden="true">
+          <use xlink:href="../../assets/header-sprite.svg#icon-phone"></use>
         </svg>
       </a>
     </li>
     <li class="socials__item">
-      <a class="socials__link socials__link--filled"
+      <a
+        class="socials__link socials__link--filled"
         @click.prevent="$emit('to-instagram')"
       >
-        <svg
-          class="socials__icon"
-          width="102"
-          height="102"
-          aria-hidden="true"
-        >
-          <use
-            xlink:href="../../assets/header-sprite.svg#icon-instagram"
-          ></use>
+        <svg class="socials__icon" width="102" height="102" aria-hidden="true">
+          <use xlink:href="../../assets/header-sprite.svg#icon-instagram"></use>
         </svg>
       </a>
     </li>

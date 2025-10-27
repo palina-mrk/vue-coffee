@@ -1,44 +1,76 @@
 <script setup>
-import { reactive } from 'vue';
-import FieldsetWords from './FieldsetWords.vue';
+import { reactive } from "vue";
+import FieldsetWords from "./FieldsetWords.vue";
 
 const fieldsetProps = reactive({
-  'geography': {
-    'name': 'geography',
-    'legend': 'География',
-    'labels': ['Африка', 'Йемен', 'Уганда','Эфиопия','Азия','Центр. Америка','Лат. Америка'],
-    'values': ['afrca','yemen','uganda','ethiopia','asia','center-america','latin-america'],
-    'fieldsCount': 7
+  geography: {
+    name: "geography",
+    legend: "География",
+    labels: [
+      "Африка",
+      "Йемен",
+      "Уганда",
+      "Эфиопия",
+      "Азия",
+      "Центр. Америка",
+      "Лат. Америка",
+    ],
+    values: [
+      "afrca",
+      "yemen",
+      "uganda",
+      "ethiopia",
+      "asia",
+      "center-america",
+      "latin-america",
+    ],
+    fieldsCount: 7,
   },
-  'acidity':{
-    'name': 'acidity',
-    'legend': 'Кислинка',
-    'labels': ['Низкая', 'Средняя', 'Высокая'],
-    'values': ['low','middle','high'],
-    'fieldsCount': 3
+  acidity: {
+    name: "acidity",
+    legend: "Кислинка",
+    labels: ["Низкая", "Средняя", "Высокая"],
+    values: ["low", "middle", "high"],
+    fieldsCount: 3,
   },
-  'processing':{
-    'name': 'processing',
-    'legend': 'Способ обработки',
-    'labels': ['Сухая', 'Мытая', 'Прочие'],
-    'values': ['dry','washed','others'],
-    'fieldsCount': 3
+  processing: {
+    name: "processing",
+    legend: "Способ обработки",
+    labels: ["Сухая", "Мытая", "Прочие"],
+    values: ["dry", "washed", "others"],
+    fieldsCount: 3,
   },
-  'actions': {
-    'name': 'actions',
-    'legend': 'Особые',
-    'labels': ['Популярное', 'Новый урожай', 'Ваш выбор','Микролот','Сорт недели','Скидки','Новинка'],
-    'values': ['popular','new-harvest','your-choise','microlot','weekly-variety','sales','new-product'],
-    'fieldsCount': 7
+  actions: {
+    name: "actions",
+    legend: "Особые",
+    labels: [
+      "Популярное",
+      "Новый урожай",
+      "Ваш выбор",
+      "Микролот",
+      "Сорт недели",
+      "Скидки",
+      "Новинка",
+    ],
+    values: [
+      "popular",
+      "new-harvest",
+      "your-choise",
+      "microlot",
+      "weekly-variety",
+      "sales",
+      "new-product",
+    ],
+    fieldsCount: 7,
   },
-  'kind': {
-    'name': 'kind',
-    'legend': 'Вид кофе',
-    'labels': ['Арабика', 'Робуста', 'Смесь арабик','Смесь арабика/робуста'],
-    'values': ['arabica','robusta','arabica-blend','arabica-robusta-blend'],
-    'fieldsCount': 4
+  kind: {
+    name: "kind",
+    legend: "Вид кофе",
+    labels: ["Арабика", "Робуста", "Смесь арабик", "Смесь арабика/робуста"],
+    values: ["arabica", "robusta", "arabica-blend", "arabica-robusta-blend"],
+    fieldsCount: 4,
   },
-})
+});
 
 /*const selectedValues = reactive({
   'geography': {},
@@ -58,7 +90,6 @@ function updateValue(object, value) {
 
 <template>
   <div class="form-block">
-
     <fieldset-words
       v-for="prop in Object.values(fieldsetProps)"
       :name="'coffee-' + prop.name"
@@ -66,17 +97,16 @@ function updateValue(object, value) {
       :labels="prop.labels"
       :values="prop.values"
       :fieldsCount="prop.fieldsCount"
-      @toggle-value="$emit('toggle-value',{'name': prop.name, 'value': $event})"
+      @toggle-value="$emit('toggle-value', { name: prop.name, value: $event })"
       class="form-block__group"
     ></fieldset-words>
   </div>
-
 </template>
 
 <style lang="scss" scoped>
 @import "@/scss/blocks/catalogs/_custom-checkbox-corns.scss";
 * {
-font-family: $ff-gilroy;
+  font-family: $ff-gilroy;
 }
 /*@toggle-value="updateValue(selectedValues[prop.name], $event)"
       */

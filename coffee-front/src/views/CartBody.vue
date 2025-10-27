@@ -1,41 +1,36 @@
 <script setup>
-import BgCart from '../components/backgrounds/BgCart.vue';
-import CartCard from '../components/cards/CartCard.vue';
-import CustomBreadcrumbs from '../components/navigation/CustomBreadcrumbs.vue';
-import DeliveryForm from '../components/subforms/DeliveryForm.vue';
-import PaymentForm from '../components/subforms/PaymentForm.vue';
-import PromoForm from '../components/subforms/PromoForm.vue';
+import BgCart from "../components/backgrounds/BgCart.vue";
+import CartCard from "../components/cards/CartCard.vue";
+import CustomBreadcrumbs from "../components/navigation/CustomBreadcrumbs.vue";
+import DeliveryForm from "../components/subforms/DeliveryForm.vue";
+import PaymentForm from "../components/subforms/PaymentForm.vue";
+import PromoForm from "../components/subforms/PromoForm.vue";
 </script>
 
 <template>
-<main>
-  <section class="cart">
-    <bg-cart></bg-cart>
-    
-    <div class="container">
-      <div class="cart__wrapper">
-        <custom-breadcrumbs
-          class="cart__breadcrumbs-list"
-        ></custom-breadcrumbs>
-        
-        <h1 class="visually-hidden">Корзина</h1>
-        <div class="cart__top-forms">
-          <cart-card
-            class="cart__form"></cart-card>
-          <delivery-form
-            class="cart__form"></delivery-form>
+  <main>
+    <section class="cart">
+      <bg-cart></bg-cart>
+
+      <div class="container">
+        <div class="cart__wrapper">
+          <custom-breadcrumbs
+            class="cart__breadcrumbs-list"
+          ></custom-breadcrumbs>
+
+          <h1 class="visually-hidden">Корзина</h1>
+          <div class="cart__top-forms">
+            <cart-card class="cart__form"></cart-card>
+            <delivery-form class="cart__form"></delivery-form>
+          </div>
+          <div class="cart__bottom-forms">
+            <promo-form class="cart__promo-form"></promo-form>
+            <payment-form class="cart__payment-form cart__form"></payment-form>
+          </div>
         </div>
-        <div class="cart__bottom-forms">
-          <promo-form
-          class="cart__promo-form"></promo-form>
-          <payment-form
-          class="cart__payment-form cart__form"></payment-form>
-        </div>
-    
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 </template>
 
 <style lang="scss" scoped>
@@ -115,5 +110,4 @@ import PromoForm from '../components/subforms/PromoForm.vue';
     }
   }
 }
-
 </style>

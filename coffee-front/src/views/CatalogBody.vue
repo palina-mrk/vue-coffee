@@ -10,5 +10,4 @@ import CatalogInner from "../components/sections/CatalogInner.vue";
   </main>
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

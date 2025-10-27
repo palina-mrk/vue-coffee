@@ -1,23 +1,23 @@
 .users-list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    display: flex;
-    gap: 5px 49px;
-    justify-content: end;
-    align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 5px 49px;
+  justify-content: end;
+  align-items: center;
 
-    @include vp-laptop {
-      gap: 5px 37px;
-    }
+  @include vp-laptop {
+    gap: 5px 37px;
+  }
 
-    @include vp-tablet {
-      gap: 5px 54px;
-    }
+  @include vp-tablet {
+    gap: 5px 54px;
+  }
 
-    @include vp-mobile {
-      gap: 5px 25px;
-    }
+  @include vp-mobile {
+    gap: 5px 25px;
+  }
 
   &__link {
     color: $color-black;

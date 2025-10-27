@@ -1,32 +1,31 @@
 <script setup>
-import CustomPromo from '../inputs/CustomPromo.vue';
-import {reactive, computed} from 'vue'
-import { useCartStore } from '../../stores/cart';
+import CustomPromo from "../inputs/CustomPromo.vue";
+import { reactive, computed } from "vue";
+import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
 
 const promoData = reactive({
-  id: 'promo',
-  name: 'promo',
-  placeholder: 'Введите промокод',
-  error: 'Срок действия промокода истёк',
+  id: "promo",
+  name: "promo",
+  placeholder: "Введите промокод",
+  error: "Срок действия промокода истёк",
   userPromo: computed(() => cartStore.userPromo),
   promoSale: computed(() => cartStore.promoSale),
-})
+});
 
 const userPromo = reactive({
-  str: '',
+  str: "",
   wasAttempt: false,
   isSuccess: false,
 });
 
-function setPromo () {
-  if(userPromo.str.length == 0)
-    return;
+function setPromo() {
+  if (userPromo.str.length == 0) return;
   userPromo.wasAttempt = true;
   userPromo.isSuccess = cartStore.setPromo(userPromo.str);
 }
-function clearInput () {
-  userPromo.str = '';
+function clearInput() {
+  userPromo.str = "";
   userPromo.wasAttempt = false;
   userPromo.isSuccess = false;
 }
@@ -35,18 +34,29 @@ function clearInput () {
 <template>
   <div class="promo-form">
     <h2 class="promo-form__title">Промокод</h2>
-    <p class="promo-form__text">Введите подарочный промокод в&nbsp;поле ниже и&nbsp;получите скидку на&nbsp;заказ до&nbsp;20%. Скидка не&nbsp;распространяется на&nbsp;доставку</p>
-    <custom-promo 
-    :class="{'promo-form__input': true, 'custom-input--accept': userPromo.wasAttempt && userPromo.isSuccess, 'custom-input--error': userPromo.wasAttempt && !userPromo.isSuccess}"
-    v-model="userPromo.str"
-    :inputData="promoData"
-    @update:modelValue="userPromo.str = $event"
-    @click="clearInput"
+    <p class="promo-form__text">
+      Введите подарочный промокод в&nbsp;поле ниже и&nbsp;получите скидку
+      на&nbsp;заказ до&nbsp;20%. Скидка не&nbsp;распространяется
+      на&nbsp;доставку
+    </p>
+    <custom-promo
+      :class="{
+        'promo-form__input': true,
+        'custom-input--accept': userPromo.wasAttempt && userPromo.isSuccess,
+        'custom-input--error': userPromo.wasAttempt && !userPromo.isSuccess,
+      }"
+      v-model="userPromo.str"
+      :inputData="promoData"
+      @update:modelValue="userPromo.str = $event"
+      @click="clearInput"
     ></custom-promo>
-    <button 
-    class="promo-form__button btn-cornsilk"
-    @click="setPromo" 
-    type="button">Ввести промокод</button>
+    <button
+      class="promo-form__button btn-cornsilk"
+      @click="setPromo"
+      type="button"
+    >
+      Ввести промокод
+    </button>
   </div>
 </template>
 

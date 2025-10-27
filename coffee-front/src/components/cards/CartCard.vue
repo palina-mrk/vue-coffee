@@ -1,49 +1,45 @@
 <script setup>
-import CartHeading from "./CartHeading.vue"
-import CartLine from "./CartLine.vue"
-import { useCartStore } from '../../stores/cart';
+import CartHeading from "./CartHeading.vue";
+import CartLine from "./CartLine.vue";
+import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
-import { useCatalogStore } from '../../stores/catalog';
+import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
-
 </script>
 
 <template>
-
   <div class="cart-card">
     <div class="cart-card__top">
-      <p class="cart-card__summary">{{ cartStore.totalCountString }} в корзине</p>
-      <button 
-        @click="cartStore.clearCart()" 
+      <p class="cart-card__summary">
+        {{ cartStore.totalCountString }} в корзине
+      </p>
+      <button
+        @click="cartStore.clearCart()"
         class="cart-card__button btn-cornsilk"
         :disabled="!(cartStore.totalCount > 0)"
-      >Удалить все</button>
+      >
+        Удалить все
+      </button>
     </div>
-    <ul
-    v-if="catalogStore.isLoaded" 
-    class="cart-card__products-list">
-      <li 
+    <ul v-if="catalogStore.isLoaded" class="cart-card__products-list">
+      <li class="cart-card__products-item" v-show="cartStore.totalCount > 0">
+        <cart-heading :sale="cartStore.globalSale"></cart-heading>
+      </li>
+      <li
         class="cart-card__products-item"
-        v-show="cartStore.totalCount > 0"
-        ><cart-heading 
-        :sale="cartStore.globalSale"
-        ></cart-heading></li>
-      <li 
-        class="cart-card__products-item"
-        v-for="item in cartStore.cartItems" 
+        v-for="item in cartStore.cartItems"
         :key="item.id"
       >
-        <cart-line 
-        :itemInfo="item" 
-        :sale="item.sale" 
-        :total="item.total" 
-        :salePercent="item.salePercent"></cart-line> 
+        <cart-line
+          :itemInfo="item"
+          :sale="item.sale"
+          :total="item.total"
+          :salePercent="item.salePercent"
+        ></cart-line>
       </li>
     </ul>
   </div>
-
 </template>
-
 
 <style lang="scss" scoped>
 .cart-card {
@@ -88,7 +84,6 @@ const catalogStore = useCatalogStore();
     min-height: 115px;
     border-radius: 10px;
     border-width: 1px;
-    
   }
 
   &__top {
@@ -189,7 +184,7 @@ const catalogStore = useCatalogStore();
     @include vp-laptop {
       margin: 0 0 -5px;
     }
-    
+
     @include vp-tablet {
       margin: 0;
       display: none;
@@ -211,7 +206,7 @@ const catalogStore = useCatalogStore();
       min-height: unset;
     }
   }
-  
+
   /* рисуем черту между элементами списка для tablet */
   &__products-item:not(:last-child) {
     @include vp-tablet {
@@ -225,9 +220,9 @@ const catalogStore = useCatalogStore();
         width: 100%;
         height: 2px;
         background-color: $color-philippine-silver;
-        bottom: -28px;  
+        bottom: -28px;
       }
-      
+
       @include vp-mobile {
         bottom: -21px;
         height: 1px;

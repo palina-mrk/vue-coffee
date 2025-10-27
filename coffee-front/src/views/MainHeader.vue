@@ -1,25 +1,32 @@
 <script setup>
-import MainNav from '../components/navigation/MainNav.vue';
-import LogoNav from '../components/navigation/LogoNav.vue';
-import CustomSearch from '../components/inputs/CustomSearch.vue';
-import UsersList from '../components/navigation/UsersList.vue';
-import TabletSocials from '../components/littles/TabletSocials.vue'
+import MainNav from "../components/navigation/MainNav.vue";
+import LogoNav from "../components/navigation/LogoNav.vue";
+import CustomSearch from "../components/inputs/CustomSearch.vue";
+import UsersList from "../components/navigation/UsersList.vue";
+import TabletSocials from "../components/littles/TabletSocials.vue";
 
-import { useRoute, useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { useRoute, useRouter } from "vue-router";
+import { ref } from "vue";
 const route = useRoute();
 const router = useRouter();
 
-const isMenu = ref(false)
-const isSearch = ref(false)
-function toInstagram () {
+const isMenu = ref(false);
+const isSearch = ref(false);
+function toInstagram() {
   isMenu.value = false;
-  router.push({name: 'home', hash: '#instagram'})
+  router.push({ name: "home", hash: "#instagram" });
 }
 </script>
 
 <template>
-  <header :class="{'header': true, 'header--background': route.name != 'home', 'header--menu': isMenu, 'header--search': isSearch}">
+  <header
+    :class="{
+      header: true,
+      'header--background': route.name != 'home',
+      'header--menu': isMenu,
+      'header--search': isSearch,
+    }"
+  >
     <div class="container">
       <div class="header__wrapper">
         <div class="header__burger">
@@ -40,19 +47,19 @@ function toInstagram () {
           </button>
         </div>
         <logo-nav class="header__logo-link"></logo-nav>
-        
-        <main-nav 
+
+        <main-nav
           class="header__nav"
-          :class="{'main-nav--vertical' : isMenu}"
+          :class="{ 'main-nav--vertical': isMenu }"
           @leave-page="isMenu = false"
         ></main-nav>
-        
-        <custom-search 
+
+        <custom-search
           class="header__search"
           @close-search="isSearch = false"
         ></custom-search>
-        
-        <users-list 
+
+        <users-list
           class="header__users-list"
           :isSearch="isSearch"
           :isMenu="isMenu"
@@ -65,7 +72,7 @@ function toInstagram () {
           width="40"
           height="40"
           aria-hidden="true"
-          @click = "isMenu = false"
+          @click="isMenu = false"
         >
           <use xlink:href="../assets/header-sprite.svg#icon-close"></use>
         </svg>
@@ -74,9 +81,7 @@ function toInstagram () {
           <a class="header__email" href="mailto:Import@kldrefine.com"
             >Import@kldrefine.com</a
           >
-          <tablet-socials
-            @to-instagram="toInstagram"
-          ></tablet-socials>
+          <tablet-socials @to-instagram="toInstagram"></tablet-socials>
         </div>
       </div>
     </div>
@@ -335,8 +340,7 @@ function toInstagram () {
 
   .header__nav {
     display: flex;
-    margin-bottom: 75px;  
-    
+    margin-bottom: 75px;
 
     @include vp-mobile {
       margin-bottom: 36px;
@@ -348,9 +352,9 @@ function toInstagram () {
     display: none;
   }
 
-  .header__users-list {  
+  .header__users-list {
     margin: 100px 0 190px;
-    
+
     @include vp-mobile {
       margin: 70px 0 120px;
     }
@@ -372,7 +376,5 @@ function toInstagram () {
   .header__nav {
     margin: 0;
   }
-
 }
-
 </style>

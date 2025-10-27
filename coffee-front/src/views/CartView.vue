@@ -10,5 +10,4 @@ import MainFooter from "./MainFooter.vue";
   <MainFooter></MainFooter>
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

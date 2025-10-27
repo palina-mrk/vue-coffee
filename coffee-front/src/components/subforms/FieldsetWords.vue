@@ -1,33 +1,36 @@
 <script setup>
-import { ref } from 'vue';
-const props = defineProps(['name','legend','labels','values','fieldsCount'])
+import { ref } from "vue";
+const props = defineProps([
+  "name",
+  "legend",
+  "labels",
+  "values",
+  "fieldsCount",
+]);
 
-const selectedValues = ref([])
+const selectedValues = ref([]);
 </script>
 
 <template>
-  
   <fieldset class="fieldset">
-
     <legend class="fieldset__name">{{ legend }}</legend>
-    <div
-      v-for="index in fieldsCount" 
-      class="custom-checkbox-words">
-      <input 
-        class="custom-checkbox-words__field visually-hidden" 
-        :id="`${name}-${values[index - 1]}`" 
-        type="checkbox" 
-        :name="`${name}`" 
+    <div v-for="index in fieldsCount" class="custom-checkbox-words">
+      <input
+        class="custom-checkbox-words__field visually-hidden"
+        :id="`${name}-${values[index - 1]}`"
+        type="checkbox"
+        :name="`${name}`"
         v-model="selectedValues"
         @input="$emit('toggle-value', $event.target.value)"
-        :value="values[index - 1]">
-      <label 
-        :for="`${name}-${values[index - 1]}`" class="custom-checkbox-words__label"
-        >{{ labels[index - 1] }}</label>
-      </div>
-      
+        :value="values[index - 1]"
+      />
+      <label
+        :for="`${name}-${values[index - 1]}`"
+        class="custom-checkbox-words__label"
+        >{{ labels[index - 1] }}</label
+      >
+    </div>
   </fieldset>
-
 </template>
 
 <style lang="scss" scoped>
@@ -71,7 +74,7 @@ const selectedValues = ref([])
       left: 0;
       top: 50%;
       transform: translateY(calc(-50% - 1px));
-      
+
       @include vp-laptop {
         width: 17px;
         height: 17px;
@@ -151,5 +154,4 @@ const selectedValues = ref([])
     max-width: 110px;
   }
 }
-
 </style>

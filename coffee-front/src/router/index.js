@@ -1,80 +1,80 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import CatalogView from '../views/CatalogView.vue'
-import CartView from '../views/CartView.vue'
-import ContactsView from '../views/ContactsView.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import CatalogView from "../views/CatalogView.vue";
+import CartView from "../views/CartView.vue";
+import ContactsView from "../views/ContactsView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: "/",
+      name: "home",
       component: HomeView,
       meta: {
-        title: 'Главная',
+        title: "Главная",
       },
     },
     {
-      path: '/catalogs',
-      name: 'catalogs',
+      path: "/catalogs",
+      name: "catalogs",
       component: HomeView,
       meta: {
-        title: 'Каталог товаров',
+        title: "Каталог товаров",
       },
     },
     {
-      path: '/catalogs/coffee',
-      name: 'coffee',
+      path: "/catalogs/coffee",
+      name: "coffee",
       component: CatalogView,
       meta: {
-        title: 'Свежеобжаренный кофе',
+        title: "Свежеобжаренный кофе",
       },
     },
     {
-      path: '/catalogs/tea',
-      name: 'tea',
+      path: "/catalogs/tea",
+      name: "tea",
       component: CatalogView,
       meta: {
-        title: 'Чай и кофейные напитки',
+        title: "Чай и кофейные напитки",
       },
     },
     {
-      path: '/catalogs/vending',
-      name: 'vending',
+      path: "/catalogs/vending",
+      name: "vending",
       component: CatalogView,
       meta: {
-        title: 'Продукция для вендинга',
+        title: "Продукция для вендинга",
       },
     },
     {
-      path: '/catalogs/healthy',
-      name: 'healthy',
+      path: "/catalogs/healthy",
+      name: "healthy",
       component: CatalogView,
       meta: {
-        title: 'Здоровое питание',
+        title: "Здоровое питание",
       },
     },
     {
-      path: '/home',
-      redirect: { name: 'home' },
+      path: "/home",
+      redirect: { name: "home" },
     },
     {
-      path: '/cart',
-      name: 'cart',
+      path: "/cart",
+      name: "cart",
       component: CartView,
       meta: {
-        title: 'Корзина',
+        title: "Корзина",
       },
     },
     {
-      path: '/contacts',
-      name: 'contacts',
+      path: "/contacts",
+      name: "contacts",
       component: ContactsView,
       meta: {
-        title: 'Контакты',
+        title: "Контакты",
       },
-    },/*
+    } /*
     {
       path: '/about',
       name: 'about',
@@ -95,31 +95,31 @@ const router = createRouter({
           props: true,
         },
       ],
-    },*/
+    },*/,
   ],
-  scrollBehavior (to) {
-    if (to.name == 'catalogs') {
+  scrollBehavior(to) {
+    if (to.name == "catalogs") {
       return {
-        el: '#catalogs',
-        top: '180',
-        behavior: 'smooth'
+        el: "#catalogs",
+        top: "180",
+        behavior: "smooth",
       };
     } else if (to.hash) {
       return {
         el: to.hash,
-        top: '100',
-        behavior: 'smooth'
-      };  
+        top: "100",
+        behavior: "smooth",
+      };
     }
-    return { 
+    return {
       top: 0,
-      behavior: 'smooth' 
-    };  
+      behavior: "smooth",
+    };
   },
-})
+});
 /*
 router.beforeEach(async (to, from) => {
   console.log(`going to `, to)
 })*/
 
-export default router
+export default router;

@@ -1,28 +1,26 @@
 <script setup>
-import { useCatalogStore } from '../stores/catalog';
-import { reactive } from 'vue';
+import { useCatalogStore } from "../stores/catalog";
+import { reactive } from "vue";
 const catalogStore = useCatalogStore();
-import ProductCard from '../components/cards/ProductCard.vue';
-import BgHome from '../components/backgrounds/BgHome.vue';
-import SliderLarge from '../components/sliders/SliderLarge.vue';
+import ProductCard from "../components/cards/ProductCard.vue";
+import BgHome from "../components/backgrounds/BgHome.vue";
+import SliderLarge from "../components/sliders/SliderLarge.vue";
 import { storeToRefs } from "pinia";
-import CatalogCard from '../components/cards/CatalogCard.vue';
+import CatalogCard from "../components/cards/CatalogCard.vue";
 
 const { catalog, isLoaded } = storeToRefs(catalogStore);
 const catalogCards = reactive([
-  {page: 'coffee', title: 'Свежеобжаренный кофе'},
-  {page: 'tea', title: 'Чай и кофейные напитки'},
-  {page: 'vending', title: 'Продукция для вендинга'},
-  {page: 'healthy', title: 'Здоровое питание'}
-])
+  { page: "coffee", title: "Свежеобжаренный кофе" },
+  { page: "tea", title: "Чай и кофейные напитки" },
+  { page: "vending", title: "Продукция для вендинга" },
+  { page: "healthy", title: "Здоровое питание" },
+]);
 </script>
 
 <template>
   <main v-if="isLoaded">
     <section class="overview">
-      <bg-home 
-      :section="'overview'"
-      ></bg-home>
+      <bg-home :section="'overview'"></bg-home>
 
       <div class="container">
         <div class="overview__hero-wrapper">
@@ -44,8 +42,8 @@ const catalogCards = reactive([
               >
             </p>
           </div>
-          <router-link 
-            class="overview__hero-button btn btn--size-xl" 
+          <router-link
+            class="overview__hero-button btn btn--size-xl"
             :to="{ name: 'catalogs' }"
             >Посмотреть каталог</router-link
           >
@@ -53,24 +51,25 @@ const catalogCards = reactive([
       </div>
       <div class="container">
         <div class="overview__catalogs-wrapper">
-          <h2 
-            class="overview__catalogs-title" 
-            id="catalogs">
+          <h2 class="overview__catalogs-title" id="catalogs">
             Каталоги нашей продукции
           </h2>
           <ul class="overview__catalogs-list">
             <li
-              v-for="catalogCard in catalogCards" 
-              class="overview__catalogs-item">
-              <CatalogCard 
-              :page="catalogCard.page"
-              :title="catalogCard.title"></CatalogCard>
+              v-for="catalogCard in catalogCards"
+              class="overview__catalogs-item"
+            >
+              <CatalogCard
+                :page="catalogCard.page"
+                :title="catalogCard.title"
+              ></CatalogCard>
             </li>
           </ul>
-          <slider-large 
-          class="overview__catalogs-slider"
-          :count="4" 
-          :selected="1"></slider-large>
+          <slider-large
+            class="overview__catalogs-slider"
+            :count="4"
+            :selected="1"
+          ></slider-large>
         </div>
       </div>
       <div class="container">
@@ -130,9 +129,7 @@ const catalogCards = reactive([
                 height="16"
                 aria-hidden="true"
               >
-                <use
-                  xlink:href="../assets/btn-sprite.svg#arrow-forward"
-                ></use>
+                <use xlink:href="../assets/btn-sprite.svg#arrow-forward"></use>
               </svg>
             </button>
           </div>
@@ -146,10 +143,8 @@ const catalogCards = reactive([
     </section>
 
     <section class="advantages">
-
       <bg-home :section="'advantages'"></bg-home>
 
-      
       <div class="container">
         <div class="advantages__wrapper">
           <div class="advantages__images">
@@ -257,7 +252,6 @@ const catalogCards = reactive([
     </section>
 
     <section class="technology">
-
       <bg-home :section="'technology'"></bg-home>
 
       <div class="container">
@@ -299,10 +293,8 @@ const catalogCards = reactive([
     </section>
 
     <section class="news">
-      
       <bg-home :section="'news'"></bg-home>
 
-      
       <div class="container">
         <div class="news__heading">
           <h2 class="news__title">Новости компании</h2>
@@ -327,9 +319,7 @@ const catalogCards = reactive([
               height="16"
               aria-hidden="true"
             >
-              <use
-                xlink:href="../assets/news-sprite.svg#icon-news-prev"
-              ></use>
+              <use xlink:href="../assets/news-sprite.svg#icon-news-prev"></use>
             </svg>
           </button>
 
@@ -344,9 +334,7 @@ const catalogCards = reactive([
               height="16"
               aria-hidden="true"
             >
-              <use
-                xlink:href="../assets/news-sprite.svg#icon-news-next"
-              ></use>
+              <use xlink:href="../assets/news-sprite.svg#icon-news-next"></use>
             </svg>
           </button>
         </div>
@@ -532,14 +520,13 @@ const catalogCards = reactive([
     </section>
 
     <section class="instagram">
-      
       <bg-home :section="'instagram'"></bg-home>
-      
+
       <div class="container">
         <div class="instagram__title-wrapper">
-          <h2 class="instagram__title"
-            id="instagram"
-          >Мы&nbsp;в&nbsp;Instagram</h2>
+          <h2 class="instagram__title" id="instagram">
+            Мы&nbsp;в&nbsp;Instagram
+          </h2>
           <a
             class="instagram__link socials__link socials__link--filled"
             href="#"

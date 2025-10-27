@@ -26,7 +26,9 @@ function setValue(newValue) {
       type="button"
       @click="showVariants"
     >
-      <span class="custom-dropdown__chosen-text">{{ currentValue }} {{ weightUnit ? weightUnit : 'г' }}.</span>
+      <span class="custom-dropdown__chosen-text"
+        >{{ currentValue }} {{ weightUnit ? weightUnit : "г" }}.</span
+      >
       <svg
         class="custom-dropdown__icon"
         width="12"
@@ -200,5 +202,4 @@ function setValue(newValue) {
     }
   }
 }
-
 </style>

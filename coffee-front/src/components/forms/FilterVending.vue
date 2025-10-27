@@ -1,39 +1,71 @@
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive } from "vue";
 
-const selectedValues = ref([])
-const labels = reactive(['Гранулированный кофе','Гранулированный какао','Гранулированный цикорий','Гранулированные кофейные напитки','Зерновой кофе','Кофе порошкообразный','Сухое молоко гранулированное'])
-const values = reactive(['granulated-coffee', 'granulated-cocoa', 'granulated-chicory', 'granulated-coffee-drinks', 'bean-coffee','powdered-coffee','granulated-milk-powder'])
-const length = ref(7)
+const selectedValues = ref([]);
+const labels = reactive([
+  "Гранулированный кофе",
+  "Гранулированный какао",
+  "Гранулированный цикорий",
+  "Гранулированные кофейные напитки",
+  "Зерновой кофе",
+  "Кофе порошкообразный",
+  "Сухое молоко гранулированное",
+]);
+const values = reactive([
+  "granulated-coffee",
+  "granulated-cocoa",
+  "granulated-chicory",
+  "granulated-coffee-drinks",
+  "bean-coffee",
+  "powdered-coffee",
+  "granulated-milk-powder",
+]);
+const length = ref(7);
 </script>
 
 <template>
   <div class="filter__group">
     <h2 class="filter__groupname visually-hidden">Фильтр чая</h2>
 
-    <div 
-      class="custom-checkbox-card"
-      v-for="i in length"
-    >
-      <input 
-        class="custom-checkbox-card__field visually-hidden" 
-        :id="`vending-filter-${values[i - 1]}`" 
-        type="checkbox" 
-        name="vending-filter" 
+    <div class="custom-checkbox-card" v-for="i in length">
+      <input
+        class="custom-checkbox-card__field visually-hidden"
+        :id="`vending-filter-${values[i - 1]}`"
+        type="checkbox"
+        name="vending-filter"
         :value="`${labels[i - 1]}`"
-        v-model="selectedValues">
-      <label 
-        :for="`vending-filter-${values[i - 1]}`"  class="custom-checkbox-card__label">
+        v-model="selectedValues"
+      />
+      <label
+        :for="`vending-filter-${values[i - 1]}`"
+        class="custom-checkbox-card__label"
+      >
         <picture>
-          <source media="(max-width: 767px)" srcset="../../images/vending-card/vending-product-mobile.png">
-          <source media="(max-width: 1348px)" srcset="../../images/vending-card/vending-product-tablet.png">
-          <source media="(max-width: 1903px)" srcset="../../images/vending-card/vending-product-laptop.png">
-          <img class="custom-checkbox-card__label-img" src="../../images/vending-card/vending-product-desktop.png" width="331" height="175" alt="Карточка вида товара для вендинга">
+          <source
+            media="(max-width: 767px)"
+            srcset="../../images/vending-card/vending-product-mobile.png"
+          />
+          <source
+            media="(max-width: 1348px)"
+            srcset="../../images/vending-card/vending-product-tablet.png"
+          />
+          <source
+            media="(max-width: 1903px)"
+            srcset="../../images/vending-card/vending-product-laptop.png"
+          />
+          <img
+            class="custom-checkbox-card__label-img"
+            src="../../images/vending-card/vending-product-desktop.png"
+            width="331"
+            height="175"
+            alt="Карточка вида товара для вендинга"
+          />
         </picture>
-        <span class="custom-checkbox-card__label-text">{{ labels[i - 1] }}</span>
+        <span class="custom-checkbox-card__label-text">{{
+          labels[i - 1]
+        }}</span>
       </label>
     </div>
-      
   </div>
 </template>
 
@@ -68,7 +100,6 @@ const length = ref(7)
   @include vp-mobile {
     gap: 10px 20px;
   }
-
 }
 
 .custom-checkbox-card {
@@ -179,5 +210,4 @@ const length = ref(7)
     }
   }
 }
-
 </style>

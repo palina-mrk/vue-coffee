@@ -86,9 +86,9 @@
     border: none;
     cursor: pointer;
     color: $color-ucla-gold;
-    
+
     @include vp-laptop {
-      right: 20px;    
+      right: 20px;
     }
 
     @include vp-tablet {
@@ -115,7 +115,7 @@
     display: flex;
     width: 20px;
     height: 20px;
-    
+
     @include vp-tablet {
       width: 15px;
       height: 15px;

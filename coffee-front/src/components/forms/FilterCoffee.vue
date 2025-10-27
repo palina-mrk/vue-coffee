@@ -1,26 +1,24 @@
 <script setup>
-import RoastingBlock from '../subforms/RoastingBlock.vue'
-import DetailsBlock from '../subforms/DetailsBlock.vue'
-import PreparationBlock from '../subforms/PreparationBlock.vue';
-import { useRoute } from 'vue-router';
-import {ref, reactive} from 'vue'
+import RoastingBlock from "../subforms/RoastingBlock.vue";
+import DetailsBlock from "../subforms/DetailsBlock.vue";
+import PreparationBlock from "../subforms/PreparationBlock.vue";
+import { useRoute } from "vue-router";
+import { ref, reactive } from "vue";
 const route = useRoute();
 
-const roastingDegrees = ref({})
+const roastingDegrees = ref({});
 const otherDetails = reactive({
-  'geography': {},
-  'acidity':{},
-  'processing':{},
-  'actions': {},
-  'kind': {},
-})
-const preparationWay = ref('')
+  geography: {},
+  acidity: {},
+  processing: {},
+  actions: {},
+  kind: {},
+});
+const preparationWay = ref("");
 
 function updateValues(object, value) {
-  if(object[value]) 
-    delete object[value];
-  else 
-    object[value] = true;
+  if (object[value]) delete object[value];
+  else object[value] = true;
 }
 </script>
 
@@ -33,15 +31,16 @@ function updateValues(object, value) {
         :maxDegree="5"
         @toggle-value="updateValues(roastingDegrees, $event)"
       ></roasting-block>
-      
+
       <!-- Особые свойства details -->
-      <details-block class="filter-form__words-block"
+      <details-block
+        class="filter-form__words-block"
         @toggle-value="updateValues(otherDetails[$event.name], $event.value)"
       >
       </details-block>
-      
+
       <!-- Способ приготовления -->
-      <preparation-block 
+      <preparation-block
         class="filter-form__cards-group"
         @set-value="preparationWay = $event"
       ></preparation-block>
@@ -51,7 +50,6 @@ function updateValues(object, value) {
       <p>{{ otherDetails }}</p>
 
       <p>{{ roastingDegrees }}</p-->
-
     </div>
   </div>
 </template>

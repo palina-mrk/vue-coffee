@@ -1,42 +1,40 @@
 <script setup>
-import { reactive } from 'vue';
-const props = defineProps(['inputData', 'selectedValue'])
+import { reactive } from "vue";
+const props = defineProps(["inputData", "selectedValue"]);
 
-const selectedValues = reactive([])
+const selectedValues = reactive([]);
 </script>
 
 <template>
-  
   <div class="radio-group">
-
     <p class="radio-group__title">{{ inputData.legend }}:</p>
 
     <div class="radio-group__wrapper">
-      <div 
-        class="radio-group__item"
-        v-for="index in inputData.fieldsCount"
-      >
-        <input 
-          class="radio-group__item-field visually-hidden" 
-          :id="`${inputData.name}-${inputData.values[index - 1]}`" 
-          type="radio" 
-          :name="`${inputData.name}`" 
+      <div class="radio-group__item" v-for="index in inputData.fieldsCount">
+        <input
+          class="radio-group__item-field visually-hidden"
+          :id="`${inputData.name}-${inputData.values[index - 1]}`"
+          type="radio"
+          :name="`${inputData.name}`"
           v-model="selectedValues"
           @input="$emit('set-value', $event.target.value)"
           :value="inputData.values[index - 1]"
           :checked="selectedValue == inputData.values[index - 1]"
-        >
-        <label 
+        />
+        <label
           class="radio-group__item-label"
-          :for="`${inputData.name}-${inputData.values[index - 1]}`" 
+          :for="`${inputData.name}-${inputData.values[index - 1]}`"
+        >
+          <span class="radio-group__label-text">{{
+            inputData.labelStrs[index - 1]
+          }}</span>
+          <span class="radio-group__label-price"
+            >{{ inputData.labelPrices[index - 1] }} ₽</span
           >
-          <span class="radio-group__label-text">{{ inputData.labelStrs[index - 1] }}</span>
-          <span class="radio-group__label-price">{{ inputData.labelPrices[index - 1] }} ₽</span>
         </label>
       </div>
     </div>
   </div>
-
 </template>
 
 <style lang="scss" scoped>
@@ -84,7 +82,7 @@ const selectedValues = reactive([])
       line-height: 16px;
     }
   }
-  
+
   &__label-price {
     font-weight: 700;
   }
@@ -106,7 +104,7 @@ const selectedValues = reactive([])
       gap: 21px;
     }
   }
-  
+
   &__item-label {
     display: flex;
     align-items: center;
@@ -141,7 +139,7 @@ const selectedValues = reactive([])
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      
+
       @include vp-laptop {
         width: 12px;
         height: 12px;
@@ -158,5 +156,4 @@ const selectedValues = reactive([])
     background-color: $color-ucla-gold;
   }
 }
-
 </style>

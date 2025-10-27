@@ -9,18 +9,22 @@ const props = defineProps(["modelValue"]);
       type="button"
       :disabled="modelValue < 2"
       @click="$emit('update:modelValue', modelValue - 1)"
-    >-</button>
-    <input 
-      class="custom-counter__field"
-      type="number" 
-      :value="modelValue"
-      @input="$emit('update:modelValue',$event.target.value)"  
     >
+      -
+    </button>
+    <input
+      class="custom-counter__field"
+      type="number"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
     <button
       class="custom-counter__btn custom-counter__btn--plus"
       type="button"
       @click="$emit('update:modelValue', modelValue + 1)"
-    >+</button>
+    >
+      +
+    </button>
   </div>
 </template>
 
@@ -97,7 +101,6 @@ const props = defineProps(["modelValue"]);
       }
     }
 
-
     &:hover {
       color: $color-ucla-gold;
     }
@@ -157,5 +160,4 @@ const props = defineProps(["modelValue"]);
     }
   }
 }
-
 </style>

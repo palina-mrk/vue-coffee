@@ -1,25 +1,46 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <div class="background__div background__div--cart-top-wall"></div>
 
-  <svg class="background__svg-vawe background__svg-vawe--cart-top" width="3720" height="568" aria-hidden="true">
+  <svg
+    class="background__svg-vawe background__svg-vawe--cart-top"
+    width="3720"
+    height="568"
+    aria-hidden="true"
+  >
     <use xlink:href="../../assets/bg-sprite.svg#bg-cart-top"></use>
   </svg>
 
-  <svg class="background__svg-vawe-for-tablet background__svg-vawe--cart-top" width="1348" height="192" aria-hidden="true">
+  <svg
+    class="background__svg-vawe-for-tablet background__svg-vawe--cart-top"
+    width="1348"
+    height="192"
+    aria-hidden="true"
+  >
     <use xlink:href="../../assets/bg-sprite.svg#bg-cart-top-for-tablet"></use>
   </svg>
 
-  <svg class="background__svg-vawe background__svg-vawe--cart-bottom" width="3720" height="384" aria-hidden="true">
+  <svg
+    class="background__svg-vawe background__svg-vawe--cart-bottom"
+    width="3720"
+    height="384"
+    aria-hidden="true"
+  >
     <use xlink:href="../../assets/bg-sprite.svg#bg-cart-bottom"></use>
   </svg>
 
   <div class="background__div background__div--cart-middle-wall"></div>
 
-  <svg class="background__svg-vawe-for-tablet background__svg-vawe--cart-bottom" width="1348" height="201" aria-hidden="true">
-    <use xlink:href="../../assets/bg-sprite.svg#bg-cart-bottom-for-tablet"></use>
+  <svg
+    class="background__svg-vawe-for-tablet background__svg-vawe--cart-bottom"
+    width="1348"
+    height="201"
+    aria-hidden="true"
+  >
+    <use
+      xlink:href="../../assets/bg-sprite.svg#bg-cart-bottom-for-tablet"
+    ></use>
   </svg>
 </template>
 

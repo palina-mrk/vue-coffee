@@ -1,35 +1,33 @@
 <script setup>
-import BgContacts from '../components/backgrounds/BgContacts.vue';
+import BgContacts from "../components/backgrounds/BgContacts.vue";
 
-import CustomBreadcrumbs from '../components/navigation/CustomBreadcrumbs.vue';
-import CustomToggle from '../components/subforms/CustomToggle.vue';
+import CustomBreadcrumbs from "../components/navigation/CustomBreadcrumbs.vue";
+import CustomToggle from "../components/subforms/CustomToggle.vue";
 
-import {reactive, ref} from 'vue';
-const toggleValues = reactive ([
+import { reactive, ref } from "vue";
+const toggleValues = reactive([
   {
-    label: 'Контакты',
-    value: 'contacts'
+    label: "Контакты",
+    value: "contacts",
   },
   {
-    label: 'Наши магазины',
-    value: 'our-shops'
-  }]
-)
-const selectedPageVariant = ref('contacts');
+    label: "Наши магазины",
+    value: "our-shops",
+  },
+]);
+const selectedPageVariant = ref("contacts");
 </script>
 
 <template>
   <main>
-  <section class="contacts">
-    <bg-contacts></bg-contacts>
-      
+    <section class="contacts">
+      <bg-contacts></bg-contacts>
+
       <div class="container">
         <h1 class="visually-hidden">Контакты</h1>
-        
-        <custom-breadcrumbs
-          class="contacts__breadcrumbs"
-        ></custom-breadcrumbs>
-        
+
+        <custom-breadcrumbs class="contacts__breadcrumbs"></custom-breadcrumbs>
+
         <custom-toggle
           class="contacts__toggle"
           :initialValues="toggleValues"
@@ -39,63 +37,96 @@ const selectedPageVariant = ref('contacts');
         ></custom-toggle>
 
         <div class="contacts__wrapper">
-          
-          <ul
-            v-show="selectedPageVariant == 'contacts'" 
-            class="contacts__list">
+          <ul v-show="selectedPageVariant == 'contacts'" class="contacts__list">
             <li class="contacts__item">
               <p class="contacts__item-title">Связаться с&nbsp;нами:</p>
               <div class="contacts__item-content">
-                <a class="contacts__item-link" href="tel:+74012375343"
-                aria-label="Ссылка на контактный телефон">
+                <a
+                  class="contacts__item-link"
+                  href="tel:+74012375343"
+                  aria-label="Ссылка на контактный телефон"
+                >
                   <span class="contacts__icon-wrapper">
-                    <svg class="contacts__icon-svg" width="13" height="13" aria-hidden="true">
-                      <use xlink:href="../assets/contacts-sprite.svg#icon-phone"></use>
+                    <svg
+                      class="contacts__icon-svg"
+                      width="13"
+                      height="13"
+                      aria-hidden="true"
+                    >
+                      <use
+                        xlink:href="../assets/contacts-sprite.svg#icon-phone"
+                      ></use>
                     </svg>
                   </span>
-                  <span class="contacts__item-line">+7 (401) 237 53&nbsp;43</span>
+                  <span class="contacts__item-line"
+                    >+7 (401) 237 53&nbsp;43</span
+                  >
                 </a>
-                <a class="contacts__item-link" href="mailto:Import@kldrefine.com"
-                aria-label="Ссылка на email">
-                <span class="contacts__icon-wrapper">
-                  <svg class="contacts__icon-svg" width="13" height="10" aria-hidden="true">
-                    <use xlink:href="../assets/contacts-sprite.svg#icon-mail"></use>
-                  </svg>
-                </span>
-                <span class="contacts__item-line">Import@kldrefine.com</span>
+                <a
+                  class="contacts__item-link"
+                  href="mailto:Import@kldrefine.com"
+                  aria-label="Ссылка на email"
+                >
+                  <span class="contacts__icon-wrapper">
+                    <svg
+                      class="contacts__icon-svg"
+                      width="13"
+                      height="10"
+                      aria-hidden="true"
+                    >
+                      <use
+                        xlink:href="../assets/contacts-sprite.svg#icon-mail"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="contacts__item-line">Import@kldrefine.com</span>
                 </a>
               </div>
             </li>
             <li class="contacts__item">
               <p class="contacts__item-title">Юридический адрес:</p>
               <div class="contacts__item-content">
-                <p class="contacts__item-paragraph">Российская Федерация, 238310, Калининградская область, Гурьевский район, поселок Васильково, улица Шатурская, дом&nbsp;4А</p>
+                <p class="contacts__item-paragraph">
+                  Российская Федерация, 238310, Калининградская область,
+                  Гурьевский район, поселок Васильково, улица Шатурская,
+                  дом&nbsp;4А
+                </p>
               </div>
             </li>
             <li class="contacts__item">
               <p class="contacts__item-title">Адрес склада:</p>
               <div class="contacts__item-content">
-                <p class="contacts__item-paragraph">Московская область, Балашиха, Западная промзона, Шоссе энтузиастов&nbsp;1</p>
+                <p class="contacts__item-paragraph">
+                  Московская область, Балашиха, Западная промзона, Шоссе
+                  энтузиастов&nbsp;1
+                </p>
               </div>
             </li>
           </ul>
-          
+
           <ul
-            v-show="selectedPageVariant == 'our-shops'" 
-            class="contacts__list">
+            v-show="selectedPageVariant == 'our-shops'"
+            class="contacts__list"
+          >
             <li class="contacts__item">
-              <p class="contacts__item-title">Наши магазины г.&nbsp;Санкт-Петербург</p>
+              <p class="contacts__item-title">
+                Наши магазины г.&nbsp;Санкт-Петербург
+              </p>
               <ul class="contacts__item-sublist">
                 <li class="contacts__item-line">Гороховая, 53</li>
                 <li class="contacts__item-line">Московский, 53</li>
               </ul>
             </li>
-            
+
             <li class="contacts__item">
-              <p class="contacts__item-title">Наши магазины Калининградская&nbsp;обл.</p>
+              <p class="contacts__item-title">
+                Наши магазины Калининградская&nbsp;обл.
+              </p>
               <ul class="contacts__item-sublist">
                 <li class="contacts__item-line">Советск, Гончарова 2а</li>
-                <li class="contacts__item-line">Черняховск, Пионерская&nbsp;1</li>
+                <li class="contacts__item-line">
+                  Черняховск, Пионерская&nbsp;1
+                </li>
                 <li class="contacts__item-line">Ульяны-Громовой 15</li>
                 <li class="contacts__item-line">Советский проспект 6а</li>
                 <li class="contacts__item-line">Гурьевск, Каштановая 1г</li>
@@ -131,10 +162,8 @@ const selectedPageVariant = ref('contacts');
               />
             </picture>
           </div>
-
         </div>
       </div>
-      
     </section>
   </main>
 </template>
@@ -215,7 +244,6 @@ const selectedPageVariant = ref('contacts');
     }
   }
 
-
   &__list {
     display: flex;
     flex-direction: column;
@@ -265,17 +293,15 @@ const selectedPageVariant = ref('contacts');
     }
   }
 
-
   &__item:nth-last-child(2) {
     @include vp-tablet {
-      order: 2;  
+      order: 2;
     }
 
     @include vp-mobile {
       order: unset;
     }
   }
-
 
   &__item-title {
     margin: 0;
@@ -368,7 +394,7 @@ const selectedPageVariant = ref('contacts');
     align-items: center;
     justify-content: center;
     gap: 10px;
-  
+
     &:hover .contacts__item-line {
       position: relative;
     }
@@ -413,7 +439,7 @@ const selectedPageVariant = ref('contacts');
       border-width: 1px;
       border-style: solid;
       width: 22px;
-      height: 22px;    
+      height: 22px;
     }
   }
 
@@ -454,5 +480,4 @@ const selectedPageVariant = ref('contacts');
     height: 100%;
   }
 }
-
 </style>

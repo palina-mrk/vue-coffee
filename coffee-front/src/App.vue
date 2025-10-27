@@ -1,16 +1,9 @@
 <script setup>
-import { onBeforeMount } from 'vue';
-import { useCatalogStore } from "./stores/catalog";
-
-onBeforeMount(() => {
-  const catalogStore = useCatalogStore();
-  catalogStore.loadCatalog();
-})
+import { onBeforeMount } from "vue";
 </script>
 
 <template>
   <RouterView></RouterView>
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

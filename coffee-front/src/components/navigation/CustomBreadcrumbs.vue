@@ -1,34 +1,29 @@
 <script setup>
-import { computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router';
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
 const router = useRouter();
 
 const routerNames = computed(() => {
-  const arr = route.path.split('/');
-  arr[0] = 'home';
+  const arr = route.path.split("/");
+  arr[0] = "home";
   return arr;
-})
+});
 </script>
 
 <template>
-    <ul 
-      class="breadcrumbs__list"
-    >
-      <li v-for="routerName in routerNames"
-        class="breadcrumbs__item">
-        <router-link 
-          class="breadcrumbs__link"  
-          :to="{ name: routerName }"
-        >{{ router.options.routes.find((r => r.name == routerName)).meta.title }}</router-link>
-      </li>
-    </ul>
-
+  <ul class="breadcrumbs__list">
+    <li v-for="routerName in routerNames" class="breadcrumbs__item">
+      <router-link class="breadcrumbs__link" :to="{ name: routerName }">{{
+        router.options.routes.find((r) => r.name == routerName).meta.title
+      }}</router-link>
+    </li>
+  </ul>
 </template>
 
 <style lang="scss" scoped>
 .breadcrumbs {
-  &__list{
+  &__list {
     display: flex;
     font-family: $ff-gilroy;
     list-style-type: none;
@@ -113,7 +108,6 @@ const routerNames = computed(() => {
 }
 
 .breadcrumbs--white {
-
   .breadcrumbs__item:not(:first-child)::before {
     background-color: $color-white;
   }
@@ -126,5 +120,4 @@ const routerNames = computed(() => {
     }
   }
 }
-
 </style>

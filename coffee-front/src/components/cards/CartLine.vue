@@ -1,17 +1,17 @@
 <script setup>
-import CustomCounter from '../inputs/CustomCounter.vue';
-defineProps(['itemInfo','sale','salePercent','total'])
-import { useCartStore } from '../../stores/cart';
+import CustomCounter from "../inputs/CustomCounter.vue";
+defineProps(["itemInfo", "sale", "salePercent", "total"]);
+import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
 </script>
 
 <template>
-  <div 
-    class="product-line__top product-line__top--long">
+  <div class="product-line__top product-line__top--long">
     <button
-    class="product-line__btn-remove btn-remove"
-    @click="cartStore.removeFromCart(itemInfo.id, itemInfo.weight)"
-    type="button">
+      class="product-line__btn-remove btn-remove"
+      @click="cartStore.removeFromCart(itemInfo.id, itemInfo.weight)"
+      type="button"
+    >
       <svg class="btn-remove__icon" width="21" height="21" aria-hidden="true">
         <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
       </svg>
@@ -19,10 +19,25 @@ const cartStore = useCartStore();
     <div class="product-line__details">
       <div class="product-line__icon-wrapper">
         <picture>
-          <source media="(max-width: 767px)" :srcset="`../../src/images/cart/cart-${itemInfo.category}-mobile.png`">
-          <source media="(max-width: 1348px)" :srcset="`../../src/images/cart/cart-${itemInfo.category}-tablet.png`">
-          <source media="(max-width: 1903px)" :srcset="`../../src/images/cart/cart-${itemInfo.category}-laptop.png`">
-          <img class="product-card__icon-image" :src="`../../src/images/cart/cart-${itemInfo.category}-desktop.png`" width="81" height="113" alt="Иконка товара">
+          <source
+            media="(max-width: 767px)"
+            :srcset="`../../src/images/cart/cart-${itemInfo.category}-mobile.png`"
+          />
+          <source
+            media="(max-width: 1348px)"
+            :srcset="`../../src/images/cart/cart-${itemInfo.category}-tablet.png`"
+          />
+          <source
+            media="(max-width: 1903px)"
+            :srcset="`../../src/images/cart/cart-${itemInfo.category}-laptop.png`"
+          />
+          <img
+            class="product-card__icon-image"
+            :src="`../../src/images/cart/cart-${itemInfo.category}-desktop.png`"
+            width="81"
+            height="113"
+            alt="Иконка товара"
+          />
         </picture>
       </div>
       <div class="product-line__details-text">
@@ -32,62 +47,88 @@ const cartStore = useCartStore();
       </div>
     </div>
     <span class="product-line__price">{{ itemInfo.price }} ₽</span>
-    <custom-counter class="product-line__count"
+    <custom-counter
+      class="product-line__count"
       :modelValue="itemInfo.count"
-      @update:modelValue="cartStore.setCount(itemInfo.id, itemInfo.weight, $event)"
+      @update:modelValue="
+        cartStore.setCount(itemInfo.id, itemInfo.weight, $event)
+      "
     ></custom-counter>
-    <span class="product-line__sale">{{ sale ? `${sale} ₽ (-${salePercent}%)` : '0  ₽'}} </span>
+    <span class="product-line__sale"
+      >{{ sale ? `${sale} ₽ (-${salePercent}%)` : "0  ₽" }}
+    </span>
     <span class="product-line__total">{{ total }} ₽</span>
   </div>
 
   <div class="product-line">
-    <div class="product-line__top"> 
-
+    <div class="product-line__top">
       <div class="product-line__details">
         <div class="product-line__icon-wrapper">
           <picture>
-            <source media="(max-width: 767px)" :srcset="`../../src/images/cart/cart-${itemInfo.category}-mobile.png`">
-            <source media="(max-width: 1348px)" :srcset="`../../src/images/cart/cart-${itemInfo.category}-tablet.png`">
-            <source media="(max-width: 1903px)" :srcset="`../../src/images/cart/cart-${itemInfo.category}-laptop.png`">
-            <img class="product-card__icon-image" :src="`../../src/images/cart/cart-${itemInfo.category}-desktop.png`" width="81" height="113" alt="Иконка товара">
+            <source
+              media="(max-width: 767px)"
+              :srcset="`../../src/images/cart/cart-${itemInfo.category}-mobile.png`"
+            />
+            <source
+              media="(max-width: 1348px)"
+              :srcset="`../../src/images/cart/cart-${itemInfo.category}-tablet.png`"
+            />
+            <source
+              media="(max-width: 1903px)"
+              :srcset="`../../src/images/cart/cart-${itemInfo.category}-laptop.png`"
+            />
+            <img
+              class="product-card__icon-image"
+              :src="`../../src/images/cart/cart-${itemInfo.category}-desktop.png`"
+              width="81"
+              height="113"
+              alt="Иконка товара"
+            />
           </picture>
         </div>
         <div class="product-line__details-text">
           <h3 class="product-line__title">{{ itemInfo.title }}</h3>
           <span class="product-line__text-line">{{ itemInfo.descripton }}</span>
-          <span class="product-line__text-line">{{ itemInfo.weightString }}</span>
+          <span class="product-line__text-line">{{
+            itemInfo.weightString
+          }}</span>
         </div>
       </div>
 
       <div class="product-line__price-wrapper">
         <span class="product-line__total">{{ total }} ₽</span>
         <div class="product-line__sale-wrapper">
-          <span class="product-line__price">{{ sale ? `${itemInfo.price} ₽` : ''}}</span>
-          <span class="product-line__sale">{{ sale ? `(-${salePercent}%)` : ''}}</span>
+          <span class="product-line__price">{{
+            sale ? `${itemInfo.price} ₽` : ""
+          }}</span>
+          <span class="product-line__sale">{{
+            sale ? `(-${salePercent}%)` : ""
+          }}</span>
         </div>
       </div>
     </div>
 
-    <div class="product-line__bottom"> 
-  
+    <div class="product-line__bottom">
       <button
-      class="product-line__btn-remove btn-remove"
-      @click="cartStore.removeFromCart(itemInfo.id, itemInfo.weight)"
-      type="button">
+        class="product-line__btn-remove btn-remove"
+        @click="cartStore.removeFromCart(itemInfo.id, itemInfo.weight)"
+        type="button"
+      >
         <svg class="btn-remove__icon" width="21" height="21" aria-hidden="true">
           <use xlink:href="../../assets/cart-sprite.svg#icon-remove"></use>
         </svg>
       </button>
 
-      <custom-counter class="product-line__count"
+      <custom-counter
+        class="product-line__count"
         :modelValue="itemInfo.count"
-        @update:modelValue="cartStore.setCount(itemInfo.id, itemInfo.weight, $event)"
+        @update:modelValue="
+          cartStore.setCount(itemInfo.id, itemInfo.weight, $event)
+        "
       ></custom-counter>
-    
     </div>
   </div>
 </template>
-
 
 <style lang="scss" scoped>
 .product-line {
@@ -185,7 +226,7 @@ const cartStore = useCartStore();
     }
   }
 
-  &__icon-wrapper{
+  &__icon-wrapper {
     width: 81px;
     height: 113px;
     display: flex;
@@ -328,7 +369,7 @@ const cartStore = useCartStore();
     }
   }
 
-  &__total {  
+  &__total {
     @include vp-tablet {
       font-size: 20px;
       line-height: 21px;
@@ -343,7 +384,7 @@ const cartStore = useCartStore();
     }
   }
 
-  &__sale-wrapper{
+  &__sale-wrapper {
     @include vp-tablet {
       display: flex;
       justify-content: end;
@@ -423,7 +464,7 @@ const cartStore = useCartStore();
     position: relative;
     left: -9px;
   }
-  
+
   &:hover {
     color: $color-raising-black;
   }

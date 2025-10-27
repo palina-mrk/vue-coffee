@@ -1,63 +1,95 @@
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive } from "vue";
 
-const selectedValues = ref([])
-const labels = reactive(['Черный чай','Травяной чай','Зелёный чай','Матча','Молочный улунг','Пуэр','Кофейные напитки'])
-const values = reactive(['black-tea','herbal-tea','green-tea','matcha','milk-oolong','pu-erh','coffee-drinks'])
-const length = ref(7)
+const selectedValues = ref([]);
+const labels = reactive([
+  "Черный чай",
+  "Травяной чай",
+  "Зелёный чай",
+  "Матча",
+  "Молочный улунг",
+  "Пуэр",
+  "Кофейные напитки",
+]);
+const values = reactive([
+  "black-tea",
+  "herbal-tea",
+  "green-tea",
+  "matcha",
+  "milk-oolong",
+  "pu-erh",
+  "coffee-drinks",
+]);
+const length = ref(7);
 
 const imageVariant = (label) => {
   switch (label) {
-    case 'Черный чай':
-    case 'Травяной чай':
-      return 'black';
-    case 'Зелёный чай':
-    case 'Матча':
-      return 'green';
-    case 'Молочный улунг':
-    case 'Пуэр':
-      return 'milk';
-    case 'Кофейные напитки':
-      return 'drinks';
+    case "Черный чай":
+    case "Травяной чай":
+      return "black";
+    case "Зелёный чай":
+    case "Матча":
+      return "green";
+    case "Молочный улунг":
+    case "Пуэр":
+      return "milk";
+    case "Кофейные напитки":
+      return "drinks";
     default:
       return null;
   }
-}
+};
 </script>
 
 <template>
   <div class="filter__group">
     <h2 class="filter__groupname visually-hidden">Фильтр чая</h2>
 
-    <div 
-      class="custom-checkbox-card"
-      v-for="i in length"
-    >
-      <input 
-        class="custom-checkbox-card__field visually-hidden" 
-        :id="`tea-filter-${values[i - 1]}`" 
-        type="checkbox" 
-        name="tea-filter" 
+    <div class="custom-checkbox-card" v-for="i in length">
+      <input
+        class="custom-checkbox-card__field visually-hidden"
+        :id="`tea-filter-${values[i - 1]}`"
+        type="checkbox"
+        name="tea-filter"
         :value="`${labels[i - 1]}`"
-        v-model="selectedValues">
-      <label 
-        :for="`tea-filter-${values[i - 1]}`"  class="custom-checkbox-card__label">
+        v-model="selectedValues"
+      />
+      <label
+        :for="`tea-filter-${values[i - 1]}`"
+        class="custom-checkbox-card__label"
+      >
         <picture>
-          <source media="(max-width: 767px)" srcset="../../images/tea-card/tea-mobile.png">
-          <source media="(max-width: 1348px)" srcset="../../images/tea-card/tea-tablet.png">
-          <source media="(max-width: 1903px)" :srcset="`../../src/images/tea-card/tea-${imageVariant(labels[i - 1])}-laptop.png`">
-          <img class="custom-checkbox-card__label-img" :src="`../../src/images/tea-card/tea-${imageVariant(labels[i - 1])}-desktop.png`" width="150" height="200" alt="Карточка вида чая">
+          <source
+            media="(max-width: 767px)"
+            srcset="../../images/tea-card/tea-mobile.png"
+          />
+          <source
+            media="(max-width: 1348px)"
+            srcset="../../images/tea-card/tea-tablet.png"
+          />
+          <source
+            media="(max-width: 1903px)"
+            :srcset="`../../src/images/tea-card/tea-${imageVariant(labels[i - 1])}-laptop.png`"
+          />
+          <img
+            class="custom-checkbox-card__label-img"
+            :src="`../../src/images/tea-card/tea-${imageVariant(labels[i - 1])}-desktop.png`"
+            width="150"
+            height="200"
+            alt="Карточка вида чая"
+          />
         </picture>
-        <span class="custom-checkbox-card__label-text">{{ labels[i - 1] }}</span>
+        <span class="custom-checkbox-card__label-text">{{
+          labels[i - 1]
+        }}</span>
       </label>
     </div>
-      
   </div>
 </template>
 
 <style lang="scss" scoped>
 * {
-font-family: $ff-gilroy;
+  font-family: $ff-gilroy;
 }
 
 .filter__group {
@@ -89,7 +121,6 @@ font-family: $ff-gilroy;
   @include vp-mobile {
     gap: 10px;
   }
-
 }
 
 .custom-checkbox-card {
@@ -190,5 +221,4 @@ font-family: $ff-gilroy;
     }
   }
 }
-
 </style>

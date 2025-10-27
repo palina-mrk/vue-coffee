@@ -1,82 +1,82 @@
 <script setup>
-import { reactive } from 'vue';
-import CustomInput from '../inputs/CustomInput.vue';
+import { reactive } from "vue";
+import CustomInput from "../inputs/CustomInput.vue";
 
 const contactData = reactive([
   {
-    id: 'user-name',
-    name: 'name',
-    placeholder: 'Имя',
-    error: 'Это обязательное поле',
-    value: '',
+    id: "user-name",
+    name: "name",
+    placeholder: "Имя",
+    error: "Это обязательное поле",
+    value: "",
   },
   {
-    id: 'user-surname',
-    name: 'surname',
-    placeholder: 'Фамилия',
-    error: 'Это обязательное поле',
-    value: '',
+    id: "user-surname",
+    name: "surname",
+    placeholder: "Фамилия",
+    error: "Это обязательное поле",
+    value: "",
   },
   {
-    id: 'user-phone',
-    type: 'tel',
-    name: 'phone',
-    placeholder: 'Телефон',
-    error: 'Это обязательное поле',
-    value: '',
+    id: "user-phone",
+    type: "tel",
+    name: "phone",
+    placeholder: "Телефон",
+    error: "Это обязательное поле",
+    value: "",
   },
   {
-    id: 'user-email',
-    name: 'email',
-    type: 'email',
-    placeholder: 'Email',
-    error: 'Это обязательное поле',
-    value: '',
+    id: "user-email",
+    name: "email",
+    type: "email",
+    placeholder: "Email",
+    error: "Это обязательное поле",
+    value: "",
   },
   {
-    id: 'user-company',
-    name: 'company',
-    placeholder: 'Название компании (необязательно)',
-    value: '',
-  }
-])
+    id: "user-company",
+    name: "company",
+    placeholder: "Название компании (необязательно)",
+    value: "",
+  },
+]);
 const addressData = reactive([
   {
-    id: 'user-country',
-    name: 'country',
-    placeholder: 'Страна',
-    error: 'Это обязательное поле',
-    value: '',
+    id: "user-country",
+    name: "country",
+    placeholder: "Страна",
+    error: "Это обязательное поле",
+    value: "",
   },
   {
-    id: 'user-city',
-    name: 'city',
-    placeholder: 'Город',
-    error: 'Это обязательное поле',
-    value: '',
+    id: "user-city",
+    name: "city",
+    placeholder: "Город",
+    error: "Это обязательное поле",
+    value: "",
   },
   {
-    id: 'user-street-home',
-    name: 'street-home',
-    placeholder: 'Улица, дом',
-    error: 'Это обязательное поле',
-    value: '',
+    id: "user-street-home",
+    name: "street-home",
+    placeholder: "Улица, дом",
+    error: "Это обязательное поле",
+    value: "",
   },
   {
-    id: 'user-index',
-    name: 'index',
-    type: 'number',
-    placeholder: 'Почтовый индекс',
-    error: 'Это обязательное поле',
-    value: '',
+    id: "user-index",
+    name: "index",
+    type: "number",
+    placeholder: "Почтовый индекс",
+    error: "Это обязательное поле",
+    value: "",
   },
   {
-    id: 'user-company',
-    name: 'company',
-    placeholder: 'Комментарий к заказу (необязательно)',
-    value: '',
-  }
-])
+    id: "user-company",
+    name: "company",
+    placeholder: "Комментарий к заказу (необязательно)",
+    value: "",
+  },
+]);
 </script>
 
 <template>
@@ -86,7 +86,7 @@ const addressData = reactive([
       <fieldset class="delivery-form__group">
         <legend class="delivery-form__groupname">Контактная информация</legend>
         <!-- у группы чексбоксов д.б. одинаковый name и v-model -->
-        <custom-input 
+        <custom-input
           v-for="inputData in contactData"
           :inputData="inputData"
           v-model="inputData.value"
@@ -97,7 +97,7 @@ const addressData = reactive([
       <fieldset class="delivery-form__group">
         <legend class="delivery-form__groupname">Адрес доставки</legend>
         <!-- у группы чексбоксов д.б. одинаковый name и v-model -->
-        <custom-input 
+        <custom-input
           v-for="inputData in addressData"
           :inputData="inputData"
           v-model="inputData.value"
@@ -105,9 +105,9 @@ const addressData = reactive([
         ></custom-input>
       </fieldset>
     </div>
-    <button 
-    class="delivery-form__button btn-cornsilk"
-    type="button">Рассчитать доставку</button>
+    <button class="delivery-form__button btn-cornsilk" type="button">
+      Рассчитать доставку
+    </button>
   </div>
 </template>
 

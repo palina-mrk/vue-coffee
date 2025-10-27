@@ -1,39 +1,67 @@
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive } from "vue";
 
-const selectedValues = ref([])
-const labels = reactive(['Цикорий и корень цикория','Напитки для здоровья','Ячменные напитки','Протеиновые смеси','Толокняные каши'])
-const values = reactive(['chicory-and-chicory-root', 'healthy-drinks', 'barley-drinks', 'protein-mixtures', 'bearberry-porridge'])
-const length = ref(5)
+const selectedValues = ref([]);
+const labels = reactive([
+  "Цикорий и корень цикория",
+  "Напитки для здоровья",
+  "Ячменные напитки",
+  "Протеиновые смеси",
+  "Толокняные каши",
+]);
+const values = reactive([
+  "chicory-and-chicory-root",
+  "healthy-drinks",
+  "barley-drinks",
+  "protein-mixtures",
+  "bearberry-porridge",
+]);
+const length = ref(5);
 </script>
 
 <template>
   <div class="filter__group">
     <h2 class="filter__groupname visually-hidden">Фильтр чая</h2>
 
-    <div 
-      class="custom-checkbox-card"
-      v-for="i in length"
-    >
-      <input 
-        class="custom-checkbox-card__field visually-hidden" 
-        :id="`healthy-filter-${values[i - 1]}`" 
-        type="checkbox" 
-        name="healthy-filter" 
+    <div class="custom-checkbox-card" v-for="i in length">
+      <input
+        class="custom-checkbox-card__field visually-hidden"
+        :id="`healthy-filter-${values[i - 1]}`"
+        type="checkbox"
+        name="healthy-filter"
         :value="`${labels[i - 1]}`"
-        v-model="selectedValues">
-      <label 
-        :for="`healthy-filter-${values[i - 1]}`"  class="custom-checkbox-card__label">
+        v-model="selectedValues"
+      />
+      <label
+        :for="`healthy-filter-${values[i - 1]}`"
+        class="custom-checkbox-card__label"
+      >
         <picture>
-          <source media="(max-width: 767px)" srcset="../../images/healthy-card/healthy-mobile.png">
-          <source media="(max-width: 1348px)" srcset="../../images/healthy-card/healthy-tablet.png">
-          <source media="(max-width: 1903px)" srcset="../../images/healthy-card/healthy-product-laptop.png">
-          <img class="custom-checkbox-card__label-img" src="../../images/healthy-card/healthy-product-desktop.png" width="331" height="175" alt="Карточка вида товара для вендинга">
+          <source
+            media="(max-width: 767px)"
+            srcset="../../images/healthy-card/healthy-mobile.png"
+          />
+          <source
+            media="(max-width: 1348px)"
+            srcset="../../images/healthy-card/healthy-tablet.png"
+          />
+          <source
+            media="(max-width: 1903px)"
+            srcset="../../images/healthy-card/healthy-product-laptop.png"
+          />
+          <img
+            class="custom-checkbox-card__label-img"
+            src="../../images/healthy-card/healthy-product-desktop.png"
+            width="331"
+            height="175"
+            alt="Карточка вида товара для вендинга"
+          />
         </picture>
-        <span class="custom-checkbox-card__label-text">{{ labels[i - 1] }}</span>
+        <span class="custom-checkbox-card__label-text">{{
+          labels[i - 1]
+        }}</span>
       </label>
     </div>
-      
   </div>
 </template>
 
@@ -67,7 +95,6 @@ const length = ref(5)
   @include vp-mobile {
     gap: 10px;
   }
-
 }
 
 .custom-checkbox-card {
@@ -170,5 +197,4 @@ const length = ref(5)
     }
   }
 }
-
 </style>

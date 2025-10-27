@@ -10,7 +10,7 @@ export const useCatalogStore = defineStore("catalog", () => {
   const teas = reactive([]);
   const healthies = reactive([]);
   const vendings = reactive([]);
-  
+
   function loadCatalog() {
     apolloClient
       .query({
@@ -24,7 +24,7 @@ export const useCatalogStore = defineStore("catalog", () => {
               rate {
                 rating
                 comments
-              } 
+              }
               weights {
                 value
                 price
@@ -53,7 +53,7 @@ export const useCatalogStore = defineStore("catalog", () => {
               rate {
                 rating
                 comments
-              } 
+              }
               weights {
                 value
                 price
@@ -70,7 +70,7 @@ export const useCatalogStore = defineStore("catalog", () => {
               rate {
                 rating
                 comments
-              } 
+              }
               weights {
                 value
                 price
@@ -87,7 +87,7 @@ export const useCatalogStore = defineStore("catalog", () => {
               rate {
                 rating
                 comments
-              } 
+              }
               weights {
                 value
                 price
@@ -100,10 +100,22 @@ export const useCatalogStore = defineStore("catalog", () => {
         `,
       })
       .then((result) => {
-        result.data.coffees.forEach((el) => {catalog.push(el); coffees.push(el)});
-        result.data.teas.forEach((el) => {catalog.push(el); teas.push(el)});
-        result.data.vendings.forEach((el) => {catalog.push(el); vendings.push(el)});
-        result.data.healthies.forEach((el) => {catalog.push(el); healthies.push(el)});
+        result.data.coffees.forEach((el) => {
+          catalog.push(el);
+          coffees.push(el);
+        });
+        result.data.teas.forEach((el) => {
+          catalog.push(el);
+          teas.push(el);
+        });
+        result.data.vendings.forEach((el) => {
+          catalog.push(el);
+          vendings.push(el);
+        });
+        result.data.healthies.forEach((el) => {
+          catalog.push(el);
+          healthies.push(el);
+        });
         isLoaded.value = true;
       });
   }
@@ -113,36 +125,29 @@ export const useCatalogStore = defineStore("catalog", () => {
   }
 
   function getKind(itemId) {
-    const item = catalog.find((i) => i.id == itemId); 
-    if (item.category != 'coffee')
-      return item.kind;
+    const item = catalog.find((i) => i.id == itemId);
+    if (item.category != "coffee") return item.kind;
 
-    const kinds = item.details.map(d => d.kind);
-    if(kinds.length == 1)
-      return kinds[0];
-    else if (!kinds.includes('Арабика'))
-      return 'Робуста';
-    else if (!kinds.includes('Робуста'))
-      return 'Смесь арабик';
-    else
-      return ('Смесь арабикa/робуста');
+    const kinds = item.details.map((d) => d.kind);
+    if (kinds.length == 1) return kinds[0];
+    else if (!kinds.includes("Арабика")) return "Робуста";
+    else if (!kinds.includes("Робуста")) return "Смесь арабик";
+    else return "Смесь арабикa/робуста";
   }
 
   function getShortDescription(itemId) {
-    const item = catalog.find((i) => i.id == itemId); 
-    if (item.category != 'coffee')
-      return item.kind;
+    const item = catalog.find((i) => i.id == itemId);
+    if (item.category != "coffee") return item.kind;
 
-    if(item.details.length == 1)
-      return `${Object.values(item.details[0]).filter(str => str != 'Detail' && str != undefined).join(', ')}`;
+    if (item.details.length == 1)
+      return `${Object.values(item.details[0])
+        .filter((str) => str != "Detail" && str != undefined)
+        .join(", ")}`;
 
-    const kinds = item.details.map(d => d.kind);
-    if (!kinds.includes('Арабика'))
-      return 'Робуста, смесь';
-    else if (!kinds.includes('Робуста'))
-      return 'Смесь арабик';
-    else
-      return ('Смесь арабикa/робуста');
+    const kinds = item.details.map((d) => d.kind);
+    if (!kinds.includes("Арабика")) return "Робуста, смесь";
+    else if (!kinds.includes("Робуста")) return "Смесь арабик";
+    else return "Смесь арабикa/робуста";
   }
 
   function getFullInfo(itemId) {
@@ -150,12 +155,31 @@ export const useCatalogStore = defineStore("catalog", () => {
   }
 
   function getSellInfo(itemId, weight) {
-    return catalog.find((i) => i.id == itemId).weights.find((w) => w.value == weight);
+    return catalog
+      .find((i) => i.id == itemId)
+      .weights.find((w) => w.value == weight);
   }
 
   function getSaleIndexes() {
-    return catalog.filter((i) => i.actions.includes('Скидки')).map(i => i.id).sort();
+    return catalog
+      .filter((i) => i.actions.includes("Скидки"))
+      .map((i) => i.id)
+      .sort();
   }
 
-  return { isLoaded, catalog, coffees, teas, vendings, healthies, loadCatalog, getPrice, getFullInfo, getSellInfo, getSaleIndexes, getShortDescription, getKind };
+  return {
+    isLoaded,
+    catalog,
+    coffees,
+    teas,
+    vendings,
+    healthies,
+    loadCatalog,
+    getPrice,
+    getFullInfo,
+    getSellInfo,
+    getSaleIndexes,
+    getShortDescription,
+    getKind,
+  };
 });

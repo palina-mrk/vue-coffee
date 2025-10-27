@@ -1,22 +1,27 @@
 <script setup>
-const props = defineProps(['modelValue', 'inputData']);
+const props = defineProps(["modelValue", "inputData"]);
 </script>
 
 <template>
   <div class="custom-input">
-    <label 
-      class="custom-input__label visually-hidden" :for="inputData.id"
+    <label
+      class="custom-input__label visually-hidden"
+      :for="inputData.id"
     ></label>
-    <input 
+    <input
       class="custom-input__field"
-      :type="inputData.type ? inputData.type : 'text'" 
+      :type="inputData.type ? inputData.type : 'text'"
       :value="modelValue"
       :name="inputData.name"
       :id="inputData.id"
       :placeholder="inputData.placeholder"
-      @input="$emit('update:modelValue',$event.target.value)"  
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
+    <span
+      v-if="inputData.error"
+      class="custom-input__info custom-input__info--error"
+      >{{ inputData.error ? inputData.error : "" }}</span
     >
-    <span v-if="inputData.error" class="custom-input__info custom-input__info--error">{{ inputData.error ? inputData.error : '' }}</span>
   </div>
 </template>
 
@@ -75,7 +80,7 @@ const props = defineProps(['modelValue', 'inputData']);
         color: $color-chinese-silver;
       }
     }
-    
+
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
       -webkit-appearance: none; /* Кнопки спрятаны */
@@ -112,11 +117,10 @@ const props = defineProps(['modelValue', 'inputData']);
       bottom: -15px;
     }
   }
-
 }
 
 .custom-input--error {
-  .custom-input__info--error{
+  .custom-input__info--error {
     display: flex;
   }
 }
@@ -133,5 +137,4 @@ const props = defineProps(['modelValue', 'inputData']);
   clip: rect(0 0 0 0);
   clip-path: inset(100%);
 }
-
 </style>

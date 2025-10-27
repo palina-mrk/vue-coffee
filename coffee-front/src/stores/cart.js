@@ -4,101 +4,106 @@ import { useCatalogStore } from "./catalog";
 
 export const useCartStore = defineStore("cart", () => {
   const catalog = useCatalogStore();
-  const cartRows = reactive(JSON.parse(localStorage.getItem("cartRows") || "[]"));/*
+  const cartRows = reactive(
+    JSON.parse(localStorage.getItem("cartRows") || "[]"),
+  ); /*
   [id1, weight1, count1], 
   [id1, weight2, count2], 
   [id2, weight2, count2],
   }*/
 
-  
   const cartSales = reactive([
     [0, 0],
     [5000, 10],
     [7000, 15],
-    [10000, 20]
-  ]) /**При покупке на определенную сумму ко всем нескидочным товарам применится скидка "по корзине" на определенное кол-во процентов
+    [10000, 20],
+  ]); /**При покупке на определенную сумму ко всем нескидочным товарам применится скидка "по корзине" на определенное кол-во процентов
   [[сумма1, процент1],[сумма2, процент2]] */
-  const cartSale = computed(() => 
-    cartSales.findLast(s => s[0] <= rawTotalSum.value)[1]
-  ) /* вычисляем эту скидку*/
+  const cartSale = computed(
+    () => cartSales.findLast((s) => s[0] <= rawTotalSum.value)[1],
+  ); /* вычисляем эту скидку*/
 
   const promoSales = reactive([
-    ['coffee2021', 15],
-    ['summer2022', 20]
+    ["coffee2021", 15],
+    ["summer2022", 20],
   ]); /** правильные промокоды с их скидками */
   const promoSale = ref(0);
-  const userPromo = ref('');
+  const userPromo = ref("");
 
   /** Попытка применить промокод
    * если верный, сохраняем и применяем к нескидочным товарам
    */
-  function setPromo (promoValue) {
-    const promoInfo = promoSales.find(s => s[0] == promoValue);
+  function setPromo(promoValue) {
+    const promoInfo = promoSales.find((s) => s[0] == promoValue);
 
-    if(!promoInfo) return false;
-    
+    if (!promoInfo) return false;
+
     promoSale.value = promoInfo[1];
     userPromo.value = promoValue;
-    console.log('promo: ',userPromo.value);
+    console.log("promo: ", userPromo.value);
     return true;
-  } 
+  }
 
   /** ко всем нескидочным 
   товарам применится максимальная из скидок по промокоду и по корзине
    */
-  const globalSale = computed(() => 
-    cartSale.value > promoSale.value ? cartSale.value : promoSale.value);
-  const saleType = computed(() => { 
+  const globalSale = computed(() =>
+    cartSale.value > promoSale.value ? cartSale.value : promoSale.value,
+  );
+  const saleType = computed(() => {
     switch (globalSale.value) {
       case 0:
-        return 'none';
-      case (cartSale.value):
-        return 'cart';
-      case (promoSale.value):
-        return 'promo';
-      default: 
-        return 'unknown';
+        return "none";
+      case cartSale.value:
+        return "cart";
+      case promoSale.value:
+        return "promo";
+      default:
+        return "unknown";
     }
   });
-  
+
   const deliveryWays = reactive([
-    [390, 'sdek', 'СДЭК - до двери'],
-    [300, 'russian-post', 'Почта России'],
-    [427, 'dpd', 'DPD - курьер, 3 дн'],
-  ]) 
+    [390, "sdek", "СДЭК - до двери"],
+    [300, "russian-post", "Почта России"],
+    [427, "dpd", "DPD - курьер, 3 дн"],
+  ]);
   const deliveryWay = ref(deliveryWays[0]);
 
-  const deliveryPrices = computed(() => deliveryWays.map(el => el[0]))
-  const deliveryValues = computed(() => deliveryWays.map(el => el[1]))
-  const deliveryLabels = computed(() => deliveryWays.map(el => el[2]))
-  function setDeliveryValue (value) {
-    const way = deliveryWays.find(el => el[1] == value);
-    if(way)
-      deliveryWay.value = way;
+  const deliveryPrices = computed(() => deliveryWays.map((el) => el[0]));
+  const deliveryValues = computed(() => deliveryWays.map((el) => el[1]));
+  const deliveryLabels = computed(() => deliveryWays.map((el) => el[2]));
+  function setDeliveryValue(value) {
+    const way = deliveryWays.find((el) => el[1] == value);
+    if (way) deliveryWay.value = way;
   }
   const deliveryValue = computed(() => deliveryWay.value[1]);
   const deliveryPrice = computed(() => deliveryWay.value[0]);
 
-  
-  const cartInfo = computed(() => cartRows.reduce((str, el) => str + `id: ${el[0]}, weight: ${el[1]}, count: ${el[2]};
-  `,"cart: "));
+  const cartInfo = computed(() =>
+    cartRows.reduce(
+      (str, el) =>
+        str +
+        `id: ${el[0]}, weight: ${el[1]}, count: ${el[2]};
+  `,
+      "cart: ",
+    ),
+  );
 
   function addToCart(itemId, weight) {
-    const item = cartRows.find(el => el[0] == itemId && el[1] == weight);
-    if (!item) 
-      cartRows.push([itemId, weight, 1]);
+    const item = cartRows.find((el) => el[0] == itemId && el[1] == weight);
+    if (!item) cartRows.push([itemId, weight, 1]);
     else item[2]++;
-    console.log(rawCartItems.value)
-    console.log(rawTotalSum.value)
-    console.log(cartItems.value)
-    console.log(totalSum.value)
+    console.log(rawCartItems.value);
+    console.log(rawTotalSum.value);
+    console.log(cartItems.value);
+    console.log(totalSum.value);
   }
 
   function removeFromCart(itemId, weight) {
-    const ind = cartRows.findIndex(el => el[0] == itemId && el[1] == weight);
-    if(ind == -1)
-      return;
-    
+    const ind = cartRows.findIndex((el) => el[0] == itemId && el[1] == weight);
+    if (ind == -1) return;
+
     cartRows.splice(ind, 1);
   }
 
@@ -108,10 +113,9 @@ export const useCartStore = defineStore("cart", () => {
       removeFromCart(itemId, weight);
       return;
     }
-      
-    const item = cartRows.find(el => el[0] == itemId && el[1] == weight);
-    if (!item) 
-      cartRows.push([itemId, weight, count]);
+
+    const item = cartRows.find((el) => el[0] == itemId && el[1] == weight);
+    if (!item) cartRows.push([itemId, weight, count]);
     else item[2] = count;
   }
 
@@ -120,79 +124,83 @@ export const useCartStore = defineStore("cart", () => {
   }
 
   const itemIdCount = computed(() => cartRows.length);
-  
+
   const totalCount = computed(() =>
-    cartRows.reduce((acc,el) => (acc + el[2]), 0)
+    cartRows.reduce((acc, el) => acc + el[2], 0),
   );
 
   const totalCountString = computed(() => {
-    if(totalCount.value % 100 > 10 && totalCount.value % 100 < 20)
+    if (totalCount.value % 100 > 10 && totalCount.value % 100 < 20)
       return `${totalCount.value} товаров`;
-    
-      switch (totalCount.value % 10) {
-        case 1: 
-          return `${totalCount.value} товар`;
-        case 2:
-        case 3:
-        case 4: 
-          return `${totalCount.value} товара`;
-        default:
-          return `${totalCount.value} товаров`;
-      }
-  }
-  );
+
+    switch (totalCount.value % 10) {
+      case 1:
+        return `${totalCount.value} товар`;
+      case 2:
+      case 3:
+      case 4:
+        return `${totalCount.value} товара`;
+      default:
+        return `${totalCount.value} товаров`;
+    }
+  });
 
   const rawTotalSum = computed(() =>
-    rawCartItems.value.reduce((acc,el) => (acc + el.total), 0)
+    rawCartItems.value.reduce((acc, el) => acc + el.total, 0),
   );
   const totalSum = computed(() =>
-    cartItems.value.reduce((acc,el) => (acc + el.total), 0)
+    cartItems.value.reduce((acc, el) => acc + el.total, 0),
   );
   const totalSale = computed(() =>
-    cartItems.value.reduce((acc,el) => (acc + el.sale), 0)
+    cartItems.value.reduce((acc, el) => acc + el.sale, 0),
   );
-  
-  const rawCartItems = computed(() => catalog.isLoaded ? cartRows.reduce((acc, [id, weight, count]) => {
-    const item = catalog.getFullInfo(id);
-    const {price, priceCrossed} = catalog.getSellInfo(id, weight);
-    const shortDescription = catalog.getShortDescription(id);
-    acc.push({
-      id: id,
-      title: item.title,
-      category: item.category,
-      descripton: shortDescription,
-      weight: weight,
-      weightString: `${weight} ${item.category == 'vending' ? 'кг.' : 'г.'}`,
-      price: (item.actions.includes('Скидки') ? priceCrossed : price) * count,
-      count: count,
-      sale: item.actions.includes('Скидки') ? (priceCrossed - price)*count : 0,
-      salePercent: item.actions.includes('Скидки') ? Math.round(((priceCrossed - price) * 100 / priceCrossed)) : 0,
-      total: price * count,
-    });
-    return acc;
-  }, []) : [])
+
+  const rawCartItems = computed(() =>
+    catalog.isLoaded
+      ? cartRows.reduce((acc, [id, weight, count]) => {
+          const item = catalog.getFullInfo(id);
+          const { price, priceCrossed } = catalog.getSellInfo(id, weight);
+          const shortDescription = catalog.getShortDescription(id);
+          acc.push({
+            id: id,
+            title: item.title,
+            category: item.category,
+            descripton: shortDescription,
+            weight: weight,
+            weightString: `${weight} ${item.category == "vending" ? "кг." : "г."}`,
+            price:
+              (item.actions.includes("Скидки") ? priceCrossed : price) * count,
+            count: count,
+            sale: item.actions.includes("Скидки")
+              ? (priceCrossed - price) * count
+              : 0,
+            salePercent: item.actions.includes("Скидки")
+              ? Math.round(((priceCrossed - price) * 100) / priceCrossed)
+              : 0,
+            total: price * count,
+          });
+          return acc;
+        }, [])
+      : [],
+  );
 
   const cartItems = computed(() => {
-    if(globalSale.value == 0)
-      return rawCartItems.value;
+    if (globalSale.value == 0) return rawCartItems.value;
 
-    return rawCartItems.value.map(rawItem => {
-        if(rawItem.actions == 'Скидки')
-          return rawItem;
-        
-        const item = Object.assign(rawItem);
-        item.salePercent = globalSale.value;
-        item.total = Math.round((rawItem.price * (100 - globalSale.value) / 100));
-        item.sale = Math.round((rawItem.price * globalSale.value / 100));
-        return item;
-      }
-    )
-  })
+    return rawCartItems.value.map((rawItem) => {
+      if (rawItem.actions == "Скидки") return rawItem;
+
+      const item = Object.assign(rawItem);
+      item.salePercent = globalSale.value;
+      item.total = Math.round((rawItem.price * (100 - globalSale.value)) / 100);
+      item.sale = Math.round((rawItem.price * globalSale.value) / 100);
+      return item;
+    });
+  });
 
   watch(cartRows, () => {
     localStorage.setItem("cartRows", JSON.stringify(cartRows));
   });
-
 
   return {
     cartRows,
@@ -220,6 +228,6 @@ export const useCartStore = defineStore("cart", () => {
     setPromo,
     saleType,
     promoSale,
-    userPromo
+    userPromo,
   };
 });

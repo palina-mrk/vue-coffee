@@ -1,25 +1,35 @@
 <script setup>
-import SliderCorns from '../sliders/SliderCorns.vue';
-import SliderPoints from '../sliders/SliderPoints.vue';
-import SliderStars from '../sliders/SliderStars.vue';
-import CustomDropdown from '../inputs/CustomDropdown.vue';
-import { useCartStore } from '../../stores/cart';
-import { computed, ref } from 'vue';
-import { useRoute } from 'vue-router';
-const props = defineProps(['product'])
+import SliderCorns from "../sliders/SliderCorns.vue";
+import SliderPoints from "../sliders/SliderPoints.vue";
+import SliderStars from "../sliders/SliderStars.vue";
+import CustomDropdown from "../inputs/CustomDropdown.vue";
+import { useCartStore } from "../../stores/cart";
+import { computed, ref } from "vue";
+import { useRoute } from "vue-router";
+const props = defineProps(["product"]);
 const cartStore = useCartStore();
 const route = useRoute();
 
-const isSale = computed(() => props.product.actions.includes('Скидки'));
+const isSale = computed(() => props.product.actions.includes("Скидки"));
 const weightIndex = ref(0);
 
-const weightVariants = computed(() => props.product.weights.map(el => el.value)); 
-const currentWeight = computed(() => props.product.weights[weightIndex.value].value);
-const currentPrice = computed(() => props.product.weights[weightIndex.value].price);
-const currentPriceCrossed = computed(() => props.product.weights[weightIndex.value].priceCrossed);
+const weightVariants = computed(() =>
+  props.product.weights.map((el) => el.value),
+);
+const currentWeight = computed(
+  () => props.product.weights[weightIndex.value].value,
+);
+const currentPrice = computed(
+  () => props.product.weights[weightIndex.value].price,
+);
+const currentPriceCrossed = computed(
+  () => props.product.weights[weightIndex.value].priceCrossed,
+);
 
 function changeWeight(newValue) {
-  weightIndex.value = props.product.weights.findIndex((weight) => weight.value == newValue);
+  weightIndex.value = props.product.weights.findIndex(
+    (weight) => weight.value == newValue,
+  );
 }
 
 function addToCart() {
@@ -28,66 +38,111 @@ function addToCart() {
 
 const imageVariant = computed(() => {
   switch (props.product.kind) {
-    case 'Черный чай':
-    case 'Травяной чай':
-      return 'black';
-    case 'Зелёный чай':
-    case 'Матча':
-      return 'green';
-    case 'Молочный улунг':
-    case 'Пуэр':
-      return 'milk';
-    case 'Кофейные напитки':
-      return 'drinks';
+    case "Черный чай":
+    case "Травяной чай":
+      return "black";
+    case "Зелёный чай":
+    case "Матча":
+      return "green";
+    case "Молочный улунг":
+    case "Пуэр":
+      return "milk";
+    case "Кофейные напитки":
+      return "drinks";
     default:
-      return 'product';
+      return "product";
   }
-})
+});
 </script>
 
 <template>
-  <div 
-  v-if="product.category == 'coffee'"
-  :class="{ 'product-card': true, 'product-card--sale': isSale,  'product-card--main-mobile': (route.name == 'home' || route.name == 'catalogs'), 'product-card--bordered': !(route.name == 'home' || route.name == 'catalogs')}">
-    <div 
-    v-show="isSale"
-    class="product-card__sales-icon">%</div>
+  <div
+    v-if="product.category == 'coffee'"
+    :class="{
+      'product-card': true,
+      'product-card--sale': isSale,
+      'product-card--main-mobile':
+        route.name == 'home' || route.name == 'catalogs',
+      'product-card--bordered': !(
+        route.name == 'home' || route.name == 'catalogs'
+      ),
+    }"
+  >
+    <div v-show="isSale" class="product-card__sales-icon">%</div>
     <div class="product-card__top">
       <div class="product-card__actions">
         <ul class="product-card__actions-list">
-          <li v-if="!isSale" v-for="action in product.actions" class="product-card__actions-item">{{ action }}</li>
+          <li
+            v-if="!isSale"
+            v-for="action in product.actions"
+            class="product-card__actions-item"
+          >
+            {{ action }}
+          </li>
           <li v-else class="product-card__actions-item">Скидки</li>
         </ul>
       </div>
-      <custom-dropdown class="product-card__dropdown" 
-      :class="{'custom-dropdown--main-mobile': (route.name == 'home' || route.name == 'catalogs')}"
-      :weightVariants="weightVariants"
-      :weightUnit="product.category == 'vending' ? 'кг' : 'г'"
-      :defaultValue="currentWeight"
-      @set-value="changeWeight($event)">
+      <custom-dropdown
+        class="product-card__dropdown"
+        :class="{
+          'custom-dropdown--main-mobile':
+            route.name == 'home' || route.name == 'catalogs',
+        }"
+        :weightVariants="weightVariants"
+        :weightUnit="product.category == 'vending' ? 'кг' : 'г'"
+        :defaultValue="currentWeight"
+        @set-value="changeWeight($event)"
+      >
       </custom-dropdown>
     </div>
     <div class="product-card__middle">
       <div class="product-card__image-wrapper">
         <picture>
-          <source media="(max-width: 767px)" srcset="../../images/product-card/product-image-mobile.png">
-          <source media="(max-width: 1348px)" srcset="../../images/product-card/product-image-tablet.png">
-          <source media="(max-width: 1903px)" srcset="../../images/product-card/product-image-laptop.png">
-          <img class="product-card__image" src="../../images/product-card/product-image-desktop.png" width="311" height="172" alt="Карточка товара кофе">
+          <source
+            media="(max-width: 767px)"
+            srcset="../../images/product-card/product-image-mobile.png"
+          />
+          <source
+            media="(max-width: 1348px)"
+            srcset="../../images/product-card/product-image-tablet.png"
+          />
+          <source
+            media="(max-width: 1903px)"
+            srcset="../../images/product-card/product-image-laptop.png"
+          />
+          <img
+            class="product-card__image"
+            src="../../images/product-card/product-image-desktop.png"
+            width="311"
+            height="172"
+            alt="Карточка товара кофе"
+          />
         </picture>
       </div>
       <div class="product-card__details">
-        <slider-stars         
-        :class="{'product-card__stars': true, 'slider-stars--main-mobile': (route.name == 'home' || route.name == 'catalogs')}"
-        :rating="product.rate.rating"></slider-stars>
-        
+        <slider-stars
+          :class="{
+            'product-card__stars': true,
+            'slider-stars--main-mobile':
+              route.name == 'home' || route.name == 'catalogs',
+          }"
+          :rating="product.rate.rating"
+        ></slider-stars>
+
         <div class="product-card__rating">
-          <span class="product-card__rating-value">{{ product.rate.rating }}</span>
-          <span class="product-card__comments-count">({{ product.rate.comments }} отзыва)</span>
+          <span class="product-card__rating-value">{{
+            product.rate.rating
+          }}</span>
+          <span class="product-card__comments-count"
+            >({{ product.rate.comments }} отзыва)</span
+          >
         </div>
 
-        <slider-corns class="product-card__corns" :count="product.roasting"></slider-corns>
-        
+        <slider-corns
+          class="product-card__corns"
+          :count="product.roasting"
+        ></slider-corns>
+
         <div class="product-card__hue">
           <span class="product-card__hue-name">Кислинка</span>
           <slider-points :count="product.hue.acidity"></slider-points>
@@ -107,69 +162,95 @@ const imageVariant = computed(() => {
     <h3 class="product-card__title">{{ product.title }}</h3>
     <p class="product-card__description">{{ product.description }}</p>
     <div class="product-card__bottom">
-      <span v-show="isSale" class="product-card__price product-card__price--crossed">{{ currentPriceCrossed }} ₽</span>
+      <span
+        v-show="isSale"
+        class="product-card__price product-card__price--crossed"
+        >{{ currentPriceCrossed }} ₽</span
+      >
       <span class="product-card__price">{{ currentPrice }} ₽</span>
-      <button 
-        @click="addToCart" 
-        class="product-card__button btn btn--size-s"
-      >В&nbsp;корзину</button>
+      <button @click="addToCart" class="product-card__button btn btn--size-s">
+        В&nbsp;корзину
+      </button>
     </div>
   </div>
 
-  <div 
-  v-else
-  :class="{ 'product-card': true,  'product-card--tea': true, 'product-card--main-mobile': (route.name == 'home' || route.name == 'catalogs'), 'product-card--bordered': !(route.name == 'home' || route.name == 'catalogs')}">
+  <div
+    v-else
+    :class="['product-card--'+ product.category , {'product-card--sale': isSale},'product-card']"
+  >
     <div class="product-card__top">
       <div class="product-card__rating-wrapper">
-        <slider-stars class="product-card__stars slider-stars--tea":rating="product.rate.rating"></slider-stars>
-          
+        <slider-stars
+          class="product-card__stars slider-stars--tea"
+          :rating="product.rate.rating"
+        ></slider-stars>
+
         <div class="product-card__rating">
-          <span class="product-card__rating-value">{{ product.rate.rating }}</span>
-          <span class="product-card__comments-count">({{ product.rate.comments }} отзыва)</span>
+          <span class="product-card__rating-value">{{
+            product.rate.rating
+          }}</span>
+          <span class="product-card__comments-count"
+            >({{ product.rate.comments }} отзыва)</span
+          >
         </div>
       </div>
 
-      <custom-dropdown 
-      class="product-card__dropdown" 
-      :class="{'custom-dropdown--main-mobile': (route.name == 'home' || route.name == 'catalogs')}"
-      :weightVariants="weightVariants"
-      :weightUnit="product.category == 'vending' ? 'кг' : 'г'"
-      :defaultValue="currentWeight"
-      @set-value="changeWeight($event)">
+      <custom-dropdown
+        class="product-card__dropdown"
+        :class="{
+          'custom-dropdown--main-mobile':
+            route.name == 'home' || route.name == 'catalogs',
+        }"
+        :weightVariants="weightVariants"
+        :weightUnit="product.category == 'vending' ? 'кг' : 'г'"
+        :defaultValue="currentWeight"
+        @set-value="changeWeight($event)"
+      >
       </custom-dropdown>
     </div>
     <div class="product-card__middle">
       <div class="product-card__image-wrapper">
-        <div
-        v-show="isSale"
-        class="product-card__sales-icon">%</div>
+        <div v-show="isSale" class="product-card__sales-icon">%</div>
         <picture>
-          <source media="(max-width: 767px)" :srcset="`../../src/images/${product.category}-card/${product.category}-product-mobile.png`">
-          <source media="(max-width: 1348px)" :srcset="`../../src/images/${product.category}-card/${product.category}-product-tablet.png`">
-          <source media="(max-width: 1903px)" :srcset="`../../src/images/${product.category}-card/${product.category}-${imageVariant}-laptop.png`">
-          <img class="product-card__image" :src="`../../src/images/${product.category}-card/${product.category}-${imageVariant}-desktop.png`" width="223" height="312" alt="Карточка товара">
+          <source
+            media="(max-width: 767px)"
+            :srcset="`../../src/images/${product.category}-card/${product.category}-product-mobile.png`"
+          />
+          <source
+            media="(max-width: 1348px)"
+            :srcset="`../../src/images/${product.category}-card/${product.category}-product-tablet.png`"
+          />
+          <source
+            media="(max-width: 1903px)"
+            :srcset="`../../src/images/${product.category}-card/${product.category}-${imageVariant}-laptop.png`"
+          />
+          <img
+            class="product-card__image"
+            :src="`../../src/images/${product.category}-card/${product.category}-${imageVariant}-desktop.png`"
+            width="223"
+            height="312"
+            alt="Карточка товара"
+          />
         </picture>
       </div>
     </div>
     <h3 class="product-card__title">{{ product.title }}</h3>
     <p class="product-card__description">{{ product.description }}</p>
     <div class="product-card__bottom">
-      <span v-show="isSale" class="product-card__price product-card__price--crossed">{{ currentPriceCrossed }} ₽</span>
+      <span
+        v-show="isSale"
+        class="product-card__price product-card__price--crossed"
+        >{{ currentPriceCrossed }} ₽</span
+      >
       <span class="product-card__price">{{ currentPrice }} ₽</span>
-      <button 
-        @click="addToCart" 
-        class="product-card__button btn btn--size-s"
-      >В&nbsp;корзину</button>
+      <button @click="addToCart" class="product-card__button btn btn--size-s">
+        В&nbsp;корзину
+      </button>
     </div>
   </div>
-
 </template>
 
-
 <style lang="scss" scoped>
-* {
-  font-family: $ff-gilroy;
-}
 .product-card {
   padding: 20px 38px 48px;
   display: flex;
@@ -177,8 +258,8 @@ const imageVariant = computed(() => {
   align-items: start;
   justify-content: start;
   box-shadow: 0px 0px 20px 0px $color-philippine-gray-25;
-  min-height: 652px;
-  width: 400px;
+  max-width: 400px;
+  height: 100%;
   border-radius: 20px;
   background-color: $color-white;
   color: $color-raising-black;
@@ -189,8 +270,7 @@ const imageVariant = computed(() => {
     padding: 13px 24px 37px;
     box-shadow: 0px 0px 20px 0px $color-chinese-silver-25;
     border: 0.7px solid $color-platinum;
-    min-height: 461px;
-    width: 282px;
+    max-width: 282px;
     border-radius: 14px;
   }
 
@@ -198,18 +278,15 @@ const imageVariant = computed(() => {
     padding: 21px 33px 42px 35px;
     box-shadow: 0px 0px 17px 0px $color-chinese-silver-25;
     border: none;
-    min-height: 552px;
-    width: 340px;
+    max-width: 340px;
     border-radius: 16px;
   }
 
   @include vp-mobile {
     box-shadow: none;
     padding: 17px 32px 43px;
-    min-height: 407px;
     border: 1px solid $color-platinum;
     border-radius: 17px;
-    min-height: 554px;
   }
 
   &__sales-icon {
@@ -226,7 +303,7 @@ const imageVariant = computed(() => {
     height: 70px;
     top: 2px;
     left: 3px;
-    display: flex;
+    display: none;
     transform: translate(50%, -50%);
     font-family: $ff-gilroy sans-serif;
 
@@ -642,7 +719,7 @@ const imageVariant = computed(() => {
     position: absolute;
     top: 0;
     left: 0;
-    display: flex;
+    display: none;
 
     @include vp-laptop {
       top: 3px;
@@ -909,15 +986,15 @@ const imageVariant = computed(() => {
   padding: 28px 40px 50px;
 
   @include vp-laptop {
-    padding: 18px 25px 38px;    
+    padding: 18px 25px 38px;
   }
 
   @include vp-tablet {
-    padding: 30px 37px 42px; 
+    padding: 30px 37px 42px;
   }
 
   @include vp-mobile {
-    padding: 26px 34px 43px; 
+    padding: 26px 34px 43px;
   }
 
   .product-card__top {
@@ -1071,11 +1148,370 @@ const imageVariant = computed(() => {
   .product-card__price--crossed {
     @include vp-tablet {
       font-size: 18px;
-      line-height: 21px;  
+      line-height: 21px;
     }
     @include vp-mobile {
       font-size: 22px;
-      line-height: 26px;    
+      line-height: 26px;
+    }
+  }
+}
+
+.product-card--vending {
+  padding: 28px 40px 50px;
+
+  @include vp-laptop {
+    padding: 18px 25px 38px;
+  }
+
+  @include vp-tablet {
+    padding: 30px 37px 42px;
+  }
+
+  @include vp-mobile {
+    padding: 26px 34px 43px;
+  }
+
+  .product-card__top {
+    justify-content: space-between;
+    margin: 0 0 15px;
+    padding: 0 6px 0 0;
+
+    @include vp-laptop {
+      margin: 0 0 8px;
+      padding: 0 1px 0 0;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 8px;
+      padding: 0;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 15px;
+      padding: 0 5px 0 0;
+    }
+  }
+
+  .product-card__rating-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 12px;
+
+    @include vp-laptop {
+      gap: 8px;
+    }
+
+    @include vp-tablet {
+      gap: 12px;
+    }
+
+    @include vp-mobile {
+      gap: 10px;
+    }
+  }
+
+  .product-card__rating-value {
+    @include vp-tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  .product-card__comments-count {
+    @include vp-tablet {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  .product-card__stars,
+  .product-card__rating,
+  .product-card__dropdown {
+    margin: 0;
+    padding: 0;
+    align-self: unset;
+  }
+
+  .product-card__middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include vp-tablet {
+      margin: 0 0 20px;
+    }
+  }
+
+  .product-card__image-wrapper {
+    width: 320px;
+    height: 250px;
+    display: flex;
+    position: relative;
+    border-radius: 20px;
+
+    @include vp-laptop {
+      width: 230px;
+      height: 177px;
+      border-radius: 14px;
+      margin: 0;
+    }
+
+    @include vp-tablet {
+      width: 274px;
+      height: 211px;
+      border-radius: 10px;
+    }
+
+    @include vp-mobile {
+      width: 279px;
+      height: 215px;
+      border-radius: 17px;
+    }
+  }
+
+  .product-card__title {
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 25px;
+      margin: 0;
+    }
+  }
+
+  .product-card__description {
+
+    @include vp-tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include vp-mobile {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  .product-card__sales-icon {
+    position: absolute;
+    top: 26px;
+    right: 31px;
+    transform: unset;
+    left: unset;
+
+    @include vp-laptop {
+      top: 22px;
+      right: 19px;
+    }
+
+    @include vp-tablet {
+      top: 31px;
+      right: 15px;
+    }
+
+    @include vp-mobile {
+      top: 35px;
+      right: 30px;
+    }
+  }
+
+  .product-card__price {
+    @include vp-tablet {
+      font-size: 24px;
+      line-height: 31px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 31px;
+    }
+  }
+
+  .product-card__price--crossed {
+    @include vp-tablet {
+      font-size: 18px;
+      line-height: 21px;
+    }
+    @include vp-mobile {
+      font-size: 22px;
+      line-height: 26px;
+    }
+  }
+}
+
+.product-card--healthy {
+  padding: 28px 40px 50px;
+
+  @include vp-laptop {
+    padding: 18px 25px 38px;
+  }
+
+  @include vp-tablet {
+    padding: 30px 37px 42px;
+  }
+
+  @include vp-mobile {
+    padding: 26px 34px 43px;
+  }
+
+  .product-card__top {
+    justify-content: space-between;
+    margin: 0 0 15px;
+    padding: 0 6px 0 0;
+
+    @include vp-laptop {
+      margin: 0 0 8px;
+      padding: 0 1px 0 0;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 8px;
+      padding: 0;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 15px;
+      padding: 0 5px 0 0;
+    }
+  }
+
+  .product-card__rating-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 12px;
+
+    @include vp-laptop {
+      gap: 8px;
+    }
+
+    @include vp-tablet {
+      gap: 12px;
+    }
+
+    @include vp-mobile {
+      gap: 10px;
+    }
+  }
+
+  .product-card__rating-value {
+    @include vp-tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  .product-card__comments-count {
+    @include vp-tablet {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  .product-card__stars,
+  .product-card__rating,
+  .product-card__dropdown {
+    margin: 0;
+    padding: 0;
+    align-self: unset;
+  }
+
+  .product-card__middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include vp-tablet {
+      margin: 0 0 20px;
+    }
+  }
+
+  .product-card__image-wrapper {
+    width: 182px;
+    height: 279px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    @include vp-laptop {
+      width: 128px;
+      height: 196px;
+    }
+
+    @include vp-tablet {
+      width: 184px;
+      height: 281px;
+    }
+
+    @include vp-mobile {
+      width: 182px;
+      height: 279px;
+    }
+  }
+
+  .product-card__title {
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+
+  .product-card__description {
+    @include vp-tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include vp-mobile {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  .product-card__sales-icon {
+    position: absolute;
+    top: 35px;
+    right: -10px;
+    transform: unset;
+    left: unset;
+
+    @include vp-laptop {
+      top: 25px;
+      right: -10px;
+    }
+
+    @include vp-tablet {
+      top: 40px;
+      right: 5px;
+    }
+
+    @include vp-mobile {
+      top: 40px;
+      right: 15px;
+    }
+  }
+
+  .product-card__price {
+    @include vp-tablet {
+      font-size: 24px;
+      line-height: 31px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 31px;
+    }
+  }
+
+  .product-card__price--crossed {
+    @include vp-tablet {
+      font-size: 18px;
+      line-height: 21px;
+    }
+    @include vp-mobile {
+      font-size: 22px;
+      line-height: 26px;
     }
   }
 }

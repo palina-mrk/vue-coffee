@@ -1,9 +1,9 @@
 <script setup>
-import { ref } from 'vue';
-import SliderCorns from '../sliders/SliderCorns.vue'
-defineProps(['maxDegree'])
+import { ref } from "vue";
+import SliderCorns from "../sliders/SliderCorns.vue";
+defineProps(["maxDegree"]);
 
-const degrees = ref([])
+const degrees = ref([]);
 </script>
 
 <template>
@@ -11,23 +11,23 @@ const degrees = ref([])
     <fieldset class="form-block__group">
       <legend class="form-block__groupname">Степень обжарки</legend>
       <!-- у группы чексбоксов д.б. одинаковый name и v-model -->
-      <div 
-        class="custom-checkbox-corns"
-        v-for="degree in maxDegree"
-      >
-        <input 
-          class="custom-checkbox-corns__field visually-hidden" :id="`coffee-roasting-${maxDegree + 1 - degree}`" 
-          type="checkbox" 
-          name="coffee-roasting" 
+      <div class="custom-checkbox-corns" v-for="degree in maxDegree">
+        <input
+          class="custom-checkbox-corns__field visually-hidden"
+          :id="`coffee-roasting-${maxDegree + 1 - degree}`"
+          type="checkbox"
+          name="coffee-roasting"
           :value="maxDegree + 1 - degree"
           v-model="degrees"
           @input="$emit('toggle-value', $event.target.value)"
-          >
-        <label 
-          class="custom-checkbox-corns__label" 
-          :for="`coffee-roasting-${maxDegree + 1 - degree}`">
-          <slider-corns class="slider-corns--label"
-          :count="maxDegree + 1 - degree"
+        />
+        <label
+          class="custom-checkbox-corns__label"
+          :for="`coffee-roasting-${maxDegree + 1 - degree}`"
+        >
+          <slider-corns
+            class="slider-corns--label"
+            :count="maxDegree + 1 - degree"
           ></slider-corns>
         </label>
       </div>
@@ -207,5 +207,4 @@ const degrees = ref([])
     margin: 0 0 24px;
   }
 }
-
 </style>

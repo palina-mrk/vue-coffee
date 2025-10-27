@@ -1,34 +1,44 @@
 <script setup>
-const props = defineProps(['modelValue','inputData']);
+const props = defineProps(["modelValue", "inputData"]);
 </script>
 
 <template>
   <div class="custom-input">
-    <label 
-      class="custom-input__label visually-hidden" :for="inputData.id"
+    <label
+      class="custom-input__label visually-hidden"
+      :for="inputData.id"
     ></label>
-    <input 
+    <input
       class="custom-input__field"
-      type="text" 
+      type="text"
       :value="modelValue"
       :name="inputData.name"
       :id="inputData.id"
       :placeholder="inputData.placeholder"
-      @input="$emit('update:modelValue',$event.target.value)"  
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
+    <span class="custom-input__info custom-input__info--accept">{{
+      `Скидка -${inputData.promoSale}% по промокоду “${inputData.userPromo}”`
+    }}</span>
+    <span class="custom-input__info custom-input__info--error">{{
+      inputData.error
+    }}</span>
+    <svg
+      class="custom-input__icon custom-input__icon--accept"
+      width="15"
+      height="13"
+      aria-hidden="true"
     >
-    <span class="custom-input__info custom-input__info--accept">{{`Скидка -${inputData.promoSale}% по промокоду “${inputData.userPromo}”`}}</span>
-    <span class="custom-input__info custom-input__info--error">{{ inputData.error }}</span>
-    <svg
-        class="custom-input__icon custom-input__icon--accept"
-        width="15" height="13" aria-hidden="true">
-        <use xlink:href="../../assets/cart-sprite.svg#icon-accept"></use>
+      <use xlink:href="../../assets/cart-sprite.svg#icon-accept"></use>
     </svg>
     <svg
-        class="custom-input__icon custom-input__icon--error"
-        width="15" height="13" aria-hidden="true">
-        <use xlink:href="../../assets/cart-sprite.svg#icon-error"></use>
+      class="custom-input__icon custom-input__icon--error"
+      width="15"
+      height="13"
+      aria-hidden="true"
+    >
+      <use xlink:href="../../assets/cart-sprite.svg#icon-error"></use>
     </svg>
-
   </div>
 </template>
 
@@ -184,7 +194,6 @@ const props = defineProps(['modelValue','inputData']);
   }
 }
 
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -197,5 +206,4 @@ const props = defineProps(['modelValue','inputData']);
   clip: rect(0 0 0 0);
   clip-path: inset(100%);
 }
-
 </style>

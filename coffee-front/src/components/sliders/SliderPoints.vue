@@ -64,5 +64,4 @@ defineProps(["count"]);
     }
   }
 }
-
 </style>

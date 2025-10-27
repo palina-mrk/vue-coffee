@@ -38,7 +38,7 @@
       left: 0;
       top: 50%;
       transform: translateY(calc(-50% - 1px));
-      
+
       @include vp-laptop {
         width: 17px;
         height: 17px;

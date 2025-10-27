@@ -1,24 +1,20 @@
 <script setup>
-const props = defineProps(['toggleName','initialValues','selected'])
+const props = defineProps(["toggleName", "initialValues", "selected"]);
 </script>
 
 <template>
   <ul class="toggle">
-    <li
-      class="toggle__item"
-      v-for="item in initialValues"
-    >
-      <input 
+    <li class="toggle__item" v-for="item in initialValues">
+      <input
         :checked="item.value == selected"
-        class="toggle__field visually-hidden" 
-        :id="`toggle-${toggleName}-${item.value}`" 
-        type="radio" 
-        :name="`toggle-${toggleName}`" 
+        class="toggle__field visually-hidden"
+        :id="`toggle-${toggleName}-${item.value}`"
+        type="radio"
+        :name="`toggle-${toggleName}`"
         :value="`${item.value}`"
-        @input="$emit('toggle-value', $event.target.value)">
-      <label 
-        :for="`toggle-${toggleName}-${item.value}`"  
-        class="toggle__label">
+        @input="$emit('toggle-value', $event.target.value)"
+      />
+      <label :for="`toggle-${toggleName}-${item.value}`" class="toggle__label">
         <span class="toggle__inner">{{ item.label }}</span>
       </label>
     </li>

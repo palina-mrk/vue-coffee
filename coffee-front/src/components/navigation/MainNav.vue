@@ -1,30 +1,29 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <nav class="main-nav">
     <ul class="main-nav__list">
       <li class="main-nav__item">
-        <router-link 
-          class="main-nav__link" 
+        <router-link
+          class="main-nav__link"
           :to="{ name: 'catalogs' }"
           @click="$emit('leave-page')"
-          >Каталог товаров</router-link>
+          >Каталог товаров</router-link
+        >
       </li>
       <li class="main-nav__item">
-        <a class="main-nav__link" 
-        @click="$emit('leave-page')">Блог</a>
+        <a class="main-nav__link" @click="$emit('leave-page')">Блог</a>
       </li>
       <li class="main-nav__item">
-        <router-link 
-        class="main-nav__link" 
-        :to="{ name: 'contacts' }"
-        @click="$emit('leave-page')">Контакты</router-link>
+        <router-link
+          class="main-nav__link"
+          :to="{ name: 'contacts' }"
+          @click="$emit('leave-page')"
+          >Контакты</router-link
+        >
       </li>
     </ul>
   </nav>
-  
 </template>
 
 <style lang="scss" scoped>
@@ -83,9 +82,8 @@
 .main-nav--vertical {
   .main-nav__list {
     flex-direction: column;
-    gap: 41px;  
-    
-    
+    gap: 41px;
+
     @include vp-mobile {
       gap: 20px;
     }
@@ -94,13 +92,12 @@
   .main-nav__link {
     font-size: 32px;
     line-height: 38px;
-    color: $color-eerie-black;  
-    
+    color: $color-eerie-black;
+
     @include vp-mobile {
       font-size: 16px;
       line-height: 19px;
     }
   }
 }
-
 </style>

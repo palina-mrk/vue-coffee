@@ -1,7 +1,7 @@
 <script setup>
-import MainNav from '../components/navigation/MainNav.vue';
-import LogoNav from '../components/navigation/LogoNav.vue';
-import BgFooter from '../components/backgrounds/BgFooter.vue';
+import MainNav from "../components/navigation/MainNav.vue";
+import LogoNav from "../components/navigation/LogoNav.vue";
+import BgFooter from "../components/backgrounds/BgFooter.vue";
 </script>
 
 <template>

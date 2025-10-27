@@ -1,31 +1,31 @@
 <script setup>
-import ProductCard from '../cards/ProductCard.vue';
-import { useCatalogStore } from '../../stores/catalog';
+import ProductCard from "../cards/ProductCard.vue";
+import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
 import { storeToRefs } from "pinia";
-const { coffees, teas, vendings, healthies, isLoaded } = storeToRefs(catalogStore);
-import { ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
+const { coffees, teas, vendings, healthies, isLoaded } =
+  storeToRefs(catalogStore);
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
 const route = useRoute();
 
 const cardsCount = ref(12);
 const maxCount = computed(() => {
-  switch(route.name) {
-    case 'coffee':
+  switch (route.name) {
+    case "coffee":
       return coffees.length;
-    case 'tea':
+    case "tea":
       return teas.length;
-    case 'vending':
+    case "vending":
       return vendings.length;
     default:
       return 0;
   }
-})
+});
 
 function showMore() {
   cardsCount.value += 20;
-  if(cardsCount.value > maxCount)
-    cardsCount.value = maxCount
+  if (cardsCount.value > maxCount) cardsCount.value = maxCount;
 }
 </script>
 
@@ -33,43 +33,58 @@ function showMore() {
   <section class="products">
     <div class="container">
       <div class="products__wrapper">
-        <h2 class="products__title visually-hidden">Отсортированные карточки товаров</h2>  
+        <h2 class="products__title visually-hidden">
+          Отсортированные карточки товаров
+        </h2>
 
-        <button class="products__sort-btn btn-linked btn-linked--black-small" type="submit">Сортировка</button>
+        <button
+          class="products__sort-btn btn-linked btn-linked--black-small"
+          type="submit"
+        >
+          Сортировка
+        </button>
 
         <ul v-if="isLoaded" class="products__list">
-          <li 
+          <li
             v-if="route.name == 'coffee'"
             class="products__item"
-            v-for="n in 20">
+            v-for="n in 20"
+          >
             <ProductCard :product="coffees[n - 1]"></ProductCard>
           </li>
 
-          <li 
+          <li
             v-else-if="route.name == 'tea'"
             class="products__item"
-            v-for="n in 20">
+            v-for="n in 20"
+          >
             <ProductCard :product="teas[n - 1]"></ProductCard>
           </li>
 
-          <li 
+          <li
             v-else-if="route.name == 'vending'"
             class="products__item"
-            v-for="n in 20">
+            v-for="n in 20"
+          >
             <ProductCard :product="vendings[n - 1]"></ProductCard>
           </li>
 
-          <li 
+          <li
             v-else-if="route.name == 'healthy'"
             class="products__item"
-            v-for="n in 20">
+            v-for="n in 20"
+          >
             <ProductCard :product="healthies[n - 1]"></ProductCard>
           </li>
         </ul>
-        
-        <button class="products__button btn btn--white-xl" type="button"
-        @click="showMore"
-        >Показать ещё</button>
+
+        <button
+          class="products__button btn btn--white-xl"
+          type="button"
+          @click="showMore"
+        >
+          Показать ещё
+        </button>
       </div>
     </div>
   </section>
@@ -123,7 +138,6 @@ function showMore() {
     }
   }
 
-
   &__list {
     margin: 0;
     padding: 0;
@@ -142,9 +156,20 @@ function showMore() {
     }
   }
 
+  &__item {
+    width: calc(25% - 15px);
+
+    @include vp-tablet {
+      width: calc(50% - 10px);
+    }
+
+    @include vp-mobile {
+      width: 100%;
+    }
+  }
+
   &__button {
     width: 100%;
   }
 }
-
 </style>

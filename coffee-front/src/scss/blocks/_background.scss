@@ -1,5 +1,4 @@
 .background {
-
   &__svg-puddle {
     color: $color-ucla-gold;
     position: absolute;
@@ -7,14 +6,14 @@
   }
 
   &__svg-puddle--right {
-    width: 1453px; 
-    height: 1750px; 
+    width: 1453px;
+    height: 1750px;
     left: calc(50% + 236px);
     top: -275px;
 
     @include vp-laptop {
-      width: 1024px; 
-      height: 1234px; 
+      width: 1024px;
+      height: 1234px;
       left: calc(50% + 167px);
       top: -190px;
     }
@@ -37,8 +36,8 @@
   }
 
   &__svg-puddle--left {
-    width: 1230px; 
-    height: 1380px; 
+    width: 1230px;
+    height: 1380px;
     left: calc(50% - 1728px);
     top: 1019px;
 
@@ -68,8 +67,8 @@
 
     @include vp-laptop {
       display: unset;
-      width: 820px; 
-      height: 935px; 
+      width: 820px;
+      height: 935px;
       left: calc(50% - 1190px);
       top: 707px;
     }
@@ -94,21 +93,21 @@
       width: 637px;
       height: 550px;
       top: 135px;
-      left: calc(50% - 113px)
+      left: calc(50% - 113px);
     }
 
     @include vp-tablet {
       width: 714px;
       height: 616px;
       top: 381px;
-      left: calc(50% - 218px)
+      left: calc(50% - 218px);
     }
 
     @include vp-mobile {
       width: 439px;
       height: 378px;
       top: 228px;
-      left: calc(50% - 107px)
+      left: calc(50% - 107px);
     }
   }
 
@@ -155,7 +154,7 @@
       width: 525px;
       height: 350px;
       left: calc(50% - 34px);
-      top: 189px;      
+      top: 189px;
     }
 
     @include vp-tablet {
@@ -187,7 +186,7 @@
     left: calc(50% + 8px);
     top: 311px;
     background: $color-onyx-15;
-    filter: blur(50px);  
+    filter: blur(50px);
 
     @include vp-laptop {
       width: 472px;
@@ -227,7 +226,7 @@
     z-index: -4;
     left: 50%;
     transform: translateX(-50%);
-  
+
     @include vp-tablet {
       width: 1348px;
       display: flex;
@@ -249,7 +248,7 @@
     }
 
     @include vp-tablet {
-      display: none;  
+      display: none;
     }
 
     @include vp-mobile {
@@ -271,7 +270,7 @@
 
     @include vp-tablet {
       height: 216px;
-      top: 32px;  
+      top: 32px;
     }
 
     @include vp-mobile {
@@ -388,7 +387,7 @@
     }
 
     @include vp-tablet {
-      display: none;      
+      display: none;
     }
   }
 
@@ -596,7 +595,7 @@
       width: 483px;
       height: 322px;
       left: calc(50% + 220px);
-      top: 32px;      
+      top: 32px;
     }
 
     @include vp-tablet {
@@ -701,7 +700,7 @@
       width: 371px;
       height: 291px;
       left: calc(50% - 208px);
-      top: 177px;  
+      top: 177px;
     }
   }
 
@@ -926,7 +925,7 @@
       width: 483px;
       height: 322px;
       left: calc(50% + 220px);
-      top: 0;      
+      top: 0;
     }
 
     @include vp-tablet {
@@ -985,7 +984,6 @@
     }
   }
 
-
   &__div--cart-middle-wall {
     top: 961px;
     bottom: 110px;
@@ -1031,7 +1029,7 @@
   }
 
   /* Для контактов */
-  
+
   &__div--contacts-top-wall {
     top: 0;
     bottom: 110px;
@@ -1084,7 +1082,7 @@
       height: 115px;
     }
   }
-  
+
   &__svg-vawe--contacts-front-footer {
     height: 407px;
     top: 30px;
