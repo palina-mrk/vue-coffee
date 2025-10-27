@@ -30,7 +30,7 @@ function showMore() {
 </script>
 
 <template>
-  <section class="products">
+  <section :class="['products','products--' + route.name]">
     <div class="container">
       <div class="products__wrapper">
         <h2 class="products__title visually-hidden">
@@ -92,6 +92,187 @@ function showMore() {
 
 <style lang="scss" scoped>
 .products {
+  padding: 48px 0 97px;
+  font-family: $ff-gilroy;
+
+  @include vp-laptop {
+    padding: 37px 0 71px;
+  }
+
+  @include vp-tablet {
+    padding: 30px 0 38px;
+  }
+
+  @include vp-mobile {
+    padding: 36px 0 50px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+    @include vp-laptop {
+      gap: 51px;
+    }
+
+    @include vp-tablet {
+      gap: 30px;
+    }
+
+    @include vp-mobile {
+      gap: 22px;
+    }
+  }
+
+  &__sort-btn {
+    align-self: start;
+
+    @include vp-laptop {
+      position: relative;
+      left: -15px;
+    }
+
+    @include vp-tablet {
+      position: unset;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 70px 20px;
+    flex-wrap: wrap;
+    justify-content: start;
+
+    @include vp-laptop {
+      gap: 49px 20px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+    }
+  }
+
+  &__item {
+    width: calc(25% - 15px);
+
+    @include vp-tablet {
+      width: calc(50% - 10px);
+    }
+
+    @include vp-mobile {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
+
+.products--tea {
+  padding: 60px 0 70px;
+
+  .products__wrapper {
+    gap: 60px;
+  }
+
+  .products__list {
+    gap: 30px 20px;
+    margin: 0 0 10px;
+
+    @include vp-laptop {
+      gap: 25px 20px;
+    }
+  }
+}
+
+.products--vending {
+  padding: 48px 0 97px;
+  font-family: $ff-gilroy;
+
+  @include vp-laptop {
+    padding: 37px 0 71px;
+  }
+
+  @include vp-tablet {
+    padding: 30px 0 38px;
+  }
+
+  @include vp-mobile {
+    padding: 36px 0 50px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+    @include vp-laptop {
+      gap: 51px;
+    }
+
+    @include vp-tablet {
+      gap: 30px;
+    }
+
+    @include vp-mobile {
+      gap: 22px;
+    }
+  }
+
+  &__sort-btn {
+    align-self: start;
+
+    @include vp-laptop {
+      position: relative;
+      left: -15px;
+    }
+
+    @include vp-tablet {
+      position: unset;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 70px 20px;
+    flex-wrap: wrap;
+    justify-content: start;
+
+    @include vp-laptop {
+      gap: 49px 20px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+    }
+  }
+
+  &__item {
+    width: calc(25% - 15px);
+
+    @include vp-tablet {
+      width: calc(50% - 10px);
+    }
+
+    @include vp-mobile {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
+
+.products--healthy {
   padding: 48px 0 97px;
   font-family: $ff-gilroy;
 
