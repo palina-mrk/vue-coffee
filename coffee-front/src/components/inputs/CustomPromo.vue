@@ -16,20 +16,17 @@ const props = defineProps(['modelValue','inputData']);
       :placeholder="inputData.placeholder"
       @input="$emit('update:modelValue',$event.target.value)"  
     >
-    <span class="custom-input__info custom-input__info--accept">{{ inputData.accept }}</span>
+    <span class="custom-input__info custom-input__info--accept">{{`Скидка -${inputData.promoSale}% по промокоду “${inputData.userPromo}”`}}</span>
     <span class="custom-input__info custom-input__info--error">{{ inputData.error }}</span>
     <svg
         class="custom-input__icon custom-input__icon--accept"
-        width="15" height="12" 
-        viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14 1.00001L5.0625 11L1 6.45455" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        width="15" height="13" aria-hidden="true">
+        <use xlink:href="../../assets/cart-sprite.svg#icon-accept"></use>
     </svg>
     <svg
         class="custom-input__icon custom-input__icon--error"
-        width="12" height="11" 
-        viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0.5 0.5L11.5 10.5" stroke="currentColor" stroke-linecap="round"/>
-      <path d="M11.5 0.5L0.499999 10.5" stroke="currentColor" stroke-linecap="round"/>
+        width="15" height="13" aria-hidden="true">
+        <use xlink:href="../../assets/cart-sprite.svg#icon-error"></use>
     </svg>
 
   </div>
@@ -98,7 +95,6 @@ const props = defineProps(['modelValue','inputData']);
     font-size: 16px;
     line-height: 19px;
     text-align: right;
-    display: none;
 
     @include vp-laptop {
       font-size: 10px;
@@ -154,6 +150,13 @@ const props = defineProps(['modelValue','inputData']);
       right: 13px;
       top: 14px;
     }
+  }
+
+  &__info--error,
+  &__icon--error,
+  &__info--accept,
+  &__icon--accept {
+    display: none;
   }
 }
 

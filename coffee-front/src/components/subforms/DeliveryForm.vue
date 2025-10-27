@@ -121,7 +121,7 @@ const addressData = reactive([
   box-shadow: 0 0 50px 0 $color-quick-silver-25;
   position: relative;
   width: 100%;
-  padding: 70px 140px;
+  padding: 72px 140px 70px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -130,7 +130,7 @@ const addressData = reactive([
     box-shadow: 0 0 35px 0 $color-spanish-gray-c95-25;
     border-radius: 14px;
     gap: 28px;
-    padding: 50px 100px 45px;
+    padding: 52px 100px 45px;
   }
 
   @include vp-tablet {
@@ -142,7 +142,7 @@ const addressData = reactive([
 
   @include vp-mobile {
     padding: 40px 18px 50px;
-    gap: 20px;
+    gap: 19px;
   }
 
   &__title {
@@ -151,13 +151,13 @@ const addressData = reactive([
     font-size: 30px;
     line-height: 37px;
     color: $color-raising-black;
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     padding: 0;
 
     @include vp-laptop {
       font-size: 22px;
       line-height: 27px;
-      margin: 0 0 5px;
+      margin: 0 0 3px;
     }
 
     @include vp-tablet {
@@ -265,7 +265,7 @@ const addressData = reactive([
   @include vp-mobile {
     font-size: 18px;
     line-height: 22px;
-    padding: 14px;
+    padding: 14px 14px 12px;
   }
 
   &:hover {

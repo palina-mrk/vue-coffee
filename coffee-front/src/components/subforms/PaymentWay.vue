@@ -103,7 +103,7 @@ const selectedValues = reactive([])
     }
 
     @include vp-mobile {
-      gap: 22px;
+      gap: 21px;
     }
   }
   

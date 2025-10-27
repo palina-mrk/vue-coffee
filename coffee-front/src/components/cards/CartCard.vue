@@ -5,6 +5,7 @@ import { useCartStore } from '../../stores/cart';
 const cartStore = useCartStore();
 import { useCatalogStore } from '../../stores/catalog';
 const catalogStore = useCatalogStore();
+
 </script>
 
 <template>
@@ -24,12 +25,19 @@ const catalogStore = useCatalogStore();
       <li 
         class="cart-card__products-item"
         v-show="cartStore.totalCount > 0"
-        ><cart-heading :sale="cartStore.globalSale"></cart-heading></li>
+        ><cart-heading 
+        :sale="cartStore.globalSale"
+        ></cart-heading></li>
       <li 
         class="cart-card__products-item"
         v-for="item in cartStore.cartItems" 
+        :key="item.id"
       >
-        <cart-line :itemInfo="item"></cart-line> 
+        <cart-line 
+        :itemInfo="item" 
+        :sale="item.sale" 
+        :total="item.total" 
+        :salePercent="item.salePercent"></cart-line> 
       </li>
     </ul>
   </div>
@@ -103,7 +111,7 @@ const catalogStore = useCatalogStore();
     }
 
     @include vp-mobile {
-      gap: 20px;
+      gap: 18px;
       margin: 0 0 20px;
     }
   }

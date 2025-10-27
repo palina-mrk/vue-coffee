@@ -948,45 +948,46 @@
 
   &__div--cart-top-wall {
     top: 0;
-    height: 479px;
+    height: 961px;
     background-color: $color-cornsilk;
+    z-index: -5;
 
     @include vp-laptop {
-      height: 339px;
+      height: 701px;
     }
 
     @include vp-tablet {
-      height: 335px;
+      height: 901px;
     }
 
     @include vp-mobile {
-      height: 100px;
+      height: 681px;
     }
   }
 
   &__svg-vawe--cart-top {
     height: 546px;
-    top: 478px;
+    top: 960px;
     color: $color-cornsilk;
 
     @include vp-laptop {
-      width: 3720px;
-      top: 338px;
+      width: 1904px;
+      top: 500px;
     }
 
     @include vp-tablet {
-      top: 330px;
+      top: 900px;
       height: 192px;
     }
 
     @include vp-mobile {
-      top: 100px;
+      top: 680px;
     }
   }
 
 
   &__div--cart-middle-wall {
-    top: 479px;
+    top: 961px;
     bottom: 110px;
     background-color: $color-white;
     width: 3720px;
@@ -994,15 +995,16 @@
     z-index: -6;
 
     @include vp-laptop {
-      top: 339px;
+      top: 501px;
     }
 
     @include vp-tablet {
       bottom: 120px;
+      top: 901px;
     }
 
     @include vp-mobile {
-      top: 100px;
+      top: 681px;
       bottom: 50px;
     }
   }

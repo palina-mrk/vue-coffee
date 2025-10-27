@@ -50,7 +50,7 @@ import PromoForm from '../components/subforms/PromoForm.vue';
   height: 100%;
 
   @include vp-laptop {
-    padding: 140px 0 0;
+    padding: 140px 0 110px;
   }
 
   @include vp-tablet {
@@ -59,6 +59,22 @@ import PromoForm from '../components/subforms/PromoForm.vue';
 
   @include vp-mobile {
     padding: 95px 0 0;
+  }
+
+  &__breadcrumbs-list {
+    margin: 0 0 50px;
+
+    @include vp-laptop {
+      margin: 0 0 35px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 19px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 28px;
+    }
   }
 
   &__top-forms {
@@ -81,22 +97,6 @@ import PromoForm from '../components/subforms/PromoForm.vue';
     @include vp-mobile {
       gap: 30px;
       margin: 0 0 20px;
-    }
-  }
-
-  &__breadcrumbs-list {
-    margin: 0 0 50px;
-
-    @include vp-laptop {
-      margin: 0 0 35px;
-    }
-
-    @include vp-tablet {
-      margin: 0 0 19px;
-    }
-
-    @include vp-mobile {
-      margin: 0 0 30px;
     }
   }
 

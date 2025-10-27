@@ -6,19 +6,61 @@ export const useCartStore = defineStore("cart", () => {
   const catalog = useCatalogStore();
   const cartRows = reactive(JSON.parse(localStorage.getItem("cartRows") || "[]"));/*
   [id1, weight1, count1], 
-     [id1, weight2, count2], 
-     [id2, weight2, count2],
+  [id1, weight2, count2], 
+  [id2, weight2, count2],
   }*/
- 
-  const globalSales = reactive([
+
+  
+  const cartSales = reactive([
     [0, 0],
     [5000, 10],
     [7000, 15],
     [10000, 20]
-  ]) /**При покупке на определенную сумму ко всем нескидочным 
-  товарам применится скидка на определенное кол-во процентов
+  ]) /**При покупке на определенную сумму ко всем нескидочным товарам применится скидка "по корзине" на определенное кол-во процентов
   [[сумма1, процент1],[сумма2, процент2]] */
+  const cartSale = computed(() => 
+    cartSales.findLast(s => s[0] <= rawTotalSum.value)[1]
+  ) /* вычисляем эту скидку*/
 
+  const promoSales = reactive([
+    ['coffee2021', 15],
+    ['summer2022', 20]
+  ]); /** правильные промокоды с их скидками */
+  const promoSale = ref(0);
+  const userPromo = ref('');
+
+  /** Попытка применить промокод
+   * если верный, сохраняем и применяем к нескидочным товарам
+   */
+  function setPromo (promoValue) {
+    const promoInfo = promoSales.find(s => s[0] == promoValue);
+
+    if(!promoInfo) return false;
+    
+    promoSale.value = promoInfo[1];
+    userPromo.value = promoValue;
+    console.log('promo: ',userPromo.value);
+    return true;
+  } 
+
+  /** ко всем нескидочным 
+  товарам применится максимальная из скидок по промокоду и по корзине
+   */
+  const globalSale = computed(() => 
+    cartSale.value > promoSale.value ? cartSale.value : promoSale.value);
+  const saleType = computed(() => { 
+    switch (globalSale.value) {
+      case 0:
+        return 'none';
+      case (cartSale.value):
+        return 'cart';
+      case (promoSale.value):
+        return 'promo';
+      default: 
+        return 'unknown';
+    }
+  });
+  
   const deliveryWays = reactive([
     [390, 'sdek', 'СДЭК - до двери'],
     [300, 'russian-post', 'Почта России'],
@@ -37,9 +79,6 @@ export const useCartStore = defineStore("cart", () => {
   const deliveryValue = computed(() => deliveryWay.value[1]);
   const deliveryPrice = computed(() => deliveryWay.value[0]);
 
-  const globalSale = computed(() => 
-    globalSales.findLast(s => s[0] <= rawTotalSum.value)[1]
-  ) /* вычисляем эту скидку*/
   
   const cartInfo = computed(() => cartRows.reduce((str, el) => str + `id: ${el[0]}, weight: ${el[1]}, count: ${el[2]};
   `,"cart: "));
@@ -134,13 +173,11 @@ export const useCartStore = defineStore("cart", () => {
   }, []) : [])
 
   const cartItems = computed(() => {
-    console.log(globalSale.value);
     if(globalSale.value == 0)
       return rawCartItems.value;
 
     return rawCartItems.value.map(rawItem => {
-        console.log(rawItem.sale);
-        if(rawItem.sale > 0)
+        if(rawItem.actions == 'Скидки')
           return rawItem;
         
         const item = Object.assign(rawItem);
@@ -151,7 +188,6 @@ export const useCartStore = defineStore("cart", () => {
       }
     )
   })
-
 
   watch(cartRows, () => {
     localStorage.setItem("cartRows", JSON.stringify(cartRows));
@@ -180,6 +216,10 @@ export const useCartStore = defineStore("cart", () => {
     deliveryValue,
     setDeliveryValue,
     deliveryValue,
-    deliveryPrice
+    deliveryPrice,
+    setPromo,
+    saleType,
+    promoSale,
+    userPromo
   };
 });

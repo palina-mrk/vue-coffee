@@ -114,7 +114,7 @@ const deliveryWays = reactive({
     }
 
     @include vp-mobile {
-      gap: 10px;
+      gap: 9px;
     }
   }
 
@@ -141,6 +141,7 @@ const deliveryWays = reactive({
     @include vp-mobile {
       font-size: 20px;
       line-height: 25px;
+      margin: 0 0 11px;
     }
   }
 
@@ -311,7 +312,7 @@ const deliveryWays = reactive({
   @include vp-mobile {
     font-size: 18px;
     line-height: 22px;
-    padding: 14px;
+    padding: 16px 14px 13px;
   }
 
   &:hover {

@@ -1,6 +1,6 @@
 <script setup>
 import CustomCounter from '../inputs/CustomCounter.vue';
-defineProps(['itemInfo'])
+defineProps(['itemInfo','sale','salePercent','total'])
 import { useCartStore } from '../../stores/cart';
 const cartStore = useCartStore();
 </script>
@@ -36,8 +36,8 @@ const cartStore = useCartStore();
       :modelValue="itemInfo.count"
       @update:modelValue="cartStore.setCount(itemInfo.id, itemInfo.weight, $event)"
     ></custom-counter>
-    <span class="product-line__sale">{{ itemInfo.sale ? `${itemInfo.sale} ₽ (-${itemInfo.salePercent}%)` : '0  ₽'}} </span>
-    <span class="product-line__total">{{ itemInfo.total }} ₽</span>
+    <span class="product-line__sale">{{ sale ? `${sale} ₽ (-${salePercent}%)` : '0  ₽'}} </span>
+    <span class="product-line__total">{{ total }} ₽</span>
   </div>
 
   <div class="product-line">
@@ -55,15 +55,15 @@ const cartStore = useCartStore();
         <div class="product-line__details-text">
           <h3 class="product-line__title">{{ itemInfo.title }}</h3>
           <span class="product-line__text-line">{{ itemInfo.descripton }}</span>
-          <span class="product-line__text-line">{{ itemInfo.weight }}</span>
+          <span class="product-line__text-line">{{ itemInfo.weightString }}</span>
         </div>
       </div>
 
       <div class="product-line__price-wrapper">
-        <span class="product-line__total">{{ itemInfo.total }} ₽</span>
+        <span class="product-line__total">{{ total }} ₽</span>
         <div class="product-line__sale-wrapper">
-          <span class="product-line__price">{{ itemInfo.sale ? `${itemInfo.price} ₽` : '0 ₽'}}</span>
-          <span class="product-line__sale">{{ itemInfo.sale ? `(-${itemInfo.salePercent}%)` : ''}}</span>
+          <span class="product-line__price">{{ sale ? `${itemInfo.price} ₽` : ''}}</span>
+          <span class="product-line__sale">{{ sale ? `(-${salePercent}%)` : ''}}</span>
         </div>
       </div>
     </div>

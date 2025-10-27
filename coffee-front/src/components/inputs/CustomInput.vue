@@ -75,6 +75,11 @@ const props = defineProps(['modelValue', 'inputData']);
         color: $color-chinese-silver;
       }
     }
+    
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none; /* Кнопки спрятаны */
+    }
   }
 
   &__info {
