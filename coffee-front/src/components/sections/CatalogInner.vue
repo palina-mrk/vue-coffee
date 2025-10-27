@@ -3,7 +3,7 @@ import ProductCard from '../cards/ProductCard.vue';
 import { useCatalogStore } from '../../stores/catalog';
 const catalogStore = useCatalogStore();
 import { storeToRefs } from "pinia";
-const { coffees, teas, isLoaded } = storeToRefs(catalogStore);
+const { coffees, teas, vendings, healthies, isLoaded } = storeToRefs(catalogStore);
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 const route = useRoute();
@@ -15,6 +15,8 @@ const maxCount = computed(() => {
       return coffees.length;
     case 'tea':
       return teas.length;
+    case 'vending':
+      return vendings.length;
     default:
       return 0;
   }
@@ -31,7 +33,7 @@ function showMore() {
   <section class="products">
     <div class="container">
       <div class="products__wrapper">
-        <h2 class="products__title visually-hidden">Отсортированные карточки товаров кофе</h2>  
+        <h2 class="products__title visually-hidden">Отсортированные карточки товаров</h2>  
 
         <button class="products__sort-btn btn-linked btn-linked--black-small" type="submit">Сортировка</button>
 
@@ -44,10 +46,24 @@ function showMore() {
           </li>
 
           <li 
-            v-else
+            v-else-if="route.name == 'tea'"
             class="products__item"
             v-for="n in 20">
             <ProductCard :product="teas[n - 1]"></ProductCard>
+          </li>
+
+          <li 
+            v-else-if="route.name == 'vending'"
+            class="products__item"
+            v-for="n in 20">
+            <ProductCard :product="vendings[n - 1]"></ProductCard>
+          </li>
+
+          <li 
+            v-else-if="route.name == 'healthy'"
+            class="products__item"
+            v-for="n in 20">
+            <ProductCard :product="healthies[n - 1]"></ProductCard>
           </li>
         </ul>
         

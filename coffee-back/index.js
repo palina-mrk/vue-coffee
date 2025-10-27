@@ -5,6 +5,8 @@ var cors = require('cors')
 
 const teas = require('./data/teas')
 const coffees = require('./data/coffee')
+const vendings = require('./data/vending')
+const healthies = require('./data/healthy')
 
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
@@ -13,6 +15,10 @@ const schema = buildSchema(`
     coffee(id: Int!): Coffee
     teas: [Tea!]!
     tea(id: Int!): Tea
+    vendings: [Vending!]!
+    vending(id: Int!): Vending
+    healthies: [Healthy!]!
+    healthy(id: Int!): Healthy
   }
 
   """ 
@@ -34,6 +40,28 @@ const schema = buildSchema(`
   }
 
   type Tea {
+    id: Int!
+    title: String!
+    category: String!
+    description: String!
+    weights: [Weight!]!
+    rate: Rate!
+    actions: [String!]!
+    kind: String!
+  }
+
+  type Vending {
+    id: Int!
+    title: String!
+    category: String!
+    description: String!
+    weights: [Weight!]!
+    rate: Rate!
+    actions: [String!]!
+    kind: String!
+  }
+
+  type Healthy {
     id: Int!
     title: String!
     category: String!
@@ -87,6 +115,20 @@ const root = {
   }),
   tea: ({id}) => teas.find(p => p.id == id),
   teas: () => teas.map(p => {
+    let weights = [];
+    p.weights.forEach(el => weights.push(el));
+    p.weights = weights;
+    return p;
+  }),
+  vending: ({id}) => vendings.find(p => p.id == id),
+  vendings: () => vendings.map(p => {
+    let weights = [];
+    p.weights.forEach(el => weights.push(el));
+    p.weights = weights;
+    return p;
+  }),
+  healthy: ({id}) => healthies.find(p => p.id == id),
+  healthies: () => healthies.map(p => {
     let weights = [];
     p.weights.forEach(el => weights.push(el));
     p.weights = weights;

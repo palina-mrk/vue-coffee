@@ -146,7 +146,7 @@ const imageVariant = computed(() => {
         <picture>
           <source media="(max-width: 767px)" :srcset="`../../src/images/${product.category}-card/${product.category}-product-mobile.png`">
           <source media="(max-width: 1348px)" :srcset="`../../src/images/${product.category}-card/${product.category}-product-tablet.png`">
-          <source media="(max-width: 1903px)" :srcset="`../../src/images/tea-card/${product.category}-${imageVariant}-laptop.png`">
+          <source media="(max-width: 1903px)" :srcset="`../../src/images/${product.category}-card/${product.category}-${imageVariant}-laptop.png`">
           <img class="product-card__image" :src="`../../src/images/${product.category}-card/${product.category}-${imageVariant}-desktop.png`" width="223" height="312" alt="Карточка товара">
         </picture>
       </div>

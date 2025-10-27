@@ -8,6 +8,8 @@ export const useCatalogStore = defineStore("catalog", () => {
   const catalog = reactive([]);
   const coffees = reactive([]);
   const teas = reactive([]);
+  const healthies = reactive([]);
+  const vendings = reactive([]);
   
   function loadCatalog() {
     apolloClient
@@ -60,12 +62,48 @@ export const useCatalogStore = defineStore("catalog", () => {
               kind
               actions
             }
+            vendings {
+              id
+              title
+              description
+              category
+              rate {
+                rating
+                comments
+              } 
+              weights {
+                value
+                price
+                priceCrossed
+              }
+              kind
+              actions
+            }
+            healthies {
+              id
+              title
+              description
+              category
+              rate {
+                rating
+                comments
+              } 
+              weights {
+                value
+                price
+                priceCrossed
+              }
+              kind
+              actions
+            }
           }
         `,
       })
       .then((result) => {
         result.data.coffees.forEach((el) => {catalog.push(el); coffees.push(el)});
         result.data.teas.forEach((el) => {catalog.push(el); teas.push(el)});
+        result.data.vendings.forEach((el) => {catalog.push(el); vendings.push(el)});
+        result.data.healthies.forEach((el) => {catalog.push(el); healthies.push(el)});
         isLoaded.value = true;
       });
   }
@@ -119,5 +157,5 @@ export const useCatalogStore = defineStore("catalog", () => {
     return catalog.filter((i) => i.actions.includes('Скидки')).map(i => i.id).sort();
   }
 
-  return { isLoaded, catalog, coffees, teas, loadCatalog, getPrice, getFullInfo, getSellInfo, getSaleIndexes, getShortDescription, getKind };
+  return { isLoaded, catalog, coffees, teas, vendings, healthies, loadCatalog, getPrice, getFullInfo, getSellInfo, getSaleIndexes, getShortDescription, getKind };
 });
