@@ -1,16 +1,20 @@
 <script setup>
-const props = defineProps(["count", "selected"]);
+const props = defineProps(["linkNames"]);
+import { useRoute } from "vue-router";
+const route = useRoute();
+import { computed } from "vue";
+const selectedName = computed(() => route.name)
 </script>
 
 <template>
   <ul class="slider-large">
     <li
-      v-for="n in count"
-      :class="{
-        'slider-large__point': true,
-        'slider-large__point--brown': n == selected,
-      }"
-    ></li>
+      v-for="linkName in linkNames"
+    ><router-link 
+      :to="{'name': linkName}"
+      class="slider-large__point"
+      :class="{'slider-large__point--brown': linkName == selectedName}"
+    ></router-link></li>
   </ul>
 </template>
 
@@ -35,10 +39,12 @@ const props = defineProps(["count", "selected"]);
   }
 
   &__point {
+    display: block;
     background-color: $color-white;
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    cursor: pointer;
 
     @include vp-laptop {
       width: 14px;

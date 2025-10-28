@@ -8,7 +8,7 @@ import SliderLarge from "../sliders/SliderLarge.vue";
 import { storeToRefs } from "pinia";
 import CatalogCard from "../cards/CatalogCard.vue";
 
-const { catalog, isLoaded, coffeeSales } = storeToRefs(catalogStore);
+const { isLoaded, coffeeSales } = storeToRefs(catalogStore);
 const catalogCards = reactive([
   { page: "coffee", title: "Свежеобжаренный кофе" },
   { page: "tea", title: "Чай и кофейные напитки" },
@@ -36,10 +36,10 @@ function getNextSales() {
         <div class="overview__hero-wrapper">
           <slider-large
             class="overview__slider"
-            :count="3"
-            :selected="1"
+            :linkNames="['home','catalogs','sales']"
+
           ></slider-large>
-          <h1 class="overview__hero-title">Свежеобжаренный кофе</h1>
+          <h1 class="overview__hero-title" id="home">Свежеобжаренный кофе</h1>
           <div class="overview__hero-content">
             <p class="overview__hero-paragraph">
               Кофе Калининградской обжарки из&nbsp;разных стран произрастания
@@ -84,7 +84,7 @@ function getNextSales() {
       </div>
       <div class="container">
         <div class="overview__products-wrapper">
-          <h2 class="overview__products-title">Товары со&nbsp;скидкой</h2>
+          <h2 class="overview__products-title" id="sales">Товары со&nbsp;скидкой</h2>
           <p class="overview__products-paragraph">
             <span class="overview__paragraph-string">
               <span class="overview__paragraph-string-tablet"
@@ -124,7 +124,7 @@ function getNextSales() {
                 :product="coffeeSales[0]" :key="coffeeSales[0].id"></ProductCard>
               </li>
               <li class="overview__products-item">
-                <ProductCard 
+                <ProductCard
                 :product="coffeeSales[1]" :key="coffeeSales[1].id"></ProductCard>
               </li>
               <li class="overview__products-item">
@@ -148,10 +148,10 @@ function getNextSales() {
               </svg>
             </button>
           </div>
-          <a
+          <router-link
             class="overview__products-link btn-linked btn-linked--black"
-            href="#"
-            >Смотреть все</a
+            :to="{ name: 'coffee' }"
+            >Смотреть все</router-link
           >
         </div>
       </div>
@@ -300,8 +300,10 @@ function getNextSales() {
               Мы&nbsp;раскрываем вкус каждого сорта кофе.
             </p>
           </div>
-          <a class="technology__button btn btn--size-xl" href="#"
-            >Посмотреть каталог</a
+          <router-link 
+          class="technology__button btn btn--size-xl" 
+          :to="{ name: 'catalogs' }"
+            >Посмотреть каталог</router-link
           >
         </div>
       </div>
@@ -732,6 +734,440 @@ function getNextSales() {
 </template>
 
 <style lang="scss" scoped>
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  background-color: $color-ucla-gold;
+  font-weight: 700;
+  line-height: 36px;
+  font-size: 30px;
+  font-family: $ff-gilroy;
+  border-radius: 5px;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+
+  @include vp-laptop {
+    font-size: 21px;
+    line-height: 25px;
+  }
+
+  @include vp-tablet {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  @include vp-mobile {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &--size-xl {
+    padding: 24px 24px 20px;
+
+    @include vp-laptop {
+      padding: 17px 17px 16px;
+      border-radius: 3.5px;
+    }
+
+    @include vp-tablet {
+      padding: 22px 20px 18px;
+      border-radius: 5px;
+    }
+
+    @include vp-mobile {
+      padding: 15px 14px 13px;
+    }
+  }
+
+  &--size-m {
+    font-size: 25px;
+    line-height: 30px;
+    padding: 18px 17px 12px;
+
+    @include vp-laptop {
+      font-size: 18px;
+      line-height: 22px;
+      padding: 10px 10px 9px;
+      border-radius: 3px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 30px;
+      padding: 21px 21px 19px;
+      border-radius: 5px;
+    }
+
+    @include vp-mobile {
+      font-size: 18px;
+      line-height: 22px;
+      padding: 15px 14px 13px;
+    }
+  }
+
+  &--size-s {
+    padding: 13px;
+    font-size: 18px;
+    line-height: 22px;
+
+    @include vp-laptop {
+      padding: 9px 9px 10px;
+      font-size: 12px;
+      line-height: 15px;
+      border-radius: 4px;
+    }
+
+    @include vp-tablet {
+      padding: 11px 11px 10px;
+      font-size: 16px;
+      line-height: 19px;
+      border-radius: 5px;
+    }
+
+    @include vp-mobile {
+      padding: 12px 11px 9px;
+      border-radius: 4px;
+    }
+  }
+
+  &:hover {
+    background-color: $color-mustard-yellow;
+  }
+
+  &--white-xl {
+    color: $color-black;
+    background-color: $color-white;
+    border: 1px solid $color-platinum;
+    padding: 23px;
+    height: 70px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+    border-radius: 10px;
+
+    @include vp-laptop {
+      height: 50px;
+      border: 0.71px solid $color-platinum;
+      padding: 16px;
+      font-size: 14px;
+      line-height: 17px;
+      border-radius: 7px;
+    }
+
+    @include vp-tablet {
+      height: 70px;
+      border: 1px solid $color-platinum;
+      padding: 22px;
+      font-size: 22px;
+      line-height: 26px;
+      border-radius: 5px;
+    }
+
+    @include vp-mobile {
+      height: 50px;
+      padding: 14px 14px 15px;
+      font-size: 18px;
+      line-height: 21px;
+    }
+
+    &:hover {
+      background-color: $color-cornsilk;
+    }
+  }
+}
+
+.btn-icon {
+  border: none;
+  user-select: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: -10px;
+    right: -10px;
+    cursor: pointer;
+  }
+
+  &:hover {
+    color: $color-ucla-gold;
+  }
+
+  &--burger {
+    .btn-icon__svg {
+      width: 59px;
+      height: 36px;
+
+      @include vp-mobile {
+        width: 29px;
+        height: 17px;
+      }
+    }
+  }
+
+  &--close {
+    width: 44px;
+    height: 44px;
+
+    @include vp-mobile {
+      width: 22px;
+      height: 22px;
+    }
+
+    &:hover {
+      color: $color-ucla-gold;
+    }
+  }
+
+  &--arrow {
+    color: $color-white;
+    background-color: $color-ucla-gold;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+
+    @include vp-laptop {
+      width: 49px;
+      height: 49px;
+    }
+
+    @include vp-tablet {
+      width: 81px;
+      height: 81px;
+    }
+
+    @include vp-mobile {
+      width: 40px;
+      height: 40px;
+    }
+
+    &:hover {
+      background-color: $color-mustard-yellow;
+    }
+
+    .btn-icon__svg {
+      width: 28px;
+      height: 14px;
+
+      @include vp-laptop {
+        width: 24px;
+        height: 12px;
+      }
+
+      @include vp-mobile {
+        width: 16px;
+        height: 8px;
+      }
+    }
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-ucla-gold;
+
+    &:hover {
+      color: $color-white;
+    }
+
+    .btn-icon__svg {
+      width: 34px;
+      height: 17px;
+
+      @include vp-tablet {
+        width: 38px;
+        height: 18px;
+      }
+
+      @include vp-mobile {
+        width: 20px;
+        height: 10px;
+      }
+    }
+  }
+
+  &--arrow-transparent {
+    .btn-icon__svg {
+      @include vp-tablet {
+        width: 101px;
+        height: 21px;
+      }
+
+      @include vp-mobile {
+        width: 48px;
+        height: 10px;
+      }
+    }
+  }
+}
+
+.btn-linked {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: $color-ucla-gold;
+  font-family: $ff-gilroy;
+  font-weight: 500;
+  line-height: 26px;
+  font-size: 20px;
+  padding: 10px 24px;
+  border-radius: 30px;
+  user-select: none;
+  cursor: pointer;
+
+  @include vp-laptop {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 5px 18px;
+    border-radius: 21px;
+  }
+
+  @include vp-tablet {
+    font-size: 25px;
+    line-height: 32px;
+    border-radius: 36px;
+    gap: 14px;
+  }
+
+  @include vp-mobile {
+    font-size: 16px;
+    line-height: 21px;
+    padding: 5px 18px 3px;
+    gap: 13px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 11px;
+
+    @include vp-laptop {
+      width: 10px;
+      height: 7px;
+    }
+
+    @include vp-tablet {
+      width: 32px;
+      height: 20px;
+    }
+
+    @include vp-mobile {
+      width: 14px;
+      height: 10px;
+    }
+  }
+
+  &:hover {
+    background-color: $color-bright-gray;
+  }
+
+  &--black {
+    line-height: 24px;
+    color: $color-black;
+    text-decoration: underline;
+    padding: 11px 30px 10px;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 16px;
+      padding: 7px 18px 6px;
+      border-radius: 18px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 30px;
+      border-radius: 30px;
+      padding: 7px 10px 6px;
+    }
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 16px;
+      padding: 5px 13px 3px;
+      border-radius: 16px;
+    }
+
+    &:hover {
+      background-color: $color-ghost-white;
+      color: $color-ucla-gold;
+    }
+  }
+
+  &--black-small {
+    line-height: 24px;
+    color: $color-black;
+    text-decoration: underline;
+    padding: 11px 30px 10px;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 16px;
+      padding: 7px 18px 6px;
+      border-radius: 18px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 26px;
+      border-radius: 25px;
+      padding: 9px 20px 8px;
+    }
+
+    @include vp-mobile {
+      font-size: 18px;
+      line-height: 21px;
+      padding: 7px 20px 7px;
+      border-radius: 20px;
+    }
+
+    &:hover {
+      background-color: $color-ghost-white;
+      color: $color-ucla-gold;
+    }
+  }
+
+  &--size-m {
+    font-size: 25px;
+    padding: 11px 29px 10px;
+
+    @include vp-laptop {
+      font-size: 18px;
+      padding: 7px 17px 6px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 30px;
+      padding: 7px 10px 6px;
+      border-radius: 30px;
+    }
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 16px;
+      padding: 5px 13px 3px;
+      border-radius: 16px;
+    }
+  }
+}
+
 .overview {
   position: relative;
   width: 100%;
@@ -1087,31 +1523,33 @@ function getNextSales() {
     }
   }
 
-  &__products-prev,
-  &__products-next {
+  &__products-prev {
+    position: relative;
     margin: 0;
     padding: 0;
+    top: -25px;
+
+    @include vp-laptop {
+      top: -15px;
+    }
 
     @include vp-tablet {
       display: none;
     }
   }
 
-  &__products-prev {
-    position: relative;
-    top: -25px;
-
-    @include vp-laptop {
-      top: -15px;
-    }
-  }
-
   &__products-next {
     position: relative;
+    margin: 0;
+    padding: 0;
     top: -15px;
 
     @include vp-laptop {
       top: -13px;
+    }
+
+    @include vp-tablet {
+      display: none;
     }
   }
 
@@ -2274,437 +2712,4 @@ function getNextSales() {
   }
 }
 
-.btn-icon {
-  border: none;
-  user-select: none;
-  padding: 0;
-  margin: 0;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  cursor: pointer;
-
-  &::before {
-    position: absolute;
-    top: -10px;
-    bottom: -10px;
-    left: -10px;
-    right: -10px;
-    cursor: pointer;
-  }
-
-  &:hover {
-    color: $color-ucla-gold;
-  }
-
-  &--burger {
-    .btn-icon__svg {
-      width: 59px;
-      height: 36px;
-
-      @include vp-mobile {
-        width: 29px;
-        height: 17px;
-      }
-    }
-  }
-
-  &--close {
-    width: 44px;
-    height: 44px;
-
-    @include vp-mobile {
-      width: 22px;
-      height: 22px;
-    }
-
-    &:hover {
-      color: $color-ucla-gold;
-    }
-  }
-
-  &--arrow {
-    color: $color-white;
-    background-color: $color-ucla-gold;
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-
-    @include vp-laptop {
-      width: 49px;
-      height: 49px;
-    }
-
-    @include vp-tablet {
-      width: 81px;
-      height: 81px;
-    }
-
-    @include vp-mobile {
-      width: 40px;
-      height: 40px;
-    }
-
-    &:hover {
-      background-color: $color-mustard-yellow;
-    }
-
-    .btn-icon__svg {
-      width: 28px;
-      height: 14px;
-
-      @include vp-laptop {
-        width: 24px;
-        height: 12px;
-      }
-
-      @include vp-mobile {
-        width: 16px;
-        height: 8px;
-      }
-    }
-  }
-
-  &--white {
-    background-color: $color-white;
-    color: $color-ucla-gold;
-
-    &:hover {
-      color: $color-white;
-    }
-
-    .btn-icon__svg {
-      width: 34px;
-      height: 17px;
-
-      @include vp-tablet {
-        width: 38px;
-        height: 18px;
-      }
-
-      @include vp-mobile {
-        width: 20px;
-        height: 10px;
-      }
-    }
-  }
-
-  &--arrow-transparent {
-    .btn-icon__svg {
-      @include vp-tablet {
-        width: 101px;
-        height: 21px;
-      }
-
-      @include vp-mobile {
-        width: 48px;
-        height: 10px;
-      }
-    }
-  }
-}
-
-.btn-linked {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  color: $color-ucla-gold;
-  font-family: $ff-gilroy;
-  font-weight: 500;
-  line-height: 26px;
-  font-size: 20px;
-  padding: 10px 24px;
-  border-radius: 30px;
-  user-select: none;
-  cursor: pointer;
-
-  @include vp-laptop {
-    font-size: 14px;
-    line-height: 18px;
-    padding: 5px 18px;
-    border-radius: 21px;
-  }
-
-  @include vp-tablet {
-    font-size: 25px;
-    line-height: 32px;
-    border-radius: 36px;
-    gap: 14px;
-  }
-
-  @include vp-mobile {
-    font-size: 16px;
-    line-height: 21px;
-    padding: 5px 18px 3px;
-    gap: 13px;
-  }
-
-  &__icon {
-    width: 16px;
-    height: 11px;
-
-    @include vp-laptop {
-      width: 10px;
-      height: 7px;
-    }
-
-    @include vp-tablet {
-      width: 32px;
-      height: 20px;
-    }
-
-    @include vp-mobile {
-      width: 14px;
-      height: 10px;
-    }
-  }
-
-  &:hover {
-    background-color: $color-bright-gray;
-  }
-
-  &--black {
-    line-height: 24px;
-    color: $color-black;
-    text-decoration: underline;
-    padding: 11px 30px 10px;
-    justify-content: center;
-    border: none;
-    background-color: transparent;
-
-    @include vp-laptop {
-      font-size: 14px;
-      line-height: 16px;
-      padding: 7px 18px 6px;
-      border-radius: 18px;
-    }
-
-    @include vp-tablet {
-      font-size: 25px;
-      line-height: 30px;
-      border-radius: 30px;
-      padding: 7px 10px 6px;
-    }
-
-    @include vp-mobile {
-      font-size: 12px;
-      line-height: 16px;
-      padding: 5px 13px 3px;
-      border-radius: 16px;
-    }
-
-    &:hover {
-      background-color: $color-ghost-white;
-      color: $color-ucla-gold;
-    }
-  }
-
-  &--black-small {
-    line-height: 24px;
-    color: $color-black;
-    text-decoration: underline;
-    padding: 11px 30px 10px;
-    justify-content: center;
-    border: none;
-    background-color: transparent;
-
-    @include vp-laptop {
-      font-size: 14px;
-      line-height: 16px;
-      padding: 7px 18px 6px;
-      border-radius: 18px;
-    }
-
-    @include vp-tablet {
-      font-size: 20px;
-      line-height: 26px;
-      border-radius: 25px;
-      padding: 9px 20px 8px;
-    }
-
-    @include vp-mobile {
-      font-size: 18px;
-      line-height: 21px;
-      padding: 7px 20px 7px;
-      border-radius: 20px;
-    }
-
-    &:hover {
-      background-color: $color-ghost-white;
-      color: $color-ucla-gold;
-    }
-  }
-
-  &--size-m {
-    font-size: 25px;
-    padding: 11px 29px 10px;
-
-    @include vp-laptop {
-      font-size: 18px;
-      padding: 7px 17px 6px;
-    }
-
-    @include vp-tablet {
-      font-size: 25px;
-      line-height: 30px;
-      padding: 7px 10px 6px;
-      border-radius: 30px;
-    }
-
-    @include vp-mobile {
-      font-size: 12px;
-      line-height: 16px;
-      padding: 5px 13px 3px;
-      border-radius: 16px;
-    }
-  }
-}
-
-.btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $color-white;
-  background-color: $color-ucla-gold;
-  font-weight: 700;
-  line-height: 36px;
-  font-size: 30px;
-  font-family: $ff-gilroy;
-  border-radius: 5px;
-  border: none;
-  margin: 0;
-  cursor: pointer;
-
-  @include vp-laptop {
-    font-size: 21px;
-    line-height: 25px;
-  }
-
-  @include vp-tablet {
-    font-size: 25px;
-    line-height: 30px;
-  }
-
-  @include vp-mobile {
-    font-size: 18px;
-    line-height: 22px;
-  }
-
-  &--size-xl {
-    padding: 24px 24px 20px;
-
-    @include vp-laptop {
-      padding: 17px 17px 16px;
-      border-radius: 3.5px;
-    }
-
-    @include vp-tablet {
-      padding: 22px 20px 18px;
-      border-radius: 5px;
-    }
-
-    @include vp-mobile {
-      padding: 15px 14px 13px;
-    }
-  }
-
-  &--size-m {
-    font-size: 25px;
-    line-height: 30px;
-    padding: 18px 17px 12px;
-
-    @include vp-laptop {
-      font-size: 18px;
-      line-height: 22px;
-      padding: 10px 10px 9px;
-      border-radius: 3px;
-    }
-
-    @include vp-tablet {
-      font-size: 25px;
-      line-height: 30px;
-      padding: 21px 21px 19px;
-      border-radius: 5px;
-    }
-
-    @include vp-mobile {
-      font-size: 18px;
-      line-height: 22px;
-      padding: 15px 14px 13px;
-    }
-  }
-
-  &--size-s {
-    padding: 13px;
-    font-size: 18px;
-    line-height: 22px;
-
-    @include vp-laptop {
-      padding: 9px 9px 10px;
-      font-size: 12px;
-      line-height: 15px;
-      border-radius: 4px;
-    }
-
-    @include vp-tablet {
-      padding: 11px 11px 10px;
-      font-size: 16px;
-      line-height: 19px;
-      border-radius: 5px;
-    }
-
-    @include vp-mobile {
-      padding: 12px 11px 9px;
-      border-radius: 4px;
-    }
-  }
-
-  &:hover {
-    background-color: $color-mustard-yellow;
-  }
-
-  &--white-xl {
-    color: $color-black;
-    background-color: $color-white;
-    border: 1px solid $color-platinum;
-    padding: 23px;
-    height: 70px;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 500;
-    border-radius: 10px;
-
-    @include vp-laptop {
-      height: 50px;
-      border: 0.71px solid $color-platinum;
-      padding: 16px;
-      font-size: 14px;
-      line-height: 17px;
-      border-radius: 7px;
-    }
-
-    @include vp-tablet {
-      height: 70px;
-      border: 1px solid $color-platinum;
-      padding: 22px;
-      font-size: 22px;
-      line-height: 26px;
-      border-radius: 5px;
-    }
-
-    @include vp-mobile {
-      height: 50px;
-      padding: 14px 14px 15px;
-      font-size: 18px;
-      line-height: 21px;
-    }
-
-    &:hover {
-      background-color: $color-cornsilk;
-    }
-  }
-}
 </style>

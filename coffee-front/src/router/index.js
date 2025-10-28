@@ -24,6 +24,14 @@ const router = createRouter({
       },
     },
     {
+      path: "/sales",
+      name: "sales",
+      component: HomeView,
+      meta: {
+        title: "Товары со скидкой",
+      },
+    },
+    {
       path: "/catalogs/coffee",
       name: "coffee",
       component: CatalogView,
@@ -101,6 +109,12 @@ const router = createRouter({
     if (to.name == "catalogs") {
       return {
         el: "#catalogs",
+        top: "180",
+        behavior: "smooth",
+      };
+    } else if (to.name == "sales") {
+      return {
+        el: "#sales",
         top: "180",
         behavior: "smooth",
       };
