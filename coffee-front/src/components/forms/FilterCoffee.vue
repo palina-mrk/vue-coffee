@@ -29,26 +29,29 @@ function updateValues(object, value) {
       <roasting-block
         class="filter-form__corns-block"
         :maxDegree="5"
-        @toggle-value="updateValues(roastingDegrees, $event)"
+        @toggle-value="$emit('set-roasting', $event)"
       ></roasting-block>
 
       <!-- Особые свойства details -->
       <details-block
         class="filter-form__words-block"
-        @toggle-value="updateValues(otherDetails[$event.name], $event.value)"
+        @toggle-value="$emit('set-details', $event)"
       >
       </details-block>
 
       <!-- Способ приготовления -->
       <preparation-block
         class="filter-form__cards-group"
-        @set-value="preparationWay = $event"
+        @set-value="$emit('set-preparation', $event)"
       ></preparation-block>
 
       <!--p>{{preparationWay}}</p>
 
       <p>{{ otherDetails }}</p>
-
+      @toggle-value="updateValues(roastingDegrees, $event)"
+     @toggle-value="updateValues(otherDetails[$event.name], $event.value)"
+     @set-value="preparationWay = $event"
+      
       <p>{{ roastingDegrees }}</p-->
     </div>
   </div>

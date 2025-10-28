@@ -441,6 +441,7 @@ const imageVariant = computed(() => {
     width: 172px;
     height: 311px;
     display: flex;
+    justify-content: center;
 
     @include vp-laptop {
       width: 120px;

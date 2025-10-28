@@ -743,6 +743,7 @@
     left: calc(50% + 38px);
     rotate: 17deg;
     z-index: 1;
+    pointer-events: none;
 
     @include vp-laptop {
       left: calc(50% + 315px);

@@ -14,6 +14,7 @@ const { coffees, teas, vendings, healthies, isLoaded } =
 import { ref, computed, reactive } from "vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
+/** формируем массив товаров отображаемого вида */
 const products = computed(() => {
   if(!isLoaded)
     return [];
@@ -31,11 +32,15 @@ const products = computed(() => {
       return [];
   }
 })
+/* все товары, кроме кофе, можно отфильтровать только по типу товара
+* сохраняем информацию об этом типе */
 const chosenTypes = reactive([]);
 function toggleChosen(type) {
   chosenTypes.includes(type) ? chosenTypes.splice(chosenTypes.indexOf(type), 1) : chosenTypes.push(type);
 }
 
+
+/* максимальное кол-во отображаемых товаров: 8 на странице */
 const cardsCount = ref(8);
 const maxCount = computed(() => {
   switch (route.name) {
@@ -49,10 +54,26 @@ const maxCount = computed(() => {
       return 0;
   }
 });
-
+/* отображаем еще на 4 товара больше */
 function showMore() {
   cardsCount.value += 4;
   if (cardsCount.value > maxCount) cardsCount.value = maxCount;
+}
+
+/* собираем подробную информацию из фильтров о товарах кофе*/
+const roastingDegrees = ref({});
+const otherDetails = reactive({
+  geography: {},
+  acidity: {},
+  processing: {},
+  actions: {},
+  kind: {},
+});
+const preparationWay = ref("");
+
+function updateValues(object, value) {
+  if (object[value]) delete object[value];
+  else object[value] = true;
 }
 </script>
 
@@ -71,6 +92,9 @@ function showMore() {
 
           <filter-coffee
             v-if="route.name == 'coffee'"
+            @setRoasting="updateValues(roastingDegrees, $event)"
+            @setDetails="updateValues(otherDetails[$event.name], $event.value)"
+            @setPreparation="preparationWay = $event"
             class="hero__form"
           ></filter-coffee>
           <filter-tea
@@ -92,6 +116,11 @@ function showMore() {
       </div>
     </section>
 
+    <p>{{ roastingDegrees }}</p>
+    <p>{{ otherDetails }}</p>
+    <p>{{ preparationWay }}</p>
+    <p>{{ products.value.filter((p) => Object.keys(roastingDegrees).length == 0 || roastingDegrees[p.roasting]) }}</p>
+
     <section :class="['products','products--' + route.name]">
       <div class="container">
         <div class="products__wrapper">
@@ -110,9 +139,9 @@ function showMore() {
             <li
               v-if="route.name == 'coffee'"
               class="products__item"
-              v-for="n in 20"
+              v-for="p in products.value.filter((p) => Object.keys(roastingDegrees).length == 0 || roastingDegrees[p.roasting]).filter((p) => Object.keys(otherDetails.actions).length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount)"
             >
-              <ProductCard :product="coffees[n - 1]"></ProductCard>
+              <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
 
             <li
