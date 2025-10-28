@@ -1,10 +1,10 @@
 <script setup>
-import BgCart from "../components/backgrounds/BgCart.vue";
-import CartCard from "../components/cards/CartCard.vue";
-import CustomBreadcrumbs from "../components/navigation/CustomBreadcrumbs.vue";
-import DeliveryForm from "../components/subforms/DeliveryForm.vue";
-import PaymentForm from "../components/subforms/PaymentForm.vue";
-import PromoForm from "../components/subforms/PromoForm.vue";
+import BgCart from "../backgrounds/BgCart.vue";
+import CartCard from "../cards/CartCard.vue";
+import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
+import DeliveryForm from "../forms/DeliveryForm.vue";
+import PaymentForm from "../forms/PaymentForm.vue";
+import PromoForm from "../forms/PromoForm.vue";
 </script>
 
 <template>

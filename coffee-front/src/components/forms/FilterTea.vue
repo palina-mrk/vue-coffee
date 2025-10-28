@@ -88,10 +88,6 @@ const imageVariant = (label) => {
 </template>
 
 <style lang="scss" scoped>
-* {
-  font-family: $ff-gilroy;
-}
-
 .filter__group {
   background-color: transparent;
   display: flex;
@@ -104,6 +100,7 @@ const imageVariant = (label) => {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-end;
+  font-family: $ff-gilroy sans-serif;
 
   @include vp-laptop {
     height: 475px;

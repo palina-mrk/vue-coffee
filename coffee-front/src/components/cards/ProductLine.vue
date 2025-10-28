@@ -17,7 +17,8 @@ const cartStore = useCartStore();
       </svg>
     </button>
     <div class="product-line__details">
-      <div class="product-line__icon-wrapper">
+      <div class="product-line__icon-wrapper"
+      :class="{'product-line__icon-wrapper--bordered': itemInfo.category == 'vending'}">
         <picture>
           <source
             media="(max-width: 767px)"
@@ -63,7 +64,9 @@ const cartStore = useCartStore();
   <div class="product-line">
     <div class="product-line__top">
       <div class="product-line__details">
-        <div class="product-line__icon-wrapper">
+        <div 
+          class="product-line__icon-wrapper"
+          :class="{'product-line__icon-wrapper--bordered': itemInfo.category == 'vending'}">
           <picture>
             <source
               media="(max-width: 767px)"
@@ -74,7 +77,7 @@ const cartStore = useCartStore();
               :srcset="`../../src/images/cart/cart-${itemInfo.category}-tablet.png`"
             />
             <source
-              media="(max-width: 1903px)"
+              media="(max-width: 1904px)"
               :srcset="`../../src/images/cart/cart-${itemInfo.category}-laptop.png`"
             />
             <img
@@ -232,15 +235,18 @@ const cartStore = useCartStore();
     display: flex;
     align-items: center;
     overflow: hidden;
+    border-radius: 5px;
 
     @include vp-laptop {
       width: 55px;
       height: 80px;
+      border-radius: 4px;
     }
 
     @include vp-tablet {
       width: 120px;
       height: 148px;
+      border-radius: 5px;
     }
 
     @include vp-mobile {
@@ -249,9 +255,14 @@ const cartStore = useCartStore();
     }
   }
 
-  &__icon-image {
-    width: 100%;
+  &__icon-wrapper--bordered picture {
     height: 100%;
+    width: 100%;
+  }
+
+  &__icon-wrapper--bordered img {
+    height: 100%;
+    width: 100%;
   }
 
   &__details-text {

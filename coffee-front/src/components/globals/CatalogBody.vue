@@ -1,0 +1,741 @@
+<script setup>
+import BgCatalog from "../backgrounds/BgCatalog.vue";
+import FilterCoffee from "../forms/FilterCoffee.vue";
+import FilterTea from "../forms/FilterTea.vue";
+import FilterHealthy from "../forms/FilterHealthy.vue";
+import FilterVending from "../forms/FilterVending.vue";
+import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
+import ProductCard from "../cards/ProductCard.vue";
+import { useCatalogStore } from "../../stores/catalog";
+const catalogStore = useCatalogStore();
+import { storeToRefs } from "pinia";
+const { coffees, teas, vendings, healthies, isLoaded } =
+  storeToRefs(catalogStore);
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
+const route = useRoute();
+
+const cardsCount = ref(12);
+const maxCount = computed(() => {
+  switch (route.name) {
+    case "coffee":
+      return coffees.length;
+    case "tea":
+      return teas.length;
+    case "vending":
+      return vendings.length;
+    default:
+      return 0;
+  }
+});
+
+function showMore() {
+  cardsCount.value += 20;
+  if (cardsCount.value > maxCount) cardsCount.value = maxCount;
+}
+</script>
+
+<template>
+  <main>
+    <section :class="['hero', `hero--${route.name}`]">
+      <bg-catalog></bg-catalog>
+
+      <div class="container">
+        <div class="hero__wrapper">
+          <custom-breadcrumbs
+            class="hero__breadcrumbs-list breadcrumbs--white"
+          ></custom-breadcrumbs>
+
+          <h2 class="hero__title">{{ route.meta.title }}</h2>
+
+          <filter-coffee
+            v-if="route.name == 'coffee'"
+            class="hero__form"
+          ></filter-coffee>
+          <filter-tea
+            v-else-if="route.name == 'tea'"
+            class="hero__form"
+          ></filter-tea>
+          <filter-vending
+            v-else-if="route.name == 'vending'"
+            class="hero__form"
+          ></filter-vending>
+          <filter-healthy
+            v-else-if="route.name == 'healthy'"
+            class="hero__form"
+          ></filter-healthy>
+        </div>
+      </div>
+    </section>
+
+    <section :class="['products','products--' + route.name]">
+      <div class="container">
+        <div class="products__wrapper">
+          <h2 class="products__title visually-hidden">
+            Отсортированные карточки товаров
+          </h2>
+
+          <button
+            class="products__sort-btn btn-linked btn-linked--black-small"
+            type="submit"
+          >
+            Сортировка
+          </button>
+
+          <ul v-if="isLoaded" class="products__list">
+            <li
+              v-if="route.name == 'coffee'"
+              class="products__item"
+              v-for="n in 20"
+            >
+              <ProductCard :product="coffees[n - 1]"></ProductCard>
+            </li>
+
+            <li
+              v-else-if="route.name == 'tea'"
+              class="products__item"
+              v-for="n in 20"
+            >
+              <ProductCard :product="teas[n - 1]"></ProductCard>
+            </li>
+
+            <li
+              v-else-if="route.name == 'vending'"
+              class="products__item"
+              v-for="n in 20"
+            >
+              <ProductCard :product="vendings[n - 1]"></ProductCard>
+            </li>
+
+            <li
+              v-else-if="route.name == 'healthy'"
+              class="products__item"
+              v-for="n in 20"
+            >
+              <ProductCard :product="healthies[n - 1]"></ProductCard>
+            </li>
+          </ul>
+
+          <button
+            class="products__button btn btn--white-xl"
+            type="button"
+            @click="showMore"
+          >
+            Показать ещё
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</template>
+
+<style lang="scss" scoped>
+.hero {
+  position: relative;
+  width: 100%;
+  padding: 200px 0 0;
+  margin: 0;
+  color: $color-white;
+  font-family: $ff-gilroy sans-serif;
+  font-weight: 500;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  @include vp-laptop {
+    padding: 140px 0 0;
+  }
+
+  @include vp-tablet {
+    padding: 173px 0 0;
+  }
+
+  @include vp-mobile {
+    padding: 95px 0 0;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 135px;
+
+    @include vp-laptop {
+      gap: 100px;
+    }
+
+    @include vp-tablet {
+      gap: 73px;
+    }
+
+    @include vp-mobile {
+      gap: 20px;
+    }
+  }
+
+  &__title {
+    padding: 0;
+    max-width: 960px;
+    font-weight: 900;
+    font-size: 70px;
+    line-height: 87px;
+    margin: 0 0 -20px;
+
+    @include vp-laptop {
+      font-size: 50px;
+      line-height: 62px;
+      max-width: 600px;
+      margin: 0 0 15px;
+    }
+
+    @include vp-tablet {
+      font-size: 50px;
+      line-height: 62px;
+      max-width: unset;
+      margin: 0 0 482px;
+    }
+
+    @include vp-mobile {
+      font-size: 25px;
+      line-height: 31px;
+      margin: 0 0 248px;
+    }
+  }
+}
+
+.hero--tea {
+  .hero__wrapper {
+  }
+
+  .hero__title {
+    @include vp-laptop {
+      margin: 0 0 -26px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 482px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 245px;
+    }
+  }
+}
+
+.products {
+  padding: 48px 0 97px;
+  font-family: $ff-gilroy;
+
+  @include vp-laptop {
+    padding: 37px 0 71px;
+  }
+
+  @include vp-tablet {
+    padding: 30px 0 38px;
+  }
+
+  @include vp-mobile {
+    padding: 36px 0 50px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+    @include vp-laptop {
+      gap: 51px;
+    }
+
+    @include vp-tablet {
+      gap: 30px;
+    }
+
+    @include vp-mobile {
+      gap: 22px;
+    }
+  }
+
+  &__sort-btn {
+    align-self: start;
+
+    @include vp-laptop {
+      position: relative;
+      left: -15px;
+    }
+
+    @include vp-tablet {
+      position: unset;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 70px 20px;
+    flex-wrap: wrap;
+    justify-content: start;
+
+    @include vp-laptop {
+      gap: 49px 20px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+    }
+  }
+
+  &__item {
+    width: calc(25% - 15px);
+
+    @include vp-tablet {
+      width: calc(50% - 10px);
+    }
+
+    @include vp-mobile {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
+
+.products--tea {
+  padding: 60px 0 70px;
+
+  .products__wrapper {
+    gap: 60px;
+  }
+
+  .products__list {
+    gap: 30px 20px;
+    margin: 0 0 10px;
+
+    @include vp-laptop {
+      gap: 25px 20px;
+    }
+  }
+}
+
+.products--vending {
+  padding: 48px 0 97px;
+  font-family: $ff-gilroy;
+
+  @include vp-laptop {
+    padding: 37px 0 71px;
+  }
+
+  @include vp-tablet {
+    padding: 30px 0 38px;
+  }
+
+  @include vp-mobile {
+    padding: 36px 0 50px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+    @include vp-laptop {
+      gap: 51px;
+    }
+
+    @include vp-tablet {
+      gap: 30px;
+    }
+
+    @include vp-mobile {
+      gap: 22px;
+    }
+  }
+
+  &__sort-btn {
+    align-self: start;
+
+    @include vp-laptop {
+      position: relative;
+      left: -15px;
+    }
+
+    @include vp-tablet {
+      position: unset;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 70px 20px;
+    flex-wrap: wrap;
+    justify-content: start;
+
+    @include vp-laptop {
+      gap: 49px 20px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+    }
+  }
+
+  &__item {
+    width: calc(25% - 15px);
+
+    @include vp-tablet {
+      width: calc(50% - 10px);
+    }
+
+    @include vp-mobile {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
+
+.products--healthy {
+  padding: 48px 0 97px;
+  font-family: $ff-gilroy;
+
+  @include vp-laptop {
+    padding: 37px 0 71px;
+  }
+
+  @include vp-tablet {
+    padding: 30px 0 38px;
+  }
+
+  @include vp-mobile {
+    padding: 36px 0 50px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+    @include vp-laptop {
+      gap: 51px;
+    }
+
+    @include vp-tablet {
+      gap: 30px;
+    }
+
+    @include vp-mobile {
+      gap: 22px;
+    }
+  }
+
+  &__sort-btn {
+    align-self: start;
+
+    @include vp-laptop {
+      position: relative;
+      left: -15px;
+    }
+
+    @include vp-tablet {
+      position: unset;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 70px 20px;
+    flex-wrap: wrap;
+    justify-content: start;
+
+    @include vp-laptop {
+      gap: 49px 20px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+    }
+  }
+
+  &__item {
+    width: calc(25% - 15px);
+
+    @include vp-tablet {
+      width: calc(50% - 10px);
+    }
+
+    @include vp-mobile {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
+
+.btn-linked--black-small {
+  display: flex;
+  align-items: center;
+  font-family: $ff-gilroy sans-serif;
+  font-weight: 500;
+  line-height: 26px;
+  font-size: 20px;
+  user-select: none;
+  line-height: 24px;
+  color: $color-black;
+  text-decoration: underline;
+  padding: 11px 30px 10px;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+
+  @include vp-laptop {
+    font-size: 14px;
+    line-height: 16px;
+    padding: 7px 18px 6px;
+    border-radius: 18px;
+  }
+
+  @include vp-tablet {
+    font-size: 20px;
+    line-height: 26px;
+    border-radius: 25px;
+    padding: 9px 20px 8px;
+  }
+
+  @include vp-mobile {
+    font-size: 18px;
+    line-height: 21px;
+    padding: 7px 20px 7px;
+    border-radius: 20px;
+  }
+
+  &:hover {
+    background-color: $color-ghost-white;
+    color: $color-ucla-gold;
+  }
+}
+
+.btn--white-xl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $ff-gilroy sans-serif;
+  border-radius: 5px;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+  color: $color-black;
+  background-color: $color-white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color-platinum;
+  padding: 23px;
+  height: 70px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  border-radius: 10px;
+
+  @include vp-laptop {
+    height: 50px;
+    border-width: 0.71px;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 17px;
+    border-radius: 7px;
+  }
+
+  @include vp-tablet {
+    height: 70px;
+    border-width: 1px;
+    padding: 22px;
+    font-size: 22px;
+    line-height: 26px;
+    border-radius: 5px;
+  }
+
+  @include vp-mobile {
+    height: 50px;
+    padding: 14px 14px 15px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  &:hover {
+    background-color: $color-cornsilk;
+  }
+}
+
+
+.btn-linked {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: $color-ucla-gold;
+  font-family: $ff-gilroy;
+  font-weight: 500;
+  line-height: 26px;
+  font-size: 20px;
+  padding: 10px 24px;
+  border-radius: 30px;
+  user-select: none;
+  cursor: pointer;
+
+  @include vp-laptop {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 5px 18px;
+    border-radius: 21px;
+  }
+
+  @include vp-tablet {
+    font-size: 25px;
+    line-height: 32px;
+    border-radius: 36px;
+    gap: 14px;
+  }
+
+  @include vp-mobile {
+    font-size: 16px;
+    line-height: 21px;
+    padding: 5px 18px 3px;
+    gap: 13px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 11px;
+
+    @include vp-laptop {
+      width: 10px;
+      height: 7px;
+    }
+
+    @include vp-tablet {
+      width: 32px;
+      height: 20px;
+    }
+
+    @include vp-mobile {
+      width: 14px;
+      height: 10px;
+    }
+  }
+
+  &:hover {
+    background-color: $color-bright-gray;
+  }
+
+  &--black {
+    line-height: 24px;
+    color: $color-black;
+    text-decoration: underline;
+    padding: 11px 30px 10px;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 16px;
+      padding: 7px 18px 6px;
+      border-radius: 18px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 30px;
+      border-radius: 30px;
+      padding: 7px 10px 6px;
+    }
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 16px;
+      padding: 5px 13px 3px;
+      border-radius: 16px;
+    }
+
+    &:hover {
+      background-color: $color-ghost-white;
+      color: $color-ucla-gold;
+    }
+  }
+
+  &--black-small {
+    line-height: 24px;
+    color: $color-black;
+    text-decoration: underline;
+    padding: 11px 30px 10px;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 16px;
+      padding: 7px 18px 6px;
+      border-radius: 18px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 26px;
+      border-radius: 25px;
+      padding: 9px 20px 8px;
+    }
+
+    @include vp-mobile {
+      font-size: 18px;
+      line-height: 21px;
+      padding: 7px 20px 7px;
+      border-radius: 20px;
+    }
+
+    &:hover {
+      background-color: $color-ghost-white;
+      color: $color-ucla-gold;
+    }
+  }
+
+  &--size-m {
+    font-size: 25px;
+    padding: 11px 29px 10px;
+
+    @include vp-laptop {
+      font-size: 18px;
+      padding: 7px 17px 6px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 30px;
+      padding: 7px 10px 6px;
+      border-radius: 30px;
+    }
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 16px;
+      padding: 5px 13px 3px;
+      border-radius: 16px;
+    }
+  }
+}
+
+</style>
+

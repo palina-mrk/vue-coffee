@@ -1,6 +1,6 @@
 <script setup>
 import { reactive } from "vue";
-import PaymentWay from "./PaymentWay.vue";
+import PaymentWay from "../fieldsets/PaymentWay.vue";
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
 

@@ -68,11 +68,8 @@ const length = ref(8);
 </template>
 
 <style lang="scss" scoped>
-* {
-  font-family: $ff-gilroy;
-}
-
 .fieldset__group {
+  font-family: $ff-gilroy;
   background-color: transparent;
   display: flex;
   flex-direction: row;

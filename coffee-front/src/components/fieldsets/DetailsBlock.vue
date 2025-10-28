@@ -104,12 +104,6 @@ function updateValue(object, value) {
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/catalogs/_custom-checkbox-corns.scss";
-* {
-  font-family: $ff-gilroy;
-}
-/*@toggle-value="updateValue(selectedValues[prop.name], $event)"
-      */
 .form-block {
   background-color: $color-white;
   border-radius: 20px;

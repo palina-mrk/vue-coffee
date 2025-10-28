@@ -1,9 +1,9 @@
 <script setup>
-import MainNav from "../components/navigation/MainNav.vue";
-import LogoNav from "../components/navigation/LogoNav.vue";
-import CustomSearch from "../components/inputs/CustomSearch.vue";
-import UsersList from "../components/navigation/UsersList.vue";
-import TabletSocials from "../components/littles/TabletSocials.vue";
+import MainNav from "../navigation/MainNav.vue";
+import LogoNav from "../navigation/LogoNav.vue";
+import CustomSearch from "../inputs/CustomSearch.vue";
+import UsersList from "../navigation/UsersList.vue";
+import TabletSocials from "../statics/TabletSocials.vue";
 
 import { useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
@@ -42,7 +42,7 @@ function toInstagram() {
               height="30"
               aria-hidden="true"
             >
-              <use xlink:href="../assets/btn-sprite.svg#burger-icon"></use>
+              <use xlink:href="../../assets/btn-sprite.svg#burger-icon"></use>
             </svg>
           </button>
         </div>
@@ -74,7 +74,7 @@ function toInstagram() {
           aria-hidden="true"
           @click="isMenu = false"
         >
-          <use xlink:href="../assets/header-sprite.svg#icon-close"></use>
+          <use xlink:href="../../assets/header-sprite.svg#icon-close"></use>
         </svg>
 
         <div class="header__menu-contacts">
@@ -375,6 +375,58 @@ function toInstagram() {
 
   .header__nav {
     margin: 0;
+  }
+}
+
+.btn-icon {
+  border: none;
+  user-select: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: -10px;
+    right: -10px;
+    cursor: pointer;
+  }
+
+  &:hover {
+    color: $color-ucla-gold;
+  }
+
+  &--burger {
+    .btn-icon__svg {
+      width: 59px;
+      height: 36px;
+
+      @include vp-mobile {
+        width: 29px;
+        height: 17px;
+      }
+    }
+  }
+
+  &--close {
+    width: 44px;
+    height: 44px;
+
+    @include vp-mobile {
+      width: 22px;
+      height: 22px;
+    }
+
+    &:hover {
+      color: $color-ucla-gold;
+    }
   }
 }
 </style>

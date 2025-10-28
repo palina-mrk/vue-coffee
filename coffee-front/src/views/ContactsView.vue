@@ -1,7 +1,7 @@
 <script setup>
-import MainHeader from "./MainHeader.vue";
-import ContactsBody from "./ContactsBody.vue";
-import MainFooter from "./MainFooter.vue";
+import MainHeader from "../components/globals/MainHeader.vue";
+import ContactsBody from "../components/globals/ContactsBody.vue";
+import MainFooter from "../components/globals/MainFooter.vue";
 </script>
 
 <template>
@@ -11,8 +11,4 @@ import MainFooter from "./MainFooter.vue";
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_btn.scss";
-* {
-  font-family: $ff-gilroy;
-}
 </style>

@@ -229,4 +229,46 @@ const props = defineProps(["page", "title"]);
     width: 100%;
   }
 }
+
+.btn--size-m {
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  background-color: $color-ucla-gold;
+  font-weight: 700;
+  font-family: $ff-gilroy sans-serif;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  font-size: 25px;
+  line-height: 30px;
+  padding: 18px 17px 12px;
+  margin: 0;
+  width: 100%;
+
+  @include vp-laptop {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 10px 10px 9px;
+    border-radius: 3px;
+  }
+
+  @include vp-tablet {
+    font-size: 25px;
+    line-height: 30px;
+    padding: 21px 21px 19px;
+    border-radius: 5px;
+  }
+
+  @include vp-mobile {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 15px 14px 13px;
+  }
+
+  &:hover {
+    background-color: $color-mustard-yellow;
+  }
+}
 </style>

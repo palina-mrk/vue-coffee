@@ -1,6 +1,6 @@
 <script setup>
 import CartHeading from "./CartHeading.vue";
-import CartLine from "./CartLine.vue";
+import ProductLine from "../cards/ProductLine.vue";
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
 import { useCatalogStore } from "../../stores/catalog";
@@ -30,12 +30,12 @@ const catalogStore = useCatalogStore();
         v-for="item in cartStore.cartItems"
         :key="item.id"
       >
-        <cart-line
+        <product-line
           :itemInfo="item"
           :sale="item.sale"
           :total="item.total"
           :salePercent="item.salePercent"
-        ></cart-line>
+        ></product-line>
       </li>
     </ul>
   </div>

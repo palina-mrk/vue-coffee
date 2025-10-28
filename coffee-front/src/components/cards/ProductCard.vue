@@ -1516,4 +1516,56 @@ const imageVariant = computed(() => {
   }
 }
 
+
+.btn--size-s {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  background-color: $color-ucla-gold;
+  font-weight: 700;
+  font-family: $ff-gilroy;
+  border-radius: 5px;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  user-select: none; 
+  padding: 13px;
+  font-size: 18px;
+  line-height: 22px;
+
+  @include vp-laptop {
+    padding: 9px 9px 10px;
+    font-size: 12px;
+    line-height: 15px;
+    border-radius: 4px;
+  }
+
+  @include vp-tablet {
+    padding: 11px 11px 10px;
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 5px;
+  }
+
+  @include vp-mobile {
+    padding: 12px 11px 9px;
+    border-radius: 4px;
+  }
+  
+  &:hover {
+    background-color: $color-mustard-yellow;
+  }
+}
+
+.product-card--main-mobile {
+  .btn--size-s {
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 14px;
+      padding: 8px 7px 8px;
+      border-radius: 3px;
+    }
+  }
+}
 </style>

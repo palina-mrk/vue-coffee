@@ -1,8 +1,8 @@
 <script setup>
-import BgContacts from "../components/backgrounds/BgContacts.vue";
+import BgContacts from "../backgrounds/BgContacts.vue";
 
-import CustomBreadcrumbs from "../components/navigation/CustomBreadcrumbs.vue";
-import CustomToggle from "../components/subforms/CustomToggle.vue";
+import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
+import CustomToggle from "../toggles/CustomToggle.vue";
 
 import { reactive, ref } from "vue";
 const toggleValues = reactive([
@@ -54,7 +54,7 @@ const selectedPageVariant = ref("contacts");
                       aria-hidden="true"
                     >
                       <use
-                        xlink:href="../assets/contacts-sprite.svg#icon-phone"
+                        xlink:href="../../assets/contacts-sprite.svg#icon-phone"
                       ></use>
                     </svg>
                   </span>
@@ -75,7 +75,7 @@ const selectedPageVariant = ref("contacts");
                       aria-hidden="true"
                     >
                       <use
-                        xlink:href="../assets/contacts-sprite.svg#icon-mail"
+                        xlink:href="../../assets/contacts-sprite.svg#icon-mail"
                       ></use>
                     </svg>
                   </span>
@@ -143,19 +143,19 @@ const selectedPageVariant = ref("contacts");
             <picture>
               <source
                 media="(max-width: 767px)"
-                srcset="../images/contacts/map-mobile.png"
+                srcset="../../images/contacts/map-mobile.png"
               />
               <source
                 media="(max-width: 1348px)"
-                srcset="../images/contacts/map-tablet.png"
+                srcset="../../images/contacts/map-tablet.png"
               />
               <source
                 media="(max-width: 1904px)"
-                srcset="../images/contacts/map-laptop.png"
+                srcset="../../images/contacts/map-laptop.png"
               />
               <img
                 class="contacts__map-image"
-                src="../images/contacts/map-desktop.png"
+                src="../../images/contacts/map-desktop.png"
                 width="960"
                 height="526"
                 alt="Карта с местонахождением интернет-магазина"

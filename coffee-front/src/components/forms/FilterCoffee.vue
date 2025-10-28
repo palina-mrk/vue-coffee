@@ -1,7 +1,7 @@
 <script setup>
-import RoastingBlock from "../subforms/RoastingBlock.vue";
-import DetailsBlock from "../subforms/DetailsBlock.vue";
-import PreparationBlock from "../subforms/PreparationBlock.vue";
+import RoastingBlock from "../fieldsets/RoastingBlock.vue";
+import DetailsBlock from "../fieldsets/DetailsBlock.vue";
+import PreparationBlock from "../toggles/PreparationBlock.vue";
 import { useRoute } from "vue-router";
 import { ref, reactive } from "vue";
 const route = useRoute();
@@ -55,12 +55,10 @@ function updateValues(object, value) {
 </template>
 
 <style lang="scss" scoped>
-* {
-  font-family: $ff-gilroy;
-}
 .filter-form {
   display: flex;
   flex-direction: column;
+  font-family: $ff-gilroy;
   gap: 70px;
 
   @include vp-laptop {
