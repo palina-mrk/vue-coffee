@@ -1,6 +1,6 @@
 <script setup>
 import { useCatalogStore } from "../../stores/catalog";
-import { reactive } from "vue";
+import { reactive, computed } from "vue";
 const catalogStore = useCatalogStore();
 import ProductCard from "../cards/ProductCard.vue";
 import BgHome from "../backgrounds/BgHome.vue";
@@ -8,13 +8,23 @@ import SliderLarge from "../sliders/SliderLarge.vue";
 import { storeToRefs } from "pinia";
 import CatalogCard from "../cards/CatalogCard.vue";
 
-const { catalog, isLoaded } = storeToRefs(catalogStore);
+const { catalog, isLoaded, coffeeSales } = storeToRefs(catalogStore);
 const catalogCards = reactive([
   { page: "coffee", title: "Свежеобжаренный кофе" },
   { page: "tea", title: "Чай и кофейные напитки" },
   { page: "vending", title: "Продукция для вендинга" },
   { page: "healthy", title: "Здоровое питание" },
 ]);
+
+function getPreviousSales() {
+  coffeeSales.value.unshift(coffeeSales.value[coffeeSales.value.length - 1]);
+  coffeeSales.value.pop();
+}
+
+function getNextSales() {
+  coffeeSales.value.push(coffeeSales.value[0]);
+  coffeeSales.value.shift();
+}
 </script>
 
 <template>
@@ -96,6 +106,7 @@ const catalogCards = reactive([
             <button
               class="overview__products-prev btn-icon btn-icon--arrow"
               type="button"
+              @click="getPreviousSales"
               aria-label="Пролистать к предыдущим карточкам"
             >
               <svg
@@ -109,19 +120,23 @@ const catalogCards = reactive([
             </button>
             <ul class="overview__products-list">
               <li class="overview__products-item">
-                <ProductCard :product="catalog[0]"></ProductCard>
+                <ProductCard 
+                :product="coffeeSales[0]" :key="coffeeSales[0].id"></ProductCard>
               </li>
               <li class="overview__products-item">
-                <ProductCard :product="catalog[1]"></ProductCard>
+                <ProductCard 
+                :product="coffeeSales[1]" :key="coffeeSales[1].id"></ProductCard>
               </li>
               <li class="overview__products-item">
-                <ProductCard :product="catalog[2]"></ProductCard>
+                <ProductCard 
+                :product="coffeeSales[2]" :key="coffeeSales[2].id"></ProductCard>
               </li>
             </ul>
             <button
               class="overview__products-next btn-icon btn-icon--arrow"
               type="button"
-              aria-label="Пролистать к предыдущим карточкам"
+              @click="getNextSales"
+              aria-label="Пролистать к следующим карточкам"
             >
               <svg
                 class="btn-icon__svg"

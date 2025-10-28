@@ -7,6 +7,7 @@ export const useCatalogStore = defineStore("catalog", () => {
   const isLoaded = ref(false);
   const catalog = reactive([]);
   const coffees = reactive([]);
+  const coffeeSales = reactive([]);
   const teas = reactive([]);
   const healthies = reactive([]);
   const vendings = reactive([]);
@@ -103,6 +104,8 @@ export const useCatalogStore = defineStore("catalog", () => {
         result.data.coffees.forEach((el) => {
           catalog.push(el);
           coffees.push(el);
+          if(el.actions.includes("Скидки"))
+            coffeeSales.push(el);
         });
         result.data.teas.forEach((el) => {
           catalog.push(el);
@@ -167,6 +170,7 @@ export const useCatalogStore = defineStore("catalog", () => {
       .sort();
   }
 
+
   return {
     isLoaded,
     catalog,
@@ -174,6 +178,7 @@ export const useCatalogStore = defineStore("catalog", () => {
     teas,
     vendings,
     healthies,
+    coffeeSales,
     loadCatalog,
     getPrice,
     getFullInfo,

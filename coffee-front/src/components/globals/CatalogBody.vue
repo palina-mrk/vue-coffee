@@ -311,7 +311,7 @@ function showMore() {
   }
 
   @include vp-mobile {
-    padding: 53px 0 0;
+    padding: 95px 0 0;
   }
 
   .hero__wrapper {
@@ -342,7 +342,7 @@ function showMore() {
     }
 
     @include vp-mobile {
-      margin: 0 0 250px;
+      margin: 0 0 208px;
     }
   }
 }
