@@ -1,7 +1,7 @@
 <script setup>
 import { ref, reactive } from "vue";
 
-const selectedValues = ref([]);
+const selectedValues = reactive([]);
 const labels = reactive([
   "Черный чай",
   "Травяной чай",
@@ -53,6 +53,7 @@ const imageVariant = (label) => {
         name="tea-filter"
         :value="`${labels[i - 1]}`"
         v-model="selectedValues"
+        @input="$emit('toggle-value', $event.target.value)"
       />
       <label
         :for="`tea-filter-${values[i - 1]}`"

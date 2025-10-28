@@ -31,6 +31,7 @@ const length = ref(5);
         name="healthy-filter"
         :value="`${labels[i - 1]}`"
         v-model="selectedValues"
+        @input="$emit('toggle-value', $event.target.value)"
       />
       <label
         :for="`healthy-filter-${values[i - 1]}`"

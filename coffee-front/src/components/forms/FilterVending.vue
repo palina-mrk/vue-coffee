@@ -35,6 +35,7 @@ const length = ref(7);
         name="vending-filter"
         :value="`${labels[i - 1]}`"
         v-model="selectedValues"
+        @input="$emit('toggle-value', $event.target.value)"
       />
       <label
         :for="`vending-filter-${values[i - 1]}`"

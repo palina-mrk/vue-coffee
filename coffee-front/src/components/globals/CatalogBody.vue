@@ -11,11 +11,32 @@ const catalogStore = useCatalogStore();
 import { storeToRefs } from "pinia";
 const { coffees, teas, vendings, healthies, isLoaded } =
   storeToRefs(catalogStore);
-import { ref, computed } from "vue";
+import { ref, computed, reactive } from "vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
+const products = computed(() => {
+  if(!isLoaded)
+    return [];
 
-const cardsCount = ref(12);
+  switch(route.name){
+    case 'coffee':
+      return coffees;
+    case 'tea':
+      return teas;
+    case 'vending':
+      return vendings;
+    case 'healthy':
+      return healthies;
+    default:
+      return [];
+  }
+})
+const chosenTypes = reactive([]);
+function toggleChosen(type) {
+  chosenTypes.includes(type) ? chosenTypes.splice(chosenTypes.indexOf(type), 1) : chosenTypes.push(type);
+}
+
+const cardsCount = ref(8);
 const maxCount = computed(() => {
   switch (route.name) {
     case "coffee":
@@ -30,7 +51,7 @@ const maxCount = computed(() => {
 });
 
 function showMore() {
-  cardsCount.value += 20;
+  cardsCount.value += 4;
   if (cardsCount.value > maxCount) cardsCount.value = maxCount;
 }
 </script>
@@ -55,14 +76,17 @@ function showMore() {
           <filter-tea
             v-else-if="route.name == 'tea'"
             class="hero__form"
+            @toggleValue="toggleChosen($event)"
           ></filter-tea>
           <filter-vending
             v-else-if="route.name == 'vending'"
             class="hero__form"
+            @toggleValue="toggleChosen($event)"
           ></filter-vending>
           <filter-healthy
             v-else-if="route.name == 'healthy'"
             class="hero__form"
+            @toggleValue="toggleChosen($event)"
           ></filter-healthy>
         </div>
       </div>
@@ -94,25 +118,25 @@ function showMore() {
             <li
               v-else-if="route.name == 'tea'"
               class="products__item"
-              v-for="n in 20"
+              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount)"
             >
-              <ProductCard :product="teas[n - 1]"></ProductCard>
+              <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
 
             <li
               v-else-if="route.name == 'vending'"
               class="products__item"
-              v-for="n in 20"
+              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount)"
             >
-              <ProductCard :product="vendings[n - 1]"></ProductCard>
+              <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
 
             <li
               v-else-if="route.name == 'healthy'"
               class="products__item"
-              v-for="n in 20"
+              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount)"
             >
-              <ProductCard :product="healthies[n - 1]"></ProductCard>
+              <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
           </ul>
 
