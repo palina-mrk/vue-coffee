@@ -279,14 +279,15 @@ const imageVariant = computed(() => {
     box-shadow: 0px 0px 17px 0px $color-chinese-silver-25;
     border: none;
     max-width: 340px;
-    border-radius: 16px;
+    border-radius: 10px;
   }
 
   @include vp-mobile {
     box-shadow: none;
     padding: 17px 32px 43px;
     border: 1px solid $color-platinum;
-    border-radius: 17px;
+    border-radius: 20px;
+    max-width: unset;
   }
 
   &__sales-icon {
@@ -1161,15 +1162,15 @@ const imageVariant = computed(() => {
   padding: 28px 40px 50px;
 
   @include vp-laptop {
-    padding: 18px 25px 38px;
+    padding: 18px 25px 25px;
   }
 
   @include vp-tablet {
-    padding: 30px 37px 42px;
+    padding: 28px 32px 30px;
   }
 
   @include vp-mobile {
-    padding: 26px 34px 43px;
+    padding: 25px 25px 30px;
   }
 
   .product-card__top {
@@ -1184,12 +1185,12 @@ const imageVariant = computed(() => {
 
     @include vp-tablet {
       margin: 0 0 8px;
-      padding: 0;
+      padding: 0 2px 0;
     }
 
     @include vp-mobile {
       margin: 0 0 15px;
-      padding: 0 5px 0 0;
+      padding: 0 5px 0;
     }
   }
 
@@ -1213,16 +1214,26 @@ const imageVariant = computed(() => {
   }
 
   .product-card__rating-value {
+    @include vp-laptop {
+      font-size: 18px;
+      line-height: 23px;
+    }
+
     @include vp-tablet {
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 20px;
+      line-height: 26px;
     }
   }
 
   .product-card__comments-count {
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
     @include vp-tablet {
-      font-size: 12px;
-      line-height: 14px;
+      font-size: 16px;
+      line-height: 21px;
     }
   }
 
@@ -1239,8 +1250,8 @@ const imageVariant = computed(() => {
     align-items: center;
     justify-content: center;
 
-    @include vp-tablet {
-      margin: 0 0 20px;
+    @include vp-laptop {
+      margin: 0 0 18px;
     }
   }
 
@@ -1272,24 +1283,42 @@ const imageVariant = computed(() => {
   }
 
   .product-card__title {
+    @include vp-laptop {
+      font-size: 21px;
+      line-height: 26px;
+      margin: 0 0 5px;
+    }
 
     @include vp-tablet {
-      font-size: 20px;
-      line-height: 25px;
-      margin: 0;
+      font-size: 23px;
+      line-height: 28px;
+      margin: 0 0 3px;
+    }
+
+    @include vp-mobile {
+      margin: 0 5px 3px;
     }
   }
 
   .product-card__description {
+    min-height: unset;
+
+    @include vp-laptop {
+      font-size: 16px;
+      line-height: 21px;
+      margin: 0;
+    }
 
     @include vp-tablet {
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 18px;
+      line-height: 23px;
+      margin: 0 0 3px;
     }
 
     @include vp-mobile {
       font-size: 14px;
       line-height: 16px;
+      margin: 0 5px 3px;
     }
   }
 
@@ -1307,7 +1336,7 @@ const imageVariant = computed(() => {
 
     @include vp-tablet {
       top: 31px;
-      right: 15px;
+      right: 25px;
     }
 
     @include vp-mobile {
@@ -1316,23 +1345,39 @@ const imageVariant = computed(() => {
     }
   }
 
-  .product-card__price {
+  .product-card__bottom {
     @include vp-tablet {
-      font-size: 24px;
-      line-height: 31px;
+      margin: 0 3px;
+    }
+
+    @include vp-mobile {
+      margin: 0 5px;
+    }
+  }
+
+  .product-card__price {
+    @include vp-laptop {
+      font-size: 23px;
+      line-height: 27px;
     }
 
     @include vp-tablet {
       font-size: 25px;
       line-height: 31px;
     }
+
+    @include vp-tablet {
+      font-size: 26px;
+      line-height: 32px;
+    }
   }
 
   .product-card__price--crossed {
-    @include vp-tablet {
-      font-size: 18px;
-      line-height: 21px;
+    @include vp-laptop {
+      font-size: 20px;
+      line-height: 23px;
     }
+
     @include vp-mobile {
       font-size: 22px;
       line-height: 26px;
@@ -1341,7 +1386,7 @@ const imageVariant = computed(() => {
 }
 
 .product-card--healthy {
-  padding: 28px 40px 50px;
+  padding: 28px 40px 30px;
 
   @include vp-laptop {
     padding: 18px 25px 38px;
@@ -1515,7 +1560,6 @@ const imageVariant = computed(() => {
     }
   }
 }
-
 
 .btn--size-s {
   display: flex;

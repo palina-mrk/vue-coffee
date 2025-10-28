@@ -114,10 +114,10 @@ const route = useRoute();
     />
   </picture>
 
-  <div class="background__div background__div--catalog-hero-top-wall"></div>
+  <div class="background__div background__div--catalog-hero-top-wall-healthy"></div>
 
   <svg
-    class="background__svg-vawe background__svg-vawe--catalog-hero"
+    class="background__svg-vawe background__svg-vawe--catalog-hero-healthy"
     width="3720"
     height="568"
     aria-hidden="true"
@@ -125,7 +125,7 @@ const route = useRoute();
     <use xlink:href="../../assets/bg-sprite.svg#bg-catalog-vawe-for-hero"></use>
   </svg>
   <svg
-    class="background__svg-vawe-for-tablet background__svg-vawe--catalog-hero"
+    class="background__svg-vawe-for-tablet background__svg-vawe--catalog-hero-healthy"
     width="1348"
     height="201"
     aria-hidden="true"
@@ -135,7 +135,7 @@ const route = useRoute();
     ></use>
   </svg>
 
-  <div class="background__div background__div--catalog-hero-bottom-wall"></div>
+  <div class="background__div background__div--catalog-hero-bottom-wall-healthy"></div>
 </template>
 
 <style lang="scss" scoped>

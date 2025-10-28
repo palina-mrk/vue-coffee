@@ -134,7 +134,7 @@ function showMore() {
 .hero {
   position: relative;
   width: 100%;
-  padding: 200px 0 0;
+  padding: 199px 0 0;
   margin: 0;
   color: $color-white;
   font-family: $ff-gilroy sans-serif;
@@ -143,7 +143,7 @@ function showMore() {
   box-sizing: border-box;
 
   @include vp-laptop {
-    padding: 140px 0 0;
+    padding: 142px 0 0;
   }
 
   @include vp-tablet {
@@ -158,7 +158,7 @@ function showMore() {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 135px;
+    gap: 140px;
 
     @include vp-laptop {
       gap: 100px;
@@ -169,7 +169,7 @@ function showMore() {
     }
 
     @include vp-mobile {
-      gap: 20px;
+      gap: 19px;
     }
   }
 
@@ -179,13 +179,13 @@ function showMore() {
     font-weight: 900;
     font-size: 70px;
     line-height: 87px;
-    margin: 0 0 -20px;
+    margin: 0;
 
     @include vp-laptop {
       font-size: 50px;
       line-height: 62px;
       max-width: 600px;
-      margin: 0 0 15px;
+      margin: 0 0 -8px;
     }
 
     @include vp-tablet {
@@ -198,18 +198,47 @@ function showMore() {
     @include vp-mobile {
       font-size: 25px;
       line-height: 31px;
-      margin: 0 0 248px;
+      margin: 0 0 250px;
     }
   }
 }
 
 .hero--tea {
+  padding: 200px 0 0;
+
+  @include vp-laptop {
+    padding: 141px 0 0;
+  }
+
+  @include vp-tablet {
+    padding: 174px 0 0;
+  }
+
+  @include vp-mobile {
+    padding: 95px 0 0;
+  }
+
   .hero__wrapper {
+    gap: 135px;
+
+    @include vp-laptop {
+      gap: 100px;
+    }
+
+    @include vp-tablet {
+      gap: 72px;
+    }
+
+    @include vp-mobile {
+      gap: 19px;
+    }
   }
 
   .hero__title {
+    margin: 0 0 -20px;
+
     @include vp-laptop {
-      margin: 0 0 -26px;
+      margin: 0 0 -27px;
     }
 
     @include vp-tablet {
@@ -217,34 +246,130 @@ function showMore() {
     }
 
     @include vp-mobile {
-      margin: 0 0 245px;
+      margin: 0 0 250px;
+    }
+  }
+}
+
+.hero--vending {
+  padding: 200px 0 0;
+
+  @include vp-laptop {
+    padding: 141px 0 0;
+  }
+
+  @include vp-tablet {
+    padding: 174px 0 0;
+  }
+
+  @include vp-mobile {
+    padding: 95px 0 0;
+  }
+
+  .hero__wrapper {
+    gap: 135px;
+
+    @include vp-laptop {
+      gap: 80px;
+    }
+
+    @include vp-tablet {
+      gap: 72px;
+    }
+
+    @include vp-mobile {
+      gap: 19px;
+    }
+  }
+
+  .hero__title {
+    margin: 0 0 -20px;
+
+    @include vp-laptop {
+      margin: 0 0 14px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 482px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 250px;
+    }
+  }
+}
+
+.hero--healthy {
+  padding: 200px 0 0;
+
+  @include vp-laptop {
+    padding: 141px 0 0;
+  }
+
+  @include vp-tablet {
+    padding: 175px 0 0;
+  }
+
+  @include vp-mobile {
+    padding: 53px 0 0;
+  }
+
+  .hero__wrapper {
+    gap: 93px;
+
+    @include vp-laptop {
+      gap: 60px;
+    }
+
+    @include vp-tablet {
+      gap: 42px;
+    }
+
+    @include vp-mobile {
+      gap: 19px;
+    }
+  }
+
+  .hero__title {
+    margin: 0 0 -16px;
+
+    @include vp-laptop {
+      margin: 0 0 -103px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 455px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 250px;
     }
   }
 }
 
 .products {
-  padding: 48px 0 97px;
+  padding: 70px 0 97px;
   font-family: $ff-gilroy;
 
   @include vp-laptop {
-    padding: 37px 0 71px;
+    padding: 45px 0 71px;
   }
 
   @include vp-tablet {
-    padding: 30px 0 38px;
+    padding: 52px 0 38px;
   }
 
   @include vp-mobile {
-    padding: 36px 0 50px;
+    padding: 36px 0 10px;
   }
 
   &__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 70px;
+    gap: 45px;
 
     @include vp-laptop {
-      gap: 51px;
+      gap: 40px;
     }
 
     @include vp-tablet {
@@ -270,7 +395,7 @@ function showMore() {
   }
 
   &__list {
-    margin: 0;
+    margin: 0 0 30px;
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -279,11 +404,17 @@ function showMore() {
     justify-content: start;
 
     @include vp-laptop {
-      gap: 49px 20px;
+      margin: 0 0 8px;
+      gap: 40px 20px;
     }
 
     @include vp-tablet {
       gap: 20px;
+      margin: 0;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 8px;
     }
   }
 
@@ -305,45 +436,76 @@ function showMore() {
 }
 
 .products--tea {
-  padding: 60px 0 70px;
+  padding: 63px 0 100px;
+
+  @include vp-laptop {
+    padding: 46px 0 74px;
+  }
+
+  @include vp-tablet {
+    padding: 52px 0 18px;
+  }
+
+  @include vp-mobile {
+    padding: 35px 0 50px;
+  }
 
   .products__wrapper {
-    gap: 60px;
+    gap: 59px;
+
+    @include vp-laptop {
+      gap: 43px;
+    }
+
+    @include vp-tablet {
+      gap: 30px;
+    }
+
+    @include vp-mobile {
+      gap: 20px;
+    } 
   }
 
   .products__list {
     gap: 30px 20px;
-    margin: 0 0 10px;
+    margin: 0 0 11px;
 
     @include vp-laptop {
+      margin: 0 0 7px;
       gap: 25px 20px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+      margin: 0 0 1px;
+    }
+
+    @include vp-mobile {
+      margin: 0;
     }
   }
 }
 
 .products--vending {
-  padding: 48px 0 97px;
-  font-family: $ff-gilroy;
+  padding: 63px 0 100px;
 
   @include vp-laptop {
-    padding: 37px 0 71px;
+    padding: 46px 0 74px;
   }
 
   @include vp-tablet {
-    padding: 30px 0 38px;
+    padding: 52px 0 18px;
   }
 
   @include vp-mobile {
-    padding: 36px 0 50px;
+    padding: 35px 0 50px;
   }
 
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 70px;
+  .products__wrapper {
+    gap: 59px;
 
     @include vp-laptop {
-      gap: 51px;
+      gap: 43px;
     }
 
     @include vp-tablet {
@@ -351,81 +513,54 @@ function showMore() {
     }
 
     @include vp-mobile {
-      gap: 22px;
+      gap: 20px;
     }
+  
   }
 
-  &__sort-btn {
-    align-self: start;
+  .products__list {
+    gap: 30px 20px;
+    margin: 0 0 11px;
 
     @include vp-laptop {
-      position: relative;
-      left: -15px;
-    }
-
-    @include vp-tablet {
-      position: unset;
-    }
-  }
-
-  &__list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    display: flex;
-    gap: 70px 20px;
-    flex-wrap: wrap;
-    justify-content: start;
-
-    @include vp-laptop {
-      gap: 49px 20px;
+      margin: 0 0 7px;
+      gap: 25px 20px;
     }
 
     @include vp-tablet {
       gap: 20px;
-    }
-  }
-
-  &__item {
-    width: calc(25% - 15px);
-
-    @include vp-tablet {
-      width: calc(50% - 10px);
+      margin: 0 0 1px;
     }
 
     @include vp-mobile {
-      width: 100%;
+      margin: 0;
     }
-  }
-
-  &__button {
-    width: 100%;
   }
 }
 
 .products--healthy {
-  padding: 48px 0 97px;
+  padding: 62px 0 97px;
   font-family: $ff-gilroy;
 
   @include vp-laptop {
-    padding: 37px 0 71px;
+    padding: 45px 0 71px;
   }
 
   @include vp-tablet {
-    padding: 30px 0 38px;
+    padding: 53px 0 38px;
   }
 
   @include vp-mobile {
-    padding: 36px 0 50px;
+    padding: 33px 0 50px;
   }
 
-  &__wrapper {
+  .products__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 70px;
+    gap: 55px;
 
     @include vp-laptop {
-      gap: 51px;
+      gap: 43px;
     }
 
     @include vp-tablet {
@@ -437,7 +572,7 @@ function showMore() {
     }
   }
 
-  &__sort-btn {
+  .products__sort-btn {
     align-self: start;
 
     @include vp-laptop {
@@ -450,7 +585,7 @@ function showMore() {
     }
   }
 
-  &__list {
+  .products__list {
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -468,7 +603,7 @@ function showMore() {
     }
   }
 
-  &__item {
+  .products__item {
     width: calc(25% - 15px);
 
     @include vp-tablet {
@@ -578,7 +713,6 @@ function showMore() {
     background-color: $color-cornsilk;
   }
 }
-
 
 .btn-linked {
   display: flex;
