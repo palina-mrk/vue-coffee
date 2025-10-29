@@ -142,7 +142,7 @@ function updateValues(object, value) {
       </div>
     </section>
 
-    <!--p>{{ roastingDegrees }}</p>
+    <!--p>{{ products.value.map(p => p.geographyDetails).reduce((acc, el) => acc.concat(el), []).sort() }}</p>
     <p>{{ geographyDetails }}</p>
     <p>{{ acidityDetails }}</p>
     <p>{{ products.value
@@ -172,12 +172,12 @@ function updateValues(object, value) {
               v-if="route.name == 'coffee'"
               class="products__item"
               v-for="p in products.value
-    .filter((p) => Object.keys(roastingDegrees).length == 0 || roastingDegrees[p.roastingDegree])
-    .filter((p) => Object.keys(kindDetails).length == 0 || kindDetails[p.kindDetail])
-    .filter((p) => Object.keys(acidityDetails).length == 0 || acidityDetails[p.acidityDetail])
-    .filter((p) => Object.keys(geographyDetails).length == 0 || p.geographyDetails.find(g => geographyDetails[g]))
-    .filter((p) => Object.keys(processingDetails).length == 0 || p.processingDetails.find(d => processingDetails[d]))
-    .filter((p) => Object.keys(actionsDetails).length == 0 || Object.keys(actionsDetails).reduce((acc, d) => acc && p.actionsDetails.includes(d), true))
+    .filter((p) => Object.keys(roastingDegrees).length == 0 || Object.keys(roastingDegrees).length && roastingDegrees[p.roastingDegree])
+    .filter((p) => Object.keys(kindDetails).length == 0 || Object.keys(kindDetails).length && kindDetails[p.kindDetail])
+    .filter((p) => Object.keys(acidityDetails).length == 0 || Object.keys(acidityDetails).length && acidityDetails[p.acidityDetail])
+    .filter((p) => Object.keys(geographyDetails).length == 0 || Object.keys(geographyDetails).length && p.geographyDetails.find(g => geographyDetails[g]))
+    .filter((p) => Object.keys(processingDetails).length == 0 || Object.keys(processingDetails).length && p.processingDetails.find(d => processingDetails[d]))
+    .filter((p) => Object.keys(actionsDetails).length == 0 || Object.keys(actionsDetails).length && Object.keys(actionsDetails).reduce((acc, d) => acc && p.actionsDetails.includes(d), true))
     .filter((el, ind) => ind < cardsCount)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>
