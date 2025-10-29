@@ -12,6 +12,8 @@ const fieldsetProps = reactive({
       "Уганда",
       "Эфиопия",
       "Азия",
+      "Европа",
+      "Сев. Америка",
       "Центр. Америка",
       "Лат. Америка",
     ],
@@ -21,10 +23,12 @@ const fieldsetProps = reactive({
       "uganda",
       "ethiopia",
       "asia",
+      "europe",
+      "north-america",
       "center-america",
       "latin-america",
     ],
-    fieldsCount: 7,
+    fieldsCount: 9,
   },
   acidity: {
     name: "acidity",
@@ -111,7 +115,7 @@ function updateValue(object, value) {
   position: relative;
   width: calc(100% - 420px);
   padding: 82px 135px 35px 95px;
-  height: 526px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -122,7 +126,6 @@ function updateValue(object, value) {
     padding: 56px 73px 25px 67px;
     width: calc(100% - 300px);
     border-radius: 14px;
-    height: 373px;
     gap: 15px 0;
   }
 
@@ -181,14 +184,29 @@ function updateValue(object, value) {
   }
 
   &__group:first-of-type {
-    margin: 0 77px 0 0;
+    margin: 0 40px 0 0;
 
     @include vp-laptop {
-      margin: 0 27px 0 0;
+      margin: 0 20px 0 0;
     }
 
     @include vp-tablet {
       order: -2;
+      margin: 0;
+    }
+  }
+
+  &__group:nth-of-type(2),
+  &__group:nth-of-type(3) {
+    order: -1;
+    margin: 0 20px 0 0;
+
+    @include vp-laptop {
+      margin: 0 47px 0 0;
+    }
+    
+    @include vp-tablet {
+      order: unset;
       margin: 0;
     }
   }

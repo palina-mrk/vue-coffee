@@ -65,41 +65,40 @@ function showMore() {
 }
 
 /* собираем подробную информацию из фильтров о товарах кофе*/
-const roastingDegrees = ref({}); // string
+const roastingDegrees = reactive([]); // string
 
-const geographyDetails = reactive({}); // array
-const acidityDetails = reactive({});  // string
-const processingDetails = reactive({}); //array
-const actionsDetails = reactive({}); // array
-const kindDetails = reactive({}); // string
+const geographyDetails = reactive([]); // array
+const acidityDetails = reactive([]);  // string
+const processingDetails = reactive([]); //array
+const actionsDetails = reactive([]); // array
+const kindDetails = reactive([]); // string
 
 const preparationWay = ref("");
 
 function updateDetails (detailName, value) {
   switch(detailName) {
     case 'geography': 
-      updateValues(geographyDetails, value);
+      toggleValue(geographyDetails, value);
       break;
     case 'acidity': 
-      updateValues(acidityDetails, value);
+      toggleValue(acidityDetails, value);
       break;
     case 'processing': 
-      updateValues(processingDetails, value);
+      toggleValue(processingDetails, value);
       break;
     case 'actions': 
-      updateValues(actionsDetails, value);
+      toggleValue(actionsDetails, value);
       break;
     case 'kind': 
-      updateValues(kindDetails, value);
+      toggleValue(kindDetails, value);
       break;
     default:
       console.log('updatingError!');
   }
 }
 
-function updateValues(object, value) {
-  if (object[value]) delete object[value];
-  else object[value] = true;
+function toggleValue(array, value) {
+  array.includes(value) ? array.splice(array.indexOf(value), 1) : array.push(value);
 }
 </script>
 
@@ -118,7 +117,7 @@ function updateValues(object, value) {
 
           <filter-coffee
             v-if="route.name == 'coffee'"
-            @setRoasting="updateValues(roastingDegrees, $event)"
+            @setRoasting="toggleValue(roastingDegrees, Number($event))"
             @setDetails="updateDetails($event.name, $event.value)"
             @setPreparation="preparationWay = $event"
             class="hero__form"
@@ -142,6 +141,17 @@ function updateValues(object, value) {
       </div>
     </section>
 
+    <!--p style="margin: 0 150px; font-size: 50px;" v-for="p in products.value
+    .filter((p) => roastingDegrees.length == 0 || roastingDegrees.includes(p.roastingDegree))
+    .filter((p) => kindDetails.length == 0 || kindDetails.includes(p.kindDetail))
+    .filter((p) => acidityDetails.length == 0 || acidityDetails.includes(p.acidityDetail))
+    .filter((p) => geographyDetails.length == 0 || p.geographyDetails.find(g => geographyDetails.includes(g)))
+    .filter((p) => processingDetails.length == 0 || p.processingDetails.find(d => processingDetails.includes(d)))
+    .filter((p) => actionsDetails.length == 0 || actionsDetails.reduce((acc, d) => acc && p.actionsDetails.includes(d), true))
+    .filter((el, ind) => ind < cardsCount)
+    .map(p => [p.roasting, p.hue.acidity, p.details.map(d => [d.geography, d.kind, d.processing]), p.actions])">{{  p }}</p>
+
+    <p>{{ roastingDegrees }}</p-->
     <!--p>{{ products.value.map(p => p.geographyDetails).reduce((acc, el) => acc.concat(el), []).sort() }}</p>
     <p>{{ geographyDetails }}</p>
     <p>{{ acidityDetails }}</p>
@@ -172,12 +182,12 @@ function updateValues(object, value) {
               v-if="route.name == 'coffee'"
               class="products__item"
               v-for="p in products.value
-    .filter((p) => Object.keys(roastingDegrees).length == 0 || Object.keys(roastingDegrees).length && roastingDegrees[p.roastingDegree])
-    .filter((p) => Object.keys(kindDetails).length == 0 || Object.keys(kindDetails).length && kindDetails[p.kindDetail])
-    .filter((p) => Object.keys(acidityDetails).length == 0 || Object.keys(acidityDetails).length && acidityDetails[p.acidityDetail])
-    .filter((p) => Object.keys(geographyDetails).length == 0 || Object.keys(geographyDetails).length && p.geographyDetails.find(g => geographyDetails[g]))
-    .filter((p) => Object.keys(processingDetails).length == 0 || Object.keys(processingDetails).length && p.processingDetails.find(d => processingDetails[d]))
-    .filter((p) => Object.keys(actionsDetails).length == 0 || Object.keys(actionsDetails).length && Object.keys(actionsDetails).reduce((acc, d) => acc && p.actionsDetails.includes(d), true))
+    .filter((p) => roastingDegrees.length == 0 || roastingDegrees.includes(p.roastingDegree))
+    .filter((p) => kindDetails.length == 0 || kindDetails.includes(p.kindDetail))
+    .filter((p) => acidityDetails.length == 0 || acidityDetails.includes(p.acidityDetail))
+    .filter((p) => geographyDetails.length == 0 || p.geographyDetails.find(g => geographyDetails.includes(g)))
+    .filter((p) => processingDetails.length == 0 || p.processingDetails.find(d => processingDetails.includes(d)))
+    .filter((p) => actionsDetails.length == 0 || actionsDetails.reduce((acc, d) => acc && p.actionsDetails.includes(d), true))
     .filter((el, ind) => ind < cardsCount)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>

@@ -142,9 +142,9 @@ export const useFilterStore = defineStore("filter", () => {
         result.data.coffees.forEach((item) => {
           const kinds = item.details.map(d => d.kind).sort();
           const kindDetail = kinds[0] != kinds[kinds.length - 1] 
-                  ? "Смесь арабика/робуста" : ((kinds.length > 1 && kinds[0]) == "Арабика" ? "Смесь арабик" : kinds[0]);
-          const acidityDetail = item.acidity <= 4 ? 'Низкая' : (
-                item.acidity <= 7 ? 'Средняя' : 'Высокая' 
+                  ? "Смесь арабика/робуста" : (kinds.length == 1 ? kinds[0]: ( kinds[0] == "Арабика" ? "Смесь арабик" : "Робуста"));
+          const acidityDetail = item.hue.acidity <= 3 ? 'Низкая' : (
+                item.hue.acidity <= 6 ? 'Средняя' : 'Высокая' 
               );
           const processingDetails = item.details.map(d => d["processing"] == 'Сухой' ? 'Сухая' : (
                 d["processing"] == 'Мытая' ? 'Мытая' : 'Прочие' ));

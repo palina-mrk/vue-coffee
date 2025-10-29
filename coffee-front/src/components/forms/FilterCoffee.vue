@@ -76,6 +76,29 @@ function updateValues(object, value) {
     gap: 35px;
   }
 
+  &__corns-block, 
+  &__words-block {
+    height: 575px;
+
+    @include vp-laptop {
+      height: 393px;
+    }
+
+    @include vp-tablet {
+      height: unset;
+    }
+  }
+
+  &__words-block {
+    @include vp-tablet {
+      height: 1300px;
+    }
+
+    @include vp-mobile {
+      height: 650px;
+    }
+  }
+
   &__inner {
     display: flex;
     gap: 20px;

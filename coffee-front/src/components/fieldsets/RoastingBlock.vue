@@ -11,7 +11,7 @@ const degrees = ref([]);
     <fieldset class="form-block__group">
       <legend class="form-block__groupname">Степень обжарки</legend>
       <!-- у группы чексбоксов д.б. одинаковый name и v-model -->
-      <div class="custom-checkbox-corns" v-for="degree in maxDegree">
+      <div class="custom-checkbox-corns" v-for="degree in maxDegree" :key="'roasting-degree-' + (maxDegree + 1 - degree)">
         <input
           class="custom-checkbox-corns__field visually-hidden"
           :id="`coffee-roasting-${maxDegree + 1 - degree}`"
@@ -96,28 +96,24 @@ const degrees = ref([]);
   position: relative;
   width: 400px;
   padding: 45px 92px;
-  height: 526px;
+  height: 100%;
 
   @include vp-laptop {
     box-shadow: 0 0 21px 0 $color-spanish-gray-c95-25;
     padding: 34px 60px;
     width: 280px;
     border-radius: 14px;
-    height: 373px;
   }
 
   @include vp-tablet {
     box-shadow: 0px 0px 61px 0px $color-spanish-gray-c95-25;
     padding: 109px 44px 65px;
-    width: 700px;
-    height: 620px;
+    width: 100%;
   }
 
   @include vp-mobile {
     box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
     padding: 52px 20px 30px;
-    width: 340px;
-    height: 303px;
   }
 
   &::before {
