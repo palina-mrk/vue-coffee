@@ -6,6 +6,7 @@ import FilterHealthy from "../forms/FilterHealthy.vue";
 import FilterVending from "../forms/FilterVending.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import ProductCard from "../cards/ProductCard.vue";
+import CustomSort from "../inputs/CustomSort.vue";
 import { useCatalogStore } from "../../stores/catalog";
 import { useFilterStore } from "../../stores/filter";
 const catalogStore = useCatalogStore();
@@ -100,6 +101,31 @@ function updateDetails (detailName, value) {
 function toggleValue(array, value) {
   array.includes(value) ? array.splice(array.indexOf(value), 1) : array.push(value);
 }
+
+const sortFields = reactive([
+  {
+    label: "По возрастанию цены",
+    value: "price-up",
+  },
+  {
+    label: "По убыванию цены",
+    value: "price-down",
+  },
+  {
+    label: "По рейтингу",
+    value: "rate-rating-down",
+  },
+  {
+    label: "По кислотности",
+    value: "hue-acidity-down",
+  }
+])
+const defaultLabel = ref(sortFields[1].label);
+const defaultValue = ref(sortFields[1].value);
+function setField(field) {
+  defaultLabel.value = field.label;
+  defaultValue.value = field.value;
+}
 </script>
 
 <template>
@@ -141,6 +167,7 @@ function toggleValue(array, value) {
       </div>
     </section>
 
+    <!-- тестирование функций для фильтров -->
     <!--p style="margin: 0 150px; font-size: 50px;" v-for="p in products.value
     .filter((p) => roastingDegrees.length == 0 || roastingDegrees.includes(p.roastingDegree))
     .filter((p) => kindDetails.length == 0 || kindDetails.includes(p.kindDetail))
@@ -152,16 +179,11 @@ function toggleValue(array, value) {
     .map(p => [p.roasting, p.hue.acidity, p.details.map(d => [d.geography, d.kind, d.processing]), p.actions])">{{  p }}</p>
 
     <p>{{ roastingDegrees }}</p-->
-    <!--p>{{ products.value.map(p => p.geographyDetails).reduce((acc, el) => acc.concat(el), []).sort() }}</p>
-    <p>{{ geographyDetails }}</p>
-    <p>{{ acidityDetails }}</p>
-    <p>{{ products.value
-    .filter((p) => Object.keys(roastingDegrees).length == 0 || roastingDegrees[p.roastingDegree])
-    .filter((p) => Object.keys(kindDetails).length == 0 || kindDetails[p.kindDetail])
-    .filter((p) => Object.keys(acidityDetails).length == 0 || acidityDetails[p.acidityDetail])
-    .filter((p) => Object.keys(geographyDetails).length == 0 || p.geographyDetails.find(g => geographyDetails[g]))
-    .filter((p) => Object.keys(processingDetails).length == 0 || p.processingDetails.find(d => processingDetails[d]))
-    .filter((p) => Object.keys(actionsDetails).length == 0 || Object.keys(actionsDetails).reduce((acc, d) => acc && p.actionsDetails.includes(d), true))  }}</p-->
+    <custom-sort 
+    :sortFields="sortFields"
+    :defaultLabel="defaultLabel"
+    @setField="setField($event)"></custom-sort>
+
 
     <section :class="['products','products--' + route.name]">
       <div class="container">

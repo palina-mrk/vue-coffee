@@ -653,7 +653,7 @@ const coffees = [
       { value: 1000, price: 1080, priceCrossed: 1480 },
     ],
     rate: { rating: 4.5, comments: 130 },
-    actions: ["Популярное", "Микролот"],
+    actions: ["Ваш выбор", "Микролот"],
     roasting: 2,
     hue: { acidity: 6, bitterness: 5, richness: 8 },
     details: [
@@ -715,7 +715,7 @@ const coffees = [
       { value: 1000, price: 1120, priceCrossed: 1520 },
     ],
     rate: { rating: 4.6, comments: 150 },
-    actions: ["Популярное", "Сорт недели"],
+    actions: ["Ваш выбор", "Сорт недели"],
     roasting: 5,
     hue: { acidity: 5, bitterness: 6, richness: 7 },
     details: [
@@ -799,7 +799,7 @@ const coffees = [
       { value: 1000, price: 960, priceCrossed: 1360 },
     ],
     rate: { rating: 4.2, comments: 110 },
-    actions: ["Скидки", "Популярное"],
+    actions: ["Скидки", "Ваш выбор"],
     roasting: 2,
     hue: { acidity: 4, bitterness: 5, richness: 7 },
     details: [
@@ -859,7 +859,7 @@ const coffees = [
       { value: 1000, price: 920, priceCrossed: 1320 },
     ],
     rate: { rating: 4.1, comments: 100 },
-    actions: ["Популярное", "Новинка"],
+    actions: ["Ваш выбор", "Новинка"],
     roasting: 4,
     hue: { acidity: 2, bitterness: 8, richness: 9 },
     details: [
