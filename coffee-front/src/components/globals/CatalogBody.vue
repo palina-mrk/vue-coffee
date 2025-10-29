@@ -102,7 +102,7 @@ function toggleValue(array, value) {
   array.includes(value) ? array.splice(array.indexOf(value), 1) : array.push(value);
 }
 
-const sortFields = reactive([
+const sortCoffeeFields = reactive([
   {
     label: "По возрастанию цены",
     value: "price-up",
@@ -119,12 +119,42 @@ const sortFields = reactive([
     label: "По кислотности",
     value: "hue-acidity-down",
   }
-])
+]);
+
+const sortFields = reactive([
+  {
+    label: "По возрастанию цены",
+    value: "price-up",
+  },
+  {
+    label: "По убыванию цены",
+    value: "price-down",
+  },
+  {
+    label: "По рейтингу",
+    value: "rate-rating-down",
+  }
+]);
+
 const defaultLabel = ref(sortFields[1].label);
 const defaultValue = ref(sortFields[1].value);
+
 function setField(field) {
   defaultLabel.value = field.label;
   defaultValue.value = field.value;
+}
+
+function compareProducts(p1, p2) {
+  switch (defaultValue.value) {
+    case 'price-up':
+      return p1.weights[0].price - p2.weights[0].price;
+    case 'price-down':
+      return p2.weights[0].price - p1.weights[0].price;
+    case 'rate-rating-down':
+      return p2.rate.rating - p1.rate.rating;
+    case 'hue-acidity-down':
+      return p2.hue.acidity - p1.hue.acidity;
+  }
 }
 </script>
 
@@ -179,11 +209,7 @@ function setField(field) {
     .map(p => [p.roasting, p.hue.acidity, p.details.map(d => [d.geography, d.kind, d.processing]), p.actions])">{{  p }}</p>
 
     <p>{{ roastingDegrees }}</p-->
-    <custom-sort 
-    :sortFields="sortFields"
-    :defaultLabel="defaultLabel"
-    @setField="setField($event)"></custom-sort>
-
+    
 
     <section :class="['products','products--' + route.name]">
       <div class="container">
@@ -192,12 +218,11 @@ function setField(field) {
             Отсортированные карточки товаров
           </h2>
 
-          <button
-            class="products__sort-btn btn-linked btn-linked--black-small"
-            type="submit"
-          >
-            Сортировка
-          </button>
+          <custom-sort 
+            class="products__sort-btn"
+            :sortFields="route.name == 'coffee' ? sortCoffeeFields : sortFields"
+            :defaultLabel="defaultLabel"
+            @setField="setField($event)"></custom-sort>
 
           <ul v-if="isLoaded && filterStore.isLoaded" class="products__list">
             <li
@@ -210,7 +235,8 @@ function setField(field) {
     .filter((p) => geographyDetails.length == 0 || p.geographyDetails.find(g => geographyDetails.includes(g)))
     .filter((p) => processingDetails.length == 0 || p.processingDetails.find(d => processingDetails.includes(d)))
     .filter((p) => actionsDetails.length == 0 || actionsDetails.reduce((acc, d) => acc && p.actionsDetails.includes(d), true))
-    .filter((el, ind) => ind < cardsCount)"
+    .filter((el, ind) => ind < cardsCount)
+    .sort(compareProducts)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
@@ -218,7 +244,7 @@ function setField(field) {
             <li
               v-else-if="route.name == 'tea'"
               class="products__item"
-              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount)"
+              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount).sort(compareProducts)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
@@ -226,7 +252,7 @@ function setField(field) {
             <li
               v-else-if="route.name == 'vending'"
               class="products__item"
-              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount)"
+              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount).sort(compareProducts)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
@@ -234,7 +260,7 @@ function setField(field) {
             <li
               v-else-if="route.name == 'healthy'"
               class="products__item"
-              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount)"
+              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount).sort(compareProducts)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
@@ -506,16 +532,7 @@ function setField(field) {
   }
 
   &__sort-btn {
-    align-self: start;
-
-    @include vp-laptop {
-      position: relative;
-      left: -15px;
-    }
-
-    @include vp-tablet {
-      position: unset;
-    }
+    margin: 0 0 30px;
   }
 
   &__list {
@@ -693,19 +710,6 @@ function setField(field) {
 
     @include vp-mobile {
       gap: 22px;
-    }
-  }
-
-  .products__sort-btn {
-    align-self: start;
-
-    @include vp-laptop {
-      position: relative;
-      left: -15px;
-    }
-
-    @include vp-tablet {
-      position: unset;
     }
   }
 

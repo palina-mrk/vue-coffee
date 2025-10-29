@@ -149,6 +149,17 @@ function setField(sortField) {
   text-align: left;
   justify-content: start;
 
+
+  @include vp-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  @include vp-mobile {
+    font-size: 16px;
+    line-height: 21px;
+  }
+
   &:hover {
     background-color: $color-lotion;
   }
@@ -168,14 +179,16 @@ function setField(sortField) {
     padding: 0;
     z-index: 3;
     list-style-type: none;
-    top: -20px;
-    left: 0;
     border-radius: 5px;
     box-shadow: 0px 0px 20px 0px $color-granite-gray-25;
     flex-direction: column;
     align-items: start;
     background-color: $color-white;
     display: none;
+
+    @include vp-mobile {
+      box-shadow: 0px 0px 20px 0px $color-granite-gray-25;
+    }
   }
 
   &__chosen-item {
@@ -187,6 +200,13 @@ function setField(sortField) {
     margin: 0;
     width: 100%;
     border-bottom: $color-bright-gray solid 1px;
+
+    @include vp-tablet {
+      padding: 17px 20px 10px 30px;
+    }
+    @include vp-mobile {
+      padding: 17px 20px 8px 30px;
+    }
   }
 
   &__chosen-text {
@@ -196,6 +216,18 @@ function setField(sortField) {
     font-size: 18px;
     line-height: 21px;
     min-width: 190px;
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 26px;
+      min-width: 250px;
+    }
+
+    @include vp-mobile {
+      font-size: 16px;
+      line-height: 21px;
+      min-width: 190px;
+    }
   }
 
   &__field {
