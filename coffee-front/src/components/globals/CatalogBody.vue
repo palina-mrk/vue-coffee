@@ -7,21 +7,25 @@ import FilterVending from "../forms/FilterVending.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import ProductCard from "../cards/ProductCard.vue";
 import { useCatalogStore } from "../../stores/catalog";
+import { useFilterStore } from "../../stores/filter";
 const catalogStore = useCatalogStore();
+const filterStore = useFilterStore();
 import { storeToRefs } from "pinia";
 const { coffees, teas, vendings, healthies, isLoaded } =
   storeToRefs(catalogStore);
+const { coffeesExtended } =
+  storeToRefs(filterStore);
 import { ref, computed, reactive } from "vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
 /** формируем массив товаров отображаемого вида */
 const products = computed(() => {
-  if(!isLoaded)
+  if(!isLoaded || !filterStore.isLoaded)
     return [];
 
   switch(route.name){
     case 'coffee':
-      return coffees;
+      return coffeesExtended;
     case 'tea':
       return teas;
     case 'vending':
@@ -61,15 +65,37 @@ function showMore() {
 }
 
 /* собираем подробную информацию из фильтров о товарах кофе*/
-const roastingDegrees = ref({});
-const otherDetails = reactive({
-  geography: {},
-  acidity: {},
-  processing: {},
-  actions: {},
-  kind: {},
-});
+const roastingDegrees = ref({}); // string
+
+const geographyDetails = reactive({}); // array
+const acidityDetails = reactive({});  // string
+const processingDetails = reactive({}); //array
+const actionsDetails = reactive({}); // array
+const kindDetails = reactive({}); // string
+
 const preparationWay = ref("");
+
+function updateDetails (detailName, value) {
+  switch(detailName) {
+    case 'geography': 
+      updateValues(geographyDetails, value);
+      break;
+    case 'acidity': 
+      updateValues(acidityDetails, value);
+      break;
+    case 'processing': 
+      updateValues(processingDetails, value);
+      break;
+    case 'actions': 
+      updateValues(actionsDetails, value);
+      break;
+    case 'kind': 
+      updateValues(kindDetails, value);
+      break;
+    default:
+      console.log('updatingError!');
+  }
+}
 
 function updateValues(object, value) {
   if (object[value]) delete object[value];
@@ -93,7 +119,7 @@ function updateValues(object, value) {
           <filter-coffee
             v-if="route.name == 'coffee'"
             @setRoasting="updateValues(roastingDegrees, $event)"
-            @setDetails="updateValues(otherDetails[$event.name], $event.value)"
+            @setDetails="updateDetails($event.name, $event.value)"
             @setPreparation="preparationWay = $event"
             class="hero__form"
           ></filter-coffee>
@@ -116,10 +142,16 @@ function updateValues(object, value) {
       </div>
     </section>
 
-    <p>{{ roastingDegrees }}</p>
-    <p>{{ otherDetails }}</p>
-    <p>{{ preparationWay }}</p>
-    <p>{{ products.value.filter((p) => Object.keys(roastingDegrees).length == 0 || roastingDegrees[p.roasting]) }}</p>
+    <!--p>{{ roastingDegrees }}</p>
+    <p>{{ geographyDetails }}</p>
+    <p>{{ acidityDetails }}</p>
+    <p>{{ products.value
+    .filter((p) => Object.keys(roastingDegrees).length == 0 || roastingDegrees[p.roastingDegree])
+    .filter((p) => Object.keys(kindDetails).length == 0 || kindDetails[p.kindDetail])
+    .filter((p) => Object.keys(acidityDetails).length == 0 || acidityDetails[p.acidityDetail])
+    .filter((p) => Object.keys(geographyDetails).length == 0 || p.geographyDetails.find(g => geographyDetails[g]))
+    .filter((p) => Object.keys(processingDetails).length == 0 || p.processingDetails.find(d => processingDetails[d]))
+    .filter((p) => Object.keys(actionsDetails).length == 0 || Object.keys(actionsDetails).reduce((acc, d) => acc && p.actionsDetails.includes(d), true))  }}</p-->
 
     <section :class="['products','products--' + route.name]">
       <div class="container">
@@ -135,11 +167,18 @@ function updateValues(object, value) {
             Сортировка
           </button>
 
-          <ul v-if="isLoaded" class="products__list">
+          <ul v-if="isLoaded && filterStore.isLoaded" class="products__list">
             <li
               v-if="route.name == 'coffee'"
               class="products__item"
-              v-for="p in products.value.filter((p) => Object.keys(roastingDegrees).length == 0 || roastingDegrees[p.roasting]).filter((p) => Object.keys(otherDetails.actions).length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount)"
+              v-for="p in products.value
+    .filter((p) => Object.keys(roastingDegrees).length == 0 || roastingDegrees[p.roastingDegree])
+    .filter((p) => Object.keys(kindDetails).length == 0 || kindDetails[p.kindDetail])
+    .filter((p) => Object.keys(acidityDetails).length == 0 || acidityDetails[p.acidityDetail])
+    .filter((p) => Object.keys(geographyDetails).length == 0 || p.geographyDetails.find(g => geographyDetails[g]))
+    .filter((p) => Object.keys(processingDetails).length == 0 || p.processingDetails.find(d => processingDetails[d]))
+    .filter((p) => Object.keys(actionsDetails).length == 0 || Object.keys(actionsDetails).reduce((acc, d) => acc && p.actionsDetails.includes(d), true))
+    .filter((el, ind) => ind < cardsCount)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>

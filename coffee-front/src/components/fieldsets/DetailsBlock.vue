@@ -95,7 +95,7 @@ function updateValue(object, value) {
       :name="'coffee-' + prop.name"
       :legend="prop.legend"
       :labels="prop.labels"
-      :values="prop.values"
+      :values="prop.labels"
       :fieldsCount="prop.fieldsCount"
       @toggle-value="$emit('toggle-value', { name: prop.name, value: $event })"
       class="form-block__group"
