@@ -31,5 +31,24 @@
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_logo-img.scss";
+.logo-img {
+  width: 260px;
+  height: 116px;
+  display: flex;
+
+  @include vp-laptop {
+    width: 180px;
+    height: 80px;
+  }
+
+  @include vp-tablet {
+    width: 225px;
+    height: 102px;
+  }
+
+  @include vp-mobile {
+    width: 110px;
+    height: 50px;
+  }
+}
 </style>

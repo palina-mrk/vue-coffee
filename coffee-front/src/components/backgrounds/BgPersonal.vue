@@ -45,5 +45,5 @@
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_background.scss";
+@import "@/scss/global/_background.scss";
 </style>

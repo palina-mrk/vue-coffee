@@ -54,7 +54,7 @@ import BgFooter from "../backgrounds/BgFooter.vue";
 </template>
 
 <style lang="scss" scoped>
-@import "@/scss/blocks/_background.scss";
+@import "@/scss/global/_background.scss";
 
 .socials {
   display: flex;
