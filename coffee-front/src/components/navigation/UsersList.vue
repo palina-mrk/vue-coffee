@@ -57,9 +57,9 @@ const isHomePage = computed(() => route.name == "home");
       </div>
     </li>
     <li class="users-list__item">
-      <a
+      <router-link
         class="users-list__link"
-        href="#"
+        :to="{ name: 'personal' }"
         @click="$emit('leave-page')"
         aria-label="Войти в личный кабинет"
       >
@@ -71,7 +71,7 @@ const isHomePage = computed(() => route.name == "home");
         >
           <use xlink:href="../../assets/header-sprite.svg#icon-user"></use>
         </svg>
-      </a>
+      </router-link>
     </li>
   </ul>
 </template>

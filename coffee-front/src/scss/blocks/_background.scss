@@ -174,7 +174,8 @@
 
   &__div {
     position: absolute;
-    left: 0;
+    width: 3720px;
+    left: calc(50% - 1860px);
     right: 0;
     z-index: -6;
   }
@@ -205,14 +206,12 @@
     display: flex;
     position: absolute;
     z-index: -4;
-    width: 100%;
-    min-width: 3720px;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 3720px;
+    left: calc(50% - 1860px);
 
     @include vp-laptop {
       width: 1904px;
-      min-width: unset;
+      left: calc(50% - 952px);
     }
 
     @include vp-tablet {
@@ -224,16 +223,16 @@
     display: none;
     position: absolute;
     z-index: -4;
-    left: 50%;
-    transform: translateX(-50%);
 
     @include vp-tablet {
       width: 1348px;
+      left: calc(50% - 674px);
       display: flex;
     }
 
     @include vp-mobile {
-      width: 767px;
+      width: 768px;
+      left: calc(50% - 384px);
     }
   }
 
@@ -1032,7 +1031,6 @@
     color: $color-cornsilk;
 
     @include vp-laptop {
-      width: 1904px;
       top: 500px;
     }
 
@@ -1050,8 +1048,6 @@
     top: 961px;
     bottom: 110px;
     background-color: $color-white;
-    width: 3720px;
-    left: calc(50% - 1860px);
     z-index: -6;
 
     @include vp-laptop {
@@ -1096,8 +1092,6 @@
     top: 0;
     bottom: 110px;
     background-color: $color-white;
-    width: 3720px;
-    left: calc(50% - 1860px);
     z-index: -6;
 
     @include vp-tablet {
@@ -1169,8 +1163,6 @@
     top: 0;
     height: 50px;
     background-color: $color-cornsilk;
-    width: 3720px;
-    left: calc(50% - 1860px);
     z-index: -7;
 
     @include vp-laptop {
@@ -1179,6 +1171,90 @@
 
     @include vp-tablet {
       height: 50px;
+    }
+  }
+
+  /* Для личного кабинета переиспользуем бэкграунд корзины */
+
+  &__div--personal-top-wall {
+    top: 0;
+    height: 476px;
+    background-color: $color-cornsilk;
+    z-index: -5;
+
+    @include vp-laptop {
+      height: 339px;
+    }
+
+    @include vp-tablet {
+      height: 335px;
+    }
+
+    @include vp-mobile {
+      height: 681px;
+    }
+  }
+
+  &__svg-vawe--personal-top {
+    height: 546px;
+    top: 475px;
+    color: $color-cornsilk;
+
+    @include vp-laptop {
+      height: 280px;
+      top: 338px;
+    }
+
+    @include vp-tablet {
+      top: 334px;
+      height: 192px;
+    }
+
+    @include vp-mobile {
+      top: 680px;
+      height: 110px;
+    }
+  }
+
+  &__div--personal-middle-wall {
+    top: 476px;
+    bottom: 110px;
+    background-color: $color-white;
+    z-index: -6;
+
+    @include vp-laptop {
+      top: 339px;
+    }
+
+    @include vp-tablet {
+      bottom: 120px;
+      top: 335px;
+    }
+
+    @include vp-mobile {
+      top: 681px;
+      bottom: 50px;
+    }
+  }
+
+  &__svg-vawe--personal-bottom {
+    height: 384px;
+    bottom: 110px;
+    color: $color-cultured;
+    background-color: $color-white;
+
+    @include vp-laptop {
+      height: 195px;
+    }
+
+    @include vp-tablet {
+      bottom: 120px;
+      height: 200px;
+    }
+
+    @include vp-mobile {
+      bottom: 50px;
+      height: 108px;
     }
   }
 }

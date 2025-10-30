@@ -1,5 +1,5 @@
 <script setup>
-import BgContacts from "../backgrounds/BgContacts.vue";
+import BgPersonal from "../backgrounds/BgPersonal.vue";
 
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import CustomToggle from "../toggles/CustomToggle.vue";
@@ -20,14 +20,13 @@ const selectedPageVariant = ref("contacts");
 
 <template>
   <main>
-    <section class="contacts">
-      <bg-contacts></bg-contacts>
+    <section class="personal">
+      <bg-personal></bg-personal>
 
       <div class="container">
-        
-          <h1 class="visually-hidden">Контакты</h1>
+        <h1 class="visually-hidden">Личный кабинет</h1>
 
-        <custom-breadcrumbs class="contacts__breadcrumbs"></custom-breadcrumbs>
+        <custom-breadcrumbs class="personal__breadcrumbs"></custom-breadcrumbs>
 
         <custom-toggle
           class="contacts__toggle"
@@ -37,133 +36,17 @@ const selectedPageVariant = ref("contacts");
           @toggle-value="selectedPageVariant = $event"
         ></custom-toggle>
 
-        <div class="contacts__wrapper">
-          <ul v-show="selectedPageVariant == 'contacts'" class="contacts__list">
-            <li class="contacts__item">
-              <p class="contacts__item-title">Связаться с&nbsp;нами:</p>
-              <div class="contacts__item-content">
-                <a
-                  class="contacts__item-link"
-                  href="tel:+74012375343"
-                  aria-label="Ссылка на контактный телефон"
-                >
-                  <span class="contacts__icon-wrapper">
-                    <svg
-                      class="contacts__icon-svg"
-                      width="13"
-                      height="13"
-                      aria-hidden="true"
-                    >
-                      <use
-                        xlink:href="../../assets/contacts-sprite.svg#icon-phone"
-                      ></use>
-                    </svg>
-                  </span>
-                  <span class="contacts__item-line"
-                    >+7 (401) 237 53&nbsp;43</span
-                  >
-                </a>
-                <a
-                  class="contacts__item-link"
-                  href="mailto:Import@kldrefine.com"
-                  aria-label="Ссылка на email"
-                >
-                  <span class="contacts__icon-wrapper">
-                    <svg
-                      class="contacts__icon-svg"
-                      width="13"
-                      height="10"
-                      aria-hidden="true"
-                    >
-                      <use
-                        xlink:href="../../assets/contacts-sprite.svg#icon-mail"
-                      ></use>
-                    </svg>
-                  </span>
-                  <span class="contacts__item-line">Import@kldrefine.com</span>
-                </a>
-              </div>
-            </li>
-            <li class="contacts__item">
-              <p class="contacts__item-title">Юридический адрес:</p>
-              <div class="contacts__item-content">
-                <p class="contacts__item-paragraph">
-                  Российская Федерация, 238310, Калининградская область,
-                  Гурьевский район, поселок Васильково, улица Шатурская,
-                  дом&nbsp;4А
-                </p>
-              </div>
-            </li>
-            <li class="contacts__item">
-              <p class="contacts__item-title">Адрес склада:</p>
-              <div class="contacts__item-content">
-                <p class="contacts__item-paragraph">
-                  Московская область, Балашиха, Западная промзона, Шоссе
-                  энтузиастов&nbsp;1
-                </p>
-              </div>
-            </li>
+        
+        <div class="personal__forms-wrapper">
+          <cart-card class="personal__user-card"></cart-card>
+          <delivery-form class="personal__orders-card"></delivery-form>
+        </div>
+
+        <div class="personal__actions-wrapper">
+          <h2 class="personal__actions-title">Персональные акции</h2>
+          <ul class="personal__actions-list">
+            <li class="personal__actions-item"></li>
           </ul>
-
-          <ul
-            v-show="selectedPageVariant == 'our-shops'"
-            class="contacts__list"
-          >
-            <li class="contacts__item">
-              <p class="contacts__item-title">
-                Наши магазины г.&nbsp;Санкт-Петербург
-              </p>
-              <ul class="contacts__item-sublist">
-                <li class="contacts__item-line">Гороховая, 53</li>
-                <li class="contacts__item-line">Московский, 53</li>
-              </ul>
-            </li>
-
-            <li class="contacts__item">
-              <p class="contacts__item-title">
-                Наши магазины Калининградская&nbsp;обл.
-              </p>
-              <ul class="contacts__item-sublist">
-                <li class="contacts__item-line">Советск, Гончарова 2а</li>
-                <li class="contacts__item-line">
-                  Черняховск, Пионерская&nbsp;1
-                </li>
-                <li class="contacts__item-line">Ульяны-Громовой 15</li>
-                <li class="contacts__item-line">Советский проспект 6а</li>
-                <li class="contacts__item-line">Гурьевск, Каштановая 1г</li>
-                <li class="contacts__item-line">Черняховского&nbsp;15</li>
-                <li class="contacts__item-line">Панина 2а</li>
-                <li class="contacts__item-line">Ленинский 8Б</li>
-                <li class="contacts__item-line">Аксакова 133</li>
-                <li class="contacts__item-line">Липовая Аллея&nbsp;2</li>
-              </ul>
-            </li>
-          </ul>
-
-          <div class="contacts__map-wrapper">
-            <picture>
-              <source
-                media="(max-width: 767px)"
-                srcset="../../images/contacts/map-mobile.png"
-              />
-              <source
-                media="(max-width: 1348px)"
-                srcset="../../images/contacts/map-tablet.png"
-              />
-              <source
-                media="(max-width: 1904px)"
-                srcset="../../images/contacts/map-laptop.png"
-              />
-              <img
-                class="contacts__map-image"
-                src="../../images/contacts/map-desktop.png"
-                width="960"
-                height="526"
-                alt="Карта с местонахождением интернет-магазина"
-              />
-            </picture>
-            
-          </div>
         </div>
       </div>
     </section>
@@ -171,16 +54,16 @@ const selectedPageVariant = ref("contacts");
 </template>
 
 <style lang="scss" scoped>
-.contacts {
+.personal {
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 202px 0 220px;
   margin: 0;
-  overflow: hidden;
-  position: relative;
   color: $color-raising-black;
   font-family: $ff-gilroy sans-serif;
   font-weight: 500;
+  overflow: hidden;
 
   @include vp-laptop {
     padding: 140px 0 175px;

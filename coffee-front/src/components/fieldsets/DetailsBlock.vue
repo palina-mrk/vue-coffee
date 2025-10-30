@@ -135,6 +135,7 @@ function updateValue(object, value) {
     width: 700px;
     height: 1200px;
     flex-direction: column;
+    border-radius: 20px;
     gap: 77px 100px;
     margin: 0 0 20px;
   }
@@ -146,6 +147,7 @@ function updateValue(object, value) {
     height: 588px;
     gap: 33px 48px;
     margin: 0 0 10px;
+    border-radius: 10px;
   }
 
   &::before {

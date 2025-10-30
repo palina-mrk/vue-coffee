@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import CatalogView from "../views/CatalogView.vue";
 import CartView from "../views/CartView.vue";
 import ContactsView from "../views/ContactsView.vue";
+import PersonalView from "../views/PersonalView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -73,6 +74,14 @@ const router = createRouter({
       component: CartView,
       meta: {
         title: "Корзина",
+      },
+    },
+    {
+      path: "/personal",
+      name: "personal",
+      component: PersonalView,
+      meta: {
+        title: "Личный кабинет",
       },
     },
     {

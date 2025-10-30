@@ -108,12 +108,14 @@ const degrees = ref([]);
   @include vp-tablet {
     box-shadow: 0px 0px 61px 0px $color-spanish-gray-c95-25;
     padding: 109px 44px 65px;
+    border-radius: 20px;
     width: 100%;
   }
 
   @include vp-mobile {
     box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
     padding: 52px 20px 30px;
+    border-radius: 10px;
   }
 
   &::before {
