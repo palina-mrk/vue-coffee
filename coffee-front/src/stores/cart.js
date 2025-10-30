@@ -63,10 +63,11 @@ export const useCartStore = defineStore("cart", () => {
     }
   });
 
+  /* [сумма, value, лейбл, длительность]*/
   const deliveryWays = reactive([
-    [390, "sdek", "СДЭК - до двери"],
-    [300, "russian-post", "Почта России"],
-    [427, "dpd", "DPD - курьер, 3 дн"],
+    [390, "sdek", "СДЭК - до двери", 2],
+    [300, "russian-post", "Почта России", 7],
+    [427, "dpd", "DPD - курьер, 3 дн", 3],
   ]);
   const deliveryWay = ref(deliveryWays[0]);
 
@@ -79,6 +80,7 @@ export const useCartStore = defineStore("cart", () => {
   }
   const deliveryValue = computed(() => deliveryWay.value[1]);
   const deliveryPrice = computed(() => deliveryWay.value[0]);
+  const deliveryDuring = computed(() => deliveryWay.value[3]); 
 
   const cartInfo = computed(() =>
     cartRows.reduce(
@@ -155,6 +157,11 @@ export const useCartStore = defineStore("cart", () => {
     cartItems.value.reduce((acc, el) => acc + el.sale, 0),
   );
 
+
+  /* информация о товарах в корзине ДО применения 
+  *  скидки к КОРЗИНЕ
+  *  т.е. здесь скидки учитываются только на товары, 
+  * которые сами по себе, в каталоге - уже со скидкой */
   const rawCartItems = computed(() =>
     catalog.isLoaded
       ? cartRows.reduce((acc, [id, weight, count]) => {
@@ -168,7 +175,8 @@ export const useCartStore = defineStore("cart", () => {
             descripton: shortDescription,
             weight: weight,
             weightString: `${weight} ${item.category == "vending" ? "кг." : "г."}`,
-            price:
+            /* цена до скидки (зачеркнутая): */
+            price:  
               (item.actions.includes("Скидки") ? priceCrossed : price) * count,
             count: count,
             sale: item.actions.includes("Скидки")
@@ -177,13 +185,21 @@ export const useCartStore = defineStore("cart", () => {
             salePercent: item.actions.includes("Скидки")
               ? Math.round(((priceCrossed - price) * 100) / priceCrossed)
               : 0,
-            total: price * count,
+            /* цена после применения скидки (итоговая): */
+            total: price * count, 
           });
           return acc;
         }, [])
       : [],
   );
 
+  /* информация о товарах в корзине ПОСЛЕ применения 
+  *  скидки КОРЗИНЫ ко всем товарам, которые не были 
+  *  изначально на скидке
+  *   т.е. здесь применяется бОльшая из:
+  *    - скидки по промокоду 
+  *    - или скидки по достижении в корзине 
+  *       определенной общей суммы */
   const cartItems = computed(() => {
     if (globalSale.value == 0) return rawCartItems.value;
 
@@ -192,6 +208,7 @@ export const useCartStore = defineStore("cart", () => {
 
       const item = Object.assign(rawItem);
       item.salePercent = globalSale.value;
+      /* итоговая цена: */
       item.total = Math.round((rawItem.price * (100 - globalSale.value)) / 100);
       item.sale = Math.round((rawItem.price * globalSale.value) / 100);
       return item;
@@ -225,6 +242,7 @@ export const useCartStore = defineStore("cart", () => {
     setDeliveryValue,
     deliveryValue,
     deliveryPrice,
+    deliveryDuring,
     setPromo,
     saleType,
     promoSale,

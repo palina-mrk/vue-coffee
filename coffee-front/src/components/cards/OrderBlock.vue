@@ -3,9 +3,71 @@ import CustomCounter from "../inputs/CustomCounter.vue";
 defineProps(["itemInfo", "sale", "salePercent", "total"]);
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
+
+const orderInfo = reactive({
+  /* информация о заказе */
+  orderID: 1,
+  isPaid: true,
+  isFinished: true,
+  paymentTime: "01.11.2025 12:24:00",
+  deliveryDate: "03.11.2025",
+  /* к оплате: totalSum + deliverySum */
+  /* totalSum - итоговая сумма за весь заказ 
+   * (товары с уже применёнными всеми скидками) */
+  totalSum: 864,
+  orderSale: 15,
+  /* totalSum - сумма за доставку */
+  deliveryPrice: 390,
+})
+
+/** информация о каждом товаре */
+const productLines = reactive([
+  {
+    id: 15,
+    title: "Энергия пшеницы",
+    weightString: "100 г.",
+    count: 2,
+    price: 240,
+    sale: 0,
+    total: 240,
+  },
+  {
+    id: 29,
+    title: "Байкальская мелодия",
+    weightString: "200 г.",
+    count: 1,
+    price: 530,
+    sale: 0,
+    total: 530,
+  },
+  {
+    id: 35,
+    title: "Brazil Santos",
+    weightString: "250 г.",
+    count: 2,
+    price: 520,
+    sale: 120,
+    total: 400,
+  },
+])
 </script>
 
 <template>
+  <div class="order-block">
+    <div class="order-block__top">
+      <span class="order-block__payment-time">{{ orderInfo.paymentTime }} - оплачено</span>
+      <span class="order-block__delivery-date"
+        v-if="orderInfo.isFinished"
+      >Дата доставки: {{ orderInfo.deliveryDate }}</span>
+      <span class="order-block__delivery-date"
+        v-else
+      >Доставлено: {{ orderInfo.deliveryDate }}</span>
+    </div>
+    <div class="order-block__inner"></div>
+    <div class="order-block__bottom">
+
+    </div>
+  </div>
   <div class="product-line__top product-line__top--long">
     <div class="product-line__details">
       <div class="product-line__icon-wrapper"
