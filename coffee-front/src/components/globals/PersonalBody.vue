@@ -27,7 +27,7 @@ const actionsInfo = reactive([
 
 <template>
   <main>
-    <section class="personal" style="min-height: 2000px;">
+    <section class="personal">
       <bg-personal></bg-personal>
 
       <div class="container">
@@ -122,7 +122,7 @@ const actionsInfo = reactive([
     }
   }
 
-  &__list {
+  &__actions-list {
     display: flex;
     overflow: hidden;
     margin: 0;
@@ -142,7 +142,7 @@ const actionsInfo = reactive([
     }
   }
 
-  &__item {
+  &__actions-item {
     display: flex;
     width: 400px;
     padding: 0;

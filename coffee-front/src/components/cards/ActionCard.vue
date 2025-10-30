@@ -4,47 +4,71 @@ const props = defineProps(["actionInfo"]);
 
 <template>
   <div class="action-card">
-    <p class="action-card__slogan">{{ action.slogan }}</p>
+    <p class="action-card__slogan">{{ actionInfo.slogan }}</p>
     <span
       class="action-card__until-str"
-      >Срок акции: до&nbsp;{{ action.until }}</span
+      >Срок акции: до&nbsp;{{ actionInfo.until }}</span
     >
   </div>
 </template>
 
 <style lang="scss" scoped>
-.catalog-card {
+.action-card {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: end;
-  background-color: $color-black-302;
-  background-image: url("../../images/personal/actions-card-desktop.png");
   padding: 39px 20px;
   border-radius: 20px;
   gap: 88px;
-  
+  position: relative;
+  background-color: $color-black-302;
+    
   @include vp-laptop {
-    background-image: url("../../images/personal/actions-card-laptop.png");
     padding: 24px 15px;
     border-radius: 14px;
     gap: 62px;
   }
 
   @include vp-tablet {
-    background-image: url("../../images/personal/actions-card-tablet.png");
     padding: 149px 40px;
     border-radius: 16px;
     gap: 70px;
   }
 
   @include vp-mobile {
-    background-image: url("../../images/personal/actions-card-mobile.png");
     padding: 60px 30px;
     border-radius: 10px;
     gap: 30px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url("../../images/personal/actions-card-desktop.png");
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    border-radius: 20px;
+  
+    @include vp-laptop {
+      background-image: url("../../images/personal/actions-card-laptop.png");
+      border-radius: 14px;
+    }
+
+    @include vp-tablet {
+      background-image: url("../../images/personal/actions-card-tablet.png");
+      border-radius: 16px;
+    }
+
+    @include vp-mobile {
+      background-image: url("../../images/personal/actions-card-mobile.png");
+      border-radius: 10px;
+    }
   }
 
   &__slogan {
