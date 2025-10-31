@@ -43,7 +43,7 @@ const selectedValues = ref([]);
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     cursor: pointer;
 
     @include vp-laptop {
@@ -128,6 +128,7 @@ const selectedValues = ref([]);
 .fieldset__name {
   font-weight: 700;
   color: $color-black;
+  font-family: $ff-gilroy, sans-serif;
   font-size: 25px;
   line-height: 30px;
   margin: 0 0 30px;

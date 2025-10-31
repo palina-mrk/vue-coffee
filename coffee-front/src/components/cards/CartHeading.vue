@@ -33,7 +33,7 @@ defineProps(["sale"]);
 
   &__text-item {
     color: $color-raising-black;
-    font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 500px;
     font-size: 20px;
     line-height: 24px;

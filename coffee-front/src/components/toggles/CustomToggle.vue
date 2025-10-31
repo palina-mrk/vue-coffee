@@ -22,6 +22,8 @@ const props = defineProps(["toggleName", "initialValues", "selected"]);
 </template>
 
 <style lang="scss" scoped>
+/* стилизация для страницы contacts */
+
 .toggle {
   background-color: transparent;
   display: flex;
@@ -62,6 +64,7 @@ const props = defineProps(["toggleName", "initialValues", "selected"]);
     border-width: 1px;
     font-weight: 600;
     font-size: 25px;
+    font-family: $ff-gilroy, sans-serif;
     line-height: 30px;
     align-items: center;
     text-align: center;
@@ -102,6 +105,49 @@ const props = defineProps(["toggleName", "initialValues", "selected"]);
     color: $color-white;
     background-color: $color-ucla-gold;
     border-color: $color-ucla-gold;
+  }
+}
+
+/* стилизация для карточки заказов */
+
+.toggle--size-m {
+  @include vp-laptop {
+    gap: 20px;
+  }
+
+  @include vp-tablet {
+    flex-direction: row;
+  }
+
+  @include vp-mobile {
+    flex-direction: column;
+  }
+
+  &__label {
+    padding: 10px;
+    font-size: 20px;
+    line-height: 24px;
+
+    @include vp-laptop {
+      border-radius: 4px;
+      padding: 7px;
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    @include vp-tablet {
+      border-radius: 2px;
+      padding: 10px;
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    @include vp-mobile {
+      border-radius: 5px;
+      padding: 11px;
+      font-size: 14px;
+      line-height: 17px;
+    }
   }
 }
 </style>

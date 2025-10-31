@@ -80,7 +80,7 @@ export const useCartStore = defineStore("cart", () => {
   }
   const deliveryValue = computed(() => deliveryWay.value[1]);
   const deliveryPrice = computed(() => deliveryWay.value[0]);
-  const deliveryDuring = computed(() => deliveryWay.value[3]); 
+  const deliveryDuring = computed(() => deliveryWay.value[3]);
 
   const cartInfo = computed(() =>
     cartRows.reduce(
@@ -157,11 +157,10 @@ export const useCartStore = defineStore("cart", () => {
     cartItems.value.reduce((acc, el) => acc + el.sale, 0),
   );
 
-
-  /* информация о товарах в корзине ДО применения 
-  *  скидки к КОРЗИНЕ
-  *  т.е. здесь скидки учитываются только на товары, 
-  * которые сами по себе, в каталоге - уже со скидкой */
+  /* информация о товарах в корзине ДО применения
+   *  скидки к КОРЗИНЕ
+   *  т.е. здесь скидки учитываются только на товары,
+   * которые сами по себе, в каталоге - уже со скидкой */
   const rawCartItems = computed(() =>
     catalog.isLoaded
       ? cartRows.reduce((acc, [id, weight, count]) => {
@@ -176,7 +175,7 @@ export const useCartStore = defineStore("cart", () => {
             weight: weight,
             weightString: `${weight} ${item.category == "vending" ? "кг." : "г."}`,
             /* цена до скидки (зачеркнутая): */
-            price:  
+            price:
               (item.actions.includes("Скидки") ? priceCrossed : price) * count,
             count: count,
             sale: item.actions.includes("Скидки")
@@ -186,20 +185,20 @@ export const useCartStore = defineStore("cart", () => {
               ? Math.round(((priceCrossed - price) * 100) / priceCrossed)
               : 0,
             /* цена после применения скидки (итоговая): */
-            total: price * count, 
+            total: price * count,
           });
           return acc;
         }, [])
       : [],
   );
 
-  /* информация о товарах в корзине ПОСЛЕ применения 
-  *  скидки КОРЗИНЫ ко всем товарам, которые не были 
-  *  изначально на скидке
-  *   т.е. здесь применяется бОльшая из:
-  *    - скидки по промокоду 
-  *    - или скидки по достижении в корзине 
-  *       определенной общей суммы */
+  /* информация о товарах в корзине ПОСЛЕ применения
+   *  скидки КОРЗИНЫ ко всем товарам, которые не были
+   *  изначально на скидке
+   *   т.е. здесь применяется бОльшая из:
+   *    - скидки по промокоду
+   *    - или скидки по достижении в корзине
+   *       определенной общей суммы */
   const cartItems = computed(() => {
     if (globalSale.value == 0) return rawCartItems.value;
 

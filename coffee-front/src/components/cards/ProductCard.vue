@@ -176,7 +176,11 @@ const imageVariant = computed(() => {
 
   <div
     v-else
-    :class="['product-card--'+ product.category , {'product-card--sale': isSale},'product-card']"
+    :class="[
+      'product-card--' + product.category,
+      { 'product-card--sale': isSale },
+      'product-card',
+    ]"
   >
     <div class="product-card__top">
       <div class="product-card__rating-wrapper">
@@ -263,7 +267,7 @@ const imageVariant = computed(() => {
   border-radius: 20px;
   background-color: $color-white;
   color: $color-raising-black;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   position: relative;
 
   @include vp-laptop {
@@ -306,7 +310,7 @@ const imageVariant = computed(() => {
     left: 3px;
     display: none;
     transform: translate(50%, -50%);
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       width: 50px;
@@ -377,7 +381,7 @@ const imageVariant = computed(() => {
   }
 
   &__actions-item {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
@@ -399,7 +403,7 @@ const imageVariant = computed(() => {
   }
 
   &__dropdown {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     margin: 1px 0 auto auto;
     width: 132px;
     z-index: 1;
@@ -512,7 +516,7 @@ const imageVariant = computed(() => {
     display: flex;
     gap: 7px;
     align-items: baseline;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       margin: 0 0 17px;
@@ -529,7 +533,7 @@ const imageVariant = computed(() => {
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;
@@ -547,7 +551,7 @@ const imageVariant = computed(() => {
     font-size: 14px;
     line-height: 16px;
     color: $color-davys-gray;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 10px;
@@ -604,7 +608,7 @@ const imageVariant = computed(() => {
     font-size: 18px;
     line-height: 21px;
     align-self: start;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 12px;
@@ -623,7 +627,7 @@ const imageVariant = computed(() => {
     line-height: 31px;
     margin: 0 0 10px;
     padding: 0;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -651,7 +655,7 @@ const imageVariant = computed(() => {
     overflow: hidden;
     padding: 0;
     margin: 0;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 12px;
@@ -691,7 +695,7 @@ const imageVariant = computed(() => {
     font-weight: 900;
     font-size: 35px;
     line-height: 44px;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 24px;
@@ -713,7 +717,7 @@ const imageVariant = computed(() => {
   }
 
   &__price--crossed {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 25px;
     line-height: 29px;
@@ -829,6 +833,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__actions-item {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-mobile {
       font-size: 10px;
       line-height: 12px;
@@ -875,6 +881,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__rating-value {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-mobile {
       font-size: 12.5px;
       line-height: 15px;
@@ -882,6 +890,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__comments-count {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-mobile {
       font-size: 9px;
       line-height: 10px;
@@ -908,6 +918,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__hue-name {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-mobile {
       font-size: 10px;
       line-height: 13px;
@@ -915,6 +927,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__title {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-mobile {
       font-size: 16px;
       line-height: 19px;
@@ -923,6 +937,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__description {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-mobile {
       font-size: 10px;
       line-height: 13px;
@@ -937,6 +953,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__price {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-mobile {
       font-size: 20px;
       line-height: 25px;
@@ -945,6 +963,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__price--crossed {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-mobile {
       font-size: 16px;
       line-height: 19px;
@@ -1040,6 +1060,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__rating-value {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 16px;
       line-height: 20px;
@@ -1047,6 +1069,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__comments-count {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 12px;
       line-height: 14px;
@@ -1094,6 +1118,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__title {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 20px;
       line-height: 25px;
@@ -1101,6 +1127,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__description {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 16px;
       line-height: 20px;
@@ -1136,6 +1164,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__price {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 24px;
       line-height: 31px;
@@ -1148,6 +1178,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__price--crossed {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 18px;
       line-height: 21px;
@@ -1442,6 +1474,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__rating-value {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 16px;
       line-height: 20px;
@@ -1449,6 +1483,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__comments-count {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 12px;
       line-height: 14px;
@@ -1497,6 +1533,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__title {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 20px;
       line-height: 25px;
@@ -1504,6 +1542,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__description {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 16px;
       line-height: 20px;
@@ -1539,6 +1579,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__price {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 24px;
       line-height: 31px;
@@ -1551,6 +1593,8 @@ const imageVariant = computed(() => {
   }
 
   .product-card__price--crossed {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 18px;
       line-height: 21px;
@@ -1569,12 +1613,12 @@ const imageVariant = computed(() => {
   color: $color-white;
   background-color: $color-ucla-gold;
   font-weight: 700;
-  font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
   border-radius: 5px;
   border: none;
   margin: 0;
   cursor: pointer;
-  user-select: none; 
+  user-select: none;
   padding: 13px;
   font-size: 18px;
   line-height: 22px;
@@ -1597,7 +1641,7 @@ const imageVariant = computed(() => {
     padding: 12px 11px 9px;
     border-radius: 4px;
   }
-  
+
   &:hover {
     background-color: $color-mustard-yellow;
   }
@@ -1605,6 +1649,8 @@ const imageVariant = computed(() => {
 
 .product-card--main-mobile {
   .btn--size-s {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-mobile {
       font-size: 12px;
       line-height: 14px;

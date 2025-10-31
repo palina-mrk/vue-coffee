@@ -39,7 +39,7 @@ import PromoForm from "../forms/PromoForm.vue";
   width: 100%;
   padding: 202px 0 110px;
   margin: 0;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   overflow: hidden;
   height: 100%;

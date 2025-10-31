@@ -114,7 +114,9 @@ const route = useRoute();
     />
   </picture>
 
-  <div class="background__div background__div--catalog-hero-top-wall-healthy"></div>
+  <div
+    class="background__div background__div--catalog-hero-top-wall-healthy"
+  ></div>
 
   <svg
     class="background__svg-vawe background__svg-vawe--catalog-hero-healthy"
@@ -135,7 +137,9 @@ const route = useRoute();
     ></use>
   </svg>
 
-  <div class="background__div background__div--catalog-hero-bottom-wall-healthy"></div>
+  <div
+    class="background__div background__div--catalog-hero-bottom-wall-healthy"
+  ></div>
 </template>
 
 <style lang="scss" scoped>

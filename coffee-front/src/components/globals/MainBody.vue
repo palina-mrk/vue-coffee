@@ -36,8 +36,7 @@ function getNextSales() {
         <div class="overview__hero-wrapper">
           <slider-large
             class="overview__slider"
-            :linkNames="['home','catalogs','sales']"
-
+            :linkNames="['home', 'catalogs', 'sales']"
           ></slider-large>
           <h1 class="overview__hero-title" id="home">Свежеобжаренный кофе</h1>
           <div class="overview__hero-content">
@@ -84,7 +83,9 @@ function getNextSales() {
       </div>
       <div class="container">
         <div class="overview__products-wrapper">
-          <h2 class="overview__products-title" id="sales">Товары со&nbsp;скидкой</h2>
+          <h2 class="overview__products-title" id="sales">
+            Товары со&nbsp;скидкой
+          </h2>
           <p class="overview__products-paragraph">
             <span class="overview__paragraph-string">
               <span class="overview__paragraph-string-tablet"
@@ -120,16 +121,22 @@ function getNextSales() {
             </button>
             <ul class="overview__products-list">
               <li class="overview__products-item">
-                <ProductCard 
-                :product="coffeeSales[0]" :key="coffeeSales[0].id"></ProductCard>
+                <ProductCard
+                  :product="coffeeSales[0]"
+                  :key="coffeeSales[0].id"
+                ></ProductCard>
               </li>
               <li class="overview__products-item">
                 <ProductCard
-                :product="coffeeSales[1]" :key="coffeeSales[1].id"></ProductCard>
+                  :product="coffeeSales[1]"
+                  :key="coffeeSales[1].id"
+                ></ProductCard>
               </li>
               <li class="overview__products-item">
-                <ProductCard 
-                :product="coffeeSales[2]" :key="coffeeSales[2].id"></ProductCard>
+                <ProductCard
+                  :product="coffeeSales[2]"
+                  :key="coffeeSales[2].id"
+                ></ProductCard>
               </li>
             </ul>
             <button
@@ -144,7 +151,9 @@ function getNextSales() {
                 height="16"
                 aria-hidden="true"
               >
-                <use xlink:href="../../assets/btn-sprite.svg#arrow-forward"></use>
+                <use
+                  xlink:href="../../assets/btn-sprite.svg#arrow-forward"
+                ></use>
               </svg>
             </button>
           </div>
@@ -300,9 +309,9 @@ function getNextSales() {
               Мы&nbsp;раскрываем вкус каждого сорта кофе.
             </p>
           </div>
-          <router-link 
-          class="technology__button btn btn--size-xl" 
-          :to="{ name: 'catalogs' }"
+          <router-link
+            class="technology__button btn btn--size-xl"
+            :to="{ name: 'catalogs' }"
             >Посмотреть каталог</router-link
           >
         </div>
@@ -336,7 +345,9 @@ function getNextSales() {
               height="16"
               aria-hidden="true"
             >
-              <use xlink:href="../../assets/news-sprite.svg#icon-news-prev"></use>
+              <use
+                xlink:href="../../assets/news-sprite.svg#icon-news-prev"
+              ></use>
             </svg>
           </button>
 
@@ -351,7 +362,9 @@ function getNextSales() {
               height="16"
               aria-hidden="true"
             >
-              <use xlink:href="../../assets/news-sprite.svg#icon-news-next"></use>
+              <use
+                xlink:href="../../assets/news-sprite.svg#icon-news-next"
+              ></use>
             </svg>
           </button>
         </div>
@@ -734,6 +747,10 @@ function getNextSales() {
 </template>
 
 <style lang="scss" scoped>
+* {
+  font-family: $ff-gilroy, sans-serif;
+}
+
 .btn {
   display: flex;
   align-items: center;
@@ -743,7 +760,7 @@ function getNextSales() {
   font-weight: 700;
   line-height: 36px;
   font-size: 30px;
-  font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
   border-radius: 5px;
   border: none;
   margin: 0;
@@ -786,6 +803,7 @@ function getNextSales() {
     font-size: 25px;
     line-height: 30px;
     padding: 18px 17px 12px;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -812,6 +830,7 @@ function getNextSales() {
     padding: 13px;
     font-size: 18px;
     line-height: 22px;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       padding: 9px 9px 10px;
@@ -846,6 +865,7 @@ function getNextSales() {
     font-size: 20px;
     line-height: 24px;
     font-weight: 500;
+  font-family: $ff-gilroy, sans-serif;
     border-radius: 10px;
 
     @include vp-laptop {
@@ -1017,7 +1037,7 @@ function getNextSales() {
   justify-content: space-between;
   gap: 8px;
   color: $color-ucla-gold;
-  font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   line-height: 26px;
   font-size: 20px;
@@ -1079,6 +1099,7 @@ function getNextSales() {
     justify-content: center;
     border: none;
     background-color: transparent;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;
@@ -1174,7 +1195,7 @@ function getNextSales() {
   padding: 160px 0 17px;
   margin: 0;
   color: $color-black;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   overflow: hidden;
 
@@ -1237,6 +1258,7 @@ function getNextSales() {
     max-width: 960px;
     font-weight: 900;
     font-size: 80px;
+  font-family: $ff-gilroy, sans-serif;
     line-height: 100px;
 
     @include vp-laptop {
@@ -1292,6 +1314,7 @@ function getNextSales() {
     padding: 0;
     font-size: 25px;
     line-height: 1.3;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -1348,7 +1371,7 @@ function getNextSales() {
   &__catalogs-title {
     margin: 0 0 78px;
     padding: 0;
-    font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
@@ -1447,6 +1470,7 @@ function getNextSales() {
     text-align: right;
     margin: 0 0 47px;
     padding: 0;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
@@ -1480,6 +1504,7 @@ function getNextSales() {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -1615,7 +1640,7 @@ function getNextSales() {
   padding: 90px 0 68px;
   margin: 0;
   color: $color-black;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   overflow: hidden;
 
@@ -1693,7 +1718,7 @@ function getNextSales() {
   &__title {
     margin: 0 0 78px;
     padding: 0;
-    font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
@@ -1834,6 +1859,7 @@ function getNextSales() {
 
   &__item-title {
     margin: 0;
+  font-family: $ff-gilroy, sans-serif;
     padding: 0;
     font-weight: 700;
     font-size: 30px;
@@ -1884,7 +1910,7 @@ function getNextSales() {
   padding: 218px 0 153px;
   margin: 0;
   color: $color-white;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   overflow: hidden;
   box-sizing: border-box;
@@ -1927,6 +1953,7 @@ function getNextSales() {
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 35px;
@@ -1977,6 +2004,7 @@ function getNextSales() {
     line-height: 32px;
     display: flex;
     flex-direction: column;
+  font-family: $ff-gilroy, sans-serif;
     align-items: start;
 
     @include vp-laptop {
@@ -2016,7 +2044,7 @@ function getNextSales() {
   max-width: 100%;
   border-radius: 20px;
   background-color: $color-white;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
 
   @include vp-laptop {
     box-shadow: 0px 0px 21px 0px $color-philippine-gray-20;
@@ -2079,7 +2107,7 @@ function getNextSales() {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
     color: $color-black;
 
     @include vp-laptop {
@@ -2106,6 +2134,7 @@ function getNextSales() {
     font-size: 25px;
     line-height: 32px;
     margin: 0;
+  font-family: $ff-gilroy, sans-serif;
     padding: 0;
 
     @include vp-laptop {
@@ -2146,6 +2175,7 @@ function getNextSales() {
     line-height: 26px;
     margin: 0;
     padding: 0;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;
@@ -2234,7 +2264,7 @@ function getNextSales() {
   padding: 50px 0 27px;
   margin: 0;
   color: $color-black;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   overflow: hidden;
 
@@ -2273,7 +2303,7 @@ function getNextSales() {
   &__title {
     margin: 0;
     padding: 0;
-    font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
@@ -2375,7 +2405,7 @@ function getNextSales() {
 .socials {
   display: flex;
   align-items: center;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   justify-content: center;
   gap: 41px;
   list-style-type: none;
@@ -2448,7 +2478,7 @@ function getNextSales() {
   padding: 60px 0 53px;
   margin: 0;
   color: $color-black;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   overflow: hidden;
 
@@ -2492,6 +2522,7 @@ function getNextSales() {
     margin: 0;
     padding: 0;
     font-weight: 900;
+  font-family: $ff-gilroy, sans-serif;
     font-size: 50px;
     line-height: 62px;
 
@@ -2711,5 +2742,4 @@ function getNextSales() {
     }
   }
 }
-
 </style>

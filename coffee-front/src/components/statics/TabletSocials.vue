@@ -26,7 +26,7 @@
 .socials {
   display: flex;
   align-items: center;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   justify-content: center;
   gap: 41px;
   list-style-type: none;

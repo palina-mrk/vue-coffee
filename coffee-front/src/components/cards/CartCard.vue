@@ -57,7 +57,7 @@ const catalogStore = useCatalogStore();
   border-width: 1px;
   border-style: solid;
   color: $color-raising-black;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
 
   @include vp-laptop {
     padding: 80px 100px 61px;
@@ -114,7 +114,7 @@ const catalogStore = useCatalogStore();
   &__summary {
     margin: 0;
     padding: 0;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 40px;
     line-height: 50px;
@@ -232,6 +232,7 @@ const catalogStore = useCatalogStore();
 }
 
 .btn-cornsilk {
+  font-family: $ff-gilroy, sans-serif;
   margin: 0;
   padding: 10px;
   background-color: $color-cornsilk;

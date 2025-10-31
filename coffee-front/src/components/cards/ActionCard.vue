@@ -5,8 +5,7 @@ const props = defineProps(["actionInfo"]);
 <template>
   <div class="action-card">
     <p class="action-card__slogan">{{ actionInfo.slogan }}</p>
-    <span
-      class="action-card__until-str"
+    <span class="action-card__until-str"
       >Срок акции: до&nbsp;{{ actionInfo.until }}</span
     >
   </div>
@@ -25,7 +24,7 @@ const props = defineProps(["actionInfo"]);
   gap: 88px;
   position: relative;
   background-color: $color-black-302;
-    
+
   @include vp-laptop {
     padding: 24px 15px;
     border-radius: 14px;
@@ -33,13 +32,13 @@ const props = defineProps(["actionInfo"]);
   }
 
   @include vp-tablet {
-    padding: 149px 40px;
+    padding: 149px 130px 149px 40px;
     border-radius: 16px;
     gap: 70px;
   }
 
   @include vp-mobile {
-    padding: 60px 30px;
+    padding: 60px 50px 60px 30px;
     border-radius: 10px;
     gap: 30px;
   }
@@ -54,7 +53,7 @@ const props = defineProps(["actionInfo"]);
     top: 0;
     z-index: -1;
     border-radius: 20px;
-  
+
     @include vp-laptop {
       background-image: url("../../images/personal/actions-card-laptop.png");
       border-radius: 14px;
@@ -72,7 +71,7 @@ const props = defineProps(["actionInfo"]);
   }
 
   &__slogan {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     color: $color-white;
     margin: 0;
     padding: 0;
@@ -97,7 +96,7 @@ const props = defineProps(["actionInfo"]);
   }
 
   &__until-str {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     color: $color-white;
     font-weight: 500;
     font-size: 20px;

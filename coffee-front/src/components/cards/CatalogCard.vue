@@ -43,7 +43,7 @@ const props = defineProps(["page", "title"]);
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 0px 30px 0px $color-philippine-gray-20;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   min-height: 539px;
   width: 400px;
   border-radius: 20px;
@@ -110,7 +110,7 @@ const props = defineProps(["page", "title"]);
   }
 
   &__title {
-    font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;
@@ -204,6 +204,7 @@ const props = defineProps(["page", "title"]);
   }
 
   .catalog-card__title {
+    font-family: $ff-gilroy, sans-serif;
     font-size: 30px;
     line-height: 1.2;
 
@@ -236,7 +237,7 @@ const props = defineProps(["page", "title"]);
   color: $color-white;
   background-color: $color-ucla-gold;
   font-weight: 700;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   border-radius: 5px;
   border: none;
   cursor: pointer;

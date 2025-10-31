@@ -64,7 +64,7 @@ function setValue(newValue) {
     user-select: none;
     cursor: pointer;
     display: flex;
-    font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 19px;
     line-height: 25px;
@@ -173,6 +173,8 @@ function setValue(newValue) {
 
 .custom-dropdown--main-mobile {
   .custom-dropdown__field--main {
+  font-family: $ff-gilroy, sans-serif;
+  
     @include vp-mobile {
       padding: 4px 10px 2px 17px;
       font-size: 12px;

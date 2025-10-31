@@ -83,7 +83,7 @@ const length = ref(7);
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-end;
-  font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
 
   @include vp-laptop {
     height: 468px;
@@ -152,7 +152,7 @@ const length = ref(7);
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     text-align: center;
     min-height: 40px;
 

@@ -30,7 +30,7 @@ function showMore() {
 </script>
 
 <template>
-  <section :class="['products','products--' + route.name]">
+  <section :class="['products', 'products--' + route.name]">
     <div class="container">
       <div class="products__wrapper">
         <h2 class="products__title visually-hidden">

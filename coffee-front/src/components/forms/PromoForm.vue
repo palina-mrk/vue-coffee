@@ -97,7 +97,7 @@ function clearInput() {
   }
 
   &__title {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 30px;
     line-height: 37px;
@@ -122,7 +122,7 @@ function clearInput() {
   }
 
   &__text {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
@@ -172,7 +172,7 @@ function clearInput() {
   font-weight: 600;
   line-height: 30px;
   font-size: 25px;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   border-radius: 5px;
   margin: 0;
   padding: 20px 17px 17px;

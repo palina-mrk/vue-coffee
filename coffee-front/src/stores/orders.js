@@ -7,8 +7,8 @@ export const useOrdersStore = defineStore("order", () => {
   const cartStore = useCartStore();
   const orderItems = reactive(
     JSON.parse(localStorage.getItem("orderRows") || "[]"),
-  ); 
-  
+  );
+
   /*
 элемент массива orderItems:
 {
@@ -58,12 +58,12 @@ export const useOrdersStore = defineStore("order", () => {
       isFinished: false,
       paymentDate: Date(),
       paymentTime: null,
-      deliveryDuring: cartStore.deliveryDuring.value, 
+      deliveryDuring: cartStore.deliveryDuring.value,
       deliveryDate: null,
       totalSum: cartStore.totalSum.value,
       deliveryPrice: cartStore.deliveryPrice.value,
       orderSale: cartStore.globalSale.value,
-      productLines: cartStore.cartItems.value.map(item => ({
+      productLines: cartStore.cartItems.value.map((item) => ({
         id: item.id,
         title: item.title,
         weightString: item.weightString,
@@ -71,14 +71,15 @@ export const useOrdersStore = defineStore("order", () => {
         price: item.price,
         sale: item.sale,
         total: item.total,
-      }))
+      })),
     };
 
     orderItem.paymentTime = paymentDate.toString();
-    orderItem.deliveryDate = paymentDate + 1000*60*60*24*orderItem.deliveryDuring;
+    orderItem.deliveryDate =
+      paymentDate + 1000 * 60 * 60 * 24 * orderItem.deliveryDuring;
 
     orderItems.push(orderItem);
-    
+
     cartStore.clearCart();
   }
 
@@ -86,6 +87,5 @@ export const useOrdersStore = defineStore("order", () => {
     localStorage.setItem("orderItems", JSON.stringify(orderItems));
   });
 
-  return {
-  };
+  return {};
 });

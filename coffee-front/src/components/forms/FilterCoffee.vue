@@ -61,7 +61,7 @@ function updateValues(object, value) {
 .filter-form {
   display: flex;
   flex-direction: column;
-  font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
   gap: 70px;
 
   @include vp-laptop {
@@ -76,7 +76,7 @@ function updateValues(object, value) {
     gap: 35px;
   }
 
-  &__corns-block, 
+  &__corns-block,
   &__words-block {
     height: 575px;
 

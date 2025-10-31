@@ -25,7 +25,7 @@ const routerNames = computed(() => {
 .breadcrumbs {
   &__list {
     display: flex;
-    font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
     list-style-type: none;
     justify-content: start;
     margin: 0;
@@ -82,6 +82,7 @@ const routerNames = computed(() => {
 
   &__link {
     color: $color-raising-black;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;

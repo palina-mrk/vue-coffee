@@ -113,6 +113,7 @@ function updateValue(object, value) {
   border-radius: 20px;
   box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
   position: relative;
+  font-family: $ff-gilroy, sans-serif;
   width: calc(100% - 420px);
   padding: 82px 135px 35px 95px;
   height: 100%;
@@ -206,7 +207,7 @@ function updateValue(object, value) {
     @include vp-laptop {
       margin: 0 47px 0 0;
     }
-    
+
     @include vp-tablet {
       order: unset;
       margin: 0;

@@ -14,36 +14,35 @@ const filterStore = useFilterStore();
 import { storeToRefs } from "pinia";
 const { coffees, teas, vendings, healthies, isLoaded } =
   storeToRefs(catalogStore);
-const { coffeesExtended } =
-  storeToRefs(filterStore);
+const { coffeesExtended } = storeToRefs(filterStore);
 import { ref, computed, reactive } from "vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
 /** формируем массив товаров отображаемого вида */
 const products = computed(() => {
-  if(!isLoaded || !filterStore.isLoaded)
-    return [];
+  if (!isLoaded || !filterStore.isLoaded) return [];
 
-  switch(route.name){
-    case 'coffee':
+  switch (route.name) {
+    case "coffee":
       return coffeesExtended;
-    case 'tea':
+    case "tea":
       return teas;
-    case 'vending':
+    case "vending":
       return vendings;
-    case 'healthy':
+    case "healthy":
       return healthies;
     default:
       return [];
   }
-})
+});
 /* все товары, кроме кофе, можно отфильтровать только по типу товара
-* сохраняем информацию об этом типе */
+ * сохраняем информацию об этом типе */
 const chosenTypes = reactive([]);
 function toggleChosen(type) {
-  chosenTypes.includes(type) ? chosenTypes.splice(chosenTypes.indexOf(type), 1) : chosenTypes.push(type);
+  chosenTypes.includes(type)
+    ? chosenTypes.splice(chosenTypes.indexOf(type), 1)
+    : chosenTypes.push(type);
 }
-
 
 /* максимальное кол-во отображаемых товаров: 8 на странице */
 const cardsCount = ref(8);
@@ -69,37 +68,39 @@ function showMore() {
 const roastingDegrees = reactive([]); // string
 
 const geographyDetails = reactive([]); // array
-const acidityDetails = reactive([]);  // string
+const acidityDetails = reactive([]); // string
 const processingDetails = reactive([]); //array
 const actionsDetails = reactive([]); // array
 const kindDetails = reactive([]); // string
 
 const preparationWay = ref("");
 
-function updateDetails (detailName, value) {
-  switch(detailName) {
-    case 'geography': 
+function updateDetails(detailName, value) {
+  switch (detailName) {
+    case "geography":
       toggleValue(geographyDetails, value);
       break;
-    case 'acidity': 
+    case "acidity":
       toggleValue(acidityDetails, value);
       break;
-    case 'processing': 
+    case "processing":
       toggleValue(processingDetails, value);
       break;
-    case 'actions': 
+    case "actions":
       toggleValue(actionsDetails, value);
       break;
-    case 'kind': 
+    case "kind":
       toggleValue(kindDetails, value);
       break;
     default:
-      console.log('updatingError!');
+      console.log("updatingError!");
   }
 }
 
 function toggleValue(array, value) {
-  array.includes(value) ? array.splice(array.indexOf(value), 1) : array.push(value);
+  array.includes(value)
+    ? array.splice(array.indexOf(value), 1)
+    : array.push(value);
 }
 
 const sortCoffeeFields = reactive([
@@ -118,7 +119,7 @@ const sortCoffeeFields = reactive([
   {
     label: "По кислотности",
     value: "hue-acidity-down",
-  }
+  },
 ]);
 
 const sortFields = reactive([
@@ -133,7 +134,7 @@ const sortFields = reactive([
   {
     label: "По рейтингу",
     value: "rate-rating-down",
-  }
+  },
 ]);
 
 const defaultLabel = ref(sortFields[1].label);
@@ -146,13 +147,13 @@ function setField(field) {
 
 function compareProducts(p1, p2) {
   switch (defaultValue.value) {
-    case 'price-up':
+    case "price-up":
       return p1.weights[0].price - p2.weights[0].price;
-    case 'price-down':
+    case "price-down":
       return p2.weights[0].price - p1.weights[0].price;
-    case 'rate-rating-down':
+    case "rate-rating-down":
       return p2.rate.rating - p1.rate.rating;
-    case 'hue-acidity-down':
+    case "hue-acidity-down":
       return p2.hue.acidity - p1.hue.acidity;
   }
 }
@@ -209,34 +210,65 @@ function compareProducts(p1, p2) {
     .map(p => [p.roasting, p.hue.acidity, p.details.map(d => [d.geography, d.kind, d.processing]), p.actions])">{{  p }}</p>
 
     <p>{{ roastingDegrees }}</p-->
-    
 
-    <section :class="['products','products--' + route.name]">
+    <section :class="['products', 'products--' + route.name]">
       <div class="container">
         <div class="products__wrapper">
           <h2 class="products__title visually-hidden">
             Отсортированные карточки товаров
           </h2>
 
-          <custom-sort 
+          <custom-sort
             class="products__sort-btn"
             :sortFields="route.name == 'coffee' ? sortCoffeeFields : sortFields"
             :defaultLabel="defaultLabel"
-            @setField="setField($event)"></custom-sort>
+            @setField="setField($event)"
+          ></custom-sort>
 
           <ul v-if="isLoaded && filterStore.isLoaded" class="products__list">
             <li
               v-if="route.name == 'coffee'"
               class="products__item"
               v-for="p in products.value
-    .filter((p) => roastingDegrees.length == 0 || roastingDegrees.includes(p.roastingDegree))
-    .filter((p) => kindDetails.length == 0 || kindDetails.includes(p.kindDetail))
-    .filter((p) => acidityDetails.length == 0 || acidityDetails.includes(p.acidityDetail))
-    .filter((p) => geographyDetails.length == 0 || p.geographyDetails.find(g => geographyDetails.includes(g)))
-    .filter((p) => processingDetails.length == 0 || p.processingDetails.find(d => processingDetails.includes(d)))
-    .filter((p) => actionsDetails.length == 0 || actionsDetails.reduce((acc, d) => acc && p.actionsDetails.includes(d), true))
-    .filter((el, ind) => ind < cardsCount)
-    .sort(compareProducts)"
+                .filter(
+                  (p) =>
+                    roastingDegrees.length == 0 ||
+                    roastingDegrees.includes(p.roastingDegree),
+                )
+                .filter(
+                  (p) =>
+                    kindDetails.length == 0 ||
+                    kindDetails.includes(p.kindDetail),
+                )
+                .filter(
+                  (p) =>
+                    acidityDetails.length == 0 ||
+                    acidityDetails.includes(p.acidityDetail),
+                )
+                .filter(
+                  (p) =>
+                    geographyDetails.length == 0 ||
+                    p.geographyDetails.find((g) =>
+                      geographyDetails.includes(g),
+                    ),
+                )
+                .filter(
+                  (p) =>
+                    processingDetails.length == 0 ||
+                    p.processingDetails.find((d) =>
+                      processingDetails.includes(d),
+                    ),
+                )
+                .filter(
+                  (p) =>
+                    actionsDetails.length == 0 ||
+                    actionsDetails.reduce(
+                      (acc, d) => acc && p.actionsDetails.includes(d),
+                      true,
+                    ),
+                )
+                .filter((el, ind) => ind < cardsCount)
+                .sort(compareProducts)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
@@ -244,7 +276,13 @@ function compareProducts(p1, p2) {
             <li
               v-else-if="route.name == 'tea'"
               class="products__item"
-              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount).sort(compareProducts)"
+              v-for="p in products.value
+                .filter(
+                  (p) =>
+                    chosenTypes.length == 0 || chosenTypes.includes(p.kind),
+                )
+                .filter((el, ind) => ind < cardsCount)
+                .sort(compareProducts)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
@@ -252,7 +290,13 @@ function compareProducts(p1, p2) {
             <li
               v-else-if="route.name == 'vending'"
               class="products__item"
-              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount).sort(compareProducts)"
+              v-for="p in products.value
+                .filter(
+                  (p) =>
+                    chosenTypes.length == 0 || chosenTypes.includes(p.kind),
+                )
+                .filter((el, ind) => ind < cardsCount)
+                .sort(compareProducts)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
@@ -260,7 +304,13 @@ function compareProducts(p1, p2) {
             <li
               v-else-if="route.name == 'healthy'"
               class="products__item"
-              v-for="p in products.value.filter((p) => chosenTypes.length == 0 || chosenTypes.includes(p.kind)).filter((el, ind) => ind < cardsCount).sort(compareProducts)"
+              v-for="p in products.value
+                .filter(
+                  (p) =>
+                    chosenTypes.length == 0 || chosenTypes.includes(p.kind),
+                )
+                .filter((el, ind) => ind < cardsCount)
+                .sort(compareProducts)"
             >
               <ProductCard :product="p" :key="p.id"></ProductCard>
             </li>
@@ -276,7 +326,6 @@ function compareProducts(p1, p2) {
         </div>
       </div>
     </section>
-
   </main>
 </template>
 
@@ -287,7 +336,7 @@ function compareProducts(p1, p2) {
   padding: 199px 0 0;
   margin: 0;
   color: $color-white;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   overflow: hidden;
   box-sizing: border-box;
@@ -329,6 +378,7 @@ function compareProducts(p1, p2) {
     font-weight: 900;
     font-size: 70px;
     line-height: 87px;
+  font-family: $ff-gilroy, sans-serif;
     margin: 0;
 
     @include vp-laptop {
@@ -499,7 +549,7 @@ function compareProducts(p1, p2) {
 
 .products {
   padding: 70px 0 97px;
-  font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
 
   @include vp-laptop {
     padding: 45px 0 71px;
@@ -604,7 +654,7 @@ function compareProducts(p1, p2) {
 
     @include vp-mobile {
       gap: 20px;
-    } 
+    }
   }
 
   .products__list {
@@ -656,7 +706,6 @@ function compareProducts(p1, p2) {
     @include vp-mobile {
       gap: 20px;
     }
-  
   }
 
   .products__list {
@@ -681,7 +730,7 @@ function compareProducts(p1, p2) {
 
 .products--healthy {
   padding: 62px 0 97px;
-  font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
 
   @include vp-laptop {
     padding: 45px 0 71px;
@@ -751,7 +800,7 @@ function compareProducts(p1, p2) {
 .btn-linked--black-small {
   display: flex;
   align-items: center;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   line-height: 26px;
   font-size: 20px;
@@ -795,7 +844,7 @@ function compareProducts(p1, p2) {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   border-radius: 5px;
   margin: 0;
   cursor: pointer;
@@ -848,7 +897,7 @@ function compareProducts(p1, p2) {
   justify-content: space-between;
   gap: 8px;
   color: $color-ucla-gold;
-  font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   line-height: 26px;
   font-size: 20px;
@@ -910,6 +959,7 @@ function compareProducts(p1, p2) {
     justify-content: center;
     border: none;
     background-color: transparent;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;
@@ -946,6 +996,7 @@ function compareProducts(p1, p2) {
     justify-content: center;
     border: none;
     background-color: transparent;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;
@@ -977,6 +1028,7 @@ function compareProducts(p1, p2) {
   &--size-m {
     font-size: 25px;
     padding: 11px 29px 10px;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -998,6 +1050,4 @@ function compareProducts(p1, p2) {
     }
   }
 }
-
 </style>
-

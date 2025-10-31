@@ -146,7 +146,7 @@ const addressData = reactive([
   }
 
   &__title {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 30px;
     line-height: 37px;
@@ -208,13 +208,13 @@ const addressData = reactive([
 
   &__groupname {
     display: none;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-tablet {
       display: unset;
       font-size: 20px;
       line-height: 24px;
       font-weight: 500;
-      font-family: $ff-gilroy sans-serif;
       color: $color-raising-black;
       margin: 0 0 20px;
       padding: 0;
@@ -240,7 +240,7 @@ const addressData = reactive([
   font-weight: 600;
   line-height: 30px;
   font-size: 25px;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   border-radius: 5px;
   margin: 0;
   padding: 20px 17px 17px;

@@ -158,7 +158,7 @@ const deliveryWays = reactive({
   }
 
   &__summary-text {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 30px;
     line-height: 37px;
@@ -185,7 +185,7 @@ const deliveryWays = reactive({
   }
 
   &__subsummary-text {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
@@ -292,7 +292,7 @@ const deliveryWays = reactive({
   }
 
   &__personal-text {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
@@ -324,7 +324,7 @@ const deliveryWays = reactive({
   font-weight: 600;
   line-height: 30px;
   font-size: 25px;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   border-radius: 5px;
   border: none;
   margin: 0;

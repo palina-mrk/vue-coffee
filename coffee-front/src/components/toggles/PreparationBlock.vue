@@ -69,7 +69,7 @@ const length = ref(8);
 
 <style lang="scss" scoped>
 .fieldset__group {
-  font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
   background-color: transparent;
   display: flex;
   flex-direction: row;
@@ -109,6 +109,7 @@ const length = ref(8);
     background-color: $color-white;
     border-radius: 20px;
     box-shadow: 0 0 30px 0 $color-spanish-gray-c95-25;
+    font-family: $ff-gilroy, sans-serif;
     width: 189px;
     min-height: 190px;
     cursor: pointer;
@@ -148,7 +149,7 @@ const length = ref(8);
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;

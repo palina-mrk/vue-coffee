@@ -35,7 +35,7 @@
     display: flex;
     justify-content: center;
     gap: 100px;
-    font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       gap: 5px 66px;
@@ -51,7 +51,7 @@
   }
 
   &__link {
-    font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 25px;
     line-height: 29px;

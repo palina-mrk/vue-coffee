@@ -3,18 +3,18 @@ const props = defineProps(["linkNames"]);
 import { useRoute } from "vue-router";
 const route = useRoute();
 import { computed } from "vue";
-const selectedName = computed(() => route.name)
+const selectedName = computed(() => route.name);
 </script>
 
 <template>
   <ul class="slider-large">
-    <li
-      v-for="linkName in linkNames"
-    ><router-link 
-      :to="{'name': linkName}"
-      class="slider-large__point"
-      :class="{'slider-large__point--brown': linkName == selectedName}"
-    ></router-link></li>
+    <li v-for="linkName in linkNames">
+      <router-link
+        :to="{ name: linkName }"
+        class="slider-large__point"
+        :class="{ 'slider-large__point--brown': linkName == selectedName }"
+      ></router-link>
+    </li>
   </ul>
 </template>
 

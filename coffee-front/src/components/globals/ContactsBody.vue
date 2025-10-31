@@ -24,8 +24,7 @@ const selectedPageVariant = ref("contacts");
       <bg-contacts></bg-contacts>
 
       <div class="container">
-        
-          <h1 class="visually-hidden">Контакты</h1>
+        <h1 class="visually-hidden">Контакты</h1>
 
         <custom-breadcrumbs class="contacts__breadcrumbs"></custom-breadcrumbs>
 
@@ -162,7 +161,6 @@ const selectedPageVariant = ref("contacts");
                 alt="Карта с местонахождением интернет-магазина"
               />
             </picture>
-            
           </div>
         </div>
       </div>
@@ -179,7 +177,7 @@ const selectedPageVariant = ref("contacts");
   overflow: hidden;
   position: relative;
   color: $color-raising-black;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
 
   @include vp-laptop {
@@ -311,7 +309,7 @@ const selectedPageVariant = ref("contacts");
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     color: $color-black;
 
     @include vp-laptop {
@@ -364,7 +362,7 @@ const selectedPageVariant = ref("contacts");
     margin: 0;
     padding: 0;
     text-decoration: none;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 20px;
     line-height: 26px;

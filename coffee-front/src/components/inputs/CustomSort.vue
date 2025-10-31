@@ -12,42 +12,40 @@ function setField(sortField) {
 </script>
 
 <template>
-  <div
-    :class="{ 'sort-input': true, 'sort-input--show-list': isShown }"
-  >
+  <div :class="{ 'sort-input': true, 'sort-input--show-list': isShown }">
     <button
       class="sort-input__open-button btn btn--linked"
       type="button"
       @click="isShown = true"
       for="sort-input"
-    >Сортировка</button>
-    
+    >
+      Сортировка
+    </button>
+
     <ul class="sort-input__list">
       <li class="sort-input__chosen-item">
         <span class="sort-input__chosen-text">{{ defaultLabel }}</span>
-        <button 
+        <button
           class="sort-input__close-button btn btn--iconed"
-          @click="isShown = false">
-          <svg
-            class="btn__icon"
-            width="13"
-            height="13"
-            aria-hidden="true"
-          >
-          <use xlink:href="../../assets/btn-sprite.svg#close-sort-btn"></use>
-        </svg>
+          @click="isShown = false"
+        >
+          <svg class="btn__icon" width="13" height="13" aria-hidden="true">
+            <use xlink:href="../../assets/btn-sprite.svg#close-sort-btn"></use>
+          </svg>
         </button>
       </li>
-      <li 
-        class="sort-input__field"  
+      <li
+        class="sort-input__field"
         v-for="sortField in sortFields"
         :key="'sort-' + sortField.value"
       >
-        <button 
+        <button
           class="sort-input__field-button btn btn--field"
           type="button"
           @click="setField(sortField)"
-          >{{ sortField.label }}</button>
+        >
+          {{ sortField.label }}
+        </button>
       </li>
     </ul>
   </div>
@@ -82,7 +80,7 @@ function setField(sortField) {
 }
 
 .btn--linked {
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
@@ -133,7 +131,7 @@ function setField(sortField) {
     top: -50%;
     right: -50%;
     bottom: -50%;
-    cursor: pointer; 
+    cursor: pointer;
   }
 }
 
@@ -141,14 +139,13 @@ function setField(sortField) {
   width: 100%;
   height: 100%;
   color: $color-black;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
   padding: 10px 30px;
   text-align: left;
   justify-content: start;
-
 
   @include vp-tablet {
     font-size: 20px;
@@ -165,7 +162,7 @@ function setField(sortField) {
   }
 }
 
-.sort-input { 
+.sort-input {
   position: relative;
   display: flex;
   align-items: start;
@@ -211,7 +208,7 @@ function setField(sortField) {
 
   &__chosen-text {
     color: $color-ucla-gold;
-    font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
@@ -239,9 +236,8 @@ function setField(sortField) {
 }
 
 .sort-input--show-list {
-  .sort-input__list{
+  .sort-input__list {
     display: flex;
   }
 }
-
 </style>

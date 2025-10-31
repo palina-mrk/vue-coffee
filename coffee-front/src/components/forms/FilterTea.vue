@@ -101,7 +101,7 @@ const imageVariant = (label) => {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-end;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
 
   @include vp-laptop {
     height: 475px;
@@ -168,7 +168,7 @@ const imageVariant = (label) => {
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     text-align: center;
 
     @include vp-laptop {

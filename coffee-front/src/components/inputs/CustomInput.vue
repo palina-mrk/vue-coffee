@@ -27,7 +27,7 @@ const props = defineProps(["modelValue", "inputData"]);
 
 <style lang="scss" scoped>
 .custom-input {
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
   display: flex;
   gap: 3px;
   align-items: end;
@@ -50,6 +50,7 @@ const props = defineProps(["modelValue", "inputData"]);
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       padding: 15px 40px;
@@ -94,6 +95,7 @@ const props = defineProps(["modelValue", "inputData"]);
     color: $color-ucla-gold;
     font-weight: 500;
     font-size: 16px;
+  font-family: $ff-gilroy, sans-serif;
     line-height: 19px;
     text-align: right;
     display: none;

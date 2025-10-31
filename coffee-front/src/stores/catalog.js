@@ -104,8 +104,7 @@ export const useCatalogStore = defineStore("catalog", () => {
         result.data.coffees.forEach((el) => {
           catalog.push(el);
           coffees.push(el);
-          if(el.actions.includes("Скидки"))
-            coffeeSales.push(el);
+          if (el.actions.includes("Скидки")) coffeeSales.push(el);
         });
         result.data.teas.forEach((el) => {
           catalog.push(el);
@@ -169,7 +168,6 @@ export const useCatalogStore = defineStore("catalog", () => {
       .map((i) => i.id)
       .sort();
   }
-
 
   return {
     isLoaded,

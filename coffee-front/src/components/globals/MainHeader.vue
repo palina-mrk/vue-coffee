@@ -96,7 +96,7 @@ function toInstagram() {
   z-index: 3;
   background: transparent;
   width: 100%;
-  font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
 
   @include vp-laptop {
     padding: 20px 0 13px;
@@ -232,7 +232,7 @@ function toInstagram() {
 
   &__email {
     display: block;
-    font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 700;
     font-size: 32px;
     line-height: 1.3;

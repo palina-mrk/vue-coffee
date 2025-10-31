@@ -31,7 +31,7 @@ const props = defineProps(["modelValue"]);
 <style lang="scss" scoped>
 .custom-counter {
   position: relative;
-  font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
 
   &__btn {
     margin: 0;
@@ -40,7 +40,7 @@ const props = defineProps(["modelValue"]);
     border: none;
     display: flex;
     color: $color-black;
-    font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 25px;
     line-height: 40px;
@@ -125,7 +125,7 @@ const props = defineProps(["modelValue"]);
     width: 100%;
     height: 100%;
     text-align: center;
-    font-family: $ff-gilroy;
+  font-family: $ff-gilroy, sans-serif;
     color: $color-black;
     font-weight: 600;
     font-size: 20px;

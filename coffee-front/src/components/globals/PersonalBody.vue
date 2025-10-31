@@ -3,6 +3,7 @@ import BgPersonal from "../backgrounds/BgPersonal.vue";
 
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import ActionCard from "../cards/ActionCard.vue";
+import OrdersCard from "../cards/OrdersCard.vue";
 
 import { reactive, ref } from "vue";
 const actionsInfo = reactive([
@@ -36,15 +37,18 @@ const actionsInfo = reactive([
         <custom-breadcrumbs class="personal__breadcrumbs"></custom-breadcrumbs>
 
         <div class="personal__forms-wrapper">
+          <orders-card></orders-card>
         </div>
 
         <div class="personal__actions-wrapper">
           <h2 class="personal__actions-title">Персональные акции</h2>
           <ul class="personal__actions-list">
-            <li class="personal__actions-item"
-            v-for="actionInfo in actionsInfo">
-            <action-card :actionInfo="actionInfo"></action-card>
-          </li>
+            <li
+              class="personal__actions-item"
+              v-for="actionInfo in actionsInfo"
+            >
+              <action-card :actionInfo="actionInfo"></action-card>
+            </li>
           </ul>
         </div>
       </div>
@@ -63,30 +67,52 @@ const actionsInfo = reactive([
   overflow: hidden;
 
   @include vp-laptop {
-    padding: 140px 0 175px;
+    padding: 140px 0 40px;
   }
 
   @include vp-tablet {
-    padding: 173px 0 45px;
+    padding: 173px 0 0;
   }
 
   @include vp-mobile {
-    padding: 95px 0 0;
+    padding: 95px 0 20px;
   }
 
   &__breadcrumbs {
     margin: 0 auto 50px 0;
 
     @include vp-laptop {
-      margin: 0 auto 30px 0;
+      margin: 0 auto 35px 0;
     }
 
     @include vp-tablet {
-      margin: 0 auto 70px 0;
+      margin: 0 auto 40px 0;
     }
 
     @include vp-mobile {
-      margin: 0 auto 27px 0;
+      margin: 0 auto 30px 0;
+    }
+  }
+
+  &__forms-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 0 0 90px;
+    
+    @include vp-laptop {
+      gap: 30px;
+      margin: 0 0 40px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+      margin: 0 0 56px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 36px;
     }
   }
 
@@ -95,30 +121,38 @@ const actionsInfo = reactive([
     flex-direction: column;
     align-items: start;
     gap: 40px;
+
+    @include vp-laptop {
+      gap: 30px;
+    }
+
+    @include vp-mobile {
+      gap: 34px;
+    }
   }
 
   &__actions-title {
-    font-family: $ff-gilroy sans-serif;
+  font-family: $ff-gilroy, sans-serif;
     color: $color-raising-black;
     margin: 0;
     padding: 0;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 30px;
     line-height: 36px;
 
     @include vp-laptop {
-      font-size: 20px;
+      font-size: 22px;
       line-height: 26px;
     }
 
     @include vp-tablet {
-      font-size: 24px;
-      line-height: 29px;
+      font-size: 36px;
+      line-height: 41px;
     }
 
     @include vp-mobile {
-      font-size: 14px;
-      line-height: 17px;
+      font-size: 20px;
+      line-height: 25px;
     }
   }
 
@@ -132,13 +166,17 @@ const actionsInfo = reactive([
     height: 449px;
 
     @include vp-laptop {
-      gap: 45px;
+      height: 315px;
     }
 
     @include vp-tablet {
+      height: 558px;
+      width: calc(50% + 50vw);
+      position: relative;
     }
 
     @include vp-mobile {
+      height: 273px;
     }
   }
 
@@ -149,12 +187,15 @@ const actionsInfo = reactive([
     margin: 0;
 
     @include vp-laptop {
+      width: 280px;
     }
 
     @include vp-tablet {
+      min-width: 460px;
     }
 
     @include vp-mobile {
+      min-width: 250px;
     }
   }
 }

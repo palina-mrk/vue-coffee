@@ -1,14 +1,13 @@
 <script setup>
-import CartHeading from "./CartHeading.vue";
-import ProductLine from "../cards/ProductLine.vue";
-import CustomToggle from "../toggles/CustomToggle.vue"
+import OrderLine from "./OrderLine.vue";
+import CustomToggle from "../toggles/CustomToggle.vue";
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
 import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
 
-
 import { reactive, ref } from "vue";
+
 const toggleValues = reactive([
   {
     label: "Текущие заказы",
@@ -20,117 +19,202 @@ const toggleValues = reactive([
   },
 ]);
 const selectedVariant = ref("current-orders");
+
+const orderInfo = reactive({
+  /* информация о заказе */
+  orderID: 1,
+  isPaid: true,
+  isFinished: true,
+  paymentTime: "01.11.2025 12:24:00",
+  deliveryDate: "03.11.2025",
+  /* к оплате: totalSum + deliverySum */
+  /* totalSum - итоговая сумма за весь заказ
+   * (товары с уже применёнными всеми скидками) */
+  totalSum: 864,
+  orderSale: 15,
+  /* totalSum - сумма за доставку */
+  deliveryPrice: 390,
+});
 </script>
 
 <template>
   <div class="orders-card">
     <h2 class="orders-card__heading">Мои заказы</h2>
     <custom-toggle
-          class="orders-card__toggle"
-          :initialValues="toggleValues"
-          :toggleName="contacts"
-          :selected="selectedVariant"
-          @toggle-value="selectedVariant = $event"
-        ></custom-toggle>
+      class="orders-card__toggle toggle--size-m"
+      :initialValues="toggleValues"
+      :toggleName="contacts"
+      :selected="selectedVariant"
+      @toggle-value="selectedVariant = $event"
+    ></custom-toggle>
 
-    
-    <ul v-if="catalogStore.isLoaded" class="cart-card__products-list">
-      <li class="cart-card__products-item" v-show="cartStore.totalCount > 0">
-        <cart-heading :sale="cartStore.globalSale"></cart-heading>
-      </li>
-      <li
-        class="cart-card__products-item"
-        v-for="item in cartStore.cartItems"
-        :key="item.id"
-      >
-        <product-line
-          :itemInfo="item"
-          :sale="item.sale"
-          :total="item.total"
-          :salePercent="item.salePercent"
-        ></product-line>
+    <ul class="orders-card__list">
+      <li class="orders-card__item order-wrapper">
+        <div class="order-wrapper__timing">
+          <span class="order-wrapper__payment-timing"
+            >{{ orderInfo.paymentTime }} - оплачено</span
+          >
+          <span class="order-wrapper__delivery-timing"
+            >{{ orderInfo.isFinished ? "Дата доставки:" : "Доставлено:" }}
+            {{ orderInfo.deliveryDate }}</span
+          >
+        </div>
+
+        <order-line class="order-wrapper__inner"> </order-line>
+
+        <div class="order-wrapper__summary">
+          <span class="order-wrapper__total-sum"
+            >Сумма заказа: {{ orderInfo.totalSum }} ₽</span
+          >
+          <span class="order-wrapper__delivery-price"
+            >"Доставка:" {{ orderInfo.deliveryPrice }} ₽</span
+          >
+        </div>
+        
       </li>
     </ul>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.cart-card {
-  padding: 110px 140px 86px;
+.order-wrapper {
+  color: $color-raising-black;
+  font-family: $ff-gilroy, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include vp-laptop {
+    gap: 13px;
+  }
+
+  @include vp-tablet {
+    gap: 16px;
+  }
+
+  @include vp-mobile {
+  }
+
+  &__timing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__payment-timing,
+  &__delivery-timing {
+    font-family: $ff-gilroy, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+
+  &__inner {
+    margin: 0 0 13px;
+
+    @include vp-laptop {
+      margin: 0 0 12px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 5px;
+    }
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-end;
+
+    @include vp-laptop {
+      gap: 4px;
+      width: 180px;
+    }
+
+    @include vp-tablet {
+      gap: 10px;
+      width: 122px;
+    }
+  }
+
+  &__payment-timing,
+  &__delivery-timing {
+    font-family: $ff-gilroy, sans-serif;
+    color: $color-sonic-silver;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+
+    @include vp-laptop {
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    @include vp-tablet {
+      font-size: 10px;
+      line-height: 9px;
+    }
+
+    @include vp-mobile {
+    }
+  }
+}
+
+.orders-card {
+  color: $color-raising-black;
+  font-family: $ff-gilroy, sans-serif;
+  padding: 60px 140px 56px;
   display: flex;
   flex-direction: column;
   background-color: $color-white;
   border-radius: 20px;
   border-width: 1px;
+  border-style: solid;
   border-color: $color-platinum;
   box-shadow: 0 0 50px 0 $color-quick-silver-25;
-  width: 1660px;
-  min-height: 268px;
-  border-radius: 20px;
-  border-width: 1px;
-  border-style: solid;
-  color: $color-raising-black;
-  font-family: $ff-gilroy sans-serif;
+  width: 100%;
+  gap: 30px;
 
   @include vp-laptop {
     padding: 80px 100px 61px;
     box-shadow: 0px 0px 35px 0px $color-quick-silver-25;
-    width: 1180px;
-    min-height: 268px;
     border-radius: 14px;
     border-width: 0.7px;
+    gap: 20px;
   }
 
   @include vp-tablet {
-    padding: 47px 34px;
+    padding: 20px 48px 30px;
     box-shadow: 0px 0px 20px 0px $color-quick-silver-25;
-    width: 700px;
-    min-height: 137px;
     border-radius: 14px;
     border-width: 0.4px;
+    gap: 15px;
   }
 
   @include vp-mobile {
     padding: 40px 17px 50px;
     width: 340px;
     box-shadow: 0px 0px 50px 0px $color-quick-silver-25;
-    min-height: 115px;
     border-radius: 10px;
     border-width: 1px;
+    gap: 20px;
   }
 
-  &__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0;
-    margin: 0 0 60px;
-    width: 100%;
-
-    @include vp-laptop {
-      margin: 0 0 45px;
-    }
-
-    @include vp-tablet {
-      flex-direction: column;
-      gap: 13px;
-      margin: 0 0 30px;
-      align-items: start;
-    }
-
-    @include vp-mobile {
-      gap: 18px;
-      margin: 0 0 20px;
-    }
-  }
-
-  &__summary {
+  &__title {
     margin: 0;
     padding: 0;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
+    color: $color-raising-black;
     font-weight: 900;
-    font-size: 40px;
-    line-height: 50px;
+    font-size: 30px;
+    line-height: 37px;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 28px;
@@ -148,33 +232,34 @@ const selectedVariant = ref("current-orders");
     }
   }
 
-  &__button {
-    width: 150px;
-    height: 45px;
+  &__toggle {
+    width: 600px;
+    margin: 0 0 8px;
 
     @include vp-laptop {
-      width: 106px;
-      height: 32px;
+      width: 380px;
+      margin: 0 0 10px;
     }
 
     @include vp-tablet {
-      width: 120px;
-      height: 35px;
+      width: 365px;
+      margin: 0 0 11px;
     }
 
     @include vp-mobile {
-      width: 124px;
-      height: 30px;
+      width: 100%;
+      margin: 0 0 5px;
     }
   }
 
-  &__products-list {
+  &__list {
+    width: 100%;
     margin: 0;
     padding: 0;
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 50px;
 
     @include vp-laptop {
       gap: 15px;
@@ -187,6 +272,12 @@ const selectedVariant = ref("current-orders");
     @include vp-mobile {
       gap: 40px;
     }
+  }
+
+  &__item {
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   /* уменьшаем gap после названий таблицы */
@@ -244,57 +335,4 @@ const selectedVariant = ref("current-orders");
   }
 }
 
-.btn-cornsilk {
-  margin: 0;
-  padding: 10px;
-  background-color: $color-cornsilk;
-  border-color: $color-ucla-gold;
-  border-style: solid;
-  border-width: 1px;
-  color: $color-ucla-gold;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  align-items: center;
-  border-radius: 5px;
-  justify-content: center;
-  cursor: pointer;
-  user-select: none;
-
-  @include vp-laptop {
-    padding: 7px;
-    border-width: 0.7px;
-    border-radius: 3.5px;
-    font-size: 14px;
-    line-height: 17px;
-  }
-
-  @include vp-tablet {
-    border-radius: 5px;
-    border-width: 1px;
-    padding: 8px;
-    font-size: 16px;
-    line-height: 19px;
-  }
-
-  @include vp-mobile {
-    border-radius: 5px;
-    border-width: 1px;
-    padding: 6px;
-    font-size: 14px;
-    line-height: 17px;
-  }
-
-  &:hover {
-    color: $color-white;
-    background-color: $color-ucla-gold;
-  }
-
-  &[disabled] {
-    border-color: $color-antiflash-white-f0;
-    background-color: $color-lotion;
-    color: $color-antiflash-white-f0;
-    cursor: unset;
-  }
-}
 </style>

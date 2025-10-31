@@ -1,6 +1,5 @@
 <script setup>
-import CustomCounter from "../inputs/CustomCounter.vue";
-defineProps(["itemInfo", "sale", "salePercent", "total"]);
+import { ref, reactive, computed } from "vue";
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
 
@@ -12,13 +11,13 @@ const orderInfo = reactive({
   paymentTime: "01.11.2025 12:24:00",
   deliveryDate: "03.11.2025",
   /* к оплате: totalSum + deliverySum */
-  /* totalSum - итоговая сумма за весь заказ 
+  /* totalSum - итоговая сумма за весь заказ
    * (товары с уже применёнными всеми скидками) */
   totalSum: 864,
   orderSale: 15,
   /* totalSum - сумма за доставку */
   deliveryPrice: 390,
-})
+});
 
 /** информация о каждом товаре */
 const productLines = reactive([
@@ -49,26 +48,15 @@ const productLines = reactive([
     sale: 120,
     total: 400,
   },
-])
+]);
 </script>
 
 <template>
-  <div class="order-block">
-    <div class="order-block__top">
-      <span class="order-block__payment-time">{{ orderInfo.paymentTime }} - оплачено</span>
-      <span class="order-block__delivery-date"
-        v-if="orderInfo.isFinished"
-      >Дата доставки: {{ orderInfo.deliveryDate }}</span>
-      <span class="order-block__delivery-date"
-        v-else
-      >Доставлено: {{ orderInfo.deliveryDate }}</span>
-    </div>
-    <div class="order-block__inner"></div>
-    <div class="order-block__bottom">
-
-    </div>
+  <div class="order-card">
+    <div class="order-inner orders-subcard"></div>
+    <div class="order-block__bottom"></div>
   </div>
-  <div class="product-line__top product-line__top--long">
+  <!--div class="product-line__top product-line__top--long">
     <div class="product-line__details">
       <div class="product-line__icon-wrapper"
       :class="{'product-line__icon-wrapper--bordered': itemInfo.category == 'vending'}">
@@ -183,11 +171,11 @@ const productLines = reactive([
         "
       ></custom-counter>
     </div>
-  </div>
+  </div-->
 </template>
 
 <style lang="scss" scoped>
-.product-line {
+.order-inner {
   display: none;
 
   @include vp-tablet {
@@ -214,7 +202,7 @@ const productLines = reactive([
     border-color: $color-antiflash-white-f0;
     background-color: $color-lotion;
     color: $color-raising-black;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     grid-template-columns: 213px 1fr 130px 215px 185px 110px;
 
     @include vp-laptop {
@@ -338,6 +326,7 @@ const productLines = reactive([
   }
 
   &__title {
+  font-family: $ff-gilroy, sans-serif;
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;
@@ -364,6 +353,7 @@ const productLines = reactive([
     font-weight: 500px;
     font-size: 18px;
     line-height: 21px;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 12px;
@@ -407,6 +397,7 @@ const productLines = reactive([
     font-weight: 500;
     font-size: 25px;
     line-height: 29px;
+  font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -434,6 +425,8 @@ const productLines = reactive([
   }
 
   &__total {
+  font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 20px;
       line-height: 21px;
@@ -459,6 +452,8 @@ const productLines = reactive([
 
   &__price,
   &__sale {
+  font-family: $ff-gilroy, sans-serif;
+  
     @include vp-tablet {
       font-size: 20px;
       line-height: 24px;

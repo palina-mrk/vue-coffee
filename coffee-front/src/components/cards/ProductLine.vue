@@ -17,8 +17,13 @@ const cartStore = useCartStore();
       </svg>
     </button>
     <div class="product-line__details">
-      <div class="product-line__icon-wrapper"
-      :class="{'product-line__icon-wrapper--bordered': itemInfo.category == 'vending'}">
+      <div
+        class="product-line__icon-wrapper"
+        :class="{
+          'product-line__icon-wrapper--bordered':
+            itemInfo.category == 'vending',
+        }"
+      >
         <picture>
           <source
             media="(max-width: 767px)"
@@ -64,9 +69,13 @@ const cartStore = useCartStore();
   <div class="product-line">
     <div class="product-line__top">
       <div class="product-line__details">
-        <div 
+        <div
           class="product-line__icon-wrapper"
-          :class="{'product-line__icon-wrapper--bordered': itemInfo.category == 'vending'}">
+          :class="{
+            'product-line__icon-wrapper--bordered':
+              itemInfo.category == 'vending',
+          }"
+        >
           <picture>
             <source
               media="(max-width: 767px)"
@@ -161,7 +170,7 @@ const cartStore = useCartStore();
     border-color: $color-antiflash-white-f0;
     background-color: $color-lotion;
     color: $color-raising-black;
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     grid-template-columns: 213px 1fr 130px 215px 185px 110px;
 
     @include vp-laptop {
@@ -290,6 +299,7 @@ const cartStore = useCartStore();
     line-height: 30px;
     margin: 0;
     padding: 0;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -311,6 +321,7 @@ const cartStore = useCartStore();
     font-weight: 500px;
     font-size: 18px;
     line-height: 21px;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 12px;
@@ -331,6 +342,7 @@ const cartStore = useCartStore();
   &__count {
     width: 170px;
     height: 50px;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       width: 109px;
@@ -354,6 +366,7 @@ const cartStore = useCartStore();
     font-weight: 500;
     font-size: 25px;
     line-height: 29px;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -381,6 +394,8 @@ const cartStore = useCartStore();
   }
 
   &__total {
+    font-family: $ff-gilroy, sans-serif;
+
     @include vp-tablet {
       font-size: 20px;
       line-height: 21px;
@@ -409,6 +424,7 @@ const cartStore = useCartStore();
     @include vp-tablet {
       font-size: 20px;
       line-height: 24px;
+      font-family: $ff-gilroy, sans-serif;
       color: $color-light-silver;
       text-align: right;
       position: relative;

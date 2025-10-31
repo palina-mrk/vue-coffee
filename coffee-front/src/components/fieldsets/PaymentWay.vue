@@ -59,7 +59,7 @@ const selectedValues = reactive([]);
   &__title,
   &__label-text,
   &__label-price {
-    font-family: $ff-gilroy sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     color: $color-raising-black;
     font-size: 20px;
