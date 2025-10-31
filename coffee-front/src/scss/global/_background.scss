@@ -1020,6 +1020,7 @@
     }
 
     @include vp-mobile {
+      display: none;
       height: 681px;
     }
   }
@@ -1039,6 +1040,7 @@
     }
 
     @include vp-mobile {
+      display: none;
       top: 680px;
     }
   }
@@ -1059,6 +1061,7 @@
     }
 
     @include vp-mobile {
+      display: none;
       top: 681px;
       bottom: 50px;
     }
@@ -1080,6 +1083,7 @@
     }
 
     @include vp-mobile {
+      display: none;
       bottom: 50px;
       height: 108px;
     }
@@ -1112,8 +1116,7 @@
       }
 
       @include vp-mobile {
-        bottom: -50px;
-        height: 80px;
+        display: none;
       }
     }
   }

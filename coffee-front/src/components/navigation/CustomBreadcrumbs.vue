@@ -75,8 +75,7 @@ const routerNames = computed(() => {
     @include vp-mobile {
       width: 2px;
       height: 2px;
-      left: -5px;
-      top: calc(50% + 2px);
+      left: -6px;
     }
   }
 
