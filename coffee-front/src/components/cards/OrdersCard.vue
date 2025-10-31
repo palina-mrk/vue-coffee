@@ -102,7 +102,7 @@ const orderInfo = reactive({
   }
 
   @include vp-tablet {
-    padding: 20px 48px 30px;
+    padding: 20px 48px 28px;
     box-shadow: 0px 0px 20px 0px $color-quick-silver-25;
     border-radius: 8px;
     border-width: 0.6px;
@@ -110,7 +110,7 @@ const orderInfo = reactive({
   }
 
   @include vp-mobile {
-    padding: 40px 17px 50px;
+    padding: 40px 17px 30px;
     width: 340px;
     box-shadow: 0px 0px 50px 0px $color-quick-silver-25;
     border-radius: 10px;
@@ -155,7 +155,7 @@ const orderInfo = reactive({
 
     @include vp-tablet {
       width: 365px;
-      margin: 0 0 16px;
+      margin: 0 0 17px;
     }
 
     @include vp-mobile {
@@ -182,7 +182,7 @@ const orderInfo = reactive({
     }
 
     @include vp-mobile {
-      gap: 40px;
+      gap: 10px;
     }
   }
 
@@ -204,16 +204,24 @@ const orderInfo = reactive({
   }
 
   @include vp-tablet {
-    gap: 16px;
+    gap: 5px;
   }
 
   @include vp-mobile {
+    gap: 20px;
   }
 
   &__timing {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include vp-mobile {
+      flex-direction: column;
+      gap: 16px;
+      align-items: start;
+      margin: 0 0 3px;
+    }
   }
 
   &__payment-timing,
@@ -235,6 +243,11 @@ const orderInfo = reactive({
       font-size: 12px;
       line-height: 15px;
     }
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 14px;
+    }
   }
 
   &__delivery-timing {
@@ -247,6 +260,12 @@ const orderInfo = reactive({
     @include vp-tablet {
       min-width: 168px;
     }
+
+    @include vp-mobile {
+      min-width: unset;
+      font-weight: 700;
+      line-height: 15px;
+    }
   }
 
   &__inner {
@@ -257,7 +276,11 @@ const orderInfo = reactive({
     }
 
     @include vp-tablet {
-      margin: 0 0 5px;
+      margin: 0 0 13px;
+    }
+
+    @include vp-mobile {
+      margin: 0;
     }
   }
 
@@ -275,7 +298,7 @@ const orderInfo = reactive({
     }
 
     @include vp-tablet {
-      gap: 10px;
+      gap: 7px;
       min-width: 122px;
     }
   }
@@ -295,7 +318,7 @@ const orderInfo = reactive({
 
     @include vp-tablet {
       font-size: 10px;
-      line-height: 9px;
+      line-height: 12px;
     }
 
     @include vp-mobile {

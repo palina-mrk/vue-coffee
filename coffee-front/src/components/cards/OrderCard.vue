@@ -10,28 +10,37 @@ const orderLines = reactive([
   {
     id: 15,
     title: "Энергия пшеницы",
+    category: "healthy",
+    shortDescription: "Напитки для здоровья",
     weightString: "100 г.",
     count: 2,
     price: 240,
     sale: 0,
+    salePercent: 0,
     total: 240,
   },
   {
     id: 29,
     title: "Байкальская мелодия",
+    category: "tea",
+    shortDescription: "Зелёный чай",
     weightString: "200 г.",
     count: 1,
     price: 530,
     sale: 0,
+    salePercent: 0,
     total: 530,
   },
   {
     id: 35,
     title: "Brazil Santos",
+    category: "coffee",
+    shortDescription: "Смесь арабик",
     weightString: "250 г.",
     count: 2,
     price: 520,
     sale: 120,
+    salePercent: 23,
     total: 400,
   },
 ]);
@@ -41,7 +50,7 @@ const orderLines = reactive([
   <div class="order-card">
     <ul class="order-card__list">
       <li class="order-card__item">
-        <span class="order-card__heading-text">Товаров:</span>
+        <span class="order-card__heading-text">Товары:</span>
         <span class="order-card__heading-text">Цена:</span>
         <span class="order-card__heading-text">Скидка{{ orderSale ?  `(${orderSale}%)` : '' }}:</span>
         <span class="order-card__heading-text">Итого:</span>
@@ -53,6 +62,37 @@ const orderLines = reactive([
         <span class="order-card__info-text">{{ line.price }} ₽</span>
         <span class="order-card__info-text">{{ line.sale }} ₽</span>
         <span class="order-card__info-text">{{ line.total }} ₽</span>
+      </li>
+      <li class="order-card__item-mobile"
+      v-for="line in orderLines">  
+        <div
+          class="order-card__icon"
+        >
+          <img
+            class="order-card__icon-image"
+            :src="`../../src/images/personal/icon-${line.category}-mobile.png`"
+            width="41"
+            height="75"
+            alt="Иконка товара"
+          />
+        </div>
+        <div class="order-card__text">
+          <h3 class="order-card__product-title">{{ line.title }}</h3>
+          <span class="order-card__product-description">{{ line.shortDescripton }}</span>
+          <span class="order-card__product-weight">{{
+            line.weightString
+          }}</span>
+        </div>
+
+        <div class="order-card__prices">
+          <span class="order-card__total">{{ line.total }} ₽</span>
+          <span class="order-card__initial-price">{{
+            line.sale ? `${line.price} ₽` : ""
+          }}</span>
+          <span class="order-card__sale-percent">{{
+            line.sale ? `(-${line.salePercent}%)` : ""
+          }}</span>
+        </div> 
       </li>
       
     </ul>
@@ -78,7 +118,7 @@ const orderLines = reactive([
   }
 
   @include vp-tablet {
-    padding: 19px 5px 29px 59px;
+    padding: 19px 3px 15px 28px;
     border-radius: 8px;
     border-width: 0.4px;
   }
@@ -123,7 +163,11 @@ const orderLines = reactive([
     }
   
     @include vp-tablet {
-      grid-template-columns: 1fr 129px 125px 117px;
+      grid-template-columns: 1fr 130px 125px 117px;
+    }
+
+    @include vp-mobile {
+      display: none;
     }
   }
 
@@ -152,10 +196,7 @@ const orderLines = reactive([
 
     @include vp-tablet {
       font-size: 10px;
-      line-height: 9px;
-    }
-
-    @include vp-mobile {
+      line-height: 12px;
     }
   }
 
@@ -173,10 +214,15 @@ const orderLines = reactive([
 
     @include vp-tablet {
       font-size: 10px;
-      line-height: 9px;
+      line-height: 12px;
     }
+  }
+
+  &__item-mobile {
+    display: none;
 
     @include vp-mobile {
+      display: flex;
     }
   }
 }
