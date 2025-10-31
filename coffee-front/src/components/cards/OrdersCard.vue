@@ -31,10 +31,61 @@ const orderInfo = reactive({
   /* totalSum - итоговая сумма за весь заказ
    * (товары с уже применёнными всеми скидками) */
   totalSum: 864,
+  rawSum: 900,
   orderSale: 15,
   /* totalSum - сумма за доставку */
   deliveryPrice: 390,
 });
+
+const orders = reactive([
+  {
+  /* информация о заказе */
+  orderID: 1,
+  isPaid: true,
+  isFinished: true,
+  paymentTime: "01.08.2021 12:24:00",
+  deliveryDate: "03.11.2021",
+  /* к оплате: totalSum + deliverySum */
+  /* totalSum - итоговая сумма за весь заказ
+   * (товары с уже применёнными всеми скидками) */
+  totalSum: 864,
+  rawSum: 900,
+  orderSale: 15,
+  /* totalSum - сумма за доставку */
+  deliveryPrice: 390,
+},
+{
+  /* информация о заказе */
+  orderID: 1,
+  isPaid: true,
+  isFinished: true,
+  paymentTime: "01.08.2021 12:24:00",
+  deliveryDate: "03.11.2021",
+  /* к оплате: totalSum + deliverySum */
+  /* totalSum - итоговая сумма за весь заказ
+   * (товары с уже применёнными всеми скидками) */
+  totalSum: 864,
+  rawSum: 900,
+  orderSale: 15,
+  /* totalSum - сумма за доставку */
+  deliveryPrice: 390,
+},{
+  /* информация о заказе */
+  orderID: 1,
+  isPaid: true,
+  isFinished: true,
+  paymentTime: "01.08.2021 12:24:00",
+  deliveryDate: "03.11.2021",
+  /* к оплате: totalSum + deliverySum */
+  /* totalSum - итоговая сумма за весь заказ
+   * (товары с уже применёнными всеми скидками) */
+  totalSum: 864,
+  rawSum: 900,
+  orderSale: 15,
+  /* totalSum - сумма за доставку */
+  deliveryPrice: 390,
+}
+])
 </script>
 
 <template>
@@ -49,7 +100,9 @@ const orderInfo = reactive({
     ></custom-toggle>
 
     <ul class="orders-card__list">
-      <li class="orders-card__item order-wrapper">
+      <li 
+      v-for="orderInfo in orders"
+      class="orders-card__item order-wrapper">
         <div class="order-wrapper__timing">
           <span class="order-wrapper__payment-timing"
             >{{ orderInfo.paymentTime }} - оплачено</span
@@ -70,6 +123,32 @@ const orderInfo = reactive({
             >Доставка: {{ orderInfo.deliveryPrice }} ₽</span
           >
         </div>
+
+        <ul class="order-wrapper__summary-mobile">
+          <li class="order-wrapper__summary-item">
+            <span>Итого:</span>
+            <span>{{ orderInfo.totalSum + orderInfo.deliveryPrice}} ₽</span>
+          </li>
+          <li class="order-wrapper__summary-item">
+            <span class="order-wrapper__summary-text">Подытог:</span>
+            <span class="order-wrapper__summary-number">{{ orderInfo.totalSum }} ₽</span>
+          </li>
+          <li class="order-wrapper__summary-item">
+            <span class="order-wrapper__summary-text">Скидка:</span>
+            <span>
+              <span class="order-wrapper__summary-number order-wrapper__summary-number--crossed">{{
+            orderInfo.orderSale ? `${orderInfo.rawSum} ₽` : ""
+          }}</span>
+              <span class="order-wrapper__summary-number">{{
+            orderInfo.orderSale ? `(-${orderInfo.orderSale}%)` : ""
+          }}</span>
+            </span>
+          </li>
+          <li class="order-wrapper__summary-item">
+            <span class="order-wrapper__summary-text">Доставка:</span>
+            <span  class="order-wrapper__summary-number">{{ orderInfo.deliveryPrice }} ₽</span>
+          </li>
+        </ul>
         
       </li>
     </ul>
@@ -182,7 +261,7 @@ const orderInfo = reactive({
     }
 
     @include vp-mobile {
-      gap: 10px;
+      gap: 50px;
     }
   }
 
@@ -190,6 +269,25 @@ const orderInfo = reactive({
     width: 100%;
     margin: 0;
     padding: 0;
+  }
+
+  /* рисуем черту между элементами списка для mobile */
+  &__item:not(:last-child) {
+    @include vp-mobile {
+      position: relative;
+    }
+
+    &::after {
+      @include vp-mobile {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 2px;
+        background-color: $color-light-silver;
+        bottom: -20px;
+        left: 0;
+      }
+    }
   }
 }
 
@@ -301,6 +399,10 @@ const orderInfo = reactive({
       gap: 7px;
       min-width: 122px;
     }
+
+    @include vp-mobile {
+      display: none;
+    }
   }
 
   &__total-sum,
@@ -320,8 +422,80 @@ const orderInfo = reactive({
       font-size: 10px;
       line-height: 12px;
     }
+  }
+
+  &__summary-mobile {
+    display: none;
 
     @include vp-mobile {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0;
+      padding: 0 5px 0 2px;
+      list-style-type: none;
+      gap: 10px;
+    }
+  }
+
+  &__summary-item {
+    @include vp-mobile {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      justify-content: space-between;
+    }
+  }
+
+  &__summary-item:first-child {
+    @include vp-mobile {
+      margin: 0 0 10px;
+      color: $color-raising-black;
+      font-family: $ff-gilroy, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+
+  &__summary-text, 
+  &__summary-number {
+    @include vp-mobile {
+      font-family: $ff-gilroy, sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  &__summary-text {
+    @include vp-mobile {
+      color: $color-raising-black;
+    }
+  }
+
+  &__summary-number {
+    @include vp-mobile {
+      color: $color-light-silver;
+    }
+  }
+
+  &__summary-number--crossed {
+    @include vp-mobile {
+      padding: 0 3px 0 0;
+      position: relative;
+    }
+
+    &::before {
+      @include vp-mobile {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: $color-light-silver;
+        left: -2px;
+        bottom: 6px;
+      }
     }
   }
 }

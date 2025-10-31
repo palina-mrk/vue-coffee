@@ -78,14 +78,12 @@ const orderLines = reactive([
         </div>
         <div class="order-card__text">
           <h3 class="order-card__product-title">{{ line.title }}</h3>
-          <span class="order-card__product-description">{{ line.shortDescripton }}</span>
-          <span class="order-card__product-weight">{{
-            line.weightString
-          }}</span>
+          <span class="order-card__product-description">{{ line.shortDescription }}</span>
+          <span class="order-card__product-weight">{{line.count}} x {{line.weightString}}</span>
         </div>
 
         <div class="order-card__prices">
-          <span class="order-card__total">{{ line.total }} ₽</span>
+          <span class="order-card__total-price">{{ line.total }} ₽</span>
           <span class="order-card__initial-price">{{
             line.sale ? `${line.price} ₽` : ""
           }}</span>
@@ -124,7 +122,7 @@ const orderLines = reactive([
   }
 
   @include vp-mobile {
-    padding: 13px 30px 13px 10px;
+    padding: 13px 20px 16px 10px;
     border-width: 1px;
     border-radius: 10px;
   }
@@ -146,6 +144,7 @@ const orderLines = reactive([
     }
 
     @include vp-mobile {
+      gap: 30px;
     }
   }
 
@@ -222,7 +221,108 @@ const orderLines = reactive([
     display: none;
 
     @include vp-mobile {
+      display: grid;
+      width: 100%;
+      grid-template-columns: 40px 1fr auto;
+      align-items: center;
+      position: relative;
+    }
+  }
+
+  &__item-mobile:not(:last-child)::after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    right: -10px;
+    background-color: $color-philippine-silver;
+  }
+
+  &__icon-image {
+    @include vp-mobile {
+      width: 30px;
+    }
+  }
+
+  &__text {
+    @include vp-mobile {
       display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: space-between;
+      gap: 2px;
+    }
+  }
+
+  &__product-title{
+    @include vp-mobile {
+      font-family: $ff-gilroy, sans-serif;
+      color: $color-raising-black;
+      font-weight: 700;
+      font-size: 10px;
+      line-height: 12px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__product-description, 
+  &__product-weight {
+    @include vp-mobile {
+      font-family: $ff-gilroy, sans-serif;
+      color: $color-black;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+
+  &__prices {
+    @include vp-mobile {
+      display: flex;
+      justify-content: end;
+      align-items: start;
+      flex-wrap: wrap;
+      gap: 3px;
+      min-height: 40px;
+    }
+  }
+
+  &__total-price {
+    @include vp-mobile {
+      font-family: $ff-gilroy, sans-serif;
+      color: $color-raising-black;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      width: 100%;
+      text-align: right;
+    }
+  }
+
+  &__initial-price,
+  &__sale-percent {
+    @include vp-mobile {
+      font-family: $ff-gilroy, sans-serif;
+      color: $color-light-silver;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      position: relative;
+    }
+  }
+
+  &__initial-price::before {
+    @include vp-mobile {
+      content: "";
+      background-color: $color-light-silver;
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      left: 0;
+      bottom: 7px;
     }
   }
 }
