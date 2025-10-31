@@ -123,16 +123,16 @@ const props = defineProps(["toggleName", "initialValues", "selected"]);
     flex-direction: column;
   }
 
-  &__label {
+  .toggle__label {
     padding: 10px;
     font-size: 20px;
-    line-height: 24px;
+    line-height: 23px;
 
     @include vp-laptop {
       border-radius: 4px;
       padding: 7px;
       font-size: 14px;
-      line-height: 17px;
+      line-height: 15px;
     }
 
     @include vp-tablet {

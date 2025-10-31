@@ -99,7 +99,7 @@ const actionsInfo = reactive([
     display: flex;
     flex-direction: column;
     gap: 40px;
-    margin: 0 0 90px;
+    margin: 0 0 60px;
     
     @include vp-laptop {
       gap: 30px;
@@ -108,7 +108,7 @@ const actionsInfo = reactive([
 
     @include vp-tablet {
       gap: 20px;
-      margin: 0 0 56px;
+      margin: 0 0 60px;
     }
 
     @include vp-mobile {
@@ -120,10 +120,14 @@ const actionsInfo = reactive([
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 40px;
+    gap: 38px;
 
     @include vp-laptop {
-      gap: 30px;
+      gap: 28px;
+    }
+
+    @include vp-tablet {
+      gap: 23px;
     }
 
     @include vp-mobile {
@@ -138,16 +142,16 @@ const actionsInfo = reactive([
     padding: 0;
     font-weight: 900;
     font-size: 30px;
-    line-height: 36px;
+    line-height: 38px;
 
     @include vp-laptop {
       font-size: 22px;
-      line-height: 26px;
+      line-height: 27px;
     }
 
     @include vp-tablet {
       font-size: 36px;
-      line-height: 41px;
+      line-height: 43px;
     }
 
     @include vp-mobile {
