@@ -1,5 +1,5 @@
 <script setup>
-import OrderLine from "./OrderLine.vue";
+import OrderCard from "./OrderCard.vue";
 import CustomToggle from "../toggles/CustomToggle.vue";
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
@@ -60,7 +60,7 @@ const orderInfo = reactive({
           >
         </div>
 
-        <order-line class="order-wrapper__inner"> </order-line>
+        <order-card class="order-wrapper__inner"> </order-card>
 
         <div class="order-wrapper__summary">
           <span class="order-wrapper__total-sum"
@@ -191,60 +191,6 @@ const orderInfo = reactive({
     margin: 0;
     padding: 0;
   }
-
-  /* уменьшаем gap после названий таблицы */
-  /* убираем названия полей для tablet */
-  &__products-item:first-child {
-    margin: 0 0 -8px;
-
-    @include vp-laptop {
-      margin: 0 0 -5px;
-    }
-
-    @include vp-tablet {
-      margin: 0;
-      display: none;
-    }
-  }
-
-  /* устанавливаем высоту для карточек товаров */
-  &__products-item:not(:first-child) {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 173px;
-
-    @include vp-laptop {
-      min-height: 122px;
-    }
-
-    @include vp-tablet {
-      min-height: unset;
-    }
-  }
-
-  /* рисуем черту между элементами списка для tablet */
-  &__products-item:not(:last-child) {
-    @include vp-tablet {
-      position: relative;
-    }
-
-    &::after {
-      @include vp-tablet {
-        position: absolute;
-        content: "";
-        width: 100%;
-        height: 2px;
-        background-color: $color-philippine-silver;
-        bottom: -28px;
-      }
-
-      @include vp-mobile {
-        bottom: -21px;
-        height: 1px;
-      }
-    }
-  }
 }
 
 .order-wrapper {
@@ -292,14 +238,14 @@ const orderInfo = reactive({
   }
 
   &__delivery-timing {
-    width: 260px;
+    min-width: 260px;
 
     @include vp-laptop {
-      width: 180px;
+      min-width: 180px;
     }
 
     @include vp-tablet {
-      width: 168px;
+      min-width: 168px;
     }
   }
 
@@ -319,18 +265,18 @@ const orderInfo = reactive({
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 260px;
+    min-width: 260px;
     align-self: flex-end;
     gap: 6px;
 
     @include vp-laptop {
       gap: 4px;
-      width: 180px;
+      min-width: 180px;
     }
 
     @include vp-tablet {
       gap: 10px;
-      width: 122px;
+      min-width: 122px;
     }
   }
 
