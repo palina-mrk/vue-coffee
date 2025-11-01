@@ -189,13 +189,27 @@ const orders = reactive([
   }
 
   @include vp-mobile {
-    padding: 40px 0 0;
+    padding: 0;
     width: 100%;
     box-shadow: 1px 1px 10px -2px $color-quick-silver-25;
-    border-style: none solid none solid;
+    border-style: none solid none none;
     border-radius: 0 0 10px 10px;
     background-color: $color-white;
     gap: 0;
+    position: relative;
+  }
+
+  &::before {
+    @include vp-mobile {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -5px;
+      background-color: $color-white;
+      height: 10px;
+      z-index: 2;
+    }
   }
 
   &__heading {
@@ -280,11 +294,10 @@ const orders = reactive([
       width: 100%;
       margin: 25px auto 0;
       border-radius: 0 0 10px 10px;
-      border-width: 0 0.4px 0.4px 0.4px;
+      border-width: 0 0.4px 0.4px 0;
       border-style: none none solid none;
       border-color: $color-platinum;
-      
-      box-shadow: 2px 7px 10px 0px $color-quick-silver-25;
+      box-shadow: 7px 10px 15px -5px $color-quick-silver-25;
     }
   }
 
