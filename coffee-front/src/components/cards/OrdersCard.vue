@@ -94,7 +94,7 @@ const orders = reactive([
     <custom-toggle
       class="orders-card__toggle toggle--size-m"
       :initialValues="toggleValues"
-      :toggleName="contacts"
+      :toggleName="'personal'"
       :selected="selectedVariant"
       @toggle-value="selectedVariant = $event"
     ></custom-toggle>
@@ -135,7 +135,7 @@ const orders = reactive([
           </li>
           <li class="order-wrapper__summary-item">
             <span class="order-wrapper__summary-text">Скидка:</span>
-            <span>
+            <span class="order-wrapper__summary-number-wrapper">
               <span class="order-wrapper__summary-number order-wrapper__summary-number--crossed">{{
             orderInfo.orderSale ? `${orderInfo.rawSum} ₽` : ""
           }}</span>
@@ -189,12 +189,13 @@ const orders = reactive([
   }
 
   @include vp-mobile {
-    padding: 40px 17px 30px;
-    width: 340px;
-    box-shadow: 0px 0px 50px 0px $color-quick-silver-25;
-    border-radius: 10px;
-    border-width: 1px;
-    gap: 20px;
+    padding: 40px 0 0;
+    width: 100%;
+    box-shadow: 1px 1px 10px -2px $color-quick-silver-25;
+    border-style: none solid none solid;
+    border-radius: 0 0 10px 10px;
+    background-color: $color-white;
+    gap: 0;
   }
 
   &__heading {
@@ -220,6 +221,9 @@ const orders = reactive([
     @include vp-mobile {
       font-size: 20px;
       line-height: 25px;
+      width: 100%;
+      max-width: $max-width-mobile;
+      margin: 0 auto 20px;
     }
   }
 
@@ -239,7 +243,8 @@ const orders = reactive([
 
     @include vp-mobile {
       width: 100%;
-      margin: 0 0 5px;
+      margin: 0 auto;
+      max-width: $max-width-mobile;
     }
   }
 
@@ -261,7 +266,7 @@ const orders = reactive([
     }
 
     @include vp-mobile {
-      gap: 50px;
+      gap: 0;
     }
   }
 
@@ -269,9 +274,35 @@ const orders = reactive([
     width: 100%;
     margin: 0;
     padding: 0;
+
+    @include vp-mobile {
+      padding: 0 17px 25px;
+      width: 100%;
+      margin: 25px auto 0;
+      border-radius: 0 0 10px 10px;
+      border-width: 0 0.4px 0.4px 0.4px;
+      border-style: none none solid none;
+      border-color: $color-platinum;
+      
+      box-shadow: 2px 7px 10px 0px $color-quick-silver-25;
+    }
   }
 
-  /* рисуем черту между элементами списка для mobile */
+
+  &__item::before {
+    @include vp-mobile {
+      position: absolute;
+
+      height: 1px;
+      left: 10px;
+      right: 10px;
+      bottom: -1px;
+      background-color: $color-platinum;
+      box-shadow: 20px 20px 50px 20px $color-quick-silver-25;
+    }
+  }
+
+  /* рисуем черту между элементами списка для mobile 
   &__item:not(:last-child) {
     @include vp-mobile {
       position: relative;
@@ -288,7 +319,7 @@ const orders = reactive([
         left: 0;
       }
     }
-  }
+  }*/
 }
 
 .order-wrapper {
@@ -431,10 +462,12 @@ const orders = reactive([
       display: flex;
       flex-direction: column;
       width: 100%;
-      margin: 0;
-      padding: 0 5px 0 2px;
+      margin: 0 auto;
+      padding: 0;
       list-style-type: none;
       gap: 10px;
+      width: 100%;
+      max-width: $max-width-mobile;
     }
   }
 
@@ -472,6 +505,10 @@ const orders = reactive([
     @include vp-mobile {
       color: $color-raising-black;
     }
+  }
+
+  &__summary-number-wrapper {
+    display: flex;
   }
 
   &__summary-number {

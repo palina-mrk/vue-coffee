@@ -9,12 +9,12 @@
   }
 
   @include vp-tablet {
-    max-width: $max-width-tablet;
-    padding: 0 14px;
+    max-width: calc($max-width-tablet + 68px);
+    padding: 0 34px;
   }
 
   @include vp-mobile {
-    max-width: $max-width-mobile;
-    padding: 0 7px;
+    max-width: calc($max-width-mobile + 36px);
+    padding: 0 18px;
   }
 }

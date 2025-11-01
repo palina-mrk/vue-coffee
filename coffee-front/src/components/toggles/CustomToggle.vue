@@ -121,6 +121,7 @@ const props = defineProps(["toggleName", "initialValues", "selected"]);
 
   @include vp-mobile {
     flex-direction: column;
+    gap: 10px;
   }
 
   .toggle__label {

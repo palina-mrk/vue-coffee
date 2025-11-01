@@ -112,7 +112,11 @@ const actionsInfo = reactive([
     }
 
     @include vp-mobile {
-      margin: 0 0 36px;
+      margin: 0 auto 36px;
+      position: relative;
+      width: calc(100% + 36px);
+      max-width: calc($max-width-mobile + 36px);
+      left: -18px;
     }
   }
 

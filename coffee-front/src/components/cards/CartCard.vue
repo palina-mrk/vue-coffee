@@ -51,7 +51,7 @@ const catalogStore = useCatalogStore();
   border-width: 1px;
   border-color: $color-platinum;
   box-shadow: 0 0 50px 0 $color-quick-silver-25;
-  width: 1660px;
+  width: 100%;
   min-height: 268px;
   border-radius: 20px;
   border-width: 1px;
@@ -62,24 +62,21 @@ const catalogStore = useCatalogStore();
   @include vp-laptop {
     padding: 80px 100px 61px;
     box-shadow: 0px 0px 35px 0px $color-quick-silver-25;
-    width: 1180px;
     min-height: 268px;
     border-radius: 14px;
     border-width: 0.7px;
   }
 
   @include vp-tablet {
-    padding: 47px 34px;
+    padding: 47px 0;
     box-shadow: 0px 0px 20px 0px $color-quick-silver-25;
-    width: 700px;
     min-height: 137px;
     border-radius: 14px;
     border-width: 0.4px;
   }
 
   @include vp-mobile {
-    padding: 40px 17px 50px;
-    width: 340px;
+    padding: 40px 0 50px;
     box-shadow: 0px 0px 50px 0px $color-quick-silver-25;
     min-height: 115px;
     border-radius: 10px;
@@ -101,13 +98,15 @@ const catalogStore = useCatalogStore();
     @include vp-tablet {
       flex-direction: column;
       gap: 13px;
-      margin: 0 0 30px;
+      margin: 0 auto 30px;
       align-items: start;
+      width: $max-width-tablet;
     }
 
     @include vp-mobile {
       gap: 18px;
-      margin: 0 0 20px;
+      margin: 0 auto 20px;
+      width: $max-width-mobile;
     }
   }
 
@@ -169,10 +168,14 @@ const catalogStore = useCatalogStore();
 
     @include vp-tablet {
       gap: 58px;
+      margin: 0 auto;
+      width: 100%;
+      max-width: $max-width-tablet;
     }
 
     @include vp-mobile {
       gap: 40px;
+      max-width: $max-width-mobile;
     }
   }
 

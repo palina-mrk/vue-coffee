@@ -1040,8 +1040,8 @@
     }
 
     @include vp-mobile {
-      display: none;
       top: 680px;
+      display: none;
     }
   }
 
@@ -1061,9 +1061,8 @@
     }
 
     @include vp-mobile {
-      display: none;
-      top: 681px;
-      bottom: 50px;
+      top: 0px;
+      bottom: 650px;
     }
   }
 
@@ -1193,7 +1192,9 @@
     }
 
     @include vp-mobile {
-      height: 681px;
+      background-color: $color-white;
+      height: unset;
+      bottom: 150px;
     }
   }
 
@@ -1215,6 +1216,7 @@
     @include vp-mobile {
       top: 680px;
       height: 110px;
+      display: none;
     }
   }
 
@@ -1234,8 +1236,10 @@
     }
 
     @include vp-mobile {
-      top: 681px;
-      bottom: 50px;
+      top: 0;
+      width: 100%;
+      bottom: 0;
+      display: none;
     }
   }
 
@@ -1257,6 +1261,7 @@
     @include vp-mobile {
       bottom: 50px;
       height: 108px;
+      display: none;
     }
   }
 }

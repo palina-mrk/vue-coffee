@@ -61,104 +61,6 @@ function clearInput() {
 </template>
 
 <style lang="scss" scoped>
-.promo-form {
-  background-color: $color-white;
-  border-radius: 20px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: $color-platinum;
-  box-shadow: 0 0 50px 0 $color-quick-silver-25;
-  position: relative;
-  width: 960px;
-  padding: 50px 140px 23px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-
-  @include vp-laptop {
-    box-shadow: 0 0 35px 0 $color-spanish-gray-c95-25;
-    border-radius: 14px;
-    gap: 20px;
-    padding: 40px 100px 41px;
-    width: 679px;
-  }
-
-  @include vp-tablet {
-    box-shadow: 0px 0px 50px 0px $color-spanish-gray-c95-25;
-    border-radius: 10px;
-    padding: 40px 34px 50px;
-    width: 700px;
-  }
-
-  @include vp-mobile {
-    padding: 30px 18px 38px;
-    width: 340px;
-    gap: 20px;
-  }
-
-  &__title {
-    font-family: $ff-gilroy, sans-serif;
-    font-weight: 900;
-    font-size: 30px;
-    line-height: 37px;
-    color: $color-raising-black;
-    margin: 0;
-    padding: 0;
-
-    @include vp-laptop {
-      font-size: 22px;
-      line-height: 26px;
-    }
-
-    @include vp-tablet {
-      font-size: 25px;
-      line-height: 31px;
-    }
-
-    @include vp-mobile {
-      font-size: 20px;
-      line-height: 25px;
-    }
-  }
-
-  &__text {
-    font-family: $ff-gilroy, sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    color: $color-raising-black;
-    padding: 0;
-    margin: 0 0 10px;
-
-    @include vp-laptop {
-      font-size: 14px;
-      line-height: 17px;
-    }
-
-    @include vp-tablet {
-      font-size: 20px;
-      line-height: 26px;
-    }
-
-    @include vp-mobile {
-      font-size: 14px;
-      line-height: 18px;
-      margin: 0;
-    }
-  }
-
-  &__input {
-    margin: 0 0 9px;
-
-    @include vp-laptop {
-      margin: 0 0 3px;
-    }
-
-    @include vp-tablet {
-      margin: 0 0 -2px;
-    }
-  }
-}
 
 .btn-cornsilk {
   display: flex;
@@ -209,6 +111,128 @@ function clearInput() {
     background-color: $color-lotion;
     color: $color-antiflash-white-f0;
     cursor: unset;
+  }
+}
+
+.promo-form {
+  background-color: $color-white;
+  border-radius: 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color-platinum;
+  box-shadow: 0 0 50px 0 $color-quick-silver-25;
+  position: relative;
+  width: 100%;
+  padding: 50px 140px 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @include vp-laptop {
+    box-shadow: 0 0 35px 0 $color-spanish-gray-c95-25;
+    border-radius: 14px;
+    gap: 20px;
+    padding: 40px 100px 41px;
+  }
+
+  @include vp-tablet {
+    box-shadow: 0px 0px 50px 0px $color-spanish-gray-c95-25;
+    border-radius: 10px;
+    padding: 40px 0 50px;
+  }
+
+  @include vp-mobile {
+    padding: 30px 0 38px;
+    gap: 20px;
+  }
+
+  &__title {
+    font-family: $ff-gilroy, sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 37px;
+    color: $color-raising-black;
+    margin: 0;
+    padding: 0;
+
+    @include vp-laptop {
+      font-size: 22px;
+      line-height: 26px;
+    }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 31px;
+      width: 100%;
+      max-width: $max-width-tablet;
+      margin: 0 auto;
+    }
+
+    @include vp-mobile {
+      font-size: 20px;
+      line-height: 25px;
+      max-width: $max-width-mobile;
+    }
+  }
+
+  &__text {
+    font-family: $ff-gilroy, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: $color-raising-black;
+    padding: 0;
+    margin: 0 0 10px;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 26px;
+      max-width: $max-width-tablet;
+      width: 100%;
+      margin: 0 auto 10px;
+    }
+
+    @include vp-mobile {
+      font-size: 14px;
+      line-height: 18px;
+      margin: 0 auto;
+      max-width: $max-width-mobile;
+    }
+  }
+
+  &__input {
+    margin: 0 0 9px;
+
+    @include vp-laptop {
+      margin: 0 0 3px;
+    }
+
+    @include vp-tablet {
+      margin: 0 auto -2px;
+      max-width: $max-width-tablet;
+      width: 100%;
+    }
+
+    @include vp-mobile {
+      max-width: $max-width-mobile;
+    }
+  }
+
+  &__button {
+    @include vp-tablet {
+      margin: 0 auto;
+      max-width: $max-width-tablet;
+      width: 100%;
+    }
+
+    @include vp-mobile {
+      max-width: $max-width-mobile;
+    }
   }
 }
 </style>

@@ -101,7 +101,7 @@ const deliveryWays = reactive({
   border-color: $color-platinum;
   box-shadow: 0 0 50px 0 $color-quick-silver-25;
   position: relative;
-  width: 680px;
+  width: 100%;
   padding: 50px 80px 23px;
   display: flex;
   flex-direction: column;
@@ -112,7 +112,6 @@ const deliveryWays = reactive({
     border-radius: 14px;
     gap: 7px;
     padding: 40px 50px 14px;
-    width: 480px;
   }
 
   @include vp-tablet {
@@ -120,21 +119,29 @@ const deliveryWays = reactive({
     border-radius: 10px;
     gap: 10px;
     padding: 40px 34px 60px;
-    width: 700px;
   }
 
   @include vp-mobile {
     padding: 30px 18px 35px;
-    width: 340px;
   }
 
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: start;
+  }
+
+  &__top,
+  &__delivery,
+  &__button {
+  @include vp-tablet {
+      margin: 0 auto;
+      max-width: $max-width-tablet;
+      width: 100%;
+    }
 
     @include vp-mobile {
-      margin: 0 0 10px;
+      max-width: $max-width-mobile;
     }
   }
 
@@ -306,11 +313,15 @@ const deliveryWays = reactive({
     @include vp-tablet {
       font-size: 12px;
       line-height: 14px;
+      margin: 0 auto;
+      max-width: $max-width-tablet;
+      width: 100%;
     }
 
     @include vp-mobile {
       font-size: 10px;
       line-height: 12px;
+      max-width: $max-width-mobile;
     }
   }
 }

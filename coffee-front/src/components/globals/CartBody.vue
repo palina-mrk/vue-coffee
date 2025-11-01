@@ -17,7 +17,6 @@ import PromoForm from "../forms/PromoForm.vue";
           <custom-breadcrumbs
             class="cart__breadcrumbs-list"
           ></custom-breadcrumbs>
-
           <h1 class="visually-hidden">Корзина</h1>
           <div class="cart__top-forms">
             <cart-card class="cart__form"></cart-card>
@@ -87,11 +86,16 @@ import PromoForm from "../forms/PromoForm.vue";
     @include vp-tablet {
       gap: 20px;
       margin: 0 0 30px;
+      position: relative;
+      min-width: calc($max-width-tablet + 68px);
+      left: -35px;
     }
 
     @include vp-mobile {
       gap: 30px;
       margin: 0 0 20px;
+      min-width: calc($max-width-mobile + 36px);
+      left: -19px;
     }
   }
 
@@ -103,10 +107,15 @@ import PromoForm from "../forms/PromoForm.vue";
     @include vp-tablet {
       flex-direction: column;
       gap: 90px;
+      position: relative;
+      width: calc($max-width-tablet + 68px);
+      left: -34px;
     }
 
     @include vp-mobile {
       gap: 20px;
+      width: calc($max-width-mobile + 36px);
+      left: -18px;
     }
   }
 }
