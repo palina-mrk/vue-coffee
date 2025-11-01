@@ -3,22 +3,22 @@ import OrderCard from "./OrderCard.vue";
 import CustomToggle from "../toggles/CustomToggle.vue";
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
-import { useCatalogStore } from "../../stores/catalog";
-const catalogStore = useCatalogStore();
+import { useOrdersStore } from "../../stores/orders";
+const ordersStore = useOrdersStore();
 
 import { reactive, ref } from "vue";
 
 const toggleValues = reactive([
   {
     label: "Текущие заказы",
-    value: "current-orders",
+    value: "current",
   },
   {
     label: "Завершенные",
-    value: "finished-orders",
+    value: "finished",
   },
 ]);
-const selectedVariant = ref("current-orders");
+const selectedVariant = ref("current");
 
 const orderInfo = reactive({
   /* информация о заказе */
@@ -36,56 +36,6 @@ const orderInfo = reactive({
   /* totalSum - сумма за доставку */
   deliveryPrice: 390,
 });
-
-const orders = reactive([
-  {
-  /* информация о заказе */
-  orderID: 1,
-  isPaid: true,
-  isFinished: true,
-  paymentTime: "01.08.2021 12:24:00",
-  deliveryDate: "03.11.2021",
-  /* к оплате: totalSum + deliverySum */
-  /* totalSum - итоговая сумма за весь заказ
-   * (товары с уже применёнными всеми скидками) */
-  totalSum: 864,
-  rawSum: 900,
-  orderSale: 15,
-  /* totalSum - сумма за доставку */
-  deliveryPrice: 390,
-},
-{
-  /* информация о заказе */
-  orderID: 1,
-  isPaid: true,
-  isFinished: true,
-  paymentTime: "01.08.2021 12:24:00",
-  deliveryDate: "03.11.2021",
-  /* к оплате: totalSum + deliverySum */
-  /* totalSum - итоговая сумма за весь заказ
-   * (товары с уже применёнными всеми скидками) */
-  totalSum: 864,
-  rawSum: 900,
-  orderSale: 15,
-  /* totalSum - сумма за доставку */
-  deliveryPrice: 390,
-},{
-  /* информация о заказе */
-  orderID: 1,
-  isPaid: true,
-  isFinished: true,
-  paymentTime: "01.08.2021 12:24:00",
-  deliveryDate: "03.11.2021",
-  /* к оплате: totalSum + deliverySum */
-  /* totalSum - итоговая сумма за весь заказ
-   * (товары с уже применёнными всеми скидками) */
-  totalSum: 864,
-  rawSum: 900,
-  orderSale: 15,
-  /* totalSum - сумма за доставку */
-  deliveryPrice: 390,
-}
-])
 </script>
 
 <template>
@@ -101,19 +51,22 @@ const orders = reactive([
 
     <ul class="orders-card__list">
       <li 
-      v-for="orderInfo in orders"
+      v-for="orderInfo in ordersStore.orderItems"
+      v-show="orderInfo.isFinished == (selectedVariant == 'finished')"
       class="orders-card__item order-wrapper">
         <div class="order-wrapper__timing">
           <span class="order-wrapper__payment-timing"
-            >{{ orderInfo.paymentTime }} - оплачено</span
+            >{{ orderInfo.isPaid ? `${orderInfo.paymentTime} - оплачено` : `${orderInfo.totalSum + orderInfo.deliveryPrice} ₽ - к оплате`}}</span
           >
           <span class="order-wrapper__delivery-timing"
-            >{{ orderInfo.isFinished ? "Дата доставки:" : "Доставлено:" }}
-            {{ orderInfo.deliveryDate }}</span
+            >{{ !orderInfo.isPaid ? `Доставка: ${orderInfo.deliveryWay}, ${orderInfo.deliveryDuring} дн.` : (!orderInfo.isFinished ? `Дата доставки: ${orderInfo.deliveryDate}` : `Доставлено: ${orderInfo.deliveryDate}`)}}
+            </span
           >
         </div>
 
-        <order-card class="order-wrapper__inner"> </order-card>
+        <order-card class="order-wrapper__inner"
+        :order-lines="orderInfo.productLines"
+        :order-sale="orderInfo.globalSale"> </order-card>
 
         <div class="order-wrapper__summary">
           <span class="order-wrapper__total-sum"
@@ -136,11 +89,11 @@ const orders = reactive([
           <li class="order-wrapper__summary-item">
             <span class="order-wrapper__summary-text">Скидка:</span>
             <span class="order-wrapper__summary-number-wrapper">
-              <span class="order-wrapper__summary-number order-wrapper__summary-number--crossed">{{
-            orderInfo.orderSale ? `${orderInfo.rawSum} ₽` : ""
+              <span class="order-wrapper__summary-number order-wrapper__summary-number--first">{{
+            orderInfo.totalSale ? `${orderInfo.totalSale} ₽` : ""
           }}</span>
               <span class="order-wrapper__summary-number">{{
-            orderInfo.orderSale ? `(-${orderInfo.orderSale}%)` : ""
+            orderInfo.globalSale ? `(${orderInfo.globalSale}%)` : ""
           }}</span>
             </span>
           </li>
@@ -530,12 +483,12 @@ const orders = reactive([
     }
   }
 
-  &__summary-number--crossed {
+  &__summary-number--first {
     @include vp-mobile {
       padding: 0 3px 0 0;
       position: relative;
     }
-
+/*
     &::before {
       @include vp-mobile {
         content: "";
@@ -546,7 +499,7 @@ const orders = reactive([
         left: -2px;
         bottom: 6px;
       }
-    }
+    }*/
   }
 }
 

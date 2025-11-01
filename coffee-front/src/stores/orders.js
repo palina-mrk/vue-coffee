@@ -1,91 +1,64 @@
 import { defineStore } from "pinia";
 import { computed, reactive, watch, ref } from "vue";
 import { useCartStore } from "./cart";
-import ProductLine from "../components/cards/ProductLine.vue";
 
 export const useOrdersStore = defineStore("order", () => {
   const cartStore = useCartStore();
+  /** orderItems - уже оплаченные заказы
+   * инф. о них меняться не может, кроме поля isFinished
+   * (станет true после доставки)
+  */
   const orderItems = reactive(
-    JSON.parse(localStorage.getItem("orderRows") || "[]"),
+    JSON.parse(localStorage.getItem("orderItems") || "[]"),
   );
 
-  /*
-элемент массива orderItems:
-{
-  orderID: 1,
-  isPaid: true,
-  isFinished: true,
-  paymentTime: "01.11.2025 12:24:00",
-  deliveryDuring: 3,
-  totalSum: 1170,
-  orderSale: 15,
-  deliveryPrice: 300,
-  productLines: [
-      {
-        id: 15,
-        title: "Энергия пшеницы",
-        weightString: "100 г.",
-        count: 2,
-        price: 240,
-        sale: 0,
-        total: 240,
-      },
-      {
-        id: 29,
-        title: "Байкальская мелодия",
-        weightString: "200 г.",
-        count: 1,
-        price: 530,
-        sale: 0,
-        total: 530,
-      },
-      {
-        id: 35,
-        title: "Brazil Santos",
-        weightString: "250 г.",
-        count: 2,
-        price: 520,
-        sale: 120,
-        total: 400,
-      },
-    ]
-}*/
+  /** до оплаты заказа мы можем считывать инфу из корзины 
+   * после оплаты всё уже "заморожено": меняться может только isFinished
+  */
+  function saveOrder () {
+    let date = new Date();
+    const paymentTime = date.toLocaleString('ru');
+    date.setDate(date.getDate() + cartStore.deliveryDuring);
+    const deliveryDate = date.toLocaleDateString('ru');
 
-  function payOrder() {
-    const orderItem = {
-      orderID: orderItems.length + 1,
-      isPaid: true,
-      isFinished: false,
-      paymentDate: Date(),
-      paymentTime: null,
-      deliveryDuring: cartStore.deliveryDuring.value,
-      deliveryDate: null,
-      totalSum: cartStore.totalSum.value,
-      deliveryPrice: cartStore.deliveryPrice.value,
-      orderSale: cartStore.globalSale.value,
-      productLines: cartStore.cartItems.value.map((item) => ({
+    const currentOrder = {};
+    currentOrder.orderID = orderItems.length + 1;
+    currentOrder.isPaid = true;
+    currentOrder.isFinished = false;
+    currentOrder.paymentTime = paymentTime;
+    currentOrder.deliveryDate = deliveryDate;
+    currentOrder.totalSum = cartStore.totalSum;     /* сумма без доставки*/
+    currentOrder.totalSale = cartStore.totalSale;   /** суммарная скидка */
+    currentOrder.globalSale = cartStore.globalSale; /* процент */
+    currentOrder.deliveryPrice = cartStore.deliveryPrice;  /* за доставку */
+    currentOrder.timeOut = setTimeout(() => currentOrder.isFinished = true, 1000*3600*24*(cartStore.deliveryDuring + 1));
+    currentOrder.productLines = cartStore.cartItems.map((item) => {
+      return {
         id: item.id,
         title: item.title,
-        weightString: item.weightString,
+        category: item.category,
+        shortDescription: "Зелёный чай",
+        weightString: "200 г.",
         count: item.count,
-        price: item.price,
+        initialPrice: item.price,
         sale: item.sale,
+        salePercent: item.salePercent,
         total: item.total,
-      })),
-    };
+      }
+    })
 
-    orderItem.paymentTime = paymentDate.toString();
-    orderItem.deliveryDate =
-      paymentDate + 1000 * 60 * 60 * 24 * orderItem.deliveryDuring;
+    
+    orderItems.push(currentOrder);
 
-    orderItems.push(orderItem);
-
-    cartStore.clearCart();
+    console.log(orderItems);
   }
 
   watch(orderItems, () => {
     localStorage.setItem("orderItems", JSON.stringify(orderItems));
   });
 
-  return {};
+  return {
+    orderItems,
+    saveOrder,
+  };
 });

@@ -67,13 +67,13 @@ export const useCartStore = defineStore("cart", () => {
   const deliveryWays = reactive([
     [390, "sdek", "СДЭК - до двери", 2],
     [300, "russian-post", "Почта России", 7],
-    [427, "dpd", "DPD - курьер, 3 дн", 3],
+    [427, "dpd", "DPD - курьер", 3],
   ]);
   const deliveryWay = ref(deliveryWays[0]);
 
   const deliveryPrices = computed(() => deliveryWays.map((el) => el[0]));
   const deliveryValues = computed(() => deliveryWays.map((el) => el[1]));
-  const deliveryLabels = computed(() => deliveryWays.map((el) => el[2]));
+  const deliveryLabels = computed(() => deliveryWays.map((el) => el[2] + ', ' + el[3] + ' дн. - '));
   function setDeliveryValue(value) {
     const way = deliveryWays.find((el) => el[1] == value);
     if (way) deliveryWay.value = way;
@@ -175,6 +175,7 @@ export const useCartStore = defineStore("cart", () => {
             weight: weight,
             weightString: `${weight} ${item.category == "vending" ? "кг." : "г."}`,
             /* цена до скидки (зачеркнутая): */
+            isSaled: item.actions.includes("Скидки"), 
             price:
               (item.actions.includes("Скидки") ? priceCrossed : price) * count,
             count: count,
@@ -203,7 +204,7 @@ export const useCartStore = defineStore("cart", () => {
     if (globalSale.value == 0) return rawCartItems.value;
 
     return rawCartItems.value.map((rawItem) => {
-      if (rawItem.actions == "Скидки") return rawItem;
+      if (rawItem.isSaled) return rawItem;
 
       const item = Object.assign(rawItem);
       item.salePercent = globalSale.value;

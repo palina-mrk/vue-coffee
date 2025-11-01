@@ -3,6 +3,8 @@ import { reactive } from "vue";
 import PaymentWay from "../fieldsets/PaymentWay.vue";
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
+import { useOrdersStore } from "../../stores/orders";
+const ordersStore = useOrdersStore();
 
 const deliveryWays = reactive({
   name: "delivery",
@@ -12,6 +14,11 @@ const deliveryWays = reactive({
   values: cartStore.deliveryValues,
   fieldsCount: cartStore.deliveryPrices.length,
 });
+
+function payOrder() {
+  ordersStore.saveOrder();
+  cartStore.clearCart();
+}
 </script>
 
 <template>
@@ -80,7 +87,9 @@ const deliveryWays = reactive({
       :selectedValue="cartStore.deliveryValue"
       @set-value="cartStore.setDeliveryValue($event)"
     ></payment-way>
-    <button class="form-block__button btn-gold" type="button">
+    <button class="form-block__button btn-gold" type="button"
+      @click="payOrder"
+    >
       Оплатить заказ
     </button>
 

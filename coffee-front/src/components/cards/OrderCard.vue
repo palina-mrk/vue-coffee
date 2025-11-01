@@ -1,11 +1,10 @@
 <script setup>
-import { ref, reactive, computed } from "vue";
-import { useCartStore } from "../../stores/cart";
-const cartStore = useCartStore();
-
+const props = defineProps(['orderLines', 'orderSale'])
+console.log(props.orderLines)
+/**
 const orderSale = ref(15);
 
-/** информация о каждом товаре */
+ информация о каждом товаре 
 const orderLines = reactive([
   {
     id: 15,
@@ -43,12 +42,12 @@ const orderLines = reactive([
     salePercent: 23,
     total: 400,
   },
-]);
+]);*/
 </script>
 
 <template>
   <div class="order-card">
-    <ul class="order-card__list">
+    <ul class="order-card__list" v-if="orderLines">
       <li class="order-card__item">
         <span class="order-card__heading-text">Товары:</span>
         <span class="order-card__heading-text">Цена:</span>
@@ -59,7 +58,7 @@ const orderLines = reactive([
         v-for="line in orderLines"
       >
         <span class="order-card__info-text">{{ line.count }} x {{ line.title }}, {{ line.weightString }}</span>
-        <span class="order-card__info-text">{{ line.price }} ₽</span>
+        <span class="order-card__info-text">{{ line.initialPrice }} ₽</span>
         <span class="order-card__info-text">{{ line.sale }} ₽</span>
         <span class="order-card__info-text">{{ line.total }} ₽</span>
       </li>
@@ -85,7 +84,7 @@ const orderLines = reactive([
         <div class="order-card__prices">
           <span class="order-card__total-price">{{ line.total }} ₽</span>
           <span class="order-card__initial-price">{{
-            line.sale ? `${line.price} ₽` : ""
+            line.sale ? `${line.initialPrice} ₽` : ""
           }}</span>
           <span class="order-card__sale-percent">{{
             line.sale ? `(-${line.salePercent}%)` : ""
