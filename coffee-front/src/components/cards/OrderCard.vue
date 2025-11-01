@@ -47,7 +47,8 @@ const orderLines = reactive([
 
 <template>
   <div class="order-card">
-    <ul class="order-card__list" v-if="orderLines">
+    <ul class="order-card__list" 
+    v-if="orderLines">
       <li class="order-card__item">
         <span class="order-card__heading-text">Товары:</span>
         <span class="order-card__heading-text">Цена:</span>
@@ -56,6 +57,7 @@ const orderLines = reactive([
       </li>
       <li class="order-card__item"
         v-for="line in orderLines"
+        :key="line.orderId"
       >
         <span class="order-card__info-text">{{ line.count }} x {{ line.title }}, {{ line.weightString }}</span>
         <span class="order-card__info-text">{{ line.initialPrice }} ₽</span>
@@ -242,6 +244,7 @@ const orderLines = reactive([
   &__icon-image {
     @include vp-mobile {
       width: 30px;
+      border-radius: 5px;
     }
   }
 

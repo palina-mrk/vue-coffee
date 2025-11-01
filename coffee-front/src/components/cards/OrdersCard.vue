@@ -1,8 +1,6 @@
 <script setup>
 import OrderCard from "./OrderCard.vue";
 import CustomToggle from "../toggles/CustomToggle.vue";
-import { useCartStore } from "../../stores/cart";
-const cartStore = useCartStore();
 import { useOrdersStore } from "../../stores/orders";
 const ordersStore = useOrdersStore();
 
@@ -19,23 +17,38 @@ const toggleValues = reactive([
   },
 ]);
 const selectedVariant = ref("current");
-
-const orderInfo = reactive({
-  /* информация о заказе */
-  orderID: 1,
-  isPaid: true,
-  isFinished: true,
-  paymentTime: "01.08.2021 12:24:00",
-  deliveryDate: "03.11.2021",
-  /* к оплате: totalSum + deliverySum */
+/*
+const cartOrder = reactive({
+  orderID: 0,
+  isPaid: false,
+  isFinished: false,
+  deliveryWay: cartStore.deliveryWay,
+  deliveryDuring: cartStore.deliveryDuring,
+  /* к оплате: totalSum + deliverySum 
   /* totalSum - итоговая сумма за весь заказ
-   * (товары с уже применёнными всеми скидками) */
-  totalSum: 864,
-  rawSum: 900,
+   * (товары с уже применёнными всеми скидками) 
+  totalSum: cartStore.totalSum,
+  totalSale: cartStore.totalSale,
+  orderSale: cartStore.globalSale,
   orderSale: 15,
-  /* totalSum - сумма за доставку */
-  deliveryPrice: 390,
-});
+  /* totalSum - сумма за доставку 
+  deliveryPrice: cartStore.deliveryPrice,
+  productLines: cartStore.cartItems.map((item) => {
+    return {
+      id: item.id,
+      title: item.title,
+      category: item.category,
+      shortDescription: item.shortDescription,
+      weightString: item.weightString,
+      count: item.count,
+      initialPrice: item.price,
+      sale: item.sale,
+      salePercent: item.salePercent,
+      total: item.total,
+    }
+  })
+})
+*/
 </script>
 
 <template>
@@ -52,6 +65,7 @@ const orderInfo = reactive({
     <ul class="orders-card__list">
       <li 
       v-for="orderInfo in ordersStore.orderItems"
+      :key="orderInfo.id"
       v-show="orderInfo.isFinished == (selectedVariant == 'finished')"
       class="orders-card__item order-wrapper">
         <div class="order-wrapper__timing">

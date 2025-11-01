@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { computed, reactive, watch, ref } from "vue";
+import { reactive, watch } from "vue";
 import { useCartStore } from "./cart";
 
 export const useOrdersStore = defineStore("order", () => {
@@ -37,8 +37,8 @@ export const useOrdersStore = defineStore("order", () => {
         id: item.id,
         title: item.title,
         category: item.category,
-        shortDescription: "Зелёный чай",
-        weightString: "200 г.",
+        shortDescription: item.shortDescription,
+        weightString: item.weightString,
         count: item.count,
         initialPrice: item.price,
         sale: item.sale,
@@ -48,7 +48,7 @@ export const useOrdersStore = defineStore("order", () => {
     })
 
     
-    orderItems.push(currentOrder);
+    orderItems.unshift(currentOrder);
 
     console.log(orderItems);
   }
