@@ -136,11 +136,13 @@ const nextSale = computed(() => {
   }
 
   @include vp-mobile {
-    padding: 30px 20px;
+    padding: 31px 18px 29px;
     margin: 0 auto;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 10px 10px;
     width: calc(100% + 36px);
+    min-height: 156px;
     max-width: calc($max-width-mobile + 36px);
+    gap: 20px;
   }
 
   &__current-sale {
@@ -239,9 +241,9 @@ const nextSale = computed(() => {
     }
 
     @include vp-mobile {
-      width: 100%;
-      max-width: $max-width-mobile;
-      margin: 0 auto 20px;
+      line-height: 17px;
+      font-size: 14px;
+      max-width: 240px;
     }
   }
 
@@ -281,9 +283,8 @@ const nextSale = computed(() => {
     }
 
     @include vp-mobile {
-      width: 100%;
-      max-width: $max-width-mobile;
-      margin: 0 auto 20px;      
+      font-size: 14px;
+      line-height: 16px;
     }
   }
 
@@ -303,8 +304,8 @@ const nextSale = computed(() => {
     }
 
     @include vp-tablet {
-      top: 10px;
-      right: 10px;
+      top: 20px;
+      right: 16px;
     }
   }
 }
@@ -321,7 +322,8 @@ const nextSale = computed(() => {
   }
 
   @include vp-mobile {
-    padding: 0;
+    padding: 22px 18px;
+    gap: 10px;
   }
 }
 </style>
