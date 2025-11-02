@@ -1,0 +1,278 @@
+<script setup>
+import LogoPersonal from "../navigation/LogoPersonal.vue";
+
+defineProps(['isEmpty']);
+
+</script>
+
+<template>
+  <div class="info-card">
+    <div class="info-card__images-block">
+      <picture class="info-card__picture-back">
+        <!--source
+          media="(max-width: 768px)"
+          srcset="../../images/personal/password-corns-mobile.png"
+        />
+        <source
+          media="(max-width: 1348px)"
+          srcset="../../images/personal/password-corns-tablet.png"
+        /-->
+        <source
+          media="(max-width: 1904px)"
+          srcset="../../images/personal/password-corns-laptop.png"
+        />
+        <img
+          class="info-card__image-back"
+          src="../../images/personal/password-corns-desktop.png"
+          width="504"
+          height="334"
+          alt="Зёрна кофе под чашкой"
+        />
+      </picture>
+
+      <picture class="info-card__picture-front">
+        <!--source
+          media="(max-width: 768px)"
+          srcset="../../images/personal/password-coffee-mobile.png"
+        />
+        <source
+          media="(max-width: 1348px)"
+          srcset="../../images/personal/password-coffee-tablet.png"
+        /-->
+        <source
+          media="(max-width: 1904px)"
+          srcset="../../images/personal/password-coffee-laptop.png"
+        />
+        <img
+          class="info-card__image-front"
+          src="../../images/personal/password-coffee-desktop.png"
+          width="460"
+          height="306"
+          alt="Чашка кофе"
+        />
+      </picture>
+    </div>
+    <div class="info-card__info-block" v-show="isEmpty">
+      <logo-personal class="info-card__logo"
+      @leave-page="$emit('close-form')"
+      ></logo-personal>
+      <p class="info-card__summary"
+        >Ваша корзина пуста!</p
+      >
+      <p class="info-card__note"
+        >Для завершения заказа необходимо добавить товаров в корзину</p
+      >
+    </div>
+    <div class="info-block__info-block" v-show="!isEmpty">
+      <logo-personal class="info-block__logo"></logo-personal>
+      <p class="info-card__summary"
+        >Оплата прошла успешно</p
+      >
+      <p class="info-card__note"
+        >Спасибо за Ваш заказ!</p
+      >
+    </div>  
+    <button class="info-card__btn-close btn-icon" type="button" 
+    @click="$emit('close-form')"
+    aria-label="Закрыть"
+        >
+          <svg
+            class="btn-icon__svg"
+            width="26"
+            height="26"
+            aria-hidden="true"
+        >
+          <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
+        </svg>
+  </button>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-black;
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  margin: 0;
+  padding: 20px;
+  user-select: none;
+  cursor: pointer;
+
+  &__svg {
+    color: $color-black;
+    width: 30px;
+    height: 30px;
+  
+    @include vp-laptop {
+      width: 12px;
+      height: 12px;
+    }
+
+    @include vp-tablet {
+      width: 8px;
+      height: 8px;
+    }
+
+    @include vp-mobile {
+      width: 17px;
+      height: 17px;
+    }
+  }
+
+  &:hover {
+    background-color: $color-spanish-gray-c95-25;
+  }
+}
+
+.info-card {
+  position: relative;
+  display: flex;
+  border-radius: 30px;
+  height: 300px;
+  width: fit-content;
+  border-color: $color-platinum;
+  box-shadow: 0 0 50px 0 $color-quick-silver-25;
+  
+
+  &__images-block {
+    border-radius: 30px 0 0 30px;
+    width: 260px;
+    height: 100%;
+    position: relative;
+    background-color: $color-ucla-gold;
+  }
+
+  &__image-back {
+    position: absolute;
+    width: 360px;
+    height: 234px;
+    right: -30px;
+    top: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  &__image-front {
+    position: absolute;
+    width: 220px;
+    height: 160px;
+    right: 0;
+    top: 10px;
+    pointer-events: none;
+    z-index: 2;
+    overflow: visible;
+  }
+
+  &__info-block {
+    background-color: $color-white;
+    border-radius: 0 30px 30px 0;
+    padding: 20px 60px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 540px;
+    height: 100%;
+
+    @include vp-laptop {
+      border-radius: 14px;
+      padding: 35px 40px 30px;
+      width: 382px;
+      min-height: 168px;
+      gap: 12px;
+    }
+
+    @include vp-tablet {
+      border-radius: 8px;
+      width: 260px;
+      min-height: 136px;
+      padding: 22px 28px 23px;
+      gap: 10px;
+    }
+
+    @include vp-mobile {
+      padding: 31px 18px 29px;
+      margin: 0 auto;
+      border-radius: 0 0 10px 10px;
+      width: calc(100% + 36px);
+      min-height: 156px;
+      max-width: calc($max-width-mobile + 36px);
+      gap: 20px;
+    }
+  }
+  
+  &__summary {
+    font-family: $ff-gilroy, sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 37px;
+    color: $color-black;
+    margin: 0 0 20px;
+    padding: 0;
+
+    @include vp-laptop {
+      font-size: 22px;
+      line-height: 27px;
+      max-width: 300px;
+    }
+
+    @include vp-tablet {
+      font-size: 14px;
+      line-height: 16px;
+      max-width: 160px;
+    }
+
+    @include vp-mobile {
+      font-size: 20px;
+      line-height: 25px;
+      max-width: calc(100% - 40px);
+    }
+  }
+
+  &__note {
+    font-family: $ff-gilroy, sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26px;
+    color: $color-black;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+
+    @include vp-laptop {
+      font-size: 12px;
+      line-height: 17px;
+    }
+
+    @include vp-tablet {
+      font-size: 12px;
+      line-height: 14px;
+      max-width: 160px;
+    }
+
+    @include vp-mobile {
+      max-width: unset;
+    }
+  }
+
+  &__btn-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    @include vp-laptop {
+      top: 17px;
+      right: 17px;
+    }
+
+    @include vp-tablet {
+      top: 20px;
+      right: 16px;
+    }
+  }
+}
+</style>

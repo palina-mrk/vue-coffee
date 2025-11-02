@@ -5,6 +5,8 @@ import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import DeliveryForm from "../forms/DeliveryForm.vue";
 import PaymentForm from "../forms/PaymentForm.vue";
 import PromoForm from "../forms/PromoForm.vue";
+import CartInfo from "../cards/CartInfo.vue";
+
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
 
@@ -47,6 +49,7 @@ function goToPayForm() {
           </div>
         </div>
       </div>
+      <cart-info :isEmpty="!cartStore.totalCount"></cart-info>
     </section>
   </main>
 </template>

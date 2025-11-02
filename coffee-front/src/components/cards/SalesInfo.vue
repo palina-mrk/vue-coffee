@@ -31,11 +31,6 @@ const nextSale = computed(() => {
     @click="showInfo = !showInfo">?</button>
   </div>
   <div class="info-block info-block--info" v-show="showInfo">
-    <button class="info-block__button btn-icon" type="button"
-    v-show="cartStore.saleType != 'promo'"
-    @click="showInfo = !showInfo">?</button>
-
-  
     <p class="info-block__not-enough"
       >До скидки 15% не хватает покупок на сумму: 1255 ₽</p>
 
@@ -44,7 +39,16 @@ const nextSale = computed(() => {
       class="info-block__sales-item">Скидка {{cartSale[1]}}% - сумма покупок {{ cartSale[0] }} ₽ </li>
     </ul>
     <button class="info-block__button btn-icon" type="button"
-    @click="showInfo = !showInfo">x</button>
+    @click="showInfo = !showInfo">
+      <svg
+        class="btn-icon__svg"
+        width="33"
+        height="33"
+        aria-hidden="true"
+      >
+        <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
+      </svg>
+    </button>
   </div>
   
 </template>
@@ -58,12 +62,12 @@ const nextSale = computed(() => {
   background-color: $color-white;
   border: none;
   font-weight: 600;
-  line-height: 29px;
+  line-height: 35px;
   font-size: 25px;
   font-family: $ff-gilroy, sans-serif;
   border-radius: 50%;
   margin: 0;
-  padding: 2px;
+  padding: 2px 0 0 2px;
   user-select: none;
   cursor: pointer;
   width: 33px;
@@ -72,25 +76,49 @@ const nextSale = computed(() => {
 
   @include vp-laptop {
     font-size: 18px;
-    line-height: 19px;
+    line-height: 23px;
     width: 23px;
     height: 23px;
   }
 
   @include vp-tablet {
     font-size: 13px;
-    line-height: 17px;
+    line-height: 18px;
     width: 16px;
     height: 16px;
-    padding: 1px;
+    padding: 1px 0 0;
   }
 
   @include vp-mobile {
     width: 33px;
     height: 33px;
-    line-height: 29px;
+    line-height: 33px;
     font-size: 25px;
     padding: 2px;
+  }
+
+  &__svg {
+    width: 18px;
+    height: 18px;
+    transform: translate(0px, 5.5px);
+
+    @include vp-laptop {
+      width: 12px;
+      height: 12px;
+      transform: translate(0.5px,3.5px);
+    }
+
+    @include vp-tablet {
+      width: 8px;
+      height: 8px;
+      transform: translate(0px,3.5px);
+    }
+
+    @include vp-mobile {
+      width: 17px;
+      height: 17px;
+      transform: translate(0.5px, 6px);
+    }
   }
 
   &:hover {
