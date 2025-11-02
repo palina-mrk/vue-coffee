@@ -63,8 +63,8 @@ defineProps(['isEmpty']);
         >Для завершения заказа необходимо добавить товаров в корзину</p
       >
     </div>
-    <div class="info-block__info-block" v-show="!isEmpty">
-      <logo-personal class="info-block__logo"></logo-personal>
+    <div class="info-card__info-block" v-show="!isEmpty">
+      <logo-personal class="info-card__logo"></logo-personal>
       <p class="info-card__summary"
         >Оплата прошла успешно</p
       >
@@ -84,7 +84,7 @@ defineProps(['isEmpty']);
         >
           <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
         </svg>
-  </button>
+    </button>
   </div>
 </template>
 
@@ -102,14 +102,18 @@ defineProps(['isEmpty']);
   user-select: none;
   cursor: pointer;
 
+  @include vp-laptop {
+    padding: 12px;
+  }
+
   &__svg {
     color: $color-black;
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
   
     @include vp-laptop {
-      width: 12px;
-      height: 12px;
+      width: 18px;
+      height: 18px;
     }
 
     @include vp-tablet {
@@ -124,66 +128,84 @@ defineProps(['isEmpty']);
   }
 
   &:hover {
-    background-color: $color-spanish-gray-c95-25;
+    background-color: $color-bright-gray;
   }
 }
 
 .info-card {
-  position: relative;
   display: flex;
   border-radius: 30px;
-  height: 300px;
-  width: fit-content;
-  border-color: $color-platinum;
-  box-shadow: 0 0 50px 0 $color-quick-silver-25;
+  min-height: 470px;
   
+  @include vp-laptop {
+    border-radius: 21px;
+    min-height: 330px;
+  }  
+
+  @include vp-tablet {
+    flex-direction: column-reverse;
+  }
 
   &__images-block {
     border-radius: 30px 0 0 30px;
-    width: 260px;
-    height: 100%;
     position: relative;
+    width: 400px;
     background-color: $color-ucla-gold;
+
+    @include vp-laptop {
+      width: 283px;
+      border-radius: 21px 0 0 21px;
+    }
   }
 
   &__image-back {
     position: absolute;
-    width: 360px;
-    height: 234px;
-    right: -30px;
-    top: 0;
     pointer-events: none;
     z-index: 1;
     overflow: visible;
+    width: 504px;
+    height: 334px;
+    right: -53px;
+    top: 1px;
+
+    @include vp-laptop {
+      width: 356px;
+      height: 237px;
+      right: -38px;
+      top: 5px;
+    }
   }
 
   &__image-front {
     position: absolute;
-    width: 220px;
-    height: 160px;
-    right: 0;
-    top: 10px;
     pointer-events: none;
     z-index: 2;
     overflow: visible;
+    width: 320px;
+    right: -26px;
+    top: -14px;
+
+    @include vp-laptop {
+      width: 236px;
+      height: 216px;
+      right: -30px;
+      top: -10px;
+    }
   }
 
   &__info-block {
     background-color: $color-white;
     border-radius: 0 30px 30px 0;
-    padding: 20px 60px 60px;
+    padding: 60px 150px 130px;
+    width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 540px;
-    height: 100%;
 
     @include vp-laptop {
-      border-radius: 14px;
-      padding: 35px 40px 30px;
-      width: 382px;
-      min-height: 168px;
-      gap: 12px;
+      border-radius: 0 21px 21px 0;
+      padding: 30px 117px 94px;
+      width: 580px;
     }
 
     @include vp-tablet {
@@ -204,20 +226,32 @@ defineProps(['isEmpty']);
       gap: 20px;
     }
   }
+
+  &__logo {
+    width: 155px;
+    height: 71px;
+    margin: 0 auto 42px;
+
+    @include vp-laptop {
+      width: 109px;
+      height: 51px;
+      margin: 0 auto 30px;
+    }
+  }
   
   &__summary {
     font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
-    font-size: 30px;
-    line-height: 37px;
+    font-size: 40px;
+    line-height: 50px;
     color: $color-black;
-    margin: 0 0 20px;
+    margin: 0 auto 40px;
     padding: 0;
+    text-align: center;
 
     @include vp-laptop {
-      font-size: 22px;
-      line-height: 27px;
-      max-width: 300px;
+      font-size: 28px;
+      line-height: 35px;
     }
 
     @include vp-tablet {
@@ -235,17 +269,17 @@ defineProps(['isEmpty']);
 
   &__note {
     font-family: $ff-gilroy, sans-serif;
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 26px;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 44px;
     color: $color-black;
     text-align: center;
     margin: 0;
     padding: 0;
 
     @include vp-laptop {
-      font-size: 12px;
-      line-height: 17px;
+      font-size: 24px;
+      line-height: 30px;
     }
 
     @include vp-tablet {
@@ -261,12 +295,12 @@ defineProps(['isEmpty']);
 
   &__btn-close {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 30px;
+    right: 30px;
 
     @include vp-laptop {
-      top: 17px;
-      right: 17px;
+      top: 35px;
+      right: 35px;
     }
 
     @include vp-tablet {

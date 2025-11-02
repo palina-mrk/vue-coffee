@@ -8,18 +8,20 @@ import PromoForm from "../forms/PromoForm.vue";
 import CartInfo from "../cards/CartInfo.vue";
 
 import { useCartStore } from "../../stores/cart";
+import {ref} from 'vue'
 const cartStore = useCartStore();
+const showInfo = ref(false);
 
 function goToPayForm() {
   if(!cartStore.totalCount){
-    console.log('cart is empty!');
+    showInfo.value = true;
     return;
   }
-  
-  window.scrollTo({
-    top: document.getElementById('payment-form').getBoundingClientRect().top + window.pageYOffset - 160,
-    behavior: 'smooth'
-  });
+  else
+    window.scrollTo({
+      top: document.getElementById('payment-form').getBoundingClientRect().top + window.pageYOffset - 160,
+      behavior: 'smooth'
+    });
 
 }
 </script>
@@ -49,7 +51,12 @@ function goToPayForm() {
           </div>
         </div>
       </div>
-      <cart-info :isEmpty="!cartStore.totalCount"></cart-info>
+      <cart-info 
+      class="cart__info-card"
+      :isEmpty="!cartStore.totalCount"
+      v-show="showInfo"
+      @close-form="showInfo = false"
+      ></cart-info>
     </section>
   </main>
 </template>
@@ -138,6 +145,26 @@ function goToPayForm() {
       gap: 20px;
       width: calc($max-width-mobile + 36px);
       left: -18px;
+    }
+  }
+
+  &__info-card {
+    position: fixed;
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -250px;
+      background-color: $color-black-302;
+      z-index: -1;
     }
   }
 }
