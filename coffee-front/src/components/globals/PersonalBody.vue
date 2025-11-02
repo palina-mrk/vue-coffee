@@ -134,10 +134,11 @@ const actionsInfo = reactive([
 
   &__sales-info {
     width: 540px;
-    
 
     @include vp-mobile {
-      width: 100%;
+      width: calc(100% + 36px);
+      max-width: calc($max-width-mobile + 36px);
+      left: -18px;
     }
   }
 

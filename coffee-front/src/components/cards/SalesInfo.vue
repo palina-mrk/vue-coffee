@@ -52,39 +52,45 @@ const nextSale = computed(() => {
 <style lang="scss" scoped>
 .btn-icon {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   color: $color-black;
   background-color: $color-white;
   border: none;
   font-weight: 600;
-  line-height: 30px;
+  line-height: 29px;
   font-size: 25px;
   font-family: $ff-gilroy, sans-serif;
   border-radius: 50%;
   margin: 0;
-  padding: 6px 0 0 4px;
+  padding: 2px;
   user-select: none;
   cursor: pointer;
   width: 33px;
   height: 33px;
+  text-align: bottom;
 
   @include vp-laptop {
     font-size: 18px;
-    line-height: 21px;
+    line-height: 19px;
     width: 23px;
     height: 23px;
-    padding: 6px 0 0 4px;
   }
 
   @include vp-tablet {
-    font-size: 25px;
-    line-height: 30px;
+    font-size: 13px;
+    line-height: 17px;
+    width: 16px;
+    height: 16px;
+    padding: 1px;
   }
 
   @include vp-mobile {
-    font-size: 18px;
-    line-height: 22px;
+    width: 33px;
+    height: 33px;
+    line-height: 29px;
+    font-size: 25px;
+    padding: 2px;
   }
 
   &:hover {
@@ -122,13 +128,19 @@ const nextSale = computed(() => {
   }
 
   @include vp-tablet {
-    border-radius: 10px;
-    padding: 40px 34px 60px;
+    border-radius: 8px;
+    width: 260px;
+    min-height: 136px;
+    padding: 22px 28px 23px;
+    gap: 10px;
   }
 
   @include vp-mobile {
-    padding: 30px 18px 35px;
-    width: 100%;
+    padding: 30px 20px;
+    margin: 0 auto;
+    border-radius: 0 0 8px 8px;
+    width: calc(100% + 36px);
+    max-width: calc($max-width-mobile + 36px);
   }
 
   &__current-sale {
@@ -139,22 +151,24 @@ const nextSale = computed(() => {
     color: $color-white;
     margin: 0;
     padding: 0;
+    max-width: 450px;
 
     @include vp-laptop {
       font-size: 22px;
       line-height: 27px;
+      max-width: 300px;
     }
 
     @include vp-tablet {
-      font-size: 30px;
-      line-height: 37px;
-      margin: 0 0 10px;
+      font-size: 14px;
+      line-height: 16px;
+      max-width: 160px;
     }
 
     @include vp-mobile {
       font-size: 20px;
       line-height: 25px;
-      margin: 0 0 11px;
+      max-width: calc(100% - 40px);
     }
   }
 
@@ -173,13 +187,7 @@ const nextSale = computed(() => {
     }
 
     @include vp-tablet {
-      font-size: 20px;
-      line-height: 24px;
-    }
-
-    @include vp-mobile {
-      font-size: 14px;
-      line-height: 16px;
+      max-width: 160px;
     }
   }
 
@@ -200,15 +208,11 @@ const nextSale = computed(() => {
     @include vp-tablet {
       font-size: 12px;
       line-height: 14px;
-      margin: 0 auto;
-      max-width: $max-width-tablet;
-      width: 100%;
+      max-width: 160px;
     }
 
     @include vp-mobile {
-      font-size: 10px;
-      line-height: 12px;
-      max-width: $max-width-mobile;
+      max-width: unset;
     }
   }
 
@@ -219,11 +223,25 @@ const nextSale = computed(() => {
     line-height: 19px;
     color: $color-black;
     padding: 0;
-    margin: 0;
+    margin: 0; 
+    max-width: 450px;
 
     @include vp-laptop {
       font-size: 12px;
       line-height: 13px;
+      max-width: 300px;
+    }
+
+    @include vp-tablet {
+      font-size: 12px;
+      line-height: 15px;
+      max-width: 150px;
+    }
+
+    @include vp-mobile {
+      width: 100%;
+      max-width: $max-width-mobile;
+      margin: 0 auto 20px;
     }
   }
 
@@ -237,6 +255,14 @@ const nextSale = computed(() => {
 
     @include vp-laptop {
       gap: 7px;
+    }
+
+    @include vp-tablet {
+      gap: 6px;
+    }
+
+    @include vp-mobile {
+      gap: 10px;
     }
   }
 
@@ -252,6 +278,12 @@ const nextSale = computed(() => {
     @include vp-laptop {
       font-size: 12px;
       line-height: 13px;
+    }
+
+    @include vp-mobile {
+      width: 100%;
+      max-width: $max-width-mobile;
+      margin: 0 auto 20px;      
     }
   }
 
@@ -269,6 +301,11 @@ const nextSale = computed(() => {
       top: 17px;
       right: 17px;
     }
+
+    @include vp-tablet {
+      top: 10px;
+      right: 10px;
+    }
   }
 }
 
@@ -276,7 +313,15 @@ const nextSale = computed(() => {
   padding: 52px 60px 62px;
 
   @include vp-laptop {
-    padding: 40px 30px 39px;
+    padding: 41px 30px 38px;
+  }
+
+  @include vp-tablet {
+    padding: 22px;
+  }
+
+  @include vp-mobile {
+    padding: 0;
   }
 }
 </style>
