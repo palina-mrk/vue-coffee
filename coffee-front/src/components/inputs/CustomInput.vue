@@ -1,9 +1,9 @@
 <script setup>
-const props = defineProps(["modelValue", "inputData"]);
+defineProps(["modelValue", "inputData", "isError"]);
 </script>
 
 <template>
-  <div class="custom-input">
+  <div :class="{'custom-input': true, 'custom-input--error': isError}">
     <label
       class="custom-input__label visually-hidden"
       :for="inputData.id"
@@ -19,7 +19,7 @@ const props = defineProps(["modelValue", "inputData"]);
     />
     <span
       v-if="inputData.error"
-      class="custom-input__info custom-input__info--error"
+      class="custom-input__info"
       >{{ inputData.error ? inputData.error : "" }}</span
     >
   </div>
@@ -50,7 +50,7 @@ const props = defineProps(["modelValue", "inputData"]);
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       padding: 15px 40px;
@@ -95,7 +95,7 @@ const props = defineProps(["modelValue", "inputData"]);
     color: $color-ucla-gold;
     font-weight: 500;
     font-size: 16px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     line-height: 19px;
     text-align: right;
     display: none;
@@ -107,23 +107,36 @@ const props = defineProps(["modelValue", "inputData"]);
     }
 
     @include vp-tablet {
-      position: unset;
+      z-index: 1;
       font-size: 12px;
       line-height: 14px;
-      bottom: -17px;
+      bottom: -10px;
     }
 
     @include vp-mobile {
       font-size: 10px;
       line-height: 12px;
-      bottom: -15px;
+      bottom: -10px;
     }
   }
 }
 
 .custom-input--error {
-  .custom-input__info--error {
+  .custom-input__info {
     display: flex;
+  }
+
+  .custom-input__field {
+
+    @include vp-tablet {
+      padding: 22px 50px 18px;
+      margin: 0 0 4px;
+    }
+
+    @include vp-mobile {
+      padding: 16px 30px 12px;
+      margin: 0 0 4px;
+    }
   }
 }
 

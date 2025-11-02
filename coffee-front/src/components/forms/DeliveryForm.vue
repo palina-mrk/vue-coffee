@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import { reactive, computed, defineEmits } from "vue";
 import CustomInput from "../inputs/CustomInput.vue";
 
 const contactData = reactive([
@@ -8,6 +8,7 @@ const contactData = reactive([
     name: "name",
     placeholder: "Имя",
     error: "Это обязательное поле",
+    isError: false,
     value: "",
   },
   {
@@ -15,6 +16,7 @@ const contactData = reactive([
     name: "surname",
     placeholder: "Фамилия",
     error: "Это обязательное поле",
+    isError: false,
     value: "",
   },
   {
@@ -23,6 +25,7 @@ const contactData = reactive([
     name: "phone",
     placeholder: "Телефон",
     error: "Это обязательное поле",
+    isError: false,
     value: "",
   },
   {
@@ -31,11 +34,13 @@ const contactData = reactive([
     type: "email",
     placeholder: "Email",
     error: "Это обязательное поле",
+    isError: false,
     value: "",
   },
   {
     id: "user-company",
     name: "company",
+    isError: false,
     placeholder: "Название компании (необязательно)",
     value: "",
   },
@@ -46,6 +51,7 @@ const addressData = reactive([
     name: "country",
     placeholder: "Страна",
     error: "Это обязательное поле",
+    isError: false,
     value: "",
   },
   {
@@ -53,6 +59,7 @@ const addressData = reactive([
     name: "city",
     placeholder: "Город",
     error: "Это обязательное поле",
+    isError: false,
     value: "",
   },
   {
@@ -60,6 +67,7 @@ const addressData = reactive([
     name: "street-home",
     placeholder: "Улица, дом",
     error: "Это обязательное поле",
+    isError: false,
     value: "",
   },
   {
@@ -68,15 +76,33 @@ const addressData = reactive([
     type: "number",
     placeholder: "Почтовый индекс",
     error: "Это обязательное поле",
+    isError: false,
     value: "",
   },
   {
     id: "user-company",
     name: "company",
+    isError: false,
     placeholder: "Комментарий к заказу (необязательно)",
     value: "",
   },
 ]);
+
+const isValid = computed(() => 
+  !Boolean(contactData.find(el => el.error && !el.value.length ) || addressData.find(el => el.error && el.value.length ))
+);
+
+const emit = defineEmits();
+function checkInput() {
+  contactData.forEach(el => 
+    el.isError = el.error && !el.value.length
+  );
+  addressData.forEach(el => 
+    el.isError = el.error && !el.value.length
+  );
+  if(isValid.value)
+    emit('is-filled');
+}
 </script>
 
 <template>
@@ -89,6 +115,7 @@ const addressData = reactive([
         <custom-input
           v-for="inputData in contactData"
           :inputData="inputData"
+          :isError="inputData.isError"
           v-model="inputData.value"
           @updated:modelValue="inputData.value = $event"
         ></custom-input>
@@ -100,12 +127,16 @@ const addressData = reactive([
         <custom-input
           v-for="inputData in addressData"
           :inputData="inputData"
+          :isError="inputData.isError"
           v-model="inputData.value"
           @updated:modelValue="inputData.value = $event"
+          @focus="inputData.isError = false"
         ></custom-input>
       </fieldset>
     </div>
-    <button class="delivery-form__button btn-cornsilk" type="button">
+    <button class="delivery-form__button btn-cornsilk"
+    @click="checkInput" 
+    type="button">
       Рассчитать доставку
     </button>
   </div>

@@ -5,6 +5,10 @@ import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import DeliveryForm from "../forms/DeliveryForm.vue";
 import PaymentForm from "../forms/PaymentForm.vue";
 import PromoForm from "../forms/PromoForm.vue";
+
+function goToPayForm() {
+
+}
 </script>
 
 <template>
@@ -20,7 +24,9 @@ import PromoForm from "../forms/PromoForm.vue";
           <h1 class="visually-hidden">Корзина</h1>
           <div class="cart__top-forms">
             <cart-card class="cart__form"></cart-card>
-            <delivery-form class="cart__form"></delivery-form>
+            <delivery-form class="cart__form"
+            @isFilled="goToPayForm"
+            ></delivery-form>
           </div>
           <div class="cart__bottom-forms">
             <promo-form class="cart__promo-form"></promo-form>

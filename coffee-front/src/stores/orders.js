@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { reactive, watch } from "vue";
+import { reactive, watch, computed } from "vue";
 import { useCartStore } from "./cart";
 
 export const useOrdersStore = defineStore("order", () => {
@@ -11,6 +11,15 @@ export const useOrdersStore = defineStore("order", () => {
   const orderItems = reactive(
     JSON.parse(localStorage.getItem("orderItems") || "[]"),
   );
+
+  orderItems.forEach((orderItem) => {
+    /* строка для тестирования завершенных заказов
+    специально устанавливаем старую дату, чтобы сразу пошли в завершенные
+    orderItem.deliveryObjectDate = 1762062460456;*/ 
+    const ts = Date.now();
+    orderItem.isFinished = (orderItem.deliveryObjectDate < ts);
+    console.log(orderItem);
+  });
 
   /** до оплаты заказа мы можем считывать инфу из корзины 
    * после оплаты всё уже "заморожено": меняться может только isFinished
@@ -26,12 +35,12 @@ export const useOrdersStore = defineStore("order", () => {
     currentOrder.isPaid = true;
     currentOrder.isFinished = false;
     currentOrder.paymentTime = paymentTime;
+    currentOrder.deliveryObjectDate = date;
     currentOrder.deliveryDate = deliveryDate;
     currentOrder.totalSum = cartStore.totalSum;     /* сумма без доставки*/
     currentOrder.totalSale = cartStore.totalSale;   /** суммарная скидка */
     currentOrder.globalSale = cartStore.globalSale; /* процент */
     currentOrder.deliveryPrice = cartStore.deliveryPrice;  /* за доставку */
-    currentOrder.timeOut = setTimeout(() => currentOrder.isFinished = true, 1000*3600*24*(cartStore.deliveryDuring + 1));
     currentOrder.productLines = cartStore.cartItems.map((item) => {
       return {
         id: item.id,
@@ -46,12 +55,25 @@ export const useOrdersStore = defineStore("order", () => {
         total: item.total,
       }
     })
-
-    
     orderItems.unshift(currentOrder);
-
-    console.log(orderItems);
   }
+
+  function clearFinished () {
+    const newItems = orderItems.filter(item => !item.isFinished);
+    orderItems.length = 0; 
+    newItems.forEach(item => orderItems.unshift(item));
+  }
+
+  function clearAll () {
+    orderItems.length = 0;
+  }
+
+  const finishedCount = computed(() => orderItems.filter((item) => item.isFinished).length);
+
+  function isLastOfSaved(state, orderID) {
+    const isFinished = (state == 'finished');
+    return orderItems.findLast((item) => item.isFinished == isFinished)?.orderID == orderID;
+  } 
 
   watch(orderItems, () => {
     localStorage.setItem("orderItems", JSON.stringify(orderItems));
@@ -60,5 +82,9 @@ export const useOrdersStore = defineStore("order", () => {
   return {
     orderItems,
     saveOrder,
+    clearFinished,
+    clearAll,
+    finishedCount,
+    isLastOfSaved,
   };
 });

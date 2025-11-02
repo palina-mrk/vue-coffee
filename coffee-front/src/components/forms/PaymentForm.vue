@@ -15,9 +15,11 @@ const deliveryWays = reactive({
   fieldsCount: cartStore.deliveryPrices.length,
 });
 
+
 function payOrder() {
   ordersStore.saveOrder();
   cartStore.clearCart();
+  scrollTo(0,0);
 }
 </script>
 

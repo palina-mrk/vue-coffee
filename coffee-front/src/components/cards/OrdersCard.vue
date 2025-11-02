@@ -17,6 +17,11 @@ const toggleValues = reactive([
   },
 ]);
 const selectedVariant = ref("current");
+
+function clearFinished() {
+  ordersStore.clearFinished();
+  sccrollTo(0, 0);
+}
 /*
 const cartOrder = reactive({
   orderID: 0,
@@ -117,12 +122,88 @@ const cartOrder = reactive({
           </li>
         </ul>
         
+        <div class="order-wrapper__btn"
+        v-if="ordersStore.isLastOfSaved(selectedVariant, orderInfo.orderID)">
+          <button
+            @click="clearFinished"
+            class="order-wrapper__clear-button btn-cornsilk"
+            v-show="selectedVariant == 'finished'"
+            :disabled="!(ordersStore.finishedCount > 0)">
+            Удалить завершённые
+          </button>
+          <!--button
+            @click="ordersStore.clearAll()"
+            class="order-wrapper__clear-button btn-cornsilk"
+            v-show="selectedVariant == 'current'"
+            :disabled="!(ordersStore.orderItems.length > 0)">
+            Удалить все
+          </button-->
+        </div>
       </li>
+
+
     </ul>
+
+    
   </div>
 </template>
 
 <style lang="scss" scoped>
+
+.btn-cornsilk {
+  font-family: $ff-gilroy, sans-serif;
+  margin: 0;
+  padding: 10px;
+  background-color: $color-cornsilk;
+  border-color: $color-ucla-gold;
+  border-style: solid;
+  border-width: 1px;
+  color: $color-ucla-gold;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  align-items: center;
+  border-radius: 5px;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+
+  @include vp-laptop {
+    padding: 7px;
+    border-width: 0.7px;
+    border-radius: 3.5px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  @include vp-tablet {
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  @include vp-mobile {
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 6px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-ucla-gold;
+  }
+
+  &[disabled] {
+    border-color: $color-antiflash-white-f0;
+    background-color: $color-lotion;
+    color: $color-antiflash-white-f0;
+    cursor: unset;
+  }
+}
 
 .orders-card {
   color: $color-raising-black;
@@ -157,8 +238,7 @@ const cartOrder = reactive({
 
   @include vp-mobile {
     padding: 0;
-    width: 100%;
-    box-shadow: 1px 1px 10px -2px $color-quick-silver-25;
+    box-shadow: 0px 0px 20px -20px $color-quick-silver-25;
     border-style: none solid none none;
     border-radius: 0 0 10px 10px;
     background-color: $color-white;
@@ -224,7 +304,7 @@ const cartOrder = reactive({
 
     @include vp-mobile {
       width: 100%;
-      margin: 0 auto;
+      margin: 0 auto 25px;
       max-width: $max-width-mobile;
     }
   }
@@ -258,21 +338,25 @@ const cartOrder = reactive({
 
     @include vp-mobile {
       padding: 0 17px 25px;
-      width: 100%;
-      margin: 25px auto 0;
+      margin: 0 auto;
       border-radius: 0 0 10px 10px;
       border-width: 0 0.4px 0.4px 0;
       border-style: none none solid none;
       border-color: $color-platinum;
       box-shadow: 7px 10px 15px -5px $color-quick-silver-25;
     }
+
+    &:not(:first-child) {
+      @include vp-mobile {
+        margin: 25px auto 0;
+      }
+    }
   }
 
-
+/*
   &__item::before {
     @include vp-mobile {
       position: absolute;
-
       height: 1px;
       left: 10px;
       right: 10px;
@@ -280,7 +364,7 @@ const cartOrder = reactive({
       background-color: $color-platinum;
       box-shadow: 20px 20px 50px 20px $color-quick-silver-25;
     }
-  }
+  }*/
 
   /* рисуем черту между элементами списка для mobile 
   &__item:not(:last-child) {
@@ -502,6 +586,25 @@ const cartOrder = reactive({
       padding: 0 3px 0 0;
       position: relative;
     }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+
+    @include vp-mobile {
+      max-width: $max-width-mobile;
+      margin: 0 auto;
+    }
+  }
+
+  &__clear-button {
+    max-width: fit-content;
+    align-self: right;
+    max-width: fit-content;
+  }
+
 /*
     &::before {
       @include vp-mobile {
@@ -513,8 +616,8 @@ const cartOrder = reactive({
         left: -2px;
         bottom: 6px;
       }
-    }*/
-  }
+    }
+  }*/
 }
 
 </style>

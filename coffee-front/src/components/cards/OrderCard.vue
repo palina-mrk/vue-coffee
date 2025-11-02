@@ -1,6 +1,6 @@
 <script setup>
-const props = defineProps(['orderLines', 'orderSale'])
-console.log(props.orderLines)
+defineProps(['orderLines', 'orderSale'])
+
 /**
 const orderSale = ref(15);
 
