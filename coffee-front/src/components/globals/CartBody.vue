@@ -155,6 +155,10 @@ function goToPayForm() {
     transform: translateX(-50%);
     z-index: 5;
 
+    @include vp-tablet {
+      top: 80px;
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -162,7 +166,7 @@ function goToPayForm() {
       height: 100vh;
       left: 50%;
       transform: translateX(-50%);
-      top: -250px;
+      top: -80px;
       background-color: $color-black-302;
       z-index: -1;
     }

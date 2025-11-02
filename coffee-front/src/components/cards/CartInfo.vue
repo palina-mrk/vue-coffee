@@ -12,11 +12,11 @@ defineProps(['isEmpty']);
         <!--source
           media="(max-width: 768px)"
           srcset="../../images/personal/password-corns-mobile.png"
-        />
+        /-->
         <source
           media="(max-width: 1348px)"
-          srcset="../../images/personal/password-corns-tablet.png"
-        /-->
+          srcset="../../images/personal/password-corns-desktop.png"
+        />
         <source
           media="(max-width: 1904px)"
           srcset="../../images/personal/password-corns-laptop.png"
@@ -34,11 +34,11 @@ defineProps(['isEmpty']);
         <!--source
           media="(max-width: 768px)"
           srcset="../../images/personal/password-coffee-mobile.png"
-        />
+        /-->
         <source
           media="(max-width: 1348px)"
-          srcset="../../images/personal/password-coffee-tablet.png"
-        /-->
+          srcset="../../images/personal/password-coffee-desktop.png"
+        />
         <source
           media="(max-width: 1904px)"
           srcset="../../images/personal/password-coffee-laptop.png"
@@ -144,6 +144,7 @@ defineProps(['isEmpty']);
 
   @include vp-tablet {
     flex-direction: column-reverse;
+    width: calc($max-width-tablet + 68px);
   }
 
   &__images-block {
@@ -155,6 +156,12 @@ defineProps(['isEmpty']);
     @include vp-laptop {
       width: 283px;
       border-radius: 21px 0 0 21px;
+    }
+
+    @include vp-tablet {
+      width: 100%;
+      border-radius: 0 0 10px 10px;
+      height: 253px;
     }
   }
 
@@ -174,6 +181,16 @@ defineProps(['isEmpty']);
       right: -38px;
       top: 5px;
     }
+
+    @include vp-tablet {
+      width: 504px;
+      height: 334px;
+      right: unset;
+      rotate: 150deg;
+      left: 5px;
+      bottom: 30px;
+      top: unset;
+    }
   }
 
   &__image-front {
@@ -181,6 +198,7 @@ defineProps(['isEmpty']);
     pointer-events: none;
     z-index: 2;
     overflow: visible;
+    height: 308px;
     width: 320px;
     right: -26px;
     top: -14px;
@@ -190,6 +208,14 @@ defineProps(['isEmpty']);
       height: 216px;
       right: -30px;
       top: -10px;
+    }
+
+    @include vp-tablet {
+      height: 308px;
+      width: 320px;
+      right: unset;
+      left: 80px;
+      top: -80px;
     }
   }
 
@@ -209,10 +235,10 @@ defineProps(['isEmpty']);
     }
 
     @include vp-tablet {
-      border-radius: 8px;
-      width: 260px;
-      min-height: 136px;
-      padding: 22px 28px 23px;
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      min-height: 320px;
+      padding: 22px 28px 43px;
       gap: 10px;
     }
 
@@ -237,6 +263,10 @@ defineProps(['isEmpty']);
       height: 51px;
       margin: 0 auto 30px;
     }
+
+    @include vp-tablet {
+      display: none;
+    }
   }
   
   &__summary {
@@ -255,15 +285,14 @@ defineProps(['isEmpty']);
     }
 
     @include vp-tablet {
-      font-size: 14px;
-      line-height: 16px;
-      max-width: 160px;
+      font-size: 35px;
+      line-height: 40px;
+      margin: 0 auto 20px;
     }
 
     @include vp-mobile {
       font-size: 20px;
       line-height: 25px;
-      max-width: calc(100% - 40px);
     }
   }
 
@@ -283,9 +312,8 @@ defineProps(['isEmpty']);
     }
 
     @include vp-tablet {
-      font-size: 12px;
-      line-height: 14px;
-      max-width: 160px;
+      font-size: 28px;
+      line-height: 36px;
     }
 
     @include vp-mobile {
