@@ -1,6 +1,6 @@
 <script setup>
 import BgPersonal from "../backgrounds/BgPersonal.vue";
-
+import SalesInfo from "../cards/SalesInfo.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import ActionCard from "../cards/ActionCard.vue";
 import OrdersCard from "../cards/OrdersCard.vue";
@@ -36,7 +36,12 @@ const actionsInfo = reactive([
 
         <custom-breadcrumbs class="personal__breadcrumbs"></custom-breadcrumbs>
 
-        <div class="personal__forms-wrapper">
+        <div class="personal__top-forms">
+          <div class="personal__user-form"></div>
+          <sales-info class="personal__sales-info"></sales-info>
+        </div>
+
+        <div class="personal__bottom-forms">
           <orders-card></orders-card>
         </div>
 
@@ -94,7 +99,49 @@ const actionsInfo = reactive([
     }
   }
 
-  &__forms-wrapper {
+  &__top-forms {
+    border: 1px solid #E4E4E4;
+    box-shadow: 0px 0px 50px rgba(163, 163, 163, 0.25);
+    border-radius: 20px;
+    display: flex;
+    justify-content: end;
+    margin: 0 0 40px;
+
+    @include vp-laptop {
+      margin: 0 0 30px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 20px;
+    }
+
+    @include vp-mobile {
+      flex-direction: column;
+      margin: 0 auto 40px;
+      position: relative;
+      width: calc(100% + 36px);
+      max-width: calc($max-width-mobile + 36px);
+      left: -18px;
+    }
+  }
+
+  &__user-form{
+  
+
+    @include vp-mobile {
+    }
+  }
+
+  &__sales-info {
+    width: 540px;
+    
+
+    @include vp-mobile {
+      width: 100%;
+    }
+  }
+
+  &__bottom-forms {
     width: 100%;
     display: flex;
     flex-direction: column;

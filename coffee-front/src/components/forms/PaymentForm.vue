@@ -17,6 +17,11 @@ const deliveryWays = reactive({
 
 
 function payOrder() {
+  if(!cartStore.totalCount){
+    console.log('cart is empty!');
+    return;
+  }
+  
   ordersStore.saveOrder();
   cartStore.clearCart();
   scrollTo(0,0);

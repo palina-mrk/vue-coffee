@@ -89,10 +89,11 @@ const addressData = reactive([
 ]);
 
 const isValid = computed(() => 
-  !Boolean(contactData.find(el => el.error && !el.value.length ) || addressData.find(el => el.error && el.value.length ))
+  Boolean(!contactData.find(el => el.error && !el.value.length ) || !addressData.find(el => el.error && el.value.length ))
 );
 
 const emit = defineEmits();
+
 function checkInput() {
   contactData.forEach(el => 
     el.isError = el.error && !el.value.length
@@ -100,8 +101,10 @@ function checkInput() {
   addressData.forEach(el => 
     el.isError = el.error && !el.value.length
   );
+
   if(isValid.value)
     emit('is-filled');
+  
 }
 </script>
 
@@ -135,7 +138,7 @@ function checkInput() {
       </fieldset>
     </div>
     <button class="delivery-form__button btn-cornsilk"
-    @click="checkInput" 
+    @click="checkInput()" 
     type="button">
       Рассчитать доставку
     </button>

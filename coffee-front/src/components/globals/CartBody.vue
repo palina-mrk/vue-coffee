@@ -5,8 +5,19 @@ import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import DeliveryForm from "../forms/DeliveryForm.vue";
 import PaymentForm from "../forms/PaymentForm.vue";
 import PromoForm from "../forms/PromoForm.vue";
+import { useCartStore } from "../../stores/cart";
+const cartStore = useCartStore();
 
 function goToPayForm() {
+  if(!cartStore.totalCount){
+    console.log('cart is empty!');
+    return;
+  }
+  
+  window.scrollTo({
+    top: document.getElementById('payment-form').getBoundingClientRect().top + window.pageYOffset - 160,
+    behavior: 'smooth'
+  });
 
 }
 </script>
@@ -25,12 +36,14 @@ function goToPayForm() {
           <div class="cart__top-forms">
             <cart-card class="cart__form"></cart-card>
             <delivery-form class="cart__form"
-            @isFilled="goToPayForm"
+            @is-filled="goToPayForm"
             ></delivery-form>
           </div>
           <div class="cart__bottom-forms">
             <promo-form class="cart__promo-form"></promo-form>
-            <payment-form class="cart__payment-form cart__form"></payment-form>
+            <payment-form 
+            class="cart__payment-form cart__form"
+            id="payment-form"></payment-form>
           </div>
         </div>
       </div>
