@@ -1,19 +1,64 @@
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
+import { useUserInfoStore } from "../../stores/user-info";
+const userInfoStore =  useUserInfoStore();
 
 const userInfo = reactive({
-  name: "Иван Иванов",
-  email: "ivan.ivanov@gmail.com",
-  tel: "+ 7 (909) 909 99 99",
-  password: "password",
-})
+  name: userInfoStore.userInfo.name,
+  email: userInfoStore.userInfo.email,
+  tel: userInfoStore.userInfo.tel,
+  password: userInfoStore.userInfo.password,
+}) 
+const emptyFields = reactive({
+  name: false,
+  email: false,
+  tel: false,
+  password: false,
+})  
+
+function setEmpties () {
+  emptyFields.name = (userInfo.name.length == 0);
+  emptyFields.email = (userInfo.email.length == 0);
+  emptyFields.tel = (userInfo.tel.length == 0);
+  emptyFields.password = (userInfo.password.length == 0);
+}
+const seePassword = ref(false);
+const showInput = ref(false);
+const isValid = computed(() => 
+  (userInfo.name.length > 0) &&
+  (userInfo.email.length > 0) &&
+  (userInfo.tel.length > 0) &&
+  (userInfo.password.length > 0)
+)
+
+function saveInfo() {
+  if(!showInput.value)
+    showInput.value = true;
+  else if(isValid.value) {
+    showInput.value = false;
+    userInfoStore.setUserInfo(userInfo);
+  } else 
+    setEmpties();
+}
 </script>
 
 <template>
   <div class="users-card">
     <h2 class="users-card__heading visually-hidden">Информация о пользователе</h2>
 
-    <p class="users-card__hello-text--mobile">{{ userInfo.name }}, здравствуйте!</p>
+    <p class="users-card__hello-text--mobile"
+      v-show="!showInput"
+    >{{ userInfo.name }}, здравствуйте!</p>
+    <div 
+      :class="{'users-card__hello-input--mobile': true, 'little-input': true, 'little-input--error': emptyFields.name}"
+    v-show="showInput">
+        <label class="little-input__label visually-hidden" for="user-name">Имя и фамилия</label>
+        <input class="little-input__field" type="text" v-model="userInfo.name" 
+        @click="emptyFields.name = false"
+        id="user-name">
+        <span class="little-input__error">это поле должно быть заполнено</span>
+      </div>
+
 
     <div class="users-card__avatar-wrapper">
       <picture class="users-card__avatar-picture">
@@ -40,46 +85,71 @@ const userInfo = reactive({
 
       <button
         class="users-card__change-btn btn-cornsilk"
+        type="button"
+        @click="saveInfo"
       >
-        Изменить
+        {{ showInput ? 'Сохранить' : 'Изменить' }}
       </button>
     </div>
 
 
     <div class="users-card__hello-wrapper">
-      <p class="users-card__hello-text">{{ userInfo.name }}, здравствуйте!</p>
-      <div class="large-input">
+      <p class="users-card__hello-text"
+      v-show="!showInput"
+      >{{ userInfo.name }}, здравствуйте!</p>
+      <div 
+      :class="{'users-card__hello-input': true, 'little-input': true, 'little-input--error': emptyFields.name}"
+      v-show="showInput"
+      >
         <label class="little-input__label visually-hidden" for="user-name">Имя и фамилия</label>
-        <input class="large-input__field" type="text" v-model="userInfo.name" id="user-name">
-        <span class="large-input__error">это поле должно быть заполнено</span>
-        <label class="little-input__label visually-hidden" for="user-hello">Приветствие</label>
-        <input class="large-input__disabled" type="text" :value="userInfo.name + ', здравствуйте!'" id="user-hello">
+        <input class="little-input__field" type="text" v-model="userInfo.name" 
+        @click="emptyFields.name = false"
+        id="user-name">
+        <span class="little-input__error">это поле должно быть заполнено</span>
       </div>
 
       <ul class="users-card__personal-list">
+        
         <li class="users-card__personal-item">
-          <div class="little-input">
-            <input class="little-input__field" type="email" v-model="userInfo.email" id="user-email">
+          <div :class="{'little-input': true,
+            'little-input--disabled': !showInput,
+            'little-input--error': showInput && emptyFields.email
+          }">
+            <input class="little-input__field" type="email" v-model="userInfo.email" 
+            @click="emptyFields.email = false"
+            id="user-email">
             <span class="little-input__error">это поле должно быть заполнено</span>
           </div>
         </li>
 
         <li class="users-card__personal-item">
-          <div class="little-input">
+          <div :class="{'little-input': true,
+            'little-input--disabled': !showInput,
+            'little-input--error': showInput && emptyFields.tel
+          }">
             <label class="little-input__label visually-hidden" for="user-tel">Телефон</label>
-            <input class="little-input__field" type="tel" v-model="userInfo.tel" id="user-tel">
+            <input class="little-input__field" type="tel" v-model="userInfo.tel"
+            @click="emptyFields.tel = false" id="user-tel">
             <span class="little-input__error">это поле должно быть заполнено</span>
           </div>
         </li>
 
         <li class="users-card__personal-item">
-          <div class="little-input little-input--password">
+          <div 
+          :class="{'little-input': true,
+            'little-input--disabled': !showInput,
+            'little-input--password': true,
+            'little-input--error': showInput && emptyFields.password
+          }">
             <label class="little-input__label" for="user-password">Пароль:</label>
             <input class="little-input__field" 
-            type="password" 
+            :type="(seePassword && showInput) ? 'text' : 'password'" 
             v-model="userInfo.password" 
+            @click="emptyFields.password = false"
             id="user-password">
-            <button type="button" class="little-input__btn btn-icon">
+            <button type="button" 
+            @click="seePassword = !seePassword"
+            class="little-input__btn btn-icon">
               <svg
                 class="btn-icon__svg"
                 width="17"
@@ -256,6 +326,7 @@ const userInfo = reactive({
     font-size: 16px;
     line-height: 19px;
     text-align: right;
+    display: none;
 
     @include vp-laptop {
       font-size: 10px;
@@ -281,7 +352,6 @@ const userInfo = reactive({
     }
   }
 }
-
 
 .little-input--password {
   position: relative;
@@ -365,7 +435,12 @@ const userInfo = reactive({
   .little-input__field {
     pointer-events: none;
     cursor: auto;
-  }
+    }
+  
+  .little-input__btn,
+  .little-input__error {
+    display: none;
+  }  
 }
 
 .users-card {
@@ -398,12 +473,26 @@ const userInfo = reactive({
     justify-content: space-between;
   }
 
-  &__hello-text--mobile {
+  &__hello-input {
+    @include vp-mobile {
+      display: none;
+    }
+  }
+
+  &__hello-text--mobile,
+  &__hello-input--mobile {
     display: none;
-    
+
     @include vp-mobile {
       display: flex;
       width: 100%;
+      font-family: $ff-gilroy, sans-serif;
+      color: $color-raising-black;
+    }
+  }
+
+  &__hello-text--mobile {    
+    @include vp-mobile {
       font-family: $ff-gilroy, sans-serif;
       color: $color-raising-black;
       font-weight: 900;
