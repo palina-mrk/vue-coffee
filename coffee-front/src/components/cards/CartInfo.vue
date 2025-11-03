@@ -9,13 +9,9 @@ defineProps(['isEmpty']);
   <div class="info-card">
     <div class="info-card__images-block">
       <picture class="info-card__picture-back">
-        <!--source
+        <source
           media="(max-width: 768px)"
           srcset="../../images/personal/password-corns-mobile.png"
-        /-->
-        <source
-          media="(max-width: 1348px)"
-          srcset="../../images/personal/password-corns-desktop.png"
         />
         <source
           media="(max-width: 1904px)"
@@ -31,13 +27,9 @@ defineProps(['isEmpty']);
       </picture>
 
       <picture class="info-card__picture-front">
-        <!--source
+        <source
           media="(max-width: 768px)"
           srcset="../../images/personal/password-coffee-mobile.png"
-        /-->
-        <source
-          media="(max-width: 1348px)"
-          srcset="../../images/personal/password-coffee-desktop.png"
         />
         <source
           media="(max-width: 1904px)"
@@ -52,39 +44,46 @@ defineProps(['isEmpty']);
         />
       </picture>
     </div>
-    <div class="info-card__info-block" v-show="isEmpty">
+    
+    <div class="info-card__content-block">
+
       <logo-personal class="info-card__logo"
       @leave-page="$emit('close-form')"
       ></logo-personal>
-      <p class="info-card__summary"
-        >Ваша корзина пуста!</p
-      >
-      <p class="info-card__note"
-        >Для завершения заказа необходимо добавить товаров в корзину</p
-      >
+      <button class="info-card__btn-close btn-icon" type="button" 
+      @click="$emit('close-form')"
+      aria-label="Закрыть"
+          >
+            <svg
+              class="btn-icon__svg"
+              width="26"
+              height="26"
+              aria-hidden="true"
+          >
+            <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
+          </svg>
+      </button>
+
+      <div class="info-card__info" v-show="isEmpty">
+        
+        <p class="info-card__summary"
+          >Ваша корзина пуста!</p
+        >
+        <p class="info-card__note"
+          >Для завершения заказа необходимо добавить товаров в корзину</p
+        >
+      </div>
+      <div class="info-card__info" v-show="!isEmpty">
+        <logo-personal class="info-card__logo"></logo-personal>
+        <p class="info-card__summary"
+          >Оплата прошла успешно</p
+        >
+        <p class="info-card__note"
+          >Спасибо за Ваш заказ!</p
+        >
+      </div>  
+
     </div>
-    <div class="info-card__info-block" v-show="!isEmpty">
-      <logo-personal class="info-card__logo"></logo-personal>
-      <p class="info-card__summary"
-        >Оплата прошла успешно</p
-      >
-      <p class="info-card__note"
-        >Спасибо за Ваш заказ!</p
-      >
-    </div>  
-    <button class="info-card__btn-close btn-icon" type="button" 
-    @click="$emit('close-form')"
-    aria-label="Закрыть"
-        >
-          <svg
-            class="btn-icon__svg"
-            width="26"
-            height="26"
-            aria-hidden="true"
-        >
-          <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
-        </svg>
-    </button>
   </div>
 </template>
 
@@ -95,39 +94,50 @@ defineProps(['isEmpty']);
   justify-content: center;
   color: $color-black;
   background-color: transparent;
-  border-radius: 50%;
   border: none;
   margin: 0;
-  padding: 20px;
-  user-select: none;
+  padding: 0;
+  position: relative;
+  z-index: 0;
   cursor: pointer;
+  color: $color-black;
+  width: 33px;
+  height: 33px;
 
   @include vp-laptop {
-    padding: 12px;
+    width: 23px;
+    height: 23px;
   }
 
-  &__svg {
-    color: $color-black;
-    width: 26px;
-    height: 26px;
+  @include vp-tablet {
+    width: 18px;
+    height: 18px;
+  }
+
+  @include vp-mobile {
+    width: 15px;
+    height: 15px;
+  }
   
-    @include vp-laptop {
-      width: 18px;
-      height: 18px;
-    }
-
-    @include vp-tablet {
-      width: 8px;
-      height: 8px;
-    }
-
-    @include vp-mobile {
-      width: 17px;
-      height: 17px;
-    }
+  &__svg {
+    display: flex;
+    width: 100%;
+    height: 100%;
   }
 
-  &:hover {
+  &::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    top: -50%;
+    z-index: -1;
+  }
+
+  &:hover::before {
     background-color: $color-bright-gray;
   }
 }
@@ -136,6 +146,7 @@ defineProps(['isEmpty']);
   display: flex;
   border-radius: 30px;
   min-height: 470px;
+  box-shadow: 0 0 50px 0 $color-spanish-gray;
   
   @include vp-laptop {
     border-radius: 21px;
@@ -143,12 +154,20 @@ defineProps(['isEmpty']);
   }  
 
   @include vp-tablet {
-    flex-direction: column-reverse;
     width: calc($max-width-tablet + 68px);
+  }
+
+  @include vp-mobile {
+    width: calc($max-width-mobile + 36px);
+    flex-direction: column-reverse;
+    border-radius: 18px;
   }
 
   &__images-block {
     border-radius: 30px 0 0 30px;
+    border-width: 1px;
+    border-color: $color-spanish-gray;
+    border-style: solid none solid solid;
     position: relative;
     width: 400px;
     background-color: $color-ucla-gold;
@@ -159,9 +178,13 @@ defineProps(['isEmpty']);
     }
 
     @include vp-tablet {
+      width: 270px;
+    }
+
+    @include vp-mobile {
       width: 100%;
-      border-radius: 0 0 10px 10px;
-      height: 253px;
+      border-radius: 0 0 18px 18px;
+      height: 150px;
     }
   }
 
@@ -182,14 +205,11 @@ defineProps(['isEmpty']);
       top: 5px;
     }
 
-    @include vp-tablet {
-      width: 504px;
-      height: 334px;
-      right: unset;
-      rotate: 150deg;
-      left: 5px;
-      bottom: 30px;
-      top: unset;
+    @include vp-mobile {
+      width: 351px;
+      height: 256px;
+      top: -70px;
+      right: 10px;
     }
   }
 
@@ -210,65 +230,83 @@ defineProps(['isEmpty']);
       top: -10px;
     }
 
-    @include vp-tablet {
-      height: 308px;
-      width: 320px;
-      right: unset;
-      left: 80px;
-      top: -80px;
+    @include vp-mobile {
+      width: 297px;
+      height: 184px;
+      right: 50px;
+      top: -20px;
     }
   }
 
-  &__info-block {
+  &__content-block {
     background-color: $color-white;
     border-radius: 0 30px 30px 0;
-    padding: 60px 150px 130px;
-    width: 800px;
-    display: flex;
-    flex-direction: column;
+    border-width: 1px;
+    border-color: $color-spanish-gray;
+    border-style: solid solid solid none;
+    padding: 45px 70px 120px;
+    width: 740px;
+    display: grid;
     align-items: center;
+    grid-template-columns: 35px 1fr 35px;
+    gap: 20px 50px;
 
     @include vp-laptop {
       border-radius: 0 21px 21px 0;
-      padding: 30px 117px 94px;
-      width: 580px;
+      padding: 30px 50px 80px;
+      width: 530px;
+      gap: 25px;
     }
 
     @include vp-tablet {
-      width: 100%;
-      border-radius: 10px 10px 0 0;
-      min-height: 320px;
-      padding: 22px 28px 43px;
-      gap: 10px;
+      width: calc(100% - 270px);
+      padding: 18px 40px 60px;
+      gap: 20px;
     }
 
     @include vp-mobile {
-      padding: 31px 18px 29px;
-      margin: 0 auto;
-      border-radius: 0 0 10px 10px;
-      width: calc(100% + 36px);
-      min-height: 156px;
-      max-width: calc($max-width-mobile + 36px);
-      gap: 20px;
+      width: 100%;
+      border-radius: 18px 18px 0 0;
+      grid-template-columns: 20px 1fr 20px;
+      padding: 18px 34px 50px;
+      gap: 10px 15px;
     }
   }
 
   &__logo {
-    width: 155px;
-    height: 71px;
-    margin: 0 auto 42px;
+    width: 185px;
+    height: 91px;
+    margin: 0 auto;
+    grid-column: -2 / -3;
 
     @include vp-laptop {
-      width: 109px;
-      height: 51px;
-      margin: 0 auto 30px;
+      width: 150px;
+      height: 65px;
     }
 
     @include vp-tablet {
-      display: none;
+      width: 120px;
+      height: 50px;
+    }
+
+    @include vp-mobile {
+      width: 110px;
+      height: 40px;
     }
   }
-  
+
+  &__btn-close {
+    grid-column: -1 / -2;
+    margin: 0 0 0 auto;
+  }
+
+  &__info {
+    display: flex;
+    grid-column: -2 / -3;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   &__summary {
     font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
@@ -284,57 +322,43 @@ defineProps(['isEmpty']);
       line-height: 35px;
     }
 
-    @include vp-tablet {
-      font-size: 35px;
-      line-height: 40px;
-      margin: 0 auto 20px;
+    @include vp-laptop {
+      font-size: 30px;
+      line-height: 37px;
     }
 
     @include vp-mobile {
       font-size: 20px;
       line-height: 25px;
+      margin: 0 auto 10px;
     }
   }
 
   &__note {
     font-family: $ff-gilroy, sans-serif;
     font-weight: 700;
-    font-size: 35px;
-    line-height: 44px;
+    font-size: 30px;
+    line-height: 37px;
     color: $color-black;
     text-align: center;
     margin: 0;
     padding: 0;
 
     @include vp-laptop {
-      font-size: 24px;
-      line-height: 30px;
+      font-size: 22px;
+      line-height: 27px;
     }
 
     @include vp-tablet {
-      font-size: 28px;
-      line-height: 36px;
+      font-size: 25px;
+      line-height: 29px;
     }
 
     @include vp-mobile {
-      max-width: unset;
+      font-size: 18px;
+      line-height: 23px;
     }
   }
 
-  &__btn-close {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-
-    @include vp-laptop {
-      top: 35px;
-      right: 35px;
-    }
-
-    @include vp-tablet {
-      top: 20px;
-      right: 16px;
-    }
-  }
 }
 </style>

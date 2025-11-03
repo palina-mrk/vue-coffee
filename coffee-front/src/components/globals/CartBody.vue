@@ -159,6 +159,10 @@ function goToPayForm() {
       top: 80px;
     }
 
+    @include vp-mobile {
+      top: 20px;
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -166,9 +170,17 @@ function goToPayForm() {
       height: 100vh;
       left: 50%;
       transform: translateX(-50%);
-      top: -80px;
-      background-color: $color-black-302;
+      top: -250px;
+      background-color: $color-quick-silver-25;
       z-index: -1;
+
+      @include vp-tablet {
+        top: -80px;
+      }
+
+      @include vp-mobile {
+        top: -20px;
+      }
     }
   }
 }

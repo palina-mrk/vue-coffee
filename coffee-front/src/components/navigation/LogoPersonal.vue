@@ -32,10 +32,10 @@
 
 <style lang="scss" scoped>
 .logo-img {
-  width: 155px;
-  height: 72px;
+  width: 100%;
+  height: 100%;
   display: flex;
-
+/*
   @include vp-laptop {
     width: 109px;
     height: 51px;
@@ -49,6 +49,6 @@
   @include vp-mobile {
     width: 132px;
     height: 62px;
-  }
+  }*/
 }
 </style>
