@@ -1,29 +1,12 @@
 <script setup>
-import { reactive, computed, defineEmits } from "vue";
+import { reactive, computed } from "vue";
 import CustomInput from "../inputs/CustomInput.vue";
 
-const contactData = reactive([
+const usersData = reactive([
   {
-    id: "user-name",
-    name: "name",
-    placeholder: "Имя",
-    error: "Это обязательное поле",
-    isError: false,
-    value: "",
-  },
-  {
-    id: "user-surname",
+    id: "user-name-surname",
     name: "surname",
-    placeholder: "Фамилия",
-    error: "Это обязательное поле",
-    isError: false,
-    value: "",
-  },
-  {
-    id: "user-phone",
-    type: "tel",
-    name: "phone",
-    placeholder: "Телефон",
+    placeholder: "имя и фамилия",
     error: "Это обязательное поле",
     isError: false,
     value: "",
@@ -32,60 +15,28 @@ const contactData = reactive([
     id: "user-email",
     name: "email",
     type: "email",
-    placeholder: "Email",
+    placeholder: "email",
     error: "Это обязательное поле",
     isError: false,
     value: "",
   },
   {
-    id: "user-company",
-    name: "company",
-    isError: false,
-    placeholder: "Название компании (необязательно)",
-    value: "",
-  },
-]);
-const addressData = reactive([
-  {
-    id: "user-country",
-    name: "country",
-    placeholder: "Страна",
+    id: "user-phone",
+    type: "tel",
+    name: "phone",
+    placeholder: "телефон",
     error: "Это обязательное поле",
     isError: false,
     value: "",
-  },
+  },  
   {
-    id: "user-city",
-    name: "city",
-    placeholder: "Город",
+    id: "user-password",
+    name: "password",
+    placeholder: "пароль",
     error: "Это обязательное поле",
     isError: false,
     value: "",
-  },
-  {
-    id: "user-street-home",
-    name: "street-home",
-    placeholder: "Улица, дом",
-    error: "Это обязательное поле",
-    isError: false,
-    value: "",
-  },
-  {
-    id: "user-index",
-    name: "index",
-    type: "number",
-    placeholder: "Почтовый индекс",
-    error: "Это обязательное поле",
-    isError: false,
-    value: "",
-  },
-  {
-    id: "user-company",
-    name: "company",
-    isError: false,
-    placeholder: "Комментарий к заказу (необязательно)",
-    value: "",
-  },
+  }
 ]);
 
 const isValid = computed(() => 
@@ -94,10 +45,10 @@ const isValid = computed(() =>
 </script>
 
 <template>
-  <div class="delivery-form"
+  <div class="users-form"
     @blur="$emit('set-state', isValid)"
   >
-    <h2 class="delivery-form__title">Доставка</h2>
+    <h2 class="users-form__title visually-hidden">Информация о пользователе</h2>
     <div class="delivery-form__inner">
       <fieldset class="delivery-form__group">
         <legend class="delivery-form__groupname">Контактная информация</legend>

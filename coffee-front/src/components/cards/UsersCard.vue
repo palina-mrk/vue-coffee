@@ -1,150 +1,85 @@
 <script setup>
 import OrderCard from "./OrderCard.vue";
-import CustomToggle from "../toggles/CustomToggle.vue";
 import { useOrdersStore } from "../../stores/orders";
 const ordersStore = useOrdersStore();
 
 import { reactive, ref } from "vue";
 
-const toggleValues = reactive([
-  {
-    label: "Текущие заказы",
-    value: "current",
-  },
-  {
-    label: "Завершенные",
-    value: "finished",
-  },
-]);
-const selectedVariant = ref("current");
-
-function clearFinished() {
-  ordersStore.clearFinished();
-  sccrollTo(0, 0);
-}
-/*
-const cartOrder = reactive({
-  orderID: 0,
-  isPaid: false,
-  isFinished: false,
-  deliveryWay: cartStore.deliveryWay,
-  deliveryDuring: cartStore.deliveryDuring,
-  /* к оплате: totalSum + deliverySum 
-  /* totalSum - итоговая сумма за весь заказ
-   * (товары с уже применёнными всеми скидками) 
-  totalSum: cartStore.totalSum,
-  totalSale: cartStore.totalSale,
-  orderSale: cartStore.globalSale,
-  orderSale: 15,
-  /* totalSum - сумма за доставку 
-  deliveryPrice: cartStore.deliveryPrice,
-  productLines: cartStore.cartItems.map((item) => {
-    return {
-      id: item.id,
-      title: item.title,
-      category: item.category,
-      shortDescription: item.shortDescription,
-      weightString: item.weightString,
-      count: item.count,
-      initialPrice: item.price,
-      sale: item.sale,
-      salePercent: item.salePercent,
-      total: item.total,
-    }
-  })
+const userInfo = reactive({
+  name: "Иван Иванов",
+  email: "ivan.ivanov@gmail.com",
+  tel: "+ 7 (909) 909 99 99",
+  password: "password",
 })
-*/
 </script>
 
 <template>
-  <div class="orders-card">
-    <h2 class="orders-card__heading">Мои заказы</h2>
-    <custom-toggle
-      class="orders-card__toggle toggle--size-m"
-      :initialValues="toggleValues"
-      :toggleName="'personal'"
-      :selected="selectedVariant"
-      @toggle-value="selectedVariant = $event"
-    ></custom-toggle>
+  <div class="users-card">
+    <h2 class="users-card__heading visually-hidden">Информация о пользователе</h2>
 
-    <ul class="orders-card__list">
-      <li 
-      v-for="orderInfo in ordersStore.orderItems"
-      :key="orderInfo.id"
-      v-show="orderInfo.isFinished == (selectedVariant == 'finished')"
-      class="orders-card__item order-wrapper">
-        <div class="order-wrapper__timing">
-          <span class="order-wrapper__payment-timing"
-            >{{ orderInfo.isPaid ? `${orderInfo.paymentTime} - оплачено` : `${orderInfo.totalSum + orderInfo.deliveryPrice} ₽ - к оплате`}}</span
-          >
-          <span class="order-wrapper__delivery-timing"
-            >{{ !orderInfo.isPaid ? `Доставка: ${orderInfo.deliveryWay}, ${orderInfo.deliveryDuring} дн.` : (!orderInfo.isFinished ? `Дата доставки: ${orderInfo.deliveryDate}` : `Доставлено: ${orderInfo.deliveryDate}`)}}
-            </span
-          >
-        </div>
+    <div class="users-card__ava-wrapper">
+      <picture class="users-card__ava-picture">
+        <source
+          media="(max-width: 768px)"
+          srcset="../../images/personal/user-avatar-mobile.png"
+        />
+        <source
+          media="(max-width: 1348px)"
+          srcset="../../images/personal/user-avatar-tablet.png"
+        />
+        <source
+          media="(max-width: 1904px)"
+          srcset="../../images/personal/user-avatar-laptop.png"
+        />
+        <img
+          class="users-card__ava-image"
+          src="../../images/personal/user-avatar-desktop.png"
+          width="119"
+          height="119"
+          alt="Аватар"
+        />
+      </picture>
 
-        <order-card class="order-wrapper__inner"
-        :order-lines="orderInfo.productLines"
-        :order-sale="orderInfo.globalSale"> </order-card>
-
-        <div class="order-wrapper__summary">
-          <span class="order-wrapper__total-sum"
-            >Сумма заказа: {{ orderInfo.totalSum }} ₽</span
-          >
-          <span class="order-wrapper__delivery-price"
-            >Доставка: {{ orderInfo.deliveryPrice }} ₽</span
-          >
-        </div>
-
-        <ul class="order-wrapper__summary-mobile">
-          <li class="order-wrapper__summary-item">
-            <span>Итого:</span>
-            <span>{{ orderInfo.totalSum + orderInfo.deliveryPrice}} ₽</span>
-          </li>
-          <li class="order-wrapper__summary-item">
-            <span class="order-wrapper__summary-text">Подытог:</span>
-            <span class="order-wrapper__summary-number">{{ orderInfo.totalSum }} ₽</span>
-          </li>
-          <li class="order-wrapper__summary-item">
-            <span class="order-wrapper__summary-text">Скидка:</span>
-            <span class="order-wrapper__summary-number-wrapper">
-              <span class="order-wrapper__summary-number order-wrapper__summary-number--first">{{
-            orderInfo.totalSale ? `${orderInfo.totalSale} ₽` : ""
-          }}</span>
-              <span class="order-wrapper__summary-number">{{
-            orderInfo.globalSale ? `(${orderInfo.globalSale}%)` : ""
-          }}</span>
-            </span>
-          </li>
-          <li class="order-wrapper__summary-item">
-            <span class="order-wrapper__summary-text">Доставка:</span>
-            <span  class="order-wrapper__summary-number">{{ orderInfo.deliveryPrice }} ₽</span>
-          </li>
-        </ul>
-        
-        <div class="order-wrapper__btn"
-        v-if="ordersStore.isLastOfSaved(selectedVariant, orderInfo.orderID)">
-          <button
-            @click="clearFinished"
-            class="order-wrapper__clear-button btn-cornsilk"
-            v-show="selectedVariant == 'finished'"
-            :disabled="!(ordersStore.finishedCount > 0)">
-            Удалить завершённые
-          </button>
-          <!--button
-            @click="ordersStore.clearAll()"
-            class="order-wrapper__clear-button btn-cornsilk"
-            v-show="selectedVariant == 'current'"
-            :disabled="!(ordersStore.orderItems.length > 0)">
-            Удалить все
-          </button-->
-        </div>
-      </li>
+      <button
+        class="users-card__btn btn-cornsilk""
+      >
+        Изменить
+      </button>
+    </div>
 
 
-    </ul>
+    <div class="users-card__hello-wrapper">
+      <p class="users-card__hello-text">{{userInfo.name}}, здравствуйте!</p>
 
-    
+      <ul class="users-card__personal-list">
+        <li class="users-card__personal-item">
+          <div class="little-input">
+            <input class="little-input__field" type="email" v-model="userInfo.email" id="user-email">
+          </div>
+        </li>
+
+        <li class="users-card__personal-item">
+          <div class="little-input">
+            <label class="little-input__label visually-hidden" for="user-email">Телефон</label>
+            <input class="little-input__field" type="email" v-model="userInfo.email" id="user-email">
+          </div>
+        </li>
+
+        <li class="users-card__personal-item">
+          <div class="little-input">
+            <label class="little-input__label visually-hidden" for="user-tel">Телефон</label>
+            <input class="little-input__field" type="email" v-model="userInfo.tel" id="user-tel">
+          </div>
+        </li>
+
+        <li class="users-card__personal-item">
+          <div class="little-input little-input--password">
+            <label class="little-input__label visually-hidden" for="user-password">Пароль</label>
+            <input class="little-input__field" type="email" v-model="userInfo.password" id="user-password">
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 

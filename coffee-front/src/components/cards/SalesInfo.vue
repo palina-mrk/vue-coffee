@@ -122,7 +122,7 @@ const nextSale = computed(() => {
   }
 
   &:hover {
-    background-color: $color-mustard-yellow;
+    background-color:  $color-bright-gray;
   }
 
   &[disabled] {
@@ -170,6 +170,7 @@ const nextSale = computed(() => {
     width: calc(100% + 36px);
     min-height: 156px;
     max-width: calc($max-width-mobile + 36px);
+    box-shadow: 0px 0px 50px $color-quick-silver-25;
     gap: 20px;
   }
 
