@@ -99,7 +99,7 @@ const length = ref(7);
   }
 
   @include vp-mobile {
-    gap: 10px 20px;
+    gap: 10px 18px;
   }
 }
 

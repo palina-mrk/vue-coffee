@@ -89,27 +89,14 @@ const addressData = reactive([
 ]);
 
 const isValid = computed(() => 
-  Boolean(!contactData.find(el => el.error && !el.value.length ) || !addressData.find(el => el.error && el.value.length ))
+  Boolean(!contactData.find(el => el.error && !el.value.length ) && !addressData.find(el => el.error && !el.value.length ))
 );
-
-const emit = defineEmits();
-
-function checkInput() {
-  contactData.forEach(el => 
-    el.isError = el.error && !el.value.length
-  );
-  addressData.forEach(el => 
-    el.isError = el.error && !el.value.length
-  );
-
-  if(isValid.value)
-    emit('is-filled');
-  
-}
 </script>
 
 <template>
-  <div class="delivery-form">
+  <div class="delivery-form"
+    @blur="$emit('set-state', isValid)"
+  >
     <h2 class="delivery-form__title">Доставка</h2>
     <div class="delivery-form__inner">
       <fieldset class="delivery-form__group">
@@ -120,7 +107,7 @@ function checkInput() {
           :inputData="inputData"
           :isError="inputData.isError"
           v-model="inputData.value"
-          @updated:modelValue="inputData.value = $event"
+          @updated:modelValue="inputData.value = $event; $emit('set-state', isValid.value)"
         ></custom-input>
       </fieldset>
 
@@ -132,13 +119,13 @@ function checkInput() {
           :inputData="inputData"
           :isError="inputData.isError"
           v-model="inputData.value"
-          @updated:modelValue="inputData.value = $event"
+          @updated:modelValue="inputData.value = $event; $emit('set-state', isValid.value)"
           @focus="inputData.isError = false"
         ></custom-input>
       </fieldset>
     </div>
     <button class="delivery-form__button btn-cornsilk"
-    @click="checkInput()" 
+    @click="$emit('count-delivery', isValid)" 
     type="button">
       Рассчитать доставку
     </button>

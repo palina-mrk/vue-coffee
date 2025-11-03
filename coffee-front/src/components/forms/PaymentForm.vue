@@ -95,7 +95,7 @@ function payOrder() {
       @set-value="cartStore.setDeliveryValue($event)"
     ></payment-way>
     <button class="form-block__button btn-gold" type="button"
-      @click="payOrder"
+      @click="$emit('set-payment')"
     >
       Оплатить заказ
     </button>

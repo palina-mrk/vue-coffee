@@ -1,7 +1,7 @@
 <script setup>
 import LogoPersonal from "../navigation/LogoPersonal.vue";
 
-defineProps(['isEmpty']);
+defineProps(['message', 'note']);
 
 </script>
 
@@ -49,6 +49,7 @@ defineProps(['isEmpty']);
 
       <logo-personal class="info-card__logo"
       @leave-page="$emit('close-form')"
+      @click="$emit('close-form')"
       ></logo-personal>
       <button class="info-card__btn-close btn-icon" type="button" 
       @click="$emit('close-form')"
@@ -64,16 +65,16 @@ defineProps(['isEmpty']);
           </svg>
       </button>
 
-      <div class="info-card__info" v-show="isEmpty">
+      <div class="info-card__info">
         
         <p class="info-card__summary"
-          >Ваша корзина пуста!</p
+          >{{ message }}</p
         >
         <p class="info-card__note"
-          >Для завершения заказа необходимо добавить товаров в корзину</p
+          >{{note}}</p
         >
       </div>
-      <div class="info-card__info" v-show="!isEmpty">
+      <!--div class="info-card__info" v-show="!isEmpty">
         <logo-personal class="info-card__logo"></logo-personal>
         <p class="info-card__summary"
           >Оплата прошла успешно</p
@@ -81,7 +82,7 @@ defineProps(['isEmpty']);
         <p class="info-card__note"
           >Спасибо за Ваш заказ!</p
         >
-      </div>  
+      </div-->  
 
     </div>
   </div>
@@ -185,6 +186,7 @@ defineProps(['isEmpty']);
       width: 100%;
       border-radius: 0 0 18px 18px;
       height: 150px;
+      border-style: none solid solid solid;
     }
   }
 
@@ -268,6 +270,7 @@ defineProps(['isEmpty']);
       width: 100%;
       border-radius: 18px 18px 0 0;
       grid-template-columns: 20px 1fr 20px;
+      border-style: solid solid none solid;
       padding: 18px 34px 50px;
       gap: 10px 15px;
     }
