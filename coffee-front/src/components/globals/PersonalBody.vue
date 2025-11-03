@@ -4,6 +4,7 @@ import SalesInfo from "../cards/SalesInfo.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import ActionCard from "../cards/ActionCard.vue";
 import OrdersCard from "../cards/OrdersCard.vue";
+import UsersCard from "../cards/UsersCard.vue";
 
 import { reactive, ref } from "vue";
 const actionsInfo = reactive([
@@ -37,8 +38,8 @@ const actionsInfo = reactive([
         <custom-breadcrumbs class="personal__breadcrumbs"></custom-breadcrumbs>
 
         <div class="personal__top-forms">
-          <div class="personal__user-form"></div>
-          <sales-info class="personal__sales-info"></sales-info>
+          <users-card></users-card>
+          <sales-info></sales-info>
         </div>
 
         <div class="personal__bottom-forms">
@@ -103,12 +104,15 @@ const actionsInfo = reactive([
     border: 1px solid #E4E4E4;
     box-shadow: 0px 0px 50px $color-quick-silver-25;
     border-radius: 20px;
+    background-color: $color-white;
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     margin: 0 0 40px;
+    overflow: hidden;
 
     @include vp-laptop {
       margin: 0 0 30px;
+      border-radius: 14px;
     }
 
     @include vp-tablet {
