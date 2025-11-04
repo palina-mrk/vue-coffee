@@ -2,8 +2,9 @@
 import SliderCorns from "../sliders/SliderCorns.vue";
 import SliderPoints from "../sliders/SliderPoints.vue";
 import SliderStars from "../sliders/SliderStars.vue";
-import RadioBlock from "../fieldsets/RadioBlock.vue"
-import { computed, ref, reactive } from "vue";
+import RadioBlock from "../fieldsets/RadioBlock.vue";
+import CartCounter from "../inputs/CartCounter.vue";
+import { computed, ref, reactive, watch } from "vue";
 
 import { useRoute } from "vue-router";
 const route = useRoute();
@@ -13,9 +14,18 @@ const cartStore = useCartStore();
 
 import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
+
 const product = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)) : {});
 
-const weightIndex = ref(0);
+/*const weightIndex = ref(0);*/
+
+const weightValue = ref(0);
+watch (() => product?.value, () => {
+  weightValue.value = product?.value.weights[0].value
+})
+
+const priceVariant = computed(() => product?.value.weights.find(el => el.value == weightValue.value)?.price)
+
 
 const weightVariants = computed(() =>
   product.value.weights.map((el) => el.value),
@@ -24,6 +34,7 @@ const weightLabels = computed(() =>
   product.value.weights.map((el) => el.value + (product.value.category == 'vending' ? ' кг.' : ' г.')),
 );
 
+/*
 const currentWeight = computed(
   () => product.value.weights[weightIndex.value].value,
 );
@@ -38,11 +49,7 @@ function changeWeight(newValue) {
   weightIndex.value = product.value.weights.findIndex(
     (weight) => weight.value == newValue,
   );
-}
-
-function addToCart() {
-  cartStore.addToCart(product.id, currentWeight.value);
-}
+}*/
 
 const imageVariant = computed(() => {
   switch (product.kind) {
@@ -146,18 +153,6 @@ const imageVariant = computed(() => {
               {{ action }}
             </li>
           </ul>
-          <!--custom-dropdown
-            class="product-card__dropdown"
-            :class="{
-              'custom-dropdown--main-mobile':
-                route.name == 'home' || route.name == 'catalogs',
-            }"
-            :weightVariants="weightVariants"
-            :weightUnit="product.category == 'vending' ? ' кг' : 'г'"
-            :defaultValue="currentWeight"
-            @set-value="changeWeight($event)"
-          >
-        </custom-dropdown-->
         </div>
         <p class="large-card__company-text">Компания Нью Рефайнинг Груп находится в&nbsp;г. Калининграде и&nbsp;имеет свой склад и&nbsp;представительство в&nbsp;Москве. Завод работает на&nbsp;рынке свежеобжаренного кофе и&nbsp;растворимой продукции более 15&nbsp;лет. Завод имеет немецкое оборудование марки Probat по&nbsp;обжарке кофе и&nbsp;итальянские агломераторы для производства растворимой продукции.</p>   
         <div class="large-card__coffee-details" v-if="product.category == 'coffee'">
@@ -182,12 +177,20 @@ const imageVariant = computed(() => {
           :labels="weightLabels"
           :values="weightVariants"
           :fields-count="weightVariants.length"
+          :selectedValue="weightValue"
+          @set-value="weightValue = $event"
         >
-
         </radio-block>
         <div class="large-card__bottom">
           <div class="large-card__counter"></div>
-          <button @click="addToCart" class="large-card__button btn btn--size-s">Купить за {{ currentPrice }} ₽</button>
+          <cart-counter
+          :productId="product.id"
+          :productWeight="weightValue"
+          ></cart-counter>
+          <button 
+          class="large-card__button btn btn--size-s"
+          @click="cartStore.addToCart(product.id, weightValue)"
+          >Купить за {{ priceVariant }} ₽</button>
         </div>
       </div>
     </div>
@@ -203,7 +206,6 @@ const imageVariant = computed(() => {
   align-items: start;
   justify-content: start;
   box-shadow: 0px 0px 20px 0px $color-philippine-gray-25;
-  max-width: 400px;
   height: 100%;
   border-radius: 20px;
   background-color: $color-white;
@@ -215,7 +217,6 @@ const imageVariant = computed(() => {
     padding: 13px 24px 37px;
     box-shadow: 0px 0px 20px 0px $color-chinese-silver-25;
     border: 0.7px solid $color-platinum;
-    max-width: 282px;
     border-radius: 14px;
   }
 
@@ -223,7 +224,6 @@ const imageVariant = computed(() => {
     padding: 21px 33px 42px 35px;
     box-shadow: 0px 0px 17px 0px $color-chinese-silver-25;
     border: none;
-    max-width: 340px;
     border-radius: 10px;
   }
 
@@ -232,7 +232,6 @@ const imageVariant = computed(() => {
     padding: 17px 32px 43px;
     border: 1px solid $color-platinum;
     border-radius: 20px;
-    max-width: unset;
   }
 
   &__sales-icon {

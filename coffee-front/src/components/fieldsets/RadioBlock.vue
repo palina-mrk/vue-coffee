@@ -5,22 +5,22 @@ const props = defineProps([
   "labels",
   "values",
   "fieldsCount",
+  "selectedValue"
 ]);
 
-const selectedValue = ref(props.values[0]);
+const selected = ref(props.selectedValue);
 </script>
 
 <template>
   <div class="radio-block">
-    <p>{{ selectedValue }}</p>
     <div v-for="index in fieldsCount" class="custom-radio">
       <input
         class="custom-radio__field visually-hidden"
         :id="`${name}-${values[index - 1]}`"
         type="radio"
         :name="`${name}`"
-        v-model="selectedValue"
-        @input="$emit('toggle-value', $event.target.value)"
+        v-model="selected"
+        @input="$emit('set-value', $event.target.value)"
         :value="values[index - 1]"
       />
       <label

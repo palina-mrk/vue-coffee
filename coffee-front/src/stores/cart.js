@@ -96,10 +96,15 @@ export const useCartStore = defineStore("cart", () => {
     const item = cartRows.find((el) => el[0] == itemId && el[1] == weight);
     if (!item) cartRows.push([itemId, weight, 1]);
     else item[2]++;
-    console.log(rawCartItems.value);
-    console.log(rawTotalSum.value);
-    console.log(cartItems.value);
-    console.log(totalSum.value);
+  }
+
+  function removeOneFromCart(itemId, weight) {
+    const ind = cartRows.findIndex((el) => el[0] == itemId && el[1] == weight);
+    if (ind == -1) return;
+
+    cartRows[ind][2] --;
+    if(cartRows[ind][2] == 0)
+      cartRows.splice(ind, 1);
   }
 
   function removeFromCart(itemId, weight) {
@@ -215,6 +220,12 @@ export const useCartStore = defineStore("cart", () => {
     });
   });
 
+  function getCount(itemId, weight) {
+    const item = cartRows.find(el => el[0] == itemId && el[1] == weight);
+    console.log(item);
+    return (item == undefined ? 0 : item[2]);
+  }
+  
   watch(cartRows, () => {
     localStorage.setItem("cartRows", JSON.stringify(cartRows));
   });
@@ -224,6 +235,7 @@ export const useCartStore = defineStore("cart", () => {
     cartSales,
     addToCart,
     removeFromCart,
+    removeOneFromCart,
     clearCart,
     setCount,
     itemIdCount,
@@ -248,5 +260,6 @@ export const useCartStore = defineStore("cart", () => {
     saleType,
     promoSale,
     userPromo,
+    getCount,
   };
 });
