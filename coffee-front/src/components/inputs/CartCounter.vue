@@ -9,12 +9,11 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
 </script>
 
 <template>
-    <p>{{ countValue }}</p>
   <div class="custom-counter">
     <button
       class="custom-counter__btn custom-counter__btn--minus"
       type="button"
-      :disabled="modelValue < 1"
+      :disabled="countValue < 1"
       @click="cartStore.removeOneFromCart(productId, productWeight)"
     >
       -

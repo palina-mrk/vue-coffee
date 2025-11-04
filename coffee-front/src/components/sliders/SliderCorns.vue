@@ -107,4 +107,40 @@ defineProps(["count"]);
     }
   }
 }
+
+.slider-corns--large {
+  gap: 11px;
+
+  @include vp-laptop {
+    gap: 7px;
+  }
+
+  @include vp-tablet {
+    gap: 20px;
+  }
+
+  @include vp-mobile {
+    gap: 10px;
+  }
+
+  .slider-corns__svg {
+    width: 28px;
+    height: 28px;
+
+    @include vp-laptop {
+      width: 17px;
+      height: 17px;
+    }
+
+    @include vp-tablet {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include vp-mobile {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
 </style>
