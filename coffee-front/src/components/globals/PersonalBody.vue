@@ -121,10 +121,9 @@ const actionsInfo = reactive([
 
     @include vp-mobile {
       flex-direction: column;
-      box-shadow: 0px 0px 20px $color-quick-silver-25;
-      margin: 0 auto;
+      box-shadow: 0px 0px 20px 0px $color-quick-silver-25;
+      margin: 0 auto 40px;
       position: relative;
-      z-index: 1;
       width: calc(100% + 36px);
       max-width: calc($max-width-mobile + 36px);
       left: -18px;

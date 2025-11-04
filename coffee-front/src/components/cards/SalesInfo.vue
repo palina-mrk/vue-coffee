@@ -75,6 +75,7 @@ const nextSale = computed(() => {
   text-align: bottom;
 
   @include vp-laptop {
+    padding: 2px 0 0 1px;
     font-size: 18px;
     line-height: 23px;
     width: 23px;
@@ -86,7 +87,7 @@ const nextSale = computed(() => {
     line-height: 18px;
     width: 16px;
     height: 16px;
-    padding: 1px 0 0;
+    padding: 0.5px 0 0 1px;
   }
 
   @include vp-mobile {
@@ -100,24 +101,24 @@ const nextSale = computed(() => {
   &__svg {
     width: 18px;
     height: 18px;
-    transform: translate(0px, 5.5px);
+    transform: translate(-5%, 38%);
 
     @include vp-laptop {
       width: 12px;
       height: 12px;
-      transform: translate(0.5px,3.5px);
+      transform: translate(-2%, 32%);
     }
 
     @include vp-tablet {
       width: 8px;
       height: 8px;
-      transform: translate(0px,3.5px);
+      transform: translate(2%, 52%);
     }
 
     @include vp-mobile {
       width: 17px;
       height: 17px;
-      transform: translate(0.5px, 6px);
+      transform: translate(0, 38%);
     }
   }
 
@@ -141,11 +142,11 @@ const nextSale = computed(() => {
   padding: 52px 60px 45px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
   position: relative;
   justify-content: space-between;
   width: 540px;
   min-height: 238px;
+  gap: 18px;
 
   @include vp-laptop {
     border-radius: 14px;

@@ -22,38 +22,6 @@ function clearFinished() {
   ordersStore.clearFinished();
   sccrollTo(0, 0);
 }
-/*
-const cartOrder = reactive({
-  orderID: 0,
-  isPaid: false,
-  isFinished: false,
-  deliveryWay: cartStore.deliveryWay,
-  deliveryDuring: cartStore.deliveryDuring,
-  /* к оплате: totalSum + deliverySum 
-  /* totalSum - итоговая сумма за весь заказ
-   * (товары с уже применёнными всеми скидками) 
-  totalSum: cartStore.totalSum,
-  totalSale: cartStore.totalSale,
-  orderSale: cartStore.globalSale,
-  orderSale: 15,
-  /* totalSum - сумма за доставку 
-  deliveryPrice: cartStore.deliveryPrice,
-  productLines: cartStore.cartItems.map((item) => {
-    return {
-      id: item.id,
-      title: item.title,
-      category: item.category,
-      shortDescription: item.shortDescription,
-      weightString: item.weightString,
-      count: item.count,
-      initialPrice: item.price,
-      sale: item.sale,
-      salePercent: item.salePercent,
-      total: item.total,
-    }
-  })
-})
-*/
 </script>
 
 <template>
@@ -109,10 +77,10 @@ const cartOrder = reactive({
             <span class="order-wrapper__summary-text">Скидка:</span>
             <span class="order-wrapper__summary-number-wrapper">
               <span class="order-wrapper__summary-number order-wrapper__summary-number--first">{{
-            orderInfo.totalSale ? `${orderInfo.totalSale} ₽` : ""
+            orderInfo.totalSale ? `${orderInfo.totalSum + orderInfo.totalSale} ₽` : ""
           }}</span>
               <span class="order-wrapper__summary-number">{{
-            orderInfo.globalSale ? `(${orderInfo.globalSale}%)` : ""
+            orderInfo.totalSale ? `(-${Number((orderInfo.totalSale * 100/ (orderInfo.totalSum + orderInfo.totalSale)).toFixed(0))}%)` : "0 ₽"
           }}</span>
             </span>
           </li>
@@ -144,7 +112,6 @@ const cartOrder = reactive({
 
     </ul>
 
-    
   </div>
 </template>
 
@@ -237,32 +204,12 @@ const cartOrder = reactive({
   }
 
   @include vp-mobile {
-    padding: 40px 0 0;
+    padding: 0;
     box-shadow: none;
-    border-style: none solid none none;
-    border-radius: 0 0 10px 10px;
     background-color: $color-white;
-    gap: 0;
-    position: relative;
+    gap: 15px;
+    border: none;
   }
-
-
-  &::after {
-    @include vp-mobile {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 10px;
-      width: 100%;
-      height: 240px;
-      z-index: -1;
-      background-color: $color-white;
-      box-shadow: 0px 0px 20px 5px $color-quick-silver-25;
-    }
-  }
-
-  
 
   &__heading {
     margin: 0;
@@ -309,7 +256,7 @@ const cartOrder = reactive({
 
     @include vp-mobile {
       width: 100%;
-      margin: 0 auto 25px;
+      margin: 0 auto;
       max-width: $max-width-mobile;
     }
   }
@@ -342,54 +289,20 @@ const cartOrder = reactive({
     padding: 0;
 
     @include vp-mobile {
-      padding: 0 17px 25px;
+      padding: 25px 17px 30px;
       margin: 0 auto;
-      border-radius: 0 0 10px 10px;
-      border-width: 0 0.4px 0.4px 0;
-      border-style: none none solid none;
-      border-color: $color-platinum;
-      box-shadow: 0px 20px 17px 10px $color-quick-silver-25;
-      position: relative;
-    }
-
-    &:not(:first-child) {
-      @include vp-mobile {
-        margin: 25px auto 0;
-      }
     }
   }
 
-/*
-  &__item::before {
+  &__item:nth-child(2n) {
     @include vp-mobile {
-      position: absolute;
-      height: 1px;
-      left: 10px;
-      right: 10px;
-      bottom: -1px;
-      background-color: $color-platinum;
-      box-shadow: 20px 20px 50px 20px $color-quick-silver-25;
+      border-radius: 10px;
+      border-width: 0.4px;
+      border-style: solid;
+      border-color: $color-platinum;
+      box-shadow: 0px 0px 20px 0px $color-quick-silver-25;
     }
-  }*/
-
-  /* рисуем черту между элементами списка для mobile 
-  &__item:not(:last-child) {
-    @include vp-mobile {
-      position: relative;
-    }
-
-    &::after {
-      @include vp-mobile {
-        position: absolute;
-        content: "";
-        width: 100%;
-        height: 2px;
-        background-color: $color-light-silver;
-        bottom: -20px;
-        left: 0;
-      }
-    }
-  }*/
+  }
 }
 
 .order-wrapper {
@@ -584,13 +497,26 @@ const cartOrder = reactive({
   &__summary-number {
     @include vp-mobile {
       color: $color-light-silver;
+      padding: 0 0 0 3px;
     }
   }
 
   &__summary-number--first {
     @include vp-mobile {
-      padding: 0 3px 0 0;
+      padding: 0;
       position: relative;
+    }
+
+    &::before {
+      @include vp-mobile {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 1px;
+        top: 49%;
+        left: 0;
+        background-color: $color-light-silver;
+      }
     }
   }
 
@@ -610,20 +536,6 @@ const cartOrder = reactive({
     align-self: right;
     max-width: fit-content;
   }
-
-/*
-    &::before {
-      @include vp-mobile {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        background-color: $color-light-silver;
-        left: -2px;
-        bottom: 6px;
-      }
-    }
-  }*/
 }
 
 </style>

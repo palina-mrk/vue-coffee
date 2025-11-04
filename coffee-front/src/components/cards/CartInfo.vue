@@ -74,15 +74,6 @@ defineProps(['message', 'note']);
           >{{note}}</p
         >
       </div>
-      <!--div class="info-card__info" v-show="!isEmpty">
-        <logo-personal class="info-card__logo"></logo-personal>
-        <p class="info-card__summary"
-          >Оплата прошла успешно</p
-        >
-        <p class="info-card__note"
-          >Спасибо за Ваш заказ!</p
-        >
-      </div-->  
 
     </div>
   </div>

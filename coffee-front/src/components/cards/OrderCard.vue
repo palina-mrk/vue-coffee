@@ -1,48 +1,5 @@
 <script setup>
 defineProps(['orderLines', 'orderSale'])
-
-/**
-const orderSale = ref(15);
-
- информация о каждом товаре 
-const orderLines = reactive([
-  {
-    id: 15,
-    title: "Энергия пшеницы",
-    category: "healthy",
-    shortDescription: "Напитки для здоровья",
-    weightString: "100 г.",
-    count: 2,
-    price: 240,
-    sale: 0,
-    salePercent: 0,
-    total: 240,
-  },
-  {
-    id: 29,
-    title: "Байкальская мелодия",
-    category: "tea",
-    shortDescription: "Зелёный чай",
-    weightString: "200 г.",
-    count: 1,
-    price: 530,
-    sale: 0,
-    salePercent: 0,
-    total: 530,
-  },
-  {
-    id: 35,
-    title: "Brazil Santos",
-    category: "coffee",
-    shortDescription: "Смесь арабик",
-    weightString: "250 г.",
-    count: 2,
-    price: 520,
-    sale: 120,
-    salePercent: 23,
-    total: 400,
-  },
-]);*/
 </script>
 
 <template>
