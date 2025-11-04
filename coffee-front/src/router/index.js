@@ -4,6 +4,7 @@ import CatalogView from "../views/CatalogView.vue";
 import CartView from "../views/CartView.vue";
 import ContactsView from "../views/ContactsView.vue";
 import PersonalView from "../views/PersonalView.vue";
+import ProductView from "../views/ProductView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -91,7 +92,15 @@ const router = createRouter({
       meta: {
         title: "Контакты",
       },
-    } /*
+    },
+    {
+      path: "/catalogs/coffee/:productID",
+      name: "coffee.product",
+      component: ProductView,
+      meta: {
+        title: "Карточка товара кофе",
+      },
+    }, /*
     {
       path: '/about',
       name: 'about',
@@ -112,7 +121,7 @@ const router = createRouter({
           props: true,
         },
       ],
-    },*/,
+    },*/
   ],
   scrollBehavior(to) {
     if (to.name == "catalogs") {

@@ -7,6 +7,7 @@ const router = useRouter();
 const routerNames = computed(() => {
   const arr = route.path.split("/");
   arr[0] = "home";
+  arr[arr.length - 1] = route.name; 
   return arr;
 });
 </script>

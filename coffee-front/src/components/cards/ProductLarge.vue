@@ -2,42 +2,50 @@
 import SliderCorns from "../sliders/SliderCorns.vue";
 import SliderPoints from "../sliders/SliderPoints.vue";
 import SliderStars from "../sliders/SliderStars.vue";
-import CustomDropdown from "../inputs/CustomDropdown.vue";
-import { useCartStore } from "../../stores/cart";
-import { computed, ref } from "vue";
+import RadioBlock from "../fieldsets/RadioBlock.vue"
+import { computed, ref, reactive } from "vue";
+
 import { useRoute } from "vue-router";
-const props = defineProps(["product"]);
-const cartStore = useCartStore();
 const route = useRoute();
 
-const isSale = computed(() => props.product.actions.includes("Скидки"));
+import { useCartStore } from "../../stores/cart";
+const cartStore = useCartStore();
+
+import { useCatalogStore } from "../../stores/catalog";
+const catalogStore = useCatalogStore();
+const product = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)) : {});
+
 const weightIndex = ref(0);
 
 const weightVariants = computed(() =>
-  props.product.weights.map((el) => el.value),
+  product.value.weights.map((el) => el.value),
 );
+const weightLabels = computed(() =>
+  product.value.weights.map((el) => el.value + (product.value.category == 'vending' ? ' кг.' : ' г.')),
+);
+
 const currentWeight = computed(
-  () => props.product.weights[weightIndex.value].value,
+  () => product.value.weights[weightIndex.value].value,
 );
 const currentPrice = computed(
-  () => props.product.weights[weightIndex.value].price,
+  () => product.value.weights[weightIndex.value].price,
 );
 const currentPriceCrossed = computed(
-  () => props.product.weights[weightIndex.value].priceCrossed,
+  () => product.value.weights[weightIndex.value].priceCrossed,
 );
 
 function changeWeight(newValue) {
-  weightIndex.value = props.product.weights.findIndex(
+  weightIndex.value = product.value.weights.findIndex(
     (weight) => weight.value == newValue,
   );
 }
 
 function addToCart() {
-  cartStore.addToCart(props.product.id, currentWeight.value);
+  cartStore.addToCart(product.id, currentWeight.value);
 }
 
 const imageVariant = computed(() => {
-  switch (props.product.kind) {
+  switch (product.kind) {
     case "Черный чай":
     case "Травяной чай":
       return "black";
@@ -56,11 +64,10 @@ const imageVariant = computed(() => {
 </script>
 
 <template>
-  <div class="large-card">
-    <div v-show="isSale" class="product-card__sales-icon">%</div>
+  <div class="large-card" v-if="catalogStore.isLoaded">
     <div class="large-card__inner">
       <div class="large-card__image-wrapper">
-        <picture>
+        <picture class="large-card__product-picture">
           <source
             media="(max-width: 768px)"
             :srcset="`../../src/images/${product.category}-view/main-${product.category}-mobile.png`"
@@ -75,14 +82,40 @@ const imageVariant = computed(() => {
             :srcset="`../../src/images/${product.category}-view/main-${product.category}-laptop.png`"
           />
           <img
-            class="large-card__image"
+            class="large-card__product-image"
             :src="`../../src/images/${product.category}-view/main-${product.category}-desktop.png`"
             width="311"
             height="172"
             alt="Карточка товара"
           />
         </picture>
+
+        <picture class="large-card__preview-picture"
+          v-if="product.category == 'coffee' || product.category == 'tea'"
+        >
+          <source
+            media="(max-width: 768px)"
+            :srcset="`../../src/images/${product.category}-view/icon-preview-mobile.png`"
+          />
+          
+          <source
+            media="(max-width: 1348px)"
+            :srcset="`../../src/images/${product.category}-view/icon-preview-tablet.png`"
+          />
+          <source
+            media="(max-width: 1904px)"
+            :srcset="`../../src/images/${product.category}-view/icon-preview-laptop.png`"
+          />
+          <img
+            class="large-card__preview-image"
+            :src="`../../src/images/${product.category}-view/icon-preview-desktop.png`"
+            width="206"
+            height="196"
+            alt="Карточка товара"
+          />
+        </picture>
       </div>
+
       <div class="large-card__content">
         <div class="large-card__top">
           <div class="large-card__heading-wrapper">
@@ -120,11 +153,11 @@ const imageVariant = computed(() => {
                 route.name == 'home' || route.name == 'catalogs',
             }"
             :weightVariants="weightVariants"
-            :weightUnit="product.category == 'vending' ? 'кг' : 'г'"
+            :weightUnit="product.category == 'vending' ? ' кг' : 'г'"
             :defaultValue="currentWeight"
             @set-value="changeWeight($event)"
           >
-          </custom-dropdown-->
+        </custom-dropdown-->
         </div>
         <p class="large-card__company-text">Компания Нью Рефайнинг Груп находится в&nbsp;г. Калининграде и&nbsp;имеет свой склад и&nbsp;представительство в&nbsp;Москве. Завод работает на&nbsp;рынке свежеобжаренного кофе и&nbsp;растворимой продукции более 15&nbsp;лет. Завод имеет немецкое оборудование марки Probat по&nbsp;обжарке кофе и&nbsp;итальянские агломераторы для производства растворимой продукции.</p>   
         <div class="large-card__coffee-details" v-if="product.category == 'coffee'">
@@ -144,6 +177,14 @@ const imageVariant = computed(() => {
           </div>
         </div>
         <div class="large-card__weight-slider"></div>
+        <radio-block
+          :name="product.id + 'weights'"
+          :labels="weightLabels"
+          :values="weightVariants"
+          :fields-count="weightVariants.length"
+        >
+
+        </radio-block>
         <div class="large-card__bottom">
           <div class="large-card__counter"></div>
           <button @click="addToCart" class="large-card__button btn btn--size-s">Купить за {{ currentPrice }} ₽</button>
@@ -155,7 +196,7 @@ const imageVariant = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-.product-card {
+.large-card {
   padding: 20px 38px 48px;
   display: flex;
   flex-direction: column;
