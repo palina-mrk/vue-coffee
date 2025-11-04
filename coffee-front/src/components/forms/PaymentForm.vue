@@ -40,7 +40,7 @@ function payOrder() {
         >
         <span class="form-block__subsummary-text"
           >Скидка: {{ cartStore.totalSale ? cartStore.totalSale : 0 }} ₽
-          {{ cartStore.globalSale ? `(${cartStore.globalSale}%)` : "" }}</span
+          {{ cartStore.totalSale ? `(${Number((cartStore.totalSale * 100/ (cartStore.totalSum + cartStore.totalSale)).toFixed(0))}%)` : "" }}</span
         >
       </span>
       <div class="form-block__icons-wrapper">
