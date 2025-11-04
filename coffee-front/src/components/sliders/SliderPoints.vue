@@ -64,4 +64,42 @@ defineProps(["count"]);
     }
   }
 }
+
+.slider-points--large {
+  gap: unset;
+  justify-content: space-between;
+  width: 180px;
+  
+  @include vp-laptop {
+    width: 136px;
+  }
+
+  @include vp-tablet {
+    width: 205px;
+  }
+
+  @include vp-mobile {
+    width: 102px;
+  }
+
+  .slider-points__item {
+    width: 14px;
+    height: 14px;
+    
+    @include vp-laptop {
+      width: 10px;
+      height: 10px;
+    }
+
+    @include vp-laptop {
+      width: 16px;
+      height: 16px;
+    }
+
+    @include vp-mobile {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
 </style>

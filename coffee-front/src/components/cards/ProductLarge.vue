@@ -97,7 +97,7 @@ const imageVariant = computed(() => {
                   :count="product.roasting"
                 ></slider-corns>
                 <h3 class="large-card__title">{{ product.title }}</h3>
-                <p class="large-card__description">{{ product.description }}</p>
+                <p class="large-card__description">{{ catalogStore.getShortDescription(product.id) }}</p>
               </div>
             
               <ul class="large-card__actions-list">
@@ -111,14 +111,15 @@ const imageVariant = computed(() => {
 
             <div class="large-card__rating">
                 <slider-stars
-                  class="large-card__stars"
+                  class="slider-stars--large"
                   :rating="product.rate.rating"
                 ></slider-stars>      
                 <span class="large-card__rating-value">{{
                   product.rate.rating
                 }}</span>
-                <span class="large-card__comments-count"
-                  >({{ product.rate.comments }} отзыва)</span
+                <a class="large-card__comments-count"
+                href="#"
+                >({{ product.rate.comments }} отзыва)</a
                 >
             </div>
           </div>
@@ -154,21 +155,28 @@ const imageVariant = computed(() => {
             </picture>
           </div>  
         </div>
+        <p class="large-card__product-text">{{ product.description }}</p>
         <p class="large-card__company-text">Компания Нью Рефайнинг Груп находится в&nbsp;г. Калининграде и&nbsp;имеет свой склад и&nbsp;представительство в&nbsp;Москве. Завод работает на&nbsp;рынке свежеобжаренного кофе и&nbsp;растворимой продукции более 15&nbsp;лет. Завод имеет немецкое оборудование марки Probat по&nbsp;обжарке кофе и&nbsp;итальянские агломераторы для производства растворимой продукции.</p>   
         <div class="large-card__coffee-details" v-if="product.category == 'coffee'">
-          <div class="product-card__hue">
-            <span class="product-card__hue-name">Кислинка</span>
-            <slider-points :count="product.hue.acidity"></slider-points>
+          <div class="large-card__hue">
+            <span class="large-card__hue-name">Кислинка</span>
+            <slider-points 
+            class="slider-points--large"
+            :count="product.hue.acidity"></slider-points>
           </div>
 
-          <div class="product-card__hue">
-            <span class="product-card__hue-name">Горчинка</span>
-            <slider-points :count="product.hue.bitterness"></slider-points>
+          <div class="large-card__hue">
+            <span class="large-card__hue-name">Горчинка</span>
+            <slider-points
+            class="slider-points--large"
+            :count="product.hue.bitterness"></slider-points>
           </div>
 
-          <div class="product-card__hue">
-            <span class="product-card__hue-name">Насыщенность</span>
-            <slider-points :count="product.hue.richness"></slider-points>
+          <div class="large-card__hue">
+            <span class="large-card__hue-name">Насыщенность</span>
+            <slider-points 
+            class="slider-points--large"
+            :count="product.hue.richness"></slider-points>
           </div>
         </div>
         <div class="large-card__weight-slider"></div>
@@ -279,6 +287,7 @@ const imageVariant = computed(() => {
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin: 0 0 33px;
   }
 
   &__headings-rating {
@@ -332,7 +341,7 @@ const imageVariant = computed(() => {
     flex-direction: column;
     gap: 10px;
     align-items: start;
-    width: 200px;
+    min-width: 180px;
   }
 
   &__actions-item {
@@ -345,126 +354,89 @@ const imageVariant = computed(() => {
     padding: 0;
   }
 
-  &__details {
-    width: 134px;
-    display: flex;
-    align-items: start;
-    flex-direction: column;
-    justify-content: end;
-
-    @include vp-laptop {
-      width: 94px;
-      margin: 0 0 -2px;
-    }
-
-    @include vp-tablet {
-      margin: 0 15px 32px 0;
-    }
-
-    @include vp-mobile {
-      width: 113px;
-      margin: 0;
-    }
-  }
-
-  &__stars {
-    margin: 0 0 12px;
-    padding: 0 2px;
-    width: 100%;
-
-    @include vp-laptop {
-      margin: 0 0 8px;
-      padding: 0;
-    }
-
-    @include vp-tablet {
-      margin: 0 0 6px;
-    }
-
-    @include vp-mobile {
-      margin: 0 0 7px;
-    }
-  }
-
   &__rating {
-    margin: 0 0 26px 4px;
-    padding: 0;
     display: flex;
-    gap: 7px;
-    align-items: baseline;
-    font-family: $ff-gilroy, sans-serif;
-
-    @include vp-laptop {
-      margin: 0 0 17px;
-      gap: 4px;
-    }
-
-    @include vp-mobile {
-      margin: 0 0 25px 1px;
-      gap: 6px;
-    }
+    gap: 20px;
+    align-items: flex-end;
   }
 
   &__rating-value {
     font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 30px;
+    line-height: 36px;
     font-family: $ff-gilroy, sans-serif;
-
-    @include vp-laptop {
-      font-size: 14px;
-      line-height: 17px;
-    }
-
-    @include vp-mobile {
-      font-size: 17px;
-      line-height: 21px;
-    }
+    color: $color-raising-black;
   }
 
   &__comments-count {
     font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 16px;
+    line-height: 19px;
     color: $color-davys-gray;
     font-family: $ff-gilroy, sans-serif;
+    text-decoration: none;
+    position: relative;
+    display: flex;
 
-    @include vp-laptop {
-      font-size: 10px;
-      line-height: 12px;
+    &::after {
+      content: "";
+      background-color: $color-davys-gray;
+      height: 1px;
+      width: 100%;
+      left: 0;
+      bottom: 3px;
+      position: absolute;
     }
 
-    @include vp-mobile {
-      font-size: 12px;
-      line-height: 14px;
+    &:hover {
+      color: $color-raising-black;
+      text-decoration: none;
+    }
+
+    &:hover::after {
+      background-color: $color-ucla-gold;
     }
   }
 
-  &__description {
+  &__product-text,
+  &__company-text {
     font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    overflow: hidden;
+    font-size: 20px;
+    line-height: 26px;
     padding: 0;
     margin: 0;
+    color: $color-raising-black;
     font-family: $ff-gilroy, sans-serif;
-
-    @include vp-laptop {
-      font-size: 12px;
-      line-height: 14px;
-    }
-
-    @include vp-tablet {
-      font-size: 16px;
-      line-height: 19px;
-    }
-
-    @include vp-mobile {
-      font-size: 14px;
-      line-height: 16px;
-    }
+    width: 700px;
   }
 
+  &__product-text {
+    margin: 0 0 15px;
+  }
+
+  &__company-text {
+    margin: 0 0 40px;
+  }
+
+  &__coffee-details {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 40px;
+  }
+
+  &__hue {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__hue-name {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: $color-raising-black;
+    font-family: $ff-gilroy, sans-serif;
+  }
 }
 
 .btn--size-s {

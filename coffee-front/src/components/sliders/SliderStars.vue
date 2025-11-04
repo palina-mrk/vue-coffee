@@ -88,4 +88,40 @@ const count = computed(() => Number(props.rating.toFixed(0)));
     }
   }
 }
+
+.slider-stars--large {
+  gap: 4px;
+
+  @include vp-laptop {
+    gap: 2px;
+  }
+
+  @include vp-tablet {
+    gap: 10px;
+  }
+
+  @include vp-mobile {
+    gap: 4px;
+  }
+
+  .slider-stars__svg {
+    width: 34px;
+    height: 34px;
+
+    @include vp-laptop {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include vp-tablet {
+      width: 50px;
+      height: 50px;
+    }
+
+    @include vp-mobile {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
 </style>
