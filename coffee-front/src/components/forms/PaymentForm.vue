@@ -38,11 +38,24 @@ function payOrder() {
         <span class="form-block__subsummary-text"
           >Подытог: {{ cartStore.totalSum }} ₽</span
         >
-        <span class="form-block__subsummary-text"
+        <span class="form-block__salary-wrapper">
+
+          <span class="form-block__subsummary-text"
+            >Скидка:</span>
+
+            
+            <span class="form-block__subsummary-text form-block__subsummary-text--crossed">{{
+              cartStore.totalSale ? `${cartStore.totalSum + cartStore.totalSale} ₽` : ""
+            }}</span>
+
+            <span class="form-block__subsummary-text"
+              >{{ cartStore.totalSale ? `(-${Number((cartStore.totalSale * 100/ (cartStore.totalSum + cartStore.totalSale)).toFixed(0))}%)` : "0 ₽" }}</span>
+      </span>
+    </span>
+        <!--span class="form-block__subsummary-text"
           >Скидка: {{ cartStore.totalSale ? cartStore.totalSale : 0 }} ₽
           {{ cartStore.totalSale ? `(${Number((cartStore.totalSale * 100/ (cartStore.totalSum + cartStore.totalSale)).toFixed(0))}%)` : "" }}</span
-        >
-      </span>
+      -->
       <div class="form-block__icons-wrapper">
         <picture>
           <source
@@ -227,6 +240,40 @@ function payOrder() {
     @include vp-mobile {
       font-size: 14px;
       line-height: 16px;
+    }
+  }
+
+  &__salary-wrapper {
+    display: flex;
+    gap: 3px;
+  }
+
+  &__subsummary-text--crossed {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 2px;
+      bottom: 55%;
+      left: 0;
+      background-color: $color-sonic-silver;
+
+      @include vp-laptop {
+        height: 1.5px;
+        bottom: 52%;
+      }
+
+      @include vp-tablet {
+        height: 1.5px;
+        bottom: 52%;
+      }
+
+      @include vp-mobile {
+        height: 1px;
+        bottom: 50%;
+      }
     }
   }
 
