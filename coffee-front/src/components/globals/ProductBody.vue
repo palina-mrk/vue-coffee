@@ -49,23 +49,8 @@ const route = useRoute();
     padding: 95px 0 0;
   }
 
-  &__breadcrumbs-list {
-    margin: 0 0 50px;
 
-    @include vp-laptop {
-      margin: 0 0 35px;
-    }
-
-    @include vp-tablet {
-      margin: 0 0 19px;
-    }
-
-    @include vp-mobile {
-      margin: 0 0 28px;
-    }
-  }
-
-  &__top-forms {
+  &__wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -90,6 +75,22 @@ const route = useRoute();
       margin: 0 0 20px;
       min-width: calc($max-width-mobile + 36px);
       left: -19px;
+    }
+  }
+
+  &__breadcrumbs-list {
+    margin: 0 0 50px;
+
+    @include vp-laptop {
+      margin: 0 0 35px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 19px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 28px;
     }
   }
 

@@ -4,7 +4,7 @@ import SliderPoints from "../sliders/SliderPoints.vue";
 import SliderStars from "../sliders/SliderStars.vue";
 import RadioBlock from "../fieldsets/RadioBlock.vue";
 import CartCounter from "../inputs/CartCounter.vue";
-import { computed, ref, reactive, watch } from "vue";
+import { computed, ref, watch } from "vue";
 
 import { useRoute } from "vue-router";
 const route = useRoute();

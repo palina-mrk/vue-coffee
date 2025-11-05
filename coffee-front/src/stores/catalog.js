@@ -126,6 +126,11 @@ export const useCatalogStore = defineStore("catalog", () => {
     return getSellInfo(itemId, weight).price;
   }
 
+  function getTitle(itemId) {
+    return catalog.find((i) => i.id === itemId) 
+      ? catalog.find((i) => i.id === itemId).title : '';
+  }
+
   function getKind(itemId) {
     const item = catalog.find((i) => i.id == itemId);
     if (item.category != "coffee") return item.kind;
@@ -184,5 +189,6 @@ export const useCatalogStore = defineStore("catalog", () => {
     getSaleIndexes,
     getShortDescription,
     getKind,
+    getTitle,
   };
 });

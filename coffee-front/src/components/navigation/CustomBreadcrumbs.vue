@@ -3,6 +3,8 @@ import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
 const router = useRouter();
+import { useCatalogStore } from "../../stores/catalog";
+const catalogStore = useCatalogStore();
 
 const routerNames = computed(() => {
   const arr = route.path.split("/");
@@ -10,13 +12,36 @@ const routerNames = computed(() => {
   arr[arr.length - 1] = route.name; 
   return arr;
 });
+
+const routerLabels = computed(() => 
+  ! catalogStore.isLoaded ? 
+  [] : route.path.split("/").map((name, ind, arr) => {
+      console.log(name, ind, arr);
+      console.log(router.options.routes);
+      if(ind == 0)
+        return router.options.routes.find((r) => r.name == "home").meta.title;
+
+      if(ind == arr.length - 1)
+        return route.meta.title + ' ' + catalogStore.getTitle(Number(name));    
+
+      return router.options.routes.find((r) => r.name == name).meta.title;
+    }))
+
 </script>
 
 <template>
-  <ul class="breadcrumbs__list">
+  <!--ul class="breadcrumbs__list">
     <li v-for="routerName in routerNames" class="breadcrumbs__item">
       <router-link class="breadcrumbs__link" :to="{ name: routerName }">{{
         router.options.routes.find((r) => r.name == routerName).meta.title
+      }}</router-link>
+    </li>
+  </ul-->
+
+  <ul class="breadcrumbs__list" v-if="catalogStore.isLoaded">
+    <li v-for="n in routerLabels.length" class="breadcrumbs__item">
+      <router-link class="breadcrumbs__link" :to="{ name: routerNames[n - 1] }">{{
+        routerLabels[n - 1]
       }}</router-link>
     </li>
   </ul>
