@@ -94,11 +94,11 @@ const router = createRouter({
       },
     },
     {
-      path: "/catalogs/coffee/:productID",
-      name: "coffee.product",
+      path: "/catalogs/:productID",
+      name: "catalogs.product",
       component: ProductView,
       meta: {
-        title: "Карточка товара кофе",
+        title: "Карточка товара",
       },
     }, /*
     {

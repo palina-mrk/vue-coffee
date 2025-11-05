@@ -16,13 +16,11 @@ const routerNames = computed(() => {
 const routerLabels = computed(() => 
   ! catalogStore.isLoaded ? 
   [] : route.path.split("/").map((name, ind, arr) => {
-      console.log(name, ind, arr);
-      console.log(router.options.routes);
       if(ind == 0)
         return router.options.routes.find((r) => r.name == "home").meta.title;
 
       if(ind == arr.length - 1)
-        return route.meta.title + ' ' + catalogStore.getTitle(Number(name));    
+        return route.meta.title + ' ' + catalogStore.getCategory(Number(name)) + ' ' + catalogStore.getTitle(Number(name));    
 
       return router.options.routes.find((r) => r.name == name).meta.title;
     }))

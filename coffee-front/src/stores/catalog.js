@@ -131,6 +131,16 @@ export const useCatalogStore = defineStore("catalog", () => {
       ? catalog.find((i) => i.id === itemId).title : '';
   }
 
+  function getCategory(itemId) {
+    switch (catalog?.find((i) => i.id === itemId)?.category) {
+      case 'coffee': return 'кофе';
+      case 'tea': return 'чая';
+      case 'healthy': return 'для здорового питания';
+      case 'vending': return 'для вендинга';
+      default: return '';
+    }
+  }
+
   function getKind(itemId) {
     const item = catalog.find((i) => i.id == itemId);
     if (item.category != "coffee") return item.kind;
@@ -190,5 +200,6 @@ export const useCatalogStore = defineStore("catalog", () => {
     getShortDescription,
     getKind,
     getTitle,
+    getCategory,
   };
 });

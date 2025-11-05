@@ -4,6 +4,7 @@ import SliderPoints from "../sliders/SliderPoints.vue";
 import SliderStars from "../sliders/SliderStars.vue";
 import RadioBlock from "../fieldsets/RadioBlock.vue";
 import LargeCounter from "../inputs/LargeCounter.vue";
+import LargeDropdown from "../inputs/LargeDropdown.vue";
 import { computed, ref, watch } from "vue";
 
 import { useRoute } from "vue-router";
@@ -57,6 +58,7 @@ const imageVariant = computed(() => {
       <div class="large-card__images-wrapper">
         <picture class="large-card__product-picture">
           <source
+            v-if="product.category != 'vending'"
             media="(max-width: 1904px)"
             :srcset="`../../src/images/${product.category}-view/main-${product.category}-laptop.png`"
           />
@@ -192,7 +194,17 @@ const imageVariant = computed(() => {
         >
         </radio-block>
 
+        
         <div class="large-card__bottom">
+          <large-dropdown class="large-card__weight-dropdown"
+            :labels="weightLabels"
+            :values="weightVariants"
+            :fields-count="weightVariants.length"
+            :selectedValue="weightValue"
+            @set-value="weightValue = $event"
+          >
+          </large-dropdown>
+
           <large-counter class="large-card__counter"
           :productId="product.id"
           :productWeight="weightValue"
@@ -591,7 +603,12 @@ const imageVariant = computed(() => {
       gap: 44px;
       margin: auto auto 20px 0;
     }
+
+    @include vp-tablet {
+      display: none;
+    }
   }
+
 
   &__bottom {
     align-self: start;
@@ -600,6 +617,21 @@ const imageVariant = computed(() => {
   
     @include vp-laptop {
       gap: 15px;
+    }
+
+    @include vp-tablet {
+      width: 100%;
+      gap: 19px;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__weight-dropdown {
+    display: none;
+
+    @include vp-tablet {
+      display: flex;
+      width: calc(50% - 10px);
     }
   }
 
@@ -611,7 +643,7 @@ const imageVariant = computed(() => {
     }
 
     @include vp-tablet {
-      width: 100px;
+      width: calc(50% - 10px);
     }
   }
 
@@ -621,6 +653,10 @@ const imageVariant = computed(() => {
     @include vp-laptop {
       width: 184px;
     }
+
+    @include vp-tablet {
+      width: 100%;
+    } 
   }
 }
 
