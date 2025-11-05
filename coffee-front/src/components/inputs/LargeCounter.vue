@@ -2,16 +2,23 @@
 const props = defineProps(['productId', 'productWeight']);
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
-import {computed} from 'vue';
+import {computed, watch} from 'vue';
 
 console.log(props.productId, props.productWeight);
+
+//const countValue = ref(props.productWeight);
+
+/*watch (
+  () => [props.productId, props.productWeight,cartStore.getCount(props.productId, props.productWeight)], 
+  () => countValue = cartStore.getCount(props.productId, props.productWeight))*/
+
 const countValue = computed(() => cartStore.getCount(props.productId, props.productWeight));
 </script>
 
 <template>
-  <div class="custom-counter">
+  <div class="large-counter">
     <button
-      class="custom-counter__btn custom-counter__btn--minus"
+      class="large-counter__btn large-counter__btn--minus"
       type="button"
       :disabled="countValue < 1"
       @click="cartStore.removeOneFromCart(productId, productWeight)"
@@ -19,13 +26,13 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
       -
     </button>
     <input
-      class="custom-counter__field"
+      class="large-counter__field"
       type="number"
       :value="countValue"
       @input="cartStore.setCount(productId, productWeight, $event.target.value)"
     />
     <button
-      class="custom-counter__btn custom-counter__btn--plus"
+      class="large-counter__btn large-counter__btn--plus"
       type="button"
       @click="cartStore.addToCart(productId, productWeight)"
     >
@@ -35,7 +42,7 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
 </template>
 
 <style lang="scss" scoped>
-.custom-counter {
+.large-counter {
   position: relative;
   font-family: $ff-gilroy, sans-serif;
 
@@ -46,37 +53,36 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
     border: none;
     display: flex;
     color: $color-black;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
-    font-size: 25px;
-    line-height: 40px;
+    font-size: 30px;
+    line-height: 35px;
     user-select: none;
     position: absolute;
     cursor: pointer;
-    top: 0;
+    top: 50%;
+    transform: translateY(calc(1px - 50%));
 
     @include vp-laptop {
       padding: 8px;
-      font-size: 18px;
-      line-height: 20px;
+      font-size: 22px;
+      line-height: 25px;
     }
 
     @include vp-tablet {
       padding: 10px;
-      font-size: 20px;
-      line-height: 24px;
-      top: 6px;
+      font-size: 40px;
+      line-height: 43px;
     }
 
     @include vp-mobile {
       padding: 13px;
       font-size: 20px;
-      line-height: 24px;
-      top: 0;
+      line-height: 23px;
     }
 
     &--minus {
-      left: 8px;
+      left: 30px;
 
       @include vp-laptop {
         left: 7px;
@@ -92,7 +98,7 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
     }
 
     &--plus {
-      right: 8px;
+      right: 30px;
 
       @include vp-laptop {
         right: 7px;
@@ -119,23 +125,22 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
 
   &__field {
     margin: 0;
-    padding: 15px 46px 11px;
+    padding: 25px 65px 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-width: 1px;
     border-style: solid;
     border-color: $color-light-silver;
-    background-color: $color-cultured;
+    background-color: $color-cultured-f6;
     border-radius: 5px;
-    width: 100%;
-    height: 100%;
     text-align: center;
-  font-family: $ff-gilroy, sans-serif;
-    color: $color-black;
+    font-family: $ff-gilroy, sans-serif;
+    color: $color-raising-black;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 100%;
 
     @include vp-laptop {
       padding: 11px 45px 9px;
@@ -150,7 +155,7 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
       border-width: 1px;
       border-color: $color-ucla-gold;
       border-radius: 5px;
-      background-color: $color-cornsilk;
+      background-color: $color-antiflash-white-f0;
       font-size: 20px;
       line-height: 23px;
     }

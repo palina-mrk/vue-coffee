@@ -54,16 +54,16 @@ const route = useRoute();
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 39px;
     margin: 0 0 25px;
 
     @include vp-laptop {
-      gap: 20px;
+      gap: 33px;
       margin: 0 0 20px;
     }
 
     @include vp-tablet {
-      gap: 20px;
+      gap: 50px;
       margin: 0 0 30px;
       position: relative;
       min-width: calc($max-width-tablet + 68px);
@@ -71,7 +71,7 @@ const route = useRoute();
     }
 
     @include vp-mobile {
-      gap: 30px;
+      gap: 13px;
       margin: 0 0 20px;
       min-width: calc($max-width-mobile + 36px);
       left: -19px;
@@ -79,19 +79,7 @@ const route = useRoute();
   }
 
   &__breadcrumbs-list {
-    margin: 0 0 50px;
-
-    @include vp-laptop {
-      margin: 0 0 35px;
-    }
-
-    @include vp-tablet {
-      margin: 0 0 19px;
-    }
-
-    @include vp-mobile {
-      margin: 0 0 28px;
-    }
+    margin: 0;
   }
 
   &__bottom-forms {

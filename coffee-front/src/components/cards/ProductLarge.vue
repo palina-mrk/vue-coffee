@@ -3,7 +3,7 @@ import SliderCorns from "../sliders/SliderCorns.vue";
 import SliderPoints from "../sliders/SliderPoints.vue";
 import SliderStars from "../sliders/SliderStars.vue";
 import RadioBlock from "../fieldsets/RadioBlock.vue";
-import CartCounter from "../inputs/CartCounter.vue";
+import LargeCounter from "../inputs/LargeCounter.vue";
 import { computed, ref, watch } from "vue";
 
 import { useRoute } from "vue-router";
@@ -179,8 +179,10 @@ const imageVariant = computed(() => {
             :count="product.hue.richness"></slider-points>
           </div>
         </div>
+
         <div class="large-card__weight-slider"></div>
-        <radio-block
+
+        <radio-block class="large-card__weight-radio"
           :name="product.id + 'weights'"
           :labels="weightLabels"
           :values="weightVariants"
@@ -189,14 +191,14 @@ const imageVariant = computed(() => {
           @set-value="weightValue = $event"
         >
         </radio-block>
+
         <div class="large-card__bottom">
-          <div class="large-card__counter"></div>
-          <cart-counter
+          <large-counter class="large-card__counter"
           :productId="product.id"
           :productWeight="weightValue"
-          ></cart-counter>
+          ></large-counter>
           <button 
-          class="large-card__button btn btn--size-s"
+          class="large-card__btn btn-gold"
           @click="cartStore.addToCart(product.id, weightValue)"
           >Купить за {{ priceVariant }} ₽</button>
         </div>
@@ -207,6 +209,51 @@ const imageVariant = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+
+.btn-gold {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  background-color: $color-ucla-gold;
+  border-radius: 5px;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  font-family: $ff-gilroy, sans-serif;
+  padding: 20px;
+  font-size: 25px;
+  line-height: 30px;
+
+  @include vp-laptop {
+    padding: 14px;
+    font-size: 18px;
+    line-height: 21px;
+    border-radius: 4px;
+  }
+
+  @include vp-tablet {
+    padding: 18px 11px 17px;
+    font-size: 25px;
+    line-height: 35px;
+    border-radius: 5px;
+    opacity: 0.7;
+  }
+
+  @include vp-mobile {
+    padding: 12px 11px 11px;
+    font-size: 14px;
+    line-height: 17px;
+    border-radius: 5px;
+  }
+
+  &:hover {
+    background-color: $color-mustard-yellow;
+  }
+}
+
 .large-card {
   padding: 73px 132px 121px;
   box-shadow: 0px 0px 50px 0px $color-quick-silver-25;
@@ -281,6 +328,11 @@ const imageVariant = computed(() => {
     display: flex;
     flex-direction: column;
     width: 740px;
+    padding: 0 0 27px;
+
+    @include vp-laptop {
+      padding: 0 0 14px;
+    }
   }
 
   &__top {
@@ -415,7 +467,7 @@ const imageVariant = computed(() => {
   }
 
   &__company-text {
-    margin: 0 0 40px;
+    margin: 0 0 30px;
   }
 
   &__coffee-details {
@@ -437,46 +489,42 @@ const imageVariant = computed(() => {
     color: $color-raising-black;
     font-family: $ff-gilroy, sans-serif;
   }
-}
 
-.btn--size-s {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $color-white;
-  background-color: $color-ucla-gold;
-  font-weight: 700;
-  font-family: $ff-gilroy, sans-serif;
-  border-radius: 5px;
-  border: none;
-  margin: 0;
-  cursor: pointer;
-  user-select: none;
-  padding: 13px;
-  font-size: 18px;
-  line-height: 22px;
-
-  @include vp-laptop {
-    padding: 9px 9px 10px;
-    font-size: 12px;
-    line-height: 15px;
-    border-radius: 4px;
+  &__weight-radio {
+    align-self: start;
+    gap: 60px;
+    margin: auto auto 33px 0;
   }
 
-  @include vp-tablet {
-    padding: 11px 11px 10px;
-    font-size: 16px;
-    line-height: 19px;
-    border-radius: 5px;
+  &__bottom {
+    align-self: start;
+    display: flex;
+    gap: 20px;
+  
+    @include vp-laptop {
+      gap: 15px;
+    }
   }
 
-  @include vp-mobile {
-    padding: 12px 11px 9px;
-    border-radius: 4px;
+  &__counter {
+    width: 260px;
+
+    @include vp-laptop {
+      width: 184px;
+    }
+
+    @include vp-tablet {
+      width: 100px;
+    }
   }
 
-  &:hover {
-    background-color: $color-mustard-yellow;
+  &__btn {
+    width: 400px;
+
+    @include vp-laptop {
+      width: 184px;
+    }
   }
 }
+
 </style>
