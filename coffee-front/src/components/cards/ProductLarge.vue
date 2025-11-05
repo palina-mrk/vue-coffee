@@ -32,6 +32,7 @@ const weightVariants = computed(() =>
 const weightLabels = computed(() =>
   product.value.weights.map((el) => el.value + (product.value.category == 'vending' ? ' кг.' : ' г.')),
 );
+const showFullText = ref(false);
 
 const imageVariant = computed(() => {
   switch (product.kind) {
@@ -125,7 +126,7 @@ const imageVariant = computed(() => {
                 >
             </div>
           </div>
-          <div class="large-card__images-tablet">
+          <div class="large-card__images-wrapper large-card__images-wrapper--tablet">
             <picture class="large-card__product-picture">
               <source
                 media="(max-width: 768px)"
@@ -158,7 +159,36 @@ const imageVariant = computed(() => {
           </div>  
         </div>
         <p class="large-card__product-text">{{ product.description }}</p>
-        <p class="large-card__company-text">Компания Нью Рефайнинг Груп находится в&nbsp;г. Калининграде и&nbsp;имеет свой склад и&nbsp;представительство в&nbsp;Москве. Завод работает на&nbsp;рынке свежеобжаренного кофе и&nbsp;растворимой продукции более 15&nbsp;лет. Завод имеет немецкое оборудование марки Probat по&nbsp;обжарке кофе и&nbsp;итальянские агломераторы для производства растворимой продукции.</p>   
+        <p :class="{'large-card__company-text' : true, 'large-card__company-text--full' : showFullText}">Компания Нью Рефайнинг Груп находится в&nbsp;г. Калининграде и&nbsp;имеет свой склад и&nbsp;представительство в&nbsp;Москве. Завод работает на&nbsp;рынке свежеобжаренного кофе и&nbsp;растворимой продукции более 15&nbsp;лет. Завод имеет немецкое оборудование марки Probat по&nbsp;обжарке кофе и&nbsp;итальянские агломераторы для производства растворимой продукции.</p>  
+        
+        <button
+          class="large-card__btn-expand btn-expand" type="button"
+          @click="showFullText = !showFullText"
+        >
+          <span class="btn-expand__text"
+            >{{showFullText ? "Свернуть текст" : "Читать полностью"}}</span
+          >
+            <svg
+              class="btn-expand__icon"
+              width="20"
+              height="9"
+              aria-hidden="true"
+              v-show="!showFullText"
+            >
+              <use xlink:href="../../assets/product-sprite.svg#icon-down-arrow"></use>
+            </svg>
+
+            <svg
+              class="btn-expand__icon-rotated"
+              width="20"
+              height="9"
+              aria-hidden="true"
+              v-show="showFullText"
+            >
+              <use xlink:href="../../assets/product-sprite.svg#icon-down-arrow"></use>
+            </svg>
+        </button>
+        
         <div class="large-card__coffee-details" v-if="product.category == 'coffee'">
           <div class="large-card__hue">
             <span class="large-card__hue-name">Кислинка</span>
@@ -221,7 +251,6 @@ const imageVariant = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-
 .btn-gold {
   display: flex;
   align-items: center;
@@ -266,6 +295,90 @@ const imageVariant = computed(() => {
   }
 }
 
+.btn-expand {
+  align-items: center;
+  color: $color-ucla-gold;
+  background-color: transparent; 
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  gap: 14px;
+  position: relative;
+  display: none;
+  
+  @include vp-tablet {
+    display: flex;
+  }
+
+  @include vp-mobile {
+    gap: 10px;
+  }
+
+  
+  &__text {
+    font-weight: 500;
+    font-family: $ff-gilroy, sans-serif;
+    font-size: 25px;
+    line-height: 29px;
+    flex-shrink: 0;
+    z-index: 0;
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 10px;
+    z-index: 0;
+
+    @include vp-mobile {
+      width: 10px;
+      height: 5px;
+    }
+  }
+
+  &__icon-rotated {
+    width: 20px;
+    height: 10px;
+    z-index: 0;
+    rotate: 180deg;
+
+    @include vp-mobile {
+      width: 10px;
+      height: 5px;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: -15px;
+    bottom: -12px;
+    left: -27px;
+    right: -27px;
+    cursor: pointer;
+    border-radius: 35px;
+    background-color: $color-white;
+
+    @include vp-mobile {
+      top: -7px;
+      bottom: -5px;
+      left: -13px;
+      right: -13px;
+      border-radius: 20px;
+    }
+  }
+
+  &:hover::before {
+    background-color: $color-ghost-white;
+  }
+}
+
 .large-card {
   padding: 73px 132px 121px;
   box-shadow: 0px 0px 50px 0px $color-quick-silver-25;
@@ -284,16 +397,14 @@ const imageVariant = computed(() => {
   }
 
   @include vp-tablet {
-    padding: 21px 33px 42px 35px;
-    box-shadow: 0px 0px 17px 0px $color-chinese-silver-25;
-    border: none;
-    border-radius: 10px;
+    padding: 50px 40px 70px;
+    box-shadow: 0px 0px 103px 0px $color-quick-silver-25;
+    border-radius: 20px;
   }
 
   @include vp-mobile {
     box-shadow: none;
     padding: 17px 32px 43px;
-    border: 1px solid $color-platinum;
     border-radius: 20px;
   }
 
@@ -322,6 +433,21 @@ const imageVariant = computed(() => {
     }
   }
 
+  &__images-wrapper--tablet {
+    display: none;
+
+    @include vp-tablet {
+      display: flex;
+      width: 260px;
+      height: 495px;
+    }
+
+    @include vp-mobile {
+      width: 136px;
+      height: 259px;
+    }
+  }
+
   &__product-image {
     width: 100%;
     height: 100%;
@@ -342,13 +468,19 @@ const imageVariant = computed(() => {
       top: 50px;
       right: -15px;
     }
-  }
-
-  &__images-tablet {
-    display: none;
 
     @include vp-tablet {
-      display: flex;
+      width: 120px;
+      height: 120px;
+      top: 41px;
+      right: -3px;
+    }
+
+    @include vp-mobile {
+      width: 66px;
+      height: 66px;
+      top: 21px;
+      right: -5px;
     }
   }
 
@@ -363,6 +495,13 @@ const imageVariant = computed(() => {
       width: 536px;
       padding: 14px 0 4px;
     }
+
+    @include vp-tablet {
+      width: 100%;
+      padding: 0;
+      align-items: start;
+      justify-content: start;
+    }
   }
 
   &__top {
@@ -373,6 +512,16 @@ const imageVariant = computed(() => {
 
     @include vp-laptop {
       margin: 0 0 25px;
+    }
+
+    @include vp-tablet {
+      flex-direction: row;
+      gap: 70px;
+      margin: 0 0 45px;
+    }
+
+    @include vp-mobile {
+      gap: 4px;
     }
   }
 
@@ -385,6 +534,16 @@ const imageVariant = computed(() => {
     @include vp-laptop {
       gap: 20px;
     }
+
+    @include vp-tablet {
+      flex-direction: column-reverse;
+      width: 290px;
+      justify-content: space-between;
+    }
+
+    @include vp-mobile {
+      width: 160px;
+    }
   }
 
   &__headings-actions {
@@ -392,6 +551,12 @@ const imageVariant = computed(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include vp-tablet {
+      flex-direction: column-reverse;
+      align-items: start;
+      min-height: 60%;
+    }
   }
 
   &__headings {
@@ -405,6 +570,11 @@ const imageVariant = computed(() => {
     @include vp-laptop {
       gap: 16px;
       width: 300px;
+    }
+
+    @include vp-tablet {
+      gap: 20px;
+      width: 100%;
     }
   }
 
@@ -421,6 +591,16 @@ const imageVariant = computed(() => {
       font-size: 28px;
       line-height: 40px;
     }
+
+    @include vp-tablet {
+      font-size: 30px;
+      line-height: 37px;
+    }
+
+    @include vp-mobile {
+      font-size: 18px;
+      line-height: 22px;
+    }
   }
 
   &__description {
@@ -435,6 +615,16 @@ const imageVariant = computed(() => {
     @include vp-laptop {
       font-size: 14px;
       line-height: 17px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 14px;
     }
   }
 
@@ -451,6 +641,11 @@ const imageVariant = computed(() => {
     @include vp-laptop {
       min-width: 142px;
     }
+
+    @include vp-tablet {
+      gap: 15px;
+      min-width: unset;
+    }
   }
 
   &__actions-item {
@@ -466,6 +661,11 @@ const imageVariant = computed(() => {
       font-size: 14px;
       line-height: 17px;
     }
+
+    @include vp-tablet {
+      font-size: 25px;
+      line-height: 30px;
+    }
   }
 
   &__rating {
@@ -476,6 +676,13 @@ const imageVariant = computed(() => {
 
     @include vp-laptop {
       gap: 15px;
+    }
+
+    @include vp-tablet {
+      gap: 30px;
+      justify-content: start;
+      align-items: center;
+      flex-wrap: wrap;
     }
   }
 
@@ -489,6 +696,11 @@ const imageVariant = computed(() => {
     @include vp-laptop {
       font-size: 22px;
       line-height: 16px;
+    }
+
+    @include vp-tablet {
+      font-size: 32px;
+      line-height: 43px;
     }
   }
 
@@ -505,6 +717,11 @@ const imageVariant = computed(() => {
     @include vp-laptop {
       font-size: 12px;
       line-height: 16px;
+    }
+
+    @include vp-tablet {
+      font-size: 24px;
+      line-height: 29px;
     }
 
     &::after {
@@ -536,12 +753,18 @@ const imageVariant = computed(() => {
     margin: 0;
     color: $color-raising-black;
     font-family: $ff-gilroy, sans-serif;
-    width: 700px;
+    max-width: 700px;
 
     @include vp-laptop {
-      width: 500px;
+      max-width: 500px;
       font-size: 14px;
       line-height: 18px;
+    }
+
+    @include vp-tablet {
+      max-width: 600px;
+      font-size: 20px;
+      line-height: 26px;
     }
   }
 
@@ -551,6 +774,10 @@ const imageVariant = computed(() => {
     @include vp-laptop {
       margin: 0 0 10px;
     }
+
+    @include vp-tablet {
+      margin: 0 0 15px;
+    }
   }
 
   &__company-text {
@@ -558,6 +785,18 @@ const imageVariant = computed(() => {
 
     @include vp-laptop {
       margin: 0 0 20px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 30px;
+      max-height: 4em;
+      overflow: hidden;
+    }
+  }
+
+  &__company-text--full {
+    @include vp-tablet {
+      max-height: unset;
     }
   }
 

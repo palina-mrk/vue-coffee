@@ -12,7 +12,7 @@ const isClicked = ref(false);
 const currentLabel = computed(() => props.labels[props.values.findIndex(value => value == currentValue.value)]);
 
 function showVariants() {
-  isClicked.value = true;
+  isClicked.value = !isClicked.value;
 }
 
 const emit = defineEmits();
@@ -64,7 +64,7 @@ function setValue(newValue) {
 
   &__field {
     margin: 0;
-    padding: 21px 40px 19px 50px;
+    padding: 21px 40px 17px 50px;
     width: 100%;
     user-select: none;
     cursor: pointer;
@@ -94,7 +94,7 @@ function setValue(newValue) {
     }
 
     &--main {
-      padding: 20px 39px 18px 49px;
+      padding: 20px 39px 16px 49px;
       border: 1px solid $color-ucla-gold;
       background-color: $color-cornsilk;
       border-radius: 5px;
@@ -120,7 +120,7 @@ function setValue(newValue) {
   &__list {
     position: absolute;
     width: 100%;
-    bottom: -8px;
+    bottom: -13px;
     transform: translateY(100%);
     padding: 0;
     margin: 0;
