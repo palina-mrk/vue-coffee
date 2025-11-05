@@ -43,6 +43,15 @@ function setValue(newValue) {
       >
         <use xlink:href="../../assets/product-sprite.svg#icon-down-arrow"></use>
       </svg>
+
+      <svg
+        class="large-dropdown__icon large-dropdown__icon--rotated"
+        width="12"
+        height="5"
+        aria-hidden="true"
+      >
+        <use xlink:href="../../assets/product-sprite.svg#icon-down-arrow"></use>
+      </svg>
     </button>
     <ul class="large-dropdown__list">
       <li class="large-dropdown__item" v-for="index in fieldsCount">
@@ -64,7 +73,7 @@ function setValue(newValue) {
 
   &__field {
     margin: 0;
-    padding: 21px 40px 17px 50px;
+    padding: 21px 40px 18px 50px;
     width: 100%;
     user-select: none;
     cursor: pointer;
@@ -80,7 +89,7 @@ function setValue(newValue) {
     justify-content: space-between;
 
     @include vp-mobile {
-      padding: 12px 20px;
+      padding: 11px 20px 10px;
       font-size: 14px;
       line-height: 16px;
     }
@@ -94,14 +103,14 @@ function setValue(newValue) {
     }
 
     &--main {
-      padding: 20px 39px 16px 49px;
+      padding: 21px 39px 17px 49px;
       border: 1px solid $color-ucla-gold;
       background-color: $color-cornsilk;
       border-radius: 5px;
 
       @include vp-mobile {
         border-radius: 4px;
-        padding: 11px 19px;
+        padding: 10px 19px 9px;
       }
     }
   }
@@ -115,6 +124,12 @@ function setValue(newValue) {
       width: 10px;
       height: 5px;
     }
+  }
+
+
+  &__icon--rotated {
+    rotate: 180deg;
+    display: none;
   }
 
   &__list {
@@ -140,6 +155,14 @@ function setValue(newValue) {
 
 .large-dropdown--clicked {
   .large-dropdown__list {
+    display: flex;
+  }
+
+  .large-dropdown__icon {
+    display: none;
+  }
+
+  .large-dropdown__icon--rotated {
     display: flex;
   }
 }

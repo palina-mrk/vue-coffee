@@ -403,9 +403,8 @@ const imageVariant = computed(() => {
   }
 
   @include vp-mobile {
-    box-shadow: none;
-    padding: 17px 32px 43px;
-    border-radius: 20px;
+    box-shadow: 0px 0px 50px 0px $color-quick-silver-25;
+    padding: 25px 20px 40px;
   }
 
   &__inner {
@@ -521,7 +520,8 @@ const imageVariant = computed(() => {
     }
 
     @include vp-mobile {
-      gap: 4px;
+      gap: 5px;
+      margin: 0 0 20px;
     }
   }
 
@@ -542,7 +542,7 @@ const imageVariant = computed(() => {
     }
 
     @include vp-mobile {
-      width: 160px;
+      width: 164px;
     }
   }
 
@@ -576,6 +576,10 @@ const imageVariant = computed(() => {
       gap: 20px;
       width: 100%;
     }
+
+    @include vp-mobile {
+      gap: 5px;
+    }
   }
 
   &__title {
@@ -600,6 +604,7 @@ const imageVariant = computed(() => {
     @include vp-mobile {
       font-size: 18px;
       line-height: 22px;
+      margin: 5px 0 0;
     }
   }
 
@@ -646,6 +651,10 @@ const imageVariant = computed(() => {
       gap: 15px;
       min-width: unset;
     }
+
+    @include vp-mobile {
+      gap: 5px;
+    }
   }
 
   &__actions-item {
@@ -666,6 +675,11 @@ const imageVariant = computed(() => {
       font-size: 25px;
       line-height: 30px;
     }
+
+    @include vp-mobile {
+      font-size: 14px;
+      line-height: 17px;
+    }
   }
 
   &__rating {
@@ -683,6 +697,10 @@ const imageVariant = computed(() => {
       justify-content: start;
       align-items: center;
       flex-wrap: wrap;
+    }
+
+    @include vp-mobile {
+      gap: 15px 13px;
     }
   }
 
@@ -702,6 +720,11 @@ const imageVariant = computed(() => {
       font-size: 32px;
       line-height: 43px;
     }
+
+    @include vp-mobile {
+      font-size: 16px;
+      line-height: 21px;
+    }
   }
 
   &__comments-count {
@@ -713,15 +736,27 @@ const imageVariant = computed(() => {
     text-decoration: none;
     position: relative;
     display: flex;
+    padding: 0;
+    margin: 0;
+    bottom: 1px;
+    
 
     @include vp-laptop {
       font-size: 12px;
-      line-height: 16px;
+      line-height: 14px;
+      bottom: 0;
     }
 
     @include vp-tablet {
       font-size: 24px;
       line-height: 29px;
+      bottom: 1px;
+    }
+
+    @include vp-mobile {
+      line-height: 14px;
+      font-size: 12px;  
+      bottom: 0px;
     }
 
     &::after {
@@ -732,6 +767,15 @@ const imageVariant = computed(() => {
       left: 0;
       bottom: 3px;
       position: absolute;
+
+      @include vp-laptop {
+        bottom: 2px;
+      }
+
+      @include vp-mobile {
+        height: 0.5px;
+        bottom: 1px;
+      }
     }
 
     &:hover {
@@ -766,6 +810,12 @@ const imageVariant = computed(() => {
       font-size: 20px;
       line-height: 26px;
     }
+
+    @include vp-mobile {
+      max-width: 250px;
+      font-size: 12px;
+      line-height: 16px;
+    }
   }
 
   &__product-text {
@@ -777,6 +827,10 @@ const imageVariant = computed(() => {
 
     @include vp-tablet {
       margin: 0 0 15px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 8px;
     }
   }
 
@@ -792,6 +846,10 @@ const imageVariant = computed(() => {
       max-height: 4em;
       overflow: hidden;
     }
+
+    @include vp-mobile {
+      margin: 0 0 20px;
+    }
   }
 
   &__company-text--full {
@@ -802,6 +860,10 @@ const imageVariant = computed(() => {
 
   &__btn-expand {
     margin: 0 0 50px;
+
+    @include vp-mobile {
+      margin: 0 0 30px;
+    }
   }
 
   &__coffee-details {
@@ -819,6 +881,11 @@ const imageVariant = computed(() => {
       justify-content: start;
       gap: 30px 118px;
     }
+
+    @include vp-mobile {
+      margin: 0 0 20px;
+      gap: 10px 53px;
+    }
   }
 
   &__hue {
@@ -832,6 +899,10 @@ const imageVariant = computed(() => {
 
     @include vp-tablet {
       gap: 10px;
+    }
+
+    @include vp-mobile {
+      gap: 5px;
     }
   }
 
@@ -850,6 +921,11 @@ const imageVariant = computed(() => {
     @include vp-tablet {
       font-size: 20px;
       line-height: 24px;
+    }
+
+    @include vp-mobile {
+      font-size: 12px;
+      line-height: 15px;
     }
   }
 
@@ -882,6 +958,10 @@ const imageVariant = computed(() => {
       gap: 19px;
       flex-wrap: wrap;
     }
+
+    @include vp-mobile {
+      gap: 20px 9px;
+    }
   }
 
   &__weight-dropdown {
@@ -890,6 +970,10 @@ const imageVariant = computed(() => {
     @include vp-tablet {
       display: flex;
       width: calc(50% - 10px);
+    }
+
+    @include vp-mobile {
+      width: calc(50% - 5px);
     }
   }
 
@@ -902,6 +986,10 @@ const imageVariant = computed(() => {
 
     @include vp-tablet {
       width: calc(50% - 10px);
+    }
+
+    @include vp-mobile {
+      width: calc(50% - 5px);
     }
   }
 

@@ -30,7 +30,7 @@ const route = useRoute();
 .product-hero {
   position: relative;
   width: 100%;
-  padding: 202px 0 110px;
+  padding: 201px 0 110px;
   margin: 0;
   font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
@@ -38,7 +38,7 @@ const route = useRoute();
   height: 100%;
 
   @include vp-laptop {
-    padding: 142px 0 110px;
+    padding: 145px 0 110px;
   }
 
   @include vp-tablet {
@@ -46,7 +46,7 @@ const route = useRoute();
   }
 
   @include vp-mobile {
-    padding: 95px 0 0;
+    padding: 100px 0 0;
   }
 
 
@@ -54,27 +54,22 @@ const route = useRoute();
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 39px;
+    gap: 37px;
     margin: 0 0 25px;
 
     @include vp-laptop {
-      gap: 27px;
+      gap: 30px;
       margin: 0 0 20px;
     }
 
     @include vp-tablet {
-      gap: 50px;
+      gap: 56px;
       margin: 0 0 30px;
-      position: relative;
-      min-width: calc($max-width-tablet + 68px);
-      left: -35px;
     }
 
     @include vp-mobile {
       gap: 13px;
-      margin: 0 0 20px;
-      min-width: calc($max-width-mobile + 36px);
-      left: -19px;
+      margin: 0 0 30px;
     }
   }
 

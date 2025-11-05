@@ -49,66 +49,34 @@ const routerLabels = computed(() =>
 .breadcrumbs {
   &__list {
     display: flex;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     list-style-type: none;
     justify-content: start;
     margin: 0;
     padding: 0;
-    gap: 14px;
+    gap: 5px 8px;
+    flex-wrap: wrap;
 
     @include vp-laptop {
-      gap: 11px;
+      gap: 5px 5px;
     }
 
     @include vp-tablet {
-      gap: 22px;
+      gap: 5px 10px;
     }
 
     @include vp-mobile {
-      gap: 12px;
+      gap: 5px 5px;
     }
   }
 
   &__item {
-    position: relative;
-  }
-
-  &__item:not(:first-child)::before {
-    content: "";
-    background-color: $color-raising-black;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    position: absolute;
-    left: -7px;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    @include vp-laptop {
-      width: 3px;
-      height: 3px;
-      left: -5px;
-    }
-
-    @include vp-tablet {
-      width: 4px;
-      height: 4px;
-      left: -11px;
-    }
-
-    @include vp-mobile {
-      width: 2px;
-      height: 2px;
-      left: -6px;
-    }
-  }
-
-  &__link {
-    color: $color-raising-black;
-  font-family: $ff-gilroy, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 18px;
-    line-height: 21px;
+    line-height: 23px;
     text-decoration: none;
 
     @include vp-laptop {
@@ -118,7 +86,76 @@ const routerLabels = computed(() =>
 
     @include vp-tablet {
       font-size: 20px;
-      line-height: 25px;
+      line-height: 26px;
+    }
+
+    @include vp-mobile {
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+
+  &__item:not(:first-child) {
+    position: relative;
+    margin: 0;
+    padding: 0 0 0 12px;
+
+    @include vp-laptop {
+      padding: 0 0 0 8px;
+    }
+
+    @include vp-tablet {
+      padding: 0 0 0 14px;
+    }
+
+    @include vp-mobile {
+      padding: 0 0 0 7px;
+    }
+  }
+
+  &__item:not(:first-child)::before {
+    content: "";
+    background-color: $color-raising-black;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: calc(50% + 1px);
+    transform: translateY(-50%);
+
+    @include vp-laptop {
+      width: 3px;
+      height: 3px;
+    }
+
+    @include vp-tablet {
+      width: 4px;
+      height: 4px;
+    }
+
+    @include vp-mobile {
+      width: 2px;
+      height: 2px;
+    }
+  }
+
+  &__link {
+    color: $color-raising-black;
+    font-family: $ff-gilroy, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    text-decoration: none;
+
+    @include vp-laptop {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 26px;
     }
 
     @include vp-mobile {

@@ -45,6 +45,20 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
 .large-counter {
   position: relative;
   font-family: $ff-gilroy, sans-serif;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: $color-light-silver;
+  background-color: $color-cultured-f6;
+
+  @include vp-laptop {
+    border-radius: 4px;
+  }
+
+  @include vp-tablet {
+    border-radius: 5px;
+    background-color: $color-antiflash-white-f0;
+  }
 
   &__btn {
     margin: 0;
@@ -76,7 +90,7 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
     }
 
     @include vp-mobile {
-      padding: 8px;
+      padding: 15px 8px 13px;
       font-size: 20px;
       line-height: 23px;
     }
@@ -129,11 +143,6 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 5px;
-    border-color: $color-light-silver;
-    background-color: $color-cultured-f6;
     text-align: center;
     font-family: $ff-gilroy, sans-serif;
     color: $color-raising-black;
@@ -141,27 +150,25 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
     font-size: 25px;
     line-height: 30px;
     width: 100%;
+    border: none;
+    background-color: transparent;
 
     @include vp-laptop {
       padding: 14px 45px 12px;
-      border-radius: 4px;
       font-size: 18px;
       line-height: 21px;
     }
 
     @include vp-tablet {
-      padding: 19px 70px 21px;
-      border-color: $color-cultured-f6;
-      border-radius: 5px;
-      background-color: $color-antiflash-white-f0;
+      padding: 21px 70px 17px;
       font-size: 25px;
       line-height: 30px;
     }
 
     @include vp-mobile {
-      padding: 12px 40px 9px;
-      font-size: 20px;
-      line-height: 23px;
+      padding: 10px 40px 9px;
+      font-size: 16px;
+      line-height: 19px;
     }
 
     &::-webkit-inner-spin-button,
