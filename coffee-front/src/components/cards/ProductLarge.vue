@@ -288,6 +288,10 @@ const imageVariant = computed(() => {
   &__inner {
     display: flex;
     gap: 150px;
+
+    @include vp-laptop {
+      gap: 112px;
+    }
   }
 
   &__images-wrapper {
@@ -295,6 +299,11 @@ const imageVariant = computed(() => {
     position: relative;
     width: 416px;
     height: 767px;
+
+    @include vp-laptop {
+      width: 294px;
+      height: 542px;
+    }
 
     @include vp-tablet {
       display: none;
@@ -307,20 +316,27 @@ const imageVariant = computed(() => {
   }
 
   &__preview-image {
-    width: 206px;
-    height: 196px;
+    position: absolute;
     overflow: hidden;
     border-radius: 50%;
-    position: absolute;
+    width: 206px;
+    height: 196px;
     top: 70px;
     right: -21px;
+
+    @include vp-laptop {
+      width: 145px;
+      height: 145px;
+      top: 50px;
+      right: -15px;
+    }
   }
 
   &__images-tablet {
     display: none;
 
     @include vp-tablet {
-      display: unset;
+      display: flex;
     }
   }
 
@@ -328,10 +344,12 @@ const imageVariant = computed(() => {
     display: flex;
     flex-direction: column;
     width: 740px;
-    padding: 0 0 27px;
+    justify-content: center;
+    padding: 27px 0 10px;
 
     @include vp-laptop {
-      padding: 0 0 14px;
+      width: 536px;
+      padding: 14px 0 4px;
     }
   }
 
@@ -340,6 +358,10 @@ const imageVariant = computed(() => {
     display: flex;
     flex-direction: column;
     margin: 0 0 33px;
+
+    @include vp-laptop {
+      margin: 0 0 25px;
+    }
   }
 
   &__headings-rating {
@@ -347,6 +369,10 @@ const imageVariant = computed(() => {
     display: flex;
     flex-direction: column;
     gap: 38px;
+
+    @include vp-laptop {
+      gap: 20px;
+    }
   }
 
   &__headings-actions {
@@ -361,8 +387,13 @@ const imageVariant = computed(() => {
     flex-direction: column;
     align-items: start;
     justify-content: start;
-    width: 360px;
+    width: 400px;
     gap: 20px;
+
+    @include vp-laptop {
+      gap: 16px;
+      width: 300px;
+    }
   }
 
   &__title {
@@ -373,6 +404,11 @@ const imageVariant = computed(() => {
     line-height: 50px;
     margin: 0;
     padding: 0;
+
+    @include vp-laptop {
+      font-size: 28px;
+      line-height: 40px;
+    }
   }
 
   &__description {
@@ -383,6 +419,11 @@ const imageVariant = computed(() => {
     line-height: 24px;
     margin: 0;
     padding: 0;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 17px;
+    }
   }
 
   &__actions-list {
@@ -394,6 +435,10 @@ const imageVariant = computed(() => {
     gap: 10px;
     align-items: start;
     min-width: 180px;
+
+    @include vp-laptop {
+      min-width: 142px;
+    }
   }
 
   &__actions-item {
@@ -404,20 +449,35 @@ const imageVariant = computed(() => {
     line-height: 24px;
     margin: 0;
     padding: 0;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 17px;
+    }
   }
 
   &__rating {
     display: flex;
     gap: 20px;
-    align-items: flex-end;
+    flex-direction: row;
+    align-items: end;
+
+    @include vp-laptop {
+      gap: 15px;
+    }
   }
 
   &__rating-value {
     font-weight: 700;
     font-size: 30px;
-    line-height: 36px;
+    line-height: 26px;
     font-family: $ff-gilroy, sans-serif;
     color: $color-raising-black;
+
+    @include vp-laptop {
+      font-size: 22px;
+      line-height: 16px;
+    }
   }
 
   &__comments-count {
@@ -429,6 +489,11 @@ const imageVariant = computed(() => {
     text-decoration: none;
     position: relative;
     display: flex;
+
+    @include vp-laptop {
+      font-size: 12px;
+      line-height: 16px;
+    }
 
     &::after {
       content: "";
@@ -460,26 +525,48 @@ const imageVariant = computed(() => {
     color: $color-raising-black;
     font-family: $ff-gilroy, sans-serif;
     width: 700px;
+
+    @include vp-laptop {
+      width: 500px;
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 
   &__product-text {
     margin: 0 0 15px;
+
+    @include vp-laptop {
+      margin: 0 0 10px;
+    }
   }
 
   &__company-text {
     margin: 0 0 30px;
+
+    @include vp-laptop {
+      margin: 0 0 20px;
+    }
   }
 
   &__coffee-details {
     display: flex;
     justify-content: space-between;
     margin: 0 0 40px;
+
+    @include vp-laptop {
+      margin: 0 0 30px;
+    }
   }
 
   &__hue {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    @include vp-laptop {
+      gap: 8px;
+    }
   }
 
   &__hue-name {
@@ -488,12 +575,22 @@ const imageVariant = computed(() => {
     line-height: 24px;
     color: $color-raising-black;
     font-family: $ff-gilroy, sans-serif;
+
+    @include vp-laptop {
+      font-size: 14px;
+      line-height: 17px;
+    }
   }
 
   &__weight-radio {
     align-self: start;
     gap: 60px;
     margin: auto auto 33px 0;
+
+    @include vp-laptop {
+      gap: 44px;
+      margin: auto auto 20px 0;
+    }
   }
 
   &__bottom {

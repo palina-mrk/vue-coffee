@@ -91,7 +91,7 @@ defineProps(["count"]);
       height: 10px;
     }
 
-    @include vp-laptop {
+    @include vp-tablet {
       width: 16px;
       height: 16px;
     }

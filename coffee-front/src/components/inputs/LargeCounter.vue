@@ -48,13 +48,13 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
 
   &__btn {
     margin: 0;
-    padding: 10px;
     background-color: transparent;
     border: none;
     display: flex;
     color: $color-black;
     font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
+    padding: 10px;
     font-size: 30px;
     line-height: 35px;
     user-select: none;
@@ -70,13 +70,13 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
     }
 
     @include vp-tablet {
-      padding: 10px;
+      padding: 12px;
       font-size: 40px;
-      line-height: 43px;
+      line-height: 46px;
     }
 
     @include vp-mobile {
-      padding: 13px;
+      padding: 8px;
       font-size: 20px;
       line-height: 23px;
     }
@@ -85,15 +85,15 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
       left: 30px;
 
       @include vp-laptop {
-        left: 7px;
+        left: 22px;
       }
 
       @include vp-tablet {
-        left: 15px;
+        left: 28px;
       }
 
       @include vp-mobile {
-        left: 4px;
+        left: 12px;
       }
     }
 
@@ -101,15 +101,15 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
       right: 30px;
 
       @include vp-laptop {
-        right: 7px;
+        right: 22px;
       }
 
       @include vp-tablet {
-        right: 15px;
+        right: 28px;
       }
 
       @include vp-mobile {
-        right: 4px;
+        right: 12px;
       }
     }
 
@@ -131,9 +131,9 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
     align-items: center;
     border-width: 1px;
     border-style: solid;
+    border-radius: 5px;
     border-color: $color-light-silver;
     background-color: $color-cultured-f6;
-    border-radius: 5px;
     text-align: center;
     font-family: $ff-gilroy, sans-serif;
     color: $color-raising-black;
@@ -143,26 +143,25 @@ const countValue = computed(() => cartStore.getCount(props.productId, props.prod
     width: 100%;
 
     @include vp-laptop {
-      padding: 11px 45px 9px;
-      border-width: 0.7px;
+      padding: 14px 45px 12px;
       border-radius: 4px;
-      font-size: 14px;
-      line-height: 15px;
+      font-size: 18px;
+      line-height: 21px;
     }
 
     @include vp-tablet {
-      padding: 15px 60px 12px;
-      border-width: 1px;
-      border-color: $color-ucla-gold;
+      padding: 19px 70px 21px;
+      border-color: $color-cultured-f6;
       border-radius: 5px;
       background-color: $color-antiflash-white-f0;
-      font-size: 20px;
-      line-height: 23px;
+      font-size: 25px;
+      line-height: 30px;
     }
 
     @include vp-mobile {
-      font-size: 18px;
-      padding: 14px 50px 10px;
+      padding: 12px 40px 9px;
+      font-size: 20px;
+      line-height: 23px;
     }
 
     &::-webkit-inner-spin-button,

@@ -38,7 +38,7 @@ const route = useRoute();
   height: 100%;
 
   @include vp-laptop {
-    padding: 140px 0 110px;
+    padding: 142px 0 110px;
   }
 
   @include vp-tablet {
@@ -58,7 +58,7 @@ const route = useRoute();
     margin: 0 0 25px;
 
     @include vp-laptop {
-      gap: 33px;
+      gap: 27px;
       margin: 0 0 20px;
     }
 
