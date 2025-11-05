@@ -800,6 +800,10 @@ const imageVariant = computed(() => {
     }
   }
 
+  &__btn-expand {
+    margin: 0 0 50px;
+  }
+
   &__coffee-details {
     display: flex;
     justify-content: space-between;
@@ -807,6 +811,13 @@ const imageVariant = computed(() => {
 
     @include vp-laptop {
       margin: 0 0 30px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 54px;
+      flex-wrap: wrap;
+      justify-content: start;
+      gap: 30px 118px;
     }
   }
 
@@ -817,6 +828,10 @@ const imageVariant = computed(() => {
 
     @include vp-laptop {
       gap: 8px;
+    }
+
+    @include vp-tablet {
+      gap: 10px;
     }
   }
 
@@ -830,6 +845,11 @@ const imageVariant = computed(() => {
     @include vp-laptop {
       font-size: 14px;
       line-height: 17px;
+    }
+
+    @include vp-tablet {
+      font-size: 20px;
+      line-height: 24px;
     }
   }
 
@@ -847,7 +867,6 @@ const imageVariant = computed(() => {
       display: none;
     }
   }
-
 
   &__bottom {
     align-self: start;
