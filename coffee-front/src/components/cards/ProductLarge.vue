@@ -1187,11 +1187,11 @@ const imageVariant = computed(() => {
   }
 
   @include vp-tablet {
-    padding: 50px 40px 70px;
+    padding: 50px 50px 70px;
   }
 
   @include vp-mobile {
-    padding: 25px 20px 40px;
+    padding: 25px 30px 40px;
   }
 
   .large-card {     
@@ -1261,7 +1261,7 @@ const imageVariant = computed(() => {
 
     &__headings-rating {
       @include vp-tablet {
-        width: 290px;
+        width: 300px;
       }
 
       @include vp-mobile {
@@ -1325,6 +1325,168 @@ const imageVariant = computed(() => {
       width: 100%;
       justify-content: start;
       gap: 25px;
+      margin: auto auto 33px 0;
+
+      @include vp-laptop {
+        gap: 18px;
+        margin: auto auto 28px 0;
+      }
+
+      @include vp-tablet {
+        display: none;
+      }
+    }
+  }
+}
+
+
+.large-card--vending {
+  padding: 110px 164px 165px;
+
+  @include vp-laptop {
+    padding: 54px 100px 76px;
+  }
+
+  @include vp-tablet {
+    padding: 50px 50px 70px;
+  }
+
+  @include vp-mobile {
+    padding: 25px 30px 40px;
+  }
+
+  .large-card {     
+    &__inner {
+      gap: 100px;
+
+      @include vp-laptop {
+        gap: 80px;
+      }
+    }
+
+    &__images-wrapper {
+      width: 433px;
+      height: 591px;
+      border-radius: 20px;
+      overflow: hidden;
+
+      @include vp-laptop {
+        width: 256px;
+        height: 483px;
+        border-radius: 14px;
+      }
+
+      @include vp-tablet {
+        display: none;
+      }
+    }    
+
+    &__images-wrapper--tablet {
+    display: none;
+
+      @include vp-tablet {
+        display: flex;
+        width: 231px;
+        height: 398px;
+      }
+
+      @include vp-mobile {
+        width: 95px;
+        height: 171px;
+      }
+    }
+
+    &__content {
+      width: 780px;
+      padding: 0;
+
+      @include vp-laptop {
+        width: 640px;
+      }
+
+      @include vp-tablet {
+        width: 100%;
+      }
+    }
+
+    &__top {
+      @include vp-tablet {
+        justify-content: space-between;
+        gap: 5px;
+        margin: 0 0 30px;
+      }
+
+      @include vp-mobile {
+        margin: 0 0 15px;
+      }
+    }
+
+    &__headings-rating {
+      @include vp-tablet {
+        width: 300px;
+      }
+
+      @include vp-mobile {
+        width: 145px;
+      }
+    }
+
+
+    &__headings-actions {
+      @include vp-tablet {
+        min-height: 60%;
+      }
+    }
+
+    &__headings {
+      @include vp-tablet {
+        gap: 15px;
+      }
+
+      @include vp-mobile {
+        gap: 5px;
+      }
+    }
+
+    &__actions-list {
+      @include vp-tablet {
+        gap: 10px;
+      }
+
+      @include vp-mobile {
+        gap: 5px;
+      }
+    }
+
+    &__rating {
+      @include vp-tablet {
+        gap: 15px 30px;
+      }
+
+      @include vp-mobile {
+        gap: 8px 13px;
+      }
+    }
+
+
+    &__product-text,
+    &__company-text {
+      max-width: 760px;
+      
+      @include vp-tablet {
+        max-width: 550px;
+      }
+
+      @include vp-mobile {
+        max-width: 250px;
+      }
+    }
+
+    &__weight-radio {
+      align-self: start;
+      width: 100%;
+      gap: 45px;
+      justify-content: start;
       margin: auto auto 33px 0;
 
       @include vp-laptop {
