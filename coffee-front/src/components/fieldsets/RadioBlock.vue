@@ -37,17 +37,18 @@ const selected = ref(props.selectedValue);
   &__label {
     position: relative;
     padding: 0 0 0 45px;
+    margin: 0;
     display: block;
     color: $color-black;
     font-weight: 500;
     font-size: 30px;
-    line-height: 35px;
+    line-height: 30px;
     font-family: $ff-gilroy, sans-serif;
     cursor: pointer;
 
     @include vp-laptop {
       font-size: 22px;
-      line-height: 25px;
+      line-height: 22px;
       padding: 0 0 0 33px;
     }
 
@@ -80,5 +81,26 @@ const selected = ref(props.selectedValue);
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.radio-block--healthy {
+  .custom-radio__label {
+    padding: 0 0 0 35px;
+
+    @include vp-laptop {
+      padding: 0 0 0 28px;
+    }
+  }
+
+  .custom-radio__label::before {
+    width: 23px;
+    height: 23px;
+
+    @include vp-laptop {
+      width: 17px;
+      height: 17px;
+      transform: translateY(calc(-1px - 50%));
+    }
+  }
 }
 </style>
