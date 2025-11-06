@@ -25,7 +25,6 @@ details.value.reduce((acc, detail) =>
 
 const kind = computed(() => catalogStore.isLoaded ? catalogStore.getKind(Number(route.params.productID)).toLowerCase() : "");
 
-const detailsCount = computed(() => Boolean(robustaStrings.value.length > 0) + Boolean(arabicaStrings.value.length > 0) + Boolean(processingKinds.value.length > 0) + 1);
 
 const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).hue.acidity : "");
 </script>
@@ -65,7 +64,7 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
         v-else
         >
         <p class="details-card__item-title">Кислинка:</p>
-        <span class="details-card__item-str">{{ acidity > 6 ? "Высокая" : (acidity > 3 ? "Средняя" : "Низкая") }}</span>
+        <span class="details-card__item-str">{{ acidity > 6 ? "высокая" : (acidity > 3 ? "средняя" : "низкая") }}</span>
       </li>
 
       <li 
