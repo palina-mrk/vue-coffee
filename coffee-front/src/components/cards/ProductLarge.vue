@@ -33,7 +33,7 @@ const weightLabels = computed(() =>
   product.value.weights.map((el) => el.value + (product.value.category == 'vending' ? ' кг.' : ' г.')),
 );
 const showFullText = ref(false);
-
+/*
 const imageVariant = computed(() => {
   switch (product.kind) {
     case "Черный чай":
@@ -50,12 +50,15 @@ const imageVariant = computed(() => {
     default:
       return "product";
   }
-});
+});*/
 </script>
 
 <template>
-  <div class="large-card" v-if="catalogStore.isLoaded">
-    <div class="large-card__inner">
+  <div 
+  v-if="catalogStore.isLoaded"
+  :class="['large-card', 'large-card--' + product.category]" >
+    <div 
+    class="large-card__inner">
       <div class="large-card__images-wrapper">
         <picture class="large-card__product-picture">
           <source
@@ -1006,4 +1009,173 @@ const imageVariant = computed(() => {
   }
 }
 
+.large-card--tea {
+  padding: 98px 109px 92px;
+
+  @include vp-laptop {
+    padding: 74px 78px 61px;
+  }
+
+  @include vp-tablet {
+    padding: 50px 40px 70px;
+  }
+
+  @include vp-mobile {
+    padding: 25px 20px 40px;
+  }
+
+  .large-card {     
+    &__inner {
+      gap: 95px;
+
+      @include vp-laptop {
+        gap: 71px;
+      }
+    }
+
+    &__images-wrapper {
+      width: 496px;
+      height: 676px;
+
+      @include vp-laptop {
+        width: 351px;
+        height: 478px;
+      }
+
+      @include vp-tablet {
+        display: none;
+      }
+    }    
+
+    &__images-wrapper--tablet {
+    display: none;
+
+    @include vp-tablet {
+      display: flex;
+      width: 291px;
+      height: 396px;
+    }
+
+    @include vp-mobile {
+      width: 143px;
+      height: 194px;
+    }
+  }
+
+    &__preview-image {
+      top: unset;
+      width: 194px;
+      height: 194px;
+      bottom: 74px;
+      right: 17px;
+
+      @include vp-laptop {
+        width: 132px;
+        height: 139px;
+        bottom: 50px;
+        right: 14px;
+      }
+
+      @include vp-tablet {
+        width: 110px;
+        height: 110px;
+        bottom: 48px;
+        right: 1px;
+      }
+
+      @include vp-mobile {
+        width: 54px;
+        height: 56px;
+        bottom: 24px;
+        right: 0;
+      }
+    }
+
+    &__content {
+      width: 700px;
+      padding: 12px 0 70px;
+
+      @include vp-laptop {
+        width: 500px;
+        padding: 6px 0 50px;
+      }
+
+      @include vp-tablet {
+        width: 100%;
+        padding: 0;
+      }
+    }
+
+    &__top {
+      @include vp-tablet {
+        justify-content: space-between;
+        gap: 5px;
+        margin: 0 0 30px;
+      }
+
+      @include vp-mobile {
+        margin: 0 0 15px;
+      }
+    }
+
+    &__headings-rating {
+      @include vp-tablet {
+        width: 290px;
+      }
+
+      @include vp-mobile {
+        width: 145px;
+      }
+    }
+
+
+    &__headings-actions {
+      @include vp-tablet {
+        min-height: 60%;
+      }
+    }
+
+    &__headings {
+      @include vp-tablet {
+        gap: 15px;
+      }
+
+      @include vp-mobile {
+        gap: 5px;
+      }
+    }
+
+    &__actions-list {
+      @include vp-tablet {
+        gap: 10px;
+      }
+
+      @include vp-mobile {
+        gap: 5px;
+      }
+    }
+
+    &__rating {
+      @include vp-tablet {
+        gap: 15px 30px;
+      }
+
+      @include vp-mobile {
+        gap: 8px 13px;
+      }
+    }
+
+
+    &__product-text,
+    &__company-text {
+      @include vp-tablet {
+        max-width: 500px;
+      }
+
+      @include vp-mobile {
+        max-width: 250px;
+      }
+    }
+  }
+}
 </style>
