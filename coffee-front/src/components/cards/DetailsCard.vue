@@ -40,9 +40,10 @@ const roastingDegree = computed(() => catalogStore.isLoaded ? catalogStore.getFu
         class="details-card__item"
         v-if="arabicaStrings.length">
         <p class="details-card__item-title">Арабика:</p>
-        <ul class="details-card__item-lines"
-        v-for="arabicaString in arabicaStrings">
-          <li class="details-card__item-line">{{ arabicaString }}</li>
+
+        <ul class="details-card__item-sublist">
+          <li class="details-card__item-subline"
+        v-for="arabicaString in arabicaStrings">{{ arabicaString }}</li>
         </ul>
       </li>
       <li 
@@ -70,14 +71,13 @@ const roastingDegree = computed(() => catalogStore.isLoaded ? catalogStore.getFu
 
 <style lang="scss" scoped>
 .details-card {
-  padding: 60px 80px 55px;
+  padding: 60px 80px 70px;
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
   border-radius: 20px;
   border: none;
   background-color: $color-white;
-  gap: 50px;
 
   @include vp-laptop {
     padding: 40px 56px 46px;
@@ -125,104 +125,67 @@ const roastingDegree = computed(() => catalogStore.isLoaded ? catalogStore.getFu
   }
 
   &__list {
-    margin: 0;
+    margin: auto 0 0;
     padding: 0;
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    align-items: start;
-
-    @include vp-laptop {
-      gap: 20px;
-    }
-
+      
     @include vp-tablet {
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row;
-      gap: unset;
     }
   }
 
   &__item {
     margin: 0;
-    padding: 0;
+    padding: 10px 1px 11px;
     display: flex;
     align-items: center;
-    gap: 50px;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 71px;
+    position: relative;
 
-    @include vp-laptop {
-      gap: 30px;
-    }
-
-    @include vp-tablet {
-      gap: 20px;
-    }
-
-    @include vp-mobile {
-      gap: 10px;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: $color-philippine-silver-b2;
+      position: absolute;
+      left: 0;
+      bottom: 0;
     }
   }
 
-  &__item-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    height: 70px;
-    background-color: $color-ucla-gold;
-    border-radius: 50%;
-    padding: 14px 14px 14px 18px;
+  &__item-title {
+    font-weight: 700;
+  }
+
+  &__item-sublist {
     margin: 0;
-
-    @include vp-laptop {
-      width: 50px;
-      height: 50px;
-      padding: 10px 4px 10px 8px;
-    }
-
-    @include vp-tablet {
-      width: 61px;
-      height: 61px;
-      padding: 12px 12px 12px 16px;
-    }
-
-    @include vp-mobile {
-      width: 30px;
-      height: 30px;
-      padding: 6px 6px 6px 8px;
-    }
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
   }
 
-  &__item-svg {
-    width: 37px;
-    height: 42px;
-    color: $color-black;
 
-    @include vp-laptop {
-      width: 27px;
-      height: 30px;
-    }
-
-    @include vp-tablet {
-      width: 33px;
-      height: 37px;
-    }
-
-    @include vp-mobile {
-      width: 16px;
-      height: 18px;
-    }
-  }
-
+  &__item-subline,
+  &__item-line,
   &__item-str {
     font-weight: 500;
+  }
+  
+  &__item-subline,
+  &__item-title,  
+  &__item-line,
+  &__item-str {
+    margin: 0;
+    padding: 0;
     font-size: 25px;
     line-height: 32px;
     font-family: $ff-gilroy, sans-serif;
     color: $color-raising-black;
-    text-transform: capitalize;
 
     @include vp-laptop {
       font-size: 18px;

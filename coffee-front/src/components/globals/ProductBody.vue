@@ -26,7 +26,7 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
           ></custom-breadcrumbs>
           <h1 class="visually-hidden">Карточка товара </h1>
           <product-large></product-large>
-          <div class="product-hero__coffee-details" v-if="category == 'coffee'">
+          <div class="product-hero__coffee-addings" v-if="category == 'coffee'">
             <taste-card class="product-hero__coffee-taste"></taste-card>
 
             <details-card class="product-hero__coffee-details"></details-card>
@@ -89,7 +89,8 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
     margin: 0;
   }
 
-  &__coffee-details {
+  &__coffee-addings {
+    width: 100%;
     display: flex;
     gap: 20px;
 
@@ -99,7 +100,7 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
   }
 
   &__coffee-taste {
-    width: 400px;
+    min-width: 400px;
 
     @include vp-laptop {
       width: 280px;
