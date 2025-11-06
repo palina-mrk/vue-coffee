@@ -96,6 +96,24 @@ const imageVariant = computed(() => {
         <div class="large-card__top">
           <div class="large-card__headings-rating">
             <div class="large-card__headings-actions">
+              <div class="large-card__images-wrapper large-card__images-wrapper--tablet"
+                v-if="product.category == 'vending'">
+                  <picture class="large-card__product-picture">
+                    <source
+                      media="(max-width: 768px)"
+                      :srcset="`../../src/images/${product.category}-view/main-${product.category}-mobile.png`"
+                    />
+                    <img
+                      class="large-card__product-image"
+                      :src="`../../src/images/${product.category}-view/main-${product.category}-tablet.png`"
+                      width="311"
+                      height="172"
+                      alt="Карточка товара"
+                    />
+                  </picture>
+
+              </div>
+
               <div class="large-card__headings">
                 <slider-corns
                   v-if="product.category == 'coffee'"
@@ -113,8 +131,10 @@ const imageVariant = computed(() => {
                   {{ action }}
                 </li>
               </ul>
+            
+            
             </div>
-
+            
             <div class="large-card__rating">
                 <slider-stars
                   class="slider-stars--large"
@@ -129,7 +149,8 @@ const imageVariant = computed(() => {
                 >
             </div>
           </div>
-          <div class="large-card__images-wrapper large-card__images-wrapper--tablet">
+          <div class="large-card__images-wrapper large-card__images-wrapper--tablet"
+          v-if="product.category != 'vending'">
             <picture class="large-card__product-picture">
               <source
                 media="(max-width: 768px)"
@@ -743,7 +764,6 @@ const imageVariant = computed(() => {
     margin: 0;
     bottom: 1px;
     
-
     @include vp-laptop {
       font-size: 12px;
       line-height: 14px;
@@ -1344,15 +1364,15 @@ const imageVariant = computed(() => {
   padding: 110px 164px 165px;
 
   @include vp-laptop {
-    padding: 54px 100px 76px;
+    padding: 60px 90px 70px;
   }
 
   @include vp-tablet {
-    padding: 50px 50px 70px;
+    padding: 50px 38px 111px;
   }
 
   @include vp-mobile {
-    padding: 25px 30px 40px;
+    padding: 25px 20px 40px;
   }
 
   .large-card {     
@@ -1360,7 +1380,7 @@ const imageVariant = computed(() => {
       gap: 100px;
 
       @include vp-laptop {
-        gap: 80px;
+        gap: 90px;
       }
     }
 
@@ -1371,7 +1391,7 @@ const imageVariant = computed(() => {
       overflow: hidden;
 
       @include vp-laptop {
-        width: 256px;
+        width: 350px;
         height: 483px;
         border-radius: 14px;
       }
@@ -1386,22 +1406,22 @@ const imageVariant = computed(() => {
 
       @include vp-tablet {
         display: flex;
-        width: 231px;
-        height: 398px;
+        width: 100%;
+        height: 348px;
+        border-radius: 20px;
       }
 
       @include vp-mobile {
-        width: 95px;
         height: 171px;
       }
     }
 
     &__content {
-      width: 780px;
-      padding: 0;
+      width: 760px;
+      padding: 10px 0 14px;
 
       @include vp-laptop {
-        width: 640px;
+        width: 540px;
       }
 
       @include vp-tablet {
@@ -1412,8 +1432,8 @@ const imageVariant = computed(() => {
     &__top {
       @include vp-tablet {
         justify-content: space-between;
-        gap: 5px;
-        margin: 0 0 30px;
+        gap: 45px;
+        margin: 0 0 40px;
       }
 
       @include vp-mobile {
@@ -1423,23 +1443,30 @@ const imageVariant = computed(() => {
 
     &__headings-rating {
       @include vp-tablet {
-        width: 300px;
-      }
-
-      @include vp-mobile {
-        width: 145px;
+        width: 100%;
+        gap: 45px;
       }
     }
 
 
     &__headings-actions {
       @include vp-tablet {
-        min-height: 60%;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 100%;
+        gap: 45px 20px;
       }
     }
 
     &__headings {
+      width: 600px;
+
+      @include vp-laptop {
+        width: 500px;
+      }
+
       @include vp-tablet {
+        width: 60%;
         gap: 15px;
       }
 
@@ -1451,6 +1478,7 @@ const imageVariant = computed(() => {
     &__actions-list {
       @include vp-tablet {
         gap: 10px;
+        width: 30%;
       }
 
       @include vp-mobile {
@@ -1460,7 +1488,10 @@ const imageVariant = computed(() => {
 
     &__rating {
       @include vp-tablet {
-        gap: 15px 30px;
+        flex-direction: row;
+        gap: 30px;
+        justify-content: start;
+        align-items: center;
       }
 
       @include vp-mobile {
@@ -1471,8 +1502,12 @@ const imageVariant = computed(() => {
 
     &__product-text,
     &__company-text {
-      max-width: 760px;
+      max-width: 700px;
       
+      @include vp-laptop {
+        max-width: 460px;
+      }
+
       @include vp-tablet {
         max-width: 550px;
       }
@@ -1485,9 +1520,9 @@ const imageVariant = computed(() => {
     &__weight-radio {
       align-self: start;
       width: 100%;
-      gap: 45px;
+      gap: 35px;
       justify-content: start;
-      margin: auto auto 33px 0;
+      margin: auto auto 30px 0;
 
       @include vp-laptop {
         gap: 18px;
