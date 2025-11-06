@@ -7,35 +7,69 @@ const route = useRoute();
 import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
 
-const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).taste : []);
+const details = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).details : []);
+
+const arabicaStrings = computed(() => 
+details.value.reduce((acc, detail) => 
+  (detail.kind == 'Арабика') ?  [...acc, detail.variety + ', ' + detail.geography] : acc,
+  [])
+);
+
+const robustaStrings = computed(() => 
+details.value.reduce((acc, detail) => 
+  detail.kind == 'Робуста' ? [...acc, detail.processing.toLowerCase() + ' ' + detail.geography] : acc, []));
+
+const processingKinds = computed(() => 
+details.value.reduce((acc, detail) => 
+  detail.kind == 'Робуста' ? [...acc, detail.processing.toLowerCase()] : acc, []));
+
+const kind = computed(() => catalogStore.isLoaded ? catalogStore.getKind(Number(route.params.productID)).toLowerCase() : "");
+
+const detailsCount = computed(() => (robustaStrings.value.length > 0) + (arabicaStrings.value.length > 0) + (processingKinds.value.length > 0) + 1);
+
+
+const roastingDegree = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).roastingDegree : []);
 </script>
 
 <template>
   <div 
-  v-if="catalogStore.isLoaded" class="taste-card" >
-    <h3 class="taste-card__heading">Вкус</h3>
-    <ul class="taste-card__list">
+  v-if="catalogStore.isLoaded" class="details-card" >
+    <h3 class="details-card__heading">Характеристики</h3>
+    <ul class="details-card__list">
       <li 
-        class="taste-card__item"
-        v-for="taste in tastes">
-        <div class="taste-card__item-icon">
-          <svg
-            class="taste-card__item-svg"
-            width="37"
-            height="42"
-            aria-hidden="true"
-          >
-            <use xlink:href="../../assets/product-sprite.svg#icon-taste"></use>
-          </svg>
-        </div>
-        <span class="taste-card__item-str">{{ taste }}</span>
+        class="details-card__item"
+        v-if="arabicaStrings.length">
+        <p class="details-card__item-title">Арабика:</p>
+        <ul class="details-card__item-lines"
+        v-for="arabicaString in arabicaStrings">
+          <li class="details-card__item-line">{{ arabicaString }}</li>
+        </ul>
+      </li>
+      <li 
+        class="details-card__item"
+        v-if="robustaStrings.length"
+        >
+        <p class="details-card__item-title">Робуста:</p>
+        <span class="details-card__item-str">{{ robustaStrings.join(', ') }}</span>
+      </li>
+      <li 
+        class="details-card__item"
+        v-if="processingKinds.length"
+        >
+        <p class="details-card__item-title">Способ обработки:</p>
+        <span class="details-card__item-str">{{ processingKinds.join(', ') }}</span>
+      </li>
+      <li 
+        class="details-card__item">
+        <p class="details-card__item-title">Вид кофе:</p>
+        <span class="details-card__item-str">{{ kind }}</span>
       </li>
     </ul>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.taste-card {
+.details-card {
   padding: 60px 80px 55px;
   display: flex;
   flex-direction: column;

@@ -1,6 +1,7 @@
 <script setup>
 import BgCart from "../backgrounds/BgCart.vue";
 import TasteCard from "../cards/TasteCard.vue";
+import DetailsCard from "../cards/DetailsCard.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import ProductLarge from "../cards/ProductLarge.vue";
 import { useRoute } from "vue-router";
@@ -27,6 +28,8 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
           <product-large></product-large>
           <div class="product-hero__coffee-details" v-if="category == 'coffee'">
             <taste-card class="product-hero__coffee-taste"></taste-card>
+
+            <details-card class="product-hero__coffee-details"></details-card>
           </div>
           <p>{{ route }}</p>
         </div>
@@ -100,6 +103,18 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
 
     @include vp-laptop {
       width: 280px;
+    }
+
+    @include vp-tablet {
+      width: 100%;
+    }
+  }
+
+  &__coffee-details {
+    width: calc(100% - 421px);
+
+    @include vp-laptop {
+    width: calc(100% - 301px);
     }
 
     @include vp-tablet {
