@@ -137,7 +137,7 @@ const imageVariant = computed(() => {
             
             <div class="large-card__rating">
                 <slider-stars
-                  class="slider-stars--large"
+                  class="slider-stars--large large-card__stars"
                   :rating="product.rate.rating"
                 ></slider-stars>      
                 <span class="large-card__rating-value">{{
@@ -418,17 +418,21 @@ const imageVariant = computed(() => {
     padding: 46px 94px 94px;
     box-shadow: 0px 0px 35px 0px $color-quick-silver-25;
     border-radius: 14px;
+    border-width: 0.7px;
   }
 
   @include vp-tablet {
     padding: 50px 40px 70px;
     box-shadow: 0px 0px 103px 0px $color-quick-silver-25;
-    border-radius: 20px;
+    border-radius: 40px;
+    border-width: 2px;
   }
 
   @include vp-mobile {
     box-shadow: 0px 0px 50px 0px $color-quick-silver-25;
     padding: 25px 20px 40px;
+    border-radius: 20px;
+    border-width: 1px;
   }
 
   &__inner {
@@ -710,7 +714,7 @@ const imageVariant = computed(() => {
     display: flex;
     gap: 20px;
     flex-direction: row;
-    align-items: end;
+    align-items: flex-end;
 
     @include vp-laptop {
       gap: 15px;
@@ -757,57 +761,30 @@ const imageVariant = computed(() => {
     line-height: 19px;
     color: $color-davys-gray;
     font-family: $ff-gilroy, sans-serif;
-    text-decoration: none;
-    position: relative;
-    display: flex;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: $color-davys-gray;
     padding: 0;
     margin: 0;
-    bottom: 1px;
     
     @include vp-laptop {
       font-size: 12px;
       line-height: 14px;
-      bottom: 0;
     }
 
     @include vp-tablet {
       font-size: 24px;
       line-height: 29px;
-      bottom: 1px;
     }
 
     @include vp-mobile {
       line-height: 14px;
       font-size: 12px;  
-      bottom: 0px;
-    }
-
-    &::after {
-      content: "";
-      background-color: $color-davys-gray;
-      height: 1px;
-      width: 100%;
-      left: 0;
-      bottom: 3px;
-      position: absolute;
-
-      @include vp-laptop {
-        bottom: 2px;
-      }
-
-      @include vp-mobile {
-        height: 0.5px;
-        bottom: 1px;
-      }
     }
 
     &:hover {
       color: $color-raising-black;
-      text-decoration: none;
-    }
-
-    &:hover::after {
-      background-color: $color-ucla-gold;
+      text-decoration-color:  $color-ucla-gold;
     }
   }
 
@@ -1412,7 +1389,8 @@ const imageVariant = computed(() => {
       }
 
       @include vp-mobile {
-        height: 171px;
+        height: 170px;
+        border-radius: 10px;
       }
     }
 
@@ -1433,11 +1411,11 @@ const imageVariant = computed(() => {
       @include vp-tablet {
         justify-content: space-between;
         gap: 45px;
-        margin: 0 0 40px;
+        margin: 0 0 45px;
       }
 
       @include vp-mobile {
-        margin: 0 0 15px;
+        margin: 0 0 23px;
       }
     }
 
@@ -1445,16 +1423,31 @@ const imageVariant = computed(() => {
       @include vp-tablet {
         width: 100%;
         gap: 45px;
+        justify-content: center;
+      }
+
+      @include vp-mobile {
+        gap: 25px;
       }
     }
 
+    &__stars {
+      @include vp-tablet {
+        flex-grow: 1;
+      }
+    }
 
     &__headings-actions {
       @include vp-tablet {
         flex-wrap: wrap;
         flex-direction: row;
+        align-items: center;
         width: 100%;
         gap: 45px 20px;
+      }
+
+      @include vp-mobile {
+        gap: 25px 13px;
       }
     }
 
@@ -1498,7 +1491,6 @@ const imageVariant = computed(() => {
         gap: 8px 13px;
       }
     }
-
 
     &__product-text,
     &__company-text {
