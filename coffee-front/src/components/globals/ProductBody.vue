@@ -100,7 +100,7 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
   }
 
   &__coffee-taste {
-    min-width: 400px;
+    width: 400px;
 
     @include vp-laptop {
       width: 280px;

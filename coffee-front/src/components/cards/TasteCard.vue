@@ -188,7 +188,6 @@ const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(N
     line-height: 32px;
     font-family: $ff-gilroy, sans-serif;
     color: $color-raising-black;
-    text-transform: capitalize;
 
     @include vp-laptop {
       font-size: 18px;

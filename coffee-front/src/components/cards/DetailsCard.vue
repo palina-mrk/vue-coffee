@@ -25,10 +25,9 @@ details.value.reduce((acc, detail) =>
 
 const kind = computed(() => catalogStore.isLoaded ? catalogStore.getKind(Number(route.params.productID)).toLowerCase() : "");
 
-const detailsCount = computed(() => (robustaStrings.value.length > 0) + (arabicaStrings.value.length > 0) + (processingKinds.value.length > 0) + 1);
+const detailsCount = computed(() => Boolean(robustaStrings.value.length > 0) + Boolean(arabicaStrings.value.length > 0) + Boolean(processingKinds.value.length > 0) + 1);
 
-
-const roastingDegree = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).roastingDegree : []);
+const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).hue.acidity : "");
 </script>
 
 <template>
@@ -60,6 +59,15 @@ const roastingDegree = computed(() => catalogStore.isLoaded ? catalogStore.getFu
         <p class="details-card__item-title">Способ обработки:</p>
         <span class="details-card__item-str">{{ processingKinds.join(', ') }}</span>
       </li>
+
+      <li 
+        class="details-card__item"
+        v-else
+        >
+        <p class="details-card__item-title">Кислинка:</p>
+        <span class="details-card__item-str">{{ acidity > 6 ? "Высокая" : (acidity > 3 ? "Средняя" : "Низкая") }}</span>
+      </li>
+
       <li 
         class="details-card__item">
         <p class="details-card__item-title">Вид кофе:</p>
@@ -80,23 +88,23 @@ const roastingDegree = computed(() => catalogStore.isLoaded ? catalogStore.getFu
   background-color: $color-white;
 
   @include vp-laptop {
-    padding: 40px 56px 46px;
+    padding: 53px 46px 40px;
     box-shadow: 0px 0px 22px 0px $color-spanish-gray-c95-25;
     border-radius: 14px;
-    gap: 30px;
   }
 
   @include vp-tablet {
-    padding: 41px 35px 50px;
+    padding: 50px 35px 70px;
     box-shadow: 0px 0px 61px 0px $color-spanish-gray-c95-25;
-    gap: 40px;
     border-radius: 10px;
+    gap: 50px;
   }
 
   @include vp-mobile {
     box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
-    padding: 19px 15px 21px;
+    padding: 30px 15px;
     gap: 20px;
+    
   }
 
   &__heading {
@@ -132,18 +140,34 @@ const roastingDegree = computed(() => catalogStore.isLoaded ? catalogStore.getFu
     flex-direction: column;
       
     @include vp-tablet {
+      margin: 0;
     }
   }
 
   &__item {
     margin: 0;
-    padding: 10px 1px 11px;
+    padding: 10px 1px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     min-height: 71px;
     position: relative;
+
+    @include vp-laptop {
+      min-height: 51px;
+      padding: 4px 1px;
+    }
+
+    @include vp-tablet {
+      min-height: 73px;
+      padding: 10px 1px;
+    }
+
+    @include vp-mobile {
+      min-height: 37px;
+      padding: 4px 1px;
+    }
 
     &::after {
       content: "";
