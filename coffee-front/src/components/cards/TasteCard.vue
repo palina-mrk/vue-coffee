@@ -60,9 +60,9 @@ const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(N
   }
 
   @include vp-mobile {
-    box-shadow: 0px 0px 50px 0px $color-spanish-gray-c95-25;
-    padding: 25px 20px 40px;
-    border-radius: 20px;
+    box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
+    padding: 19px 15px 21px;
+    gap: 20px;
   }
 
   &__heading {
@@ -86,7 +86,7 @@ const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(N
 
     @include vp-mobile {
       font-size: 18px;
-      line-height: 22px;
+      line-height: 23px;
     }
   }
 
@@ -107,9 +107,7 @@ const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(N
       justify-content: space-between;
       align-items: center;
       flex-direction: row;
-    }
-
-    @include vp-mobile {
+      gap: unset;
     }
   }
 
@@ -129,8 +127,7 @@ const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(N
     }
 
     @include vp-mobile {
-      font-size: 14px;
-      line-height: 17px;
+      gap: 10px;
     }
   }
 
@@ -158,7 +155,9 @@ const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(N
     }
 
     @include vp-mobile {
-      gap: 15px 13px;
+      width: 30px;
+      height: 30px;
+      padding: 6px 6px 6px 8px;
     }
   }
 
@@ -175,6 +174,11 @@ const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(N
     @include vp-tablet {
       width: 33px;
       height: 37px;
+    }
+
+    @include vp-mobile {
+      width: 16px;
+      height: 18px;
     }
   }
 
@@ -197,8 +201,8 @@ const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(N
     }
 
     @include vp-mobile {
-      font-size: 16px;
-      line-height: 21px;
+      font-size: 12px;
+      line-height: 16px;
     }
   }
 }
