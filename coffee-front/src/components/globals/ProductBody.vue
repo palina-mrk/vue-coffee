@@ -1,15 +1,21 @@
 <script setup>
 import BgCart from "../backgrounds/BgCart.vue";
+import TasteCard from "../cards/TasteCard.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import ProductLarge from "../cards/ProductLarge.vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
 
+import { useCatalogStore } from "../../stores/catalog";
+const catalogStore = useCatalogStore();
+import {computed} from 'vue';
+
+const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).category : "");
 </script>
 
 <template>
   <main>
-    <section class="product-hero" style="min-height: 2000px;">
+    <section class="product-hero">
       <bg-cart></bg-cart>
 
       <div class="container">
@@ -19,6 +25,9 @@ const route = useRoute();
           ></custom-breadcrumbs>
           <h1 class="visually-hidden">Карточка товара </h1>
           <product-large></product-large>
+          <div class="product-hero__coffee-details" v-if="category == 'coffee'">
+            <taste-card class="product-hero__coffee-taste"></taste-card>
+          </div>
           <p>{{ route }}</p>
         </div>
       </div>
@@ -77,59 +86,24 @@ const route = useRoute();
     margin: 0;
   }
 
-  &__bottom-forms {
-    width: 100%;
+  &__coffee-details {
     display: flex;
     gap: 20px;
 
     @include vp-tablet {
       flex-direction: column;
-      gap: 90px;
-      position: relative;
-      width: calc($max-width-tablet + 68px);
-      left: -34px;
-    }
-
-    @include vp-mobile {
-      gap: 20px;
-      width: calc($max-width-mobile + 36px);
-      left: -18px;
     }
   }
 
-  &__info-card {
-    position: fixed;
-    top: 250px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
+  &__coffee-taste {
+    width: 400px;
+
+    @include vp-laptop {
+      width: 280px;
+    }
 
     @include vp-tablet {
-      top: 80px;
-    }
-
-    @include vp-mobile {
-      top: 20px;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      width: 100vw;
-      height: 100vh;
-      left: 50%;
-      transform: translateX(-50%);
-      top: -250px;
-      background-color: $color-quick-silver-25;
-      z-index: -1;
-
-      @include vp-tablet {
-        top: -80px;
-      }
-
-      @include vp-mobile {
-        top: -20px;
-      }
+      width: 100%;
     }
   }
 }

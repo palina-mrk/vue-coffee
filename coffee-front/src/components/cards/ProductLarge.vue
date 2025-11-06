@@ -33,24 +33,6 @@ const weightLabels = computed(() =>
   product.value.weights.map((el) => el.value + (product.value.category == 'vending' ? ' кг.' : ' г.')),
 );
 const showFullText = ref(false);
-/*
-const imageVariant = computed(() => {
-  switch (product.kind) {
-    case "Черный чай":
-    case "Травяной чай":
-      return "black";
-    case "Зелёный чай":
-    case "Матча":
-      return "green";
-    case "Молочный улунг":
-    case "Пуэр":
-      return "milk";
-    case "Кофейные напитки":
-      return "drinks";
-    default:
-      return "product";
-  }
-});*/
 </script>
 
 <template>
