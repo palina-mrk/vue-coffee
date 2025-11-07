@@ -565,6 +565,11 @@ const showFullText = ref(false);
       flex-direction: column-reverse;
       align-items: start;
       min-height: 60%;
+      gap: 20px;
+    }
+
+    @include vp-mobile {
+      gap: 15px;
     }
   }
 

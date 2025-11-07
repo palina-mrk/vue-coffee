@@ -5,6 +5,7 @@ import DetailsCard from "../cards/DetailsCard.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import ProductLarge from "../cards/ProductLarge.vue";
 import AnchorToggle from "../navigation/AnchorToggle.vue";
+import RawDescription from "../articles/RawDescription.vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
 
@@ -37,6 +38,7 @@ const anchorObjects = ref([
 
 <template>
   <main>
+    
     <section class="product-hero">
       <bg-cart></bg-cart>
 
@@ -57,9 +59,13 @@ const anchorObjects = ref([
 
             <details-card class="product-hero__coffee-details"></details-card>
           </div>
+          <raw-description
+          class="product-hero__raw-description"
+          ></raw-description>
         </div>
       </div>
     </section>
+
   </main>
 </template>
 
@@ -71,23 +77,25 @@ const anchorObjects = ref([
 .product-hero {
   position: relative;
   width: 100%;
-  padding: 201px 0 110px;
-  margin: 0;
+  padding: 201px 0 67px;
   font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   overflow: hidden;
   height: 100%;
+  border-bottom: 1px solid $color-philippine-silver;
 
   @include vp-laptop {
-    padding: 145px 0 110px;
+    padding: 145px 0 20px;
   }
 
   @include vp-tablet {
-    padding: 173px 0 0;
+    padding: 173px 0 70px;
+    border-bottom: 2px solid $color-philippine-silver;
   }
 
   @include vp-mobile {
-    padding: 100px 0 0;
+    padding: 100px 0 50px;
+    border-bottom: 1px solid $color-philippine-silver;
   }
 
   &__wrapper {
@@ -154,13 +162,20 @@ const anchorObjects = ref([
     width: 100%;
     display: flex;
     gap: 20px;
+    margin: 0 0 61px;
+
+    @include vp-laptop {
+      margin: 0 0 38px;      
+    }
 
     @include vp-tablet {
       flex-direction: column;
+      margin: 0 0 35px;
     }
 
     @include vp-mobile {
       gap: 9px;
+      margin: 0 0 18px;
     }
   }
 
