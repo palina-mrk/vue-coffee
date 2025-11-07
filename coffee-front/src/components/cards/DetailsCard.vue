@@ -78,7 +78,7 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
 
 <style lang="scss" scoped>
 .details-card {
-  padding: 60px 80px 70px;
+  padding: 60px 80px;
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
@@ -87,7 +87,7 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
   background-color: $color-white;
 
   @include vp-laptop {
-    padding: 53px 46px 40px;
+    padding: 45px 95px 40px 55px;
     box-shadow: 0px 0px 22px 0px $color-spanish-gray-c95-25;
     border-radius: 14px;
   }
@@ -96,13 +96,13 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
     padding: 50px 35px 70px;
     box-shadow: 0px 0px 61px 0px $color-spanish-gray-c95-25;
     border-radius: 10px;
-    gap: 50px;
+    gap: 25px;
   }
 
   @include vp-mobile {
     box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
-    padding: 30px 15px;
-    gap: 20px;
+    padding: 32px 15px 29px;
+    gap: 15px;
     
   }
 
@@ -121,8 +121,8 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
     }
 
     @include vp-tablet {
-      font-size: 30px;
-      line-height: 39px;
+      font-size: 25px;
+      line-height: 32px;
     }
 
     @include vp-mobile {
@@ -159,12 +159,12 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
     }
 
     @include vp-tablet {
-      min-height: 73px;
-      padding: 10px 1px;
+      min-height: 74px;
+      padding: 7px 1px;
     }
 
     @include vp-mobile {
-      min-height: 37px;
+      min-height: 36px;
       padding: 4px 1px;
     }
 
@@ -179,10 +179,6 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
     }
   }
 
-  &__item-title {
-    font-weight: 700;
-  }
-
   &__item-sublist {
     margin: 0;
     padding: 0;
@@ -190,13 +186,8 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
     display: flex;
     flex-direction: column;
     align-items: end;
-  }
-
-
-  &__item-subline,
-  &__item-line,
-  &__item-str {
-    font-weight: 500;
+    text-align: right;
+    max-width: 70%;
   }
   
   &__item-subline,
@@ -216,14 +207,25 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
     }
 
     @include vp-tablet {
-      font-size: 24px;
-      line-height: 33px;
+      font-size: 20px;
+      line-height: 26px;
     }
 
     @include vp-mobile {
       font-size: 12px;
       line-height: 16px;
     }
+  }
+
+  &__item-title {
+    font-weight: 700;
+  }
+
+  &__item-subline,
+  &__item-line,
+  &__item-str {
+    font-weight: 500;
+    text-align: right;
   }
 }
 </style>

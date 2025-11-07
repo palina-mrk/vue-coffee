@@ -46,16 +46,16 @@ const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(N
   gap: 50px;
 
   @include vp-laptop {
-    padding: 40px 56px 46px;
+    padding: 45px 56px 46px;
     box-shadow: 0px 0px 22px 0px $color-spanish-gray-c95-25;
     border-radius: 14px;
     gap: 30px;
   }
 
   @include vp-tablet {
-    padding: 41px 35px 50px;
+    padding: 43px 35px 48px;
     box-shadow: 0px 0px 61px 0px $color-spanish-gray-c95-25;
-    gap: 40px;
+    gap: 35px;
     border-radius: 10px;
   }
 
@@ -104,10 +104,11 @@ const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(N
     }
 
     @include vp-tablet {
-      justify-content: space-between;
+      gap: 5px;
       align-items: center;
       flex-direction: row;
-      gap: unset;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
   }
 
