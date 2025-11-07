@@ -1264,4 +1264,107 @@
       display: none;
     }
   }
+
+  /* для отдельной страницы товара */
+
+  &__div--product-top-wall {
+    top: 0;
+    height: 881px;
+    background-color: $color-cornsilk;
+    z-index: -5;
+
+    @include vp-laptop {
+      height: 481px;
+    }
+
+    @include vp-tablet {
+      height: 1301px;
+    }
+
+    @include vp-mobile {
+      height: 701px;
+    }
+  }
+
+  &__svg-vawe--product-top {
+    height: 546px;
+    top: 880px;
+    color: $color-cornsilk;
+
+    @include vp-laptop {
+      height: 280px;
+      top: 480px;
+    }
+
+    @include vp-tablet {
+      top: 1300px;
+      height: 192px;
+    }
+
+    @include vp-mobile {
+      top: 700px;
+      height: 110px;
+    }
+  }
+
+  &__div--product-middle-wall {
+    background-color: $color-white;
+    z-index: -6;
+  }
+
+  &__div--product-middle-wall--for-top {
+    top: 881px;
+    bottom: 0;
+
+    @include vp-laptop {
+      top: 481px;
+    }
+
+    @include vp-tablet {
+      top: 1301px;
+    }
+
+    @include vp-mobile {
+      top: 701px;
+    }
+  }
+
+  &__div--product-middle-wall--for-middle {
+    top: 0;
+    bottom: 0;
+  }
+
+  &__div--product-middle-wall--for-bottom {
+    top: 0;
+    bottom: 110px;
+
+    @include vp-tablet {
+      bottom: 120px;
+    }
+
+    @include vp-mobile {
+      bottom: 650px;
+    }
+  }
+
+  &__svg-vawe--product-bottom {
+    height: 384px;
+    bottom: 110px;
+    color: $color-cultured;
+    background-color: $color-white;
+
+    @include vp-laptop {
+      height: 195px;
+    }
+
+    @include vp-tablet {
+      bottom: 120px;
+      height: 200px;
+    }
+
+    @include vp-mobile {
+      bottom: 50px;
+      height: 108px;
+    }
+  }
 }

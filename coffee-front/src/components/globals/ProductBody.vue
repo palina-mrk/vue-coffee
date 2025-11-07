@@ -1,17 +1,19 @@
 <script setup>
-import BgCart from "../backgrounds/BgCart.vue";
+import BgProduct from "../backgrounds/BgProduct.vue";
 import TasteCard from "../cards/TasteCard.vue";
 import DetailsCard from "../cards/DetailsCard.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import ProductLarge from "../cards/ProductLarge.vue";
 import AnchorToggle from "../navigation/AnchorToggle.vue";
 import RawDescription from "../articles/RawDescription.vue";
+import PreparationBlock from "../toggles/PreparationBlock.vue";
+
 import { useRoute } from "vue-router";
 const route = useRoute();
 
 import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
-import { computed, ref } from 'vue';
+import { computed, ref, reactive } from 'vue';
 
 const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).category : "");
 
@@ -34,13 +36,31 @@ const anchorObjects = ref([
     label: "Отзывы"
   }
 ])
+
+const cookingWay = ref("");
+
+const cookingCoffee = reactive({
+  
+});
+
+const cookingText = reactive({
+  'tea': {
+
+  },
+  'healthy': {
+
+  },
+  'vending': {
+
+  }
+});
 </script>
 
 <template>
   <main>
     
     <section class="product-hero">
-      <bg-cart></bg-cart>
+      <bg-product :place="'top'"></bg-product>
 
       <div class="container">
         <div class="product-hero__wrapper">
@@ -66,6 +86,28 @@ const anchorObjects = ref([
       </div>
     </section>
 
+    <section class="product-cooking">
+      <bg-product :place="'middle'"></bg-product>
+
+      <div class="container">
+        <div class="product-cooking__wrapper">
+          <h2 
+          v-if="category == 'coffee'"
+          class="product-cooking__heading">Способы приготовления кофе</h2>
+          <h2 
+          v-else
+          class="product-cooking__heading">Как готовть?</h2>
+          
+          <!-- Способ приготовления -->
+          <preparation-block
+            v-if="category == 'coffee'"
+            class="product-cooking__cooking-cards"
+            @set-value="cookingWay = $event"
+          ></preparation-block>
+        </div>
+      </div>
+    </section>
+    
   </main>
 </template>
 
@@ -81,7 +123,6 @@ const anchorObjects = ref([
   font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   overflow: hidden;
-  height: 100%;
   border-bottom: 1px solid $color-philippine-silver;
 
   @include vp-laptop {
