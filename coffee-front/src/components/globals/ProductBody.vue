@@ -282,16 +282,15 @@ const cookingText = reactive({
   border-bottom: 1px solid $color-philippine-silver;
 
   @include vp-laptop {
-    padding: 145px 0 20px;
+    padding: 40px 0 80px;
   }
 
   @include vp-tablet {
-    padding: 173px 0 70px;
     border-bottom: 2px solid $color-philippine-silver;
   }
 
   @include vp-mobile {
-    padding: 100px 0 50px;
+    padding: 30px 0;
     border-bottom: 1px solid $color-philippine-silver;
   }
 }

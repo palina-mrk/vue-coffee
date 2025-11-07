@@ -119,12 +119,11 @@ const textVariants = reactive({
       width: 100%;
       margin: 0;
       height: 348px;
-      border-radius: 20px;
+      border-radius: 10px;
     }
 
     @include vp-mobile {
       height: 170px;
-      border-radius: 10px;
     }
   }
 

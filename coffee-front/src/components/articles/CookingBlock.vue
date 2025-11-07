@@ -118,7 +118,15 @@ const cookingText = reactive({
     gap: 50px;
 
     @include vp-laptop {
-      
+      gap: 30px;
+    }
+
+    @include vp-tablet {
+      gap: 35px;
+    }
+
+    @include vp-mobile {
+      gap: 20px;
     }
   }
 
@@ -130,10 +138,38 @@ const cookingText = reactive({
     line-height: 50px;
     margin: 0 0 10px;
     padding: 0;
+
+    @include vp-laptop {
+      font-size: 28px;
+      line-height: 35px;
+      margin: 0;
+    }
+
+    @include vp-tablet {
+      font-size: 36px;
+      line-height: 45px;
+    }  
+    
+    @include vp-mobile {
+      font-size: 18px;
+      line-height: 22px;
+    }           
   }
 
   &__cooking-cards {
     margin: 0 0 60px;
+
+    @include vp-laptop {
+      margin: 0 0 40px;
+    }
+
+    @include vp-tablet {
+      margin: 0 0 25px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 30px;
+    }
   }
 
   &__subtitle {
@@ -144,6 +180,24 @@ const cookingText = reactive({
     line-height: 50px;
     margin: 0;
     padding: 0;
+
+    @include vp-laptop {
+      font-size: 28px;
+      line-height: 35px;
+      margin: 0 0 10px;
+    }
+
+    @include vp-tablet {
+      font-size: 36px;
+      line-height: 45px;
+      margin: 0 0 5px;
+    }
+
+    @include vp-mobile {
+      font-size: 18px;
+      line-height: 22px;
+      margin: 0 0 10px;
+    }
   }
 
   &__paragraph {
@@ -160,18 +214,21 @@ const cookingText = reactive({
       font-size: 18px;
       line-height: 23px;
       text-indent: 48px;
+      margin: 0 0 25px;
     }
 
     @include vp-tablet {
       font-size: 20px;
       line-height: 26px;
       text-indent: 45px;
+      margin: 0 0 35px;
     }
 
     @include vp-mobile {
       font-size: 14px;
       line-height: 18px;
       text-indent: 24px;
+      margin: 0 0 20px;
     }
   }
 
@@ -185,17 +242,16 @@ const cookingText = reactive({
 
     @include vp-laptop {
       border-radius: 14px;
-      height: 296px;     
+      height: 389px;     
     }
 
     @include vp-tablet {
-      height: 348px;
-      border-radius: 20px;
+      height: 237px;
+      border-radius: 10px;
     }
 
     @include vp-mobile {
-      height: 170px;
-      border-radius: 10px;
+      height: 116px;
     }
   }
 }
