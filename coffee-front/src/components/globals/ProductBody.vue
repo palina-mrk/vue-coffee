@@ -4,14 +4,35 @@ import TasteCard from "../cards/TasteCard.vue";
 import DetailsCard from "../cards/DetailsCard.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import ProductLarge from "../cards/ProductLarge.vue";
+import AnchorToggle from "../navigation/AnchorToggle.vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
 
 import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
-import {computed} from 'vue';
+import { computed, ref } from 'vue';
 
 const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).category : "");
+
+
+const anchorObjects = ref([
+  {
+    link: "product-description",
+    label: "Описание"
+  },
+  {
+    link: "product-description",
+    label: "Как готовить?"
+  },
+  {
+    link: "product-description",
+    label: "Дополнительно"
+  },
+  {
+    link: "product-description",
+    label: "Отзывы"
+  }
+])
 </script>
 
 <template>
@@ -25,13 +46,17 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
             class="product-hero__breadcrumbs-list"
           ></custom-breadcrumbs>
           <h1 class="visually-hidden">Карточка товара </h1>
-          <product-large></product-large>
+          <product-large 
+          class="product-hero__product-card"
+          id="product-description"></product-large>
+          <anchor-toggle 
+          class="product-hero__anchor-toggle"
+          :anchorObjects="anchorObjects"></anchor-toggle>
           <div class="product-hero__coffee-addings" v-if="category == 'coffee'">
             <taste-card class="product-hero__coffee-taste"></taste-card>
 
             <details-card class="product-hero__coffee-details"></details-card>
           </div>
-          <p>{{ route }}</p>
         </div>
       </div>
     </section>
@@ -39,6 +64,10 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
 </template>
 
 <style lang="scss" scoped>
+#product-description {
+  scroll-margin-top: 200px;
+}
+
 .product-hero {
   position: relative;
   width: 100%;
@@ -60,7 +89,6 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
   @include vp-mobile {
     padding: 100px 0 0;
   }
-
 
   &__wrapper {
     width: 100%;
@@ -89,6 +117,39 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
     margin: 0;
   }
 
+  &__product-card {
+    margin: 0 0 61px;
+
+    @include vp-laptop {
+      margin: 0 0 28px;      
+    }
+
+    @include vp-tablet {
+      margin: 0 0 13px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 28px;
+    }
+  }
+
+  &__anchor-toggle {
+    width: 100%;
+    margin: 0 0 61px;
+    
+    @include vp-laptop {
+      margin: 0 0 38px;      
+    }
+
+    @include vp-tablet {
+      margin: 0 0 35px;
+    }
+
+    @include vp-mobile {
+      margin: 0 0 18px;
+    }
+  }
+
   &__coffee-addings {
     width: 100%;
     display: flex;
@@ -96,6 +157,10 @@ const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo
 
     @include vp-tablet {
       flex-direction: column;
+    }
+
+    @include vp-mobile {
+      gap: 9px;
     }
   }
 

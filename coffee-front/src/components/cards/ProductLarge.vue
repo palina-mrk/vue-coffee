@@ -406,14 +406,13 @@ const showFullText = ref(false);
   @include vp-tablet {
     padding: 50px 40px 70px;
     box-shadow: 0px 0px 103px 0px $color-quick-silver-25;
-    border-radius: 40px;
+    border-radius: 20px;
     border-width: 2px;
   }
 
   @include vp-mobile {
     box-shadow: 0px 0px 50px 0px $color-quick-silver-25;
     padding: 25px 20px 40px;
-    border-radius: 20px;
     border-width: 1px;
   }
 
