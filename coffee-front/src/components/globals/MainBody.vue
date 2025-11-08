@@ -1,6 +1,6 @@
 <script setup>
 import { useCatalogStore } from "../../stores/catalog";
-import { reactive, computed } from "vue";
+import { reactive } from "vue";
 const catalogStore = useCatalogStore();
 import ProductCard from "../cards/ProductCard.vue";
 import BgHome from "../backgrounds/BgHome.vue";
@@ -51,10 +51,9 @@ function getNextSales() {
               >
             </p>
           </div>
-          <router-link
+          <a href="#catalogs"
             class="overview__hero-button btn btn--size-xl"
-            :to="{ name: 'catalogs' }"
-            >Посмотреть каталог</router-link
+            >Посмотреть каталог</a
           >
         </div>
       </div>
@@ -309,10 +308,9 @@ function getNextSales() {
               Мы&nbsp;раскрываем вкус каждого сорта кофе.
             </p>
           </div>
-          <router-link
+          <a href="#catalogs"
             class="technology__button btn btn--size-xl"
-            :to="{ name: 'catalogs' }"
-            >Посмотреть каталог</router-link
+            >Посмотреть каталог</a
           >
         </div>
       </div>

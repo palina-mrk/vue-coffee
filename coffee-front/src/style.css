@@ -9,6 +9,26 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 200px;
+}
+
+
+@media (max-width: 1903px) {
+  html {
+    scroll-padding-top: 180px;
+  }
+}
+
+@media (max-width: 1348px) {
+  html {
+    scroll-padding-top: 180px;
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 100px;
+  }
 }
 
 img {

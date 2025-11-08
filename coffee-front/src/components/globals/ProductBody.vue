@@ -19,7 +19,7 @@ import { computed, ref, reactive } from 'vue';
 const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).category : "");
 
 
-const anchorObjects = ref([
+const anchorObjectsCoffee = ref([
   {
     link: "product-description",
     label: "Описание"
@@ -31,6 +31,22 @@ const anchorObjects = ref([
   {
     link: "product-adding",
     label: "Дополнительно"
+  },
+  {
+    link: "product-description",
+    label: "Отзывы"
+  }
+])
+
+
+const anchorObjects = ref([
+  {
+    link: "product-description",
+    label: "Описание"
+  },
+  {
+    link: "product-cooking",
+    label: "Как готовить?"
   },
   {
     link: "product-description",
@@ -57,7 +73,7 @@ const anchorObjects = ref([
           id="product-description"></product-large>
           <anchor-toggle 
           class="product-hero__anchor-toggle"
-          :anchorObjects="anchorObjects"></anchor-toggle>
+          :anchorObjects="category == 'coffee' ? anchorObjectsCoffee : anchorObjects"></anchor-toggle>
           <div class="product-hero__coffee-addings" v-if="category == 'coffee'">
             <taste-card class="product-hero__coffee-taste"></taste-card>
 
@@ -90,26 +106,6 @@ const anchorObjects = ref([
 </template>
 
 <style lang="scss" scoped>
-#product-description {
-  scroll-margin-top: 200px;
-}
-
-#product-cooking {
-  scroll-margin-top: 200px;
-
-  @include vp-laptop {
-    scroll-margin-top: 345px;  
-  }
-
-  @include vp-tablet {
-    scroll-margin-top: 273px;  
-  }
-
-  @include vp-laptop {
-    scroll-margin-top: 100px;  
-  }
-}
-
 .product-hero {
   position: relative;
   width: 100%;

@@ -1,18 +1,9 @@
 <script setup>
 const props = defineProps(["anchorObjects"]);
-/**
- * anchorObjects = [
- * {
- *  link: "xxx",
- *  label: "Описание"
- * }
- * ]
- *
- */
 </script>
 
 <template>
-  <ul class="anchors-list">
+  <ul :class="['anchors-list', 'anchors-list--' + anchorObjects.length]">
     <li class="anchors-list__item" v-for="anchor in anchorObjects">
       <a :href="'#' + anchor.link" class="anchors-list__link">
         {{ anchor.label }}
@@ -99,6 +90,17 @@ const props = defineProps(["anchorObjects"]);
   &__link:hover {
     background-color: $color-cornsilk;
     border-color: $color-ucla-gold;
+  }
+}
+
+.anchors-list--3 {
+  .anchors-list {
+    &__item:first-child {
+      
+      @include vp-tablet {
+        width: 100%;
+      }
+    }
   }
 }
 </style>
