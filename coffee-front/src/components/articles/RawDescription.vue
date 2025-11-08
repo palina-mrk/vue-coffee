@@ -39,8 +39,8 @@ const textVariants = reactive({
 <template>
   <div
   v-if="catalogStore.isLoaded"
-  :class="['article-wrapper', 'article-wrapper--' + category]">
-    <div class="article-wrapper__image-wrapper">
+  :class="['article', 'article--' + category]">
+    <div class="article__image-wrapper">
       <picture class="article-wrapper__picture">
         <source
           media="(max-width: 1904px)"
@@ -55,11 +55,11 @@ const textVariants = reactive({
     </div>
           
     <p 
-    class="article-wrapper__text-paragraph"
+    class="article__paragraph"
     v-for="paragraph in textVariants[category]">{{ paragraph }}</p>
 
-    <div class="article-wrapper__image-wrapper article-wrapper__image-wrapper--tablet">
-      <picture class="article-wrapper__picture">
+    <div class="article__image-wrapper article__image-wrapper--tablet">
+      <picture class="article__picture">
         <source
           media="(max-width: 768px)"
           :srcset="`../../src/images/${category}-view/secondary-${category}-mobile.png`"
@@ -75,7 +75,7 @@ const textVariants = reactive({
 </template>
 
 <style lang="scss" scoped>
-.article-wrapper {
+.article {
   height: fit-content;
   overflow: hidden;
 
@@ -127,53 +127,53 @@ const textVariants = reactive({
     }
   }
 
-  &__text-paragraph {
+  &__paragraph {
     font-family: $ff-gilroy, sans-serif;
     color: $color-raising-black;
     font-weight: 500;
     font-size: 25px;
     line-height: 32px;
     padding: 0;
-    margin: 0 0 32px;
+    margin: 0 0 30px;
     text-indent: 64px;
 
     @include vp-laptop {
       font-size: 18px;
       line-height: 23px;
-      margin: 0 0 24px;
+      margin: 0 0 20px;
       text-indent: 48px;
     }
 
     @include vp-tablet {
       font-size: 20px;
       line-height: 26px;
-      margin: 0 0 26px;
+      margin: 0 0 15px;
       text-indent: 45px;
     }
 
     @include vp-mobile {
       font-size: 14px;
       line-height: 18px;
-      margin: 0 0 18px;
+      margin: 0 0 10px;
       text-indent: 24px;
     }
   }
 
-  &__text-paragraph:last-of-type {
+  &__paragraph:last-of-type {
     margin: 0;
 
     @include vp-tablet {
-      margin: 0 0 80px;
+      margin: 0 0 30px;
     }
 
     @include vp-mobile {
-      margin: 0 0 40px;
+      margin: 0 0 20px;
     }
   }
 }
 
-.article-wrapper--healthy {
-  .article-wrapper {
+.article--healthy {
+  .article {
     
     &__image-wrapper {
       width: 307px;
@@ -197,7 +197,6 @@ const textVariants = reactive({
         height: 170px;
       }
     }
-
   }
 }
 </style>

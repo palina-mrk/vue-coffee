@@ -26,11 +26,6 @@ import { computed, ref, reactive } from 'vue';
     class="adding__paragraph"
     >Помимо традиционного способа заваривания, существуют альтернативные методы потребления кофе. Например, холодные напитки, такие как фраппе и&nbsp;айс-латте, популярны летом. Некоторые предпочитают добавлять специи, такие как корица или кардамон, для придания уникального аромата. Также существует растущая тенденция употреблять кофе в&nbsp;виде сиропа или порошка для добавления в&nbsp;десерты и&nbsp;выпечку.</p>
 
-
-    <p 
-    class="adding__paragraph"
-    >Эти дополнительные факты подчеркивают многообразие культуры кофе и&nbsp;его значимость в&nbsp;повседневной жизни людей по&nbsp;всему миру.</p>
-
     <div class="adding__image-wrapper">
       <picture class="cooking__picture">
         <source
@@ -53,8 +48,6 @@ import { computed, ref, reactive } from 'vue';
       </picture>
     </div>
 
-
-
     <h2 class="adding__title">Ещё немного интересного о&nbsp;кофе</h2>
     <h3 class="adding__subtitle">Биохимия кофе</h3>
     <p 
@@ -76,13 +69,8 @@ import { computed, ref, reactive } from 'vue';
     class="adding__paragraph"
     >Производство кофе оказывает значительное влияние на&nbsp;окружающую среду. Большая часть кофе выращивается на&nbsp;небольших фермах, часто расположенных в&nbsp;тропиках. Интенсивное использование удобрений и&nbsp;пестицидов негативно сказывается на&nbsp;экосистемах. Поэтому всё большее значение приобретают экологически чистые методы выращивания, такие как биологическое земледелие и&nbsp;восстановление лесов вокруг кофейных плантаций.</p>
 
-
-    <p 
-    class="adding__paragraph"
-    >Эти параграфы раскрывают разные стороны мира кофе, подчёркивая его сложность и&nbsp;разнообразие.</p>
-
     <div class="adding__image-wrapper">
-      <picture class="cooking__picture">
+      <picture class="adding__picture">
         <source
           media="(max-width: 768px)"
           srcset="../../images/coffee-view/one-cup-mobile.png"
@@ -96,6 +84,7 @@ import { computed, ref, reactive } from 'vue';
           srcset="../../images/coffee-view/one-cup-laptop.png"
         />
         <img
+          class="adding__image"
           src="../../images/coffee-view/one-cup-desktop.png"
           width="1660"
           height="550"
@@ -113,6 +102,19 @@ import { computed, ref, reactive } from 'vue';
     display: flex;
     flex-direction: column;
     align-items: start;
+    gap: 60px;
+
+    @include vp-laptop {
+      gap: 40px;
+    }
+
+    @include vp-tablet {
+      gap: 30px;
+    }
+
+    @include vp-mobile {
+      gap: 20px;
+    }
   }
 
   &__title {
@@ -121,13 +123,12 @@ import { computed, ref, reactive } from 'vue';
     font-weight: 900;
     font-size: 40px;
     line-height: 50px;
-    margin: 0 0 60px;
+    margin: 0;
     padding: 0;
 
     @include vp-laptop {
       font-size: 28px;
       line-height: 35px;
-      margin: 0 0 40px;
     }
 
     @include vp-tablet {
@@ -147,25 +148,22 @@ import { computed, ref, reactive } from 'vue';
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
-    margin: 0 0 60px;
+    margin: 0;
     padding: 0;
 
     @include vp-laptop {
-      font-size: 28px;
-      line-height: 35px;
-      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 26px;
     }
 
     @include vp-tablet {
-      font-size: 36px;
-      line-height: 45px;
-      margin: 0 0 5px;
+      font-size: 30px;
+      line-height: 39px;
     }
 
     @include vp-mobile {
-      font-size: 18px;
-      line-height: 22px;
-      margin: 0 0 10px;
+      font-size: 16px;
+      line-height: 19px;
     }
   }
 
@@ -176,40 +174,41 @@ import { computed, ref, reactive } from 'vue';
     font-size: 25px;
     line-height: 32px;
     padding: 0;
-    margin: 0 0 20px;
     text-indent: 64px;
+    margin: 0;
 
     @include vp-laptop {
       font-size: 18px;
       line-height: 23px;
       text-indent: 48px;
-      margin: 0 0 25px;
     }
 
     @include vp-tablet {
       font-size: 20px;
       line-height: 26px;
       text-indent: 45px;
-      margin: 0 0 35px;
     }
 
     @include vp-mobile {
       font-size: 14px;
       line-height: 18px;
       text-indent: 24px;
-      margin: 0 0 20px;
     }
   }
 
-  &__paragraph:last-of-type {
-    margin: 0 0 70px;
+  &__paragraph + .adding__image-wrapper {
+    margin-top: 10px;
+
+    @include vp-laptop {
+      margin-top: 5px;
+    }
 
     @include vp-tablet {
-      margin: 0 0 80px;
+      margin-top: 20px;
     }
 
     @include vp-mobile {
-      margin: 0 0 40px;
+      margin-top: 0;
     }
   }
 
@@ -232,6 +231,22 @@ import { computed, ref, reactive } from 'vue';
 
     @include vp-mobile {
       height: 116px;
+    }
+  }
+
+  &__image-wrapper + .adding__title {
+    margin-top: 20px;
+
+    @include vp-laptop {
+      margin-top: 10px;
+    }
+
+    @include vp-tablet {
+      margin-top: 20px;
+    }
+
+    @include vp-mobile {
+      margin-top: 10px;
     }
   }
 }

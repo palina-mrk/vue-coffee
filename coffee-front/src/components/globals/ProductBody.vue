@@ -85,6 +85,7 @@ const anchorObjects = ref([
         <adding-block  id="product-adding"></adding-block>
       </div>
     </section>
+    
   </main>
 </template>
 
@@ -94,7 +95,7 @@ const anchorObjects = ref([
 }
 
 #product-cooking {
-  scroll-margin-top: 400px;
+  scroll-margin-top: 200px;
 
   @include vp-laptop {
     scroll-margin-top: 345px;  
@@ -241,7 +242,28 @@ const anchorObjects = ref([
 .product-cooking {
   position: relative;
   width: 100%;
-  padding: 50px 0 100px;
+  padding: 70px 0 100px;
+  overflow: hidden;
+  border-bottom: 1px solid $color-philippine-silver;
+
+  @include vp-laptop {
+    padding: 40px 0 80px;
+  }
+
+  @include vp-tablet {
+    border-bottom: 2px solid $color-philippine-silver;
+  }
+
+  @include vp-mobile {
+    padding: 30px 0;
+    border-bottom: 1px solid $color-philippine-silver;
+  }
+}
+
+.adding-info {
+  position: relative;
+  width: 100%;
+  padding: 70px 0 100px;
   overflow: hidden;
   border-bottom: 1px solid $color-philippine-silver;
 

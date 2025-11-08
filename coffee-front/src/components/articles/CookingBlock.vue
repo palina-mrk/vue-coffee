@@ -67,7 +67,7 @@ const cookingText = reactive({
         @set-value="cookingWay = $event"
       ></preparation-block>
 
-      <h3 class="cooking__subtitle"
+      <h3 class="cooking__title"
       v-if="cookingWay.length > 0"
       >{{ cookingCoffee[cookingWay].title }}</h3>
       <p 
@@ -115,14 +115,14 @@ const cookingText = reactive({
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 50px;
+    gap: 60px;
 
     @include vp-laptop {
-      gap: 30px;
+      gap: 40px;
     }
 
     @include vp-tablet {
-      gap: 35px;
+      gap: 30px;
     }
 
     @include vp-mobile {
@@ -136,13 +136,12 @@ const cookingText = reactive({
     font-weight: 900;
     font-size: 40px;
     line-height: 50px;
-    margin: 0 0 10px;
+    margin: 0;
     padding: 0;
 
     @include vp-laptop {
       font-size: 28px;
       line-height: 35px;
-      margin: 0;
     }
 
     @include vp-tablet {
@@ -156,47 +155,28 @@ const cookingText = reactive({
     }           
   }
 
-  &__cooking-cards {
-    margin: 0 0 60px;
-
-    @include vp-laptop {
-      margin: 0 0 40px;
-    }
-
-    @include vp-tablet {
-      margin: 0 0 25px;
-    }
-
-    @include vp-mobile {
-      margin: 0 0 30px;
-    }
-  }
-
   &__subtitle {
     font-family: $ff-gilroy, sans-serif;
     color: $color-black;
-    font-weight: 900;
-    font-size: 40px;
-    line-height: 50px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
     margin: 0;
     padding: 0;
 
     @include vp-laptop {
-      font-size: 28px;
-      line-height: 35px;
-      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 26px;
     }
 
     @include vp-tablet {
-      font-size: 36px;
-      line-height: 45px;
-      margin: 0 0 5px;
+      font-size: 30px;
+      line-height: 39px;
     }
 
     @include vp-mobile {
-      font-size: 18px;
-      line-height: 22px;
-      margin: 0 0 10px;
+      font-size: 16px;
+      line-height: 19px;
     }
   }
 
@@ -207,31 +187,44 @@ const cookingText = reactive({
     font-size: 25px;
     line-height: 32px;
     padding: 0;
-    margin: 0 0 20px;
+    margin: 0;
     text-indent: 64px;
 
     @include vp-laptop {
       font-size: 18px;
       line-height: 23px;
       text-indent: 48px;
-      margin: 0 0 25px;
     }
 
     @include vp-tablet {
       font-size: 20px;
       line-height: 26px;
       text-indent: 45px;
-      margin: 0 0 35px;
     }
 
     @include vp-mobile {
       font-size: 14px;
       line-height: 18px;
       text-indent: 24px;
-      margin: 0 0 20px;
     }
   }
 
+
+  &__paragraph + .cooking__image-wrapper {
+    margin-top: 10px;
+
+    @include vp-laptop {
+      margin-top: 5px;
+    }
+
+    @include vp-tablet {
+      margin-top: 20px;
+    }
+
+    @include vp-mobile {
+      margin-top: 0;
+    }
+  }
 
   &__image-wrapper {
     border-radius: 20px;
