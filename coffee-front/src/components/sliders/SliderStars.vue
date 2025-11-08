@@ -124,4 +124,36 @@ const count = computed(() => Number(props.rating.toFixed(0)));
     }
   }
 }
+
+.slider-stars--review {
+  gap: 4px;
+
+  @include vp-laptop {
+    gap: 2px;
+  }
+
+  @include vp-mobile {
+    gap: 1px;
+  }
+
+  .slider-stars__svg {
+    width: 34px;
+    height: 34px;
+
+    @include vp-laptop {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include vp-tablet {
+      width: 21px;
+      height: 21px;
+    }
+
+    @include vp-mobile {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
 </style>

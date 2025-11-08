@@ -7,6 +7,7 @@ import ProductLarge from "../cards/ProductLarge.vue";
 import AnchorToggle from "../navigation/AnchorToggle.vue";
 import RawDescription from "../articles/RawDescription.vue";
 import AddingBlock from "../articles/AddingBlock.vue";
+import ReviewsBlock from "../articles/ReviewsBlock.vue";
 import CookingBlock from "../articles/CookingBlock.vue";
 
 import { useRoute } from "vue-router";
@@ -33,7 +34,7 @@ const anchorObjectsCoffee = ref([
     label: "Дополнительно"
   },
   {
-    link: "product-description",
+    link: "reviews-list",
     label: "Отзывы"
   }
 ])
@@ -49,7 +50,7 @@ const anchorObjects = ref([
     label: "Как готовить?"
   },
   {
-    link: "product-description",
+    link: "reviews-list",
     label: "Отзывы"
   }
 ])
@@ -102,6 +103,14 @@ const anchorObjects = ref([
       </div>
     </section>
     
+    <section class="reviews">
+      <bg-product :place="'bottom'"></bg-product>
+
+      <div class="container">
+        <reviews-block  id="reviews-list"></reviews-block>
+      </div>
+    </section>
+
   </main>
 </template>
 
@@ -274,6 +283,24 @@ const anchorObjects = ref([
   @include vp-mobile {
     padding: 30px 0;
     border-bottom: 1px solid $color-philippine-silver;
+  }
+}
+
+.reviews {
+  position: relative;
+  width: 100%;
+  padding: 70px 0 100px;
+  overflow: hidden;
+  
+  @include vp-laptop {
+    padding: 40px 0 80px;
+  }
+
+  @include vp-tablet {
+  }
+
+  @include vp-mobile {
+    padding: 30px 0;
   }
 }
 </style>

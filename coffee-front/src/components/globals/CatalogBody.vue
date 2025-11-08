@@ -54,6 +54,8 @@ const maxCount = computed(() => {
       return teas.length;
     case "vending":
       return vendings.length;
+    case "healthy":
+      return healthies.length;
     default:
       return 0;
   }
