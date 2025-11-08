@@ -853,14 +853,12 @@ const maxCount = computed(() => {
   border-style: solid;
   border-color: $color-platinum;
   padding: 23px;
-  height: 70px;
   font-size: 20px;
   line-height: 24px;
   font-weight: 500;
   border-radius: 10px;
 
   @include vp-laptop {
-    height: 50px;
     border-width: 0.71px;
     padding: 16px;
     font-size: 14px;
@@ -869,7 +867,6 @@ const maxCount = computed(() => {
   }
 
   @include vp-tablet {
-    height: 70px;
     border-width: 1px;
     padding: 22px;
     font-size: 22px;
@@ -878,10 +875,9 @@ const maxCount = computed(() => {
   }
 
   @include vp-mobile {
-    height: 50px;
-    padding: 14px 14px 15px;
-    font-size: 18px;
-    line-height: 21px;
+    padding: 13px 14px 11px;
+    font-size: 14px;
+    line-height: 16px;
   }
 
   &:hover {
@@ -942,6 +938,18 @@ const maxCount = computed(() => {
     display: flex;
     flex-direction: column;
     gap: 50px;
+
+    @include vp-laptop {
+      
+    }
+
+    @include vp-tablet {
+      
+    }
+
+    @include vp-mobile {
+      margin: 0 0 9px;
+    }
   }
 
   &__item {

@@ -297,7 +297,7 @@ const anchorObjects = ref([
   }
 
   @include vp-mobile {
-    padding: 30px 0;
+    padding: 40px 0 0;
   }
 }
 </style>

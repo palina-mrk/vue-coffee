@@ -1336,20 +1336,13 @@
 
   &__div--product-middle-wall--for-bottom {
     top: 0;
-    bottom: 110px;
+    height: 0;
 
-    @include vp-tablet {
-      bottom: 120px;
-    }
-
-    @include vp-mobile {
-      bottom: 650px;
-    }
   }
 
   &__svg-vawe--product-bottom {
     height: 384px;
-    bottom: 110px;
+    top: 0;
     color: $color-cultured;
     background-color: $color-white;
 
@@ -1358,12 +1351,10 @@
     }
 
     @include vp-tablet {
-      bottom: 120px;
       height: 200px;
     }
 
     @include vp-mobile {
-      bottom: 50px;
       height: 108px;
     }
   }
