@@ -795,8 +795,9 @@ const reviews = reactive({
   }
 ] });
 
-/* максимальное кол-во отображаемых отзывов: 8 на странице */
-const cardsCount = ref(8);
+/* Изначально кол-во отображаемых отзывов */
+const reviewsCount = ref(5);
+/*
 const maxCount = computed(() => {
   switch (category.value) {
     case "coffee":
@@ -810,7 +811,7 @@ const maxCount = computed(() => {
     default:
       return 0;
   }
-});
+});*/
 </script>
 
 <template>
@@ -819,7 +820,7 @@ const maxCount = computed(() => {
 
     <ul class="reviews__list">
       <li class="reviews__item"
-        v-for="n in cardsCount"
+        v-for="n in reviewsCount"
       >
         <review-card class="reviews__card" :review="reviews[category][n - 1]" :key="n"></review-card>
       </li>
@@ -828,7 +829,7 @@ const maxCount = computed(() => {
     <button
       class="reviews__button btn--white-xl"
       type="button"
-      @click="cardsCount += 4"
+      @click="reviewsCount <= reviews[category].length - 4 ? cardsCount += 4 : cardsCount = reviews[category].length"
     >
       Показать ещё
     </button>
@@ -894,14 +895,14 @@ const maxCount = computed(() => {
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 60px;
+    gap: 98px;
 
     @include vp-laptop {
-      gap: 40px;
+      gap: 78px;
     }
 
     @include vp-tablet {
-      gap: 30px;
+      gap: 68px;
     }
 
     @include vp-mobile {
@@ -913,8 +914,8 @@ const maxCount = computed(() => {
     font-family: $ff-gilroy, sans-serif;
     color: $color-black;
     font-weight: 900;
-    font-size: 28px;
-    line-height: 36px;
+    font-size: 40px;
+    line-height: 50px;
     margin: 0;
     padding: 0;
 
@@ -924,8 +925,8 @@ const maxCount = computed(() => {
     }
 
     @include vp-tablet {
-      font-size: 36px;
-      line-height: 45px;
+      font-size: 38px;
+      line-height: 44px;
     }  
     
     @include vp-mobile {
