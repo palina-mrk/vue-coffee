@@ -17,8 +17,7 @@ export const useOrdersStore = defineStore("order", () => {
     специально устанавливаем старую дату, чтобы сразу пошли в завершенные
     orderItem.deliveryObjectDate = 1762062460456;*/ 
     const ts = Date.now();
-    orderItem.isFinished = (orderItem.deliveryObjectDate < ts);
-    console.log(orderItem);
+    orderItem.isFinished = (Date.parse(orderItem.deliveryObjectDate) < ts);
   });
 
   /** до оплаты заказа мы можем считывать инфу из корзины 

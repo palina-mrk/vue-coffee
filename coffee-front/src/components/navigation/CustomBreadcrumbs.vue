@@ -121,9 +121,8 @@ const routerLabels = computed(() =>
     border-radius: 50%;
     position: absolute;
     left: 0;
-    top: calc(50% + 1px);
-    transform: translateY(-50%);
-
+    bottom: 50%;
+    
     @include vp-laptop {
       width: 3px;
       height: 3px;

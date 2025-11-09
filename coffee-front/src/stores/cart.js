@@ -40,7 +40,6 @@ export const useCartStore = defineStore("cart", () => {
 
     promoSale.value = promoInfo[1];
     userPromo.value = promoValue;
-    console.log("promo: ", userPromo.value);
     return true;
   }
 
@@ -93,12 +92,18 @@ export const useCartStore = defineStore("cart", () => {
   );
 
   function addToCart(itemId, weight) {
+    if(!weight)
+      return;
+
     const item = cartRows.find((el) => el[0] == itemId && el[1] == weight);
     if (!item) cartRows.push([itemId, weight, 1]);
     else item[2]++;
   }
 
   function removeOneFromCart(itemId, weight) {
+    if(!weight)
+      return;
+
     const ind = cartRows.findIndex((el) => el[0] == itemId && el[1] == weight);
     if (ind == -1) return;
 
@@ -108,6 +113,9 @@ export const useCartStore = defineStore("cart", () => {
   }
 
   function removeFromCart(itemId, weight) {
+    if(!weight)
+      return;
+
     const ind = cartRows.findIndex((el) => el[0] == itemId && el[1] == weight);
     if (ind == -1) return;
 
@@ -115,6 +123,9 @@ export const useCartStore = defineStore("cart", () => {
   }
 
   function setCount(itemId, weight, itemCount) {
+    if(!weight)
+      return;
+
     const count = Number(itemCount);
     if (count <= 0) {
       removeFromCart(itemId, weight);
@@ -221,6 +232,9 @@ export const useCartStore = defineStore("cart", () => {
   });
 
   function getCount(itemId, weight) {
+    if(!weight)
+      return 0;
+
     const item = cartRows.find(el => el[0] == itemId && el[1] == weight);
     console.log(item);
     return (item == undefined ? 0 : item[2]);
