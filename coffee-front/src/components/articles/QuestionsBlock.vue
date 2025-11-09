@@ -163,10 +163,10 @@ const questions = reactive ([
       position: absolute;
       left: 0;
       top: 0;
-      box-shadow: 5px 10px 10px 0px rgba(0, 0, 0, 0.15);
+      box-shadow: 5px 10px 10px 0px $color-black-15;
 
       @include vp-laptop {
-        box-shadow: 3.55px 7px 7px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 3.55px 7px 7px 0px $color-black-15;
       }
     }
   }

@@ -1,12 +1,11 @@
 <script setup>
-import BgProduct from "../backgrounds/BgProduct.vue";
 import BgBlog from "../backgrounds/BgBlog.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import AnchorToggle from "../navigation/AnchorToggle.vue";
 import AddingBlock from "../articles/AddingBlock.vue";
 import QuestionsBlock from "../articles/QuestionsBlock.vue";
 import CookingCoffee from "../articles/CookingCoffee.vue";
-import BgHome from "../backgrounds/BgHome.vue";
+import NewsBlock from "../articles/NewsBlock.vue";
 
 import { computed, ref, reactive } from 'vue';
 const anchorObjects = ref([
@@ -15,7 +14,7 @@ const anchorObjects = ref([
     label: "Обучение"
   },
   {
-    link: "teaching",
+    link: "news",
     label: "Новости"
   },
   {
@@ -46,6 +45,14 @@ const anchorObjects = ref([
         <cooking-coffee id="teaching"></cooking-coffee>
         <adding-block></adding-block>
       </div>
+    </div>
+  </section>
+
+  <section class="news" id="news">
+    <bg-blog :place="'top'"></bg-blog>
+
+    <div class="container">
+      <news-block></news-block>
     </div>
   </section>
 
@@ -187,6 +194,28 @@ const anchorObjects = ref([
     @include vp-tablet {
       width: 100%;
     }
+  }
+}
+
+.news {
+  position: relative;
+  width: 100%;
+  padding: 49px 0 100px;
+  overflow: hidden;
+  border-bottom: 1px solid $color-philippine-silver;
+  
+  @include vp-laptop {
+    padding: 34px 0 0;
+  }
+
+  @include vp-tablet {
+    padding: 44px 0 78px;
+    border-bottom: 2px solid $color-philippine-silver;
+  }
+
+  @include vp-mobile {
+    padding: 25px 0 70px;
+    border-bottom: 1px solid $color-philippine-silver;
   }
 }
 
