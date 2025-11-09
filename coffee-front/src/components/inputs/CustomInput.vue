@@ -1,5 +1,8 @@
 <script setup>
-defineProps(["modelValue", "inputData", "isError"]);
+defineProps(["modelValue", "inputData"]);
+import {ref} from 'vue';
+
+const isError=ref(false);
 </script>
 
 <template>
@@ -15,10 +18,10 @@ defineProps(["modelValue", "inputData", "isError"]);
       :name="inputData.name"
       :id="inputData.id"
       :placeholder="inputData.placeholder"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="isError=($event.target.value.length == 0); $emit('update:modelValue', $event.target.value)"
+      @focus="isError = false"
     />
     <span
-      v-if="inputData.error"
       class="custom-input__info"
       >{{ inputData.error ? inputData.error : "" }}</span
     >

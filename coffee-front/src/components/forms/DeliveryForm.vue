@@ -89,7 +89,10 @@ const addressData = reactive([
 ]);
 
 const isValid = computed(() => 
-  Boolean(!contactData.find(el => el.error && !el.value.length ) && !addressData.find(el => el.error && !el.value.length ))
+  !Boolean(
+    contactData.find(el => el.error && !el.value.length)  || 
+    addressData.find(el => el.error && !el.value.length )
+  )
 );
 </script>
 
@@ -105,21 +108,18 @@ const isValid = computed(() =>
         <custom-input
           v-for="inputData in contactData"
           :inputData="inputData"
-          :isError="inputData.isError"
           v-model="inputData.value"
-          @updated:modelValue="inputData.value = $event; $emit('set-state', isValid.value)"
+          @updated:modelValue="inputData.value = $event; inputData.isError=($event.length > 0); $emit('set-state', isValid)"
         ></custom-input>
       </fieldset>
 
       <fieldset class="delivery-form__group">
         <legend class="delivery-form__groupname">Адрес доставки</legend>
-        <!-- у группы чексбоксов д.б. одинаковый name и v-model -->
         <custom-input
           v-for="inputData in addressData"
           :inputData="inputData"
-          :isError="inputData.isError"
           v-model="inputData.value"
-          @updated:modelValue="inputData.value = $event; $emit('set-state', isValid.value)"
+          @updated:modelValue="inputData.value = $event; inputData.isError=($event.length > 0); $emit('set-state', isValid)"
           @focus="inputData.isError = false"
         ></custom-input>
       </fieldset>

@@ -1359,4 +1359,60 @@
       height: 108px;
     }
   }
+
+  /*  для блога */
+
+  &__div--blog-footer-wall {
+    display: none;
+    background-color: $color-cornsilk;
+
+    @include vp-tablet {
+      display: flex;
+      top: 0;
+      height: 85px;
+    }
+
+    @include vp-mobile {
+      height: 8px;
+    }
+  }
+
+  &__svg-blog-vawe--footer {
+    z-index: -6;
+    height: 408px;
+    top: -100px;
+    color: $color-cornsilk;
+    background-color: $color-white;
+
+    @include vp-laptop {
+      height: 210px;
+      top: -45px;
+    }
+
+    @include vp-tablet {
+      height: 192px;
+      top: 85px;
+    }
+
+    @include vp-mobile {
+      height: 109px;
+      top: 8px;
+    }
+  }
+  
+  &__div--blog-footer-bottom-wall {
+    top: 308px;
+    bottom: -1px;
+    background-color: $color-white;
+    width: 3720px;
+    left: calc(50% - 1860px);
+
+    @include vp-laptop {
+      top: 165px;
+    }
+
+    @include vp-tablet {
+      top: 117px;
+    }
+  }
 }

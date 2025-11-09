@@ -51,7 +51,6 @@ const cartStore = useCartStore();
         <router-link 
         :to="{ name: 'catalogs.product', params: { productID:  itemInfo.id } }"
         class="product-line__title">{{ itemInfo.title }}</router-link>
-        <!--h3 class="product-line__title">{{ itemInfo.title }}</h3-->
         <span class="product-line__text-line">{{ itemInfo.descripton }}</span>
         <span class="product-line__text-line">{{ itemInfo.weightString }}</span>
       </div>
@@ -106,7 +105,6 @@ const cartStore = useCartStore();
           <router-link 
           :to="{ name: 'catalogs.product', params: { productID:  itemInfo.id } }"
           class="product-line__title">{{ itemInfo.title }}</router-link>
-          <!--h3 class="product-line__title">{{ itemInfo.title }}</h3-->
           <span class="product-line__text-line">{{ itemInfo.descripton }}</span>
           <span class="product-line__text-line">{{
             itemInfo.weightString

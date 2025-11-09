@@ -798,7 +798,7 @@ const reviews = reactive({
 /* Изначально кол-во отображаемых отзывов */
 const reviewsCount = ref(5);
 
-const maxCount = computed(() => {
+/*const maxCount = computed(() => {
   switch (category.value) {
     case "coffee":
       return reviews.coffee.length;
@@ -811,7 +811,7 @@ const maxCount = computed(() => {
     default:
       return 0;
   }
-});
+});*/
 </script>
 
 <template>

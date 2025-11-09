@@ -5,6 +5,7 @@ import CartView from "../views/CartView.vue";
 import ContactsView from "../views/ContactsView.vue";
 import PersonalView from "../views/PersonalView.vue";
 import ProductView from "../views/ProductView.vue";
+import BlogView from "../views/BlogView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -100,28 +101,15 @@ const router = createRouter({
       meta: {
         title: "Карточка товара",
       },
-    }, /*
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/About.vue'),
     },
     {
-      path: '/posts/:postId',
-      name: 'post',
-      component: () => import('../views/Post.vue'),
-      children: [
-        {
-          path: 'comments/:commentId',
-          component: () => import('../components/PostComment.vue'),
-          name: 'post.comment',
-          props: true,
-        },
-      ],
-    },*/
+      path: "/blog",
+      name: "blog",
+      component: BlogView,
+      meta: {
+        title: "Блог",
+      },
+    }, 
   ],
   scrollBehavior(to) {
     if (to.name == "catalogs") {
