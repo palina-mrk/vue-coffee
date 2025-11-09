@@ -193,19 +193,19 @@ const anchorObjects = ref([
 .questions {
   position: relative;
   width: 100%;
-  padding: 70px 0 50px;
+  padding: 45px 0 10px;
   overflow: hidden;
   
   @include vp-laptop {
-    padding: 28px 0 95px;
+    padding: 34px 0 0;
   }
 
   @include vp-tablet {
-    padding: 28px 0 45px;
+    padding: 44px 0 78px;
   }
 
   @include vp-mobile {
-    padding: 0;
+    padding: 25px 0 70px;
   }
 }
 </style>

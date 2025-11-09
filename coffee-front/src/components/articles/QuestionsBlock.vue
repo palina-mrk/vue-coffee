@@ -85,7 +85,7 @@ const questions = reactive ([
   @include vp-tablet {
     justify-content: start;
     flex-direction: column;
-    gap: 60px;
+    gap: 28px;
     align-items: stretch;
   }
 
