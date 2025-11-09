@@ -286,18 +286,19 @@ const anchorObjects = ref([
 .reviews {
   position: relative;
   width: 100%;
-  padding: 70px 0 100px;
+  padding: 70px 0 50px;
   overflow: hidden;
   
   @include vp-laptop {
-    padding: 40px 0 80px;
+    padding: 28px 0 95px;
   }
 
   @include vp-tablet {
+    padding: 28px 0 45px;
   }
 
   @include vp-mobile {
-    padding: 40px 0 0;
+    padding: 8px 0 0;
   }
 }
 </style>

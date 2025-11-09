@@ -91,7 +91,7 @@ defineProps(["review"])
 
 
     @include vp-mobile {
-      padding: 20px 50px 20px 20px;
+      padding: 20px 35px 20px 20px;
     }
   }
 
@@ -215,6 +215,17 @@ defineProps(["review"])
     }
   }
 
+  &__text {
+    margin: 0 30px 0 0;
+    
+    @include vp-laptop {
+      margin: 0 35px 0 0;
+    }
+
+    @include vp-mobile {
+      margin: 0 15px 0 0;
+    }
+  }
 
   &__date, 
   &__user-city {

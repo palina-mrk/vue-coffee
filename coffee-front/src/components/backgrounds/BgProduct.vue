@@ -27,6 +27,14 @@ defineProps(['place'])
     <use xlink:href="../../assets/bg-sprite.svg#bg-cart-top-for-tablet"></use>
   </svg>
 
+  <div 
+  v-if="place == 'top'"
+  class="background__div background__div--product-middle-wall background__div--product-middle-wall--for-top"></div>
+
+  <div 
+  v-if="place == 'middle'"
+  class="background__div background__div--product-middle-wall background__div--product-middle-wall--for-middle"></div>
+
   <svg
   v-if="place == 'bottom'"
     class="background__svg-vawe background__svg-vawe--product-bottom"
@@ -37,19 +45,6 @@ defineProps(['place'])
     <use xlink:href="../../assets/bg-sprite.svg#bg-cart-bottom"></use>
   </svg>
 
-  <div 
-  v-if="place == 'top'"
-  class="background__div background__div--product-middle-wall background__div--product-middle-wall--for-top"></div>
-
-  <div 
-  v-if="place == 'middle'"
-  class="background__div background__div--product-middle-wall background__div--product-middle-wall--for-middle"></div>
-
-  <div 
-  v-if="place == 'bottom'"
-  class="background__div background__div--product-middle-wall background__div--product-middle-wall--for-bottom"></div>
-
-  
   <svg
   v-if="place == 'bottom'"
     class="background__svg-vawe-for-tablet background__svg-vawe--product-bottom"

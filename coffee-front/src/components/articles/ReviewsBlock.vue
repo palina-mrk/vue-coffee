@@ -797,7 +797,7 @@ const reviews = reactive({
 
 /* Изначально кол-во отображаемых отзывов */
 const reviewsCount = ref(5);
-/*
+
 const maxCount = computed(() => {
   switch (category.value) {
     case "coffee":
@@ -811,7 +811,7 @@ const maxCount = computed(() => {
     default:
       return 0;
   }
-});*/
+});
 </script>
 
 <template>
@@ -829,7 +829,8 @@ const maxCount = computed(() => {
     <button
       class="reviews__button btn--white-xl"
       type="button"
-      @click="reviewsCount <= reviews[category].length - 4 ? cardsCount += 4 : cardsCount = reviews[category].length"
+      :disabled="reviewsCount == reviews[category].length"
+      @click="reviewsCount <= reviews[category].length - 4 ? reviewsCount += 4 : reviewsCount = reviews[category].length"
     >
       Показать ещё
     </button>
@@ -852,15 +853,16 @@ const maxCount = computed(() => {
   border-width: 1px;
   border-style: solid;
   border-color: $color-platinum;
-  padding: 23px;
+  padding: 25px 23px 21px;
   font-size: 20px;
   line-height: 24px;
   font-weight: 500;
   border-radius: 10px;
+  text-align: center;
 
   @include vp-laptop {
     border-width: 0.71px;
-    padding: 16px;
+    padding: 18px 16px 14px;
     font-size: 14px;
     line-height: 17px;
     border-radius: 7px;
@@ -868,20 +870,27 @@ const maxCount = computed(() => {
 
   @include vp-tablet {
     border-width: 1px;
-    padding: 22px;
-    font-size: 22px;
-    line-height: 26px;
+    padding: 21px 21px 14px;
+    font-size: 25px;
+    line-height: 33px;
     border-radius: 5px;
   }
 
   @include vp-mobile {
-    padding: 13px 14px 11px;
+    padding: 13px 14px 9px;
     font-size: 14px;
     line-height: 16px;
   }
 
   &:hover {
     background-color: $color-cornsilk;
+  }
+
+  &[disabled] {
+    border-color: $color-bright-gray;
+    color: $color-silver-sand-c6;
+    background-color: $color-cultured-f6;
+    cursor: unset;
   }
 }
 
@@ -891,18 +900,14 @@ const maxCount = computed(() => {
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 98px;
-
-    @include vp-laptop {
-      gap: 78px;
-    }
+    gap: 48px;
 
     @include vp-tablet {
-      gap: 68px;
+      gap: 30px;
     }
 
     @include vp-mobile {
-      gap: 20px;
+      gap: 18px;
     }
   }
 
@@ -912,22 +917,26 @@ const maxCount = computed(() => {
     font-weight: 900;
     font-size: 40px;
     line-height: 50px;
-    margin: 0;
+    margin: 0 0 50px;
     padding: 0;
 
     @include vp-laptop {
       font-size: 28px;
       line-height: 35px;
+      line-height: 30px;
+      margin: 0 0 29px;
     }
 
     @include vp-tablet {
       font-size: 38px;
       line-height: 44px;
+      margin: 0 0 39px;
     }  
     
     @include vp-mobile {
       font-size: 18px;
       line-height: 22px;
+      margin: 0;
     }           
   }
 
@@ -939,16 +948,8 @@ const maxCount = computed(() => {
     flex-direction: column;
     gap: 50px;
 
-    @include vp-laptop {
-      
-    }
-
-    @include vp-tablet {
-      
-    }
-
     @include vp-mobile {
-      margin: 0 0 9px;
+      margin: 0 0 12px;
     }
   }
 
