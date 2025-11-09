@@ -1362,6 +1362,61 @@
 
   /*  для блога */
 
+  &__svg-vawe--questions {
+    color: $color-cornsilk;
+    background-color: $color-white;
+    height: 400px;
+    top: 0px;
+
+    @include vp-laptop {
+      height: 300px;
+    }
+
+    @include vp-tablet {
+      height: 216px;
+    }
+
+    @include vp-mobile {
+      height: 123px;
+    }
+  }
+
+  &__div--questions-wall {
+    top: 240px;
+    bottom: 100px;
+    background-color: $color-cornsilk;
+
+    @include vp-laptop {
+      top: 145px;
+      bottom:45px;
+    }
+
+    @include vp-tablet {
+      top: 240px;
+      bottom: 0;
+    }
+
+    @include vp-mobile {
+      top: 43px;
+    }
+  }
+
+  &__svg-vawe--questions-bottom {
+    height: 408px;
+    bottom: -308px;
+    color: $color-cornsilk;
+    background-color: $color-white;
+    
+    @include vp-laptop {
+      height: 210px;
+      bottom: -165px;
+    }
+
+    @include vp-tablet {
+      display: none;
+    }
+  }
+
   &__div--blog-footer-wall {
     display: none;
     background-color: $color-cornsilk;
@@ -1412,6 +1467,10 @@
     }
 
     @include vp-tablet {
+      top: 277px;
+    }
+
+    @include vp-mobile {
       top: 117px;
     }
   }

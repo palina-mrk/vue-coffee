@@ -1,5 +1,6 @@
 <script setup>
 import BgProduct from "../backgrounds/BgProduct.vue";
+import BgBlog from "../backgrounds/BgBlog.vue";
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
 import AnchorToggle from "../navigation/AnchorToggle.vue";
 import AddingBlock from "../articles/AddingBlock.vue";
@@ -28,29 +29,28 @@ const anchorObjects = ref([
 <template>
   <main>
 
-    <section class="teaching">
-      <bg-product :place="'middle'"></bg-product>
+  <section class="teaching">
+    <bg-blog :place="'top'"></bg-blog>
 
-      <div class="container">
-        <div class="teaching__wrapper">
-          <custom-breadcrumbs
-            class="teaching__breadcrumbs-list"
-          ></custom-breadcrumbs>
-          <h1 class="visually-hidden">Блог </h1>
-          
-          <anchor-toggle 
-          class="teaching__anchor-toggle"
-          :anchorObjects="anchorObjects"></anchor-toggle>
-    
-          <cooking-coffee id="teaching"></cooking-coffee>
-          <adding-block></adding-block>
-        </div>
+    <div class="container">
+      <div class="teaching__wrapper">
+        <custom-breadcrumbs
+          class="teaching__breadcrumbs-list"
+        ></custom-breadcrumbs>
+        <h1 class="visually-hidden">Блог </h1>
+        
+        <anchor-toggle 
+        class="teaching__anchor-toggle"
+        :anchorObjects="anchorObjects"></anchor-toggle>
+  
+        <cooking-coffee id="teaching"></cooking-coffee>
+        <adding-block></adding-block>
       </div>
-    </section>
-
+    </div>
+  </section>
 
   <section class="questions" id="questions">
-    <bg-home :section="'advantages'"></bg-home>
+    <bg-blog :place="'middle'"></bg-blog>
 
     <div class="container">
       <questions-block></questions-block>
