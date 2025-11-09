@@ -45,16 +45,13 @@ defineProps(['newsItem'])
 .news-card {
   display: flex;
   box-shadow: 0px 0px 30px 0px $color-philippine-gray-20;
-  min-height: 400px;
-  justify-content: space-between;
-  max-width: 100%;
+  width: 100%;
   border-radius: 20px;
   background-color: $color-white;
   font-family: $ff-gilroy, sans-serif;
 
   @include vp-laptop {
     box-shadow: 0px 0px 21px 0px $color-philippine-gray-20;
-    min-height: 282px;
     border-radius: 14px;
   }
 
@@ -62,22 +59,17 @@ defineProps(['newsItem'])
     box-shadow: 0px 0px 61px 0px $color-philippine-gray-20;
     flex-direction: column;
     border-radius: 40px;
-    overflow: hidden;
-    width: 700px;
-    min-height: 374px;
   }
 
   @include vp-mobile {
     box-shadow: 0px 0px 30px 0px $color-philippine-gray-20;
-    width: 340px;
     border-radius: 10px;
-    min-height: 242px;
   }
 
   &__image-wrapper {
     display: flex;
-    width: 336px;
-    max-height: 100%;
+    width: 400px;
+    height: 400px;
     overflow: hidden;
     border-radius: 20px 0 0 20px;
 
@@ -102,7 +94,6 @@ defineProps(['newsItem'])
   &__image {
     width: 100%;
     height: 100%;
-    object-position: top center;
     overflow: hidden;
   }
 

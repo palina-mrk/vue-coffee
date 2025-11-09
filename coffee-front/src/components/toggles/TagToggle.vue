@@ -25,7 +25,7 @@ const selected = ref("")
 </template>
 
 <style lang="scss" scoped>
-/* стилизация для страницы contacts */
+/* стилизация для страницы blog */
 
 .toggle {
   background-color: transparent;
@@ -42,7 +42,7 @@ const selected = ref("")
 
   @include vp-tablet {
     gap: 20px;
-    flex-direction: column;
+    flex-wrap: wrap;
   }
 
   @include vp-mobile {
@@ -52,23 +52,30 @@ const selected = ref("")
   &__item {
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: calc(25% - 15px);
+
+    @include vp-tablet {
+      width: calc(50% - 10px);
+    }
+
+    @include vp-mobile {
+      width: calc(50% - 5px);
+    }
   }
 
   &__label {
     display: block;
-    height: 100%;
     margin: 0;
-    padding: 15px;
+    padding: 11px 10px 10px;
     border-color: $color-chinese-silver;
     background-color: $color-cultured-f6;
     color: $color-ucla-gold;
     border-style: solid;
     border-width: 1px;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 20px;
     font-family: $ff-gilroy, sans-serif;
-    line-height: 30px;
+    line-height: 26px;
     align-items: center;
     text-align: center;
     border-radius: 5px;
@@ -77,10 +84,11 @@ const selected = ref("")
     user-select: none;
 
     @include vp-laptop {
-      padding: 10px;
+      padding: 7px 6px 6px;
       border-radius: 4px;
-      font-size: 18px;
-      line-height: 21px;
+      border-width: 0.7px;
+      font-size: 14px;
+      line-height: 17px;
     }
 
     @include vp-tablet {
@@ -108,50 +116,6 @@ const selected = ref("")
     color: $color-white;
     background-color: $color-ucla-gold;
     border-color: $color-ucla-gold;
-  }
-}
-
-/* стилизация для карточки заказов */
-
-.toggle--size-m {
-  @include vp-laptop {
-    gap: 20px;
-  }
-
-  @include vp-tablet {
-    flex-direction: row;
-  }
-
-  @include vp-mobile {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .toggle__label {
-    padding: 10px;
-    font-size: 20px;
-    line-height: 23px;
-
-    @include vp-laptop {
-      border-radius: 4px;
-      padding: 7px;
-      font-size: 14px;
-      line-height: 15px;
-    }
-
-    @include vp-tablet {
-      border-radius: 2px;
-      padding: 10px;
-      font-size: 12px;
-      line-height: 14px;
-    }
-
-    @include vp-mobile {
-      border-radius: 5px;
-      padding: 11px;
-      font-size: 14px;
-      line-height: 17px;
-    }
   }
 }
 </style>
