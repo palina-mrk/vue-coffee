@@ -1,87 +1,153 @@
 <script setup>
 import { reactive } from "vue";
+import QuestionCard from "../cards/QuestionCard.vue";
+const questions = reactive ([
+  {
+    "question": "Какие виды кофе представлены в вашем магазине?",
+    "answer": "Мы предлагаем широкий ассортимент свежемолотого и зернового кофе различных сортов, включая арабику, робусту, смеси, а также специальные бленды."
+  },
+  {
+    "question": "Есть ли доставка товаров для вендинга?",
+    "answer": "Да, мы предоставляем доставку товаров по всей территории России. Стоимость доставки зависит от региона и объема заказа."
+  },
+  {
+    "question": "Какой минимальный заказ на чай и сухие продукты?",
+    "answer": "Минимальная сумма заказа не ограничена. Для суммы заказа от 5000 рублей действуют скидки и особые условия сотрудничества."
+  },
+  {
+    "question": "Предоставляете ли сертификаты качества на продукцию?",
+    "answer": "Все наши товары имеют необходимые сертификаты соответствия и декларации качества, подтверждающие безопасность продукции."
+  },
+  {
+    "question": "Можно ли заказать пробники перед крупным закупом?",
+    "answer": "Да, мы можем предложить образцы нашей продукции для предварительного тестирования. Свяжитесь с нами для оформления заявки на получение образцов."
+  }
+])
 </script>
 
 <template>
   <div class="questions-block">
-    <div class="questions-block__images">
-      <picture>
-        <source
-          media="(max-width: 1903px)"
-          srcset="../../images/advantages/advantages-corns-laptop.png"
-        />
-        <img
-          class="advantages__back-image"
-          src="../../images/advantages/advantages-corns-desktop.png"
-          width="755"
-          height="503"
-          alt="Кофейные зёрна"
-        />
-      </picture>
-      <picture>
-        <source
-          media="(max-width: 1903px)"
-          srcset="../../images/advantages/advantages-cup-laptop.png"
-        />
-        <img
-          class="advantages__front-image"
-          src="../../images/advantages/advantages-cup-desktop.png"
-          width="504"
-          height="433"
-          alt="Чашка кофе"
-        />
-      </picture>
-    </div>
-    <div class="questions-block__content">
-      <h2 class="questions-block__title">
-        Частые вопросы:
-      </h2>
-      <ul class="questions-block__list">
-        <li class="questions-block__item">
-          <div class="advantages__item-icon">
-            <svg
-              class="advantages__item-svg"
-              width="36"
-              height="30"
-              aria-hidden="true"
-            >
-              <use
-                xlink:href="../../assets/advantages-sprite.svg#icon-consult"
-              ></use>
-            </svg>
-          </div>
-          <div class="advantages__item-text">
-            <p class="advantages__item-title">Консультации 24/7</p>
-            <p class="advantages__item-description">
-              Наши специалисты готовы всегда помочь и&nbsp;подсказать вам
-              с&nbsp;выбором кофе или другой продукции.
-            </p>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <picture>
+      <source
+        media="(max-width: 1903px)"
+        srcset="../../images/blog/questions-corns-laptop.png"
+      />
+      <img
+        class="questions-block__back-image"
+        src="../../images/blog/questions-corns-desktop.png"
+        width="971"
+        height="646"
+        alt="Кофейные зёрна"
+      />
+    </picture>
+    
+    <h2 class="questions-block__title">Частые вопросы:</h2>
+      
+    <picture>
+      <source
+        media="(max-width: 1903px)"
+        srcset="../../images/blog/questions-cup-laptop.png"
+      />
+      <img
+        class="questions-block__front-image"
+        src="../../images/blog/questions-cup-desktop.png"
+        width="669"
+        height="579"
+        alt="Чашка кофе"
+      />
+    </picture>
+    
+    <ul class="questions-block__list">
+      <li class="questions-block__item"
+      v-for="questionItem in questions">
+        <question-card :question="questionItem.question"
+        :answer="questionItem.answer"></question-card>
+      </li>
+    </ul>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .questions-block {
-    width: 100%;
-    justify-content: start;
-    display: flex;
-    gap: 85px;
+  width: 100%;
+  justify-content: start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: start;
+  gap: 56px 20px;
+  position: relative;
+
+  @include vp-laptop {
+    gap: 39px 20px;
+  }
+
+  @include vp-tablet {
+    flex-direction: column;
+    gap: 60px;
+    align-items: stretch;
+  }
+
+  @include vp-mobile {
+    gap: 30px;
+  }
+
+  &__back-image {
+    width: 971px;
+    height: 646px;
+    top: 73px;
+    left: -5px;
+    z-index: -1;
+    position: absolute;
 
     @include vp-laptop {
-      gap: 65px;
+      width: 688px;
+      height: 457px;
+      top: 45px;
+      left: -5px;
     }
-  
 
-  &__images {
-    width: 755px;
-    display: flex;
-    position: relative;
+    @include vp-tablet {
+      display: none;
+    }
+  }
+    
+  &__title {
+    font-family: $ff-gilroy, sans-serif;
+    color: $color-black;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 
     @include vp-laptop {
-      width: 534px;
+      font-size: 28px;
+      line-height: 35px;
+      line-height: 30px;
+    }
+
+    @include vp-tablet {
+      font-size: 36px;
+      line-height: 45px;
+    }  
+    
+    @include vp-mobile {
+      font-size: 18px;
+      line-height: 22px;
+    }           
+  }
+
+  &__front-image {
+    margin: 180px auto auto 0;
+    width: 649px;
+    height: 458px;
+    
+    @include vp-laptop {
+      margin: 90px auto auto 0;
+      width: 459px;
+      height: 395px;
     }
 
     @include vp-tablet {
@@ -89,86 +155,23 @@ import { reactive } from "vue";
     }
   }
 
-  &__back-image {
-    width: 755px;
-    height: 503px;
-    top: 107px;
-    left: 0px;
-    z-index: -1;
-    position: absolute;
-
-    @include vp-laptop {
-      width: 534px;
-      height: 355px;
-      top: 78px;
-      left: 0px;
-    }
-  }
-
-  &__front-image {
-    width: 516px;
-    height: 433px;
-    margin: 280px auto 0 0;
-
-    @include vp-laptop {
-      width: 366px;
-      height: 307px;
-      margin: 200px auto 0 0;
-    }
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-  }
-
-  &__title {
-    margin: 0 0 78px;
-    padding: 0;
-  font-family: $ff-gilroy, sans-serif;
-    font-weight: 900;
-    font-size: 50px;
-    line-height: 62px;
-    max-width: 580px;
-
-    @include vp-laptop {
-      font-size: 35px;
-      line-height: 44px;
-      margin: 0 0 54px;
-      max-width: 410px;
-    }
-
-    @include vp-tablet {
-      font-size: 40px;
-      line-height: 50px;
-      margin: 0 0 60px;
-      max-width: 460px;
-    }
-
-    @include vp-mobile {
-      font-size: 20px;
-      line-height: 25px;
-      margin: 0 0 30px;
-      max-width: 220px;
-    }
-  }
-
   &__list {
+    width: calc(100% - 700px);
     display: flex;
     flex-direction: column;
-    align-items: start;
     margin: 0;
     padding: 0;
     list-style-type: none;
-    gap: 59px;
+    gap: 30px;
 
     @include vp-laptop {
-      gap: 38px;
+      width: calc(100% - 500px);
+      gap: 20px;
     }
 
     @include vp-tablet {
-      gap: 60px;
+      width: 100%;
+      gap: 20px;
     }
 
     @include vp-mobile {
@@ -179,21 +182,7 @@ import { reactive } from "vue";
   &__item {
     padding: 0;
     margin: 0;
-    display: flex;
-    gap: 50px;
-    align-items: start;
-
-    @include vp-laptop {
-      gap: 30px;
-    }
-
-    @include vp-tablet {
-      gap: 40px;
-    }
-
-    @include vp-mobile {
-      gap: 21px;
-    }
+    width: 100%;
   }
 }
 </style>
