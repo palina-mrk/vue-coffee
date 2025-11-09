@@ -62,7 +62,6 @@ const isExpanded = ref(false);
 
   @include vp-mobile {
     box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
-    border-radius: 10px;
   }
   
   &__top {
@@ -82,6 +81,11 @@ const isExpanded = ref(false);
     @include vp-tablet {
       padding: 29px 41px 29px 59px;
       gap: 30px;
+    }
+
+    @include vp-mobile {
+      padding: 19px 19px 23px 29px;
+      gap: 20px;
     }
   }
 
@@ -106,7 +110,7 @@ const isExpanded = ref(false);
 
     @include vp-mobile {
       font-size: 14px;
-      line-height: 17px;
+      line-height: 18px;
     }
   }
 
@@ -125,6 +129,11 @@ const isExpanded = ref(false);
       height: 28px;  
     }
 
+    @include vp-mobile {
+      width: 14px;
+      height: 14px;
+    }
+
     &:hover {
       color: $color-ucla-gold;
     }
@@ -139,6 +148,10 @@ const isExpanded = ref(false);
 
     @include vp-tablet {
       height: 4px;
+    }
+
+    @include vp-mobile {
+      height: 2px;
     }
   }
 
@@ -165,8 +178,10 @@ const isExpanded = ref(false);
     }
 
     @include vp-mobile {
-      font-size: 14px;
-      line-height: 18px;
+      font-size: 12px;
+      line-height: 16px;
+      padding: 3px 26px 25px 29px;
+      margin: 0;
     }
   }
 }

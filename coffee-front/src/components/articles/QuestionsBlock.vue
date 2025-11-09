@@ -83,13 +83,14 @@ const questions = reactive ([
   }
 
   @include vp-tablet {
+    justify-content: start;
     flex-direction: column;
     gap: 60px;
     align-items: stretch;
   }
 
   @include vp-mobile {
-    gap: 30px;
+    gap: 15px;
   }
 
   &__back-image {
@@ -175,7 +176,7 @@ const questions = reactive ([
     }
 
     @include vp-mobile {
-      gap: 30px;
+      gap: 10px;
     }
   }
 
