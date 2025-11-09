@@ -7,6 +7,10 @@ defineProps(['place'])
   v-if="place == 'top'"
   class="background__div background__div--product-middle-wall background__div--product-middle-wall--for-middle"></div>
 
+  <div 
+  v-if="place == 'middle'"
+  class="background__div background__div--questions-top-wall"></div>
+
   <svg
   v-if="place == 'middle'"
     class="background__svg-vawe background__svg-vawe--questions"

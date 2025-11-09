@@ -144,6 +144,7 @@ const questions = reactive ([
     margin: 180px auto auto 0;
     width: 649px;
     height: 458px;
+    position: relative;
     
     @include vp-laptop {
       margin: 90px auto auto 0;
@@ -153,6 +154,20 @@ const questions = reactive ([
 
     @include vp-tablet {
       display: none;
+    }
+
+    &::before {
+      width: 100%;
+      height: 100%;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      box-shadow: 5px 10px 10px 0px rgba(0, 0, 0, 0.15);
+
+      @include vp-laptop {
+        box-shadow: 3.55px 7px 7px 0px rgba(0, 0, 0, 0.15);
+      }
     }
   }
 

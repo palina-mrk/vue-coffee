@@ -1362,42 +1362,60 @@
 
   /*  для блога */
 
+  &__div--questions-top-wall {
+    display: none;
+    background-color: $color-white;
+
+    @include vp-tablet {
+      display: flex;
+      top: 0;
+      height: 79px;
+    }
+
+    @include vp-mobile {
+      height: 171px;
+    }
+  }
+
   &__svg-vawe--questions {
     color: $color-cornsilk;
     background-color: $color-white;
     height: 400px;
-    top: 0px;
+    top: -88px;
 
     @include vp-laptop {
       height: 300px;
+      top: -78px;
     }
 
     @include vp-tablet {
       height: 216px;
+      top: 78px;
     }
 
     @include vp-mobile {
       height: 123px;
+      top: 48px;
     }
   }
 
   &__div--questions-wall {
-    top: 240px;
+    top: 311px;
     bottom: 100px;
     background-color: $color-cornsilk;
 
     @include vp-laptop {
-      top: 145px;
-      bottom:45px;
+      top: 221px;
+      bottom: 45px;
     }
 
     @include vp-tablet {
-      top: 240px;
+      top: 293px;
       bottom: 0;
     }
 
     @include vp-mobile {
-      top: 43px;
+      top: 170px;
     }
   }
 
