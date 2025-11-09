@@ -16,7 +16,15 @@ defineProps(['orderLines', 'orderSale'])
         v-for="line in orderLines"
         :key="line.orderId"
       >
-        <span class="order-card__info-text">{{ line.count }} x {{ line.title }}, {{ line.weightString }}</span>
+        <span class="order-card__info-string">
+          <span class="order-card__info-text">{{ line.count }}</span>
+          <span class="order-card__info-text">x</span>
+          <router-link 
+          :to="{ name: 'catalogs.product', params: { productID:  line.id } }"
+          class="order-card__info-text order-card__info-text--link">{{line.title }},</router-link>
+          <span class="order-card__info-text">{{ line.weightString }}</span>
+        </span>
+        <!--span class="order-card__info-text">{{ line.count }} x {{ line.title }}, {{ line.weightString }}</span-->
         <span class="order-card__info-text">{{ line.initialPrice }} ₽</span>
         <span class="order-card__info-text">{{ line.sale }} ₽</span>
         <span class="order-card__info-text">{{ line.total }} ₽</span>
@@ -35,7 +43,10 @@ defineProps(['orderLines', 'orderSale'])
           />
         </div>
         <div class="order-card__text">
-          <h3 class="order-card__product-title">{{ line.title }}</h3>
+          <router-link 
+            :to="{ name: 'catalogs.product', params: { productID:  line.id } }"
+            class="order-card__product-title">{{ line.title }}</router-link>
+          <!--h3 class="order-card__product-title">{{ line.title }}</h3-->
           <span class="order-card__product-description">{{ line.shortDescription }}</span>
           <span class="order-card__product-weight">{{line.count}} x {{line.weightString}}</span>
         </div>
@@ -157,6 +168,17 @@ defineProps(['orderLines', 'orderSale'])
     }
   }
 
+  &__info-string {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 2px;
+
+    @include vp-laptop {
+      gap: 1.5px;
+    }
+  }
+
   &__info-text {
     font-weight: 500;
     font-family: $ff-gilroy, sans-serif;
@@ -172,6 +194,30 @@ defineProps(['orderLines', 'orderSale'])
     @include vp-tablet {
       font-size: 10px;
       line-height: 12px;
+    }
+  }
+
+  &__info-text--link {
+    cursor: pointer;
+    position: relative;
+
+    &:hover::after {
+      content: "";
+      width: 100%;
+      height: 1.5px;
+      border-radius: 2px;
+      position: absolute;
+      bottom: 3px;
+      left: 0;
+      background-color: $color-ucla-gold;
+
+      @include vp-laptop {
+        bottom: 2px;
+      }
+
+      @include vp-tablet {
+        bottom: 1px;
+      }
     }
   }
 
@@ -224,6 +270,22 @@ defineProps(['orderLines', 'orderSale'])
       line-height: 12px;
       margin: 0;
       padding: 0;
+      cursor: pointer;     
+      position: relative; 
+    }
+    
+    &:hover::after {
+
+      @include vp-mobile {
+        content: "";
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: $color-ucla-gold;    
+      }
     }
   }
 

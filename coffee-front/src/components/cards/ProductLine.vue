@@ -47,7 +47,11 @@ const cartStore = useCartStore();
         </picture>
       </div>
       <div class="product-line__details-text">
-        <h3 class="product-line__title">{{ itemInfo.title }}</h3>
+
+        <router-link 
+        :to="{ name: 'catalogs.product', params: { productID:  itemInfo.id } }"
+        class="product-line__title">{{ itemInfo.title }}</router-link>
+        <!--h3 class="product-line__title">{{ itemInfo.title }}</h3-->
         <span class="product-line__text-line">{{ itemInfo.descripton }}</span>
         <span class="product-line__text-line">{{ itemInfo.weightString }}</span>
       </div>
@@ -99,7 +103,10 @@ const cartStore = useCartStore();
           </picture>
         </div>
         <div class="product-line__details-text">
-          <h3 class="product-line__title">{{ itemInfo.title }}</h3>
+          <router-link 
+          :to="{ name: 'catalogs.product', params: { productID:  itemInfo.id } }"
+          class="product-line__title">{{ itemInfo.title }}</router-link>
+          <!--h3 class="product-line__title">{{ itemInfo.title }}</h3-->
           <span class="product-line__text-line">{{ itemInfo.descripton }}</span>
           <span class="product-line__text-line">{{
             itemInfo.weightString
@@ -300,6 +307,9 @@ const cartStore = useCartStore();
     margin: 0;
     padding: 0;
     font-family: $ff-gilroy, sans-serif;
+    color: $color-raising-black;
+    cursor: pointer;
+    position: relative;
 
     @include vp-laptop {
       font-size: 18px;
@@ -314,6 +324,26 @@ const cartStore = useCartStore();
     @include vp-mobile {
       font-size: 10px;
       line-height: 12px;
+    }
+
+    &:hover::after {
+      content: "";
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: $color-ucla-gold;
+
+      @include vp-laptop {
+        height: 2px;
+        border-radius: 1px;
+      }
+
+      @include vp-mobile {
+        height: 1px;
+      }
     }
   }
 

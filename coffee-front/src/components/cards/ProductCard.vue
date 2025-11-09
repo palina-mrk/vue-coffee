@@ -159,7 +159,9 @@ const imageVariant = computed(() => {
         </div>
       </div>
     </div>
-    <h3 class="product-card__title">{{ product.title }}</h3>
+    <router-link 
+    :to="{ name: 'catalogs.product', params: { productID: product.id } }"
+    class="product-card__title">{{ product.title }}</router-link>
     <p class="product-card__description">{{ product.description }}</p>
     <div class="product-card__bottom">
       <span
@@ -238,7 +240,9 @@ const imageVariant = computed(() => {
         </picture>
       </div>
     </div>
-    <h3 class="product-card__title">{{ product.title }}</h3>
+    <router-link 
+    :to="{ name: 'catalogs.product', params: { productID: product.id }}"
+    class="product-card__title">{{ product.title }}</router-link>
     <p class="product-card__description">{{ product.description }}</p>
     <div class="product-card__bottom">
       <span
@@ -628,6 +632,9 @@ const imageVariant = computed(() => {
     margin: 0 0 10px;
     padding: 0;
     font-family: $ff-gilroy, sans-serif;
+    color: $color-raising-black;
+    cursor: pointer;
+    position: relative;
 
     @include vp-laptop {
       font-size: 18px;
@@ -645,6 +652,26 @@ const imageVariant = computed(() => {
       font-size: 20px;
       line-height: 25px;
       margin: 0 0 10px;
+    }
+
+    &:hover::after {
+      content: "";
+      width: 100%;
+      height: 5px;
+      border-radius: 2px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: $color-ucla-gold;
+
+      @include vp-laptop {
+        height: 3px;
+        border-radius: 1px;
+      }
+
+      @include vp-tablet {
+        height: 2px;
+      }
     }
   }
 
