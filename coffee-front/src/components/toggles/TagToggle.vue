@@ -6,7 +6,7 @@ const selected = ref("");
 </script>
 
 <template>
-  <ul class="toggle">
+  <ul :class="['toggle', 'toggle--' + initialValues.length % 2 ? 'odd' : 'even']">
     <li class="toggle__item" v-for="item in initialValues">
       <input
         :checked="item == selected"
@@ -37,6 +37,8 @@ const selected = ref("");
   margin: 0;
   list-style-type: none;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: end;
   border: none;
 
   @include vp-laptop {
@@ -45,7 +47,6 @@ const selected = ref("");
 
   @include vp-tablet {
     gap: 20px;
-    flex-wrap: wrap;
   }
 
   @include vp-mobile {
@@ -69,7 +70,7 @@ const selected = ref("");
   &__label {
     display: block;
     margin: 0;
-    padding: 11px 10px 10px;
+    padding: 12px 10px 9px;
     border-color: $color-chinese-silver;
     background-color: $color-cultured-f6;
     color: $color-ucla-gold;
@@ -119,6 +120,15 @@ const selected = ref("");
     color: $color-white;
     background-color: $color-ucla-gold;
     border-color: $color-ucla-gold;
+  }
+}
+
+.toggle--odd {
+
+  .toggle__item:first-child {
+    @include vp-tablet {
+      width: 100%;
+    }
   }
 }
 </style>

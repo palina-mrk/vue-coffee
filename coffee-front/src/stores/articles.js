@@ -8,7 +8,7 @@ export const useArticlesStore = defineStore("articles", () => {
   const articles = reactive([]);
   const tags = reactive([]);
 
-  function loadCatalog() {
+  function loadArticles() {
     apolloClient
       .query({
         query: gql`
@@ -16,7 +16,6 @@ export const useArticlesStore = defineStore("articles", () => {
             articles {
               id
               title
-              description
               text
               author
               tag
@@ -31,10 +30,12 @@ export const useArticlesStore = defineStore("articles", () => {
           if (!tags.includes(el.tag)) tags.push(el.tag);
         });
         isLoaded.value = true;
+        console.log(articles)
       });
   }
 
   return {
+    loadArticles,
     isLoaded,
     articles,
     tags,

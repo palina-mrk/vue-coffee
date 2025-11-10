@@ -80,13 +80,12 @@ const anchorObjects = ref([
   }
 
   @include vp-tablet {
-    padding: 173px 0 70px;
-    border-bottom: 2px solid $color-philippine-silver;
+    padding: 173px 0 20px;
+    border-bottom: none;
   }
 
   @include vp-mobile {
-    padding: 100px 0 50px;
-    border-bottom: 1px solid $color-philippine-silver;
+    padding: 100px 0 10px;
   }
 
   &__wrapper {
@@ -198,21 +197,21 @@ const anchorObjects = ref([
 .news {
   position: relative;
   width: 100%;
-  padding: 49px 0 100px;
+  padding: 53px 0 100px;
   overflow: hidden;
   border-bottom: 1px solid $color-philippine-silver;
 
   @include vp-laptop {
-    padding: 34px 0 0;
+    padding: 34px 0 79px;
   }
 
   @include vp-tablet {
-    padding: 44px 0 78px;
+    padding: 30px 0 70px;
     border-bottom: 2px solid $color-philippine-silver;
   }
 
   @include vp-mobile {
-    padding: 25px 0 70px;
+    padding: 10px 0 40px;
     border-bottom: 1px solid $color-philippine-silver;
   }
 }

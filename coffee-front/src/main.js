@@ -7,6 +7,7 @@ import { DefaultApolloClient } from "@vue/apollo-composable";
 import apolloClient from "./apollo";
 import { useCatalogStore } from "./stores/catalog";
 import { useFilterStore } from "./stores/filter";
+import { useArticlesStore } from "./stores/articles";
 
 const app = createApp({
   setup() {
@@ -19,7 +20,9 @@ app.use(createPinia());
 
 const catalogStore = useCatalogStore();
 const filterStore = useFilterStore();
+const articlesStore = useArticlesStore();
 catalogStore.loadCatalog();
 filterStore.loadFilter();
+articlesStore.loadArticles();
 
 app.mount("#app");

@@ -29,18 +29,132 @@ defineProps(["newsItem"]);
     </div>
     <div class="news-card__inner">
       <h3 class="news-card__title">{{ newsItem.title }}</h3>
-      <div class="news-card__content" v-for="paragraphText in newsItem.text">
-        <p class="news-card__paragraph">{{ paragraphText }}</p>
+      <div class="news-card__content">
+        <p class="news-card__paragraph">{{ newsItem.text[0] }}</p>
+        <p class="news-card__paragraph">{{ newsItem.text[1] }}</p>
       </div>
       <div class="news-card__bottom">
         <span class="news-card__author">{{ newsItem.author }}</span>
-        <span class="news-card__date">{{ newsItem.date }}</span>
+        
+        <a class="news-card__link btn-linked" href="#">
+          <span class="btn-linked__text">Подробнее</span>
+          <svg
+            class="btn-linked__icon"
+            width="14"
+            height="12"
+            aria-hidden="true"
+          >
+            <use
+              xlink:href="../../assets/btn-sprite.svg#arrow-for-link"
+            ></use>
+          </svg>
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.btn-linked {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: $color-ucla-gold;
+  font-family: $ff-gilroy, sans-serif;
+  font-weight: 500;
+  line-height: 26px;
+  font-size: 20px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  width: fit-content;
+
+  @include vp-laptop {
+    font-size: 14px;
+    line-height: 18px;
+    gap: 8px;
+  }
+
+  @include vp-tablet {
+    font-size: 25px;
+    line-height: 32px;
+    gap: 14px;
+  }
+
+  @include vp-mobile {
+    font-size: 16px;
+    line-height: 19px;
+    gap: 13px;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: -11px;
+    left: -24px;
+    bottom: -7px;
+    right: -21px;
+    border-radius: 30px;
+    cursor: pointer;
+    z-index: -1;
+
+    @include vp-laptop {
+      top: -7px;
+      left: -18px;
+      bottom: -4px;
+      right: -15px;
+      border-radius: 21px;
+    }
+
+    @include vp-tablet {
+      top: -14px;
+      left: -28px;
+      bottom: -8px;
+      right: -24px;
+      border-radius: 36px;
+    }
+    
+    @include vp-mobile {
+      top: -6px;
+      left: -18px;
+      bottom: -4px;
+      right: -15px;
+      border-radius: 21px;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 12px;
+    margin: 0 0 4px;
+
+    @include vp-laptop {
+      width: 10px;
+      height: 8px;
+      margin: 0 0 6px;
+    }
+
+    @include vp-tablet {
+      width: 26px;
+      height: 16px;
+      margin: 0 0 2px;
+    }
+
+    @include vp-mobile {
+      width: 13px;
+      height: 10px;
+    }
+  }
+
+  &:hover::after {
+    background-color: $color-bright-gray;
+  }
+}
+
 .news-card {
   display: flex;
   box-shadow: 0px 0px 30px 0px $color-philippine-gray-20;
@@ -73,7 +187,8 @@ defineProps(["newsItem"]);
     border-radius: 20px 0 0 20px;
 
     @include vp-laptop {
-      width: 238px;
+      width: 280px;
+      height: 283px;
       border-radius: 14px 0 0 14px;
     }
 
@@ -97,22 +212,23 @@ defineProps(["newsItem"]);
   }
 
   &__inner {
-    height: 100%;
+    max-height: 400px;
     display: flex;
     flex-direction: column;
     font-family: $ff-gilroy, sans-serif;
     color: $color-black;
-    padding: 40px 81px 0 84px;
-    width: 624px;
+    padding: 40px 130px 50px 70px;
     gap: 30px;
 
     @include vp-laptop {
-      padding: 32px 57px 8px 60px;
+      max-height: 283px;
+      padding: 30px 90px 38px 53px;
       width: 442px;
       gap: 20px;
     }
 
     @include vp-tablet {
+      max-height: unset;
       padding: 62px 80px 72px 80px;
       width: 100%;
       min-height: 489px;
@@ -122,7 +238,6 @@ defineProps(["newsItem"]);
     @include vp-mobile {
       padding: 40px 30px 10px 40px;
       gap: 40px;
-      min-height: 368px;
     }
   }
 
