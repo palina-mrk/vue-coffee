@@ -1,16 +1,18 @@
 <script setup>
 import CustomBreadcrumbs from "../navigation/CustomBreadcrumbs.vue";
-import BgPersonal from "../backgrounds/BgPersonal.vue";
+import BgProduct from "../backgrounds/BgProduct.vue";
+
+import { computed } from "vue";
 
 import { useRoute } from "vue-router";
 const route = useRoute();
 
-import { useArticleStore } from "../../stores/articles";
-const articleStore = useArticleStore();
+import { useArticlesStore } from "../../stores/articles";
+const articlesStore = useArticlesStore();
 
 const newsItem = computed(() =>
-  articleStore.isLoaded
-    ? articleStore.getFullInfo(Number(route.params.articleID))
+  articlesStore.isLoaded
+    ? articlesStore.getFullInfo(Number(route.params.articleID))
     : {},
 );
 
@@ -18,15 +20,33 @@ const newsItem = computed(() =>
 
 <template>
   <main>
-    <section class="product-hero">
-      <bg-personal></bg-personal>
+    <section class="headings">
+      <bg-product :place="'middle'"></bg-product>
 
       <div class="container">
-        <div class="product-hero__wrapper">
+        <div class="headings__wrapper">
           <custom-breadcrumbs
-            class="product-hero__breadcrumbs-list"
+            class="headings__breadcrumbs-list"
           ></custom-breadcrumbs>
-          <h1 class="visually-hidden">Карточка товара</h1>
+          <h1 class="visually-hidden">Страница блога</h1>
+          <h3 class="headings__title" v-if="articlesStore.isLoaded">{{ newsItem.title }}</h3>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="article">
+      <bg-product :place="'bottom'"></bg-product>
+      <div class="container">
+        <div class="article__inner" v-if="articlesStore.isLoaded">
+          <div class="article__content">
+            <p class="article__paragraph" v-for="articleParagraph in newsItem.text">{{ articleParagraph }}</p>
+          </div>
+          <div class="article__bottom">
+            <span class="article__author">{{ newsItem.author }}</span>
+            
+            <span class="article__date">{{ newsItem.date }}</span>
+        </div>
         </div>
       </div>
     </section>
@@ -34,190 +54,194 @@ const newsItem = computed(() =>
 </template>
 
 <style lang="scss" scoped>
-.product-hero {
+.headings {
   position: relative;
   width: 100%;
-  padding: 201px 0 67px;
+  padding: 201px 0 40px;
   font-family: $ff-gilroy, sans-serif;
   font-weight: 500;
   overflow: hidden;
-  border-bottom: 1px solid $color-philippine-silver;
 
   @include vp-laptop {
     padding: 145px 0 20px;
   }
 
   @include vp-tablet {
-    padding: 173px 0 70px;
-    border-bottom: 2px solid $color-philippine-silver;
+    padding: 173px 0 30px;
+    border-bottom: none;
   }
 
   @include vp-mobile {
-    padding: 100px 0 50px;
-    border-bottom: 1px solid $color-philippine-silver;
+    padding: 100px 0 10px;
   }
 
   &__wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 37px;
-    margin: 0 0 25px;
+    gap: 110px;
 
     @include vp-laptop {
-      gap: 30px;
-      margin: 0 0 20px;
+      gap: 80px;
     }
 
     @include vp-tablet {
-      gap: 56px;
-      margin: 0 0 30px;
+      gap: 55px;
     }
 
     @include vp-mobile {
-      gap: 13px;
-      margin: 0 0 30px;
+      gap: 50px;
     }
   }
 
   &__breadcrumbs-list {
+      margin: 0;
+  }
+  
+  &__title {
+    font-family: $ff-gilroy, sans-serif;
+    color: $color-black;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 50px;
     margin: 0;
-  }
-
-  &__product-card {
-    margin: 0 0 61px;
+    padding: 0;
 
     @include vp-laptop {
-      margin: 0 0 28px;
+      font-size: 28px;
+      line-height: 35px;
     }
 
     @include vp-tablet {
-      margin: 0 0 13px;
+      font-size: 36px;
+      line-height: 45px;
     }
 
     @include vp-mobile {
-      margin: 0 0 28px;
+      font-size: 18px;
+      line-height: 22px;
     }
   }
+}
 
-  &__anchor-toggle {
-    width: 100%;
-    margin: 0 0 61px;
+.article {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 20px 0 10px;
+  overflow: hidden;
 
-    @include vp-laptop {
-      margin: 0 0 38px;
-    }
-
-    @include vp-tablet {
-      margin: 0 0 35px;
-    }
-
-    @include vp-mobile {
-      margin: 0 0 18px;
-    }
+  @include vp-tablet {
+    padding: 10px 0 78px;
   }
 
-  &__coffee-addings {
-    width: 100%;
+  @include vp-mobile {
+    padding: 20px 0 70px;
+  }
+  
+  
+  &__inner {
     display: flex;
-    gap: 20px;
-    margin: 0 0 61px;
+    flex-direction: column;
+    font-family: $ff-gilroy, sans-serif;
+    color: $color-black;
+    gap: 50px;
 
     @include vp-laptop {
-      margin: 0 0 38px;
+      gap: 35px;
     }
 
     @include vp-tablet {
-      flex-direction: column;
-      margin: 0 0 35px;
+      gap: 40px;
     }
 
     @include vp-mobile {
-      gap: 9px;
-      margin: 0 0 18px;
+      gap: 35px;
     }
   }
 
-  &__coffee-taste {
-    width: 400px;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 
     @include vp-laptop {
-      width: 280px;
+      gap: 20px;
     }
 
     @include vp-tablet {
-      width: 100%;
+      gap: 25px;
+    }
+
+    @include vp-mobile {
+      gap: 18px;
     }
   }
 
-  &__coffee-details {
-    width: calc(100% - 421px);
+  &__paragraph,
+  &__date {
+    font-family: $ff-gilroy, sans-serif;
+    color: $color-raising-black;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 32px;
+    padding: 0;
+    margin: 0;
+    text-indent: 64px;
 
     @include vp-laptop {
-      width: calc(100% - 301px);
+      font-size: 18px;
+      line-height: 23px;
+      text-indent: 48px;
     }
 
     @include vp-tablet {
-      width: 100%;
+      font-size: 20px;
+      line-height: 26px;
+      text-indent: 45px;
+    }
+
+    @include vp-mobile {
+      font-size: 14px;
+      line-height: 18px;
+      text-indent: 24px;
     }
   }
-}
 
-.product-cooking {
-  position: relative;
-  width: 100%;
-  padding: 70px 0 100px;
-  overflow: hidden;
-  border-bottom: 1px solid $color-philippine-silver;
-
-  @include vp-laptop {
-    padding: 40px 0 80px;
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
-  @include vp-tablet {
-    border-bottom: 2px solid $color-philippine-silver;
+  &__author{
+    font-family: $ff-gilroy, sans-serif;
+    color: $color-black;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    margin: 0;
+    padding: 0;
+
+    @include vp-laptop {
+      font-size: 22px;
+      line-height: 26px;
+    }
+
+    @include vp-tablet {
+      font-size: 30px;
+      line-height: 39px;
+    }
+
+    @include vp-mobile {
+      font-size: 16px;
+      line-height: 19px;
+    }
   }
 
-  @include vp-mobile {
-    padding: 30px 0;
-    border-bottom: 1px solid $color-philippine-silver;
-  }
-}
-
-.adding-info {
-  position: relative;
-  width: 100%;
-  padding: 70px 0 100px;
-  overflow: hidden;
-
-  @include vp-laptop {
-    padding: 40px 0 80px;
-  }
-
-  @include vp-tablet {
-  }
-
-  @include vp-mobile {
-    padding: 30px 0;
-  }
-}
-
-.reviews {
-  position: relative;
-  width: 100%;
-  padding: 70px 0 50px;
-  overflow: hidden;
-
-  @include vp-laptop {
-    padding: 28px 0 95px;
-  }
-
-  @include vp-tablet {
-    padding: 28px 0 45px;
-  }
-
-  @include vp-mobile {
-    padding: 8px 0 0;
+  &__date {
+    font-weight: 600;
   }
 }
 </style>

@@ -6,6 +6,7 @@ import ContactsView from "../views/ContactsView.vue";
 import PersonalView from "../views/PersonalView.vue";
 import ProductView from "../views/ProductView.vue";
 import BlogView from "../views/BlogView.vue";
+import ArticleView from "../views/ArticleView.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -108,6 +109,14 @@ const router = createRouter({
       component: BlogView,
       meta: {
         title: "Блог",
+      },
+    },
+    {
+      path: "/blog/:articleID",
+      name: "blog.article",
+      component: ArticleView,
+      meta: {
+        title: "Статья блога",
       },
     },
   ],

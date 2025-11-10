@@ -49,6 +49,8 @@ defineProps(["place"]);
   >
     <use xlink:href="../../assets/bg-sprite.svg#bg-footer-vawe"></use>
   </svg>
+
+  
 </template>
 
 <style lang="scss" scoped>
