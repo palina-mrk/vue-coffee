@@ -380,7 +380,7 @@ function compareProducts(p1, p2) {
     font-weight: 900;
     font-size: 70px;
     line-height: 87px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     margin: 0;
 
     @include vp-laptop {
@@ -961,7 +961,7 @@ function compareProducts(p1, p2) {
     justify-content: center;
     border: none;
     background-color: transparent;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;
@@ -998,7 +998,7 @@ function compareProducts(p1, p2) {
     justify-content: center;
     border: none;
     background-color: transparent;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;
@@ -1030,7 +1030,7 @@ function compareProducts(p1, p2) {
   &--size-m {
     font-size: 25px;
     padding: 11px 29px 10px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;

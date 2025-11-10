@@ -39,7 +39,7 @@ const length = ref(8);
         name="coffee-preparation"
         :value="`${labels[i - 1]}`"
         v-model="selectedValues"
-        @input="$emit('set-value', $event.target.value )"
+        @input="$emit('set-value', $event.target.value)"
       />
       <label
         :for="`coffee-preparation-${values[i - 1]}`"

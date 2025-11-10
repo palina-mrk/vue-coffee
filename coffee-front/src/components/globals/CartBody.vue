@@ -11,8 +11,7 @@ import { useOrdersStore } from "../../stores/orders";
 const ordersStore = useOrdersStore();
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
-import {ref, reactive, computed} from 'vue'
-
+import { ref, reactive, computed } from "vue";
 
 const showInfo = ref(false);
 
@@ -20,46 +19,45 @@ const deliveryFilled = ref(false);
 const cartFilled = computed(() => cartStore.totalCount > 0);
 
 const infoMessage = computed(() => {
-  if(cartFilled.value && deliveryFilled.value)
-    return "Оплата прошла успешно";
-  else if (!cartFilled.value)
-    return 'Ваша корзина пуста!';
-  else if (!deliveryFilled.value)
-    return 'Адрес доставки не указан';
+  if (cartFilled.value && deliveryFilled.value) return "Оплата прошла успешно";
+  else if (!cartFilled.value) return "Ваша корзина пуста!";
+  else if (!deliveryFilled.value) return "Адрес доставки не указан";
 });
 const infoNote = computed(() => {
-  if(cartFilled.value && deliveryFilled.value)
-    return "Спасибо за Ваш заказ!";
+  if (cartFilled.value && deliveryFilled.value) return "Спасибо за Ваш заказ!";
   else if (!cartFilled.value)
-    return 'Для завершения заказа необходимо добавить товаров в корзину';
+    return "Для завершения заказа необходимо добавить товаров в корзину";
   else if (!deliveryFilled.value)
-    return 'Для завершения заказа необходимо указать адрес и контактную информацию';
+    return "Для завершения заказа необходимо указать адрес и контактную информацию";
 });
 
 function countDelivery(isValid) {
   deliveryFilled.value = isValid;
-  console.log(deliveryFilled.value)
-  
-  if(cartFilled.value && deliveryFilled.value) {
+  console.log(deliveryFilled.value);
+
+  if (cartFilled.value && deliveryFilled.value) {
     window.scrollTo({
-      top: document.getElementById('payment-form').getBoundingClientRect().top + window.pageYOffset - 160,
-      behavior: 'smooth'
+      top:
+        document.getElementById("payment-form").getBoundingClientRect().top +
+        window.pageYOffset -
+        160,
+      behavior: "smooth",
     });
   } else {
-    showInfo.value = true;    
+    showInfo.value = true;
   }
 }
 
-function setPayment() { 
+function setPayment() {
   showInfo.value = true;
-  
-  if(cartFilled.value && deliveryFilled.value)
-    setTimeout(() =>  {
+
+  if (cartFilled.value && deliveryFilled.value)
+    setTimeout(() => {
       showInfo.value = false;
       ordersStore.saveOrder();
       cartStore.clearCart();
-      scrollTo(0,0);
-    }, 5000);   
+      scrollTo(0, 0);
+    }, 5000);
 }
 </script>
 
@@ -76,26 +74,28 @@ function setPayment() {
           <h1 class="visually-hidden">Корзина</h1>
           <div class="cart__top-forms">
             <cart-card class="cart__form"></cart-card>
-            <delivery-form class="cart__form"
-            @count-delivery="countDelivery($event)"
-            @set-state="deliveryFilled = $event"
+            <delivery-form
+              class="cart__form"
+              @count-delivery="countDelivery($event)"
+              @set-state="deliveryFilled = $event"
             ></delivery-form>
           </div>
           <div class="cart__bottom-forms">
             <promo-form class="cart__promo-form"></promo-form>
-            <payment-form 
-            class="cart__payment-form cart__form"
-            @set-payment="setPayment"
-            id="payment-form"></payment-form>
+            <payment-form
+              class="cart__payment-form cart__form"
+              @set-payment="setPayment"
+              id="payment-form"
+            ></payment-form>
           </div>
         </div>
       </div>
-      <cart-info 
-      class="cart__info-card"
-      :message="infoMessage"
-      :note="infoNote"
-      v-show="showInfo"
-      @close-form="showInfo = false"
+      <cart-info
+        class="cart__info-card"
+        :message="infoMessage"
+        :note="infoNote"
+        v-show="showInfo"
+        @close-form="showInfo = false"
       ></cart-info>
     </section>
   </main>

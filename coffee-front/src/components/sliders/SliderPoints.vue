@@ -69,7 +69,7 @@ defineProps(["count"]);
   gap: unset;
   justify-content: space-between;
   width: 180px;
-  
+
   @include vp-laptop {
     width: 136px;
   }
@@ -85,7 +85,7 @@ defineProps(["count"]);
   .slider-points__item {
     width: 14px;
     height: 14px;
-    
+
     @include vp-laptop {
       width: 10px;
       height: 10px;

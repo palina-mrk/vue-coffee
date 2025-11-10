@@ -5,7 +5,7 @@ const props = defineProps([
   "labels",
   "values",
   "fieldsCount",
-  "selectedValue"
+  "selectedValue",
 ]);
 
 const selected = ref(props.selectedValue);

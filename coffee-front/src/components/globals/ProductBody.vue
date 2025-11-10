@@ -15,51 +15,51 @@ const route = useRoute();
 
 import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
-import { computed, ref, reactive } from 'vue';
+import { computed, ref, reactive } from "vue";
 
-const category = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).category : "");
-
+const category = computed(() =>
+  catalogStore.isLoaded
+    ? catalogStore.getFullInfo(Number(route.params.productID)).category
+    : "",
+);
 
 const anchorObjectsCoffee = ref([
   {
     link: "product-description",
-    label: "Описание"
+    label: "Описание",
   },
   {
     link: "product-cooking",
-    label: "Как готовить?"
+    label: "Как готовить?",
   },
   {
     link: "product-adding",
-    label: "Дополнительно"
+    label: "Дополнительно",
   },
   {
     link: "reviews-list",
-    label: "Отзывы"
-  }
-])
-
+    label: "Отзывы",
+  },
+]);
 
 const anchorObjects = ref([
   {
     link: "product-description",
-    label: "Описание"
+    label: "Описание",
   },
   {
     link: "product-cooking",
-    label: "Как готовить?"
+    label: "Как готовить?",
   },
   {
     link: "reviews-list",
-    label: "Отзывы"
-  }
-])
-
+    label: "Отзывы",
+  },
+]);
 </script>
 
 <template>
   <main>
-    
     <section class="product-hero">
       <bg-product :place="'top'"></bg-product>
 
@@ -68,20 +68,24 @@ const anchorObjects = ref([
           <custom-breadcrumbs
             class="product-hero__breadcrumbs-list"
           ></custom-breadcrumbs>
-          <h1 class="visually-hidden">Карточка товара </h1>
-          <product-large 
-          class="product-hero__product-card"
-          id="product-description"></product-large>
-          <anchor-toggle 
-          class="product-hero__anchor-toggle"
-          :anchorObjects="category == 'coffee' ? anchorObjectsCoffee : anchorObjects"></anchor-toggle>
+          <h1 class="visually-hidden">Карточка товара</h1>
+          <product-large
+            class="product-hero__product-card"
+            id="product-description"
+          ></product-large>
+          <anchor-toggle
+            class="product-hero__anchor-toggle"
+            :anchorObjects="
+              category == 'coffee' ? anchorObjectsCoffee : anchorObjects
+            "
+          ></anchor-toggle>
           <div class="product-hero__coffee-addings" v-if="category == 'coffee'">
             <taste-card class="product-hero__coffee-taste"></taste-card>
 
             <details-card class="product-hero__coffee-details"></details-card>
           </div>
           <raw-description
-          class="product-hero__raw-description"
+            class="product-hero__raw-description"
           ></raw-description>
         </div>
       </div>
@@ -94,23 +98,22 @@ const anchorObjects = ref([
         <cooking-block id="product-cooking"></cooking-block>
       </div>
     </section>
-    
+
     <section class="adding-info" v-if="category == 'coffee'">
       <bg-product :place="'middle'"></bg-product>
 
       <div class="container">
-        <adding-block  id="product-adding"></adding-block>
+        <adding-block id="product-adding"></adding-block>
       </div>
     </section>
-    
+
     <section class="reviews">
       <bg-product :place="'bottom'"></bg-product>
 
       <div class="container">
-        <reviews-block  id="reviews-list"></reviews-block>
+        <reviews-block id="reviews-list"></reviews-block>
       </div>
     </section>
-
   </main>
 </template>
 
@@ -169,7 +172,7 @@ const anchorObjects = ref([
     margin: 0 0 61px;
 
     @include vp-laptop {
-      margin: 0 0 28px;      
+      margin: 0 0 28px;
     }
 
     @include vp-tablet {
@@ -184,9 +187,9 @@ const anchorObjects = ref([
   &__anchor-toggle {
     width: 100%;
     margin: 0 0 61px;
-    
+
     @include vp-laptop {
-      margin: 0 0 38px;      
+      margin: 0 0 38px;
     }
 
     @include vp-tablet {
@@ -205,7 +208,7 @@ const anchorObjects = ref([
     margin: 0 0 61px;
 
     @include vp-laptop {
-      margin: 0 0 38px;      
+      margin: 0 0 38px;
     }
 
     @include vp-tablet {
@@ -235,7 +238,7 @@ const anchorObjects = ref([
     width: calc(100% - 421px);
 
     @include vp-laptop {
-    width: calc(100% - 301px);
+      width: calc(100% - 301px);
     }
 
     @include vp-tablet {
@@ -288,7 +291,7 @@ const anchorObjects = ref([
   width: 100%;
   padding: 70px 0 50px;
   overflow: hidden;
-  
+
   @include vp-laptop {
     padding: 28px 0 95px;
   }

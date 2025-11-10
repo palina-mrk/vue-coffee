@@ -1,8 +1,8 @@
 <script setup>
 const props = defineProps(["toggleName", "initialValues"]);
-import {ref} from 'vue';
+import { ref } from "vue";
 
-const selected = ref("")
+const selected = ref("");
 </script>
 
 <template>
@@ -15,7 +15,10 @@ const selected = ref("")
         type="radio"
         :name="`toggle-${toggleName}`"
         :value="item"
-        @input="selected = $event.target.value; $emit('toggle-value', $event.target.value)"
+        @input="
+          selected = $event.target.value;
+          $emit('toggle-value', $event.target.value);
+        "
       />
       <label :for="`toggle-${toggleName}-${item}`" class="toggle__label">
         <span class="toggle__inner">{{ item }}</span>

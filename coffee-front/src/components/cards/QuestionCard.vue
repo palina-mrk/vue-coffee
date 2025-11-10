@@ -1,16 +1,12 @@
 <script setup>
 defineProps(["question", "answer"]);
-import { ref } from 'vue';
+import { ref } from "vue";
 const isExpanded = ref(false);
 </script>
 
 <template>
-  <div class="question-card"
-  @blur="isExpanded = false">
-
-    <div class="question-card__top"
-      @click="isExpanded = !isExpanded"
-    >
+  <div class="question-card" @blur="isExpanded = false">
+    <div class="question-card__top" @click="isExpanded = !isExpanded">
       <h3 class="question-card__title">{{ question }}</h3>
       <svg
         v-show="!isExpanded"
@@ -21,7 +17,7 @@ const isExpanded = ref(false);
       >
         <use xlink:href="../../assets/btn-sprite.svg#icon-plus"></use>
       </svg>
-      
+
       <svg
         v-show="isExpanded"
         class="question-card__svg question-card__svg--minus"
@@ -33,9 +29,7 @@ const isExpanded = ref(false);
       </svg>
     </div>
 
-    <p 
-    v-show="isExpanded"
-    class="question-card__text">{{ answer }}</p>
+    <p v-show="isExpanded" class="question-card__text">{{ answer }}</p>
   </div>
 </template>
 
@@ -63,7 +57,7 @@ const isExpanded = ref(false);
   @include vp-mobile {
     box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
   }
-  
+
   &__top {
     display: flex;
     width: 100%;
@@ -126,7 +120,7 @@ const isExpanded = ref(false);
 
     @include vp-tablet {
       width: 28px;
-      height: 28px;  
+      height: 28px;
     }
 
     @include vp-mobile {
@@ -163,7 +157,7 @@ const isExpanded = ref(false);
     line-height: 26px;
     padding: 10px 103px 39px 44px;
     margin: 0;
-    
+
     @include vp-laptop {
       font-size: 14px;
       line-height: 18px;

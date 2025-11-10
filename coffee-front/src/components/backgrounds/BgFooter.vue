@@ -90,9 +90,7 @@ const route = useRoute();
       height="192"
       aria-hidden="true"
     >
-      <use
-        xlink:href="../../assets/bg-sprite.svg#bg-cart-top-for-tablet"
-      ></use>
+      <use xlink:href="../../assets/bg-sprite.svg#bg-cart-top-for-tablet"></use>
     </svg>
 
     <div class="background__div background__div--blog-footer-bottom-wall"></div>

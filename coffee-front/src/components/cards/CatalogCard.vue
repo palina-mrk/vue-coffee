@@ -110,7 +110,7 @@ const props = defineProps(["page", "title"]);
   }
 
   &__title {
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;

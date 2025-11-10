@@ -1,8 +1,8 @@
 <script setup>
-const props = defineProps(['productId', 'productWeight']);
+const props = defineProps(["productId", "productWeight"]);
 import { useCartStore } from "../../stores/cart";
 const cartStore = useCartStore();
-import {computed, watch} from 'vue';
+import { computed, watch } from "vue";
 
 console.log(props.productId, props.productWeight);
 
@@ -12,7 +12,9 @@ console.log(props.productId, props.productWeight);
   () => [props.productId, props.productWeight,cartStore.getCount(props.productId, props.productWeight)], 
   () => countValue = cartStore.getCount(props.productId, props.productWeight))*/
 
-const countValue = computed(() => cartStore.getCount(props.productId, props.productWeight));
+const countValue = computed(() =>
+  cartStore.getCount(props.productId, props.productWeight),
+);
 </script>
 
 <template>

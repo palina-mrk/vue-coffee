@@ -7,17 +7,18 @@ const route = useRoute();
 import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
 
-const tastes = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).taste : []);
+const tastes = computed(() =>
+  catalogStore.isLoaded
+    ? catalogStore.getFullInfo(Number(route.params.productID)).taste
+    : [],
+);
 </script>
 
 <template>
-  <div 
-  v-if="catalogStore.isLoaded" class="taste-card" >
+  <div v-if="catalogStore.isLoaded" class="taste-card">
     <h3 class="taste-card__heading">Вкус</h3>
     <ul class="taste-card__list">
-      <li 
-        class="taste-card__item"
-        v-for="taste in tastes">
+      <li class="taste-card__item" v-for="taste in tastes">
         <div class="taste-card__item-icon">
           <svg
             class="taste-card__item-svg"

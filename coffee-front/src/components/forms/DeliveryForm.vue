@@ -88,18 +88,17 @@ const addressData = reactive([
   },
 ]);
 
-const isValid = computed(() => 
-  !Boolean(
-    contactData.find(el => el.error && !el.value.length)  || 
-    addressData.find(el => el.error && !el.value.length )
-  )
+const isValid = computed(
+  () =>
+    !Boolean(
+      contactData.find((el) => el.error && !el.value.length) ||
+        addressData.find((el) => el.error && !el.value.length),
+    ),
 );
 </script>
 
 <template>
-  <div class="delivery-form"
-    @blur="$emit('set-state', isValid)"
-  >
+  <div class="delivery-form" @blur="$emit('set-state', isValid)">
     <h2 class="delivery-form__title">Доставка</h2>
     <div class="delivery-form__inner">
       <fieldset class="delivery-form__group">
@@ -109,7 +108,11 @@ const isValid = computed(() =>
           v-for="inputData in contactData"
           :inputData="inputData"
           v-model="inputData.value"
-          @updated:modelValue="inputData.value = $event; inputData.isError=($event.length > 0); $emit('set-state', isValid)"
+          @updated:modelValue="
+            inputData.value = $event;
+            inputData.isError = $event.length > 0;
+            $emit('set-state', isValid);
+          "
         ></custom-input>
       </fieldset>
 
@@ -119,14 +122,20 @@ const isValid = computed(() =>
           v-for="inputData in addressData"
           :inputData="inputData"
           v-model="inputData.value"
-          @updated:modelValue="inputData.value = $event; inputData.isError=($event.length > 0); $emit('set-state', isValid)"
+          @updated:modelValue="
+            inputData.value = $event;
+            inputData.isError = $event.length > 0;
+            $emit('set-state', isValid);
+          "
           @focus="inputData.isError = false"
         ></custom-input>
       </fieldset>
     </div>
-    <button class="delivery-form__button btn-cornsilk"
-    @click="$emit('count-delivery', isValid)" 
-    type="button">
+    <button
+      class="delivery-form__button btn-cornsilk"
+      @click="$emit('count-delivery', isValid)"
+      type="button"
+    >
       Рассчитать доставку
     </button>
   </div>

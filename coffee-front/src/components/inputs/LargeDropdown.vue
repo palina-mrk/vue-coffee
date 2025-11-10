@@ -1,15 +1,15 @@
 <script setup>
-const props = defineProps([
-  "labels",
-  "values",
-  "fieldsCount",
-  "selectedValue"
-]);
+const props = defineProps(["labels", "values", "fieldsCount", "selectedValue"]);
 import { ref, computed, defineEmits } from "vue";
 
 const currentValue = ref(props.selectedValue);
 const isClicked = ref(false);
-const currentLabel = computed(() => props.labels[props.values.findIndex(value => value == currentValue.value)]);
+const currentLabel = computed(
+  () =>
+    props.labels[
+      props.values.findIndex((value) => value == currentValue.value)
+    ],
+);
 
 function showVariants() {
   isClicked.value = !isClicked.value;
@@ -32,9 +32,7 @@ function setValue(newValue) {
       type="button"
       @click="showVariants"
     >
-      <span class="large-dropdown__chosen-text"
-        >{{ currentLabel }}</span
-      >
+      <span class="large-dropdown__chosen-text">{{ currentLabel }}</span>
       <svg
         class="large-dropdown__icon"
         width="12"
@@ -125,7 +123,6 @@ function setValue(newValue) {
       height: 5px;
     }
   }
-
 
   &__icon--rotated {
     rotate: 180deg;

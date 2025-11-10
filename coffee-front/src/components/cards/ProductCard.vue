@@ -159,9 +159,11 @@ const imageVariant = computed(() => {
         </div>
       </div>
     </div>
-    <router-link 
-    :to="{ name: 'catalogs.product', params: { productID: product.id } }"
-    class="product-card__title">{{ product.title }}</router-link>
+    <router-link
+      :to="{ name: 'catalogs.product', params: { productID: product.id } }"
+      class="product-card__title"
+      >{{ product.title }}</router-link
+    >
     <p class="product-card__description">{{ product.description }}</p>
     <div class="product-card__bottom">
       <span
@@ -240,9 +242,11 @@ const imageVariant = computed(() => {
         </picture>
       </div>
     </div>
-    <router-link 
-    :to="{ name: 'catalogs.product', params: { productID: product.id }}"
-    class="product-card__title">{{ product.title }}</router-link>
+    <router-link
+      :to="{ name: 'catalogs.product', params: { productID: product.id } }"
+      class="product-card__title"
+      >{{ product.title }}</router-link
+    >
     <p class="product-card__description">{{ product.description }}</p>
     <div class="product-card__bottom">
       <span

@@ -35,7 +35,7 @@
   width: 100%;
   height: 100%;
   display: flex;
-/*
+  /*
   @include vp-laptop {
     width: 109px;
     height: 51px;

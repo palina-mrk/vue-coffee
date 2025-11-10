@@ -172,7 +172,7 @@ import BgFooter from "../backgrounds/BgFooter.vue";
     height: 100%;
     flex-grow: 1;
     border: none;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 25px;
     line-height: 32px;
@@ -213,7 +213,7 @@ import BgFooter from "../backgrounds/BgFooter.vue";
     margin: 0;
     width: 260px;
     color: $color-white;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;
@@ -258,7 +258,7 @@ import BgFooter from "../backgrounds/BgFooter.vue";
   }
 
   &__agree {
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 16px;
     line-height: 21px;
@@ -362,7 +362,7 @@ import BgFooter from "../backgrounds/BgFooter.vue";
   &__subscribe-title {
     margin: 0 0 52px;
     padding: 0;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
@@ -391,7 +391,7 @@ import BgFooter from "../backgrounds/BgFooter.vue";
   }
 
   &__subscribe-paragraph {
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     margin: 0 0 58px;
     padding: 0;
     font-size: 25px;

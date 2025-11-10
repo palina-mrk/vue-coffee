@@ -16,31 +16,42 @@ const cartStore = useCartStore();
 import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
 
-const product = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)) : {});
+const product = computed(() =>
+  catalogStore.isLoaded
+    ? catalogStore.getFullInfo(Number(route.params.productID))
+    : {},
+);
 
 const weightValue = ref(0);
-watch (() => product?.value, () => {
-  weightValue.value = product?.value.weights[0].value
-})
+watch(
+  () => product?.value,
+  () => {
+    weightValue.value = product?.value.weights[0].value;
+  },
+);
 
-const priceVariant = computed(() => product?.value.weights.find(el => el.value == weightValue.value)?.price)
-
+const priceVariant = computed(
+  () =>
+    product?.value.weights.find((el) => el.value == weightValue.value)?.price,
+);
 
 const weightVariants = computed(() =>
   product.value.weights.map((el) => el.value),
 );
 const weightLabels = computed(() =>
-  product.value.weights.map((el) => el.value + (product.value.category == 'vending' ? ' кг.' : ' г.')),
+  product.value.weights.map(
+    (el) => el.value + (product.value.category == "vending" ? " кг." : " г."),
+  ),
 );
 const showFullText = ref(false);
 </script>
 
 <template>
-  <div 
-  v-if="catalogStore.isLoaded"
-  :class="['large-card', 'large-card--' + product.category]" >
-    <div 
-    class="large-card__inner">
+  <div
+    v-if="catalogStore.isLoaded"
+    :class="['large-card', 'large-card--' + product.category]"
+  >
+    <div class="large-card__inner">
       <div class="large-card__images-wrapper">
         <picture class="large-card__product-picture">
           <source
@@ -57,7 +68,8 @@ const showFullText = ref(false);
           />
         </picture>
 
-        <picture class="large-card__preview-picture"
+        <picture
+          class="large-card__preview-picture"
           v-if="product.category == 'coffee' || product.category == 'tea'"
         >
           <source
@@ -78,22 +90,23 @@ const showFullText = ref(false);
         <div class="large-card__top">
           <div class="large-card__headings-rating">
             <div class="large-card__headings-actions">
-              <div class="large-card__images-wrapper large-card__images-wrapper--tablet"
-                v-if="product.category == 'vending'">
-                  <picture class="large-card__product-picture">
-                    <source
-                      media="(max-width: 768px)"
-                      :srcset="`../../src/images/${product.category}-view/main-${product.category}-mobile.png`"
-                    />
-                    <img
-                      class="large-card__product-image"
-                      :src="`../../src/images/${product.category}-view/main-${product.category}-tablet.png`"
-                      width="311"
-                      height="172"
-                      alt="Карточка товара"
-                    />
-                  </picture>
-
+              <div
+                class="large-card__images-wrapper large-card__images-wrapper--tablet"
+                v-if="product.category == 'vending'"
+              >
+                <picture class="large-card__product-picture">
+                  <source
+                    media="(max-width: 768px)"
+                    :srcset="`../../src/images/${product.category}-view/main-${product.category}-mobile.png`"
+                  />
+                  <img
+                    class="large-card__product-image"
+                    :src="`../../src/images/${product.category}-view/main-${product.category}-tablet.png`"
+                    width="311"
+                    height="172"
+                    alt="Карточка товара"
+                  />
+                </picture>
               </div>
 
               <div class="large-card__headings">
@@ -103,36 +116,38 @@ const showFullText = ref(false);
                   :count="product.roasting"
                 ></slider-corns>
                 <h3 class="large-card__title">{{ product.title }}</h3>
-                <p class="large-card__description">{{ catalogStore.getShortDescription(product.id) }}</p>
+                <p class="large-card__description">
+                  {{ catalogStore.getShortDescription(product.id) }}
+                </p>
               </div>
-            
+
               <ul class="large-card__actions-list">
-                <li class="large-card__actions-item"
+                <li
+                  class="large-card__actions-item"
                   v-for="action in product.actions"
                 >
                   {{ action }}
                 </li>
               </ul>
-            
-            
             </div>
-            
+
             <div class="large-card__rating">
-                <slider-stars
-                  class="slider-stars--large large-card__stars"
-                  :rating="product.rate.rating"
-                ></slider-stars>      
-                <span class="large-card__rating-value">{{
-                  product.rate.rating
-                }}</span>
-                <a class="large-card__comments-count"
-                href="#"
+              <slider-stars
+                class="slider-stars--large large-card__stars"
+                :rating="product.rate.rating"
+              ></slider-stars>
+              <span class="large-card__rating-value">{{
+                product.rate.rating
+              }}</span>
+              <a class="large-card__comments-count" href="#"
                 >({{ product.rate.comments }} отзыва)</a
-                >
+              >
             </div>
           </div>
-          <div class="large-card__images-wrapper large-card__images-wrapper--tablet"
-          v-if="product.category != 'vending'">
+          <div
+            class="large-card__images-wrapper large-card__images-wrapper--tablet"
+            v-if="product.category != 'vending'"
+          >
             <picture class="large-card__product-picture">
               <source
                 media="(max-width: 768px)"
@@ -147,7 +162,8 @@ const showFullText = ref(false);
               />
             </picture>
 
-            <picture class="large-card__preview-picture"
+            <picture
+              class="large-card__preview-picture"
               v-if="product.category == 'coffee' || product.category == 'tea'"
             >
               <source
@@ -162,65 +178,92 @@ const showFullText = ref(false);
                 alt="Фото сырья"
               />
             </picture>
-          </div>  
+          </div>
         </div>
         <p class="large-card__product-text">{{ product.description }}</p>
-        <p :class="{'large-card__company-text' : true, 'large-card__company-text--full' : showFullText}">Компания Нью Рефайнинг Груп находится в&nbsp;г. Калининграде и&nbsp;имеет свой склад и&nbsp;представительство в&nbsp;Москве. Завод работает на&nbsp;рынке свежеобжаренного кофе и&nbsp;растворимой продукции более 15&nbsp;лет. Завод имеет немецкое оборудование марки Probat по&nbsp;обжарке кофе и&nbsp;итальянские агломераторы для производства растворимой продукции.</p>  
-        
+        <p
+          :class="{
+            'large-card__company-text': true,
+            'large-card__company-text--full': showFullText,
+          }"
+        >
+          Компания Нью Рефайнинг Груп находится в&nbsp;г. Калининграде
+          и&nbsp;имеет свой склад и&nbsp;представительство в&nbsp;Москве. Завод
+          работает на&nbsp;рынке свежеобжаренного кофе и&nbsp;растворимой
+          продукции более 15&nbsp;лет. Завод имеет немецкое оборудование марки
+          Probat по&nbsp;обжарке кофе и&nbsp;итальянские агломераторы для
+          производства растворимой продукции.
+        </p>
+
         <button
-          class="large-card__btn-expand btn-expand" type="button"
+          class="large-card__btn-expand btn-expand"
+          type="button"
           @click="showFullText = !showFullText"
         >
-          <span class="btn-expand__text"
-            >{{showFullText ? "Свернуть текст" : "Читать полностью"}}</span
+          <span class="btn-expand__text">{{
+            showFullText ? "Свернуть текст" : "Читать полностью"
+          }}</span>
+          <svg
+            class="btn-expand__icon"
+            width="20"
+            height="9"
+            aria-hidden="true"
+            v-show="!showFullText"
           >
-            <svg
-              class="btn-expand__icon"
-              width="20"
-              height="9"
-              aria-hidden="true"
-              v-show="!showFullText"
-            >
-              <use xlink:href="../../assets/product-sprite.svg#icon-down-arrow"></use>
-            </svg>
+            <use
+              xlink:href="../../assets/product-sprite.svg#icon-down-arrow"
+            ></use>
+          </svg>
 
-            <svg
-              class="btn-expand__icon-rotated"
-              width="20"
-              height="9"
-              aria-hidden="true"
-              v-show="showFullText"
-            >
-              <use xlink:href="../../assets/product-sprite.svg#icon-down-arrow"></use>
-            </svg>
+          <svg
+            class="btn-expand__icon-rotated"
+            width="20"
+            height="9"
+            aria-hidden="true"
+            v-show="showFullText"
+          >
+            <use
+              xlink:href="../../assets/product-sprite.svg#icon-down-arrow"
+            ></use>
+          </svg>
         </button>
-        
-        <div class="large-card__coffee-details" v-if="product.category == 'coffee'">
+
+        <div
+          class="large-card__coffee-details"
+          v-if="product.category == 'coffee'"
+        >
           <div class="large-card__hue">
             <span class="large-card__hue-name">Кислинка</span>
-            <slider-points 
-            class="slider-points--large"
-            :count="product.hue.acidity"></slider-points>
+            <slider-points
+              class="slider-points--large"
+              :count="product.hue.acidity"
+            ></slider-points>
           </div>
 
           <div class="large-card__hue">
             <span class="large-card__hue-name">Горчинка</span>
             <slider-points
-            class="slider-points--large"
-            :count="product.hue.bitterness"></slider-points>
+              class="slider-points--large"
+              :count="product.hue.bitterness"
+            ></slider-points>
           </div>
 
           <div class="large-card__hue">
             <span class="large-card__hue-name">Насыщенность</span>
-            <slider-points 
-            class="slider-points--large"
-            :count="product.hue.richness"></slider-points>
+            <slider-points
+              class="slider-points--large"
+              :count="product.hue.richness"
+            ></slider-points>
           </div>
         </div>
 
         <div class="large-card__weight-slider"></div>
 
-        <radio-block :class="['large-card__weight-radio', 'radio-block--' + product.category]"
+        <radio-block
+          :class="[
+            'large-card__weight-radio',
+            'radio-block--' + product.category,
+          ]"
           :name="product.id + 'weights'"
           :labels="weightLabels"
           :values="weightVariants"
@@ -230,9 +273,9 @@ const showFullText = ref(false);
         >
         </radio-block>
 
-        
         <div class="large-card__bottom">
-          <large-dropdown class="large-card__weight-dropdown"
+          <large-dropdown
+            class="large-card__weight-dropdown"
             :labels="weightLabels"
             :values="weightVariants"
             :fields-count="weightVariants.length"
@@ -241,18 +284,20 @@ const showFullText = ref(false);
           >
           </large-dropdown>
 
-          <large-counter class="large-card__counter"
-          :productId="product.id"
-          :productWeight="weightValue"
+          <large-counter
+            class="large-card__counter"
+            :productId="product.id"
+            :productWeight="weightValue"
           ></large-counter>
-          <button 
-          class="large-card__btn btn-gold"
-          @click="cartStore.addToCart(product.id, weightValue)"
-          >Купить за {{ priceVariant }} ₽</button>
+          <button
+            class="large-card__btn btn-gold"
+            @click="cartStore.addToCart(product.id, weightValue)"
+          >
+            Купить за {{ priceVariant }} ₽
+          </button>
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -304,7 +349,7 @@ const showFullText = ref(false);
 .btn-expand {
   align-items: center;
   color: $color-ucla-gold;
-  background-color: transparent; 
+  background-color: transparent;
   border: none;
   margin: 0;
   padding: 0;
@@ -313,7 +358,7 @@ const showFullText = ref(false);
   gap: 14px;
   position: relative;
   display: none;
-  
+
   @include vp-tablet {
     display: flex;
   }
@@ -322,7 +367,6 @@ const showFullText = ref(false);
     gap: 10px;
   }
 
-  
   &__text {
     font-weight: 500;
     font-family: $ff-gilroy, sans-serif;
@@ -752,7 +796,7 @@ const showFullText = ref(false);
     text-decoration-color: $color-davys-gray;
     padding: 0;
     margin: 0;
-    
+
     @include vp-laptop {
       font-size: 12px;
       line-height: 14px;
@@ -765,12 +809,12 @@ const showFullText = ref(false);
 
     @include vp-mobile {
       line-height: 14px;
-      font-size: 12px;  
+      font-size: 12px;
     }
 
     &:hover {
       color: $color-raising-black;
-      text-decoration-color:  $color-ucla-gold;
+      text-decoration-color: $color-ucla-gold;
     }
   }
 
@@ -934,7 +978,7 @@ const showFullText = ref(false);
     align-self: start;
     display: flex;
     gap: 20px;
-  
+
     @include vp-laptop {
       gap: 15px;
     }
@@ -988,7 +1032,7 @@ const showFullText = ref(false);
 
     @include vp-tablet {
       width: 100%;
-    } 
+    }
   }
 }
 
@@ -1007,7 +1051,7 @@ const showFullText = ref(false);
     padding: 25px 20px 40px;
   }
 
-  .large-card {     
+  .large-card {
     &__inner {
       gap: 95px;
 
@@ -1028,22 +1072,22 @@ const showFullText = ref(false);
       @include vp-tablet {
         display: none;
       }
-    }    
+    }
 
     &__images-wrapper--tablet {
-    display: none;
+      display: none;
 
-    @include vp-tablet {
-      display: flex;
-      width: 291px;
-      height: 396px;
-    }
+      @include vp-tablet {
+        display: flex;
+        width: 291px;
+        height: 396px;
+      }
 
-    @include vp-mobile {
-      width: 143px;
-      height: 194px;
+      @include vp-mobile {
+        width: 143px;
+        height: 194px;
+      }
     }
-  }
 
     &__preview-image {
       top: unset;
@@ -1111,7 +1155,6 @@ const showFullText = ref(false);
       }
     }
 
-
     &__headings-actions {
       @include vp-tablet {
         min-height: 60%;
@@ -1148,7 +1191,6 @@ const showFullText = ref(false);
       }
     }
 
-
     &__product-text,
     &__company-text {
       @include vp-tablet {
@@ -1177,7 +1219,7 @@ const showFullText = ref(false);
     padding: 25px 30px 40px;
   }
 
-  .large-card {     
+  .large-card {
     &__inner {
       gap: 110px;
 
@@ -1198,10 +1240,10 @@ const showFullText = ref(false);
       @include vp-tablet {
         display: none;
       }
-    }    
+    }
 
     &__images-wrapper--tablet {
-    display: none;
+      display: none;
 
       @include vp-tablet {
         display: flex;
@@ -1252,7 +1294,6 @@ const showFullText = ref(false);
       }
     }
 
-
     &__headings-actions {
       @include vp-tablet {
         min-height: 60%;
@@ -1289,11 +1330,10 @@ const showFullText = ref(false);
       }
     }
 
-
     &__product-text,
     &__company-text {
       max-width: 760px;
-      
+
       @include vp-tablet {
         max-width: 550px;
       }
@@ -1322,7 +1362,6 @@ const showFullText = ref(false);
   }
 }
 
-
 .large-card--vending {
   padding: 110px 164px 165px;
 
@@ -1338,7 +1377,7 @@ const showFullText = ref(false);
     padding: 25px 20px 40px;
   }
 
-  .large-card {     
+  .large-card {
     &__inner {
       gap: 100px;
 
@@ -1362,10 +1401,10 @@ const showFullText = ref(false);
       @include vp-tablet {
         display: none;
       }
-    }    
+    }
 
     &__images-wrapper--tablet {
-    display: none;
+      display: none;
 
       @include vp-tablet {
         display: flex;
@@ -1481,7 +1520,7 @@ const showFullText = ref(false);
     &__product-text,
     &__company-text {
       max-width: 700px;
-      
+
       @include vp-laptop {
         max-width: 460px;
       }

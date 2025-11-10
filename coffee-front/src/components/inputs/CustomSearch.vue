@@ -48,7 +48,7 @@
     width: 100%;
     border: none;
     border-radius: 30px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 20px;
     line-height: 26px;

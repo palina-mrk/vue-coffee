@@ -7,68 +7,92 @@ const route = useRoute();
 import { useCatalogStore } from "../../stores/catalog";
 const catalogStore = useCatalogStore();
 
-const details = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).details : []);
-
-const arabicaStrings = computed(() => 
-details.value.reduce((acc, detail) => 
-  (detail.kind == 'Арабика') ?  [...acc, detail.variety + ', ' + detail.geography] : acc,
-  [])
+const details = computed(() =>
+  catalogStore.isLoaded
+    ? catalogStore.getFullInfo(Number(route.params.productID)).details
+    : [],
 );
 
-const robustaStrings = computed(() => 
-details.value.reduce((acc, detail) => 
-  detail.kind == 'Робуста' ? [...acc, detail.processing.toLowerCase() + ' ' + detail.geography] : acc, []));
+const arabicaStrings = computed(() =>
+  details.value.reduce(
+    (acc, detail) =>
+      detail.kind == "Арабика"
+        ? [...acc, detail.variety + ", " + detail.geography]
+        : acc,
+    [],
+  ),
+);
 
-const processingKinds = computed(() => 
-details.value.reduce((acc, detail) => 
-  detail.kind == 'Робуста' ? [...acc, detail.processing.toLowerCase()] : acc, []));
+const robustaStrings = computed(() =>
+  details.value.reduce(
+    (acc, detail) =>
+      detail.kind == "Робуста"
+        ? [...acc, detail.processing.toLowerCase() + " " + detail.geography]
+        : acc,
+    [],
+  ),
+);
 
-const kind = computed(() => catalogStore.isLoaded ? catalogStore.getKind(Number(route.params.productID)).toLowerCase() : "");
+const processingKinds = computed(() =>
+  details.value.reduce(
+    (acc, detail) =>
+      detail.kind == "Робуста"
+        ? [...acc, detail.processing.toLowerCase()]
+        : acc,
+    [],
+  ),
+);
 
+const kind = computed(() =>
+  catalogStore.isLoaded
+    ? catalogStore.getKind(Number(route.params.productID)).toLowerCase()
+    : "",
+);
 
-const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(Number(route.params.productID)).hue.acidity : "");
+const acidity = computed(() =>
+  catalogStore.isLoaded
+    ? catalogStore.getFullInfo(Number(route.params.productID)).hue.acidity
+    : "",
+);
 </script>
 
 <template>
-  <div 
-  v-if="catalogStore.isLoaded" class="details-card" >
+  <div v-if="catalogStore.isLoaded" class="details-card">
     <h3 class="details-card__heading">Характеристики</h3>
     <ul class="details-card__list">
-      <li 
-        class="details-card__item"
-        v-if="arabicaStrings.length">
+      <li class="details-card__item" v-if="arabicaStrings.length">
         <p class="details-card__item-title">Арабика:</p>
 
         <ul class="details-card__item-sublist">
-          <li class="details-card__item-subline"
-        v-for="arabicaString in arabicaStrings">{{ arabicaString }}</li>
+          <li
+            class="details-card__item-subline"
+            v-for="arabicaString in arabicaStrings"
+          >
+            {{ arabicaString }}
+          </li>
         </ul>
       </li>
-      <li 
-        class="details-card__item"
-        v-if="robustaStrings.length"
-        >
+      <li class="details-card__item" v-if="robustaStrings.length">
         <p class="details-card__item-title">Робуста:</p>
-        <span class="details-card__item-str">{{ robustaStrings.join(', ') }}</span>
+        <span class="details-card__item-str">{{
+          robustaStrings.join(", ")
+        }}</span>
       </li>
-      <li 
-        class="details-card__item"
-        v-if="processingKinds.length"
-        >
+      <li class="details-card__item" v-if="processingKinds.length">
         <p class="details-card__item-title">Способ обработки:</p>
-        <span class="details-card__item-str">{{ processingKinds.join(', ') }}</span>
+        <span class="details-card__item-str">{{
+          processingKinds.join(", ")
+        }}</span>
       </li>
 
-      <li 
-        class="details-card__item"
-        v-else
-        >
+      <li class="details-card__item" v-else>
         <p class="details-card__item-title">Кислинка:</p>
-        <span class="details-card__item-str">{{ acidity > 6 ? "высокая" : (acidity > 3 ? "средняя" : "низкая") }}</span>
+        <span class="details-card__item-str">{{
+          acidity > 6 ? "высокая" : acidity > 3 ? "средняя" : "низкая"
+        }}</span>
       </li>
 
-      <li 
-        class="details-card__item">
+      <li class="details-card__item">
         <p class="details-card__item-title">Вид кофе:</p>
         <span class="details-card__item-str">{{ kind }}</span>
       </li>
@@ -103,7 +127,6 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
     box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
     padding: 32px 15px 29px;
     gap: 15px;
-    
   }
 
   &__heading {
@@ -137,7 +160,7 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
     list-style-type: none;
     display: flex;
     flex-direction: column;
-      
+
     @include vp-tablet {
       margin: 0;
     }
@@ -189,9 +212,9 @@ const acidity = computed(() => catalogStore.isLoaded ? catalogStore.getFullInfo(
     text-align: right;
     max-width: 70%;
   }
-  
+
   &__item-subline,
-  &__item-title,  
+  &__item-title,
   &__item-line,
   &__item-str {
     margin: 0;

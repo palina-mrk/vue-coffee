@@ -36,24 +36,35 @@ function clearFinished() {
     ></custom-toggle>
 
     <ul class="orders-card__list">
-      <li 
-      v-for="orderInfo in ordersStore.orderItems"
-      :key="orderInfo.id"
-      v-show="orderInfo.isFinished == (selectedVariant == 'finished')"
-      class="orders-card__item order-wrapper">
+      <li
+        v-for="orderInfo in ordersStore.orderItems"
+        :key="orderInfo.id"
+        v-show="orderInfo.isFinished == (selectedVariant == 'finished')"
+        class="orders-card__item order-wrapper"
+      >
         <div class="order-wrapper__timing">
-          <span class="order-wrapper__payment-timing"
-            >{{ orderInfo.isPaid ? `${orderInfo.paymentTime} - оплачено` : `${orderInfo.totalSum + orderInfo.deliveryPrice} ₽ - к оплате`}}</span
-          >
+          <span class="order-wrapper__payment-timing">{{
+            orderInfo.isPaid
+              ? `${orderInfo.paymentTime} - оплачено`
+              : `${orderInfo.totalSum + orderInfo.deliveryPrice} ₽ - к оплате`
+          }}</span>
           <span class="order-wrapper__delivery-timing"
-            >{{ !orderInfo.isPaid ? `Доставка: ${orderInfo.deliveryWay}, ${orderInfo.deliveryDuring} дн.` : (!orderInfo.isFinished ? `Дата доставки: ${orderInfo.deliveryDate}` : `Доставлено: ${orderInfo.deliveryDate}`)}}
-            </span
-          >
+            >{{
+              !orderInfo.isPaid
+                ? `Доставка: ${orderInfo.deliveryWay}, ${orderInfo.deliveryDuring} дн.`
+                : !orderInfo.isFinished
+                  ? `Дата доставки: ${orderInfo.deliveryDate}`
+                  : `Доставлено: ${orderInfo.deliveryDate}`
+            }}
+          </span>
         </div>
 
-        <order-card class="order-wrapper__inner"
-        :order-lines="orderInfo.productLines"
-        :order-sale="orderInfo.globalSale"> </order-card>
+        <order-card
+          class="order-wrapper__inner"
+          :order-lines="orderInfo.productLines"
+          :order-sale="orderInfo.globalSale"
+        >
+        </order-card>
 
         <div class="order-wrapper__summary">
           <span class="order-wrapper__total-sum"
@@ -67,36 +78,50 @@ function clearFinished() {
         <ul class="order-wrapper__summary-mobile">
           <li class="order-wrapper__summary-item">
             <span>Итого:</span>
-            <span>{{ orderInfo.totalSum + orderInfo.deliveryPrice}} ₽</span>
+            <span>{{ orderInfo.totalSum + orderInfo.deliveryPrice }} ₽</span>
           </li>
           <li class="order-wrapper__summary-item">
             <span class="order-wrapper__summary-text">Подытог:</span>
-            <span class="order-wrapper__summary-number">{{ orderInfo.totalSum }} ₽</span>
+            <span class="order-wrapper__summary-number"
+              >{{ orderInfo.totalSum }} ₽</span
+            >
           </li>
           <li class="order-wrapper__summary-item">
             <span class="order-wrapper__summary-text">Скидка:</span>
             <span class="order-wrapper__summary-number-wrapper">
-              <span class="order-wrapper__summary-number order-wrapper__summary-number--first">{{
-            orderInfo.totalSale ? `${orderInfo.totalSum + orderInfo.totalSale} ₽` : ""
-          }}</span>
+              <span
+                class="order-wrapper__summary-number order-wrapper__summary-number--first"
+                >{{
+                  orderInfo.totalSale
+                    ? `${orderInfo.totalSum + orderInfo.totalSale} ₽`
+                    : ""
+                }}</span
+              >
               <span class="order-wrapper__summary-number">{{
-            orderInfo.totalSale ? `(-${Number((orderInfo.totalSale * 100/ (orderInfo.totalSum + orderInfo.totalSale)).toFixed(0))}%)` : "0 ₽"
-          }}</span>
+                orderInfo.totalSale
+                  ? `(-${Number(((orderInfo.totalSale * 100) / (orderInfo.totalSum + orderInfo.totalSale)).toFixed(0))}%)`
+                  : "0 ₽"
+              }}</span>
             </span>
           </li>
           <li class="order-wrapper__summary-item">
             <span class="order-wrapper__summary-text">Доставка:</span>
-            <span  class="order-wrapper__summary-number">{{ orderInfo.deliveryPrice }} ₽</span>
+            <span class="order-wrapper__summary-number"
+              >{{ orderInfo.deliveryPrice }} ₽</span
+            >
           </li>
         </ul>
-        
-        <div class="order-wrapper__btn"
-        v-if="ordersStore.isLastOfSaved(selectedVariant, orderInfo.orderID)">
+
+        <div
+          class="order-wrapper__btn"
+          v-if="ordersStore.isLastOfSaved(selectedVariant, orderInfo.orderID)"
+        >
           <button
             @click="clearFinished"
             class="order-wrapper__clear-button btn-cornsilk"
             v-show="selectedVariant == 'finished'"
-            :disabled="!(ordersStore.finishedCount > 0)">
+            :disabled="!(ordersStore.finishedCount > 0)"
+          >
             Удалить завершённые
           </button>
           <!--button
@@ -108,15 +133,11 @@ function clearFinished() {
           </button-->
         </div>
       </li>
-
-
     </ul>
-
   </div>
 </template>
 
 <style lang="scss" scoped>
-
 .btn-cornsilk {
   font-family: $ff-gilroy, sans-serif;
   margin: 0;
@@ -344,7 +365,7 @@ function clearFinished() {
     font-size: 20px;
     line-height: 24px;
     letter-spacing: 0.05em;
-  
+
     @include vp-laptop {
       font-size: 14px;
       line-height: 18px;
@@ -474,7 +495,7 @@ function clearFinished() {
     }
   }
 
-  &__summary-text, 
+  &__summary-text,
   &__summary-number {
     @include vp-mobile {
       font-family: $ff-gilroy, sans-serif;
@@ -537,5 +558,4 @@ function clearFinished() {
     max-width: fit-content;
   }
 }
-
 </style>

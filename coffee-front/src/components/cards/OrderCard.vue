@@ -1,27 +1,31 @@
 <script setup>
-defineProps(['orderLines', 'orderSale'])
+defineProps(["orderLines", "orderSale"]);
 </script>
 
 <template>
   <div class="order-card">
-    <ul class="order-card__list" 
-    v-if="orderLines">
+    <ul class="order-card__list" v-if="orderLines">
       <li class="order-card__item">
         <span class="order-card__heading-text">Товары:</span>
         <span class="order-card__heading-text">Цена:</span>
-        <span class="order-card__heading-text">Скидка{{ orderSale ?  `(${orderSale}%)` : '' }}:</span>
+        <span class="order-card__heading-text"
+          >Скидка{{ orderSale ? `(${orderSale}%)` : "" }}:</span
+        >
         <span class="order-card__heading-text">Итого:</span>
       </li>
-      <li class="order-card__item"
+      <li
+        class="order-card__item"
         v-for="line in orderLines"
         :key="line.orderId"
       >
         <span class="order-card__info-string">
           <span class="order-card__info-text">{{ line.count }}</span>
           <span class="order-card__info-text">x</span>
-          <router-link 
-          :to="{ name: 'catalogs.product', params: { productID:  line.id } }"
-          class="order-card__info-text order-card__info-text--link">{{line.title }},</router-link>
+          <router-link
+            :to="{ name: 'catalogs.product', params: { productID: line.id } }"
+            class="order-card__info-text order-card__info-text--link"
+            >{{ line.title }},</router-link
+          >
           <span class="order-card__info-text">{{ line.weightString }}</span>
         </span>
         <!--span class="order-card__info-text">{{ line.count }} x {{ line.title }}, {{ line.weightString }}</span-->
@@ -29,11 +33,8 @@ defineProps(['orderLines', 'orderSale'])
         <span class="order-card__info-text">{{ line.sale }} ₽</span>
         <span class="order-card__info-text">{{ line.total }} ₽</span>
       </li>
-      <li class="order-card__item-mobile"
-      v-for="line in orderLines">  
-        <div
-          class="order-card__icon"
-        >
+      <li class="order-card__item-mobile" v-for="line in orderLines">
+        <div class="order-card__icon">
           <img
             class="order-card__icon-image"
             :src="`../../src/images/personal/icon-${line.category}-mobile.png`"
@@ -43,12 +44,18 @@ defineProps(['orderLines', 'orderSale'])
           />
         </div>
         <div class="order-card__text">
-          <router-link 
-            :to="{ name: 'catalogs.product', params: { productID:  line.id } }"
-            class="order-card__product-title">{{ line.title }}</router-link>
+          <router-link
+            :to="{ name: 'catalogs.product', params: { productID: line.id } }"
+            class="order-card__product-title"
+            >{{ line.title }}</router-link
+          >
           <!--h3 class="order-card__product-title">{{ line.title }}</h3-->
-          <span class="order-card__product-description">{{ line.shortDescription }}</span>
-          <span class="order-card__product-weight">{{line.count}} x {{line.weightString}}</span>
+          <span class="order-card__product-description">{{
+            line.shortDescription
+          }}</span>
+          <span class="order-card__product-weight"
+            >{{ line.count }} x {{ line.weightString }}</span
+          >
         </div>
 
         <div class="order-card__prices">
@@ -59,9 +66,8 @@ defineProps(['orderLines', 'orderSale'])
           <span class="order-card__sale-percent">{{
             line.sale ? `(-${line.salePercent}%)` : ""
           }}</span>
-        </div> 
+        </div>
       </li>
-      
     </ul>
   </div>
 </template>
@@ -76,7 +82,6 @@ defineProps(['orderLines', 'orderSale'])
   border-style: solid;
   border-color: $color-antiflash-white-f0;
   background-color: $color-lotion;
-
 
   @include vp-laptop {
     padding: 21px 5px 22px 42px;
@@ -129,7 +134,7 @@ defineProps(['orderLines', 'orderSale'])
     @include vp-laptop {
       grid-template-columns: 1fr 200px 200px 172px;
     }
-  
+
     @include vp-tablet {
       grid-template-columns: 1fr 130px 125px 117px;
     }
@@ -261,7 +266,7 @@ defineProps(['orderLines', 'orderSale'])
     }
   }
 
-  &__product-title{
+  &__product-title {
     @include vp-mobile {
       font-family: $ff-gilroy, sans-serif;
       color: $color-raising-black;
@@ -270,12 +275,11 @@ defineProps(['orderLines', 'orderSale'])
       line-height: 12px;
       margin: 0;
       padding: 0;
-      cursor: pointer;     
-      position: relative; 
+      cursor: pointer;
+      position: relative;
     }
-    
-    &:hover::after {
 
+    &:hover::after {
       @include vp-mobile {
         content: "";
         width: 100%;
@@ -284,12 +288,12 @@ defineProps(['orderLines', 'orderSale'])
         position: absolute;
         bottom: 0;
         left: 0;
-        background-color: $color-ucla-gold;    
+        background-color: $color-ucla-gold;
       }
     }
   }
 
-  &__product-description, 
+  &__product-description,
   &__product-weight {
     @include vp-mobile {
       font-family: $ff-gilroy, sans-serif;
@@ -347,5 +351,4 @@ defineProps(['orderLines', 'orderSale'])
     }
   }
 }
-
 </style>

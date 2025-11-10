@@ -15,16 +15,15 @@ const deliveryWays = reactive({
   fieldsCount: cartStore.deliveryPrices.length,
 });
 
-
 function payOrder() {
-  if(!cartStore.totalCount){
-    console.log('cart is empty!');
+  if (!cartStore.totalCount) {
+    console.log("cart is empty!");
     return;
   }
-  
+
   ordersStore.saveOrder();
   cartStore.clearCart();
-  scrollTo(0,0);
+  scrollTo(0, 0);
 }
 </script>
 
@@ -39,20 +38,25 @@ function payOrder() {
           >Подытог: {{ cartStore.totalSum }} ₽</span
         >
         <span class="form-block__salary-wrapper">
+          <span class="form-block__subsummary-text">Скидка:</span>
 
-          <span class="form-block__subsummary-text"
-            >Скидка:</span>
+          <span
+            class="form-block__subsummary-text form-block__subsummary-text--crossed"
+            >{{
+              cartStore.totalSale
+                ? `${cartStore.totalSum + cartStore.totalSale} ₽`
+                : ""
+            }}</span
+          >
 
-            
-            <span class="form-block__subsummary-text form-block__subsummary-text--crossed">{{
-              cartStore.totalSale ? `${cartStore.totalSum + cartStore.totalSale} ₽` : ""
-            }}</span>
-
-            <span class="form-block__subsummary-text"
-              >{{ cartStore.totalSale ? `(-${Number((cartStore.totalSale * 100/ (cartStore.totalSum + cartStore.totalSale)).toFixed(0))}%)` : "0 ₽" }}</span>
+          <span class="form-block__subsummary-text">{{
+            cartStore.totalSale
+              ? `(-${Number(((cartStore.totalSale * 100) / (cartStore.totalSum + cartStore.totalSale)).toFixed(0))}%)`
+              : "0 ₽"
+          }}</span>
+        </span>
       </span>
-    </span>
-        <!--span class="form-block__subsummary-text"
+      <!--span class="form-block__subsummary-text"
           >Скидка: {{ cartStore.totalSale ? cartStore.totalSale : 0 }} ₽
           {{ cartStore.totalSale ? `(${Number((cartStore.totalSale * 100/ (cartStore.totalSum + cartStore.totalSale)).toFixed(0))}%)` : "" }}</span
       -->
@@ -107,7 +111,9 @@ function payOrder() {
       :selectedValue="cartStore.deliveryValue"
       @set-value="cartStore.setDeliveryValue($event)"
     ></payment-way>
-    <button class="form-block__button btn-gold" type="button"
+    <button
+      class="form-block__button btn-gold"
+      type="button"
       @click="$emit('set-payment')"
     >
       Оплатить заказ
@@ -163,7 +169,7 @@ function payOrder() {
   &__top,
   &__delivery,
   &__button {
-  @include vp-tablet {
+    @include vp-tablet {
       margin: 0 auto;
       max-width: $max-width-tablet;
       width: 100%;

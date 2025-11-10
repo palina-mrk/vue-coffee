@@ -5,52 +5,64 @@ const cartStore = useCartStore();
 
 const showInfo = ref(false);
 
-console.log(showInfo.value)
+console.log(showInfo.value);
 
 const nextSale = computed(() => {
-  return cartStore.cartSales.find((el) => cartStore.totalSum < el[0])
-})
+  return cartStore.cartSales.find((el) => cartStore.totalSum < el[0]);
+});
 </script>
 
 <template>
   <div class="info-block" v-show="!showInfo">
-    <p class="info-block__current-sale"
-      >Ваша скидка: {{ cartStore.globalSale }} %</p
+    <p class="info-block__current-sale">
+      Ваша скидка: {{ cartStore.globalSale }} %
+    </p>
+    <p class="info-block__payment-sum">
+      Итого к оплате: {{ cartStore.totalSum + cartStore.deliveryPrice }} ₽ *
+    </p>
+    <p
+      class="info-block__sale-note"
+      v-show="cartStore.saleType == 'cart' || cartStore.saleType == 'none'"
     >
-    <p class="info-block__payment-sum"
-      >Итого к оплате: {{ cartStore.totalSum + cartStore.deliveryPrice }} ₽ *</p
+      * До скидки {{ nextSale[1] }}% не хватает покупок на сумму:
+      {{ nextSale[0] - cartStore.totalSum }} ₽
+    </p>
+    <p class="info-block__sale-note" v-show="cartStore.saleType == 'promo'">
+      * Применена скидка {{ cartStore.globalSale }}% по промокоду "{{
+        cartStore.userPromo
+      }}"
+    </p>
+    <button
+      class="info-block__button btn-icon"
+      type="button"
+      @click="showInfo = !showInfo"
     >
-    <p class="info-block__sale-note"
-    v-show="cartStore.saleType == 'cart' || cartStore.saleType == 'none'"
-      >* До скидки {{nextSale[1]}}% не хватает покупок на сумму: {{ nextSale[0] - cartStore.totalSum  }} ₽</p>
-    <p class="info-block__sale-note"
-    v-show="cartStore.saleType == 'promo'"
-      >* Применена скидка {{ cartStore.globalSale }}% по промокоду "{{ cartStore.userPromo }}"</p
-    >
-    <button class="info-block__button btn-icon" type="button"
-    @click="showInfo = !showInfo">?</button>
+      ?
+    </button>
   </div>
   <div class="info-block info-block--info" v-show="showInfo">
-    <p class="info-block__not-enough"
-      >До скидки 15% не хватает покупок на сумму: 1255 ₽</p>
+    <p class="info-block__not-enough">
+      До скидки 15% не хватает покупок на сумму: 1255 ₽
+    </p>
 
     <ul class="info-block__sales-list">
-      <li v-for="cartSale in cartStore.cartSales"
-      class="info-block__sales-item">Скидка {{cartSale[1]}}% - сумма покупок {{ cartSale[0] }} ₽ </li>
-    </ul>
-    <button class="info-block__button btn-icon" type="button"
-    @click="showInfo = !showInfo">
-      <svg
-        class="btn-icon__svg"
-        width="33"
-        height="33"
-        aria-hidden="true"
+      <li
+        v-for="cartSale in cartStore.cartSales"
+        class="info-block__sales-item"
       >
+        Скидка {{ cartSale[1] }}% - сумма покупок {{ cartSale[0] }} ₽
+      </li>
+    </ul>
+    <button
+      class="info-block__button btn-icon"
+      type="button"
+      @click="showInfo = !showInfo"
+    >
+      <svg class="btn-icon__svg" width="33" height="33" aria-hidden="true">
         <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
       </svg>
     </button>
   </div>
-  
 </template>
 
 <style lang="scss" scoped>
@@ -123,7 +135,7 @@ const nextSale = computed(() => {
   }
 
   &:hover {
-    background-color:  $color-bright-gray;
+    background-color: $color-bright-gray;
   }
 
   &[disabled] {
@@ -255,7 +267,7 @@ const nextSale = computed(() => {
     line-height: 19px;
     color: $color-black;
     padding: 0;
-    margin: 0; 
+    margin: 0;
     max-width: 450px;
 
     @include vp-laptop {
@@ -317,7 +329,6 @@ const nextSale = computed(() => {
       line-height: 16px;
     }
   }
-
 
   &__sales-item:first-child {
     display: none;

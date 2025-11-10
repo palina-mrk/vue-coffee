@@ -1,9 +1,9 @@
 <script setup>
-defineProps(['newsItem'])
+defineProps(["newsItem"]);
 </script>
 
 <template>
-  <div class="news-card" >
+  <div class="news-card">
     <div class="news-card__image-wrapper">
       <picture>
         <source
@@ -29,8 +29,7 @@ defineProps(['newsItem'])
     </div>
     <div class="news-card__inner">
       <h3 class="news-card__title">{{ newsItem.title }}</h3>
-      <div class="news-card__content"
-      v-for="paragraphText in newsItem.text">
+      <div class="news-card__content" v-for="paragraphText in newsItem.text">
         <p class="news-card__paragraph">{{ paragraphText }}</p>
       </div>
       <div class="news-card__bottom">
@@ -174,7 +173,7 @@ defineProps(['newsItem'])
     line-height: 26px;
     margin: 0;
     padding: 0;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;

@@ -1,8 +1,7 @@
 <script setup>
 import LogoPersonal from "../navigation/LogoPersonal.vue";
 
-defineProps(['message', 'note']);
-
+defineProps(["message", "note"]);
 </script>
 
 <template>
@@ -44,37 +43,28 @@ defineProps(['message', 'note']);
         />
       </picture>
     </div>
-    
-    <div class="info-card__content-block">
 
-      <logo-personal class="info-card__logo"
-      @leave-page="$emit('close-form')"
-      @click="$emit('close-form')"
+    <div class="info-card__content-block">
+      <logo-personal
+        class="info-card__logo"
+        @leave-page="$emit('close-form')"
+        @click="$emit('close-form')"
       ></logo-personal>
-      <button class="info-card__btn-close btn-icon" type="button" 
-      @click="$emit('close-form')"
-      aria-label="Закрыть"
-          >
-            <svg
-              class="btn-icon__svg"
-              width="26"
-              height="26"
-              aria-hidden="true"
-          >
-            <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
-          </svg>
+      <button
+        class="info-card__btn-close btn-icon"
+        type="button"
+        @click="$emit('close-form')"
+        aria-label="Закрыть"
+      >
+        <svg class="btn-icon__svg" width="26" height="26" aria-hidden="true">
+          <use xlink:href="../../assets/cart-sprite.svg#icon-cross"></use>
+        </svg>
       </button>
 
       <div class="info-card__info">
-        
-        <p class="info-card__summary"
-          >{{ message }}</p
-        >
-        <p class="info-card__note"
-          >{{note}}</p
-        >
+        <p class="info-card__summary">{{ message }}</p>
+        <p class="info-card__note">{{ note }}</p>
       </div>
-
     </div>
   </div>
 </template>
@@ -110,7 +100,7 @@ defineProps(['message', 'note']);
     width: 15px;
     height: 15px;
   }
-  
+
   &__svg {
     display: flex;
     width: 100%;
@@ -139,11 +129,11 @@ defineProps(['message', 'note']);
   border-radius: 30px;
   min-height: 470px;
   box-shadow: 0 0 50px 0 $color-spanish-gray;
-  
+
   @include vp-laptop {
     border-radius: 21px;
     min-height: 330px;
-  }  
+  }
 
   @include vp-tablet {
     width: calc($max-width-tablet + 68px);
@@ -353,6 +343,5 @@ defineProps(['message', 'note']);
       line-height: 23px;
     }
   }
-
 }
 </style>

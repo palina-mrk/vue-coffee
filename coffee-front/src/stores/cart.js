@@ -72,7 +72,9 @@ export const useCartStore = defineStore("cart", () => {
 
   const deliveryPrices = computed(() => deliveryWays.map((el) => el[0]));
   const deliveryValues = computed(() => deliveryWays.map((el) => el[1]));
-  const deliveryLabels = computed(() => deliveryWays.map((el) => el[2] + ', ' + el[3] + ' дн. - '));
+  const deliveryLabels = computed(() =>
+    deliveryWays.map((el) => el[2] + ", " + el[3] + " дн. - "),
+  );
   function setDeliveryValue(value) {
     const way = deliveryWays.find((el) => el[1] == value);
     if (way) deliveryWay.value = way;
@@ -92,8 +94,7 @@ export const useCartStore = defineStore("cart", () => {
   );
 
   function addToCart(itemId, weight) {
-    if(!weight)
-      return;
+    if (!weight) return;
 
     const item = cartRows.find((el) => el[0] == itemId && el[1] == weight);
     if (!item) cartRows.push([itemId, weight, 1]);
@@ -101,20 +102,17 @@ export const useCartStore = defineStore("cart", () => {
   }
 
   function removeOneFromCart(itemId, weight) {
-    if(!weight)
-      return;
+    if (!weight) return;
 
     const ind = cartRows.findIndex((el) => el[0] == itemId && el[1] == weight);
     if (ind == -1) return;
 
-    cartRows[ind][2] --;
-    if(cartRows[ind][2] == 0)
-      cartRows.splice(ind, 1);
+    cartRows[ind][2]--;
+    if (cartRows[ind][2] == 0) cartRows.splice(ind, 1);
   }
 
   function removeFromCart(itemId, weight) {
-    if(!weight)
-      return;
+    if (!weight) return;
 
     const ind = cartRows.findIndex((el) => el[0] == itemId && el[1] == weight);
     if (ind == -1) return;
@@ -123,8 +121,7 @@ export const useCartStore = defineStore("cart", () => {
   }
 
   function setCount(itemId, weight, itemCount) {
-    if(!weight)
-      return;
+    if (!weight) return;
 
     const count = Number(itemCount);
     if (count <= 0) {
@@ -191,7 +188,7 @@ export const useCartStore = defineStore("cart", () => {
             weight: weight,
             weightString: `${weight} ${item.category == "vending" ? "кг." : "г."}`,
             /* цена до скидки (зачеркнутая): */
-            isSaled: item.actions.includes("Скидки"), 
+            isSaled: item.actions.includes("Скидки"),
             price:
               (item.actions.includes("Скидки") ? priceCrossed : price) * count,
             count: count,
@@ -232,14 +229,13 @@ export const useCartStore = defineStore("cart", () => {
   });
 
   function getCount(itemId, weight) {
-    if(!weight)
-      return 0;
+    if (!weight) return 0;
 
-    const item = cartRows.find(el => el[0] == itemId && el[1] == weight);
+    const item = cartRows.find((el) => el[0] == itemId && el[1] == weight);
     console.log(item);
-    return (item == undefined ? 0 : item[2]);
+    return item == undefined ? 0 : item[2];
   }
-  
+
   watch(cartRows, () => {
     localStorage.setItem("cartRows", JSON.stringify(cartRows));
   });

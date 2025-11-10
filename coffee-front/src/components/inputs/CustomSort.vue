@@ -208,7 +208,7 @@ function setField(sortField) {
 
   &__chosen-text {
     color: $color-ucla-gold;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;

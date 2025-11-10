@@ -1,6 +1,6 @@
 <script setup>
-import SliderStars from "../sliders/SliderStars.vue"
-defineProps(["review"])
+import SliderStars from "../sliders/SliderStars.vue";
+defineProps(["review"]);
 </script>
 
 <template>
@@ -11,13 +11,13 @@ defineProps(["review"])
         <span class="review-card__title">{{ review.title }}</span>
         <span class="review-card__date">{{ review.date }}</span>
       </div>
-      <slider-stars 
-      class="review-card__stars slider-stars--review" 
-      :rating="review.rate"></slider-stars>
-      <p class="review-card__text">{{ review.text }}</p>  
+      <slider-stars
+        class="review-card__stars slider-stars--review"
+        :rating="review.rate"
+      ></slider-stars>
+      <p class="review-card__text">{{ review.text }}</p>
     </div>
     <div class="review-card__bottom">
-
       <picture class="review-card__avatar-picture">
         <source
           media="(max-width: 767px)"
@@ -57,7 +57,7 @@ defineProps(["review"])
   box-shadow: 0px 0px 30px 0px $color-spanish-gray-c95-25;
   border-radius: 20px;
   overflow: hidden;
-  
+
   @include vp-laptop {
     box-shadow: 0px 0px 22px 0px $color-spanish-gray-c95-25;
     border-radius: 14px;
@@ -89,7 +89,6 @@ defineProps(["review"])
       padding: 40px 70px 50px 50px;
     }
 
-
     @include vp-mobile {
       padding: 20px 35px 20px 20px;
     }
@@ -113,13 +112,13 @@ defineProps(["review"])
       font-size: 30px;
       line-height: 39px;
       margin: 0 0 15px;
-    }  
-    
+    }
+
     @include vp-mobile {
       font-size: 20px;
       line-height: 27px;
       margin: 0;
-    }           
+    }
   }
 
   &__heading {
@@ -167,7 +166,7 @@ defineProps(["review"])
     }
   }
 
-  &__date, 
+  &__date,
   &__text,
   &__user-city {
     font-family: $ff-gilroy, sans-serif;
@@ -193,7 +192,7 @@ defineProps(["review"])
     }
   }
 
-  &__date, 
+  &__date,
   &__text,
   &__user-city {
     font-weight: 500;
@@ -217,7 +216,7 @@ defineProps(["review"])
 
   &__text {
     margin: 0 30px 0 0;
-    
+
     @include vp-laptop {
       margin: 0 35px 0 0;
     }
@@ -227,7 +226,7 @@ defineProps(["review"])
     }
   }
 
-  &__date, 
+  &__date,
   &__user-city {
     @include vp-tablet {
       opacity: 12%;

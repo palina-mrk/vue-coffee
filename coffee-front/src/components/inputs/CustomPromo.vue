@@ -64,7 +64,7 @@ const props = defineProps(["modelValue", "inputData"]);
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       padding: 16px 50px 16px 40px;
@@ -106,7 +106,7 @@ const props = defineProps(["modelValue", "inputData"]);
     font-size: 16px;
     line-height: 19px;
     text-align: right;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 10px;

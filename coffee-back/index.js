@@ -7,6 +7,7 @@ const teas = require('./data/teas')
 const coffees = require('./data/coffee')
 const vendings = require('./data/vending')
 const healthies = require('./data/healthy')
+const articles = require('./data/articles')
 
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
@@ -19,6 +20,8 @@ const schema = buildSchema(`
     vending(id: Int!): Vending
     healthies: [Healthy!]!
     healthy(id: Int!): Healthy
+    articles: [Article!]!
+    article(id: Int!): Article
   }
 
   """ 
@@ -95,6 +98,15 @@ const schema = buildSchema(`
     processing: String
     geography: String!
   }
+
+  type Article {
+    id: Int!
+    title: String!
+    text: [String!]!
+    author: String!
+    date: String!
+    tag: String!
+  }
 `)
 
 const app = express()
@@ -132,6 +144,13 @@ const root = {
     let weights = [];
     p.weights.forEach(el => weights.push(el));
     p.weights = weights;
+    return p;
+  }),
+  article: ({id}) => articles.find(p => p.id == id),
+  articles: () => articles.map(p => {
+    let text = [];
+    p.text.forEach(el => text.push(el));
+    p.text = text;
     return p;
   }),
 }

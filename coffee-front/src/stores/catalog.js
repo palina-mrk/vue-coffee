@@ -127,17 +127,23 @@ export const useCatalogStore = defineStore("catalog", () => {
   }
 
   function getTitle(itemId) {
-    return catalog.find((i) => i.id === itemId) 
-      ? catalog.find((i) => i.id === itemId).title : '';
+    return catalog.find((i) => i.id === itemId)
+      ? catalog.find((i) => i.id === itemId).title
+      : "";
   }
 
   function getCategory(itemId) {
     switch (catalog?.find((i) => i.id === itemId)?.category) {
-      case 'coffee': return 'кофе';
-      case 'tea': return 'чая';
-      case 'healthy': return 'для здорового питания';
-      case 'vending': return 'для вендинга';
-      default: return '';
+      case "coffee":
+        return "кофе";
+      case "tea":
+        return "чая";
+      case "healthy":
+        return "для здорового питания";
+      case "vending":
+        return "для вендинга";
+      default:
+        return "";
     }
   }
 

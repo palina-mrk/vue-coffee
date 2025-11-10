@@ -1,64 +1,75 @@
 <script setup>
 import { reactive, ref, computed } from "vue";
 import { useUserInfoStore } from "../../stores/user-info";
-const userInfoStore =  useUserInfoStore();
+const userInfoStore = useUserInfoStore();
 
 const userInfo = reactive({
   name: userInfoStore.userInfo.name,
   email: userInfoStore.userInfo.email,
   tel: userInfoStore.userInfo.tel,
   password: userInfoStore.userInfo.password,
-}) 
+});
 const emptyFields = reactive({
   name: false,
   email: false,
   tel: false,
   password: false,
-})  
+});
 
-function setEmpties () {
-  emptyFields.name = (userInfo.name.length == 0);
-  emptyFields.email = (userInfo.email.length == 0);
-  emptyFields.tel = (userInfo.tel.length == 0);
-  emptyFields.password = (userInfo.password.length == 0);
+function setEmpties() {
+  emptyFields.name = userInfo.name.length == 0;
+  emptyFields.email = userInfo.email.length == 0;
+  emptyFields.tel = userInfo.tel.length == 0;
+  emptyFields.password = userInfo.password.length == 0;
 }
 const seePassword = ref(false);
 const showInput = ref(false);
-const isValid = computed(() => 
-  (userInfo.name.length > 0) &&
-  (userInfo.email.length > 0) &&
-  (userInfo.tel.length > 0) &&
-  (userInfo.password.length > 0)
-)
+const isValid = computed(
+  () =>
+    userInfo.name.length > 0 &&
+    userInfo.email.length > 0 &&
+    userInfo.tel.length > 0 &&
+    userInfo.password.length > 0,
+);
 
 function saveInfo() {
-  if(!showInput.value)
-    showInput.value = true;
-  else if(isValid.value) {
+  if (!showInput.value) showInput.value = true;
+  else if (isValid.value) {
     showInput.value = false;
     userInfoStore.setUserInfo(userInfo);
-  } else 
-    setEmpties();
+  } else setEmpties();
 }
 </script>
 
 <template>
   <div class="users-card">
-    <h2 class="users-card__heading visually-hidden">Информация о пользователе</h2>
+    <h2 class="users-card__heading visually-hidden">
+      Информация о пользователе
+    </h2>
 
-    <p class="users-card__hello-text--mobile"
-      v-show="!showInput"
-    >{{ userInfo.name }}, здравствуйте!</p>
-    <div 
-      :class="{'users-card__hello-input--mobile': true, 'little-input': true, 'little-input--error': emptyFields.name}"
-    v-show="showInput">
-        <label class="little-input__label visually-hidden" for="user-name">Имя и фамилия</label>
-        <input class="little-input__field" type="text" v-model="userInfo.name" 
+    <p class="users-card__hello-text--mobile" v-show="!showInput">
+      {{ userInfo.name }}, здравствуйте!
+    </p>
+    <div
+      :class="{
+        'users-card__hello-input--mobile': true,
+        'little-input': true,
+        'little-input--error': emptyFields.name,
+      }"
+      v-show="showInput"
+    >
+      <label class="little-input__label visually-hidden" for="user-name"
+        >Имя и фамилия</label
+      >
+      <input
+        class="little-input__field"
+        type="text"
+        v-model="userInfo.name"
         @click="emptyFields.name = false"
-        id="user-name">
-        <span class="little-input__error">это поле должно быть заполнено</span>
-      </div>
-
+        id="user-name"
+      />
+      <span class="little-input__error">это поле должно быть заполнено</span>
+    </div>
 
     <div class="users-card__avatar-wrapper">
       <picture class="users-card__avatar-picture">
@@ -88,82 +99,122 @@ function saveInfo() {
         type="button"
         @click="saveInfo"
       >
-        {{ showInput ? 'Сохранить' : 'Изменить' }}
+        {{ showInput ? "Сохранить" : "Изменить" }}
       </button>
     </div>
 
-
     <div class="users-card__hello-wrapper">
-      <p class="users-card__hello-text"
-      v-show="!showInput"
-      >{{ userInfo.name }}, здравствуйте!</p>
-      <div 
-      :class="{'users-card__hello-input': true, 'little-input': true, 'little-input--error': emptyFields.name}"
-      v-show="showInput"
+      <p class="users-card__hello-text" v-show="!showInput">
+        {{ userInfo.name }}, здравствуйте!
+      </p>
+      <div
+        :class="{
+          'users-card__hello-input': true,
+          'little-input': true,
+          'little-input--error': emptyFields.name,
+        }"
+        v-show="showInput"
       >
-        <label class="little-input__label visually-hidden" for="user-name">Имя и фамилия</label>
-        <input class="little-input__field" type="text" v-model="userInfo.name" 
-        @click="emptyFields.name = false"
-        id="user-name">
+        <label class="little-input__label visually-hidden" for="user-name"
+          >Имя и фамилия</label
+        >
+        <input
+          class="little-input__field"
+          type="text"
+          v-model="userInfo.name"
+          @click="emptyFields.name = false"
+          id="user-name"
+        />
         <span class="little-input__error">это поле должно быть заполнено</span>
       </div>
 
       <ul class="users-card__personal-list">
-        
         <li class="users-card__personal-item">
-          <div :class="{'little-input': true,
-            'little-input--disabled': !showInput,
-            'little-input--error': showInput && emptyFields.email
-          }">
-            <input class="little-input__field" type="email" v-model="userInfo.email" 
-            @click="emptyFields.email = false"
-            id="user-email">
-            <span class="little-input__error">это поле должно быть заполнено</span>
+          <div
+            :class="{
+              'little-input': true,
+              'little-input--disabled': !showInput,
+              'little-input--error': showInput && emptyFields.email,
+            }"
+          >
+            <input
+              class="little-input__field"
+              type="email"
+              v-model="userInfo.email"
+              @click="emptyFields.email = false"
+              id="user-email"
+            />
+            <span class="little-input__error"
+              >это поле должно быть заполнено</span
+            >
           </div>
         </li>
 
         <li class="users-card__personal-item">
-          <div :class="{'little-input': true,
-            'little-input--disabled': !showInput,
-            'little-input--error': showInput && emptyFields.tel
-          }">
-            <label class="little-input__label visually-hidden" for="user-tel">Телефон</label>
-            <input class="little-input__field" type="tel" v-model="userInfo.tel"
-            @click="emptyFields.tel = false" id="user-tel">
-            <span class="little-input__error">это поле должно быть заполнено</span>
+          <div
+            :class="{
+              'little-input': true,
+              'little-input--disabled': !showInput,
+              'little-input--error': showInput && emptyFields.tel,
+            }"
+          >
+            <label class="little-input__label visually-hidden" for="user-tel"
+              >Телефон</label
+            >
+            <input
+              class="little-input__field"
+              type="tel"
+              v-model="userInfo.tel"
+              @click="emptyFields.tel = false"
+              id="user-tel"
+            />
+            <span class="little-input__error"
+              >это поле должно быть заполнено</span
+            >
           </div>
         </li>
 
         <li class="users-card__personal-item">
-          <div 
-          :class="{'little-input': true,
-            'little-input--disabled': !showInput,
-            'little-input--password': true,
-            'little-input--error': showInput && emptyFields.password
-          }">
-            <label class="little-input__label" for="user-password">Пароль:</label>
-            <input class="little-input__field" 
-            :type="(seePassword && showInput) ? 'text' : 'password'" 
-            v-model="userInfo.password" 
-            @click="emptyFields.password = false"
-            id="user-password">
-            <button type="button" 
-            @click="seePassword = !seePassword"
-            class="little-input__btn btn-icon">
+          <div
+            :class="{
+              'little-input': true,
+              'little-input--disabled': !showInput,
+              'little-input--password': true,
+              'little-input--error': showInput && emptyFields.password,
+            }"
+          >
+            <label class="little-input__label" for="user-password"
+              >Пароль:</label
+            >
+            <input
+              class="little-input__field"
+              :type="seePassword && showInput ? 'text' : 'password'"
+              v-model="userInfo.password"
+              @click="emptyFields.password = false"
+              id="user-password"
+            />
+            <button
+              type="button"
+              @click="seePassword = !seePassword"
+              class="little-input__btn btn-icon"
+            >
               <svg
                 class="btn-icon__svg"
                 width="17"
                 height="13"
                 aria-hidden="true"
               >
-                <use xlink:href="../../assets/input-sprite.svg#personal-eye"></use>
+                <use
+                  xlink:href="../../assets/input-sprite.svg#personal-eye"
+                ></use>
               </svg>
             </button>
-              <span class="little-input__error">это поле должно быть заполнено</span>
-        </div>
+            <span class="little-input__error"
+              >это поле должно быть заполнено</span
+            >
+          </div>
         </li>
       </ul>
-
     </div>
   </div>
 </template>
@@ -192,11 +243,11 @@ function saveInfo() {
   justify-content: center;
   cursor: pointer;
   color: $color-black;
-  
+
   &__svg {
     width: 16px;
     height: 12px;
-    
+
     @include vp-laptop {
       width: 10px;
       height: 8px;
@@ -392,14 +443,14 @@ function saveInfo() {
   }
 
   .little-input__field {
-    padding: 3px 34px 2px 90px;  
+    padding: 3px 34px 2px 90px;
 
     @include vp-laptop {
-      padding: 2px 40px 1px 60px;    
+      padding: 2px 40px 1px 60px;
     }
 
     @include vp-tablet {
-      padding: 2px 20px 1px 60px;    
+      padding: 2px 20px 1px 60px;
     }
   }
 
@@ -435,12 +486,12 @@ function saveInfo() {
   .little-input__field {
     pointer-events: none;
     cursor: auto;
-    }
-  
+  }
+
   .little-input__btn,
   .little-input__error {
     display: none;
-  }  
+  }
 }
 
 .users-card {
@@ -491,7 +542,7 @@ function saveInfo() {
     }
   }
 
-  &__hello-text--mobile {    
+  &__hello-text--mobile {
     @include vp-mobile {
       font-family: $ff-gilroy, sans-serif;
       color: $color-raising-black;
@@ -522,7 +573,6 @@ function saveInfo() {
       align-items: center;
       gap: 15px;
     }
-    
   }
 
   &__avatar-image {
@@ -633,5 +683,4 @@ function saveInfo() {
     display: flex;
   }
 }
-
 </style>

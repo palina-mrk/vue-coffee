@@ -7,63 +7,61 @@ import QuestionsBlock from "../articles/QuestionsBlock.vue";
 import CookingCoffee from "../articles/CookingCoffee.vue";
 import NewsBlock from "../articles/NewsBlock.vue";
 
-import { computed, ref, reactive } from 'vue';
+import { computed, ref, reactive } from "vue";
 const anchorObjects = ref([
   {
     link: "teaching",
-    label: "Обучение"
+    label: "Обучение",
   },
   {
     link: "news",
-    label: "Новости"
+    label: "Новости",
   },
   {
     link: "questions",
-    label: "Частые вопросы"
-  }
-])
-
+    label: "Частые вопросы",
+  },
+]);
 </script>
 
 <template>
   <main>
+    <section class="teaching">
+      <bg-blog :place="'top'"></bg-blog>
 
-  <section class="teaching">
-    <bg-blog :place="'top'"></bg-blog>
+      <div class="container">
+        <div class="teaching__wrapper">
+          <custom-breadcrumbs
+            class="teaching__breadcrumbs-list"
+          ></custom-breadcrumbs>
+          <h1 class="visually-hidden">Блог</h1>
 
-    <div class="container">
-      <div class="teaching__wrapper">
-        <custom-breadcrumbs
-          class="teaching__breadcrumbs-list"
-        ></custom-breadcrumbs>
-        <h1 class="visually-hidden">Блог </h1>
-        
-        <anchor-toggle 
-        class="teaching__anchor-toggle"
-        :anchorObjects="anchorObjects"></anchor-toggle>
-  
-        <cooking-coffee id="teaching"></cooking-coffee>
-        <adding-block></adding-block>
+          <anchor-toggle
+            class="teaching__anchor-toggle"
+            :anchorObjects="anchorObjects"
+          ></anchor-toggle>
+
+          <cooking-coffee id="teaching"></cooking-coffee>
+          <adding-block></adding-block>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="news" id="news">
-    <bg-blog :place="'top'"></bg-blog>
+    <section class="news" id="news">
+      <bg-blog :place="'top'"></bg-blog>
 
-    <div class="container">
-      <news-block></news-block>
-    </div>
-  </section>
+      <div class="container">
+        <news-block></news-block>
+      </div>
+    </section>
 
-  <section class="questions" id="questions">
-    <bg-blog :place="'middle'"></bg-blog>
+    <section class="questions" id="questions">
+      <bg-blog :place="'middle'"></bg-blog>
 
-    <div class="container">
-      <questions-block></questions-block>
-    </div>
-  </section>
-
+      <div class="container">
+        <questions-block></questions-block>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -122,7 +120,7 @@ const anchorObjects = ref([
     margin: 0 0 61px;
 
     @include vp-laptop {
-      margin: 0 0 28px;      
+      margin: 0 0 28px;
     }
 
     @include vp-tablet {
@@ -137,9 +135,9 @@ const anchorObjects = ref([
   &__anchor-toggle {
     width: 100%;
     margin: 0 0 61px;
-    
+
     @include vp-laptop {
-      margin: 0 0 38px;      
+      margin: 0 0 38px;
     }
 
     @include vp-tablet {
@@ -158,7 +156,7 @@ const anchorObjects = ref([
     margin: 0 0 61px;
 
     @include vp-laptop {
-      margin: 0 0 38px;      
+      margin: 0 0 38px;
     }
 
     @include vp-tablet {
@@ -188,7 +186,7 @@ const anchorObjects = ref([
     width: calc(100% - 421px);
 
     @include vp-laptop {
-    width: calc(100% - 301px);
+      width: calc(100% - 301px);
     }
 
     @include vp-tablet {
@@ -203,7 +201,7 @@ const anchorObjects = ref([
   padding: 49px 0 100px;
   overflow: hidden;
   border-bottom: 1px solid $color-philippine-silver;
-  
+
   @include vp-laptop {
     padding: 34px 0 0;
   }
@@ -224,7 +222,7 @@ const anchorObjects = ref([
   width: 100%;
   padding: 45px 0 10px;
   overflow: hidden;
-  
+
   @include vp-laptop {
     padding: 34px 0 0;
   }

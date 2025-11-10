@@ -101,7 +101,7 @@ const actionsInfo = reactive([
   }
 
   &__top-forms {
-    border: 1px solid #E4E4E4;
+    border: 1px solid #e4e4e4;
     box-shadow: 0px 0px 50px $color-quick-silver-25;
     border-radius: 20px;
     background-color: $color-white;
@@ -128,12 +128,9 @@ const actionsInfo = reactive([
       max-width: calc($max-width-mobile + 36px);
       left: -18px;
     }
-
   }
 
-  &__user-form{
-  
-
+  &__user-form {
     @include vp-mobile {
       width: 100%;
     }
@@ -153,7 +150,7 @@ const actionsInfo = reactive([
     flex-direction: column;
     gap: 40px;
     margin: 0 0 60px;
-    
+
     @include vp-laptop {
       gap: 30px;
       margin: 0 0 40px;
@@ -193,7 +190,7 @@ const actionsInfo = reactive([
   }
 
   &__actions-title {
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     color: $color-raising-black;
     margin: 0;
     padding: 0;

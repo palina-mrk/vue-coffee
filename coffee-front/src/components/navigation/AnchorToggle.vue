@@ -96,7 +96,6 @@ const props = defineProps(["anchorObjects"]);
 .anchors-list--3 {
   .anchors-list {
     &__item:first-child {
-      
       @include vp-tablet {
         width: 100%;
       }

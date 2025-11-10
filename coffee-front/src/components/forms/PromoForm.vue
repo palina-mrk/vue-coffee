@@ -61,7 +61,6 @@ function clearInput() {
 </template>
 
 <style lang="scss" scoped>
-
 .btn-cornsilk {
   display: flex;
   align-items: center;

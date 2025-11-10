@@ -51,8 +51,7 @@ function getNextSales() {
               >
             </p>
           </div>
-          <a href="#catalogs"
-            class="overview__hero-button btn btn--size-xl"
+          <a href="#catalogs" class="overview__hero-button btn btn--size-xl"
             >Посмотреть каталог</a
           >
         </div>
@@ -308,8 +307,7 @@ function getNextSales() {
               Мы&nbsp;раскрываем вкус каждого сорта кофе.
             </p>
           </div>
-          <a href="#catalogs"
-            class="technology__button btn btn--size-xl"
+          <a href="#catalogs" class="technology__button btn btn--size-xl"
             >Посмотреть каталог</a
           >
         </div>
@@ -801,7 +799,7 @@ function getNextSales() {
     font-size: 25px;
     line-height: 30px;
     padding: 18px 17px 12px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -828,7 +826,7 @@ function getNextSales() {
     padding: 13px;
     font-size: 18px;
     line-height: 22px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       padding: 9px 9px 10px;
@@ -863,7 +861,7 @@ function getNextSales() {
     font-size: 20px;
     line-height: 24px;
     font-weight: 500;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     border-radius: 10px;
 
     @include vp-laptop {
@@ -1097,7 +1095,7 @@ function getNextSales() {
     justify-content: center;
     border: none;
     background-color: transparent;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;
@@ -1256,7 +1254,7 @@ function getNextSales() {
     max-width: 960px;
     font-weight: 900;
     font-size: 80px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     line-height: 100px;
 
     @include vp-laptop {
@@ -1312,7 +1310,7 @@ function getNextSales() {
     padding: 0;
     font-size: 25px;
     line-height: 1.3;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -1369,7 +1367,7 @@ function getNextSales() {
   &__catalogs-title {
     margin: 0 0 78px;
     padding: 0;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
@@ -1468,7 +1466,7 @@ function getNextSales() {
     text-align: right;
     margin: 0 0 47px;
     padding: 0;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
@@ -1502,7 +1500,7 @@ function getNextSales() {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 18px;
@@ -1716,7 +1714,7 @@ function getNextSales() {
   &__title {
     margin: 0 0 78px;
     padding: 0;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
@@ -1857,7 +1855,7 @@ function getNextSales() {
 
   &__item-title {
     margin: 0;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     padding: 0;
     font-weight: 700;
     font-size: 30px;
@@ -1951,7 +1949,7 @@ function getNextSales() {
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 35px;
@@ -2002,7 +2000,7 @@ function getNextSales() {
     line-height: 32px;
     display: flex;
     flex-direction: column;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     align-items: start;
 
     @include vp-laptop {
@@ -2105,7 +2103,7 @@ function getNextSales() {
     display: flex;
     flex-direction: column;
     gap: 40px;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     color: $color-black;
 
     @include vp-laptop {
@@ -2132,7 +2130,7 @@ function getNextSales() {
     font-size: 25px;
     line-height: 32px;
     margin: 0;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     padding: 0;
 
     @include vp-laptop {
@@ -2173,7 +2171,7 @@ function getNextSales() {
     line-height: 26px;
     margin: 0;
     padding: 0;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;
@@ -2301,7 +2299,7 @@ function getNextSales() {
   &__title {
     margin: 0;
     padding: 0;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-weight: 900;
     font-size: 50px;
     line-height: 62px;
@@ -2520,7 +2518,7 @@ function getNextSales() {
     margin: 0;
     padding: 0;
     font-weight: 900;
-  font-family: $ff-gilroy, sans-serif;
+    font-family: $ff-gilroy, sans-serif;
     font-size: 50px;
     line-height: 62px;
 

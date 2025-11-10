@@ -9,22 +9,29 @@ const catalogStore = useCatalogStore();
 const routerNames = computed(() => {
   const arr = route.path.split("/");
   arr[0] = "home";
-  arr[arr.length - 1] = route.name; 
+  arr[arr.length - 1] = route.name;
   return arr;
 });
 
-const routerLabels = computed(() => 
-  ! catalogStore.isLoaded ? 
-  [] : route.path.split("/").map((name, ind, arr) => {
-      if(ind == 0)
-        return router.options.routes.find((r) => r.name == "home").meta.title;
+const routerLabels = computed(() =>
+  !catalogStore.isLoaded
+    ? []
+    : route.path.split("/").map((name, ind, arr) => {
+        if (ind == 0)
+          return router.options.routes.find((r) => r.name == "home").meta.title;
 
-      if(ind == arr.length - 1)
-        return route.meta.title + ' ' + catalogStore.getCategory(Number(name)) + ' ' + catalogStore.getTitle(Number(name));    
+        if (ind == arr.length - 1)
+          return (
+            route.meta.title +
+            " " +
+            catalogStore.getCategory(Number(name)) +
+            " " +
+            catalogStore.getTitle(Number(name))
+          );
 
-      return router.options.routes.find((r) => r.name == name).meta.title;
-    }))
-
+        return router.options.routes.find((r) => r.name == name).meta.title;
+      }),
+);
 </script>
 
 <template>
@@ -38,9 +45,11 @@ const routerLabels = computed(() =>
 
   <ul class="breadcrumbs__list" v-if="catalogStore.isLoaded">
     <li v-for="n in routerLabels.length" class="breadcrumbs__item">
-      <router-link class="breadcrumbs__link" :to="{ name: routerNames[n - 1] }">{{
-        routerLabels[n - 1]
-      }}</router-link>
+      <router-link
+        class="breadcrumbs__link"
+        :to="{ name: routerNames[n - 1] }"
+        >{{ routerLabels[n - 1] }}</router-link
+      >
     </li>
   </ul>
 </template>
@@ -122,7 +131,7 @@ const routerLabels = computed(() =>
     position: absolute;
     left: 0;
     bottom: 50%;
-    
+
     @include vp-laptop {
       width: 3px;
       height: 3px;

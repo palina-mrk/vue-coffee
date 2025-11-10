@@ -109,7 +109,7 @@ const router = createRouter({
       meta: {
         title: "Блог",
       },
-    }, 
+    },
   ],
   scrollBehavior(to) {
     if (to.name == "catalogs") {

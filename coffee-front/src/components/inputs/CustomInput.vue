@@ -1,12 +1,12 @@
 <script setup>
 defineProps(["modelValue", "inputData"]);
-import {ref} from 'vue';
+import { ref } from "vue";
 
-const isError=ref(false);
+const isError = ref(false);
 </script>
 
 <template>
-  <div :class="{'custom-input': true, 'custom-input--error': isError}">
+  <div :class="{ 'custom-input': true, 'custom-input--error': isError }">
     <label
       class="custom-input__label visually-hidden"
       :for="inputData.id"
@@ -18,13 +18,15 @@ const isError=ref(false);
       :name="inputData.name"
       :id="inputData.id"
       :placeholder="inputData.placeholder"
-      @input="isError=($event.target.value.length == 0); $emit('update:modelValue', $event.target.value)"
+      @input="
+        isError = $event.target.value.length == 0;
+        $emit('update:modelValue', $event.target.value);
+      "
       @focus="isError = false"
     />
-    <span
-      class="custom-input__info"
-      >{{ inputData.error ? inputData.error : "" }}</span
-    >
+    <span class="custom-input__info">{{
+      inputData.error ? inputData.error : ""
+    }}</span>
   </div>
 </template>
 
@@ -130,7 +132,6 @@ const isError=ref(false);
   }
 
   .custom-input__field {
-
     @include vp-tablet {
       padding: 22px 50px 18px;
       margin: 0 0 4px;
