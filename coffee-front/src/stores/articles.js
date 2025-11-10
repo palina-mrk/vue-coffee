@@ -34,9 +34,14 @@ export const useArticlesStore = defineStore("articles", () => {
       });
   }
 
+  function getFullInfo(itemId) {
+    return articles.find((i) => i.id === itemId);
+  }
+
   return {
     loadArticles,
     isLoaded,
+    getFullInfo,
     articles,
     tags,
   };
