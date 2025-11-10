@@ -12,7 +12,11 @@
         >
       </li>
       <li class="main-nav__item">
-        <a class="main-nav__link" @click="$emit('leave-page')">Блог</a>
+        <router-link
+          :to="{ name: 'blog' }"
+          class="main-nav__link"
+          @click="$emit('leave-page')">Блог
+        </router-link>
       </li>
       <li class="main-nav__item">
         <router-link

@@ -36,7 +36,10 @@ defineProps(["newsItem"]);
       <div class="news-card__bottom">
         <span class="news-card__author">{{ newsItem.author }}</span>
         
-        <a class="news-card__link btn-linked" href="#">
+        <router-link
+          :to="{ name: 'blog.article', params: { articleID: newsItem.id } }"
+          class="news-card__link btn-linked"
+          >
           <span class="btn-linked__text">Подробнее</span>
           <svg
             class="btn-linked__icon"
@@ -48,7 +51,7 @@ defineProps(["newsItem"]);
               xlink:href="../../assets/btn-sprite.svg#arrow-for-link"
             ></use>
           </svg>
-        </a>
+        </router-link>
       </div>
     </div>
   </div>
