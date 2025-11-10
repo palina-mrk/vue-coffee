@@ -6,6 +6,7 @@ import gql from "graphql-tag";
 export const useArticlesStore = defineStore("articles", () => {
   const isLoaded = ref(false);
   const articles = reactive([]);
+  const news = reactive([]);
   const tags = reactive([]);
 
   function loadArticles() {
@@ -27,6 +28,7 @@ export const useArticlesStore = defineStore("articles", () => {
       .then((result) => {
         result.data.articles.forEach((el) => {
           articles.push(el);
+          news.push(el);
           if (!tags.includes(el.tag)) tags.push(el.tag);
         });
         isLoaded.value = true;
@@ -49,6 +51,7 @@ export const useArticlesStore = defineStore("articles", () => {
     isLoaded,
     getFullInfo,
     articles,
+    news,
     getTitle,
     tags,
   };

@@ -1,7 +1,9 @@
 <script setup>
+import { useArticlesStore } from "../../stores/articles";
 import { useCatalogStore } from "../../stores/catalog";
 import { reactive } from "vue";
 const catalogStore = useCatalogStore();
+const articlesStore = useArticlesStore();
 import ProductCard from "../cards/ProductCard.vue";
 import BgHome from "../backgrounds/BgHome.vue";
 import SliderLarge from "../sliders/SliderLarge.vue";
@@ -9,6 +11,7 @@ import { storeToRefs } from "pinia";
 import CatalogCard from "../cards/CatalogCard.vue";
 
 const { isLoaded, coffeeSales } = storeToRefs(catalogStore);
+const { news } = storeToRefs(articlesStore);
 const catalogCards = reactive([
   { page: "coffee", title: "Свежеобжаренный кофе" },
   { page: "tea", title: "Чай и кофейные напитки" },
@@ -24,6 +27,16 @@ function getPreviousSales() {
 function getNextSales() {
   coffeeSales.value.push(coffeeSales.value[0]);
   coffeeSales.value.shift();
+}
+
+function getPreviousNews() {
+  news.value.unshift(news.value[news.value.length - 1]);
+  news.value.pop();
+}
+
+function getNextNews() {
+  news.value.push(news.value[0]);
+  news.value.shift();
 }
 </script>
 
@@ -314,25 +327,26 @@ function getNextSales() {
       </div>
     </section>
 
-    <section class="news">
+    <section class="news" v-if="articlesStore.isLoaded">
       <bg-home :section="'news'"></bg-home>
 
       <div class="container">
         <div class="news__heading">
           <h2 class="news__title">Новости компании</h2>
 
-          <a
+          <router-link
+            :to="{name: 'news'}"
             class="news__link btn-linked btn-linked--black btn-linked--size-m"
-            href="#"
           >
             <span class="btn-linked__text">Читать все</span>
-          </a>
+          </router-link>
         </div>
 
         <div class="news__arrows">
           <button
             class="news__arrow-btn btn-icon btn-icon--arrow-transparent"
             type="button"
+            @click="getPreviousNews"
             aria-label="Посмотреть предыдущую новость"
           >
             <svg
@@ -350,6 +364,7 @@ function getNextSales() {
           <button
             class="news__arrow-btn btn-icon btn-icon--arrow-transparent"
             type="button"
+            @click="getNextNews"
             aria-label="Посмотреть следующую новость"
           >
             <svg
@@ -393,22 +408,14 @@ function getNextSales() {
               </div>
               <div class="news-card__inner">
                 <h3 class="news-card__title">
-                  Танзанийский кофе. Откуда он&nbsp;взялся и&nbsp;почему
-                  мы&nbsp;его так любим?
+                  {{ news[0].title }}
                 </h3>
                 <div class="news-card__content">
                   <p class="news-card__paragraph">
-                    Танзания&nbsp;&mdash; красивая африканская страна. Именно
-                    здесь расположены легендарные географические
-                    объекты&nbsp;&mdash; вулкан Килиманджаро и&nbsp;озеро
-                    Виктория.
-                  </p>
-                  <p class="news-card__paragraph">
-                    Но&nbsp;наш интерес вызван не&nbsp;столько природными
-                    красотами, сколько кофе...
+                    {{ news[0].text[0] }}
                   </p>
                 </div>
-                <a class="news-card__link btn-linked" href="#">
+                <router-link class="news-card__link btn-linked" :to="{ name: 'blog.article', params: { articleID: news[0].id } }">
                   <span class="btn-linked__text">Подробнее</span>
                   <svg
                     class="btn-linked__icon"
@@ -420,7 +427,7 @@ function getNextSales() {
                       xlink:href="../../assets/btn-sprite.svg#arrow-for-link"
                     ></use>
                   </svg>
-                </a>
+                </router-link>
               </div>
             </div>
           </li>
@@ -428,16 +435,13 @@ function getNextSales() {
           <li class="news__item">
             <div class="news-card">
               <div class="news-card__inner">
-                <h3 class="news-card__title">Африканский кофе Кения&nbsp;АА</h3>
+                <h3 class="news-card__title">{{ news[1].title }}</h3>
                 <div class="news-card__content">
                   <p class="news-card__paragraph">
-                    Кения АА&nbsp;&mdash; у&nbsp;этого кофе, из&nbsp;африканской
-                    страны, репутация одного из&nbsp;самых вкусных и&nbsp;ярких
-                    сортов в&nbsp;мире. Многие обжарщики высоко оценивают
-                    местные разновидности высокогорной арабики.
+                    {{ news[1].text[0] }}
                   </p>
                 </div>
-                <a class="news-card__link btn-linked" href="#">
+                <router-link class="news-card__link btn-linked" :to="{ name: 'blog.article', params: { articleID: news[1].id } }">
                   <span class="btn-linked__text">Подробнее</span>
                   <svg
                     class="btn-linked__icon"
@@ -449,7 +453,7 @@ function getNextSales() {
                       xlink:href="../../assets/btn-sprite.svg#arrow-for-link"
                     ></use>
                   </svg>
-                </a>
+                </router-link>
               </div>
             </div>
           </li>
@@ -457,16 +461,13 @@ function getNextSales() {
           <li class="news__item">
             <div class="news-card">
               <div class="news-card__inner">
-                <h3 class="news-card__title">Африканский кофе Кения&nbsp;АА</h3>
+                <h3 class="news-card__title">{{ news[2].title }}</h3>
                 <div class="news-card__content">
                   <p class="news-card__paragraph">
-                    Кения АА&nbsp;&mdash; у&nbsp;этого кофе, из&nbsp;африканской
-                    страны, репутация одного из&nbsp;самых вкусных и&nbsp;ярких
-                    сортов в&nbsp;мире. Многие обжарщики высоко оценивают
-                    местные разновидности высокогорной арабики.
+                    {{ news[2].text[0] }}
                   </p>
                 </div>
-                <a class="news-card__link btn-linked" href="#">
+                <router-link class="news-card__link btn-linked" :to="{ name: 'blog.article', params: { articleID: news[2].id } }">
                   <span class="btn-linked__text">Подробнее</span>
                   <svg
                     class="btn-linked__icon"
@@ -478,7 +479,7 @@ function getNextSales() {
                       xlink:href="../../assets/btn-sprite.svg#arrow-for-link"
                     ></use>
                   </svg>
-                </a>
+                </router-link>
               </div>
             </div>
           </li>
@@ -510,22 +511,14 @@ function getNextSales() {
               </div>
               <div class="news-card__inner">
                 <h3 class="news-card__title">
-                  Танзанийский кофе. Откуда он&nbsp;взялся и&nbsp;почему
-                  мы&nbsp;его так любим?
+                  {{ news[3].title }}
                 </h3>
                 <div class="news-card__content">
                   <p class="news-card__paragraph">
-                    Танзания&nbsp;&mdash; красивая африканская страна. Именно
-                    здесь расположены легендарные географические
-                    объекты&nbsp;&mdash; вулкан Килиманджаро и&nbsp;озеро
-                    Виктория.
-                  </p>
-                  <p class="news-card__paragraph">
-                    Но&nbsp;наш интерес вызван не&nbsp;столько природными
-                    красотами, сколько кофе...
+                    {{ news[3].text[0] }}
                   </p>
                 </div>
-                <a class="news-card__link btn-linked" href="#">
+                <router-link class="news-card__link btn-linked" :to="{ name: 'blog.article', params: { articleID: news[3].id } }">
                   <span class="btn-linked__text">Подробнее</span>
                   <svg
                     class="btn-linked__icon"
@@ -537,7 +530,7 @@ function getNextSales() {
                       xlink:href="../../assets/btn-sprite.svg#arrow-for-link"
                     ></use>
                   </svg>
-                </a>
+                </router-link>
               </div>
             </div>
           </li>
@@ -2035,7 +2028,7 @@ function getNextSales() {
 .news-card {
   display: flex;
   box-shadow: 0px 0px 30px 0px $color-philippine-gray-20;
-  min-height: 400px;
+  height: 400px;
   justify-content: space-between;
   max-width: 100%;
   border-radius: 20px;
@@ -2044,24 +2037,24 @@ function getNextSales() {
 
   @include vp-laptop {
     box-shadow: 0px 0px 21px 0px $color-philippine-gray-20;
-    min-height: 282px;
+    height: 282px;
     border-radius: 14px;
   }
 
   @include vp-tablet {
     box-shadow: 0px 0px 61px 0px $color-philippine-gray-20;
     flex-direction: column;
-    border-radius: 40px;
+    border-radius: 40px 40px 20px 20px;
     overflow: hidden;
     width: 700px;
-    min-height: 374px;
+    height: unset;
+    min-height: 300px;
   }
 
   @include vp-mobile {
     box-shadow: 0px 0px 30px 0px $color-philippine-gray-20;
     width: 340px;
-    border-radius: 10px;
-    min-height: 242px;
+    border-radius: 20px 20px 10px 10px;
   }
 
   &__image-wrapper {
@@ -2115,13 +2108,13 @@ function getNextSales() {
     @include vp-tablet {
       width: 700px;
       padding: 70px 90px 50px;
-      gap: 25px;
+      gap: 15px;
     }
 
     @include vp-mobile {
       width: 340px;
-      padding: 30px 30px 10px 30px;
-      gap: 18px;
+      padding: 30px 30px 20px 30px;
+      gap: 10px;
     }
   }
 
@@ -2152,17 +2145,15 @@ function getNextSales() {
   &__content {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     gap: 20px;
 
     @include vp-tablet {
-      max-height: 104px;
-      overflow: hidden;
       gap: 20px;
     }
 
     @include vp-mobile {
       gap: 14px;
-      max-height: 90px;
     }
   }
 
@@ -2172,7 +2163,7 @@ function getNextSales() {
     margin: 0;
     padding: 0;
     font-family: $ff-gilroy, sans-serif;
-
+    
     @include vp-laptop {
       font-size: 14px;
       line-height: 18px;
@@ -2191,23 +2182,6 @@ function getNextSales() {
 
   &__link {
     margin: auto auto 0 0;
-    position: relative;
-    bottom: 16px;
-    left: -24px;
-
-    @include vp-laptop {
-      bottom: 6px;
-      left: -17px;
-    }
-
-    @include vp-tablet {
-      left: -18px;
-      bottom: 8px;
-    }
-
-    @include vp-mobile {
-      bottom: 24px;
-    }
   }
 }
 
@@ -2226,14 +2200,12 @@ function getNextSales() {
     @include vp-tablet {
       padding: 62px 80px 72px 80px;
       width: 100%;
-      min-height: 489px;
-      gap: 50px;
+      height: 580px;
     }
 
     @include vp-mobile {
-      padding: 40px 30px 10px 40px;
-      gap: 40px;
-      min-height: 368px;
+      padding: 40px 30px 40px 40px;
+      height: 500px;
     }
   }
 
@@ -2246,10 +2218,15 @@ function getNextSales() {
 
     @include vp-tablet {
       gap: 25px;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
     }
 
     @include vp-mobile {
       gap: 18px;
+      height: 164px;
+      overflow: hidden;
     }
   }
 }
@@ -2370,30 +2347,30 @@ function getNextSales() {
     justify-content: space-between;
 
     @include vp-tablet {
-      flex-direction: column;
-      min-height: 769px;
-      justify-content: start;
-      position: relative;
-      z-index: 1;
+      height: 769px;
     }
 
     @include vp-mobile {
-      min-height: 403px;
+      height: 503px;
     }
   }
 
-  &__item {
+  &__item:first-child {
     padding: 0;
     margin: 0;
     display: flex;
 
     @include vp-tablet {
-      top: -100px;
-      display: none;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      justify-content: start;
+    }
+  }
 
-      &:nth-child(1) {
-        display: flex;
-      }
+  &__item:not(:first-child) {
+    @include vp-tablet {
+      display: none;  
     }
   }
 }

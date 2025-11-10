@@ -119,6 +119,14 @@ const router = createRouter({
         title: "Статья блога",
       },
     },
+    {
+      path: "/news",
+      name: "news",
+      component: BlogView,
+      meta: {
+        title: "Новости блога",
+      },
+    },
   ],
   scrollBehavior(to) {
     if (to.name == "catalogs") {
@@ -133,7 +141,14 @@ const router = createRouter({
         top: "180",
         behavior: "smooth",
       };
-    } else if (to.hash) {
+    } else if (to.name == "news") {
+      return {
+        el: "#news",
+        top: "180",
+        behavior: "smooth",
+      };
+    } 
+    else if (to.hash) {
       return {
         el: to.hash,
         top: "100",
