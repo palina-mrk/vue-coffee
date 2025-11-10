@@ -210,10 +210,10 @@ const tagItems = computed(() =>
   }
 
   &__toggle {
-    width: calc(100% - 470px);
+    width: calc(100% - 400px);
 
     @include vp-laptop {
-      width: calc(100% - 333px);  
+    width: calc(100% - 268px);  
     }
 
     @include vp-tablet {
@@ -228,18 +228,14 @@ const tagItems = computed(() =>
     margin: 0;
     padding: 0;
     list-style-type: none;
-    gap: 30px;
+    gap: 50px;
 
     @include vp-laptop {
-      gap: 20px;
+      gap: 30px;
     }
 
     @include vp-tablet {
       gap: 20px;
-    }
-
-    @include vp-mobile {
-      gap: 10px;
     }
   }
 

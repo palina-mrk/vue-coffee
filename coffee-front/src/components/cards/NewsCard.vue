@@ -171,48 +171,47 @@ defineProps(["newsItem"]);
   @include vp-tablet {
     box-shadow: 0px 0px 61px 0px $color-philippine-gray-20;
     flex-direction: column;
-    border-radius: 40px;
+    border-radius: 40px 40px 20px 20px;
   }
 
   @include vp-mobile {
     box-shadow: 0px 0px 30px 0px $color-philippine-gray-20;
-    border-radius: 10px;
+    border-radius: 20px 20px 10px 10px;
   }
 
   &__image-wrapper {
-    display: flex;
-    width: 400px;
+    min-width: 400px;
     height: 400px;
     overflow: hidden;
     border-radius: 20px 0 0 20px;
 
     @include vp-laptop {
-      width: 280px;
+      min-width: 283px;
       height: 283px;
       border-radius: 14px 0 0 14px;
     }
 
     @include vp-tablet {
-      width: 700px;
-      min-height: 280px;
+      width: 100%;
+      height: 280px;
       border-radius: 40px 40px 0 0;
     }
 
     @include vp-mobile {
-      width: 340px;
-      min-height: 137px;
-      border-radius: 10px 10px 0 0;
+      height: 137px;
+      border-radius: 20px 20px 0 0;
     }
   }
 
   &__image {
     width: 100%;
-    height: 100%;
+    object-fit: cover;
     overflow: hidden;
   }
 
   &__inner {
     max-height: 400px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     font-family: $ff-gilroy, sans-serif;
@@ -223,20 +222,20 @@ defineProps(["newsItem"]);
     @include vp-laptop {
       max-height: 283px;
       padding: 30px 90px 38px 53px;
-      width: 442px;
       gap: 20px;
     }
 
     @include vp-tablet {
-      max-height: unset;
-      padding: 62px 80px 72px 80px;
+      flex-grow: unset;
+      max-height: 490px;
       width: 100%;
-      min-height: 489px;
+      padding: 60px 80px 80px;
       gap: 50px;
     }
 
     @include vp-mobile {
-      padding: 40px 30px 10px 40px;
+      padding: 40px 30px 40px 40px;
+      max-height: 370px;
       gap: 40px;
     }
   }
@@ -247,6 +246,7 @@ defineProps(["newsItem"]);
     line-height: 32px;
     margin: 0;
     font-family: $ff-gilroy, sans-serif;
+    color: $color-black;
     padding: 0;
 
     @include vp-laptop {
@@ -268,7 +268,8 @@ defineProps(["newsItem"]);
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 20px;
+    overflow: hidden;
 
     @include vp-laptop {
       gap: 18px;
@@ -284,11 +285,13 @@ defineProps(["newsItem"]);
   }
 
   &__paragraph {
+    font-family: $ff-gilroy, sans-serif;
+    font-weight: 500;
+    color: $color-black;
     font-size: 20px;
     line-height: 26px;
     margin: 0;
     padding: 0;
-    font-family: $ff-gilroy, sans-serif;
 
     @include vp-laptop {
       font-size: 14px;
@@ -306,24 +309,36 @@ defineProps(["newsItem"]);
     }
   }
 
-  &__link {
-    margin: auto auto 0 0;
-    position: relative;
-    bottom: 16px;
-    left: -24px;
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__author {
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    font-family: $ff-gilroy, sans-serif;
+    color: $color-black;
 
     @include vp-laptop {
-      bottom: 6px;
-      left: -17px;
+      font-size: 14px;
+      line-height: 18px;
     }
 
     @include vp-tablet {
-      left: -18px;
-      bottom: 8px;
+      display: none;
+      font-size: 20px;
+      line-height: 26px;
     }
 
     @include vp-mobile {
-      bottom: 24px;
+      font-size: 14px;
+      line-height: 18px;
     }
   }
 }
