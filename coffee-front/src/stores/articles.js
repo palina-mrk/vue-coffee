@@ -38,11 +38,18 @@ export const useArticlesStore = defineStore("articles", () => {
     return articles.find((i) => i.id === itemId);
   }
 
+  function getTitle(itemId) {
+    return articles.find((i) => i.id === itemId)
+      ? articles.find((i) => i.id === itemId).title
+      : "";
+  }
+
   return {
     loadArticles,
     isLoaded,
     getFullInfo,
     articles,
+    getTitle,
     tags,
   };
 });
